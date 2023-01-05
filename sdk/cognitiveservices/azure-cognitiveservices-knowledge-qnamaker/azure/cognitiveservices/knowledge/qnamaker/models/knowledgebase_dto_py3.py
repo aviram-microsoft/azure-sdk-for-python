@@ -41,18 +41,31 @@ class KnowledgebaseDTO(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'host_name': {'key': 'hostName', 'type': 'str'},
-        'last_accessed_timestamp': {'key': 'lastAccessedTimestamp', 'type': 'str'},
-        'last_changed_timestamp': {'key': 'lastChangedTimestamp', 'type': 'str'},
-        'last_published_timestamp': {'key': 'lastPublishedTimestamp', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'user_id': {'key': 'userId', 'type': 'str'},
-        'urls': {'key': 'urls', 'type': '[str]'},
-        'sources': {'key': 'sources', 'type': '[str]'},
+        "id": {"key": "id", "type": "str"},
+        "host_name": {"key": "hostName", "type": "str"},
+        "last_accessed_timestamp": {"key": "lastAccessedTimestamp", "type": "str"},
+        "last_changed_timestamp": {"key": "lastChangedTimestamp", "type": "str"},
+        "last_published_timestamp": {"key": "lastPublishedTimestamp", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "user_id": {"key": "userId", "type": "str"},
+        "urls": {"key": "urls", "type": "[str]"},
+        "sources": {"key": "sources", "type": "[str]"},
     }
 
-    def __init__(self, *, id: str=None, host_name: str=None, last_accessed_timestamp: str=None, last_changed_timestamp: str=None, last_published_timestamp: str=None, name: str=None, user_id: str=None, urls=None, sources=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str = None,
+        host_name: str = None,
+        last_accessed_timestamp: str = None,
+        last_changed_timestamp: str = None,
+        last_published_timestamp: str = None,
+        name: str = None,
+        user_id: str = None,
+        urls=None,
+        sources=None,
+        **kwargs
+    ) -> None:
         super(KnowledgebaseDTO, self).__init__(**kwargs)
         self.id = id
         self.host_name = host_name

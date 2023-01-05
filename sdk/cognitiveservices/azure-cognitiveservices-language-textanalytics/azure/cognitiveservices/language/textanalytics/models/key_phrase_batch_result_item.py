@@ -31,17 +31,17 @@ class KeyPhraseBatchResultItem(Model):
     """
 
     _validation = {
-        'key_phrases': {'readonly': True},
+        "key_phrases": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'key_phrases': {'key': 'keyPhrases', 'type': '[str]'},
-        'statistics': {'key': 'statistics', 'type': 'DocumentStatistics'},
+        "id": {"key": "id", "type": "str"},
+        "key_phrases": {"key": "keyPhrases", "type": "[str]"},
+        "statistics": {"key": "statistics", "type": "DocumentStatistics"},
     }
 
     def __init__(self, **kwargs):
         super(KeyPhraseBatchResultItem, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
+        self.id = kwargs.get("id", None)
         self.key_phrases = None
-        self.statistics = kwargs.get('statistics', None)
+        self.statistics = kwargs.get("statistics", None)

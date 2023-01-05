@@ -28,15 +28,15 @@ class RequestStatistics(Model):
     """
 
     _attribute_map = {
-        'documents_count': {'key': 'documentsCount', 'type': 'int'},
-        'valid_documents_count': {'key': 'validDocumentsCount', 'type': 'int'},
-        'erroneous_documents_count': {'key': 'erroneousDocumentsCount', 'type': 'int'},
-        'transactions_count': {'key': 'transactionsCount', 'type': 'long'},
+        "documents_count": {"key": "documentsCount", "type": "int"},
+        "valid_documents_count": {"key": "validDocumentsCount", "type": "int"},
+        "erroneous_documents_count": {"key": "erroneousDocumentsCount", "type": "int"},
+        "transactions_count": {"key": "transactionsCount", "type": "long"},
     }
 
     def __init__(self, **kwargs):
         super(RequestStatistics, self).__init__(**kwargs)
-        self.documents_count = kwargs.get('documents_count', None)
-        self.valid_documents_count = kwargs.get('valid_documents_count', None)
-        self.erroneous_documents_count = kwargs.get('erroneous_documents_count', None)
-        self.transactions_count = kwargs.get('transactions_count', None)
+        self.documents_count = kwargs.get("documents_count", None)
+        self.valid_documents_count = kwargs.get("valid_documents_count", None)
+        self.erroneous_documents_count = kwargs.get("erroneous_documents_count", None)
+        self.transactions_count = kwargs.get("transactions_count", None)

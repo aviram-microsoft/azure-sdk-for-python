@@ -40,15 +40,15 @@ class ErrorResponseError(Error):
     """
 
     _validation = {
-        'code': {'required': True},
+        "code": {"required": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
-        'target': {'key': 'target', 'type': 'str'},
-        'details': {'key': 'details', 'type': '[Error]'},
-        'inner_error': {'key': 'innerError', 'type': 'InnerErrorModel'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "target": {"key": "target", "type": "str"},
+        "details": {"key": "details", "type": "[Error]"},
+        "inner_error": {"key": "innerError", "type": "InnerErrorModel"},
     }
 
     def __init__(self, **kwargs):

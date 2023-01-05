@@ -21,9 +21,9 @@ class ModelsResult(Model):
     """
 
     _attribute_map = {
-        'models_property': {'key': 'models', 'type': '[ModelResult]'},
+        "models_property": {"key": "models", "type": "[ModelResult]"},
     }
 
     def __init__(self, **kwargs):
         super(ModelsResult, self).__init__(**kwargs)
-        self.models_property = kwargs.get('models_property', None)
+        self.models_property = kwargs.get("models_property", None)

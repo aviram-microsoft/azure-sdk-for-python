@@ -25,16 +25,16 @@ class FeedbackRecordDTO(Model):
     """
 
     _validation = {
-        'user_question': {'max_length': 1000},
+        "user_question": {"max_length": 1000},
     }
 
     _attribute_map = {
-        'user_id': {'key': 'userId', 'type': 'str'},
-        'user_question': {'key': 'userQuestion', 'type': 'str'},
-        'qna_id': {'key': 'qnaId', 'type': 'int'},
+        "user_id": {"key": "userId", "type": "str"},
+        "user_question": {"key": "userQuestion", "type": "str"},
+        "qna_id": {"key": "qnaId", "type": "int"},
     }
 
-    def __init__(self, *, user_id: str=None, user_question: str=None, qna_id: int=None, **kwargs) -> None:
+    def __init__(self, *, user_id: str = None, user_question: str = None, qna_id: int = None, **kwargs) -> None:
         super(FeedbackRecordDTO, self).__init__(**kwargs)
         self.user_id = user_id
         self.user_question = user_question

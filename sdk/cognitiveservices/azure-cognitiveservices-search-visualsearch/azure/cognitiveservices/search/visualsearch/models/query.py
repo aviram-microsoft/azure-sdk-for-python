@@ -40,24 +40,24 @@ class Query(Model):
     """
 
     _validation = {
-        'text': {'required': True},
-        'display_text': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'search_link': {'readonly': True},
-        'thumbnail': {'readonly': True},
+        "text": {"required": True},
+        "display_text": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "search_link": {"readonly": True},
+        "thumbnail": {"readonly": True},
     }
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'display_text': {'key': 'displayText', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'search_link': {'key': 'searchLink', 'type': 'str'},
-        'thumbnail': {'key': 'thumbnail', 'type': 'ImageObject'},
+        "text": {"key": "text", "type": "str"},
+        "display_text": {"key": "displayText", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "search_link": {"key": "searchLink", "type": "str"},
+        "thumbnail": {"key": "thumbnail", "type": "ImageObject"},
     }
 
     def __init__(self, **kwargs):
         super(Query, self).__init__(**kwargs)
-        self.text = kwargs.get('text', None)
+        self.text = kwargs.get("text", None)
         self.display_text = None
         self.web_search_url = None
         self.search_link = None

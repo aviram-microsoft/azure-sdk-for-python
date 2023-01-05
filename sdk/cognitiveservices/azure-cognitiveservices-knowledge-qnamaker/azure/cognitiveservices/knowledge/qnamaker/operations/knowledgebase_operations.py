@@ -33,8 +33,7 @@ class KnowledgebaseOperations(object):
 
         self.config = config
 
-    def list_all(
-            self, custom_headers=None, raw=False, **operation_config):
+    def list_all(self, custom_headers=None, raw=False, **operation_config):
         """Gets all knowledgebases for a user.
 
         :param dict custom_headers: headers that will be added to the request
@@ -50,9 +49,9 @@ class KnowledgebaseOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_all.metadata['url']
+        url = self.list_all.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -61,7 +60,7 @@ class KnowledgebaseOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -75,17 +74,17 @@ class KnowledgebaseOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('KnowledgebasesDTO', response)
+            deserialized = self._deserialize("KnowledgebasesDTO", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_all.metadata = {'url': '/knowledgebases'}
 
-    def get_details(
-            self, kb_id, custom_headers=None, raw=False, **operation_config):
+    list_all.metadata = {"url": "/knowledgebases"}
+
+    def get_details(self, kb_id, custom_headers=None, raw=False, **operation_config):
         """Gets details of a specific knowledgebase.
 
         :param kb_id: Knowledgebase id.
@@ -103,10 +102,10 @@ class KnowledgebaseOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_details.metadata['url']
+        url = self.get_details.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'kbId': self._serialize.url("kb_id", kb_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "kbId": self._serialize.url("kb_id", kb_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -115,7 +114,7 @@ class KnowledgebaseOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -129,17 +128,17 @@ class KnowledgebaseOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('KnowledgebaseDTO', response)
+            deserialized = self._deserialize("KnowledgebaseDTO", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_details.metadata = {'url': '/knowledgebases/{kbId}'}
 
-    def delete(
-            self, kb_id, custom_headers=None, raw=False, **operation_config):
+    get_details.metadata = {"url": "/knowledgebases/{kbId}"}
+
+    def delete(self, kb_id, custom_headers=None, raw=False, **operation_config):
         """Deletes the knowledgebase and all its data.
 
         :param kb_id: Knowledgebase id.
@@ -155,10 +154,10 @@ class KnowledgebaseOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete.metadata['url']
+        url = self.delete.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'kbId': self._serialize.url("kb_id", kb_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "kbId": self._serialize.url("kb_id", kb_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -180,10 +179,10 @@ class KnowledgebaseOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete.metadata = {'url': '/knowledgebases/{kbId}'}
 
-    def publish(
-            self, kb_id, custom_headers=None, raw=False, **operation_config):
+    delete.metadata = {"url": "/knowledgebases/{kbId}"}
+
+    def publish(self, kb_id, custom_headers=None, raw=False, **operation_config):
         """Publishes all changes in test index of a knowledgebase to its prod
         index.
 
@@ -200,10 +199,10 @@ class KnowledgebaseOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.publish.metadata['url']
+        url = self.publish.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'kbId': self._serialize.url("kb_id", kb_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "kbId": self._serialize.url("kb_id", kb_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -225,10 +224,10 @@ class KnowledgebaseOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    publish.metadata = {'url': '/knowledgebases/{kbId}'}
 
-    def replace(
-            self, kb_id, qn_alist, custom_headers=None, raw=False, **operation_config):
+    publish.metadata = {"url": "/knowledgebases/{kbId}"}
+
+    def replace(self, kb_id, qn_alist, custom_headers=None, raw=False, **operation_config):
         """Replace knowledgebase contents.
 
         :param kb_id: Knowledgebase id.
@@ -251,10 +250,10 @@ class KnowledgebaseOperations(object):
         replace_kb = models.ReplaceKbDTO(qn_alist=qn_alist)
 
         # Construct URL
-        url = self.replace.metadata['url']
+        url = self.replace.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'kbId': self._serialize.url("kb_id", kb_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "kbId": self._serialize.url("kb_id", kb_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -263,12 +262,12 @@ class KnowledgebaseOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(replace_kb, 'ReplaceKbDTO')
+        body_content = self._serialize.body(replace_kb, "ReplaceKbDTO")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -280,10 +279,10 @@ class KnowledgebaseOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    replace.metadata = {'url': '/knowledgebases/{kbId}'}
 
-    def update(
-            self, kb_id, update_kb, custom_headers=None, raw=False, **operation_config):
+    replace.metadata = {"url": "/knowledgebases/{kbId}"}
+
+    def update(self, kb_id, update_kb, custom_headers=None, raw=False, **operation_config):
         """Asynchronous operation to modify a knowledgebase.
 
         :param kb_id: Knowledgebase id.
@@ -303,10 +302,10 @@ class KnowledgebaseOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.update.metadata['url']
+        url = self.update.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'kbId': self._serialize.url("kb_id", kb_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "kbId": self._serialize.url("kb_id", kb_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -315,13 +314,13 @@ class KnowledgebaseOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(update_kb, 'UpdateKbOperationDTO')
+        body_content = self._serialize.body(update_kb, "UpdateKbOperationDTO")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -334,9 +333,9 @@ class KnowledgebaseOperations(object):
         header_dict = {}
 
         if response.status_code == 202:
-            deserialized = self._deserialize('Operation', response)
+            deserialized = self._deserialize("Operation", response)
             header_dict = {
-                'Location': 'str',
+                "Location": "str",
             }
 
         if raw:
@@ -345,10 +344,10 @@ class KnowledgebaseOperations(object):
             return client_raw_response
 
         return deserialized
-    update.metadata = {'url': '/knowledgebases/{kbId}'}
 
-    def create(
-            self, create_kb_payload, custom_headers=None, raw=False, **operation_config):
+    update.metadata = {"url": "/knowledgebases/{kbId}"}
+
+    def create(self, create_kb_payload, custom_headers=None, raw=False, **operation_config):
         """Asynchronous operation to create a new knowledgebase.
 
         :param create_kb_payload: Post body of the request.
@@ -366,9 +365,9 @@ class KnowledgebaseOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.create.metadata['url']
+        url = self.create.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -377,13 +376,13 @@ class KnowledgebaseOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(create_kb_payload, 'CreateKbDTO')
+        body_content = self._serialize.body(create_kb_payload, "CreateKbDTO")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -395,17 +394,19 @@ class KnowledgebaseOperations(object):
         deserialized = None
 
         if response.status_code == 202:
-            deserialized = self._deserialize('Operation', response)
+            deserialized = self._deserialize("Operation", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create.metadata = {'url': '/knowledgebases/create'}
+
+    create.metadata = {"url": "/knowledgebases/create"}
 
     def download(
-            self, kb_id, environment, source=None, changed_since=None, custom_headers=None, raw=False, **operation_config):
+        self, kb_id, environment, source=None, changed_since=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Download the knowledgebase.
 
         :param kb_id: Knowledgebase id.
@@ -432,24 +433,24 @@ class KnowledgebaseOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.download.metadata['url']
+        url = self.download.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'kbId': self._serialize.url("kb_id", kb_id, 'str'),
-            'environment': self._serialize.url("environment", environment, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "kbId": self._serialize.url("kb_id", kb_id, "str"),
+            "environment": self._serialize.url("environment", environment, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if source is not None:
-            query_parameters['source'] = self._serialize.query("source", source, 'str')
+            query_parameters["source"] = self._serialize.query("source", source, "str")
         if changed_since is not None:
-            query_parameters['changedSince'] = self._serialize.query("changed_since", changed_since, 'str')
+            query_parameters["changedSince"] = self._serialize.query("changed_since", changed_since, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -463,17 +464,17 @@ class KnowledgebaseOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('QnADocumentsDTO', response)
+            deserialized = self._deserialize("QnADocumentsDTO", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    download.metadata = {'url': '/knowledgebases/{kbId}/{environment}/qna'}
 
-    def generate_answer(
-            self, kb_id, generate_answer_payload, custom_headers=None, raw=False, **operation_config):
+    download.metadata = {"url": "/knowledgebases/{kbId}/{environment}/qna"}
+
+    def generate_answer(self, kb_id, generate_answer_payload, custom_headers=None, raw=False, **operation_config):
         """GenerateAnswer call to query knowledgebase (QnA Maker Managed).
 
         :param kb_id: Knowledgebase id.
@@ -494,10 +495,10 @@ class KnowledgebaseOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.generate_answer.metadata['url']
+        url = self.generate_answer.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'kbId': self._serialize.url("kb_id", kb_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "kbId": self._serialize.url("kb_id", kb_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -506,13 +507,13 @@ class KnowledgebaseOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(generate_answer_payload, 'QueryDTO')
+        body_content = self._serialize.body(generate_answer_payload, "QueryDTO")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -524,17 +525,17 @@ class KnowledgebaseOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('QnASearchResultList', response)
+            deserialized = self._deserialize("QnASearchResultList", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    generate_answer.metadata = {'url': '/knowledgebases/{kbId}/generateAnswer'}
 
-    def train(
-            self, kb_id, feedback_records=None, custom_headers=None, raw=False, **operation_config):
+    generate_answer.metadata = {"url": "/knowledgebases/{kbId}/generateAnswer"}
+
+    def train(self, kb_id, feedback_records=None, custom_headers=None, raw=False, **operation_config):
         """Train call to add suggestions to knowledgebase (QnAMaker Managed).
 
         :param kb_id: Knowledgebase id.
@@ -555,10 +556,10 @@ class KnowledgebaseOperations(object):
         train_payload = models.FeedbackRecordsDTO(feedback_records=feedback_records)
 
         # Construct URL
-        url = self.train.metadata['url']
+        url = self.train.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'kbId': self._serialize.url("kb_id", kb_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "kbId": self._serialize.url("kb_id", kb_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -567,12 +568,12 @@ class KnowledgebaseOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(train_payload, 'FeedbackRecordsDTO')
+        body_content = self._serialize.body(train_payload, "FeedbackRecordsDTO")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -584,4 +585,5 @@ class KnowledgebaseOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    train.metadata = {'url': '/knowledgebases/{kbId}/train'}
+
+    train.metadata = {"url": "/knowledgebases/{kbId}/train"}

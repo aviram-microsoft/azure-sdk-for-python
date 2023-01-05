@@ -30,12 +30,13 @@ from ._anomaly_detector_client_enums import (
 )
 
 __all__ = [
-    'APIError', 'APIErrorException',
-    'ChangePointDetectRequest',
-    'ChangePointDetectResponse',
-    'EntireDetectResponse',
-    'LastDetectResponse',
-    'Point',
-    'Request',
-    'Granularity',
+    "APIError",
+    "APIErrorException",
+    "ChangePointDetectRequest",
+    "ChangePointDetectResponse",
+    "EntireDetectResponse",
+    "LastDetectResponse",
+    "Point",
+    "Request",
+    "Granularity",
 ]

@@ -28,13 +28,15 @@ class ErrorResponse(Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
-        'target': {'key': 'target', 'type': 'str'},
-        'inner_error': {'key': 'innerError', 'type': 'InternalError'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "target": {"key": "target", "type": "str"},
+        "inner_error": {"key": "innerError", "type": "InternalError"},
     }
 
-    def __init__(self, *, code: str=None, message: str=None, target: str=None, inner_error=None, **kwargs) -> None:
+    def __init__(
+        self, *, code: str = None, message: str = None, target: str = None, inner_error=None, **kwargs
+    ) -> None:
         super(ErrorResponse, self).__init__(**kwargs)
         self.code = code
         self.message = message
@@ -51,4 +53,4 @@ class ErrorResponseException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(ErrorResponseException, self).__init__(deserialize, response, 'ErrorResponse', *args)
+        super(ErrorResponseException, self).__init__(deserialize, response, "ErrorResponse", *args)

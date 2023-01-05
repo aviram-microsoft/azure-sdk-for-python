@@ -26,16 +26,14 @@ class ResponseBase(Model):
     """
 
     _validation = {
-        '_type': {'required': True},
+        "_type": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Identifiable': 'Identifiable'}
-    }
+    _subtype_map = {"_type": {"Identifiable": "Identifiable"}}
 
     def __init__(self, **kwargs):
         super(ResponseBase, self).__init__(**kwargs)
@@ -60,23 +58,21 @@ class Identifiable(ResponseBase):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Response': 'Response'}
-    }
+    _subtype_map = {"_type": {"Response": "Response"}}
 
     def __init__(self, **kwargs):
         super(Identifiable, self).__init__(**kwargs)
         self.id = None
-        self._type = 'Identifiable'
+        self._type = "Identifiable"
 
 
 class Response(Identifiable):
@@ -100,25 +96,30 @@ class Response(Identifiable):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
     }
 
     _subtype_map = {
-        '_type': {'SearchResponse': 'SearchResponse', 'ErrorResponse': 'ErrorResponse', 'Answer': 'Answer', 'Thing': 'Thing'}
+        "_type": {
+            "SearchResponse": "SearchResponse",
+            "ErrorResponse": "ErrorResponse",
+            "Answer": "Answer",
+            "Thing": "Thing",
+        }
     }
 
     def __init__(self, **kwargs):
         super(Response, self).__init__(**kwargs)
         self.web_search_url = None
-        self._type = 'Response'
+        self._type = "Response"
 
 
 class Answer(Response):
@@ -144,27 +145,25 @@ class Answer(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
     }
 
-    _subtype_map = {
-        '_type': {'SearchResultsAnswer': 'SearchResultsAnswer'}
-    }
+    _subtype_map = {"_type": {"SearchResultsAnswer": "SearchResultsAnswer"}}
 
     def __init__(self, **kwargs):
         super(Answer, self).__init__(**kwargs)
         self.follow_up_queries = None
-        self._type = 'Answer'
+        self._type = "Answer"
 
 
 class Thing(Response):
@@ -196,28 +195,26 @@ class Thing(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'CreativeWork': 'CreativeWork'}
-    }
+    _subtype_map = {"_type": {"CreativeWork": "CreativeWork"}}
 
     def __init__(self, **kwargs):
         super(Thing, self).__init__(**kwargs)
@@ -225,7 +222,7 @@ class Thing(Response):
         self.url = None
         self.description = None
         self.bing_id = None
-        self._type = 'Thing'
+        self._type = "Thing"
 
 
 class CreativeWork(Thing):
@@ -264,41 +261,39 @@ class CreativeWork(Thing):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'WebPage': 'WebPage'}
-    }
+    _subtype_map = {"_type": {"WebPage": "WebPage"}}
 
     def __init__(self, **kwargs):
         super(CreativeWork, self).__init__(**kwargs)
         self.thumbnail_url = None
         self.provider = None
         self.text = None
-        self._type = 'CreativeWork'
+        self._type = "CreativeWork"
 
 
 class Error(Model):
@@ -334,28 +329,28 @@ class Error(Model):
     """
 
     _validation = {
-        'code': {'required': True},
-        'sub_code': {'readonly': True},
-        'message': {'required': True},
-        'more_details': {'readonly': True},
-        'parameter': {'readonly': True},
-        'value': {'readonly': True},
+        "code": {"required": True},
+        "sub_code": {"readonly": True},
+        "message": {"required": True},
+        "more_details": {"readonly": True},
+        "parameter": {"readonly": True},
+        "value": {"readonly": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'sub_code': {'key': 'subCode', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
-        'more_details': {'key': 'moreDetails', 'type': 'str'},
-        'parameter': {'key': 'parameter', 'type': 'str'},
-        'value': {'key': 'value', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "sub_code": {"key": "subCode", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "more_details": {"key": "moreDetails", "type": "str"},
+        "parameter": {"key": "parameter", "type": "str"},
+        "value": {"key": "value", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(Error, self).__init__(**kwargs)
-        self.code = kwargs.get('code', "None")
+        self.code = kwargs.get("code", "None")
         self.sub_code = None
-        self.message = kwargs.get('message', None)
+        self.message = kwargs.get("message", None)
         self.more_details = None
         self.parameter = None
         self.value = None
@@ -382,23 +377,23 @@ class ErrorResponse(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'errors': {'required': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "errors": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'errors': {'key': 'errors', 'type': '[Error]'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "errors": {"key": "errors", "type": "[Error]"},
     }
 
     def __init__(self, **kwargs):
         super(ErrorResponse, self).__init__(**kwargs)
-        self.errors = kwargs.get('errors', None)
-        self._type = 'ErrorResponse'
+        self.errors = kwargs.get("errors", None)
+        self._type = "ErrorResponse"
 
 
 class ErrorResponseException(HttpOperationError):
@@ -410,7 +405,7 @@ class ErrorResponseException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(ErrorResponseException, self).__init__(deserialize, response, 'ErrorResponse', *args)
+        super(ErrorResponseException, self).__init__(deserialize, response, "ErrorResponse", *args)
 
 
 class Query(Model):
@@ -437,22 +432,22 @@ class Query(Model):
     """
 
     _validation = {
-        'text': {'required': True},
-        'display_text': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'search_link': {'readonly': True},
+        "text": {"required": True},
+        "display_text": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "search_link": {"readonly": True},
     }
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'display_text': {'key': 'displayText', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'search_link': {'key': 'searchLink', 'type': 'str'},
+        "text": {"key": "text", "type": "str"},
+        "display_text": {"key": "displayText", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "search_link": {"key": "searchLink", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(Query, self).__init__(**kwargs)
-        self.text = kwargs.get('text', None)
+        self.text = kwargs.get("text", None)
         self.display_text = None
         self.web_search_url = None
         self.search_link = None
@@ -489,22 +484,22 @@ class QueryContext(Model):
     """
 
     _validation = {
-        'original_query': {'required': True},
-        'altered_query': {'readonly': True},
-        'alteration_override_query': {'readonly': True},
-        'adult_intent': {'readonly': True},
+        "original_query": {"required": True},
+        "altered_query": {"readonly": True},
+        "alteration_override_query": {"readonly": True},
+        "adult_intent": {"readonly": True},
     }
 
     _attribute_map = {
-        'original_query': {'key': 'originalQuery', 'type': 'str'},
-        'altered_query': {'key': 'alteredQuery', 'type': 'str'},
-        'alteration_override_query': {'key': 'alterationOverrideQuery', 'type': 'str'},
-        'adult_intent': {'key': 'adultIntent', 'type': 'bool'},
+        "original_query": {"key": "originalQuery", "type": "str"},
+        "altered_query": {"key": "alteredQuery", "type": "str"},
+        "alteration_override_query": {"key": "alterationOverrideQuery", "type": "str"},
+        "adult_intent": {"key": "adultIntent", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(QueryContext, self).__init__(**kwargs)
-        self.original_query = kwargs.get('original_query', None)
+        self.original_query = kwargs.get("original_query", None)
         self.altered_query = None
         self.alteration_override_query = None
         self.adult_intent = None
@@ -537,26 +532,26 @@ class SearchResponse(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'query_context': {'readonly': True},
-        'web_pages': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "query_context": {"readonly": True},
+        "web_pages": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'web_pages': {'key': 'webPages', 'type': 'WebWebAnswer'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "web_pages": {"key": "webPages", "type": "WebWebAnswer"},
     }
 
     def __init__(self, **kwargs):
         super(SearchResponse, self).__init__(**kwargs)
         self.query_context = None
         self.web_pages = None
-        self._type = 'SearchResponse'
+        self._type = "SearchResponse"
 
 
 class SearchResultsAnswer(Answer):
@@ -591,35 +586,33 @@ class SearchResultsAnswer(Answer):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'query_context': {'readonly': True},
-        'total_estimated_matches': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "query_context": {"readonly": True},
+        "total_estimated_matches": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'total_estimated_matches': {'key': 'totalEstimatedMatches', 'type': 'long'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "total_estimated_matches": {"key": "totalEstimatedMatches", "type": "long"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
     }
 
-    _subtype_map = {
-        '_type': {'Web/WebAnswer': 'WebWebAnswer'}
-    }
+    _subtype_map = {"_type": {"Web/WebAnswer": "WebWebAnswer"}}
 
     def __init__(self, **kwargs):
         super(SearchResultsAnswer, self).__init__(**kwargs)
         self.query_context = None
         self.total_estimated_matches = None
         self.is_family_friendly = None
-        self._type = 'SearchResultsAnswer'
+        self._type = "SearchResultsAnswer"
 
 
 class WebMetaTag(Model):
@@ -635,13 +628,13 @@ class WebMetaTag(Model):
     """
 
     _validation = {
-        'name': {'readonly': True},
-        'content': {'readonly': True},
+        "name": {"readonly": True},
+        "content": {"readonly": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'content': {'key': 'content', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "content": {"key": "content", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -705,39 +698,39 @@ class WebPage(CreativeWork):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'description': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
-        'display_url': {'readonly': True},
-        'snippet': {'readonly': True},
-        'deep_links': {'readonly': True},
-        'date_last_crawled': {'readonly': True},
-        'search_tags': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "description": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
+        "display_url": {"readonly": True},
+        "snippet": {"readonly": True},
+        "deep_links": {"readonly": True},
+        "date_last_crawled": {"readonly": True},
+        "search_tags": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
-        'display_url': {'key': 'displayUrl', 'type': 'str'},
-        'snippet': {'key': 'snippet', 'type': 'str'},
-        'deep_links': {'key': 'deepLinks', 'type': '[WebPage]'},
-        'date_last_crawled': {'key': 'dateLastCrawled', 'type': 'str'},
-        'search_tags': {'key': 'searchTags', 'type': '[WebMetaTag]'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
+        "display_url": {"key": "displayUrl", "type": "str"},
+        "snippet": {"key": "snippet", "type": "str"},
+        "deep_links": {"key": "deepLinks", "type": "[WebPage]"},
+        "date_last_crawled": {"key": "dateLastCrawled", "type": "str"},
+        "search_tags": {"key": "searchTags", "type": "[WebMetaTag]"},
     }
 
     def __init__(self, **kwargs):
@@ -747,7 +740,7 @@ class WebPage(CreativeWork):
         self.deep_links = None
         self.date_last_crawled = None
         self.search_tags = None
-        self._type = 'WebPage'
+        self._type = "WebPage"
 
 
 class WebWebAnswer(SearchResultsAnswer):
@@ -786,31 +779,31 @@ class WebWebAnswer(SearchResultsAnswer):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'follow_up_queries': {'readonly': True},
-        'query_context': {'readonly': True},
-        'total_estimated_matches': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
-        'value': {'required': True},
-        'some_results_removed': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "follow_up_queries": {"readonly": True},
+        "query_context": {"readonly": True},
+        "total_estimated_matches": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
+        "value": {"required": True},
+        "some_results_removed": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'follow_up_queries': {'key': 'followUpQueries', 'type': '[Query]'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'total_estimated_matches': {'key': 'totalEstimatedMatches', 'type': 'long'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
-        'value': {'key': 'value', 'type': '[WebPage]'},
-        'some_results_removed': {'key': 'someResultsRemoved', 'type': 'bool'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "follow_up_queries": {"key": "followUpQueries", "type": "[Query]"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "total_estimated_matches": {"key": "totalEstimatedMatches", "type": "long"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
+        "value": {"key": "value", "type": "[WebPage]"},
+        "some_results_removed": {"key": "someResultsRemoved", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(WebWebAnswer, self).__init__(**kwargs)
-        self.value = kwargs.get('value', None)
+        self.value = kwargs.get("value", None)
         self.some_results_removed = None
-        self._type = 'Web/WebAnswer'
+        self._type = "Web/WebAnswer"

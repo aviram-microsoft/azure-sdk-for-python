@@ -20,9 +20,9 @@ class ActiveLearningSettingsDTO(Model):
     """
 
     _attribute_map = {
-        'enable': {'key': 'enable', 'type': 'str'},
+        "enable": {"key": "enable", "type": "str"},
     }
 
-    def __init__(self, *, enable: str=None, **kwargs) -> None:
+    def __init__(self, *, enable: str = None, **kwargs) -> None:
         super(ActiveLearningSettingsDTO, self).__init__(**kwargs)
         self.enable = enable

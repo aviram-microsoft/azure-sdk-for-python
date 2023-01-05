@@ -11,9 +11,9 @@
 
 from ._configuration import CustomSearchClientConfiguration
 from ._custom_search_client import CustomSearchClient
-__all__ = ['CustomSearchClient', 'CustomSearchClientConfiguration']
+
+__all__ = ["CustomSearchClient", "CustomSearchClientConfiguration"]
 
 from .version import VERSION
 
 __version__ = VERSION
-

@@ -20,7 +20,7 @@ from devtools_testutils import mgmt_settings_fake as fake_settings
 
 
 class EntitySearchTest(ReplayableTest):
-    FILTER_HEADERS = ReplayableTest.FILTER_HEADERS + ['Ocp-Apim-Subscription-Key']
+    FILTER_HEADERS = ReplayableTest.FILTER_HEADERS + ["Ocp-Apim-Subscription-Key"]
 
     def __init__(self, method_name):
         self._fake_settings, self._real_settings = self._load_settings()
@@ -32,25 +32,24 @@ class EntitySearchTest(ReplayableTest):
             if self._real_settings:
                 return self._real_settings
             else:
-                raise AzureTestError('Need a mgmt_settings_real.py file to run tests live.')
+                raise AzureTestError("Need a mgmt_settings_real.py file to run tests live.")
         else:
             return self._fake_settings
 
     def _load_settings(self):
         try:
             from devtools_testutils import mgmt_settings_real as real_settings
+
             return fake_settings, real_settings
         except ImportError:
             return fake_settings, None
 
     def test_search(self):
         raise unittest.SkipTest("Skipping test_search")
-        query = 'seahawks'
-        market = 'en-us'
+        query = "seahawks"
+        market = "en-us"
 
-        credentials = CognitiveServicesCredentials(
-            self.settings.CS_SUBSCRIPTION_KEY
-        )
+        credentials = CognitiveServicesCredentials(self.settings.CS_SUBSCRIPTION_KEY)
         entity_search_api = EntitySearchClient(credentials)
         response = entity_search_api.entities.search(query=query, market=market)
 
@@ -64,4 +63,3 @@ class EntitySearchTest(ReplayableTest):
         assert response.entities.value is not None
         assert len(response.entities.value) == 1
         assert response.entities.value[0].contractual_rules is not None
-

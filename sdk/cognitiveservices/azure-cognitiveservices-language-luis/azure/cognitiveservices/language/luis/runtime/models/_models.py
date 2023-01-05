@@ -27,19 +27,19 @@ class DynamicList(Model):
     """
 
     _validation = {
-        'list_entity_name': {'required': True},
-        'request_lists': {'required': True},
+        "list_entity_name": {"required": True},
+        "request_lists": {"required": True},
     }
 
     _attribute_map = {
-        'list_entity_name': {'key': 'listEntityName', 'type': 'str'},
-        'request_lists': {'key': 'requestLists', 'type': '[RequestList]'},
+        "list_entity_name": {"key": "listEntityName", "type": "str"},
+        "request_lists": {"key": "requestLists", "type": "[RequestList]"},
     }
 
     def __init__(self, **kwargs):
         super(DynamicList, self).__init__(**kwargs)
-        self.list_entity_name = kwargs.get('list_entity_name', None)
-        self.request_lists = kwargs.get('request_lists', None)
+        self.list_entity_name = kwargs.get("list_entity_name", None)
+        self.request_lists = kwargs.get("request_lists", None)
 
 
 class Error(Model):
@@ -53,16 +53,16 @@ class Error(Model):
     """
 
     _validation = {
-        'error': {'required': True},
+        "error": {"required": True},
     }
 
     _attribute_map = {
-        'error': {'key': 'error', 'type': 'ErrorBody'},
+        "error": {"key": "error", "type": "ErrorBody"},
     }
 
     def __init__(self, **kwargs):
         super(Error, self).__init__(**kwargs)
-        self.error = kwargs.get('error', None)
+        self.error = kwargs.get("error", None)
 
 
 class ErrorException(HttpOperationError):
@@ -74,7 +74,7 @@ class ErrorException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(ErrorException, self).__init__(deserialize, response, 'Error', *args)
+        super(ErrorException, self).__init__(deserialize, response, "Error", *args)
 
 
 class ErrorBody(Model):
@@ -89,19 +89,19 @@ class ErrorBody(Model):
     """
 
     _validation = {
-        'code': {'required': True},
-        'message': {'required': True},
+        "code": {"required": True},
+        "message": {"required": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ErrorBody, self).__init__(**kwargs)
-        self.code = kwargs.get('code', None)
-        self.message = kwargs.get('message', None)
+        self.code = kwargs.get("code", None)
+        self.message = kwargs.get("message", None)
 
 
 class ExternalEntity(Model):
@@ -125,26 +125,26 @@ class ExternalEntity(Model):
     """
 
     _validation = {
-        'entity_name': {'required': True},
-        'start_index': {'required': True},
-        'entity_length': {'required': True},
+        "entity_name": {"required": True},
+        "start_index": {"required": True},
+        "entity_length": {"required": True},
     }
 
     _attribute_map = {
-        'entity_name': {'key': 'entityName', 'type': 'str'},
-        'start_index': {'key': 'startIndex', 'type': 'int'},
-        'entity_length': {'key': 'entityLength', 'type': 'int'},
-        'resolution': {'key': 'resolution', 'type': 'object'},
-        'score': {'key': 'score', 'type': 'float'},
+        "entity_name": {"key": "entityName", "type": "str"},
+        "start_index": {"key": "startIndex", "type": "int"},
+        "entity_length": {"key": "entityLength", "type": "int"},
+        "resolution": {"key": "resolution", "type": "object"},
+        "score": {"key": "score", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(ExternalEntity, self).__init__(**kwargs)
-        self.entity_name = kwargs.get('entity_name', None)
-        self.start_index = kwargs.get('start_index', None)
-        self.entity_length = kwargs.get('entity_length', None)
-        self.resolution = kwargs.get('resolution', None)
-        self.score = kwargs.get('score', None)
+        self.entity_name = kwargs.get("entity_name", None)
+        self.start_index = kwargs.get("start_index", None)
+        self.entity_length = kwargs.get("entity_length", None)
+        self.resolution = kwargs.get("resolution", None)
+        self.score = kwargs.get("score", None)
 
 
 class Intent(Model):
@@ -158,14 +158,14 @@ class Intent(Model):
     """
 
     _attribute_map = {
-        'score': {'key': 'score', 'type': 'float'},
-        'child_app': {'key': 'childApp', 'type': 'Prediction'},
+        "score": {"key": "score", "type": "float"},
+        "child_app": {"key": "childApp", "type": "Prediction"},
     }
 
     def __init__(self, **kwargs):
         super(Intent, self).__init__(**kwargs)
-        self.score = kwargs.get('score', None)
-        self.child_app = kwargs.get('child_app', None)
+        self.score = kwargs.get("score", None)
+        self.child_app = kwargs.get("child_app", None)
 
 
 class Prediction(Model):
@@ -191,26 +191,26 @@ class Prediction(Model):
     """
 
     _validation = {
-        'top_intent': {'required': True},
-        'intents': {'required': True},
-        'entities': {'required': True},
+        "top_intent": {"required": True},
+        "intents": {"required": True},
+        "entities": {"required": True},
     }
 
     _attribute_map = {
-        'altered_query': {'key': 'alteredQuery', 'type': 'str'},
-        'top_intent': {'key': 'topIntent', 'type': 'str'},
-        'intents': {'key': 'intents', 'type': '{Intent}'},
-        'entities': {'key': 'entities', 'type': '{object}'},
-        'sentiment': {'key': 'sentiment', 'type': 'Sentiment'},
+        "altered_query": {"key": "alteredQuery", "type": "str"},
+        "top_intent": {"key": "topIntent", "type": "str"},
+        "intents": {"key": "intents", "type": "{Intent}"},
+        "entities": {"key": "entities", "type": "{object}"},
+        "sentiment": {"key": "sentiment", "type": "Sentiment"},
     }
 
     def __init__(self, **kwargs):
         super(Prediction, self).__init__(**kwargs)
-        self.altered_query = kwargs.get('altered_query', None)
-        self.top_intent = kwargs.get('top_intent', None)
-        self.intents = kwargs.get('intents', None)
-        self.entities = kwargs.get('entities', None)
-        self.sentiment = kwargs.get('sentiment', None)
+        self.altered_query = kwargs.get("altered_query", None)
+        self.top_intent = kwargs.get("top_intent", None)
+        self.intents = kwargs.get("intents", None)
+        self.entities = kwargs.get("entities", None)
+        self.sentiment = kwargs.get("sentiment", None)
 
 
 class PredictionRequest(Model):
@@ -234,22 +234,22 @@ class PredictionRequest(Model):
     """
 
     _validation = {
-        'query': {'required': True},
+        "query": {"required": True},
     }
 
     _attribute_map = {
-        'query': {'key': 'query', 'type': 'str'},
-        'options': {'key': 'options', 'type': 'PredictionRequestOptions'},
-        'external_entities': {'key': 'externalEntities', 'type': '[ExternalEntity]'},
-        'dynamic_lists': {'key': 'dynamicLists', 'type': '[DynamicList]'},
+        "query": {"key": "query", "type": "str"},
+        "options": {"key": "options", "type": "PredictionRequestOptions"},
+        "external_entities": {"key": "externalEntities", "type": "[ExternalEntity]"},
+        "dynamic_lists": {"key": "dynamicLists", "type": "[DynamicList]"},
     }
 
     def __init__(self, **kwargs):
         super(PredictionRequest, self).__init__(**kwargs)
-        self.query = kwargs.get('query', None)
-        self.options = kwargs.get('options', None)
-        self.external_entities = kwargs.get('external_entities', None)
-        self.dynamic_lists = kwargs.get('dynamic_lists', None)
+        self.query = kwargs.get("query", None)
+        self.options = kwargs.get("options", None)
+        self.external_entities = kwargs.get("external_entities", None)
+        self.dynamic_lists = kwargs.get("dynamic_lists", None)
 
 
 class PredictionRequestOptions(Model):
@@ -264,14 +264,14 @@ class PredictionRequestOptions(Model):
     """
 
     _attribute_map = {
-        'datetime_reference': {'key': 'datetimeReference', 'type': 'iso-8601'},
-        'prefer_external_entities': {'key': 'preferExternalEntities', 'type': 'bool'},
+        "datetime_reference": {"key": "datetimeReference", "type": "iso-8601"},
+        "prefer_external_entities": {"key": "preferExternalEntities", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(PredictionRequestOptions, self).__init__(**kwargs)
-        self.datetime_reference = kwargs.get('datetime_reference', None)
-        self.prefer_external_entities = kwargs.get('prefer_external_entities', None)
+        self.datetime_reference = kwargs.get("datetime_reference", None)
+        self.prefer_external_entities = kwargs.get("prefer_external_entities", None)
 
 
 class PredictionResponse(Model):
@@ -287,19 +287,19 @@ class PredictionResponse(Model):
     """
 
     _validation = {
-        'query': {'required': True},
-        'prediction': {'required': True},
+        "query": {"required": True},
+        "prediction": {"required": True},
     }
 
     _attribute_map = {
-        'query': {'key': 'query', 'type': 'str'},
-        'prediction': {'key': 'prediction', 'type': 'Prediction'},
+        "query": {"key": "query", "type": "str"},
+        "prediction": {"key": "prediction", "type": "Prediction"},
     }
 
     def __init__(self, **kwargs):
         super(PredictionResponse, self).__init__(**kwargs)
-        self.query = kwargs.get('query', None)
-        self.prediction = kwargs.get('prediction', None)
+        self.query = kwargs.get("query", None)
+        self.prediction = kwargs.get("prediction", None)
 
 
 class RequestList(Model):
@@ -316,20 +316,20 @@ class RequestList(Model):
     """
 
     _validation = {
-        'canonical_form': {'required': True},
+        "canonical_form": {"required": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'canonical_form': {'key': 'canonicalForm', 'type': 'str'},
-        'synonyms': {'key': 'synonyms', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "canonical_form": {"key": "canonicalForm", "type": "str"},
+        "synonyms": {"key": "synonyms", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(RequestList, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.canonical_form = kwargs.get('canonical_form', None)
-        self.synonyms = kwargs.get('synonyms', None)
+        self.name = kwargs.get("name", None)
+        self.canonical_form = kwargs.get("canonical_form", None)
+        self.synonyms = kwargs.get("synonyms", None)
 
 
 class Sentiment(Model):
@@ -344,15 +344,15 @@ class Sentiment(Model):
     """
 
     _validation = {
-        'score': {'required': True},
+        "score": {"required": True},
     }
 
     _attribute_map = {
-        'label': {'key': 'label', 'type': 'str'},
-        'score': {'key': 'score', 'type': 'float'},
+        "label": {"key": "label", "type": "str"},
+        "score": {"key": "score", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(Sentiment, self).__init__(**kwargs)
-        self.label = kwargs.get('label', None)
-        self.score = kwargs.get('score', None)
+        self.label = kwargs.get("label", None)
+        self.score = kwargs.get("score", None)

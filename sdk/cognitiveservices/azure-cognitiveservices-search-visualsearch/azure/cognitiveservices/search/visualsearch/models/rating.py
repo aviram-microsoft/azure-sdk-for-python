@@ -36,25 +36,23 @@ class Rating(PropertiesItem):
     """
 
     _validation = {
-        'text': {'readonly': True},
-        '_type': {'required': True},
-        'rating_value': {'required': True},
-        'best_rating': {'readonly': True},
+        "text": {"readonly": True},
+        "_type": {"required": True},
+        "rating_value": {"required": True},
+        "best_rating": {"readonly": True},
     }
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        '_type': {'key': '_type', 'type': 'str'},
-        'rating_value': {'key': 'ratingValue', 'type': 'float'},
-        'best_rating': {'key': 'bestRating', 'type': 'float'},
+        "text": {"key": "text", "type": "str"},
+        "_type": {"key": "_type", "type": "str"},
+        "rating_value": {"key": "ratingValue", "type": "float"},
+        "best_rating": {"key": "bestRating", "type": "float"},
     }
 
-    _subtype_map = {
-        '_type': {'AggregateRating': 'AggregateRating'}
-    }
+    _subtype_map = {"_type": {"AggregateRating": "AggregateRating"}}
 
     def __init__(self, **kwargs):
         super(Rating, self).__init__(**kwargs)
-        self.rating_value = kwargs.get('rating_value', None)
+        self.rating_value = kwargs.get("rating_value", None)
         self.best_rating = None
-        self._type = 'Rating'
+        self._type = "Rating"

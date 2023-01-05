@@ -26,11 +26,15 @@ class QnASearchResultAnswerSpan(AnswerSpanResponseDTO):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'score': {'key': 'score', 'type': 'float'},
-        'start_index': {'key': 'startIndex', 'type': 'int'},
-        'end_index': {'key': 'endIndex', 'type': 'int'},
+        "text": {"key": "text", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+        "start_index": {"key": "startIndex", "type": "int"},
+        "end_index": {"key": "endIndex", "type": "int"},
     }
 
-    def __init__(self, *, text: str=None, score: float=None, start_index: int=None, end_index: int=None, **kwargs) -> None:
-        super(QnASearchResultAnswerSpan, self).__init__(text=text, score=score, start_index=start_index, end_index=end_index, **kwargs)
+    def __init__(
+        self, *, text: str = None, score: float = None, start_index: int = None, end_index: int = None, **kwargs
+    ) -> None:
+        super(QnASearchResultAnswerSpan, self).__init__(
+            text=text, score=score, start_index=start_index, end_index=end_index, **kwargs
+        )

@@ -41,17 +41,17 @@ class CropArea(Model):
     """
 
     _validation = {
-        'top': {'required': True},
-        'bottom': {'required': True},
-        'left': {'required': True},
-        'right': {'required': True},
+        "top": {"required": True},
+        "bottom": {"required": True},
+        "left": {"required": True},
+        "right": {"required": True},
     }
 
     _attribute_map = {
-        'top': {'key': 'top', 'type': 'float'},
-        'bottom': {'key': 'bottom', 'type': 'float'},
-        'left': {'key': 'left', 'type': 'float'},
-        'right': {'key': 'right', 'type': 'float'},
+        "top": {"key": "top", "type": "float"},
+        "bottom": {"key": "bottom", "type": "float"},
+        "left": {"key": "left", "type": "float"},
+        "right": {"key": "right", "type": "float"},
     }
 
     def __init__(self, *, top: float, bottom: float, left: float, right: float, **kwargs) -> None:

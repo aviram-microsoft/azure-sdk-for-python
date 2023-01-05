@@ -76,56 +76,54 @@ class MediaObject(CreativeWork):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'alternate_name': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'date_published': {'readonly': True},
-        'text': {'readonly': True},
-        'content_url': {'readonly': True},
-        'host_page_url': {'readonly': True},
-        'content_size': {'readonly': True},
-        'encoding_format': {'readonly': True},
-        'host_page_display_url': {'readonly': True},
-        'width': {'readonly': True},
-        'height': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "alternate_name": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "date_published": {"readonly": True},
+        "text": {"readonly": True},
+        "content_url": {"readonly": True},
+        "host_page_url": {"readonly": True},
+        "content_size": {"readonly": True},
+        "encoding_format": {"readonly": True},
+        "host_page_display_url": {"readonly": True},
+        "width": {"readonly": True},
+        "height": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'alternate_name': {'key': 'alternateName', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'date_published': {'key': 'datePublished', 'type': 'str'},
-        'text': {'key': 'text', 'type': 'str'},
-        'content_url': {'key': 'contentUrl', 'type': 'str'},
-        'host_page_url': {'key': 'hostPageUrl', 'type': 'str'},
-        'content_size': {'key': 'contentSize', 'type': 'str'},
-        'encoding_format': {'key': 'encodingFormat', 'type': 'str'},
-        'host_page_display_url': {'key': 'hostPageDisplayUrl', 'type': 'str'},
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "alternate_name": {"key": "alternateName", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "date_published": {"key": "datePublished", "type": "str"},
+        "text": {"key": "text", "type": "str"},
+        "content_url": {"key": "contentUrl", "type": "str"},
+        "host_page_url": {"key": "hostPageUrl", "type": "str"},
+        "content_size": {"key": "contentSize", "type": "str"},
+        "encoding_format": {"key": "encodingFormat", "type": "str"},
+        "host_page_display_url": {"key": "hostPageDisplayUrl", "type": "str"},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
     }
 
-    _subtype_map = {
-        '_type': {'ImageObject': 'ImageObject'}
-    }
+    _subtype_map = {"_type": {"ImageObject": "ImageObject"}}
 
     def __init__(self, **kwargs) -> None:
         super(MediaObject, self).__init__(**kwargs)
@@ -136,4 +134,4 @@ class MediaObject(CreativeWork):
         self.host_page_display_url = None
         self.width = None
         self.height = None
-        self._type = 'MediaObject'
+        self._type = "MediaObject"

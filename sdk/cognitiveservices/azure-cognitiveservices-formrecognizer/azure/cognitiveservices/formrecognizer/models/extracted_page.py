@@ -34,19 +34,19 @@ class ExtractedPage(Model):
     """
 
     _attribute_map = {
-        'number': {'key': 'number', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
-        'width': {'key': 'width', 'type': 'int'},
-        'cluster_id': {'key': 'clusterId', 'type': 'int'},
-        'key_value_pairs': {'key': 'keyValuePairs', 'type': '[ExtractedKeyValuePair]'},
-        'tables': {'key': 'tables', 'type': '[ExtractedTable]'},
+        "number": {"key": "number", "type": "int"},
+        "height": {"key": "height", "type": "int"},
+        "width": {"key": "width", "type": "int"},
+        "cluster_id": {"key": "clusterId", "type": "int"},
+        "key_value_pairs": {"key": "keyValuePairs", "type": "[ExtractedKeyValuePair]"},
+        "tables": {"key": "tables", "type": "[ExtractedTable]"},
     }
 
     def __init__(self, **kwargs):
         super(ExtractedPage, self).__init__(**kwargs)
-        self.number = kwargs.get('number', None)
-        self.height = kwargs.get('height', None)
-        self.width = kwargs.get('width', None)
-        self.cluster_id = kwargs.get('cluster_id', None)
-        self.key_value_pairs = kwargs.get('key_value_pairs', None)
-        self.tables = kwargs.get('tables', None)
+        self.number = kwargs.get("number", None)
+        self.height = kwargs.get("height", None)
+        self.width = kwargs.get("width", None)
+        self.cluster_id = kwargs.get("cluster_id", None)
+        self.key_value_pairs = kwargs.get("key_value_pairs", None)
+        self.tables = kwargs.get("tables", None)

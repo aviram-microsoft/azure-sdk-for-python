@@ -36,7 +36,8 @@ class PatternOperations(object):
         self.config = config
 
     def add_pattern(
-            self, app_id, version_id, pattern=None, intent=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, pattern=None, intent=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Adds a pattern to a version of the application.
 
         :param app_id: The application ID.
@@ -62,11 +63,11 @@ class PatternOperations(object):
         pattern1 = models.PatternRuleCreateObject(pattern=pattern, intent=intent)
 
         # Construct URL
-        url = self.add_pattern.metadata['url']
+        url = self.add_pattern.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -75,13 +76,13 @@ class PatternOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(pattern1, 'PatternRuleCreateObject')
+        body_content = self._serialize.body(pattern1, "PatternRuleCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -92,17 +93,17 @@ class PatternOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('PatternRuleInfo', response)
+            deserialized = self._deserialize("PatternRuleInfo", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_pattern.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternrule'}
 
-    def list_patterns(
-            self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+    add_pattern.metadata = {"url": "/apps/{appId}/versions/{versionId}/patternrule"}
+
+    def list_patterns(self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
         """Gets patterns in a version of the application.
 
         :param app_id: The application ID.
@@ -127,24 +128,24 @@ class PatternOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_patterns.metadata['url']
+        url = self.list_patterns.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -157,17 +158,17 @@ class PatternOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[PatternRuleInfo]', response)
+            deserialized = self._deserialize("[PatternRuleInfo]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_patterns.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternrules'}
 
-    def update_patterns(
-            self, app_id, version_id, patterns, custom_headers=None, raw=False, **operation_config):
+    list_patterns.metadata = {"url": "/apps/{appId}/versions/{versionId}/patternrules"}
+
+    def update_patterns(self, app_id, version_id, patterns, custom_headers=None, raw=False, **operation_config):
         """Updates patterns in a version of the application.
 
         :param app_id: The application ID.
@@ -190,11 +191,11 @@ class PatternOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.update_patterns.metadata['url']
+        url = self.update_patterns.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -203,13 +204,13 @@ class PatternOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(patterns, '[PatternRuleUpdateObject]')
+        body_content = self._serialize.body(patterns, "[PatternRuleUpdateObject]")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -220,17 +221,17 @@ class PatternOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[PatternRuleInfo]', response)
+            deserialized = self._deserialize("[PatternRuleInfo]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_patterns.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternrules'}
 
-    def batch_add_patterns(
-            self, app_id, version_id, patterns, custom_headers=None, raw=False, **operation_config):
+    update_patterns.metadata = {"url": "/apps/{appId}/versions/{versionId}/patternrules"}
+
+    def batch_add_patterns(self, app_id, version_id, patterns, custom_headers=None, raw=False, **operation_config):
         """Adds a batch of patterns in a version of the application.
 
         :param app_id: The application ID.
@@ -253,11 +254,11 @@ class PatternOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.batch_add_patterns.metadata['url']
+        url = self.batch_add_patterns.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -266,13 +267,13 @@ class PatternOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(patterns, '[PatternRuleCreateObject]')
+        body_content = self._serialize.body(patterns, "[PatternRuleCreateObject]")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -283,17 +284,17 @@ class PatternOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('[PatternRuleInfo]', response)
+            deserialized = self._deserialize("[PatternRuleInfo]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    batch_add_patterns.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternrules'}
 
-    def delete_patterns(
-            self, app_id, version_id, pattern_ids, custom_headers=None, raw=False, **operation_config):
+    batch_add_patterns.metadata = {"url": "/apps/{appId}/versions/{versionId}/patternrules"}
+
+    def delete_patterns(self, app_id, version_id, pattern_ids, custom_headers=None, raw=False, **operation_config):
         """Deletes a list of patterns in a version of the application.
 
         :param app_id: The application ID.
@@ -315,11 +316,11 @@ class PatternOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_patterns.metadata['url']
+        url = self.delete_patterns.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -328,13 +329,13 @@ class PatternOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(pattern_ids, '[str]')
+        body_content = self._serialize.body(pattern_ids, "[str]")
 
         # Construct and send request
         request = self._client.delete(url, query_parameters, header_parameters, body_content)
@@ -345,17 +346,19 @@ class PatternOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_patterns.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternrules'}
+
+    delete_patterns.metadata = {"url": "/apps/{appId}/versions/{versionId}/patternrules"}
 
     def update_pattern(
-            self, app_id, version_id, pattern_id, pattern, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, pattern_id, pattern, custom_headers=None, raw=False, **operation_config
+    ):
         """Updates a pattern in a version of the application.
 
         :param app_id: The application ID.
@@ -380,12 +383,12 @@ class PatternOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.update_pattern.metadata['url']
+        url = self.update_pattern.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'patternId': self._serialize.url("pattern_id", pattern_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "patternId": self._serialize.url("pattern_id", pattern_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -394,13 +397,13 @@ class PatternOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(pattern, 'PatternRuleUpdateObject')
+        body_content = self._serialize.body(pattern, "PatternRuleUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -411,17 +414,17 @@ class PatternOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PatternRuleInfo', response)
+            deserialized = self._deserialize("PatternRuleInfo", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_pattern.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternrules/{patternId}'}
 
-    def delete_pattern(
-            self, app_id, version_id, pattern_id, custom_headers=None, raw=False, **operation_config):
+    update_pattern.metadata = {"url": "/apps/{appId}/versions/{versionId}/patternrules/{patternId}"}
+
+    def delete_pattern(self, app_id, version_id, pattern_id, custom_headers=None, raw=False, **operation_config):
         """Deletes the pattern with the specified ID from a version of the
         application..
 
@@ -444,12 +447,12 @@ class PatternOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_pattern.metadata['url']
+        url = self.delete_pattern.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'patternId': self._serialize.url("pattern_id", pattern_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "patternId": self._serialize.url("pattern_id", pattern_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -458,7 +461,7 @@ class PatternOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -471,17 +474,19 @@ class PatternOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_pattern.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternrules/{patternId}'}
+
+    delete_pattern.metadata = {"url": "/apps/{appId}/versions/{versionId}/patternrules/{patternId}"}
 
     def list_intent_patterns(
-            self, app_id, version_id, intent_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, intent_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config
+    ):
         """Returns patterns for the specific intent in a version of the
         application.
 
@@ -509,25 +514,25 @@ class PatternOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_intent_patterns.metadata['url']
+        url = self.list_intent_patterns.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'intentId': self._serialize.url("intent_id", intent_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "intentId": self._serialize.url("intent_id", intent_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -540,11 +545,12 @@ class PatternOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[PatternRuleInfo]', response)
+            deserialized = self._deserialize("[PatternRuleInfo]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_intent_patterns.metadata = {'url': '/apps/{appId}/versions/{versionId}/intents/{intentId}/patternrules'}
+
+    list_intent_patterns.metadata = {"url": "/apps/{appId}/versions/{versionId}/intents/{intentId}/patternrules"}

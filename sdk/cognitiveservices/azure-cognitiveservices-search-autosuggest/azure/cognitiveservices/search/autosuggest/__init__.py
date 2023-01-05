@@ -11,9 +11,9 @@
 
 from ._configuration import AutoSuggestClientConfiguration
 from ._auto_suggest_client import AutoSuggestClient
-__all__ = ['AutoSuggestClient', 'AutoSuggestClientConfiguration']
+
+__all__ = ["AutoSuggestClient", "AutoSuggestClientConfiguration"]
 
 from .version import VERSION
 
 __version__ = VERSION
-

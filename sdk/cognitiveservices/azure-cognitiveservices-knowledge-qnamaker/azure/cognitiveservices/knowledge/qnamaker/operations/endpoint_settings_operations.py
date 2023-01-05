@@ -33,8 +33,7 @@ class EndpointSettingsOperations(object):
 
         self.config = config
 
-    def get_settings(
-            self, custom_headers=None, raw=False, **operation_config):
+    def get_settings(self, custom_headers=None, raw=False, **operation_config):
         """Gets endpoint settings for an endpoint.
 
         :param dict custom_headers: headers that will be added to the request
@@ -50,9 +49,9 @@ class EndpointSettingsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_settings.metadata['url']
+        url = self.get_settings.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -61,7 +60,7 @@ class EndpointSettingsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -75,17 +74,17 @@ class EndpointSettingsOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('EndpointSettingsDTO', response)
+            deserialized = self._deserialize("EndpointSettingsDTO", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_settings.metadata = {'url': '/endpointSettings'}
 
-    def update_settings(
-            self, active_learning=None, custom_headers=None, raw=False, **operation_config):
+    get_settings.metadata = {"url": "/endpointSettings"}
+
+    def update_settings(self, active_learning=None, custom_headers=None, raw=False, **operation_config):
         """Updates endpoint settings for an endpoint.
 
         :param active_learning: Active Learning settings of the endpoint.
@@ -104,9 +103,9 @@ class EndpointSettingsOperations(object):
         endpoint_settings_payload = models.EndpointSettingsDTO(active_learning=active_learning)
 
         # Construct URL
-        url = self.update_settings.metadata['url']
+        url = self.update_settings.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -115,12 +114,12 @@ class EndpointSettingsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(endpoint_settings_payload, 'EndpointSettingsDTO')
+        body_content = self._serialize.body(endpoint_settings_payload, "EndpointSettingsDTO")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -132,4 +131,5 @@ class EndpointSettingsOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    update_settings.metadata = {'url': '/endpointSettings'}
+
+    update_settings.metadata = {"url": "/endpointSettings"}

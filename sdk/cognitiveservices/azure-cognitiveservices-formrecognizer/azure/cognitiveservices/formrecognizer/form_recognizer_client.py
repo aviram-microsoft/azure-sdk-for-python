@@ -29,18 +29,17 @@ class FormRecognizerClientConfiguration(Configuration):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         if endpoint is None:
             raise ValueError("Parameter 'endpoint' must not be None.")
         if credentials is None:
             raise ValueError("Parameter 'credentials' must not be None.")
-        base_url = '{Endpoint}/formrecognizer/v1.0-preview'
+        base_url = "{Endpoint}/formrecognizer/v1.0-preview"
 
         super(FormRecognizerClientConfiguration, self).__init__(base_url)
 
-        self.add_user_agent('azure-cognitiveservices-formrecognizer/{}'.format(VERSION))
+        self.add_user_agent("azure-cognitiveservices-formrecognizer/{}".format(VERSION))
 
         self.endpoint = endpoint
         self.credentials = credentials
@@ -60,20 +59,17 @@ class FormRecognizerClient(SDKClient):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         self.config = FormRecognizerClientConfiguration(endpoint, credentials)
         super(FormRecognizerClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = '1.0-preview'
+        self.api_version = "1.0-preview"
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
-
-    def train_custom_model(
-            self, source, custom_headers=None, raw=False, **operation_config):
+    def train_custom_model(self, source, custom_headers=None, raw=False, **operation_config):
         """Train Model.
 
         Create and train a custom model. The train request must include a
@@ -106,9 +102,9 @@ class FormRecognizerClient(SDKClient):
         train_request = models.TrainRequest(source=source)
 
         # Construct URL
-        url = self.train_custom_model.metadata['url']
+        url = self.train_custom_model.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -117,13 +113,13 @@ class FormRecognizerClient(SDKClient):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(train_request, 'TrainRequest')
+        body_content = self._serialize.body(train_request, "TrainRequest")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -135,17 +131,17 @@ class FormRecognizerClient(SDKClient):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('TrainResult', response)
+            deserialized = self._deserialize("TrainResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    train_custom_model.metadata = {'url': '/custom/train'}
 
-    def get_extracted_keys(
-            self, id, custom_headers=None, raw=False, **operation_config):
+    train_custom_model.metadata = {"url": "/custom/train"}
+
+    def get_extracted_keys(self, id, custom_headers=None, raw=False, **operation_config):
         """Get Keys.
 
         Retrieve the keys that were
@@ -165,10 +161,10 @@ class FormRecognizerClient(SDKClient):
          :class:`ErrorResponseException<azure.cognitiveservices.formrecognizer.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_extracted_keys.metadata['url']
+        url = self.get_extracted_keys.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'id': self._serialize.url("id", id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "id": self._serialize.url("id", id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -177,7 +173,7 @@ class FormRecognizerClient(SDKClient):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -191,17 +187,17 @@ class FormRecognizerClient(SDKClient):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('KeysResult', response)
+            deserialized = self._deserialize("KeysResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_extracted_keys.metadata = {'url': '/custom/models/{id}/keys'}
 
-    def get_custom_models(
-            self, custom_headers=None, raw=False, **operation_config):
+    get_extracted_keys.metadata = {"url": "/custom/models/{id}/keys"}
+
+    def get_custom_models(self, custom_headers=None, raw=False, **operation_config):
         """Get Models.
 
         Get information about all trained custom models.
@@ -218,9 +214,9 @@ class FormRecognizerClient(SDKClient):
          :class:`ErrorResponseException<azure.cognitiveservices.formrecognizer.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_custom_models.metadata['url']
+        url = self.get_custom_models.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -229,7 +225,7 @@ class FormRecognizerClient(SDKClient):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -243,17 +239,17 @@ class FormRecognizerClient(SDKClient):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('ModelsResult', response)
+            deserialized = self._deserialize("ModelsResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_custom_models.metadata = {'url': '/custom/models'}
 
-    def get_custom_model(
-            self, id, custom_headers=None, raw=False, **operation_config):
+    get_custom_models.metadata = {"url": "/custom/models"}
+
+    def get_custom_model(self, id, custom_headers=None, raw=False, **operation_config):
         """Get Model.
 
         Get information about a model.
@@ -272,10 +268,10 @@ class FormRecognizerClient(SDKClient):
          :class:`ErrorResponseException<azure.cognitiveservices.formrecognizer.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_custom_model.metadata['url']
+        url = self.get_custom_model.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'id': self._serialize.url("id", id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "id": self._serialize.url("id", id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -284,7 +280,7 @@ class FormRecognizerClient(SDKClient):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -298,17 +294,17 @@ class FormRecognizerClient(SDKClient):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('ModelResult', response)
+            deserialized = self._deserialize("ModelResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_custom_model.metadata = {'url': '/custom/models/{id}'}
 
-    def delete_custom_model(
-            self, id, custom_headers=None, raw=False, **operation_config):
+    get_custom_model.metadata = {"url": "/custom/models/{id}"}
+
+    def delete_custom_model(self, id, custom_headers=None, raw=False, **operation_config):
         """Delete Model.
 
         Delete model artifacts.
@@ -326,10 +322,10 @@ class FormRecognizerClient(SDKClient):
          :class:`ErrorResponseException<azure.cognitiveservices.formrecognizer.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_custom_model.metadata['url']
+        url = self.delete_custom_model.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'id': self._serialize.url("id", id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "id": self._serialize.url("id", id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -351,10 +347,10 @@ class FormRecognizerClient(SDKClient):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete_custom_model.metadata = {'url': '/custom/models/{id}'}
 
-    def analyze_with_custom_model(
-            self, id, form_stream, keys=None, custom_headers=None, raw=False, **operation_config):
+    delete_custom_model.metadata = {"url": "/custom/models/{id}"}
+
+    def analyze_with_custom_model(self, id, form_stream, keys=None, custom_headers=None, raw=False, **operation_config):
         """Analyze Form.
 
         Extract key-value pairs from a given document. The input document must
@@ -379,28 +375,28 @@ class FormRecognizerClient(SDKClient):
          :class:`ErrorResponseException<azure.cognitiveservices.formrecognizer.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.analyze_with_custom_model.metadata['url']
+        url = self.analyze_with_custom_model.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'id': self._serialize.url("id", id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "id": self._serialize.url("id", id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if keys is not None:
-            query_parameters['keys'] = self._serialize.query("keys", keys, '[str]', div=',')
+            query_parameters["keys"] = self._serialize.query("keys", keys, "[str]", div=",")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'multipart/form-data'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "multipart/form-data"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct form data
         form_data_content = {
-            'form_stream': form_stream,
+            "form_stream": form_stream,
         }
 
         # Construct and send request
@@ -413,11 +409,12 @@ class FormRecognizerClient(SDKClient):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('AnalyzeResult', response)
+            deserialized = self._deserialize("AnalyzeResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    analyze_with_custom_model.metadata = {'url': '/custom/models/{id}/analyze'}
+
+    analyze_with_custom_model.metadata = {"url": "/custom/models/{id}/analyze"}

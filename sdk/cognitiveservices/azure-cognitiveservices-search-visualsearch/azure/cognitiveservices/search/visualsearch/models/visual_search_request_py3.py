@@ -27,8 +27,8 @@ class VisualSearchRequest(Model):
     """
 
     _attribute_map = {
-        'image_info': {'key': 'imageInfo', 'type': 'ImageInfo'},
-        'knowledge_request': {'key': 'knowledgeRequest', 'type': 'KnowledgeRequest'},
+        "image_info": {"key": "imageInfo", "type": "ImageInfo"},
+        "knowledge_request": {"key": "knowledgeRequest", "type": "KnowledgeRequest"},
     }
 
     def __init__(self, *, image_info=None, knowledge_request=None, **kwargs) -> None:

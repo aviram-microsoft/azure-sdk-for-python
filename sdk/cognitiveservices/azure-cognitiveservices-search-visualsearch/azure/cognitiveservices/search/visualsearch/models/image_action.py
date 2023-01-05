@@ -74,54 +74,60 @@ class ImageAction(Action):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'alternate_name': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'date_published': {'readonly': True},
-        'text': {'readonly': True},
-        'result': {'readonly': True},
-        'display_name': {'readonly': True},
-        'is_top_action': {'readonly': True},
-        'service_url': {'readonly': True},
-        'action_type': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "alternate_name": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "date_published": {"readonly": True},
+        "text": {"readonly": True},
+        "result": {"readonly": True},
+        "display_name": {"readonly": True},
+        "is_top_action": {"readonly": True},
+        "service_url": {"readonly": True},
+        "action_type": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'alternate_name': {'key': 'alternateName', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'date_published': {'key': 'datePublished', 'type': 'str'},
-        'text': {'key': 'text', 'type': 'str'},
-        'result': {'key': 'result', 'type': '[Thing]'},
-        'display_name': {'key': 'displayName', 'type': 'str'},
-        'is_top_action': {'key': 'isTopAction', 'type': 'bool'},
-        'service_url': {'key': 'serviceUrl', 'type': 'str'},
-        'action_type': {'key': 'actionType', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "alternate_name": {"key": "alternateName", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "date_published": {"key": "datePublished", "type": "str"},
+        "text": {"key": "text", "type": "str"},
+        "result": {"key": "result", "type": "[Thing]"},
+        "display_name": {"key": "displayName", "type": "str"},
+        "is_top_action": {"key": "isTopAction", "type": "bool"},
+        "service_url": {"key": "serviceUrl", "type": "str"},
+        "action_type": {"key": "actionType", "type": "str"},
     }
 
     _subtype_map = {
-        '_type': {'ImageEntityAction': 'ImageEntityAction', 'ImageModuleAction': 'ImageModuleAction', 'ImageRecipesAction': 'ImageRecipesAction', 'ImageRelatedSearchesAction': 'ImageRelatedSearchesAction', 'ImageShoppingSourcesAction': 'ImageShoppingSourcesAction'}
+        "_type": {
+            "ImageEntityAction": "ImageEntityAction",
+            "ImageModuleAction": "ImageModuleAction",
+            "ImageRecipesAction": "ImageRecipesAction",
+            "ImageRelatedSearchesAction": "ImageRelatedSearchesAction",
+            "ImageShoppingSourcesAction": "ImageShoppingSourcesAction",
+        }
     }
 
     def __init__(self, **kwargs):
         super(ImageAction, self).__init__(**kwargs)
         self.action_type = None
-        self._type = 'ImageAction'
+        self._type = "ImageAction"

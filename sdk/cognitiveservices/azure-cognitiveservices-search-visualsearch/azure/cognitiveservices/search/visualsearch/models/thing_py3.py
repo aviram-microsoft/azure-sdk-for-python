@@ -51,33 +51,40 @@ class Thing(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'alternate_name': {'readonly': True},
-        'bing_id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "alternate_name": {"readonly": True},
+        "bing_id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'alternate_name': {'key': 'alternateName', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "alternate_name": {"key": "alternateName", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
     }
 
     _subtype_map = {
-        '_type': {'ImageTag': 'ImageTag', 'Organization': 'Organization', 'Offer': 'Offer', 'CreativeWork': 'CreativeWork', 'Person': 'Person', 'Intangible': 'Intangible'}
+        "_type": {
+            "ImageTag": "ImageTag",
+            "Organization": "Organization",
+            "Offer": "Offer",
+            "CreativeWork": "CreativeWork",
+            "Person": "Person",
+            "Intangible": "Intangible",
+        }
     }
 
     def __init__(self, **kwargs) -> None:
@@ -88,4 +95,4 @@ class Thing(Response):
         self.description = None
         self.alternate_name = None
         self.bing_id = None
-        self._type = 'Thing'
+        self._type = "Thing"

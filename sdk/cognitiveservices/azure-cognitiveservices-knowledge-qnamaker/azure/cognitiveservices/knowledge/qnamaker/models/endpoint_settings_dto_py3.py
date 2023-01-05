@@ -21,7 +21,7 @@ class EndpointSettingsDTO(Model):
     """
 
     _attribute_map = {
-        'active_learning': {'key': 'activeLearning', 'type': 'EndpointSettingsDTOActiveLearning'},
+        "active_learning": {"key": "activeLearning", "type": "EndpointSettingsDTOActiveLearning"},
     }
 
     def __init__(self, *, active_learning=None, **kwargs) -> None:

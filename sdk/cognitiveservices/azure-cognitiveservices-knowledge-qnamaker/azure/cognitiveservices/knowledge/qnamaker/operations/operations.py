@@ -33,8 +33,7 @@ class Operations(object):
 
         self.config = config
 
-    def get_details(
-            self, operation_id, custom_headers=None, raw=False, **operation_config):
+    def get_details(self, operation_id, custom_headers=None, raw=False, **operation_config):
         """Gets details of a specific long running operation.
 
         :param operation_id: Operation id.
@@ -51,10 +50,10 @@ class Operations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_details.metadata['url']
+        url = self.get_details.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'operationId': self._serialize.url("operation_id", operation_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "operationId": self._serialize.url("operation_id", operation_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -63,7 +62,7 @@ class Operations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -78,9 +77,9 @@ class Operations(object):
         header_dict = {}
 
         if response.status_code == 200:
-            deserialized = self._deserialize('Operation', response)
+            deserialized = self._deserialize("Operation", response)
             header_dict = {
-                'RetryAfter': 'int',
+                "RetryAfter": "int",
             }
 
         if raw:
@@ -89,4 +88,5 @@ class Operations(object):
             return client_raw_response
 
         return deserialized
-    get_details.metadata = {'url': '/operations/{operationId}'}
+
+    get_details.metadata = {"url": "/operations/{operationId}"}

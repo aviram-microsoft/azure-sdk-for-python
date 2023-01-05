@@ -38,7 +38,24 @@ class EntitiesOperations(object):
         self.x_bing_apis_sdk = "true"
 
     def search(
-            self, query, accept_language=None, pragma=None, user_agent=None, client_id=None, client_ip=None, location=None, country_code=None, market="en-us", response_filter=None, response_format=None, safe_search=None, set_lang=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        query,
+        accept_language=None,
+        pragma=None,
+        user_agent=None,
+        client_id=None,
+        client_ip=None,
+        location=None,
+        country_code=None,
+        market="en-us",
+        response_filter=None,
+        response_format=None,
+        safe_search=None,
+        set_lang=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """The Entity Search API lets you send a search query to Bing and get back
         search results that include entities and places. Place results include
         restaurants, hotel, or other local businesses. For places, the query
@@ -232,46 +249,52 @@ class EntitiesOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.search.entitysearch.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.search.metadata['url']
+        url = self.search.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if country_code is not None:
-            query_parameters['cc'] = self._serialize.query("country_code", country_code, 'str')
+            query_parameters["cc"] = self._serialize.query("country_code", country_code, "str")
         if market is not None:
-            query_parameters['mkt'] = self._serialize.query("market", market, 'str')
-        query_parameters['q'] = self._serialize.query("query", query, 'str')
+            query_parameters["mkt"] = self._serialize.query("market", market, "str")
+        query_parameters["q"] = self._serialize.query("query", query, "str")
         if response_filter is not None:
-            query_parameters['ResponseFilter'] = self._serialize.query("response_filter", response_filter, '[str]', div=',')
+            query_parameters["ResponseFilter"] = self._serialize.query(
+                "response_filter", response_filter, "[str]", div=","
+            )
         if response_format is not None:
-            query_parameters['ResponseFormat'] = self._serialize.query("response_format", response_format, '[str]', div=',')
+            query_parameters["ResponseFormat"] = self._serialize.query(
+                "response_format", response_format, "[str]", div=","
+            )
         if safe_search is not None:
-            query_parameters['SafeSearch'] = self._serialize.query("safe_search", safe_search, 'str')
+            query_parameters["SafeSearch"] = self._serialize.query("safe_search", safe_search, "str")
         if set_lang is not None:
-            query_parameters['SetLang'] = self._serialize.query("set_lang", set_lang, 'str')
+            query_parameters["SetLang"] = self._serialize.query("set_lang", set_lang, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['X-BingApis-SDK'] = self._serialize.header("self.x_bing_apis_sdk", self.x_bing_apis_sdk, 'str')
+        header_parameters["X-BingApis-SDK"] = self._serialize.header(
+            "self.x_bing_apis_sdk", self.x_bing_apis_sdk, "str"
+        )
         if accept_language is not None:
-            header_parameters['Accept-Language'] = self._serialize.header("accept_language", accept_language, 'str')
+            header_parameters["Accept-Language"] = self._serialize.header("accept_language", accept_language, "str")
         if pragma is not None:
-            header_parameters['Pragma'] = self._serialize.header("pragma", pragma, 'str')
+            header_parameters["Pragma"] = self._serialize.header("pragma", pragma, "str")
         if user_agent is not None:
-            header_parameters['User-Agent'] = self._serialize.header("user_agent", user_agent, 'str')
+            header_parameters["User-Agent"] = self._serialize.header("user_agent", user_agent, "str")
         if client_id is not None:
-            header_parameters['X-MSEdge-ClientID'] = self._serialize.header("client_id", client_id, 'str')
+            header_parameters["X-MSEdge-ClientID"] = self._serialize.header("client_id", client_id, "str")
         if client_ip is not None:
-            header_parameters['X-MSEdge-ClientIP'] = self._serialize.header("client_ip", client_ip, 'str')
+            header_parameters["X-MSEdge-ClientIP"] = self._serialize.header("client_ip", client_ip, "str")
         if location is not None:
-            header_parameters['X-Search-Location'] = self._serialize.header("location", location, 'str')
+            header_parameters["X-Search-Location"] = self._serialize.header("location", location, "str")
 
         # Construct and send request
         request = self._client.get(url, query_parameters, header_parameters)
@@ -282,11 +305,12 @@ class EntitiesOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('SearchResponse', response)
+            deserialized = self._deserialize("SearchResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    search.metadata = {'url': '/entities'}
+
+    search.metadata = {"url": "/entities"}

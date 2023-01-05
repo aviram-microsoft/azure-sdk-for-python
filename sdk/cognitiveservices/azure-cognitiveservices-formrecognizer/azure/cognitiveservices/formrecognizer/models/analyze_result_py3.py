@@ -29,9 +29,9 @@ class AnalyzeResult(Model):
     """
 
     _attribute_map = {
-        'status': {'key': 'status', 'type': 'str'},
-        'pages': {'key': 'pages', 'type': '[ExtractedPage]'},
-        'errors': {'key': 'errors', 'type': '[FormOperationError]'},
+        "status": {"key": "status", "type": "str"},
+        "pages": {"key": "pages", "type": "[ExtractedPage]"},
+        "errors": {"key": "errors", "type": "[FormOperationError]"},
     }
 
     def __init__(self, *, status=None, pages=None, errors=None, **kwargs) -> None:

@@ -22,8 +22,8 @@ class UpdateQnaDTOQuestions(UpdateQuestionsDTO):
     """
 
     _attribute_map = {
-        'add': {'key': 'add', 'type': '[str]'},
-        'delete': {'key': 'delete', 'type': '[str]'},
+        "add": {"key": "add", "type": "[str]"},
+        "delete": {"key": "delete", "type": "[str]"},
     }
 
     def __init__(self, *, add=None, delete=None, **kwargs) -> None:

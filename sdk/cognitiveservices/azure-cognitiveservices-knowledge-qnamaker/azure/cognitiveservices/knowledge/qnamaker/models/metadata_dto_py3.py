@@ -24,13 +24,13 @@ class MetadataDTO(Model):
     """
 
     _validation = {
-        'name': {'required': True, 'max_length': 100, 'min_length': 1},
-        'value': {'required': True, 'max_length': 500, 'min_length': 1},
+        "name": {"required": True, "max_length": 100, "min_length": 1},
+        "value": {"required": True, "max_length": 500, "min_length": 1},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'value': {'key': 'value', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "value": {"key": "value", "type": "str"},
     }
 
     def __init__(self, *, name: str, value: str, **kwargs) -> None:

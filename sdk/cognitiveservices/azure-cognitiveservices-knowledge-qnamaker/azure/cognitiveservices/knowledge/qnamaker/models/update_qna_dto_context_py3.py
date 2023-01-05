@@ -30,10 +30,15 @@ class UpdateQnaDTOContext(UpdateContextDTO):
     """
 
     _attribute_map = {
-        'prompts_to_delete': {'key': 'promptsToDelete', 'type': '[int]'},
-        'prompts_to_add': {'key': 'promptsToAdd', 'type': '[PromptDTO]'},
-        'is_context_only': {'key': 'isContextOnly', 'type': 'bool'},
+        "prompts_to_delete": {"key": "promptsToDelete", "type": "[int]"},
+        "prompts_to_add": {"key": "promptsToAdd", "type": "[PromptDTO]"},
+        "is_context_only": {"key": "isContextOnly", "type": "bool"},
     }
 
-    def __init__(self, *, prompts_to_delete=None, prompts_to_add=None, is_context_only: bool=None, **kwargs) -> None:
-        super(UpdateQnaDTOContext, self).__init__(prompts_to_delete=prompts_to_delete, prompts_to_add=prompts_to_add, is_context_only=is_context_only, **kwargs)
+    def __init__(self, *, prompts_to_delete=None, prompts_to_add=None, is_context_only: bool = None, **kwargs) -> None:
+        super(UpdateQnaDTOContext, self).__init__(
+            prompts_to_delete=prompts_to_delete,
+            prompts_to_add=prompts_to_add,
+            is_context_only=is_context_only,
+            **kwargs
+        )

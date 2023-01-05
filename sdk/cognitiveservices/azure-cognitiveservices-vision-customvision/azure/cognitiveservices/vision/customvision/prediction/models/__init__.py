@@ -27,11 +27,12 @@ from ._custom_vision_prediction_client_enums import (
 )
 
 __all__ = [
-    'BoundingBox',
-    'CustomVisionError', 'CustomVisionErrorException',
-    'ImagePrediction',
-    'ImageUrl',
-    'Prediction',
-    'CustomVisionErrorCodes',
-    'TagType',
+    "BoundingBox",
+    "CustomVisionError",
+    "CustomVisionErrorException",
+    "ImagePrediction",
+    "ImageUrl",
+    "Prediction",
+    "CustomVisionErrorCodes",
+    "TagType",
 ]

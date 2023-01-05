@@ -35,22 +35,22 @@ class AdultInfo(Model):
     """
 
     _attribute_map = {
-        'is_adult_content': {'key': 'isAdultContent', 'type': 'bool'},
-        'is_racy_content': {'key': 'isRacyContent', 'type': 'bool'},
-        'is_gory_content': {'key': 'isGoryContent', 'type': 'bool'},
-        'adult_score': {'key': 'adultScore', 'type': 'float'},
-        'racy_score': {'key': 'racyScore', 'type': 'float'},
-        'gore_score': {'key': 'goreScore', 'type': 'float'},
+        "is_adult_content": {"key": "isAdultContent", "type": "bool"},
+        "is_racy_content": {"key": "isRacyContent", "type": "bool"},
+        "is_gory_content": {"key": "isGoryContent", "type": "bool"},
+        "adult_score": {"key": "adultScore", "type": "float"},
+        "racy_score": {"key": "racyScore", "type": "float"},
+        "gore_score": {"key": "goreScore", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(AdultInfo, self).__init__(**kwargs)
-        self.is_adult_content = kwargs.get('is_adult_content', None)
-        self.is_racy_content = kwargs.get('is_racy_content', None)
-        self.is_gory_content = kwargs.get('is_gory_content', None)
-        self.adult_score = kwargs.get('adult_score', None)
-        self.racy_score = kwargs.get('racy_score', None)
-        self.gore_score = kwargs.get('gore_score', None)
+        self.is_adult_content = kwargs.get("is_adult_content", None)
+        self.is_racy_content = kwargs.get("is_racy_content", None)
+        self.is_gory_content = kwargs.get("is_gory_content", None)
+        self.adult_score = kwargs.get("adult_score", None)
+        self.racy_score = kwargs.get("racy_score", None)
+        self.gore_score = kwargs.get("gore_score", None)
 
 
 class AnalyzeResults(Model):
@@ -69,22 +69,22 @@ class AnalyzeResults(Model):
     """
 
     _validation = {
-        'version': {'required': True},
-        'model_version': {'required': True, 'pattern': r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$'},
-        'read_results': {'required': True},
+        "version": {"required": True},
+        "model_version": {"required": True, "pattern": r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"},
+        "read_results": {"required": True},
     }
 
     _attribute_map = {
-        'version': {'key': 'version', 'type': 'str'},
-        'model_version': {'key': 'modelVersion', 'type': 'str'},
-        'read_results': {'key': 'readResults', 'type': '[ReadResult]'},
+        "version": {"key": "version", "type": "str"},
+        "model_version": {"key": "modelVersion", "type": "str"},
+        "read_results": {"key": "readResults", "type": "[ReadResult]"},
     }
 
     def __init__(self, **kwargs):
         super(AnalyzeResults, self).__init__(**kwargs)
-        self.version = kwargs.get('version', None)
-        self.model_version = kwargs.get('model_version', None)
-        self.read_results = kwargs.get('read_results', None)
+        self.version = kwargs.get("version", None)
+        self.model_version = kwargs.get("model_version", None)
+        self.read_results = kwargs.get("read_results", None)
 
 
 class Appearance(Model):
@@ -97,16 +97,16 @@ class Appearance(Model):
     """
 
     _validation = {
-        'style': {'required': True},
+        "style": {"required": True},
     }
 
     _attribute_map = {
-        'style': {'key': 'style', 'type': 'Style'},
+        "style": {"key": "style", "type": "Style"},
     }
 
     def __init__(self, **kwargs):
         super(Appearance, self).__init__(**kwargs)
-        self.style = kwargs.get('style', None)
+        self.style = kwargs.get("style", None)
 
 
 class AreaOfInterestResult(Model):
@@ -129,22 +129,22 @@ class AreaOfInterestResult(Model):
     """
 
     _validation = {
-        'area_of_interest': {'readonly': True},
+        "area_of_interest": {"readonly": True},
     }
 
     _attribute_map = {
-        'area_of_interest': {'key': 'areaOfInterest', 'type': 'BoundingRect'},
-        'request_id': {'key': 'requestId', 'type': 'str'},
-        'metadata': {'key': 'metadata', 'type': 'ImageMetadata'},
-        'model_version': {'key': 'modelVersion', 'type': 'str'},
+        "area_of_interest": {"key": "areaOfInterest", "type": "BoundingRect"},
+        "request_id": {"key": "requestId", "type": "str"},
+        "metadata": {"key": "metadata", "type": "ImageMetadata"},
+        "model_version": {"key": "modelVersion", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(AreaOfInterestResult, self).__init__(**kwargs)
         self.area_of_interest = None
-        self.request_id = kwargs.get('request_id', None)
-        self.metadata = kwargs.get('metadata', None)
-        self.model_version = kwargs.get('model_version', None)
+        self.request_id = kwargs.get("request_id", None)
+        self.metadata = kwargs.get("metadata", None)
+        self.model_version = kwargs.get("model_version", None)
 
 
 class BoundingRect(Model):
@@ -161,18 +161,18 @@ class BoundingRect(Model):
     """
 
     _attribute_map = {
-        'x': {'key': 'x', 'type': 'int'},
-        'y': {'key': 'y', 'type': 'int'},
-        'w': {'key': 'w', 'type': 'int'},
-        'h': {'key': 'h', 'type': 'int'},
+        "x": {"key": "x", "type": "int"},
+        "y": {"key": "y", "type": "int"},
+        "w": {"key": "w", "type": "int"},
+        "h": {"key": "h", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(BoundingRect, self).__init__(**kwargs)
-        self.x = kwargs.get('x', None)
-        self.y = kwargs.get('y', None)
-        self.w = kwargs.get('w', None)
-        self.h = kwargs.get('h', None)
+        self.x = kwargs.get("x", None)
+        self.y = kwargs.get("y", None)
+        self.w = kwargs.get("w", None)
+        self.h = kwargs.get("h", None)
 
 
 class Category(Model):
@@ -188,16 +188,16 @@ class Category(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'score': {'key': 'score', 'type': 'float'},
-        'detail': {'key': 'detail', 'type': 'CategoryDetail'},
+        "name": {"key": "name", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+        "detail": {"key": "detail", "type": "CategoryDetail"},
     }
 
     def __init__(self, **kwargs):
         super(Category, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.score = kwargs.get('score', None)
-        self.detail = kwargs.get('detail', None)
+        self.name = kwargs.get("name", None)
+        self.score = kwargs.get("score", None)
+        self.detail = kwargs.get("detail", None)
 
 
 class CategoryDetail(Model):
@@ -212,14 +212,14 @@ class CategoryDetail(Model):
     """
 
     _attribute_map = {
-        'celebrities': {'key': 'celebrities', 'type': '[CelebritiesModel]'},
-        'landmarks': {'key': 'landmarks', 'type': '[LandmarksModel]'},
+        "celebrities": {"key": "celebrities", "type": "[CelebritiesModel]"},
+        "landmarks": {"key": "landmarks", "type": "[LandmarksModel]"},
     }
 
     def __init__(self, **kwargs):
         super(CategoryDetail, self).__init__(**kwargs)
-        self.celebrities = kwargs.get('celebrities', None)
-        self.landmarks = kwargs.get('landmarks', None)
+        self.celebrities = kwargs.get("celebrities", None)
+        self.landmarks = kwargs.get("landmarks", None)
 
 
 class CelebritiesModel(Model):
@@ -236,16 +236,16 @@ class CelebritiesModel(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
-        'face_rectangle': {'key': 'faceRectangle', 'type': 'FaceRectangle'},
+        "name": {"key": "name", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "face_rectangle": {"key": "faceRectangle", "type": "FaceRectangle"},
     }
 
     def __init__(self, **kwargs):
         super(CelebritiesModel, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.confidence = kwargs.get('confidence', None)
-        self.face_rectangle = kwargs.get('face_rectangle', None)
+        self.name = kwargs.get("name", None)
+        self.confidence = kwargs.get("confidence", None)
+        self.face_rectangle = kwargs.get("face_rectangle", None)
 
 
 class ColorInfo(Model):
@@ -264,20 +264,20 @@ class ColorInfo(Model):
     """
 
     _attribute_map = {
-        'dominant_color_foreground': {'key': 'dominantColorForeground', 'type': 'str'},
-        'dominant_color_background': {'key': 'dominantColorBackground', 'type': 'str'},
-        'dominant_colors': {'key': 'dominantColors', 'type': '[str]'},
-        'accent_color': {'key': 'accentColor', 'type': 'str'},
-        'is_bw_img': {'key': 'isBWImg', 'type': 'bool'},
+        "dominant_color_foreground": {"key": "dominantColorForeground", "type": "str"},
+        "dominant_color_background": {"key": "dominantColorBackground", "type": "str"},
+        "dominant_colors": {"key": "dominantColors", "type": "[str]"},
+        "accent_color": {"key": "accentColor", "type": "str"},
+        "is_bw_img": {"key": "isBWImg", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(ColorInfo, self).__init__(**kwargs)
-        self.dominant_color_foreground = kwargs.get('dominant_color_foreground', None)
-        self.dominant_color_background = kwargs.get('dominant_color_background', None)
-        self.dominant_colors = kwargs.get('dominant_colors', None)
-        self.accent_color = kwargs.get('accent_color', None)
-        self.is_bw_img = kwargs.get('is_bw_img', None)
+        self.dominant_color_foreground = kwargs.get("dominant_color_foreground", None)
+        self.dominant_color_background = kwargs.get("dominant_color_background", None)
+        self.dominant_colors = kwargs.get("dominant_colors", None)
+        self.accent_color = kwargs.get("accent_color", None)
+        self.is_bw_img = kwargs.get("is_bw_img", None)
 
 
 class ComputerVisionError(Model):
@@ -299,21 +299,21 @@ class ComputerVisionError(Model):
     """
 
     _validation = {
-        'code': {'required': True},
-        'message': {'required': True},
+        "code": {"required": True},
+        "message": {"required": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
-        'innererror': {'key': 'innererror', 'type': 'ComputerVisionInnerError'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "innererror": {"key": "innererror", "type": "ComputerVisionInnerError"},
     }
 
     def __init__(self, **kwargs):
         super(ComputerVisionError, self).__init__(**kwargs)
-        self.code = kwargs.get('code', None)
-        self.message = kwargs.get('message', None)
-        self.innererror = kwargs.get('innererror', None)
+        self.code = kwargs.get("code", None)
+        self.message = kwargs.get("message", None)
+        self.innererror = kwargs.get("innererror", None)
 
 
 class ComputerVisionErrorResponse(Model):
@@ -327,16 +327,16 @@ class ComputerVisionErrorResponse(Model):
     """
 
     _validation = {
-        'error': {'required': True},
+        "error": {"required": True},
     }
 
     _attribute_map = {
-        'error': {'key': 'error', 'type': 'ComputerVisionError'},
+        "error": {"key": "error", "type": "ComputerVisionError"},
     }
 
     def __init__(self, **kwargs):
         super(ComputerVisionErrorResponse, self).__init__(**kwargs)
-        self.error = kwargs.get('error', None)
+        self.error = kwargs.get("error", None)
 
 
 class ComputerVisionErrorResponseException(HttpOperationError):
@@ -348,7 +348,9 @@ class ComputerVisionErrorResponseException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(ComputerVisionErrorResponseException, self).__init__(deserialize, response, 'ComputerVisionErrorResponse', *args)
+        super(ComputerVisionErrorResponseException, self).__init__(
+            deserialize, response, "ComputerVisionErrorResponse", *args
+        )
 
 
 class ComputerVisionInnerError(Model):
@@ -371,19 +373,19 @@ class ComputerVisionInnerError(Model):
     """
 
     _validation = {
-        'code': {'required': True},
-        'message': {'required': True},
+        "code": {"required": True},
+        "message": {"required": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ComputerVisionInnerError, self).__init__(**kwargs)
-        self.code = kwargs.get('code', None)
-        self.message = kwargs.get('message', None)
+        self.code = kwargs.get("code", None)
+        self.message = kwargs.get("message", None)
 
 
 class ComputerVisionOcrError(Model):
@@ -401,21 +403,21 @@ class ComputerVisionOcrError(Model):
     """
 
     _validation = {
-        'code': {'required': True},
-        'message': {'required': True},
+        "code": {"required": True},
+        "message": {"required": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'object'},
-        'message': {'key': 'message', 'type': 'str'},
-        'request_id': {'key': 'requestId', 'type': 'str'},
+        "code": {"key": "code", "type": "object"},
+        "message": {"key": "message", "type": "str"},
+        "request_id": {"key": "requestId", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ComputerVisionOcrError, self).__init__(**kwargs)
-        self.code = kwargs.get('code', None)
-        self.message = kwargs.get('message', None)
-        self.request_id = kwargs.get('request_id', None)
+        self.code = kwargs.get("code", None)
+        self.message = kwargs.get("message", None)
+        self.request_id = kwargs.get("request_id", None)
 
 
 class ComputerVisionOcrErrorException(HttpOperationError):
@@ -427,7 +429,7 @@ class ComputerVisionOcrErrorException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(ComputerVisionOcrErrorException, self).__init__(deserialize, response, 'ComputerVisionOcrError', *args)
+        super(ComputerVisionOcrErrorException, self).__init__(deserialize, response, "ComputerVisionOcrError", *args)
 
 
 class DetectedBrand(Model):
@@ -447,15 +449,15 @@ class DetectedBrand(Model):
     """
 
     _validation = {
-        'name': {'readonly': True},
-        'confidence': {'readonly': True},
-        'rectangle': {'readonly': True},
+        "name": {"readonly": True},
+        "confidence": {"readonly": True},
+        "rectangle": {"readonly": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
-        'rectangle': {'key': 'rectangle', 'type': 'BoundingRect'},
+        "name": {"key": "name", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "rectangle": {"key": "rectangle", "type": "BoundingRect"},
     }
 
     def __init__(self, **kwargs):
@@ -487,22 +489,22 @@ class DetectedObject(Model):
     """
 
     _validation = {
-        'rectangle': {'readonly': True},
+        "rectangle": {"readonly": True},
     }
 
     _attribute_map = {
-        'rectangle': {'key': 'rectangle', 'type': 'BoundingRect'},
-        'object_property': {'key': 'object', 'type': 'str'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
-        'parent': {'key': 'parent', 'type': 'ObjectHierarchy'},
+        "rectangle": {"key": "rectangle", "type": "BoundingRect"},
+        "object_property": {"key": "object", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "parent": {"key": "parent", "type": "ObjectHierarchy"},
     }
 
     def __init__(self, **kwargs):
         super(DetectedObject, self).__init__(**kwargs)
         self.rectangle = None
-        self.object_property = kwargs.get('object_property', None)
-        self.confidence = kwargs.get('confidence', None)
-        self.parent = kwargs.get('parent', None)
+        self.object_property = kwargs.get("object_property", None)
+        self.confidence = kwargs.get("confidence", None)
+        self.parent = kwargs.get("parent", None)
 
 
 class DetectResult(Model):
@@ -524,22 +526,22 @@ class DetectResult(Model):
     """
 
     _validation = {
-        'objects': {'readonly': True},
+        "objects": {"readonly": True},
     }
 
     _attribute_map = {
-        'objects': {'key': 'objects', 'type': '[DetectedObject]'},
-        'request_id': {'key': 'requestId', 'type': 'str'},
-        'metadata': {'key': 'metadata', 'type': 'ImageMetadata'},
-        'model_version': {'key': 'modelVersion', 'type': 'str'},
+        "objects": {"key": "objects", "type": "[DetectedObject]"},
+        "request_id": {"key": "requestId", "type": "str"},
+        "metadata": {"key": "metadata", "type": "ImageMetadata"},
+        "model_version": {"key": "modelVersion", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(DetectResult, self).__init__(**kwargs)
         self.objects = None
-        self.request_id = kwargs.get('request_id', None)
-        self.metadata = kwargs.get('metadata', None)
-        self.model_version = kwargs.get('model_version', None)
+        self.request_id = kwargs.get("request_id", None)
+        self.metadata = kwargs.get("metadata", None)
+        self.model_version = kwargs.get("model_version", None)
 
 
 class DomainModelResults(Model):
@@ -558,18 +560,18 @@ class DomainModelResults(Model):
     """
 
     _attribute_map = {
-        'result': {'key': 'result', 'type': 'object'},
-        'request_id': {'key': 'requestId', 'type': 'str'},
-        'metadata': {'key': 'metadata', 'type': 'ImageMetadata'},
-        'model_version': {'key': 'modelVersion', 'type': 'str'},
+        "result": {"key": "result", "type": "object"},
+        "request_id": {"key": "requestId", "type": "str"},
+        "metadata": {"key": "metadata", "type": "ImageMetadata"},
+        "model_version": {"key": "modelVersion", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(DomainModelResults, self).__init__(**kwargs)
-        self.result = kwargs.get('result', None)
-        self.request_id = kwargs.get('request_id', None)
-        self.metadata = kwargs.get('metadata', None)
-        self.model_version = kwargs.get('model_version', None)
+        self.result = kwargs.get("result", None)
+        self.request_id = kwargs.get("request_id", None)
+        self.metadata = kwargs.get("metadata", None)
+        self.model_version = kwargs.get("model_version", None)
 
 
 class FaceDescription(Model):
@@ -588,16 +590,16 @@ class FaceDescription(Model):
     """
 
     _attribute_map = {
-        'age': {'key': 'age', 'type': 'int'},
-        'gender': {'key': 'gender', 'type': 'Gender'},
-        'face_rectangle': {'key': 'faceRectangle', 'type': 'FaceRectangle'},
+        "age": {"key": "age", "type": "int"},
+        "gender": {"key": "gender", "type": "Gender"},
+        "face_rectangle": {"key": "faceRectangle", "type": "FaceRectangle"},
     }
 
     def __init__(self, **kwargs):
         super(FaceDescription, self).__init__(**kwargs)
-        self.age = kwargs.get('age', None)
-        self.gender = kwargs.get('gender', None)
-        self.face_rectangle = kwargs.get('face_rectangle', None)
+        self.age = kwargs.get("age", None)
+        self.gender = kwargs.get("gender", None)
+        self.face_rectangle = kwargs.get("face_rectangle", None)
 
 
 class FaceRectangle(Model):
@@ -616,18 +618,18 @@ class FaceRectangle(Model):
     """
 
     _attribute_map = {
-        'left': {'key': 'left', 'type': 'int'},
-        'top': {'key': 'top', 'type': 'int'},
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
+        "left": {"key": "left", "type": "int"},
+        "top": {"key": "top", "type": "int"},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(FaceRectangle, self).__init__(**kwargs)
-        self.left = kwargs.get('left', None)
-        self.top = kwargs.get('top', None)
-        self.width = kwargs.get('width', None)
-        self.height = kwargs.get('height', None)
+        self.left = kwargs.get("left", None)
+        self.top = kwargs.get("top", None)
+        self.width = kwargs.get("width", None)
+        self.height = kwargs.get("height", None)
 
 
 class ImageAnalysis(Model):
@@ -675,34 +677,34 @@ class ImageAnalysis(Model):
     """
 
     _attribute_map = {
-        'categories': {'key': 'categories', 'type': '[Category]'},
-        'adult': {'key': 'adult', 'type': 'AdultInfo'},
-        'color': {'key': 'color', 'type': 'ColorInfo'},
-        'image_type': {'key': 'imageType', 'type': 'ImageType'},
-        'tags': {'key': 'tags', 'type': '[ImageTag]'},
-        'description': {'key': 'description', 'type': 'ImageDescriptionDetails'},
-        'faces': {'key': 'faces', 'type': '[FaceDescription]'},
-        'objects': {'key': 'objects', 'type': '[DetectedObject]'},
-        'brands': {'key': 'brands', 'type': '[DetectedBrand]'},
-        'request_id': {'key': 'requestId', 'type': 'str'},
-        'metadata': {'key': 'metadata', 'type': 'ImageMetadata'},
-        'model_version': {'key': 'modelVersion', 'type': 'str'},
+        "categories": {"key": "categories", "type": "[Category]"},
+        "adult": {"key": "adult", "type": "AdultInfo"},
+        "color": {"key": "color", "type": "ColorInfo"},
+        "image_type": {"key": "imageType", "type": "ImageType"},
+        "tags": {"key": "tags", "type": "[ImageTag]"},
+        "description": {"key": "description", "type": "ImageDescriptionDetails"},
+        "faces": {"key": "faces", "type": "[FaceDescription]"},
+        "objects": {"key": "objects", "type": "[DetectedObject]"},
+        "brands": {"key": "brands", "type": "[DetectedBrand]"},
+        "request_id": {"key": "requestId", "type": "str"},
+        "metadata": {"key": "metadata", "type": "ImageMetadata"},
+        "model_version": {"key": "modelVersion", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ImageAnalysis, self).__init__(**kwargs)
-        self.categories = kwargs.get('categories', None)
-        self.adult = kwargs.get('adult', None)
-        self.color = kwargs.get('color', None)
-        self.image_type = kwargs.get('image_type', None)
-        self.tags = kwargs.get('tags', None)
-        self.description = kwargs.get('description', None)
-        self.faces = kwargs.get('faces', None)
-        self.objects = kwargs.get('objects', None)
-        self.brands = kwargs.get('brands', None)
-        self.request_id = kwargs.get('request_id', None)
-        self.metadata = kwargs.get('metadata', None)
-        self.model_version = kwargs.get('model_version', None)
+        self.categories = kwargs.get("categories", None)
+        self.adult = kwargs.get("adult", None)
+        self.color = kwargs.get("color", None)
+        self.image_type = kwargs.get("image_type", None)
+        self.tags = kwargs.get("tags", None)
+        self.description = kwargs.get("description", None)
+        self.faces = kwargs.get("faces", None)
+        self.objects = kwargs.get("objects", None)
+        self.brands = kwargs.get("brands", None)
+        self.request_id = kwargs.get("request_id", None)
+        self.metadata = kwargs.get("metadata", None)
+        self.model_version = kwargs.get("model_version", None)
 
 
 class ImageCaption(Model):
@@ -715,14 +717,14 @@ class ImageCaption(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
+        "text": {"key": "text", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(ImageCaption, self).__init__(**kwargs)
-        self.text = kwargs.get('text', None)
-        self.confidence = kwargs.get('confidence', None)
+        self.text = kwargs.get("text", None)
+        self.confidence = kwargs.get("confidence", None)
 
 
 class ImageDescription(Model):
@@ -744,20 +746,20 @@ class ImageDescription(Model):
     """
 
     _attribute_map = {
-        'tags': {'key': 'description.tags', 'type': '[str]'},
-        'captions': {'key': 'description.captions', 'type': '[ImageCaption]'},
-        'request_id': {'key': 'requestId', 'type': 'str'},
-        'metadata': {'key': 'metadata', 'type': 'ImageMetadata'},
-        'model_version': {'key': 'modelVersion', 'type': 'str'},
+        "tags": {"key": "description.tags", "type": "[str]"},
+        "captions": {"key": "description.captions", "type": "[ImageCaption]"},
+        "request_id": {"key": "requestId", "type": "str"},
+        "metadata": {"key": "metadata", "type": "ImageMetadata"},
+        "model_version": {"key": "modelVersion", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ImageDescription, self).__init__(**kwargs)
-        self.tags = kwargs.get('tags', None)
-        self.captions = kwargs.get('captions', None)
-        self.request_id = kwargs.get('request_id', None)
-        self.metadata = kwargs.get('metadata', None)
-        self.model_version = kwargs.get('model_version', None)
+        self.tags = kwargs.get("tags", None)
+        self.captions = kwargs.get("captions", None)
+        self.request_id = kwargs.get("request_id", None)
+        self.metadata = kwargs.get("metadata", None)
+        self.model_version = kwargs.get("model_version", None)
 
 
 class ImageDescriptionDetails(Model):
@@ -772,14 +774,14 @@ class ImageDescriptionDetails(Model):
     """
 
     _attribute_map = {
-        'tags': {'key': 'tags', 'type': '[str]'},
-        'captions': {'key': 'captions', 'type': '[ImageCaption]'},
+        "tags": {"key": "tags", "type": "[str]"},
+        "captions": {"key": "captions", "type": "[ImageCaption]"},
     }
 
     def __init__(self, **kwargs):
         super(ImageDescriptionDetails, self).__init__(**kwargs)
-        self.tags = kwargs.get('tags', None)
-        self.captions = kwargs.get('captions', None)
+        self.tags = kwargs.get("tags", None)
+        self.captions = kwargs.get("captions", None)
 
 
 class ImageMetadata(Model):
@@ -794,16 +796,16 @@ class ImageMetadata(Model):
     """
 
     _attribute_map = {
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
-        'format': {'key': 'format', 'type': 'str'},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
+        "format": {"key": "format", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ImageMetadata, self).__init__(**kwargs)
-        self.width = kwargs.get('width', None)
-        self.height = kwargs.get('height', None)
-        self.format = kwargs.get('format', None)
+        self.width = kwargs.get("width", None)
+        self.height = kwargs.get("height", None)
+        self.format = kwargs.get("format", None)
 
 
 class ImageTag(Model):
@@ -818,16 +820,16 @@ class ImageTag(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
-        'hint': {'key': 'hint', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "hint": {"key": "hint", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ImageTag, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.confidence = kwargs.get('confidence', None)
-        self.hint = kwargs.get('hint', None)
+        self.name = kwargs.get("name", None)
+        self.confidence = kwargs.get("confidence", None)
+        self.hint = kwargs.get("hint", None)
 
 
 class ImageType(Model):
@@ -841,14 +843,14 @@ class ImageType(Model):
     """
 
     _attribute_map = {
-        'clip_art_type': {'key': 'clipArtType', 'type': 'int'},
-        'line_drawing_type': {'key': 'lineDrawingType', 'type': 'int'},
+        "clip_art_type": {"key": "clipArtType", "type": "int"},
+        "line_drawing_type": {"key": "lineDrawingType", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(ImageType, self).__init__(**kwargs)
-        self.clip_art_type = kwargs.get('clip_art_type', None)
-        self.line_drawing_type = kwargs.get('line_drawing_type', None)
+        self.clip_art_type = kwargs.get("clip_art_type", None)
+        self.line_drawing_type = kwargs.get("line_drawing_type", None)
 
 
 class ImageUrl(Model):
@@ -861,16 +863,16 @@ class ImageUrl(Model):
     """
 
     _validation = {
-        'url': {'required': True},
+        "url": {"required": True},
     }
 
     _attribute_map = {
-        'url': {'key': 'url', 'type': 'str'},
+        "url": {"key": "url", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ImageUrl, self).__init__(**kwargs)
-        self.url = kwargs.get('url', None)
+        self.url = kwargs.get("url", None)
 
 
 class LandmarksModel(Model):
@@ -884,14 +886,14 @@ class LandmarksModel(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
+        "name": {"key": "name", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(LandmarksModel, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.confidence = kwargs.get('confidence', None)
+        self.name = kwargs.get("name", None)
+        self.confidence = kwargs.get("confidence", None)
 
 
 class Line(Model):
@@ -915,26 +917,26 @@ class Line(Model):
     """
 
     _validation = {
-        'bounding_box': {'required': True},
-        'text': {'required': True},
-        'words': {'required': True},
+        "bounding_box": {"required": True},
+        "text": {"required": True},
+        "words": {"required": True},
     }
 
     _attribute_map = {
-        'language': {'key': 'language', 'type': 'str'},
-        'bounding_box': {'key': 'boundingBox', 'type': '[float]'},
-        'appearance': {'key': 'appearance', 'type': 'Appearance'},
-        'text': {'key': 'text', 'type': 'str'},
-        'words': {'key': 'words', 'type': '[Word]'},
+        "language": {"key": "language", "type": "str"},
+        "bounding_box": {"key": "boundingBox", "type": "[float]"},
+        "appearance": {"key": "appearance", "type": "Appearance"},
+        "text": {"key": "text", "type": "str"},
+        "words": {"key": "words", "type": "[Word]"},
     }
 
     def __init__(self, **kwargs):
         super(Line, self).__init__(**kwargs)
-        self.language = kwargs.get('language', None)
-        self.bounding_box = kwargs.get('bounding_box', None)
-        self.appearance = kwargs.get('appearance', None)
-        self.text = kwargs.get('text', None)
-        self.words = kwargs.get('words', None)
+        self.language = kwargs.get("language", None)
+        self.bounding_box = kwargs.get("bounding_box", None)
+        self.appearance = kwargs.get("appearance", None)
+        self.text = kwargs.get("text", None)
+        self.words = kwargs.get("words", None)
 
 
 class ListModelsResult(Model):
@@ -949,11 +951,11 @@ class ListModelsResult(Model):
     """
 
     _validation = {
-        'models_property': {'readonly': True},
+        "models_property": {"readonly": True},
     }
 
     _attribute_map = {
-        'models_property': {'key': 'models', 'type': '[ModelDescription]'},
+        "models_property": {"key": "models", "type": "[ModelDescription]"},
     }
 
     def __init__(self, **kwargs):
@@ -971,14 +973,14 @@ class ModelDescription(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'categories': {'key': 'categories', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "categories": {"key": "categories", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(ModelDescription, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.categories = kwargs.get('categories', None)
+        self.name = kwargs.get("name", None)
+        self.categories = kwargs.get("categories", None)
 
 
 class ObjectHierarchy(Model):
@@ -997,16 +999,16 @@ class ObjectHierarchy(Model):
     """
 
     _attribute_map = {
-        'object_property': {'key': 'object', 'type': 'str'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
-        'parent': {'key': 'parent', 'type': 'ObjectHierarchy'},
+        "object_property": {"key": "object", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
+        "parent": {"key": "parent", "type": "ObjectHierarchy"},
     }
 
     def __init__(self, **kwargs):
         super(ObjectHierarchy, self).__init__(**kwargs)
-        self.object_property = kwargs.get('object_property', None)
-        self.confidence = kwargs.get('confidence', None)
-        self.parent = kwargs.get('parent', None)
+        self.object_property = kwargs.get("object_property", None)
+        self.confidence = kwargs.get("confidence", None)
+        self.parent = kwargs.get("parent", None)
 
 
 class OcrLine(Model):
@@ -1026,14 +1028,14 @@ class OcrLine(Model):
     """
 
     _attribute_map = {
-        'bounding_box': {'key': 'boundingBox', 'type': 'str'},
-        'words': {'key': 'words', 'type': '[OcrWord]'},
+        "bounding_box": {"key": "boundingBox", "type": "str"},
+        "words": {"key": "words", "type": "[OcrWord]"},
     }
 
     def __init__(self, **kwargs):
         super(OcrLine, self).__init__(**kwargs)
-        self.bounding_box = kwargs.get('bounding_box', None)
-        self.words = kwargs.get('words', None)
+        self.bounding_box = kwargs.get("bounding_box", None)
+        self.words = kwargs.get("words", None)
 
 
 class OcrRegion(Model):
@@ -1053,14 +1055,14 @@ class OcrRegion(Model):
     """
 
     _attribute_map = {
-        'bounding_box': {'key': 'boundingBox', 'type': 'str'},
-        'lines': {'key': 'lines', 'type': '[OcrLine]'},
+        "bounding_box": {"key": "boundingBox", "type": "str"},
+        "lines": {"key": "lines", "type": "[OcrLine]"},
     }
 
     def __init__(self, **kwargs):
         super(OcrRegion, self).__init__(**kwargs)
-        self.bounding_box = kwargs.get('bounding_box', None)
-        self.lines = kwargs.get('lines', None)
+        self.bounding_box = kwargs.get("bounding_box", None)
+        self.lines = kwargs.get("lines", None)
 
 
 class OcrResult(Model):
@@ -1096,20 +1098,20 @@ class OcrResult(Model):
     """
 
     _attribute_map = {
-        'language': {'key': 'language', 'type': 'str'},
-        'text_angle': {'key': 'textAngle', 'type': 'float'},
-        'orientation': {'key': 'orientation', 'type': 'str'},
-        'regions': {'key': 'regions', 'type': '[OcrRegion]'},
-        'model_version': {'key': 'modelVersion', 'type': 'str'},
+        "language": {"key": "language", "type": "str"},
+        "text_angle": {"key": "textAngle", "type": "float"},
+        "orientation": {"key": "orientation", "type": "str"},
+        "regions": {"key": "regions", "type": "[OcrRegion]"},
+        "model_version": {"key": "modelVersion", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(OcrResult, self).__init__(**kwargs)
-        self.language = kwargs.get('language', None)
-        self.text_angle = kwargs.get('text_angle', None)
-        self.orientation = kwargs.get('orientation', None)
-        self.regions = kwargs.get('regions', None)
-        self.model_version = kwargs.get('model_version', None)
+        self.language = kwargs.get("language", None)
+        self.text_angle = kwargs.get("text_angle", None)
+        self.orientation = kwargs.get("orientation", None)
+        self.regions = kwargs.get("regions", None)
+        self.model_version = kwargs.get("model_version", None)
 
 
 class OcrWord(Model):
@@ -1127,14 +1129,14 @@ class OcrWord(Model):
     """
 
     _attribute_map = {
-        'bounding_box': {'key': 'boundingBox', 'type': 'str'},
-        'text': {'key': 'text', 'type': 'str'},
+        "bounding_box": {"key": "boundingBox", "type": "str"},
+        "text": {"key": "text", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(OcrWord, self).__init__(**kwargs)
-        self.bounding_box = kwargs.get('bounding_box', None)
-        self.text = kwargs.get('text', None)
+        self.bounding_box = kwargs.get("bounding_box", None)
+        self.text = kwargs.get("text", None)
 
 
 class ReadOperationResult(Model):
@@ -1156,18 +1158,18 @@ class ReadOperationResult(Model):
     """
 
     _attribute_map = {
-        'status': {'key': 'status', 'type': 'OperationStatusCodes'},
-        'created_date_time': {'key': 'createdDateTime', 'type': 'str'},
-        'last_updated_date_time': {'key': 'lastUpdatedDateTime', 'type': 'str'},
-        'analyze_result': {'key': 'analyzeResult', 'type': 'AnalyzeResults'},
+        "status": {"key": "status", "type": "OperationStatusCodes"},
+        "created_date_time": {"key": "createdDateTime", "type": "str"},
+        "last_updated_date_time": {"key": "lastUpdatedDateTime", "type": "str"},
+        "analyze_result": {"key": "analyzeResult", "type": "AnalyzeResults"},
     }
 
     def __init__(self, **kwargs):
         super(ReadOperationResult, self).__init__(**kwargs)
-        self.status = kwargs.get('status', None)
-        self.created_date_time = kwargs.get('created_date_time', None)
-        self.last_updated_date_time = kwargs.get('last_updated_date_time', None)
-        self.analyze_result = kwargs.get('analyze_result', None)
+        self.status = kwargs.get("status", None)
+        self.created_date_time = kwargs.get("created_date_time", None)
+        self.last_updated_date_time = kwargs.get("last_updated_date_time", None)
+        self.analyze_result = kwargs.get("analyze_result", None)
 
 
 class ReadResult(Model):
@@ -1199,33 +1201,33 @@ class ReadResult(Model):
     """
 
     _validation = {
-        'page': {'required': True},
-        'angle': {'required': True},
-        'width': {'required': True},
-        'height': {'required': True},
-        'unit': {'required': True},
-        'lines': {'required': True},
+        "page": {"required": True},
+        "angle": {"required": True},
+        "width": {"required": True},
+        "height": {"required": True},
+        "unit": {"required": True},
+        "lines": {"required": True},
     }
 
     _attribute_map = {
-        'page': {'key': 'page', 'type': 'int'},
-        'language': {'key': 'language', 'type': 'str'},
-        'angle': {'key': 'angle', 'type': 'float'},
-        'width': {'key': 'width', 'type': 'float'},
-        'height': {'key': 'height', 'type': 'float'},
-        'unit': {'key': 'unit', 'type': 'TextRecognitionResultDimensionUnit'},
-        'lines': {'key': 'lines', 'type': '[Line]'},
+        "page": {"key": "page", "type": "int"},
+        "language": {"key": "language", "type": "str"},
+        "angle": {"key": "angle", "type": "float"},
+        "width": {"key": "width", "type": "float"},
+        "height": {"key": "height", "type": "float"},
+        "unit": {"key": "unit", "type": "TextRecognitionResultDimensionUnit"},
+        "lines": {"key": "lines", "type": "[Line]"},
     }
 
     def __init__(self, **kwargs):
         super(ReadResult, self).__init__(**kwargs)
-        self.page = kwargs.get('page', None)
-        self.language = kwargs.get('language', None)
-        self.angle = kwargs.get('angle', None)
-        self.width = kwargs.get('width', None)
-        self.height = kwargs.get('height', None)
-        self.unit = kwargs.get('unit', None)
-        self.lines = kwargs.get('lines', None)
+        self.page = kwargs.get("page", None)
+        self.language = kwargs.get("language", None)
+        self.angle = kwargs.get("angle", None)
+        self.width = kwargs.get("width", None)
+        self.height = kwargs.get("height", None)
+        self.unit = kwargs.get("unit", None)
+        self.lines = kwargs.get("lines", None)
 
 
 class Style(Model):
@@ -1242,19 +1244,19 @@ class Style(Model):
     """
 
     _validation = {
-        'name': {'required': True},
-        'confidence': {'required': True},
+        "name": {"required": True},
+        "confidence": {"required": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
+        "name": {"key": "name", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(Style, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.confidence = kwargs.get('confidence', None)
+        self.name = kwargs.get("name", None)
+        self.confidence = kwargs.get("confidence", None)
 
 
 class TagResult(Model):
@@ -1274,18 +1276,18 @@ class TagResult(Model):
     """
 
     _attribute_map = {
-        'tags': {'key': 'tags', 'type': '[ImageTag]'},
-        'request_id': {'key': 'requestId', 'type': 'str'},
-        'metadata': {'key': 'metadata', 'type': 'ImageMetadata'},
-        'model_version': {'key': 'modelVersion', 'type': 'str'},
+        "tags": {"key": "tags", "type": "[ImageTag]"},
+        "request_id": {"key": "requestId", "type": "str"},
+        "metadata": {"key": "metadata", "type": "ImageMetadata"},
+        "model_version": {"key": "modelVersion", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(TagResult, self).__init__(**kwargs)
-        self.tags = kwargs.get('tags', None)
-        self.request_id = kwargs.get('request_id', None)
-        self.metadata = kwargs.get('metadata', None)
-        self.model_version = kwargs.get('model_version', None)
+        self.tags = kwargs.get("tags", None)
+        self.request_id = kwargs.get("request_id", None)
+        self.metadata = kwargs.get("metadata", None)
+        self.model_version = kwargs.get("model_version", None)
 
 
 class Word(Model):
@@ -1302,19 +1304,19 @@ class Word(Model):
     """
 
     _validation = {
-        'bounding_box': {'required': True},
-        'text': {'required': True},
-        'confidence': {'required': True},
+        "bounding_box": {"required": True},
+        "text": {"required": True},
+        "confidence": {"required": True},
     }
 
     _attribute_map = {
-        'bounding_box': {'key': 'boundingBox', 'type': '[float]'},
-        'text': {'key': 'text', 'type': 'str'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
+        "bounding_box": {"key": "boundingBox", "type": "[float]"},
+        "text": {"key": "text", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(Word, self).__init__(**kwargs)
-        self.bounding_box = kwargs.get('bounding_box', None)
-        self.text = kwargs.get('text', None)
-        self.confidence = kwargs.get('confidence', None)
+        self.bounding_box = kwargs.get("bounding_box", None)
+        self.text = kwargs.get("text", None)
+        self.confidence = kwargs.get("confidence", None)

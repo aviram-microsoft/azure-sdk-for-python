@@ -11,9 +11,9 @@
 
 from ._configuration import LUISAuthoringClientConfiguration
 from ._luis_authoring_client import LUISAuthoringClient
-__all__ = ['LUISAuthoringClient', 'LUISAuthoringClientConfiguration']
+
+__all__ = ["LUISAuthoringClient", "LUISAuthoringClientConfiguration"]
 
 from .version import VERSION
 
 __version__ = VERSION
-

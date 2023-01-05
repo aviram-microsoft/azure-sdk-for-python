@@ -15,9 +15,18 @@ from .. import models
 
 
 class ComputerVisionClientOperationsMixin(object):
-
     def analyze_image(
-            self, url, visual_features=None, details=None, language="en", description_exclude=None, model_version="latest", custom_headers=None, raw=False, **operation_config):
+        self,
+        url,
+        visual_features=None,
+        details=None,
+        language="en",
+        description_exclude=None,
+        model_version="latest",
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """This operation extracts a rich set of visual features based on the
         image content.
         Two input methods are supported -- (1) Uploading an image or (2)
@@ -85,34 +94,40 @@ class ComputerVisionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.analyze_image.metadata['url']
+        url = self.analyze_image.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if visual_features is not None:
-            query_parameters['visualFeatures'] = self._serialize.query("visual_features", visual_features, '[VisualFeatureTypes]', div=',')
+            query_parameters["visualFeatures"] = self._serialize.query(
+                "visual_features", visual_features, "[VisualFeatureTypes]", div=","
+            )
         if details is not None:
-            query_parameters['details'] = self._serialize.query("details", details, '[Details]', div=',')
+            query_parameters["details"] = self._serialize.query("details", details, "[Details]", div=",")
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'str')
+            query_parameters["language"] = self._serialize.query("language", language, "str")
         if description_exclude is not None:
-            query_parameters['descriptionExclude'] = self._serialize.query("description_exclude", description_exclude, '[DescriptionExclude]', div=',')
+            query_parameters["descriptionExclude"] = self._serialize.query(
+                "description_exclude", description_exclude, "[DescriptionExclude]", div=","
+            )
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -123,17 +138,27 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageAnalysis', response)
+            deserialized = self._deserialize("ImageAnalysis", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    analyze_image.metadata = {'url': '/analyze'}
+
+    analyze_image.metadata = {"url": "/analyze"}
 
     def describe_image(
-            self, url, max_candidates=1, language="en", description_exclude=None, model_version="latest", custom_headers=None, raw=False, **operation_config):
+        self,
+        url,
+        max_candidates=1,
+        language="en",
+        description_exclude=None,
+        model_version="latest",
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """This operation generates a description of an image in human readable
         language with complete sentences. The description is based on a
         collection of content tags, which are also returned by the operation.
@@ -180,32 +205,36 @@ class ComputerVisionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.describe_image.metadata['url']
+        url = self.describe_image.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if max_candidates is not None:
-            query_parameters['maxCandidates'] = self._serialize.query("max_candidates", max_candidates, 'int')
+            query_parameters["maxCandidates"] = self._serialize.query("max_candidates", max_candidates, "int")
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'str')
+            query_parameters["language"] = self._serialize.query("language", language, "str")
         if description_exclude is not None:
-            query_parameters['descriptionExclude'] = self._serialize.query("description_exclude", description_exclude, '[DescriptionExclude]', div=',')
+            query_parameters["descriptionExclude"] = self._serialize.query(
+                "description_exclude", description_exclude, "[DescriptionExclude]", div=","
+            )
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -216,17 +245,17 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageDescription', response)
+            deserialized = self._deserialize("ImageDescription", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    describe_image.metadata = {'url': '/describe'}
 
-    def detect_objects(
-            self, url, model_version="latest", custom_headers=None, raw=False, **operation_config):
+    describe_image.metadata = {"url": "/describe"}
+
+    def detect_objects(self, url, model_version="latest", custom_headers=None, raw=False, **operation_config):
         """Performs object detection on the specified image.
         Two input methods are supported -- (1) Uploading an image or (2)
         specifying an image URL.
@@ -255,26 +284,28 @@ class ComputerVisionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.detect_objects.metadata['url']
+        url = self.detect_objects.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -285,17 +316,17 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('DetectResult', response)
+            deserialized = self._deserialize("DetectResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    detect_objects.metadata = {'url': '/detect'}
 
-    def list_models(
-            self, custom_headers=None, raw=False, **operation_config):
+    detect_objects.metadata = {"url": "/detect"}
+
+    def list_models(self, custom_headers=None, raw=False, **operation_config):
         """This operation returns the list of domain-specific models that are
         supported by the Computer Vision API. Currently, the API supports
         following domain-specific models: celebrity recognizer, landmark
@@ -317,9 +348,9 @@ class ComputerVisionClientOperationsMixin(object):
          :class:`ComputerVisionErrorResponseException<azure.cognitiveservices.vision.computervision.models.ComputerVisionErrorResponseException>`
         """
         # Construct URL
-        url = self.list_models.metadata['url']
+        url = self.list_models.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -328,7 +359,7 @@ class ComputerVisionClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -341,17 +372,19 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ListModelsResult', response)
+            deserialized = self._deserialize("ListModelsResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_models.metadata = {'url': '/models'}
+
+    list_models.metadata = {"url": "/models"}
 
     def analyze_image_by_domain(
-            self, model, url, language="en", model_version="latest", custom_headers=None, raw=False, **operation_config):
+        self, model, url, language="en", model_version="latest", custom_headers=None, raw=False, **operation_config
+    ):
         """This operation recognizes content within an image by applying a
         domain-specific model. The list of domain-specific models that are
         supported by the Computer Vision API can be retrieved using the /models
@@ -392,29 +425,31 @@ class ComputerVisionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.analyze_image_by_domain.metadata['url']
+        url = self.analyze_image_by_domain.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'model': self._serialize.url("model", model, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "model": self._serialize.url("model", model, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'str')
+            query_parameters["language"] = self._serialize.query("language", language, "str")
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -425,17 +460,26 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('DomainModelResults', response)
+            deserialized = self._deserialize("DomainModelResults", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    analyze_image_by_domain.metadata = {'url': '/models/{model}/analyze'}
+
+    analyze_image_by_domain.metadata = {"url": "/models/{model}/analyze"}
 
     def recognize_printed_text(
-            self, url, detect_orientation=True, language="unk", model_version="latest", custom_headers=None, raw=False, **operation_config):
+        self,
+        url,
+        detect_orientation=True,
+        language="unk",
+        model_version="latest",
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Optical Character Recognition (OCR) detects text in an image and
         extracts the recognized characters into a machine-usable character
         stream.
@@ -478,29 +522,31 @@ class ComputerVisionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.recognize_printed_text.metadata['url']
+        url = self.recognize_printed_text.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['detectOrientation'] = self._serialize.query("detect_orientation", detect_orientation, 'bool')
+        query_parameters["detectOrientation"] = self._serialize.query("detect_orientation", detect_orientation, "bool")
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'OcrLanguages')
+            query_parameters["language"] = self._serialize.query("language", language, "OcrLanguages")
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -511,17 +557,17 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OcrResult', response)
+            deserialized = self._deserialize("OcrResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    recognize_printed_text.metadata = {'url': '/ocr'}
 
-    def tag_image(
-            self, url, language="en", model_version="latest", custom_headers=None, raw=False, **operation_config):
+    recognize_printed_text.metadata = {"url": "/ocr"}
+
+    def tag_image(self, url, language="en", model_version="latest", custom_headers=None, raw=False, **operation_config):
         """This operation generates a list of words, or tags, that are relevant to
         the content of the supplied image. The Computer Vision API can return
         tags based on objects, living beings, scenery or actions found in
@@ -562,28 +608,30 @@ class ComputerVisionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.tag_image.metadata['url']
+        url = self.tag_image.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'str')
+            query_parameters["language"] = self._serialize.query("language", language, "str")
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -594,17 +642,28 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('TagResult', response)
+            deserialized = self._deserialize("TagResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    tag_image.metadata = {'url': '/tag'}
+
+    tag_image.metadata = {"url": "/tag"}
 
     def generate_thumbnail(
-            self, width, height, url, smart_cropping=False, model_version="latest", custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        width,
+        height,
+        url,
+        smart_cropping=False,
+        model_version="latest",
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """This operation generates a thumbnail image with the user-specified
         width and height. By default, the service analyzes the image,
         identifies the region of interest (ROI), and generates smart cropping
@@ -650,30 +709,32 @@ class ComputerVisionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.generate_thumbnail.metadata['url']
+        url = self.generate_thumbnail.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['width'] = self._serialize.query("width", width, 'int', maximum=1024, minimum=1)
-        query_parameters['height'] = self._serialize.query("height", height, 'int', maximum=1024, minimum=1)
+        query_parameters["width"] = self._serialize.query("width", width, "int", maximum=1024, minimum=1)
+        query_parameters["height"] = self._serialize.query("height", height, "int", maximum=1024, minimum=1)
         if smart_cropping is not None:
-            query_parameters['smartCropping'] = self._serialize.query("smart_cropping", smart_cropping, 'bool')
+            query_parameters["smartCropping"] = self._serialize.query("smart_cropping", smart_cropping, "bool")
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/octet-stream'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/octet-stream"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -689,10 +750,10 @@ class ComputerVisionClientOperationsMixin(object):
             return client_raw_response
 
         return deserialized
-    generate_thumbnail.metadata = {'url': '/generateThumbnail'}
 
-    def get_area_of_interest(
-            self, url, model_version="latest", custom_headers=None, raw=False, **operation_config):
+    generate_thumbnail.metadata = {"url": "/generateThumbnail"}
+
+    def get_area_of_interest(self, url, model_version="latest", custom_headers=None, raw=False, **operation_config):
         """This operation returns a bounding box around the most important area of
         the image.
         A successful response will be returned in JSON. If the request failed,
@@ -724,26 +785,28 @@ class ComputerVisionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.get_area_of_interest.metadata['url']
+        url = self.get_area_of_interest.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -754,17 +817,27 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('AreaOfInterestResult', response)
+            deserialized = self._deserialize("AreaOfInterestResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_area_of_interest.metadata = {'url': '/areaOfInterest'}
+
+    get_area_of_interest.metadata = {"url": "/areaOfInterest"}
 
     def read(
-            self, url, language=None, pages=None, model_version="latest", reading_order="basic", custom_headers=None, raw=False, **operation_config):
+        self,
+        url,
+        language=None,
+        pages=None,
+        model_version="latest",
+        reading_order="basic",
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Use this interface to get the result of a Read operation, employing the
         state-of-the-art Optical Character Recognition (OCR) algorithms
         optimized for text-heavy documents. When you use the Read interface,
@@ -814,31 +887,33 @@ class ComputerVisionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.read.metadata['url']
+        url = self.read.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'str')
+            query_parameters["language"] = self._serialize.query("language", language, "str")
         if pages is not None:
-            query_parameters['pages'] = self._serialize.query("pages", pages, '[str]', div=',')
+            query_parameters["pages"] = self._serialize.query("pages", pages, "[str]", div=",")
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
         if reading_order is not None:
-            query_parameters['readingOrder'] = self._serialize.query("reading_order", reading_order, 'str')
+            query_parameters["readingOrder"] = self._serialize.query("reading_order", reading_order, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -849,14 +924,16 @@ class ComputerVisionClientOperationsMixin(object):
 
         if raw:
             client_raw_response = ClientRawResponse(None, response)
-            client_raw_response.add_headers({
-                'Operation-Location': 'str',
-            })
+            client_raw_response.add_headers(
+                {
+                    "Operation-Location": "str",
+                }
+            )
             return client_raw_response
-    read.metadata = {'url': '/read/analyze'}
 
-    def get_read_result(
-            self, operation_id, custom_headers=None, raw=False, **operation_config):
+    read.metadata = {"url": "/read/analyze"}
+
+    def get_read_result(self, operation_id, custom_headers=None, raw=False, **operation_config):
         """This interface is used for getting OCR results of Read operation. The
         URL to this interface should be retrieved from 'Operation-Location'
         field returned from Read interface.
@@ -877,10 +954,10 @@ class ComputerVisionClientOperationsMixin(object):
          :class:`ComputerVisionOcrErrorException<azure.cognitiveservices.vision.computervision.models.ComputerVisionOcrErrorException>`
         """
         # Construct URL
-        url = self.get_read_result.metadata['url']
+        url = self.get_read_result.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'operationId': self._serialize.url("operation_id", operation_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "operationId": self._serialize.url("operation_id", operation_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -889,7 +966,7 @@ class ComputerVisionClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -902,17 +979,29 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ReadOperationResult', response)
+            deserialized = self._deserialize("ReadOperationResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_read_result.metadata = {'url': '/read/analyzeResults/{operationId}'}
+
+    get_read_result.metadata = {"url": "/read/analyzeResults/{operationId}"}
 
     def analyze_image_in_stream(
-            self, image, visual_features=None, details=None, language="en", description_exclude=None, model_version="latest", custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        image,
+        visual_features=None,
+        details=None,
+        language="en",
+        description_exclude=None,
+        model_version="latest",
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """This operation extracts a rich set of visual features based on the
         image content.
         Two input methods are supported -- (1) Uploading an image or (2)
@@ -983,29 +1072,35 @@ class ComputerVisionClientOperationsMixin(object):
          :class:`ComputerVisionErrorResponseException<azure.cognitiveservices.vision.computervision.models.ComputerVisionErrorResponseException>`
         """
         # Construct URL
-        url = self.analyze_image_in_stream.metadata['url']
+        url = self.analyze_image_in_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if visual_features is not None:
-            query_parameters['visualFeatures'] = self._serialize.query("visual_features", visual_features, '[VisualFeatureTypes]', div=',')
+            query_parameters["visualFeatures"] = self._serialize.query(
+                "visual_features", visual_features, "[VisualFeatureTypes]", div=","
+            )
         if details is not None:
-            query_parameters['details'] = self._serialize.query("details", details, '[Details]', div=',')
+            query_parameters["details"] = self._serialize.query("details", details, "[Details]", div=",")
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'str')
+            query_parameters["language"] = self._serialize.query("language", language, "str")
         if description_exclude is not None:
-            query_parameters['descriptionExclude'] = self._serialize.query("description_exclude", description_exclude, '[DescriptionExclude]', div=',')
+            query_parameters["descriptionExclude"] = self._serialize.query(
+                "description_exclude", description_exclude, "[DescriptionExclude]", div=","
+            )
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1021,17 +1116,19 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageAnalysis', response)
+            deserialized = self._deserialize("ImageAnalysis", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    analyze_image_in_stream.metadata = {'url': '/analyze'}
+
+    analyze_image_in_stream.metadata = {"url": "/analyze"}
 
     def get_area_of_interest_in_stream(
-            self, image, model_version="latest", custom_headers=None, raw=False, callback=None, **operation_config):
+        self, image, model_version="latest", custom_headers=None, raw=False, callback=None, **operation_config
+    ):
         """This operation returns a bounding box around the most important area of
         the image.
         A successful response will be returned in JSON. If the request failed,
@@ -1066,21 +1163,23 @@ class ComputerVisionClientOperationsMixin(object):
          :class:`ComputerVisionErrorResponseException<azure.cognitiveservices.vision.computervision.models.ComputerVisionErrorResponseException>`
         """
         # Construct URL
-        url = self.get_area_of_interest_in_stream.metadata['url']
+        url = self.get_area_of_interest_in_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1096,17 +1195,28 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('AreaOfInterestResult', response)
+            deserialized = self._deserialize("AreaOfInterestResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_area_of_interest_in_stream.metadata = {'url': '/areaOfInterest'}
+
+    get_area_of_interest_in_stream.metadata = {"url": "/areaOfInterest"}
 
     def describe_image_in_stream(
-            self, image, max_candidates=1, language="en", description_exclude=None, model_version="latest", custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        image,
+        max_candidates=1,
+        language="en",
+        description_exclude=None,
+        model_version="latest",
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """This operation generates a description of an image in human readable
         language with complete sentences. The description is based on a
         collection of content tags, which are also returned by the operation.
@@ -1156,27 +1266,31 @@ class ComputerVisionClientOperationsMixin(object):
          :class:`ComputerVisionErrorResponseException<azure.cognitiveservices.vision.computervision.models.ComputerVisionErrorResponseException>`
         """
         # Construct URL
-        url = self.describe_image_in_stream.metadata['url']
+        url = self.describe_image_in_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if max_candidates is not None:
-            query_parameters['maxCandidates'] = self._serialize.query("max_candidates", max_candidates, 'int')
+            query_parameters["maxCandidates"] = self._serialize.query("max_candidates", max_candidates, "int")
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'str')
+            query_parameters["language"] = self._serialize.query("language", language, "str")
         if description_exclude is not None:
-            query_parameters['descriptionExclude'] = self._serialize.query("description_exclude", description_exclude, '[DescriptionExclude]', div=',')
+            query_parameters["descriptionExclude"] = self._serialize.query(
+                "description_exclude", description_exclude, "[DescriptionExclude]", div=","
+            )
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1192,17 +1306,19 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageDescription', response)
+            deserialized = self._deserialize("ImageDescription", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    describe_image_in_stream.metadata = {'url': '/describe'}
+
+    describe_image_in_stream.metadata = {"url": "/describe"}
 
     def detect_objects_in_stream(
-            self, image, model_version="latest", custom_headers=None, raw=False, callback=None, **operation_config):
+        self, image, model_version="latest", custom_headers=None, raw=False, callback=None, **operation_config
+    ):
         """Performs object detection on the specified image.
         Two input methods are supported -- (1) Uploading an image or (2)
         specifying an image URL.
@@ -1234,21 +1350,23 @@ class ComputerVisionClientOperationsMixin(object):
          :class:`ComputerVisionErrorResponseException<azure.cognitiveservices.vision.computervision.models.ComputerVisionErrorResponseException>`
         """
         # Construct URL
-        url = self.detect_objects_in_stream.metadata['url']
+        url = self.detect_objects_in_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1264,17 +1382,28 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('DetectResult', response)
+            deserialized = self._deserialize("DetectResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    detect_objects_in_stream.metadata = {'url': '/detect'}
+
+    detect_objects_in_stream.metadata = {"url": "/detect"}
 
     def generate_thumbnail_in_stream(
-            self, width, height, image, smart_cropping=False, model_version="latest", custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        width,
+        height,
+        image,
+        smart_cropping=False,
+        model_version="latest",
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """This operation generates a thumbnail image with the user-specified
         width and height. By default, the service analyzes the image,
         identifies the region of interest (ROI), and generates smart cropping
@@ -1318,25 +1447,27 @@ class ComputerVisionClientOperationsMixin(object):
          :class:`HttpOperationError<msrest.exceptions.HttpOperationError>`
         """
         # Construct URL
-        url = self.generate_thumbnail_in_stream.metadata['url']
+        url = self.generate_thumbnail_in_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['width'] = self._serialize.query("width", width, 'int', maximum=1024, minimum=1)
-        query_parameters['height'] = self._serialize.query("height", height, 'int', maximum=1024, minimum=1)
+        query_parameters["width"] = self._serialize.query("width", width, "int", maximum=1024, minimum=1)
+        query_parameters["height"] = self._serialize.query("height", height, "int", maximum=1024, minimum=1)
         if smart_cropping is not None:
-            query_parameters['smartCropping'] = self._serialize.query("smart_cropping", smart_cropping, 'bool')
+            query_parameters["smartCropping"] = self._serialize.query("smart_cropping", smart_cropping, "bool")
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/octet-stream'
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/octet-stream"
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1357,10 +1488,20 @@ class ComputerVisionClientOperationsMixin(object):
             return client_raw_response
 
         return deserialized
-    generate_thumbnail_in_stream.metadata = {'url': '/generateThumbnail'}
+
+    generate_thumbnail_in_stream.metadata = {"url": "/generateThumbnail"}
 
     def analyze_image_by_domain_in_stream(
-            self, model, image, language="en", model_version="latest", custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        model,
+        image,
+        language="en",
+        model_version="latest",
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """This operation recognizes content within an image by applying a
         domain-specific model. The list of domain-specific models that are
         supported by the Computer Vision API can be retrieved using the /models
@@ -1404,24 +1545,26 @@ class ComputerVisionClientOperationsMixin(object):
          :class:`ComputerVisionErrorResponseException<azure.cognitiveservices.vision.computervision.models.ComputerVisionErrorResponseException>`
         """
         # Construct URL
-        url = self.analyze_image_by_domain_in_stream.metadata['url']
+        url = self.analyze_image_by_domain_in_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'model': self._serialize.url("model", model, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "model": self._serialize.url("model", model, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'str')
+            query_parameters["language"] = self._serialize.query("language", language, "str")
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1437,17 +1580,27 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('DomainModelResults', response)
+            deserialized = self._deserialize("DomainModelResults", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    analyze_image_by_domain_in_stream.metadata = {'url': '/models/{model}/analyze'}
+
+    analyze_image_by_domain_in_stream.metadata = {"url": "/models/{model}/analyze"}
 
     def recognize_printed_text_in_stream(
-            self, image, detect_orientation=True, language="unk", model_version="latest", custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        image,
+        detect_orientation=True,
+        language="unk",
+        model_version="latest",
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """Optical Character Recognition (OCR) detects text in an image and
         extracts the recognized characters into a machine-usable character
         stream.
@@ -1493,24 +1646,26 @@ class ComputerVisionClientOperationsMixin(object):
          :class:`ComputerVisionErrorResponseException<azure.cognitiveservices.vision.computervision.models.ComputerVisionErrorResponseException>`
         """
         # Construct URL
-        url = self.recognize_printed_text_in_stream.metadata['url']
+        url = self.recognize_printed_text_in_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['detectOrientation'] = self._serialize.query("detect_orientation", detect_orientation, 'bool')
+        query_parameters["detectOrientation"] = self._serialize.query("detect_orientation", detect_orientation, "bool")
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'OcrLanguages')
+            query_parameters["language"] = self._serialize.query("language", language, "OcrLanguages")
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1526,17 +1681,26 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OcrResult', response)
+            deserialized = self._deserialize("OcrResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    recognize_printed_text_in_stream.metadata = {'url': '/ocr'}
+
+    recognize_printed_text_in_stream.metadata = {"url": "/ocr"}
 
     def tag_image_in_stream(
-            self, image, language="en", model_version="latest", custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        image,
+        language="en",
+        model_version="latest",
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """This operation generates a list of words, or tags, that are relevant to
         the content of the supplied image. The Computer Vision API can return
         tags based on objects, living beings, scenery or actions found in
@@ -1580,23 +1744,25 @@ class ComputerVisionClientOperationsMixin(object):
          :class:`ComputerVisionErrorResponseException<azure.cognitiveservices.vision.computervision.models.ComputerVisionErrorResponseException>`
         """
         # Construct URL
-        url = self.tag_image_in_stream.metadata['url']
+        url = self.tag_image_in_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'str')
+            query_parameters["language"] = self._serialize.query("language", language, "str")
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1612,17 +1778,28 @@ class ComputerVisionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('TagResult', response)
+            deserialized = self._deserialize("TagResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    tag_image_in_stream.metadata = {'url': '/tag'}
+
+    tag_image_in_stream.metadata = {"url": "/tag"}
 
     def read_in_stream(
-            self, image, language=None, pages=None, model_version="latest", reading_order="basic", custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        image,
+        language=None,
+        pages=None,
+        model_version="latest",
+        reading_order="basic",
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """Use this interface to get the result of a Read operation, employing the
         state-of-the-art Optical Character Recognition (OCR) algorithms
         optimized for text-heavy documents. When you use the Read interface,
@@ -1675,26 +1852,28 @@ class ComputerVisionClientOperationsMixin(object):
          :class:`ComputerVisionOcrErrorException<azure.cognitiveservices.vision.computervision.models.ComputerVisionOcrErrorException>`
         """
         # Construct URL
-        url = self.read_in_stream.metadata['url']
+        url = self.read_in_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'str')
+            query_parameters["language"] = self._serialize.query("language", language, "str")
         if pages is not None:
-            query_parameters['pages'] = self._serialize.query("pages", pages, '[str]', div=',')
+            query_parameters["pages"] = self._serialize.query("pages", pages, "[str]", div=",")
         if model_version is not None:
-            query_parameters['model-version'] = self._serialize.query("model_version", model_version, 'str', pattern=r'^(latest|\d{4}-\d{2}-\d{2})(-preview)?$')
+            query_parameters["model-version"] = self._serialize.query(
+                "model_version", model_version, "str", pattern=r"^(latest|\d{4}-\d{2}-\d{2})(-preview)?$"
+            )
         if reading_order is not None:
-            query_parameters['readingOrder'] = self._serialize.query("reading_order", reading_order, 'str')
+            query_parameters["readingOrder"] = self._serialize.query("reading_order", reading_order, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1710,8 +1889,11 @@ class ComputerVisionClientOperationsMixin(object):
 
         if raw:
             client_raw_response = ClientRawResponse(None, response)
-            client_raw_response.add_headers({
-                'Operation-Location': 'str',
-            })
+            client_raw_response.add_headers(
+                {
+                    "Operation-Location": "str",
+                }
+            )
             return client_raw_response
-    read_in_stream.metadata = {'url': '/read/analyze'}
+
+    read_in_stream.metadata = {"url": "/read/analyze"}

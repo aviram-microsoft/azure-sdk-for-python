@@ -12,5 +12,5 @@
 from ._web_operations import WebOperations
 
 __all__ = [
-    'WebOperations',
+    "WebOperations",
 ]

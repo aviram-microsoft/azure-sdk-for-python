@@ -14,9 +14,7 @@ from .. import models
 
 
 class AnomalyDetectorClientOperationsMixin(object):
-
-    def entire_detect(
-            self, body, custom_headers=None, raw=False, **operation_config):
+    def entire_detect(self, body, custom_headers=None, raw=False, **operation_config):
         """Detect anomalies for the entire series in batch.
 
         This operation generates a model using an entire series, each point is
@@ -40,9 +38,9 @@ class AnomalyDetectorClientOperationsMixin(object):
          :class:`APIErrorException<azure.cognitiveservices.anomalydetector.models.APIErrorException>`
         """
         # Construct URL
-        url = self.entire_detect.metadata['url']
+        url = self.entire_detect.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -51,13 +49,13 @@ class AnomalyDetectorClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'Request')
+        body_content = self._serialize.body(body, "Request")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -68,17 +66,17 @@ class AnomalyDetectorClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('EntireDetectResponse', response)
+            deserialized = self._deserialize("EntireDetectResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    entire_detect.metadata = {'url': '/timeseries/entire/detect'}
 
-    def last_detect(
-            self, body, custom_headers=None, raw=False, **operation_config):
+    entire_detect.metadata = {"url": "/timeseries/entire/detect"}
+
+    def last_detect(self, body, custom_headers=None, raw=False, **operation_config):
         """Detect anomaly status of the latest point in time series.
 
         This operation generates a model using points before the latest one.
@@ -102,9 +100,9 @@ class AnomalyDetectorClientOperationsMixin(object):
          :class:`APIErrorException<azure.cognitiveservices.anomalydetector.models.APIErrorException>`
         """
         # Construct URL
-        url = self.last_detect.metadata['url']
+        url = self.last_detect.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -113,13 +111,13 @@ class AnomalyDetectorClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'Request')
+        body_content = self._serialize.body(body, "Request")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -130,17 +128,17 @@ class AnomalyDetectorClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('LastDetectResponse', response)
+            deserialized = self._deserialize("LastDetectResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    last_detect.metadata = {'url': '/timeseries/last/detect'}
 
-    def change_point_detect(
-            self, body, custom_headers=None, raw=False, **operation_config):
+    last_detect.metadata = {"url": "/timeseries/last/detect"}
+
+    def change_point_detect(self, body, custom_headers=None, raw=False, **operation_config):
         """Detect change point for the entire series.
 
         Evaluate change point score of every series point.
@@ -162,9 +160,9 @@ class AnomalyDetectorClientOperationsMixin(object):
          :class:`APIErrorException<azure.cognitiveservices.anomalydetector.models.APIErrorException>`
         """
         # Construct URL
-        url = self.change_point_detect.metadata['url']
+        url = self.change_point_detect.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -173,13 +171,13 @@ class AnomalyDetectorClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'ChangePointDetectRequest')
+        body_content = self._serialize.body(body, "ChangePointDetectRequest")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -190,11 +188,12 @@ class AnomalyDetectorClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ChangePointDetectResponse', response)
+            deserialized = self._deserialize("ChangePointDetectResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    change_point_detect.metadata = {'url': '/timeseries/changePoint/detect'}
+
+    change_point_detect.metadata = {"url": "/timeseries/changePoint/detect"}

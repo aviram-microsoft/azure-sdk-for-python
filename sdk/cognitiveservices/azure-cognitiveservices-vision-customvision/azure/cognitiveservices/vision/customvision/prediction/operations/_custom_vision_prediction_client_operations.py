@@ -14,9 +14,16 @@ from .. import models
 
 
 class CustomVisionPredictionClientOperationsMixin(object):
-
     def classify_image(
-            self, project_id, published_name, image_data, application=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        published_name,
+        image_data,
+        application=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Classify an image and saves the result.
 
         :param project_id: The project id.
@@ -43,29 +50,29 @@ class CustomVisionPredictionClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.prediction.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.classify_image.metadata['url']
+        url = self.classify_image.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'publishedName': self._serialize.url("published_name", published_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "publishedName": self._serialize.url("published_name", published_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if application is not None:
-            query_parameters['application'] = self._serialize.query("application", application, 'str')
+            query_parameters["application"] = self._serialize.query("application", application, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'multipart/form-data'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "multipart/form-data"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct form data
         form_data_content = {
-            'imageData': image_data,
+            "imageData": image_data,
         }
 
         # Construct and send request
@@ -77,17 +84,26 @@ class CustomVisionPredictionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImagePrediction', response)
+            deserialized = self._deserialize("ImagePrediction", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    classify_image.metadata = {'url': '/{projectId}/classify/iterations/{publishedName}/image'}
+
+    classify_image.metadata = {"url": "/{projectId}/classify/iterations/{publishedName}/image"}
 
     def classify_image_with_no_store(
-            self, project_id, published_name, image_data, application=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        published_name,
+        image_data,
+        application=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Classify an image without saving the result.
 
         :param project_id: The project id.
@@ -114,29 +130,29 @@ class CustomVisionPredictionClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.prediction.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.classify_image_with_no_store.metadata['url']
+        url = self.classify_image_with_no_store.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'publishedName': self._serialize.url("published_name", published_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "publishedName": self._serialize.url("published_name", published_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if application is not None:
-            query_parameters['application'] = self._serialize.query("application", application, 'str')
+            query_parameters["application"] = self._serialize.query("application", application, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'multipart/form-data'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "multipart/form-data"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct form data
         form_data_content = {
-            'imageData': image_data,
+            "imageData": image_data,
         }
 
         # Construct and send request
@@ -148,17 +164,19 @@ class CustomVisionPredictionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImagePrediction', response)
+            deserialized = self._deserialize("ImagePrediction", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    classify_image_with_no_store.metadata = {'url': '/{projectId}/classify/iterations/{publishedName}/image/nostore'}
+
+    classify_image_with_no_store.metadata = {"url": "/{projectId}/classify/iterations/{publishedName}/image/nostore"}
 
     def classify_image_url(
-            self, project_id, published_name, url, application=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, published_name, url, application=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Classify an image url and saves the result.
 
         :param project_id: The project id.
@@ -186,28 +204,28 @@ class CustomVisionPredictionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.classify_image_url.metadata['url']
+        url = self.classify_image_url.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'publishedName': self._serialize.url("published_name", published_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "publishedName": self._serialize.url("published_name", published_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if application is not None:
-            query_parameters['application'] = self._serialize.query("application", application, 'str')
+            query_parameters["application"] = self._serialize.query("application", application, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -218,17 +236,19 @@ class CustomVisionPredictionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImagePrediction', response)
+            deserialized = self._deserialize("ImagePrediction", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    classify_image_url.metadata = {'url': '/{projectId}/classify/iterations/{publishedName}/url'}
+
+    classify_image_url.metadata = {"url": "/{projectId}/classify/iterations/{publishedName}/url"}
 
     def classify_image_url_with_no_store(
-            self, project_id, published_name, url, application=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, published_name, url, application=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Classify an image url without saving the result.
 
         :param project_id: The project id.
@@ -256,28 +276,28 @@ class CustomVisionPredictionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.classify_image_url_with_no_store.metadata['url']
+        url = self.classify_image_url_with_no_store.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'publishedName': self._serialize.url("published_name", published_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "publishedName": self._serialize.url("published_name", published_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if application is not None:
-            query_parameters['application'] = self._serialize.query("application", application, 'str')
+            query_parameters["application"] = self._serialize.query("application", application, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -288,17 +308,26 @@ class CustomVisionPredictionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImagePrediction', response)
+            deserialized = self._deserialize("ImagePrediction", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    classify_image_url_with_no_store.metadata = {'url': '/{projectId}/classify/iterations/{publishedName}/url/nostore'}
+
+    classify_image_url_with_no_store.metadata = {"url": "/{projectId}/classify/iterations/{publishedName}/url/nostore"}
 
     def detect_image(
-            self, project_id, published_name, image_data, application=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        published_name,
+        image_data,
+        application=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Detect objects in an image and saves the result.
 
         :param project_id: The project id.
@@ -325,29 +354,29 @@ class CustomVisionPredictionClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.prediction.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.detect_image.metadata['url']
+        url = self.detect_image.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'publishedName': self._serialize.url("published_name", published_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "publishedName": self._serialize.url("published_name", published_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if application is not None:
-            query_parameters['application'] = self._serialize.query("application", application, 'str')
+            query_parameters["application"] = self._serialize.query("application", application, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'multipart/form-data'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "multipart/form-data"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct form data
         form_data_content = {
-            'imageData': image_data,
+            "imageData": image_data,
         }
 
         # Construct and send request
@@ -359,17 +388,26 @@ class CustomVisionPredictionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImagePrediction', response)
+            deserialized = self._deserialize("ImagePrediction", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    detect_image.metadata = {'url': '/{projectId}/detect/iterations/{publishedName}/image'}
+
+    detect_image.metadata = {"url": "/{projectId}/detect/iterations/{publishedName}/image"}
 
     def detect_image_with_no_store(
-            self, project_id, published_name, image_data, application=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        published_name,
+        image_data,
+        application=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Detect objects in an image without saving the result.
 
         :param project_id: The project id.
@@ -396,29 +434,29 @@ class CustomVisionPredictionClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.prediction.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.detect_image_with_no_store.metadata['url']
+        url = self.detect_image_with_no_store.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'publishedName': self._serialize.url("published_name", published_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "publishedName": self._serialize.url("published_name", published_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if application is not None:
-            query_parameters['application'] = self._serialize.query("application", application, 'str')
+            query_parameters["application"] = self._serialize.query("application", application, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'multipart/form-data'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "multipart/form-data"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct form data
         form_data_content = {
-            'imageData': image_data,
+            "imageData": image_data,
         }
 
         # Construct and send request
@@ -430,17 +468,19 @@ class CustomVisionPredictionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImagePrediction', response)
+            deserialized = self._deserialize("ImagePrediction", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    detect_image_with_no_store.metadata = {'url': '/{projectId}/detect/iterations/{publishedName}/image/nostore'}
+
+    detect_image_with_no_store.metadata = {"url": "/{projectId}/detect/iterations/{publishedName}/image/nostore"}
 
     def detect_image_url(
-            self, project_id, published_name, url, application=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, published_name, url, application=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Detect objects in an image url and saves the result.
 
         :param project_id: The project id.
@@ -468,28 +508,28 @@ class CustomVisionPredictionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.detect_image_url.metadata['url']
+        url = self.detect_image_url.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'publishedName': self._serialize.url("published_name", published_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "publishedName": self._serialize.url("published_name", published_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if application is not None:
-            query_parameters['application'] = self._serialize.query("application", application, 'str')
+            query_parameters["application"] = self._serialize.query("application", application, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -500,17 +540,19 @@ class CustomVisionPredictionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImagePrediction', response)
+            deserialized = self._deserialize("ImagePrediction", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    detect_image_url.metadata = {'url': '/{projectId}/detect/iterations/{publishedName}/url'}
+
+    detect_image_url.metadata = {"url": "/{projectId}/detect/iterations/{publishedName}/url"}
 
     def detect_image_url_with_no_store(
-            self, project_id, published_name, url, application=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, published_name, url, application=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Detect objects in an image url without saving the result.
 
         :param project_id: The project id.
@@ -538,28 +580,28 @@ class CustomVisionPredictionClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.detect_image_url_with_no_store.metadata['url']
+        url = self.detect_image_url_with_no_store.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'publishedName': self._serialize.url("published_name", published_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "publishedName": self._serialize.url("published_name", published_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if application is not None:
-            query_parameters['application'] = self._serialize.query("application", application, 'str')
+            query_parameters["application"] = self._serialize.query("application", application, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -570,11 +612,12 @@ class CustomVisionPredictionClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImagePrediction', response)
+            deserialized = self._deserialize("ImagePrediction", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    detect_image_url_with_no_store.metadata = {'url': '/{projectId}/detect/iterations/{publishedName}/url/nostore'}
+
+    detect_image_url_with_no_store.metadata = {"url": "/{projectId}/detect/iterations/{publishedName}/url/nostore"}

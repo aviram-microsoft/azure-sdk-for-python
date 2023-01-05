@@ -26,16 +26,14 @@ class ResponseBase(Model):
     """
 
     _validation = {
-        '_type': {'required': True},
+        "_type": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Identifiable': 'Identifiable'}
-    }
+    _subtype_map = {"_type": {"Identifiable": "Identifiable"}}
 
     def __init__(self, **kwargs) -> None:
         super(ResponseBase, self).__init__(**kwargs)
@@ -60,23 +58,21 @@ class Identifiable(ResponseBase):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Response': 'Response'}
-    }
+    _subtype_map = {"_type": {"Response": "Response"}}
 
     def __init__(self, **kwargs) -> None:
         super(Identifiable, self).__init__(**kwargs)
         self.id = None
-        self._type = 'Identifiable'
+        self._type = "Identifiable"
 
 
 class Response(Identifiable):
@@ -112,30 +108,28 @@ class Response(Identifiable):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'potential_action': {'readonly': True},
-        'immediate_action': {'readonly': True},
-        'preferred_clickthrough_url': {'readonly': True},
-        'adaptive_card': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "potential_action": {"readonly": True},
+        "immediate_action": {"readonly": True},
+        "preferred_clickthrough_url": {"readonly": True},
+        "adaptive_card": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'potential_action': {'key': 'potentialAction', 'type': '[Action]'},
-        'immediate_action': {'key': 'immediateAction', 'type': '[Action]'},
-        'preferred_clickthrough_url': {'key': 'preferredClickthroughUrl', 'type': 'str'},
-        'adaptive_card': {'key': 'adaptiveCard', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "potential_action": {"key": "potentialAction", "type": "[Action]"},
+        "immediate_action": {"key": "immediateAction", "type": "[Action]"},
+        "preferred_clickthrough_url": {"key": "preferredClickthroughUrl", "type": "str"},
+        "adaptive_card": {"key": "adaptiveCard", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Answer': 'Answer', 'Thing': 'Thing', 'ErrorResponse': 'ErrorResponse'}
-    }
+    _subtype_map = {"_type": {"Answer": "Answer", "Thing": "Thing", "ErrorResponse": "ErrorResponse"}}
 
     def __init__(self, **kwargs) -> None:
         super(Response, self).__init__(**kwargs)
@@ -145,7 +139,7 @@ class Response(Identifiable):
         self.immediate_action = None
         self.preferred_clickthrough_url = None
         self.adaptive_card = None
-        self._type = 'Response'
+        self._type = "Response"
 
 
 class Thing(Response):
@@ -183,37 +177,35 @@ class Thing(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'potential_action': {'readonly': True},
-        'immediate_action': {'readonly': True},
-        'preferred_clickthrough_url': {'readonly': True},
-        'adaptive_card': {'readonly': True},
-        'url': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "potential_action": {"readonly": True},
+        "immediate_action": {"readonly": True},
+        "preferred_clickthrough_url": {"readonly": True},
+        "adaptive_card": {"readonly": True},
+        "url": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'potential_action': {'key': 'potentialAction', 'type': '[Action]'},
-        'immediate_action': {'key': 'immediateAction', 'type': '[Action]'},
-        'preferred_clickthrough_url': {'key': 'preferredClickthroughUrl', 'type': 'str'},
-        'adaptive_card': {'key': 'adaptiveCard', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "potential_action": {"key": "potentialAction", "type": "[Action]"},
+        "immediate_action": {"key": "immediateAction", "type": "[Action]"},
+        "preferred_clickthrough_url": {"key": "preferredClickthroughUrl", "type": "str"},
+        "adaptive_card": {"key": "adaptiveCard", "type": "str"},
+        "url": {"key": "url", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'CreativeWork': 'CreativeWork'}
-    }
+    _subtype_map = {"_type": {"CreativeWork": "CreativeWork"}}
 
     def __init__(self, **kwargs) -> None:
         super(Thing, self).__init__(**kwargs)
         self.url = None
-        self._type = 'Thing'
+        self._type = "Thing"
 
 
 class CreativeWork(Thing):
@@ -289,64 +281,62 @@ class CreativeWork(Thing):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'potential_action': {'readonly': True},
-        'immediate_action': {'readonly': True},
-        'preferred_clickthrough_url': {'readonly': True},
-        'adaptive_card': {'readonly': True},
-        'url': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'about': {'readonly': True},
-        'mentions': {'readonly': True},
-        'provider': {'readonly': True},
-        'creator': {'readonly': True},
-        'text': {'readonly': True},
-        'discussion_url': {'readonly': True},
-        'comment_count': {'readonly': True},
-        'main_entity': {'readonly': True},
-        'head_line': {'readonly': True},
-        'copyright_holder': {'readonly': True},
-        'copyright_year': {'readonly': True},
-        'disclaimer': {'readonly': True},
-        'is_accessible_for_free': {'readonly': True},
-        'genre': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "potential_action": {"readonly": True},
+        "immediate_action": {"readonly": True},
+        "preferred_clickthrough_url": {"readonly": True},
+        "adaptive_card": {"readonly": True},
+        "url": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "about": {"readonly": True},
+        "mentions": {"readonly": True},
+        "provider": {"readonly": True},
+        "creator": {"readonly": True},
+        "text": {"readonly": True},
+        "discussion_url": {"readonly": True},
+        "comment_count": {"readonly": True},
+        "main_entity": {"readonly": True},
+        "head_line": {"readonly": True},
+        "copyright_holder": {"readonly": True},
+        "copyright_year": {"readonly": True},
+        "disclaimer": {"readonly": True},
+        "is_accessible_for_free": {"readonly": True},
+        "genre": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'potential_action': {'key': 'potentialAction', 'type': '[Action]'},
-        'immediate_action': {'key': 'immediateAction', 'type': '[Action]'},
-        'preferred_clickthrough_url': {'key': 'preferredClickthroughUrl', 'type': 'str'},
-        'adaptive_card': {'key': 'adaptiveCard', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'about': {'key': 'about', 'type': '[Thing]'},
-        'mentions': {'key': 'mentions', 'type': '[Thing]'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'creator': {'key': 'creator', 'type': 'Thing'},
-        'text': {'key': 'text', 'type': 'str'},
-        'discussion_url': {'key': 'discussionUrl', 'type': 'str'},
-        'comment_count': {'key': 'commentCount', 'type': 'int'},
-        'main_entity': {'key': 'mainEntity', 'type': 'Thing'},
-        'head_line': {'key': 'headLine', 'type': 'str'},
-        'copyright_holder': {'key': 'copyrightHolder', 'type': 'Thing'},
-        'copyright_year': {'key': 'copyrightYear', 'type': 'int'},
-        'disclaimer': {'key': 'disclaimer', 'type': 'str'},
-        'is_accessible_for_free': {'key': 'isAccessibleForFree', 'type': 'bool'},
-        'genre': {'key': 'genre', 'type': '[str]'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "potential_action": {"key": "potentialAction", "type": "[Action]"},
+        "immediate_action": {"key": "immediateAction", "type": "[Action]"},
+        "preferred_clickthrough_url": {"key": "preferredClickthroughUrl", "type": "str"},
+        "adaptive_card": {"key": "adaptiveCard", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "about": {"key": "about", "type": "[Thing]"},
+        "mentions": {"key": "mentions", "type": "[Thing]"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "creator": {"key": "creator", "type": "Thing"},
+        "text": {"key": "text", "type": "str"},
+        "discussion_url": {"key": "discussionUrl", "type": "str"},
+        "comment_count": {"key": "commentCount", "type": "int"},
+        "main_entity": {"key": "mainEntity", "type": "Thing"},
+        "head_line": {"key": "headLine", "type": "str"},
+        "copyright_holder": {"key": "copyrightHolder", "type": "Thing"},
+        "copyright_year": {"key": "copyrightYear", "type": "int"},
+        "disclaimer": {"key": "disclaimer", "type": "str"},
+        "is_accessible_for_free": {"key": "isAccessibleForFree", "type": "bool"},
+        "genre": {"key": "genre", "type": "[str]"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
     }
 
-    _subtype_map = {
-        '_type': {'Action': 'Action'}
-    }
+    _subtype_map = {"_type": {"Action": "Action"}}
 
     def __init__(self, **kwargs) -> None:
         super(CreativeWork, self).__init__(**kwargs)
@@ -366,7 +356,7 @@ class CreativeWork(Thing):
         self.is_accessible_for_free = None
         self.genre = None
         self.is_family_friendly = None
-        self._type = 'CreativeWork'
+        self._type = "CreativeWork"
 
 
 class Action(CreativeWork):
@@ -450,72 +440,70 @@ class Action(CreativeWork):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'potential_action': {'readonly': True},
-        'immediate_action': {'readonly': True},
-        'preferred_clickthrough_url': {'readonly': True},
-        'adaptive_card': {'readonly': True},
-        'url': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'about': {'readonly': True},
-        'mentions': {'readonly': True},
-        'provider': {'readonly': True},
-        'creator': {'readonly': True},
-        'text': {'readonly': True},
-        'discussion_url': {'readonly': True},
-        'comment_count': {'readonly': True},
-        'main_entity': {'readonly': True},
-        'head_line': {'readonly': True},
-        'copyright_holder': {'readonly': True},
-        'copyright_year': {'readonly': True},
-        'disclaimer': {'readonly': True},
-        'is_accessible_for_free': {'readonly': True},
-        'genre': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
-        'result': {'readonly': True},
-        'display_name': {'readonly': True},
-        'is_top_action': {'readonly': True},
-        'service_url': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "potential_action": {"readonly": True},
+        "immediate_action": {"readonly": True},
+        "preferred_clickthrough_url": {"readonly": True},
+        "adaptive_card": {"readonly": True},
+        "url": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "about": {"readonly": True},
+        "mentions": {"readonly": True},
+        "provider": {"readonly": True},
+        "creator": {"readonly": True},
+        "text": {"readonly": True},
+        "discussion_url": {"readonly": True},
+        "comment_count": {"readonly": True},
+        "main_entity": {"readonly": True},
+        "head_line": {"readonly": True},
+        "copyright_holder": {"readonly": True},
+        "copyright_year": {"readonly": True},
+        "disclaimer": {"readonly": True},
+        "is_accessible_for_free": {"readonly": True},
+        "genre": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
+        "result": {"readonly": True},
+        "display_name": {"readonly": True},
+        "is_top_action": {"readonly": True},
+        "service_url": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'potential_action': {'key': 'potentialAction', 'type': '[Action]'},
-        'immediate_action': {'key': 'immediateAction', 'type': '[Action]'},
-        'preferred_clickthrough_url': {'key': 'preferredClickthroughUrl', 'type': 'str'},
-        'adaptive_card': {'key': 'adaptiveCard', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'about': {'key': 'about', 'type': '[Thing]'},
-        'mentions': {'key': 'mentions', 'type': '[Thing]'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'creator': {'key': 'creator', 'type': 'Thing'},
-        'text': {'key': 'text', 'type': 'str'},
-        'discussion_url': {'key': 'discussionUrl', 'type': 'str'},
-        'comment_count': {'key': 'commentCount', 'type': 'int'},
-        'main_entity': {'key': 'mainEntity', 'type': 'Thing'},
-        'head_line': {'key': 'headLine', 'type': 'str'},
-        'copyright_holder': {'key': 'copyrightHolder', 'type': 'Thing'},
-        'copyright_year': {'key': 'copyrightYear', 'type': 'int'},
-        'disclaimer': {'key': 'disclaimer', 'type': 'str'},
-        'is_accessible_for_free': {'key': 'isAccessibleForFree', 'type': 'bool'},
-        'genre': {'key': 'genre', 'type': '[str]'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
-        'result': {'key': 'result', 'type': '[Thing]'},
-        'display_name': {'key': 'displayName', 'type': 'str'},
-        'is_top_action': {'key': 'isTopAction', 'type': 'bool'},
-        'service_url': {'key': 'serviceUrl', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "potential_action": {"key": "potentialAction", "type": "[Action]"},
+        "immediate_action": {"key": "immediateAction", "type": "[Action]"},
+        "preferred_clickthrough_url": {"key": "preferredClickthroughUrl", "type": "str"},
+        "adaptive_card": {"key": "adaptiveCard", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "about": {"key": "about", "type": "[Thing]"},
+        "mentions": {"key": "mentions", "type": "[Thing]"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "creator": {"key": "creator", "type": "Thing"},
+        "text": {"key": "text", "type": "str"},
+        "discussion_url": {"key": "discussionUrl", "type": "str"},
+        "comment_count": {"key": "commentCount", "type": "int"},
+        "main_entity": {"key": "mainEntity", "type": "Thing"},
+        "head_line": {"key": "headLine", "type": "str"},
+        "copyright_holder": {"key": "copyrightHolder", "type": "Thing"},
+        "copyright_year": {"key": "copyrightYear", "type": "int"},
+        "disclaimer": {"key": "disclaimer", "type": "str"},
+        "is_accessible_for_free": {"key": "isAccessibleForFree", "type": "bool"},
+        "genre": {"key": "genre", "type": "[str]"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
+        "result": {"key": "result", "type": "[Thing]"},
+        "display_name": {"key": "displayName", "type": "str"},
+        "is_top_action": {"key": "isTopAction", "type": "bool"},
+        "service_url": {"key": "serviceUrl", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'SearchAction': 'SearchAction'}
-    }
+    _subtype_map = {"_type": {"SearchAction": "SearchAction"}}
 
     def __init__(self, **kwargs) -> None:
         super(Action, self).__init__(**kwargs)
@@ -523,7 +511,7 @@ class Action(CreativeWork):
         self.display_name = None
         self.is_top_action = None
         self.service_url = None
-        self._type = 'Action'
+        self._type = "Action"
 
 
 class Answer(Response):
@@ -558,34 +546,32 @@ class Answer(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'potential_action': {'readonly': True},
-        'immediate_action': {'readonly': True},
-        'preferred_clickthrough_url': {'readonly': True},
-        'adaptive_card': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "potential_action": {"readonly": True},
+        "immediate_action": {"readonly": True},
+        "preferred_clickthrough_url": {"readonly": True},
+        "adaptive_card": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'potential_action': {'key': 'potentialAction', 'type': '[Action]'},
-        'immediate_action': {'key': 'immediateAction', 'type': '[Action]'},
-        'preferred_clickthrough_url': {'key': 'preferredClickthroughUrl', 'type': 'str'},
-        'adaptive_card': {'key': 'adaptiveCard', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "potential_action": {"key": "potentialAction", "type": "[Action]"},
+        "immediate_action": {"key": "immediateAction", "type": "[Action]"},
+        "preferred_clickthrough_url": {"key": "preferredClickthroughUrl", "type": "str"},
+        "adaptive_card": {"key": "adaptiveCard", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'SearchResultsAnswer': 'SearchResultsAnswer'}
-    }
+    _subtype_map = {"_type": {"SearchResultsAnswer": "SearchResultsAnswer"}}
 
     def __init__(self, **kwargs) -> None:
         super(Answer, self).__init__(**kwargs)
-        self._type = 'Answer'
+        self._type = "Answer"
 
 
 class Error(Model):
@@ -616,21 +602,21 @@ class Error(Model):
     """
 
     _validation = {
-        'code': {'required': True},
-        'message': {'required': True},
-        'more_details': {'readonly': True},
-        'parameter': {'readonly': True},
-        'value': {'readonly': True},
-        '_type': {'required': True},
+        "code": {"required": True},
+        "message": {"required": True},
+        "more_details": {"readonly": True},
+        "parameter": {"readonly": True},
+        "value": {"readonly": True},
+        "_type": {"required": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
-        'more_details': {'key': 'moreDetails', 'type': 'str'},
-        'parameter': {'key': 'parameter', 'type': 'str'},
-        'value': {'key': 'value', 'type': 'str'},
-        '_type': {'key': '_type', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "more_details": {"key": "moreDetails", "type": "str"},
+        "parameter": {"key": "parameter", "type": "str"},
+        "value": {"key": "value", "type": "str"},
+        "_type": {"key": "_type", "type": "str"},
     }
 
     def __init__(self, *, message: str, code="None", **kwargs) -> None:
@@ -676,33 +662,33 @@ class ErrorResponse(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'potential_action': {'readonly': True},
-        'immediate_action': {'readonly': True},
-        'preferred_clickthrough_url': {'readonly': True},
-        'adaptive_card': {'readonly': True},
-        'errors': {'required': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "potential_action": {"readonly": True},
+        "immediate_action": {"readonly": True},
+        "preferred_clickthrough_url": {"readonly": True},
+        "adaptive_card": {"readonly": True},
+        "errors": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'potential_action': {'key': 'potentialAction', 'type': '[Action]'},
-        'immediate_action': {'key': 'immediateAction', 'type': '[Action]'},
-        'preferred_clickthrough_url': {'key': 'preferredClickthroughUrl', 'type': 'str'},
-        'adaptive_card': {'key': 'adaptiveCard', 'type': 'str'},
-        'errors': {'key': 'errors', 'type': '[Error]'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "potential_action": {"key": "potentialAction", "type": "[Action]"},
+        "immediate_action": {"key": "immediateAction", "type": "[Action]"},
+        "preferred_clickthrough_url": {"key": "preferredClickthroughUrl", "type": "str"},
+        "adaptive_card": {"key": "adaptiveCard", "type": "str"},
+        "errors": {"key": "errors", "type": "[Error]"},
     }
 
     def __init__(self, *, errors, **kwargs) -> None:
         super(ErrorResponse, self).__init__(**kwargs)
         self.errors = errors
-        self._type = 'ErrorResponse'
+        self._type = "ErrorResponse"
 
 
 class ErrorResponseException(HttpOperationError):
@@ -714,7 +700,7 @@ class ErrorResponseException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(ErrorResponseException, self).__init__(deserialize, response, 'ErrorResponse', *args)
+        super(ErrorResponseException, self).__init__(deserialize, response, "ErrorResponse", *args)
 
 
 class QueryContext(Model):
@@ -762,23 +748,23 @@ class QueryContext(Model):
     """
 
     _validation = {
-        'original_query': {'required': True},
-        'altered_query': {'readonly': True},
-        'alteration_override_query': {'readonly': True},
-        'adult_intent': {'readonly': True},
-        'ask_user_for_location': {'readonly': True},
-        'is_transactional': {'readonly': True},
-        '_type': {'required': True},
+        "original_query": {"required": True},
+        "altered_query": {"readonly": True},
+        "alteration_override_query": {"readonly": True},
+        "adult_intent": {"readonly": True},
+        "ask_user_for_location": {"readonly": True},
+        "is_transactional": {"readonly": True},
+        "_type": {"required": True},
     }
 
     _attribute_map = {
-        'original_query': {'key': 'originalQuery', 'type': 'str'},
-        'altered_query': {'key': 'alteredQuery', 'type': 'str'},
-        'alteration_override_query': {'key': 'alterationOverrideQuery', 'type': 'str'},
-        'adult_intent': {'key': 'adultIntent', 'type': 'bool'},
-        'ask_user_for_location': {'key': 'askUserForLocation', 'type': 'bool'},
-        'is_transactional': {'key': 'isTransactional', 'type': 'bool'},
-        '_type': {'key': '_type', 'type': 'str'},
+        "original_query": {"key": "originalQuery", "type": "str"},
+        "altered_query": {"key": "alteredQuery", "type": "str"},
+        "alteration_override_query": {"key": "alterationOverrideQuery", "type": "str"},
+        "adult_intent": {"key": "adultIntent", "type": "bool"},
+        "ask_user_for_location": {"key": "askUserForLocation", "type": "bool"},
+        "is_transactional": {"key": "isTransactional", "type": "bool"},
+        "_type": {"key": "_type", "type": "str"},
     }
 
     def __init__(self, *, original_query: str, **kwargs) -> None:
@@ -879,73 +865,73 @@ class SearchAction(Action):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'potential_action': {'readonly': True},
-        'immediate_action': {'readonly': True},
-        'preferred_clickthrough_url': {'readonly': True},
-        'adaptive_card': {'readonly': True},
-        'url': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'about': {'readonly': True},
-        'mentions': {'readonly': True},
-        'provider': {'readonly': True},
-        'creator': {'readonly': True},
-        'text': {'readonly': True},
-        'discussion_url': {'readonly': True},
-        'comment_count': {'readonly': True},
-        'main_entity': {'readonly': True},
-        'head_line': {'readonly': True},
-        'copyright_holder': {'readonly': True},
-        'copyright_year': {'readonly': True},
-        'disclaimer': {'readonly': True},
-        'is_accessible_for_free': {'readonly': True},
-        'genre': {'readonly': True},
-        'is_family_friendly': {'readonly': True},
-        'result': {'readonly': True},
-        'display_name': {'readonly': True},
-        'is_top_action': {'readonly': True},
-        'service_url': {'readonly': True},
-        'display_text': {'readonly': True},
-        'query': {'readonly': True},
-        'search_kind': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "potential_action": {"readonly": True},
+        "immediate_action": {"readonly": True},
+        "preferred_clickthrough_url": {"readonly": True},
+        "adaptive_card": {"readonly": True},
+        "url": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "about": {"readonly": True},
+        "mentions": {"readonly": True},
+        "provider": {"readonly": True},
+        "creator": {"readonly": True},
+        "text": {"readonly": True},
+        "discussion_url": {"readonly": True},
+        "comment_count": {"readonly": True},
+        "main_entity": {"readonly": True},
+        "head_line": {"readonly": True},
+        "copyright_holder": {"readonly": True},
+        "copyright_year": {"readonly": True},
+        "disclaimer": {"readonly": True},
+        "is_accessible_for_free": {"readonly": True},
+        "genre": {"readonly": True},
+        "is_family_friendly": {"readonly": True},
+        "result": {"readonly": True},
+        "display_name": {"readonly": True},
+        "is_top_action": {"readonly": True},
+        "service_url": {"readonly": True},
+        "display_text": {"readonly": True},
+        "query": {"readonly": True},
+        "search_kind": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'potential_action': {'key': 'potentialAction', 'type': '[Action]'},
-        'immediate_action': {'key': 'immediateAction', 'type': '[Action]'},
-        'preferred_clickthrough_url': {'key': 'preferredClickthroughUrl', 'type': 'str'},
-        'adaptive_card': {'key': 'adaptiveCard', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'about': {'key': 'about', 'type': '[Thing]'},
-        'mentions': {'key': 'mentions', 'type': '[Thing]'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'creator': {'key': 'creator', 'type': 'Thing'},
-        'text': {'key': 'text', 'type': 'str'},
-        'discussion_url': {'key': 'discussionUrl', 'type': 'str'},
-        'comment_count': {'key': 'commentCount', 'type': 'int'},
-        'main_entity': {'key': 'mainEntity', 'type': 'Thing'},
-        'head_line': {'key': 'headLine', 'type': 'str'},
-        'copyright_holder': {'key': 'copyrightHolder', 'type': 'Thing'},
-        'copyright_year': {'key': 'copyrightYear', 'type': 'int'},
-        'disclaimer': {'key': 'disclaimer', 'type': 'str'},
-        'is_accessible_for_free': {'key': 'isAccessibleForFree', 'type': 'bool'},
-        'genre': {'key': 'genre', 'type': '[str]'},
-        'is_family_friendly': {'key': 'isFamilyFriendly', 'type': 'bool'},
-        'result': {'key': 'result', 'type': '[Thing]'},
-        'display_name': {'key': 'displayName', 'type': 'str'},
-        'is_top_action': {'key': 'isTopAction', 'type': 'bool'},
-        'service_url': {'key': 'serviceUrl', 'type': 'str'},
-        'display_text': {'key': 'displayText', 'type': 'str'},
-        'query': {'key': 'query', 'type': 'str'},
-        'search_kind': {'key': 'searchKind', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "potential_action": {"key": "potentialAction", "type": "[Action]"},
+        "immediate_action": {"key": "immediateAction", "type": "[Action]"},
+        "preferred_clickthrough_url": {"key": "preferredClickthroughUrl", "type": "str"},
+        "adaptive_card": {"key": "adaptiveCard", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "about": {"key": "about", "type": "[Thing]"},
+        "mentions": {"key": "mentions", "type": "[Thing]"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "creator": {"key": "creator", "type": "Thing"},
+        "text": {"key": "text", "type": "str"},
+        "discussion_url": {"key": "discussionUrl", "type": "str"},
+        "comment_count": {"key": "commentCount", "type": "int"},
+        "main_entity": {"key": "mainEntity", "type": "Thing"},
+        "head_line": {"key": "headLine", "type": "str"},
+        "copyright_holder": {"key": "copyrightHolder", "type": "Thing"},
+        "copyright_year": {"key": "copyrightYear", "type": "int"},
+        "disclaimer": {"key": "disclaimer", "type": "str"},
+        "is_accessible_for_free": {"key": "isAccessibleForFree", "type": "bool"},
+        "genre": {"key": "genre", "type": "[str]"},
+        "is_family_friendly": {"key": "isFamilyFriendly", "type": "bool"},
+        "result": {"key": "result", "type": "[Thing]"},
+        "display_name": {"key": "displayName", "type": "str"},
+        "is_top_action": {"key": "isTopAction", "type": "bool"},
+        "service_url": {"key": "serviceUrl", "type": "str"},
+        "display_text": {"key": "displayText", "type": "str"},
+        "query": {"key": "query", "type": "str"},
+        "search_kind": {"key": "searchKind", "type": "str"},
     }
 
     def __init__(self, **kwargs) -> None:
@@ -953,7 +939,7 @@ class SearchAction(Action):
         self.display_text = None
         self.query = None
         self.search_kind = None
-        self._type = 'SearchAction'
+        self._type = "SearchAction"
 
 
 class SearchResultsAnswer(Answer):
@@ -991,37 +977,35 @@ class SearchResultsAnswer(Answer):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'potential_action': {'readonly': True},
-        'immediate_action': {'readonly': True},
-        'preferred_clickthrough_url': {'readonly': True},
-        'adaptive_card': {'readonly': True},
-        'query_context': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "potential_action": {"readonly": True},
+        "immediate_action": {"readonly": True},
+        "preferred_clickthrough_url": {"readonly": True},
+        "adaptive_card": {"readonly": True},
+        "query_context": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'potential_action': {'key': 'potentialAction', 'type': '[Action]'},
-        'immediate_action': {'key': 'immediateAction', 'type': '[Action]'},
-        'preferred_clickthrough_url': {'key': 'preferredClickthroughUrl', 'type': 'str'},
-        'adaptive_card': {'key': 'adaptiveCard', 'type': 'str'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "potential_action": {"key": "potentialAction", "type": "[Action]"},
+        "immediate_action": {"key": "immediateAction", "type": "[Action]"},
+        "preferred_clickthrough_url": {"key": "preferredClickthroughUrl", "type": "str"},
+        "adaptive_card": {"key": "adaptiveCard", "type": "str"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
     }
 
-    _subtype_map = {
-        '_type': {'Suggestions': 'Suggestions'}
-    }
+    _subtype_map = {"_type": {"Suggestions": "Suggestions"}}
 
     def __init__(self, **kwargs) -> None:
         super(SearchResultsAnswer, self).__init__(**kwargs)
         self.query_context = None
-        self._type = 'SearchResultsAnswer'
+        self._type = "SearchResultsAnswer"
 
 
 class Suggestions(SearchResultsAnswer):
@@ -1059,35 +1043,35 @@ class Suggestions(SearchResultsAnswer):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'potential_action': {'readonly': True},
-        'immediate_action': {'readonly': True},
-        'preferred_clickthrough_url': {'readonly': True},
-        'adaptive_card': {'readonly': True},
-        'query_context': {'readonly': True},
-        'suggestion_groups': {'required': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "potential_action": {"readonly": True},
+        "immediate_action": {"readonly": True},
+        "preferred_clickthrough_url": {"readonly": True},
+        "adaptive_card": {"readonly": True},
+        "query_context": {"readonly": True},
+        "suggestion_groups": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'potential_action': {'key': 'potentialAction', 'type': '[Action]'},
-        'immediate_action': {'key': 'immediateAction', 'type': '[Action]'},
-        'preferred_clickthrough_url': {'key': 'preferredClickthroughUrl', 'type': 'str'},
-        'adaptive_card': {'key': 'adaptiveCard', 'type': 'str'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'suggestion_groups': {'key': 'suggestionGroups', 'type': '[SuggestionsSuggestionGroup]'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "potential_action": {"key": "potentialAction", "type": "[Action]"},
+        "immediate_action": {"key": "immediateAction", "type": "[Action]"},
+        "preferred_clickthrough_url": {"key": "preferredClickthroughUrl", "type": "str"},
+        "adaptive_card": {"key": "adaptiveCard", "type": "str"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "suggestion_groups": {"key": "suggestionGroups", "type": "[SuggestionsSuggestionGroup]"},
     }
 
     def __init__(self, *, suggestion_groups, **kwargs) -> None:
         super(Suggestions, self).__init__(**kwargs)
         self.suggestion_groups = suggestion_groups
-        self._type = 'Suggestions'
+        self._type = "Suggestions"
 
 
 class SuggestionsSuggestionGroup(Model):
@@ -1108,15 +1092,15 @@ class SuggestionsSuggestionGroup(Model):
     """
 
     _validation = {
-        'name': {'required': True},
-        'search_suggestions': {'required': True},
-        '_type': {'required': True},
+        "name": {"required": True},
+        "search_suggestions": {"required": True},
+        "_type": {"required": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'search_suggestions': {'key': 'searchSuggestions', 'type': '[SearchAction]'},
-        '_type': {'key': '_type', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "search_suggestions": {"key": "searchSuggestions", "type": "[SearchAction]"},
+        "_type": {"key": "_type", "type": "str"},
     }
 
     def __init__(self, *, search_suggestions, name="Unknown", **kwargs) -> None:

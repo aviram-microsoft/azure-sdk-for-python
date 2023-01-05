@@ -16,9 +16,9 @@ from .knowledgebase_operations import KnowledgebaseOperations
 from .operations import Operations
 
 __all__ = [
-    'EndpointSettingsOperations',
-    'EndpointKeysOperations',
-    'AlterationsOperations',
-    'KnowledgebaseOperations',
-    'Operations',
+    "EndpointSettingsOperations",
+    "EndpointKeysOperations",
+    "AlterationsOperations",
+    "KnowledgebaseOperations",
+    "Operations",
 ]

@@ -23,14 +23,14 @@ class APIError(Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'object'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "object"},
+        "message": {"key": "message", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(APIError, self).__init__(**kwargs)
-        self.code = kwargs.get('code', None)
-        self.message = kwargs.get('message', None)
+        self.code = kwargs.get("code", None)
+        self.message = kwargs.get("message", None)
 
 
 class APIErrorException(HttpOperationError):
@@ -42,7 +42,7 @@ class APIErrorException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(APIErrorException, self).__init__(deserialize, response, 'APIError', *args)
+        super(APIErrorException, self).__init__(deserialize, response, "APIError", *args)
 
 
 class ChangePointDetectRequest(Model):
@@ -78,27 +78,27 @@ class ChangePointDetectRequest(Model):
     """
 
     _validation = {
-        'series': {'required': True},
-        'granularity': {'required': True},
+        "series": {"required": True},
+        "granularity": {"required": True},
     }
 
     _attribute_map = {
-        'series': {'key': 'series', 'type': '[Point]'},
-        'granularity': {'key': 'granularity', 'type': 'Granularity'},
-        'custom_interval': {'key': 'customInterval', 'type': 'int'},
-        'period': {'key': 'period', 'type': 'int'},
-        'stable_trend_window': {'key': 'stableTrendWindow', 'type': 'int'},
-        'threshold': {'key': 'threshold', 'type': 'float'},
+        "series": {"key": "series", "type": "[Point]"},
+        "granularity": {"key": "granularity", "type": "Granularity"},
+        "custom_interval": {"key": "customInterval", "type": "int"},
+        "period": {"key": "period", "type": "int"},
+        "stable_trend_window": {"key": "stableTrendWindow", "type": "int"},
+        "threshold": {"key": "threshold", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(ChangePointDetectRequest, self).__init__(**kwargs)
-        self.series = kwargs.get('series', None)
-        self.granularity = kwargs.get('granularity', None)
-        self.custom_interval = kwargs.get('custom_interval', None)
-        self.period = kwargs.get('period', None)
-        self.stable_trend_window = kwargs.get('stable_trend_window', None)
-        self.threshold = kwargs.get('threshold', None)
+        self.series = kwargs.get("series", None)
+        self.granularity = kwargs.get("granularity", None)
+        self.custom_interval = kwargs.get("custom_interval", None)
+        self.period = kwargs.get("period", None)
+        self.stable_trend_window = kwargs.get("stable_trend_window", None)
+        self.threshold = kwargs.get("threshold", None)
 
 
 class ChangePointDetectResponse(Model):
@@ -120,22 +120,22 @@ class ChangePointDetectResponse(Model):
     """
 
     _validation = {
-        'period': {'required': True},
-        'is_change_point': {'required': True},
-        'confidence_scores': {'required': True},
+        "period": {"required": True},
+        "is_change_point": {"required": True},
+        "confidence_scores": {"required": True},
     }
 
     _attribute_map = {
-        'period': {'key': 'period', 'type': 'int'},
-        'is_change_point': {'key': 'isChangePoint', 'type': '[bool]'},
-        'confidence_scores': {'key': 'confidenceScores', 'type': '[float]'},
+        "period": {"key": "period", "type": "int"},
+        "is_change_point": {"key": "isChangePoint", "type": "[bool]"},
+        "confidence_scores": {"key": "confidenceScores", "type": "[float]"},
     }
 
     def __init__(self, **kwargs):
         super(ChangePointDetectResponse, self).__init__(**kwargs)
-        self.period = kwargs.get('period', None)
-        self.is_change_point = kwargs.get('is_change_point', None)
-        self.confidence_scores = kwargs.get('confidence_scores', None)
+        self.period = kwargs.get("period", None)
+        self.is_change_point = kwargs.get("is_change_point", None)
+        self.confidence_scores = kwargs.get("confidence_scores", None)
 
 
 class EntireDetectResponse(Model):
@@ -182,34 +182,34 @@ class EntireDetectResponse(Model):
     """
 
     _validation = {
-        'period': {'required': True},
-        'expected_values': {'required': True},
-        'upper_margins': {'required': True},
-        'lower_margins': {'required': True},
-        'is_anomaly': {'required': True},
-        'is_negative_anomaly': {'required': True},
-        'is_positive_anomaly': {'required': True},
+        "period": {"required": True},
+        "expected_values": {"required": True},
+        "upper_margins": {"required": True},
+        "lower_margins": {"required": True},
+        "is_anomaly": {"required": True},
+        "is_negative_anomaly": {"required": True},
+        "is_positive_anomaly": {"required": True},
     }
 
     _attribute_map = {
-        'period': {'key': 'period', 'type': 'int'},
-        'expected_values': {'key': 'expectedValues', 'type': '[float]'},
-        'upper_margins': {'key': 'upperMargins', 'type': '[float]'},
-        'lower_margins': {'key': 'lowerMargins', 'type': '[float]'},
-        'is_anomaly': {'key': 'isAnomaly', 'type': '[bool]'},
-        'is_negative_anomaly': {'key': 'isNegativeAnomaly', 'type': '[bool]'},
-        'is_positive_anomaly': {'key': 'isPositiveAnomaly', 'type': '[bool]'},
+        "period": {"key": "period", "type": "int"},
+        "expected_values": {"key": "expectedValues", "type": "[float]"},
+        "upper_margins": {"key": "upperMargins", "type": "[float]"},
+        "lower_margins": {"key": "lowerMargins", "type": "[float]"},
+        "is_anomaly": {"key": "isAnomaly", "type": "[bool]"},
+        "is_negative_anomaly": {"key": "isNegativeAnomaly", "type": "[bool]"},
+        "is_positive_anomaly": {"key": "isPositiveAnomaly", "type": "[bool]"},
     }
 
     def __init__(self, **kwargs):
         super(EntireDetectResponse, self).__init__(**kwargs)
-        self.period = kwargs.get('period', None)
-        self.expected_values = kwargs.get('expected_values', None)
-        self.upper_margins = kwargs.get('upper_margins', None)
-        self.lower_margins = kwargs.get('lower_margins', None)
-        self.is_anomaly = kwargs.get('is_anomaly', None)
-        self.is_negative_anomaly = kwargs.get('is_negative_anomaly', None)
-        self.is_positive_anomaly = kwargs.get('is_positive_anomaly', None)
+        self.period = kwargs.get("period", None)
+        self.expected_values = kwargs.get("expected_values", None)
+        self.upper_margins = kwargs.get("upper_margins", None)
+        self.lower_margins = kwargs.get("lower_margins", None)
+        self.is_anomaly = kwargs.get("is_anomaly", None)
+        self.is_negative_anomaly = kwargs.get("is_negative_anomaly", None)
+        self.is_positive_anomaly = kwargs.get("is_positive_anomaly", None)
 
 
 class LastDetectResponse(Model):
@@ -251,37 +251,37 @@ class LastDetectResponse(Model):
     """
 
     _validation = {
-        'period': {'required': True},
-        'suggested_window': {'required': True},
-        'expected_value': {'required': True},
-        'upper_margin': {'required': True},
-        'lower_margin': {'required': True},
-        'is_anomaly': {'required': True},
-        'is_negative_anomaly': {'required': True},
-        'is_positive_anomaly': {'required': True},
+        "period": {"required": True},
+        "suggested_window": {"required": True},
+        "expected_value": {"required": True},
+        "upper_margin": {"required": True},
+        "lower_margin": {"required": True},
+        "is_anomaly": {"required": True},
+        "is_negative_anomaly": {"required": True},
+        "is_positive_anomaly": {"required": True},
     }
 
     _attribute_map = {
-        'period': {'key': 'period', 'type': 'int'},
-        'suggested_window': {'key': 'suggestedWindow', 'type': 'int'},
-        'expected_value': {'key': 'expectedValue', 'type': 'float'},
-        'upper_margin': {'key': 'upperMargin', 'type': 'float'},
-        'lower_margin': {'key': 'lowerMargin', 'type': 'float'},
-        'is_anomaly': {'key': 'isAnomaly', 'type': 'bool'},
-        'is_negative_anomaly': {'key': 'isNegativeAnomaly', 'type': 'bool'},
-        'is_positive_anomaly': {'key': 'isPositiveAnomaly', 'type': 'bool'},
+        "period": {"key": "period", "type": "int"},
+        "suggested_window": {"key": "suggestedWindow", "type": "int"},
+        "expected_value": {"key": "expectedValue", "type": "float"},
+        "upper_margin": {"key": "upperMargin", "type": "float"},
+        "lower_margin": {"key": "lowerMargin", "type": "float"},
+        "is_anomaly": {"key": "isAnomaly", "type": "bool"},
+        "is_negative_anomaly": {"key": "isNegativeAnomaly", "type": "bool"},
+        "is_positive_anomaly": {"key": "isPositiveAnomaly", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(LastDetectResponse, self).__init__(**kwargs)
-        self.period = kwargs.get('period', None)
-        self.suggested_window = kwargs.get('suggested_window', None)
-        self.expected_value = kwargs.get('expected_value', None)
-        self.upper_margin = kwargs.get('upper_margin', None)
-        self.lower_margin = kwargs.get('lower_margin', None)
-        self.is_anomaly = kwargs.get('is_anomaly', None)
-        self.is_negative_anomaly = kwargs.get('is_negative_anomaly', None)
-        self.is_positive_anomaly = kwargs.get('is_positive_anomaly', None)
+        self.period = kwargs.get("period", None)
+        self.suggested_window = kwargs.get("suggested_window", None)
+        self.expected_value = kwargs.get("expected_value", None)
+        self.upper_margin = kwargs.get("upper_margin", None)
+        self.lower_margin = kwargs.get("lower_margin", None)
+        self.is_anomaly = kwargs.get("is_anomaly", None)
+        self.is_negative_anomaly = kwargs.get("is_negative_anomaly", None)
+        self.is_positive_anomaly = kwargs.get("is_positive_anomaly", None)
 
 
 class Point(Model):
@@ -296,19 +296,19 @@ class Point(Model):
     """
 
     _validation = {
-        'timestamp': {'required': True},
-        'value': {'required': True},
+        "timestamp": {"required": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        'timestamp': {'key': 'timestamp', 'type': 'iso-8601'},
-        'value': {'key': 'value', 'type': 'float'},
+        "timestamp": {"key": "timestamp", "type": "iso-8601"},
+        "value": {"key": "value", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(Point, self).__init__(**kwargs)
-        self.timestamp = kwargs.get('timestamp', None)
-        self.value = kwargs.get('value', None)
+        self.timestamp = kwargs.get("timestamp", None)
+        self.value = kwargs.get("value", None)
 
 
 class Request(Model):
@@ -343,24 +343,24 @@ class Request(Model):
     """
 
     _validation = {
-        'series': {'required': True},
-        'granularity': {'required': True},
+        "series": {"required": True},
+        "granularity": {"required": True},
     }
 
     _attribute_map = {
-        'series': {'key': 'series', 'type': '[Point]'},
-        'granularity': {'key': 'granularity', 'type': 'Granularity'},
-        'custom_interval': {'key': 'customInterval', 'type': 'int'},
-        'period': {'key': 'period', 'type': 'int'},
-        'max_anomaly_ratio': {'key': 'maxAnomalyRatio', 'type': 'float'},
-        'sensitivity': {'key': 'sensitivity', 'type': 'int'},
+        "series": {"key": "series", "type": "[Point]"},
+        "granularity": {"key": "granularity", "type": "Granularity"},
+        "custom_interval": {"key": "customInterval", "type": "int"},
+        "period": {"key": "period", "type": "int"},
+        "max_anomaly_ratio": {"key": "maxAnomalyRatio", "type": "float"},
+        "sensitivity": {"key": "sensitivity", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(Request, self).__init__(**kwargs)
-        self.series = kwargs.get('series', None)
-        self.granularity = kwargs.get('granularity', None)
-        self.custom_interval = kwargs.get('custom_interval', None)
-        self.period = kwargs.get('period', None)
-        self.max_anomaly_ratio = kwargs.get('max_anomaly_ratio', None)
-        self.sensitivity = kwargs.get('sensitivity', None)
+        self.series = kwargs.get("series", None)
+        self.granularity = kwargs.get("granularity", None)
+        self.custom_interval = kwargs.get("custom_interval", None)
+        self.period = kwargs.get("period", None)
+        self.max_anomaly_ratio = kwargs.get("max_anomaly_ratio", None)
+        self.sensitivity = kwargs.get("sensitivity", None)

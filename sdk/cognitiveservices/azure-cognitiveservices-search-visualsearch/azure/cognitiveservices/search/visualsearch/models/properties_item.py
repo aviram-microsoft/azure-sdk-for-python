@@ -30,18 +30,16 @@ class PropertiesItem(Model):
     """
 
     _validation = {
-        'text': {'readonly': True},
-        '_type': {'required': True},
+        "text": {"readonly": True},
+        "_type": {"required": True},
     }
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        '_type': {'key': '_type', 'type': 'str'},
+        "text": {"key": "text", "type": "str"},
+        "_type": {"key": "_type", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Rating': 'Rating'}
-    }
+    _subtype_map = {"_type": {"Rating": "Rating"}}
 
     def __init__(self, **kwargs):
         super(PropertiesItem, self).__init__(**kwargs)

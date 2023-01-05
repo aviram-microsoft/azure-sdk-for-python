@@ -36,7 +36,17 @@ class PredictionOperations(object):
         self.config = config
 
     def get_version_prediction(
-            self, app_id, version_id, prediction_request, verbose=None, show_all_intents=None, log=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        prediction_request,
+        verbose=None,
+        show_all_intents=None,
+        log=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Gets the predictions for an application version.
 
         :param app_id: The application ID.
@@ -67,32 +77,32 @@ class PredictionOperations(object):
          :class:`ErrorException<azure.cognitiveservices.language.luis.runtime.models.ErrorException>`
         """
         # Construct URL
-        url = self.get_version_prediction.metadata['url']
+        url = self.get_version_prediction.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if verbose is not None:
-            query_parameters['verbose'] = self._serialize.query("verbose", verbose, 'bool')
+            query_parameters["verbose"] = self._serialize.query("verbose", verbose, "bool")
         if show_all_intents is not None:
-            query_parameters['show-all-intents'] = self._serialize.query("show_all_intents", show_all_intents, 'bool')
+            query_parameters["show-all-intents"] = self._serialize.query("show_all_intents", show_all_intents, "bool")
         if log is not None:
-            query_parameters['log'] = self._serialize.query("log", log, 'bool')
+            query_parameters["log"] = self._serialize.query("log", log, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(prediction_request, 'PredictionRequest')
+        body_content = self._serialize.body(prediction_request, "PredictionRequest")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -103,17 +113,28 @@ class PredictionOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PredictionResponse', response)
+            deserialized = self._deserialize("PredictionResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_version_prediction.metadata = {'url': '/apps/{appId}/versions/{versionId}/predict'}
+
+    get_version_prediction.metadata = {"url": "/apps/{appId}/versions/{versionId}/predict"}
 
     def get_slot_prediction(
-            self, app_id, slot_name, prediction_request, verbose=None, show_all_intents=None, log=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        slot_name,
+        prediction_request,
+        verbose=None,
+        show_all_intents=None,
+        log=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Gets the predictions for an application slot.
 
         :param app_id: The application ID.
@@ -144,32 +165,32 @@ class PredictionOperations(object):
          :class:`ErrorException<azure.cognitiveservices.language.luis.runtime.models.ErrorException>`
         """
         # Construct URL
-        url = self.get_slot_prediction.metadata['url']
+        url = self.get_slot_prediction.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'slotName': self._serialize.url("slot_name", slot_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "slotName": self._serialize.url("slot_name", slot_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if verbose is not None:
-            query_parameters['verbose'] = self._serialize.query("verbose", verbose, 'bool')
+            query_parameters["verbose"] = self._serialize.query("verbose", verbose, "bool")
         if show_all_intents is not None:
-            query_parameters['show-all-intents'] = self._serialize.query("show_all_intents", show_all_intents, 'bool')
+            query_parameters["show-all-intents"] = self._serialize.query("show_all_intents", show_all_intents, "bool")
         if log is not None:
-            query_parameters['log'] = self._serialize.query("log", log, 'bool')
+            query_parameters["log"] = self._serialize.query("log", log, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(prediction_request, 'PredictionRequest')
+        body_content = self._serialize.body(prediction_request, "PredictionRequest")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -180,11 +201,12 @@ class PredictionOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PredictionResponse', response)
+            deserialized = self._deserialize("PredictionResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_slot_prediction.metadata = {'url': '/apps/{appId}/slots/{slotName}/predict'}
+
+    get_slot_prediction.metadata = {"url": "/apps/{appId}/slots/{slotName}/predict"}

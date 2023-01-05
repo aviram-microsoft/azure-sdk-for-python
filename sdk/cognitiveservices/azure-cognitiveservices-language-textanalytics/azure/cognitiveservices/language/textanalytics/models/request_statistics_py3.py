@@ -28,13 +28,21 @@ class RequestStatistics(Model):
     """
 
     _attribute_map = {
-        'documents_count': {'key': 'documentsCount', 'type': 'int'},
-        'valid_documents_count': {'key': 'validDocumentsCount', 'type': 'int'},
-        'erroneous_documents_count': {'key': 'erroneousDocumentsCount', 'type': 'int'},
-        'transactions_count': {'key': 'transactionsCount', 'type': 'long'},
+        "documents_count": {"key": "documentsCount", "type": "int"},
+        "valid_documents_count": {"key": "validDocumentsCount", "type": "int"},
+        "erroneous_documents_count": {"key": "erroneousDocumentsCount", "type": "int"},
+        "transactions_count": {"key": "transactionsCount", "type": "long"},
     }
 
-    def __init__(self, *, documents_count: int=None, valid_documents_count: int=None, erroneous_documents_count: int=None, transactions_count: int=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        documents_count: int = None,
+        valid_documents_count: int = None,
+        erroneous_documents_count: int = None,
+        transactions_count: int = None,
+        **kwargs
+    ) -> None:
         super(RequestStatistics, self).__init__(**kwargs)
         self.documents_count = documents_count
         self.valid_documents_count = valid_documents_count

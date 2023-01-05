@@ -21,9 +21,9 @@ class FeedbackRecordsDTO(Model):
     """
 
     _attribute_map = {
-        'feedback_records': {'key': 'feedbackRecords', 'type': '[FeedbackRecordDTO]'},
+        "feedback_records": {"key": "feedbackRecords", "type": "[FeedbackRecordDTO]"},
     }
 
     def __init__(self, **kwargs):
         super(FeedbackRecordsDTO, self).__init__(**kwargs)
-        self.feedback_records = kwargs.get('feedback_records', None)
+        self.feedback_records = kwargs.get("feedback_records", None)

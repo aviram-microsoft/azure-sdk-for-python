@@ -26,8 +26,8 @@ class ExtractedTableColumn(Model):
     """
 
     _attribute_map = {
-        'header': {'key': 'header', 'type': '[ExtractedToken]'},
-        'entries': {'key': 'entries', 'type': '[[ExtractedToken]]'},
+        "header": {"key": "header", "type": "[ExtractedToken]"},
+        "entries": {"key": "entries", "type": "[[ExtractedToken]]"},
     }
 
     def __init__(self, *, header=None, entries=None, **kwargs) -> None:

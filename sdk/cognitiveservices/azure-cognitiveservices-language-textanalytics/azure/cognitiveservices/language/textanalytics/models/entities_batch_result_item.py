@@ -30,17 +30,17 @@ class EntitiesBatchResultItem(Model):
     """
 
     _validation = {
-        'entities': {'readonly': True},
+        "entities": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'entities': {'key': 'entities', 'type': '[EntityRecord]'},
-        'statistics': {'key': 'statistics', 'type': 'DocumentStatistics'},
+        "id": {"key": "id", "type": "str"},
+        "entities": {"key": "entities", "type": "[EntityRecord]"},
+        "statistics": {"key": "statistics", "type": "DocumentStatistics"},
     }
 
     def __init__(self, **kwargs):
         super(EntitiesBatchResultItem, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
+        self.id = kwargs.get("id", None)
         self.entities = None
-        self.statistics = kwargs.get('statistics', None)
+        self.statistics = kwargs.get("statistics", None)

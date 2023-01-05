@@ -29,13 +29,13 @@ class AnalyzeResult(Model):
     """
 
     _attribute_map = {
-        'status': {'key': 'status', 'type': 'str'},
-        'pages': {'key': 'pages', 'type': '[ExtractedPage]'},
-        'errors': {'key': 'errors', 'type': '[FormOperationError]'},
+        "status": {"key": "status", "type": "str"},
+        "pages": {"key": "pages", "type": "[ExtractedPage]"},
+        "errors": {"key": "errors", "type": "[FormOperationError]"},
     }
 
     def __init__(self, **kwargs):
         super(AnalyzeResult, self).__init__(**kwargs)
-        self.status = kwargs.get('status', None)
-        self.pages = kwargs.get('pages', None)
-        self.errors = kwargs.get('errors', None)
+        self.status = kwargs.get("status", None)
+        self.pages = kwargs.get("pages", None)
+        self.errors = kwargs.get("errors", None)

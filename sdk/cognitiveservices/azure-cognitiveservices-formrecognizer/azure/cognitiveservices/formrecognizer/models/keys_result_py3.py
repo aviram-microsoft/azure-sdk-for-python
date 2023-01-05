@@ -21,7 +21,7 @@ class KeysResult(Model):
     """
 
     _attribute_map = {
-        'clusters': {'key': 'clusters', 'type': '{[str]}'},
+        "clusters": {"key": "clusters", "type": "{[str]}"},
     }
 
     def __init__(self, *, clusters=None, **kwargs) -> None:

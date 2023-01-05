@@ -36,18 +36,27 @@ class UpdateKbOperationDTO(Model):
     """
 
     _validation = {
-        'default_answer_used_for_extraction': {'max_length': 300, 'min_length': 1},
+        "default_answer_used_for_extraction": {"max_length": 300, "min_length": 1},
     }
 
     _attribute_map = {
-        'add': {'key': 'add', 'type': 'UpdateKbOperationDTOAdd'},
-        'delete': {'key': 'delete', 'type': 'UpdateKbOperationDTODelete'},
-        'update': {'key': 'update', 'type': 'UpdateKbOperationDTOUpdate'},
-        'enable_hierarchical_extraction': {'key': 'enableHierarchicalExtraction', 'type': 'bool'},
-        'default_answer_used_for_extraction': {'key': 'defaultAnswerUsedForExtraction', 'type': 'str'},
+        "add": {"key": "add", "type": "UpdateKbOperationDTOAdd"},
+        "delete": {"key": "delete", "type": "UpdateKbOperationDTODelete"},
+        "update": {"key": "update", "type": "UpdateKbOperationDTOUpdate"},
+        "enable_hierarchical_extraction": {"key": "enableHierarchicalExtraction", "type": "bool"},
+        "default_answer_used_for_extraction": {"key": "defaultAnswerUsedForExtraction", "type": "str"},
     }
 
-    def __init__(self, *, add=None, delete=None, update=None, enable_hierarchical_extraction: bool=None, default_answer_used_for_extraction: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        add=None,
+        delete=None,
+        update=None,
+        enable_hierarchical_extraction: bool = None,
+        default_answer_used_for_extraction: str = None,
+        **kwargs
+    ) -> None:
         super(UpdateKbOperationDTO, self).__init__(**kwargs)
         self.add = add
         self.delete = delete

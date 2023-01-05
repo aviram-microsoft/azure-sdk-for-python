@@ -26,15 +26,15 @@ class AnswerSpanResponseDTO(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'score': {'key': 'score', 'type': 'float'},
-        'start_index': {'key': 'startIndex', 'type': 'int'},
-        'end_index': {'key': 'endIndex', 'type': 'int'},
+        "text": {"key": "text", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+        "start_index": {"key": "startIndex", "type": "int"},
+        "end_index": {"key": "endIndex", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(AnswerSpanResponseDTO, self).__init__(**kwargs)
-        self.text = kwargs.get('text', None)
-        self.score = kwargs.get('score', None)
-        self.start_index = kwargs.get('start_index', None)
-        self.end_index = kwargs.get('end_index', None)
+        self.text = kwargs.get("text", None)
+        self.score = kwargs.get("score", None)
+        self.start_index = kwargs.get("start_index", None)
+        self.end_index = kwargs.get("end_index", None)

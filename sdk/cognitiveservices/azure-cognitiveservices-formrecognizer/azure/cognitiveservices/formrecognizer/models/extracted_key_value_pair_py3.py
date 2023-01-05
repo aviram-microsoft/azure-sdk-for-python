@@ -25,8 +25,8 @@ class ExtractedKeyValuePair(Model):
     """
 
     _attribute_map = {
-        'key': {'key': 'key', 'type': '[ExtractedToken]'},
-        'value': {'key': 'value', 'type': '[ExtractedToken]'},
+        "key": {"key": "key", "type": "[ExtractedToken]"},
+        "value": {"key": "value", "type": "[ExtractedToken]"},
     }
 
     def __init__(self, *, key=None, value=None, **kwargs) -> None:

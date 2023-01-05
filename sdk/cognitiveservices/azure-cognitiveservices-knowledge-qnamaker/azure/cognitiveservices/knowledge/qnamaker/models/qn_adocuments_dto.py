@@ -21,9 +21,9 @@ class QnADocumentsDTO(Model):
     """
 
     _attribute_map = {
-        'qna_documents': {'key': 'qnaDocuments', 'type': '[QnADTO]'},
+        "qna_documents": {"key": "qnaDocuments", "type": "[QnADTO]"},
     }
 
     def __init__(self, **kwargs):
         super(QnADocumentsDTO, self).__init__(**kwargs)
-        self.qna_documents = kwargs.get('qna_documents', None)
+        self.qna_documents = kwargs.get("qna_documents", None)

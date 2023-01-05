@@ -11,9 +11,9 @@
 
 from ._configuration import ComputerVisionClientConfiguration
 from ._computer_vision_client import ComputerVisionClient
-__all__ = ['ComputerVisionClient', 'ComputerVisionClientConfiguration']
+
+__all__ = ["ComputerVisionClient", "ComputerVisionClientConfiguration"]
 
 from .version import VERSION
 
 __version__ = VERSION
-

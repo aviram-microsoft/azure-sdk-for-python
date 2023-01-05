@@ -22,8 +22,8 @@ class UpdateKbOperationDTODelete(DeleteKbContentsDTO):
     """
 
     _attribute_map = {
-        'ids': {'key': 'ids', 'type': '[int]'},
-        'sources': {'key': 'sources', 'type': '[str]'},
+        "ids": {"key": "ids", "type": "[int]"},
+        "sources": {"key": "sources", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):

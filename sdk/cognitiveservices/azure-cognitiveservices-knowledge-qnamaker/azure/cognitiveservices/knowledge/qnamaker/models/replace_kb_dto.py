@@ -24,13 +24,13 @@ class ReplaceKbDTO(Model):
     """
 
     _validation = {
-        'qn_alist': {'required': True},
+        "qn_alist": {"required": True},
     }
 
     _attribute_map = {
-        'qn_alist': {'key': 'qnAList', 'type': '[QnADTO]'},
+        "qn_alist": {"key": "qnAList", "type": "[QnADTO]"},
     }
 
     def __init__(self, **kwargs):
         super(ReplaceKbDTO, self).__init__(**kwargs)
-        self.qn_alist = kwargs.get('qn_alist', None)
+        self.qn_alist = kwargs.get("qn_alist", None)

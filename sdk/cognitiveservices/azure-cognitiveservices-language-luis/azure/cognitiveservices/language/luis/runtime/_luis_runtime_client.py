@@ -34,16 +34,14 @@ class LUISRuntimeClient(SDKClient):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         self.config = LUISRuntimeClientConfiguration(endpoint, credentials)
         super(LUISRuntimeClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = '3.0'
+        self.api_version = "3.0"
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
-        self.prediction = PredictionOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+        self.prediction = PredictionOperations(self._client, self.config, self._serialize, self._deserialize)

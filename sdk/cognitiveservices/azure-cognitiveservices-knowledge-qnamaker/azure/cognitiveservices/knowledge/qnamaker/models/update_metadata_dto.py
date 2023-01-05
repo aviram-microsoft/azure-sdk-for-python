@@ -24,11 +24,11 @@ class UpdateMetadataDTO(Model):
     """
 
     _attribute_map = {
-        'delete': {'key': 'delete', 'type': '[MetadataDTO]'},
-        'add': {'key': 'add', 'type': '[MetadataDTO]'},
+        "delete": {"key": "delete", "type": "[MetadataDTO]"},
+        "add": {"key": "add", "type": "[MetadataDTO]"},
     }
 
     def __init__(self, **kwargs):
         super(UpdateMetadataDTO, self).__init__(**kwargs)
-        self.delete = kwargs.get('delete', None)
-        self.add = kwargs.get('add', None)
+        self.delete = kwargs.get("delete", None)
+        self.add = kwargs.get("add", None)

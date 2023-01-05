@@ -34,7 +34,19 @@ class TextModerationOperations(object):
         self.config = config
 
     def screen_text(
-            self, text_content_type, text_content, language=None, autocorrect=False, pii=False, list_id=None, classify=False, custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        text_content_type,
+        text_content,
+        language=None,
+        autocorrect=False,
+        pii=False,
+        list_id=None,
+        classify=False,
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """Detect profanity and match against custom and shared blocklists.
 
         Detects profanity in more than 100 languages and match against custom
@@ -72,32 +84,32 @@ class TextModerationOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.screen_text.metadata['url']
+        url = self.screen_text.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if language is not None:
-            query_parameters['language'] = self._serialize.query("language", language, 'str')
+            query_parameters["language"] = self._serialize.query("language", language, "str")
         if autocorrect is not None:
-            query_parameters['autocorrect'] = self._serialize.query("autocorrect", autocorrect, 'bool')
+            query_parameters["autocorrect"] = self._serialize.query("autocorrect", autocorrect, "bool")
         if pii is not None:
-            query_parameters['PII'] = self._serialize.query("pii", pii, 'bool')
+            query_parameters["PII"] = self._serialize.query("pii", pii, "bool")
         if list_id is not None:
-            query_parameters['listId'] = self._serialize.query("list_id", list_id, 'str')
+            query_parameters["listId"] = self._serialize.query("list_id", list_id, "str")
         if classify is not None:
-            query_parameters['classify'] = self._serialize.query("classify", classify, 'bool')
+            query_parameters["classify"] = self._serialize.query("classify", classify, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'text/plain'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "text/plain"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("text_content_type", text_content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("text_content_type", text_content_type, "str")
 
         # Construct body
         body_content = self._client.stream_upload(text_content, callback)
@@ -112,17 +124,19 @@ class TextModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('Screen', response)
+            deserialized = self._deserialize("Screen", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    screen_text.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessText/Screen/'}
+
+    screen_text.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessText/Screen/"}
 
     def detect_language(
-            self, text_content_type, text_content, custom_headers=None, raw=False, callback=None, **operation_config):
+        self, text_content_type, text_content, custom_headers=None, raw=False, callback=None, **operation_config
+    ):
         """This operation will detect the language of given input content. Returns
         the <a href="http://www-01.sil.org/iso639-3/codes.asp">ISO 639-3
         code</a> for the predominant language comprising the submitted text.
@@ -151,9 +165,9 @@ class TextModerationOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.detect_language.metadata['url']
+        url = self.detect_language.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -162,11 +176,11 @@ class TextModerationOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'text/plain'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "text/plain"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("text_content_type", text_content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("text_content_type", text_content_type, "str")
 
         # Construct body
         body_content = self._client.stream_upload(text_content, callback)
@@ -181,11 +195,12 @@ class TextModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('DetectedLanguage', response)
+            deserialized = self._deserialize("DetectedLanguage", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    detect_language.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessText/DetectLanguage'}
+
+    detect_language.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessText/DetectLanguage"}

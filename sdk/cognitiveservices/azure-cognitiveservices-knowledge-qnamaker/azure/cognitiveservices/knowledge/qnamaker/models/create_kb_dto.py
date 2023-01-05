@@ -51,32 +51,32 @@ class CreateKbDTO(Model):
     """
 
     _validation = {
-        'name': {'required': True, 'max_length': 100, 'min_length': 1},
-        'default_answer_used_for_extraction': {'max_length': 300, 'min_length': 1},
-        'language': {'max_length': 100, 'min_length': 1},
-        'default_answer': {'max_length': 300, 'min_length': 1},
+        "name": {"required": True, "max_length": 100, "min_length": 1},
+        "default_answer_used_for_extraction": {"max_length": 300, "min_length": 1},
+        "language": {"max_length": 100, "min_length": 1},
+        "default_answer": {"max_length": 300, "min_length": 1},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'qna_list': {'key': 'qnaList', 'type': '[QnADTO]'},
-        'urls': {'key': 'urls', 'type': '[str]'},
-        'files': {'key': 'files', 'type': '[FileDTO]'},
-        'enable_hierarchical_extraction': {'key': 'enableHierarchicalExtraction', 'type': 'bool'},
-        'default_answer_used_for_extraction': {'key': 'defaultAnswerUsedForExtraction', 'type': 'str'},
-        'language': {'key': 'language', 'type': 'str'},
-        'enable_multiple_languages': {'key': 'enableMultipleLanguages', 'type': 'bool'},
-        'default_answer': {'key': 'defaultAnswer', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "qna_list": {"key": "qnaList", "type": "[QnADTO]"},
+        "urls": {"key": "urls", "type": "[str]"},
+        "files": {"key": "files", "type": "[FileDTO]"},
+        "enable_hierarchical_extraction": {"key": "enableHierarchicalExtraction", "type": "bool"},
+        "default_answer_used_for_extraction": {"key": "defaultAnswerUsedForExtraction", "type": "str"},
+        "language": {"key": "language", "type": "str"},
+        "enable_multiple_languages": {"key": "enableMultipleLanguages", "type": "bool"},
+        "default_answer": {"key": "defaultAnswer", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(CreateKbDTO, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.qna_list = kwargs.get('qna_list', None)
-        self.urls = kwargs.get('urls', None)
-        self.files = kwargs.get('files', None)
-        self.enable_hierarchical_extraction = kwargs.get('enable_hierarchical_extraction', None)
-        self.default_answer_used_for_extraction = kwargs.get('default_answer_used_for_extraction', None)
-        self.language = kwargs.get('language', None)
-        self.enable_multiple_languages = kwargs.get('enable_multiple_languages', None)
-        self.default_answer = kwargs.get('default_answer', None)
+        self.name = kwargs.get("name", None)
+        self.qna_list = kwargs.get("qna_list", None)
+        self.urls = kwargs.get("urls", None)
+        self.files = kwargs.get("files", None)
+        self.enable_hierarchical_extraction = kwargs.get("enable_hierarchical_extraction", None)
+        self.default_answer_used_for_extraction = kwargs.get("default_answer_used_for_extraction", None)
+        self.language = kwargs.get("language", None)
+        self.enable_multiple_languages = kwargs.get("enable_multiple_languages", None)
+        self.default_answer = kwargs.get("default_answer", None)

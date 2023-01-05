@@ -55,30 +55,27 @@ class FaceClient(SDKClient):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         self.config = FaceClientConfiguration(endpoint, credentials)
         super(FaceClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = '1.0'
+        self.api_version = "1.0"
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
-        self.face = FaceOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+        self.face = FaceOperations(self._client, self.config, self._serialize, self._deserialize)
         self.person_group_person = PersonGroupPersonOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.person_group = PersonGroupOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.face_list = FaceListOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+            self._client, self.config, self._serialize, self._deserialize
+        )
+        self.person_group = PersonGroupOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.face_list = FaceListOperations(self._client, self.config, self._serialize, self._deserialize)
         self.large_person_group_person = LargePersonGroupPersonOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+            self._client, self.config, self._serialize, self._deserialize
+        )
         self.large_person_group = LargePersonGroupOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.large_face_list = LargeFaceListOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.snapshot = SnapshotOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+            self._client, self.config, self._serialize, self._deserialize
+        )
+        self.large_face_list = LargeFaceListOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.snapshot = SnapshotOperations(self._client, self.config, self._serialize, self._deserialize)

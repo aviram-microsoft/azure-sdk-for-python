@@ -30,18 +30,17 @@ class TextAnalyticsClientConfiguration(Configuration):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         if endpoint is None:
             raise ValueError("Parameter 'endpoint' must not be None.")
         if credentials is None:
             raise ValueError("Parameter 'credentials' must not be None.")
-        base_url = '{Endpoint}/text/analytics/v2.1'
+        base_url = "{Endpoint}/text/analytics/v2.1"
 
         super(TextAnalyticsClientConfiguration, self).__init__(base_url)
 
-        self.add_user_agent('azure-cognitiveservices-language-textanalytics/{}'.format(VERSION))
+        self.add_user_agent("azure-cognitiveservices-language-textanalytics/{}".format(VERSION))
 
         self.endpoint = endpoint
         self.credentials = credentials
@@ -61,20 +60,17 @@ class TextAnalyticsClient(SDKClient):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         self.config = TextAnalyticsClientConfiguration(endpoint, credentials)
         super(TextAnalyticsClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = 'v2.1'
+        self.api_version = "v2.1"
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
-
-    def detect_language(
-            self, show_stats=None, documents=None, custom_headers=None, raw=False, **operation_config):
+    def detect_language(self, show_stats=None, documents=None, custom_headers=None, raw=False, **operation_config):
         """The API returns the detected language and a numeric score between 0 and
         1.
 
@@ -104,27 +100,27 @@ class TextAnalyticsClient(SDKClient):
             language_batch_input = models.LanguageBatchInput(documents=documents)
 
         # Construct URL
-        url = self.detect_language.metadata['url']
+        url = self.detect_language.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if show_stats is not None:
-            query_parameters['showStats'] = self._serialize.query("show_stats", show_stats, 'bool')
+            query_parameters["showStats"] = self._serialize.query("show_stats", show_stats, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
         if language_batch_input is not None:
-            body_content = self._serialize.body(language_batch_input, 'LanguageBatchInput')
+            body_content = self._serialize.body(language_batch_input, "LanguageBatchInput")
         else:
             body_content = None
 
@@ -138,17 +134,17 @@ class TextAnalyticsClient(SDKClient):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('LanguageBatchResult', response)
+            deserialized = self._deserialize("LanguageBatchResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    detect_language.metadata = {'url': '/languages'}
 
-    def entities(
-            self, show_stats=None, documents=None, custom_headers=None, raw=False, **operation_config):
+    detect_language.metadata = {"url": "/languages"}
+
+    def entities(self, show_stats=None, documents=None, custom_headers=None, raw=False, **operation_config):
         """The API returns a list of recognized entities in a given document.
 
         To get even more information on each recognized entity we recommend
@@ -180,27 +176,27 @@ class TextAnalyticsClient(SDKClient):
             multi_language_batch_input = models.MultiLanguageBatchInput(documents=documents)
 
         # Construct URL
-        url = self.entities.metadata['url']
+        url = self.entities.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if show_stats is not None:
-            query_parameters['showStats'] = self._serialize.query("show_stats", show_stats, 'bool')
+            query_parameters["showStats"] = self._serialize.query("show_stats", show_stats, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
         if multi_language_batch_input is not None:
-            body_content = self._serialize.body(multi_language_batch_input, 'MultiLanguageBatchInput')
+            body_content = self._serialize.body(multi_language_batch_input, "MultiLanguageBatchInput")
         else:
             body_content = None
 
@@ -214,17 +210,17 @@ class TextAnalyticsClient(SDKClient):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('EntitiesBatchResult', response)
+            deserialized = self._deserialize("EntitiesBatchResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    entities.metadata = {'url': '/entities'}
 
-    def key_phrases(
-            self, show_stats=None, documents=None, custom_headers=None, raw=False, **operation_config):
+    entities.metadata = {"url": "/entities"}
+
+    def key_phrases(self, show_stats=None, documents=None, custom_headers=None, raw=False, **operation_config):
         """The API returns a list of strings denoting the key talking points in
         the input text.
 
@@ -256,27 +252,27 @@ class TextAnalyticsClient(SDKClient):
             multi_language_batch_input = models.MultiLanguageBatchInput(documents=documents)
 
         # Construct URL
-        url = self.key_phrases.metadata['url']
+        url = self.key_phrases.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if show_stats is not None:
-            query_parameters['showStats'] = self._serialize.query("show_stats", show_stats, 'bool')
+            query_parameters["showStats"] = self._serialize.query("show_stats", show_stats, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
         if multi_language_batch_input is not None:
-            body_content = self._serialize.body(multi_language_batch_input, 'MultiLanguageBatchInput')
+            body_content = self._serialize.body(multi_language_batch_input, "MultiLanguageBatchInput")
         else:
             body_content = None
 
@@ -290,17 +286,17 @@ class TextAnalyticsClient(SDKClient):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('KeyPhraseBatchResult', response)
+            deserialized = self._deserialize("KeyPhraseBatchResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    key_phrases.metadata = {'url': '/keyPhrases'}
 
-    def sentiment(
-            self, show_stats=None, documents=None, custom_headers=None, raw=False, **operation_config):
+    key_phrases.metadata = {"url": "/keyPhrases"}
+
+    def sentiment(self, show_stats=None, documents=None, custom_headers=None, raw=False, **operation_config):
         """The API returns a numeric score between 0 and 1.
 
         Scores close to 1 indicate positive sentiment, while scores close to 0
@@ -331,27 +327,27 @@ class TextAnalyticsClient(SDKClient):
             multi_language_batch_input = models.MultiLanguageBatchInput(documents=documents)
 
         # Construct URL
-        url = self.sentiment.metadata['url']
+        url = self.sentiment.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if show_stats is not None:
-            query_parameters['showStats'] = self._serialize.query("show_stats", show_stats, 'bool')
+            query_parameters["showStats"] = self._serialize.query("show_stats", show_stats, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
         if multi_language_batch_input is not None:
-            body_content = self._serialize.body(multi_language_batch_input, 'MultiLanguageBatchInput')
+            body_content = self._serialize.body(multi_language_batch_input, "MultiLanguageBatchInput")
         else:
             body_content = None
 
@@ -365,13 +361,14 @@ class TextAnalyticsClient(SDKClient):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('SentimentBatchResult', response)
+            deserialized = self._deserialize("SentimentBatchResult", response)
         if response.status_code == 500:
-            deserialized = self._deserialize('ErrorResponse', response)
+            deserialized = self._deserialize("ErrorResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    sentiment.metadata = {'url': '/sentiment'}
+
+    sentiment.metadata = {"url": "/sentiment"}

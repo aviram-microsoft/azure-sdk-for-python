@@ -25,12 +25,12 @@ class ErrorInformation(Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'inner_error': {'key': 'innerError', 'type': 'InnerError'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "inner_error": {"key": "innerError", "type": "InnerError"},
+        "message": {"key": "message", "type": "str"},
     }
 
-    def __init__(self, *, code: str=None, inner_error=None, message: str=None, **kwargs) -> None:
+    def __init__(self, *, code: str = None, inner_error=None, message: str = None, **kwargs) -> None:
         super(ErrorInformation, self).__init__(**kwargs)
         self.code = code
         self.inner_error = inner_error

@@ -21,9 +21,9 @@ class QnASearchResultList(Model):
     """
 
     _attribute_map = {
-        'answers': {'key': 'answers', 'type': '[QnASearchResult]'},
+        "answers": {"key": "answers", "type": "[QnASearchResult]"},
     }
 
     def __init__(self, **kwargs):
         super(QnASearchResultList, self).__init__(**kwargs)
-        self.answers = kwargs.get('answers', None)
+        self.answers = kwargs.get("answers", None)

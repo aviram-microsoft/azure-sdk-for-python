@@ -12,5 +12,5 @@
 from ._auto_suggest_client_operations import AutoSuggestClientOperationsMixin
 
 __all__ = [
-    'AutoSuggestClientOperationsMixin',
+    "AutoSuggestClientOperationsMixin",
 ]

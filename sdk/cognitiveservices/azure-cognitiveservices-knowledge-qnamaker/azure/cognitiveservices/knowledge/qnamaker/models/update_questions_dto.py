@@ -23,11 +23,11 @@ class UpdateQuestionsDTO(Model):
     """
 
     _attribute_map = {
-        'add': {'key': 'add', 'type': '[str]'},
-        'delete': {'key': 'delete', 'type': '[str]'},
+        "add": {"key": "add", "type": "[str]"},
+        "delete": {"key": "delete", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(UpdateQuestionsDTO, self).__init__(**kwargs)
-        self.add = kwargs.get('add', None)
-        self.delete = kwargs.get('delete', None)
+        self.add = kwargs.get("add", None)
+        self.delete = kwargs.get("delete", None)

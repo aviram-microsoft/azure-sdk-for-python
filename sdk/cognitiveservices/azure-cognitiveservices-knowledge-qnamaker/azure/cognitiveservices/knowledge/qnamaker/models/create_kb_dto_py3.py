@@ -51,25 +51,38 @@ class CreateKbDTO(Model):
     """
 
     _validation = {
-        'name': {'required': True, 'max_length': 100, 'min_length': 1},
-        'default_answer_used_for_extraction': {'max_length': 300, 'min_length': 1},
-        'language': {'max_length': 100, 'min_length': 1},
-        'default_answer': {'max_length': 300, 'min_length': 1},
+        "name": {"required": True, "max_length": 100, "min_length": 1},
+        "default_answer_used_for_extraction": {"max_length": 300, "min_length": 1},
+        "language": {"max_length": 100, "min_length": 1},
+        "default_answer": {"max_length": 300, "min_length": 1},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'qna_list': {'key': 'qnaList', 'type': '[QnADTO]'},
-        'urls': {'key': 'urls', 'type': '[str]'},
-        'files': {'key': 'files', 'type': '[FileDTO]'},
-        'enable_hierarchical_extraction': {'key': 'enableHierarchicalExtraction', 'type': 'bool'},
-        'default_answer_used_for_extraction': {'key': 'defaultAnswerUsedForExtraction', 'type': 'str'},
-        'language': {'key': 'language', 'type': 'str'},
-        'enable_multiple_languages': {'key': 'enableMultipleLanguages', 'type': 'bool'},
-        'default_answer': {'key': 'defaultAnswer', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "qna_list": {"key": "qnaList", "type": "[QnADTO]"},
+        "urls": {"key": "urls", "type": "[str]"},
+        "files": {"key": "files", "type": "[FileDTO]"},
+        "enable_hierarchical_extraction": {"key": "enableHierarchicalExtraction", "type": "bool"},
+        "default_answer_used_for_extraction": {"key": "defaultAnswerUsedForExtraction", "type": "str"},
+        "language": {"key": "language", "type": "str"},
+        "enable_multiple_languages": {"key": "enableMultipleLanguages", "type": "bool"},
+        "default_answer": {"key": "defaultAnswer", "type": "str"},
     }
 
-    def __init__(self, *, name: str, qna_list=None, urls=None, files=None, enable_hierarchical_extraction: bool=None, default_answer_used_for_extraction: str=None, language: str=None, enable_multiple_languages: bool=None, default_answer: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        name: str,
+        qna_list=None,
+        urls=None,
+        files=None,
+        enable_hierarchical_extraction: bool = None,
+        default_answer_used_for_extraction: str = None,
+        language: str = None,
+        enable_multiple_languages: bool = None,
+        default_answer: str = None,
+        **kwargs
+    ) -> None:
         super(CreateKbDTO, self).__init__(**kwargs)
         self.name = name
         self.qna_list = qna_list

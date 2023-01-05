@@ -51,37 +51,37 @@ class Person(Thing):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'alternate_name': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'job_title': {'readonly': True},
-        'twitter_profile': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "alternate_name": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "job_title": {"readonly": True},
+        "twitter_profile": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'alternate_name': {'key': 'alternateName', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'job_title': {'key': 'jobTitle', 'type': 'str'},
-        'twitter_profile': {'key': 'twitterProfile', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "alternate_name": {"key": "alternateName", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "job_title": {"key": "jobTitle", "type": "str"},
+        "twitter_profile": {"key": "twitterProfile", "type": "str"},
     }
 
     def __init__(self, **kwargs) -> None:
         super(Person, self).__init__(**kwargs)
         self.job_title = None
         self.twitter_profile = None
-        self._type = 'Person'
+        self._type = "Person"

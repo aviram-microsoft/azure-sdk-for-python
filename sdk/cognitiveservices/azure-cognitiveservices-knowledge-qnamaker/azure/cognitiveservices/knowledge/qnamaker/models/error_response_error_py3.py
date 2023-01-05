@@ -40,16 +40,20 @@ class ErrorResponseError(Error):
     """
 
     _validation = {
-        'code': {'required': True},
+        "code": {"required": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
-        'target': {'key': 'target', 'type': 'str'},
-        'details': {'key': 'details', 'type': '[Error]'},
-        'inner_error': {'key': 'innerError', 'type': 'InnerErrorModel'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "target": {"key": "target", "type": "str"},
+        "details": {"key": "details", "type": "[Error]"},
+        "inner_error": {"key": "innerError", "type": "InnerErrorModel"},
     }
 
-    def __init__(self, *, code, message: str=None, target: str=None, details=None, inner_error=None, **kwargs) -> None:
-        super(ErrorResponseError, self).__init__(code=code, message=message, target=target, details=details, inner_error=inner_error, **kwargs)
+    def __init__(
+        self, *, code, message: str = None, target: str = None, details=None, inner_error=None, **kwargs
+    ) -> None:
+        super(ErrorResponseError, self).__init__(
+            code=code, message=message, target=target, details=details, inner_error=inner_error, **kwargs
+        )

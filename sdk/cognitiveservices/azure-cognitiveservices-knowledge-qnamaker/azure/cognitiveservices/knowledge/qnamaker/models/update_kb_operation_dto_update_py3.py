@@ -30,15 +30,17 @@ class UpdateKbOperationDTOUpdate(UpdateKbContentsDTO):
     """
 
     _validation = {
-        'default_answer': {'max_length': 300, 'min_length': 1},
+        "default_answer": {"max_length": 300, "min_length": 1},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'qna_list': {'key': 'qnaList', 'type': '[UpdateQnaDTO]'},
-        'urls': {'key': 'urls', 'type': '[str]'},
-        'default_answer': {'key': 'defaultAnswer', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "qna_list": {"key": "qnaList", "type": "[UpdateQnaDTO]"},
+        "urls": {"key": "urls", "type": "[str]"},
+        "default_answer": {"key": "defaultAnswer", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, qna_list=None, urls=None, default_answer: str=None, **kwargs) -> None:
-        super(UpdateKbOperationDTOUpdate, self).__init__(name=name, qna_list=qna_list, urls=urls, default_answer=default_answer, **kwargs)
+    def __init__(self, *, name: str = None, qna_list=None, urls=None, default_answer: str = None, **kwargs) -> None:
+        super(UpdateKbOperationDTOUpdate, self).__init__(
+            name=name, qna_list=qna_list, urls=urls, default_answer=default_answer, **kwargs
+        )

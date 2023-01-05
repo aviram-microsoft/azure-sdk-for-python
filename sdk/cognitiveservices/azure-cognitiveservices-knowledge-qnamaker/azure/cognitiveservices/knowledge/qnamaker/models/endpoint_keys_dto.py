@@ -28,17 +28,17 @@ class EndpointKeysDTO(Model):
     """
 
     _attribute_map = {
-        'primary_endpoint_key': {'key': 'primaryEndpointKey', 'type': 'str'},
-        'secondary_endpoint_key': {'key': 'secondaryEndpointKey', 'type': 'str'},
-        'installed_version': {'key': 'installedVersion', 'type': 'str'},
-        'last_stable_version': {'key': 'lastStableVersion', 'type': 'str'},
-        'language': {'key': 'language', 'type': 'str'},
+        "primary_endpoint_key": {"key": "primaryEndpointKey", "type": "str"},
+        "secondary_endpoint_key": {"key": "secondaryEndpointKey", "type": "str"},
+        "installed_version": {"key": "installedVersion", "type": "str"},
+        "last_stable_version": {"key": "lastStableVersion", "type": "str"},
+        "language": {"key": "language", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(EndpointKeysDTO, self).__init__(**kwargs)
-        self.primary_endpoint_key = kwargs.get('primary_endpoint_key', None)
-        self.secondary_endpoint_key = kwargs.get('secondary_endpoint_key', None)
-        self.installed_version = kwargs.get('installed_version', None)
-        self.last_stable_version = kwargs.get('last_stable_version', None)
-        self.language = kwargs.get('language', None)
+        self.primary_endpoint_key = kwargs.get("primary_endpoint_key", None)
+        self.secondary_endpoint_key = kwargs.get("secondary_endpoint_key", None)
+        self.installed_version = kwargs.get("installed_version", None)
+        self.last_stable_version = kwargs.get("last_stable_version", None)
+        self.language = kwargs.get("language", None)

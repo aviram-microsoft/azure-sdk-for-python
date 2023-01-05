@@ -20,7 +20,7 @@ from devtools_testutils import mgmt_settings_fake as fake_settings
 
 
 class SpellCheckTest(ReplayableTest):
-    FILTER_HEADERS = ReplayableTest.FILTER_HEADERS + ['Ocp-Apim-Subscription-Key']
+    FILTER_HEADERS = ReplayableTest.FILTER_HEADERS + ["Ocp-Apim-Subscription-Key"]
 
     def __init__(self, method_name):
         self._fake_settings, self._real_settings = self._load_settings()
@@ -32,28 +32,22 @@ class SpellCheckTest(ReplayableTest):
             if self._real_settings:
                 return self._real_settings
             else:
-                raise AzureTestError('Need a mgmt_settings_real.py file to run tests live.')
+                raise AzureTestError("Need a mgmt_settings_real.py file to run tests live.")
         else:
             return self._fake_settings
 
     def _load_settings(self):
         try:
             from devtools_testutils import mgmt_settings_real as real_settings
+
             return fake_settings, real_settings
         except ImportError:
             return fake_settings, None
 
     def test_spell_check(self):
         raise unittest.SkipTest("Skipping test_spell_check")
-        credentials = CognitiveServicesCredentials(
-            self.settings.CS_SUBSCRIPTION_KEY
-        )
+        credentials = CognitiveServicesCredentials(self.settings.CS_SUBSCRIPTION_KEY)
         text_analytics = SpellCheckClient(credentials=credentials)
-        response = text_analytics.spell_checker(
-            "cognituve services"
-        )
+        response = text_analytics.spell_checker("cognituve services")
         self.assertEqual(response.flagged_tokens[0].token, "cognituve")
         self.assertEqual(response.flagged_tokens[0].suggestions[0].suggestion, "cognitive")
-
-
-

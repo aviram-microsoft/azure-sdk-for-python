@@ -36,7 +36,17 @@ class FaceOperations(object):
         self.config = config
 
     def find_similar(
-            self, face_id, face_list_id=None, large_face_list_id=None, face_ids=None, max_num_of_candidates_returned=20, mode="matchPerson", custom_headers=None, raw=False, **operation_config):
+        self,
+        face_id,
+        face_list_id=None,
+        large_face_list_id=None,
+        face_ids=None,
+        max_num_of_candidates_returned=20,
+        mode="matchPerson",
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Given query face's faceId, to search the similar-looking faces from a
         faceId array, a face list or a large face list. faceId array contains
         the faces created by [Face - Detect With
@@ -106,12 +116,19 @@ class FaceOperations(object):
         :raises:
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
-        body = models.FindSimilarRequest(face_id=face_id, face_list_id=face_list_id, large_face_list_id=large_face_list_id, face_ids=face_ids, max_num_of_candidates_returned=max_num_of_candidates_returned, mode=mode)
+        body = models.FindSimilarRequest(
+            face_id=face_id,
+            face_list_id=face_list_id,
+            large_face_list_id=large_face_list_id,
+            face_ids=face_ids,
+            max_num_of_candidates_returned=max_num_of_candidates_returned,
+            mode=mode,
+        )
 
         # Construct URL
-        url = self.find_similar.metadata['url']
+        url = self.find_similar.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -120,13 +137,13 @@ class FaceOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'FindSimilarRequest')
+        body_content = self._serialize.body(body, "FindSimilarRequest")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -137,17 +154,17 @@ class FaceOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[SimilarFace]', response)
+            deserialized = self._deserialize("[SimilarFace]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    find_similar.metadata = {'url': '/findsimilars'}
 
-    def group(
-            self, face_ids, custom_headers=None, raw=False, **operation_config):
+    find_similar.metadata = {"url": "/findsimilars"}
+
+    def group(self, face_ids, custom_headers=None, raw=False, **operation_config):
         """Divide candidate faces into groups based on face similarity.<br />
         * The output is one or more disjointed face groups and a messyGroup. A
         face group contains faces that have similar looking, often of the same
@@ -182,9 +199,9 @@ class FaceOperations(object):
         body = models.GroupRequest(face_ids=face_ids)
 
         # Construct URL
-        url = self.group.metadata['url']
+        url = self.group.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -193,13 +210,13 @@ class FaceOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'GroupRequest')
+        body_content = self._serialize.body(body, "GroupRequest")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -210,17 +227,27 @@ class FaceOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('GroupResult', response)
+            deserialized = self._deserialize("GroupResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    group.metadata = {'url': '/group'}
+
+    group.metadata = {"url": "/group"}
 
     def identify(
-            self, face_ids, person_group_id=None, large_person_group_id=None, max_num_of_candidates_returned=1, confidence_threshold=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        face_ids,
+        person_group_id=None,
+        large_person_group_id=None,
+        max_num_of_candidates_returned=1,
+        confidence_threshold=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """1-to-many identification to find the closest matches of the specific
         query person face from a person group or large person group.
         <br/> For each face in the faceIds array, Face Identify will compute
@@ -286,12 +313,18 @@ class FaceOperations(object):
         :raises:
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
-        body = models.IdentifyRequest(face_ids=face_ids, person_group_id=person_group_id, large_person_group_id=large_person_group_id, max_num_of_candidates_returned=max_num_of_candidates_returned, confidence_threshold=confidence_threshold)
+        body = models.IdentifyRequest(
+            face_ids=face_ids,
+            person_group_id=person_group_id,
+            large_person_group_id=large_person_group_id,
+            max_num_of_candidates_returned=max_num_of_candidates_returned,
+            confidence_threshold=confidence_threshold,
+        )
 
         # Construct URL
-        url = self.identify.metadata['url']
+        url = self.identify.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -300,13 +333,13 @@ class FaceOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'IdentifyRequest')
+        body_content = self._serialize.body(body, "IdentifyRequest")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -317,17 +350,17 @@ class FaceOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[IdentifyResult]', response)
+            deserialized = self._deserialize("[IdentifyResult]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    identify.metadata = {'url': '/identify'}
 
-    def verify_face_to_face(
-            self, face_id1, face_id2, custom_headers=None, raw=False, **operation_config):
+    identify.metadata = {"url": "/identify"}
+
+    def verify_face_to_face(self, face_id1, face_id2, custom_headers=None, raw=False, **operation_config):
         """Verify whether two faces belong to a same person or whether one face
         belongs to a person.
         <br/>
@@ -360,9 +393,9 @@ class FaceOperations(object):
         body = models.VerifyFaceToFaceRequest(face_id1=face_id1, face_id2=face_id2)
 
         # Construct URL
-        url = self.verify_face_to_face.metadata['url']
+        url = self.verify_face_to_face.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -371,13 +404,13 @@ class FaceOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'VerifyFaceToFaceRequest')
+        body_content = self._serialize.body(body, "VerifyFaceToFaceRequest")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -388,17 +421,30 @@ class FaceOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('VerifyResult', response)
+            deserialized = self._deserialize("VerifyResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    verify_face_to_face.metadata = {'url': '/verify'}
+
+    verify_face_to_face.metadata = {"url": "/verify"}
 
     def detect_with_url(
-            self, url, return_face_id=True, return_face_landmarks=False, return_face_attributes=None, recognition_model="recognition_01", return_recognition_model=False, detection_model="detection_01", face_id_time_to_live=86400, custom_headers=None, raw=False, **operation_config):
+        self,
+        url,
+        return_face_id=True,
+        return_face_landmarks=False,
+        return_face_attributes=None,
+        recognition_model="recognition_01",
+        return_recognition_model=False,
+        detection_model="detection_01",
+        face_id_time_to_live=86400,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Detect human faces in an image, return face rectangles, and optionally
         with faceIds, landmarks, and attributes.<br />
         * No image will be stored. Only the extracted face feature will be
@@ -506,38 +552,46 @@ class FaceOperations(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.detect_with_url.metadata['url']
+        url = self.detect_with_url.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if return_face_id is not None:
-            query_parameters['returnFaceId'] = self._serialize.query("return_face_id", return_face_id, 'bool')
+            query_parameters["returnFaceId"] = self._serialize.query("return_face_id", return_face_id, "bool")
         if return_face_landmarks is not None:
-            query_parameters['returnFaceLandmarks'] = self._serialize.query("return_face_landmarks", return_face_landmarks, 'bool')
+            query_parameters["returnFaceLandmarks"] = self._serialize.query(
+                "return_face_landmarks", return_face_landmarks, "bool"
+            )
         if return_face_attributes is not None:
-            query_parameters['returnFaceAttributes'] = self._serialize.query("return_face_attributes", return_face_attributes, '[FaceAttributeType]', div=',')
+            query_parameters["returnFaceAttributes"] = self._serialize.query(
+                "return_face_attributes", return_face_attributes, "[FaceAttributeType]", div=","
+            )
         if recognition_model is not None:
-            query_parameters['recognitionModel'] = self._serialize.query("recognition_model", recognition_model, 'str')
+            query_parameters["recognitionModel"] = self._serialize.query("recognition_model", recognition_model, "str")
         if return_recognition_model is not None:
-            query_parameters['returnRecognitionModel'] = self._serialize.query("return_recognition_model", return_recognition_model, 'bool')
+            query_parameters["returnRecognitionModel"] = self._serialize.query(
+                "return_recognition_model", return_recognition_model, "bool"
+            )
         if detection_model is not None:
-            query_parameters['detectionModel'] = self._serialize.query("detection_model", detection_model, 'str')
+            query_parameters["detectionModel"] = self._serialize.query("detection_model", detection_model, "str")
         if face_id_time_to_live is not None:
-            query_parameters['faceIdTimeToLive'] = self._serialize.query("face_id_time_to_live", face_id_time_to_live, 'int', maximum=86400, minimum=60)
+            query_parameters["faceIdTimeToLive"] = self._serialize.query(
+                "face_id_time_to_live", face_id_time_to_live, "int", maximum=86400, minimum=60
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -548,17 +602,26 @@ class FaceOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[DetectedFace]', response)
+            deserialized = self._deserialize("[DetectedFace]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    detect_with_url.metadata = {'url': '/detect'}
+
+    detect_with_url.metadata = {"url": "/detect"}
 
     def verify_face_to_person(
-            self, face_id, person_id, person_group_id=None, large_person_group_id=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        face_id,
+        person_id,
+        person_group_id=None,
+        large_person_group_id=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Verify whether two faces belong to a same person. Compares a face Id
         with a Person Id.
 
@@ -589,12 +652,17 @@ class FaceOperations(object):
         :raises:
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
-        body = models.VerifyFaceToPersonRequest(face_id=face_id, person_group_id=person_group_id, large_person_group_id=large_person_group_id, person_id=person_id)
+        body = models.VerifyFaceToPersonRequest(
+            face_id=face_id,
+            person_group_id=person_group_id,
+            large_person_group_id=large_person_group_id,
+            person_id=person_id,
+        )
 
         # Construct URL
-        url = self.verify_face_to_person.metadata['url']
+        url = self.verify_face_to_person.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -603,13 +671,13 @@ class FaceOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'VerifyFaceToPersonRequest')
+        body_content = self._serialize.body(body, "VerifyFaceToPersonRequest")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -620,17 +688,31 @@ class FaceOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('VerifyResult', response)
+            deserialized = self._deserialize("VerifyResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    verify_face_to_person.metadata = {'url': '/verify'}
+
+    verify_face_to_person.metadata = {"url": "/verify"}
 
     def detect_with_stream(
-            self, image, return_face_id=True, return_face_landmarks=False, return_face_attributes=None, recognition_model="recognition_01", return_recognition_model=False, detection_model="detection_01", face_id_time_to_live=86400, custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        image,
+        return_face_id=True,
+        return_face_landmarks=False,
+        return_face_attributes=None,
+        recognition_model="recognition_01",
+        return_recognition_model=False,
+        detection_model="detection_01",
+        face_id_time_to_live=86400,
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """Detect human faces in an image, return face rectangles, and optionally
         with faceIds, landmarks, and attributes.<br />
         * No image will be stored. Only the extracted face feature will be
@@ -741,33 +823,41 @@ class FaceOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.detect_with_stream.metadata['url']
+        url = self.detect_with_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if return_face_id is not None:
-            query_parameters['returnFaceId'] = self._serialize.query("return_face_id", return_face_id, 'bool')
+            query_parameters["returnFaceId"] = self._serialize.query("return_face_id", return_face_id, "bool")
         if return_face_landmarks is not None:
-            query_parameters['returnFaceLandmarks'] = self._serialize.query("return_face_landmarks", return_face_landmarks, 'bool')
+            query_parameters["returnFaceLandmarks"] = self._serialize.query(
+                "return_face_landmarks", return_face_landmarks, "bool"
+            )
         if return_face_attributes is not None:
-            query_parameters['returnFaceAttributes'] = self._serialize.query("return_face_attributes", return_face_attributes, '[FaceAttributeType]', div=',')
+            query_parameters["returnFaceAttributes"] = self._serialize.query(
+                "return_face_attributes", return_face_attributes, "[FaceAttributeType]", div=","
+            )
         if recognition_model is not None:
-            query_parameters['recognitionModel'] = self._serialize.query("recognition_model", recognition_model, 'str')
+            query_parameters["recognitionModel"] = self._serialize.query("recognition_model", recognition_model, "str")
         if return_recognition_model is not None:
-            query_parameters['returnRecognitionModel'] = self._serialize.query("return_recognition_model", return_recognition_model, 'bool')
+            query_parameters["returnRecognitionModel"] = self._serialize.query(
+                "return_recognition_model", return_recognition_model, "bool"
+            )
         if detection_model is not None:
-            query_parameters['detectionModel'] = self._serialize.query("detection_model", detection_model, 'str')
+            query_parameters["detectionModel"] = self._serialize.query("detection_model", detection_model, "str")
         if face_id_time_to_live is not None:
-            query_parameters['faceIdTimeToLive'] = self._serialize.query("face_id_time_to_live", face_id_time_to_live, 'int', maximum=86400, minimum=60)
+            query_parameters["faceIdTimeToLive"] = self._serialize.query(
+                "face_id_time_to_live", face_id_time_to_live, "int", maximum=86400, minimum=60
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -783,11 +873,12 @@ class FaceOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[DetectedFace]', response)
+            deserialized = self._deserialize("[DetectedFace]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    detect_with_stream.metadata = {'url': '/detect'}
+
+    detect_with_stream.metadata = {"url": "/detect"}

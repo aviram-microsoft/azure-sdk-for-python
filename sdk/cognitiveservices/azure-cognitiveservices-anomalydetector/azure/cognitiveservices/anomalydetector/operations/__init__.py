@@ -12,5 +12,5 @@
 from ._anomaly_detector_client_operations import AnomalyDetectorClientOperationsMixin
 
 __all__ = [
-    'AnomalyDetectorClientOperationsMixin',
+    "AnomalyDetectorClientOperationsMixin",
 ]

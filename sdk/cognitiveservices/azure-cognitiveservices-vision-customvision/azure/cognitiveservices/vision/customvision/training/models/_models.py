@@ -29,25 +29,25 @@ class BoundingBox(Model):
     """
 
     _validation = {
-        'left': {'required': True},
-        'top': {'required': True},
-        'width': {'required': True},
-        'height': {'required': True},
+        "left": {"required": True},
+        "top": {"required": True},
+        "width": {"required": True},
+        "height": {"required": True},
     }
 
     _attribute_map = {
-        'left': {'key': 'left', 'type': 'float'},
-        'top': {'key': 'top', 'type': 'float'},
-        'width': {'key': 'width', 'type': 'float'},
-        'height': {'key': 'height', 'type': 'float'},
+        "left": {"key": "left", "type": "float"},
+        "top": {"key": "top", "type": "float"},
+        "width": {"key": "width", "type": "float"},
+        "height": {"key": "height", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(BoundingBox, self).__init__(**kwargs)
-        self.left = kwargs.get('left', None)
-        self.top = kwargs.get('top', None)
-        self.width = kwargs.get('width', None)
-        self.height = kwargs.get('height', None)
+        self.left = kwargs.get("left", None)
+        self.top = kwargs.get("top", None)
+        self.width = kwargs.get("width", None)
+        self.height = kwargs.get("height", None)
 
 
 class CreateProjectOptions(Model):
@@ -64,14 +64,14 @@ class CreateProjectOptions(Model):
     """
 
     _attribute_map = {
-        'export_model_container_uri': {'key': 'exportModelContainerUri', 'type': 'str'},
-        'notification_queue_uri': {'key': 'notificationQueueUri', 'type': 'str'},
+        "export_model_container_uri": {"key": "exportModelContainerUri", "type": "str"},
+        "notification_queue_uri": {"key": "notificationQueueUri", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(CreateProjectOptions, self).__init__(**kwargs)
-        self.export_model_container_uri = kwargs.get('export_model_container_uri', None)
-        self.notification_queue_uri = kwargs.get('notification_queue_uri', None)
+        self.export_model_container_uri = kwargs.get("export_model_container_uri", None)
+        self.notification_queue_uri = kwargs.get("notification_queue_uri", None)
 
 
 class CustomBaseModelInfo(Model):
@@ -88,19 +88,19 @@ class CustomBaseModelInfo(Model):
     """
 
     _validation = {
-        'project_id': {'required': True},
-        'iteration_id': {'required': True},
+        "project_id": {"required": True},
+        "iteration_id": {"required": True},
     }
 
     _attribute_map = {
-        'project_id': {'key': 'projectId', 'type': 'str'},
-        'iteration_id': {'key': 'iterationId', 'type': 'str'},
+        "project_id": {"key": "projectId", "type": "str"},
+        "iteration_id": {"key": "iterationId", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(CustomBaseModelInfo, self).__init__(**kwargs)
-        self.project_id = kwargs.get('project_id', None)
-        self.iteration_id = kwargs.get('iteration_id', None)
+        self.project_id = kwargs.get("project_id", None)
+        self.iteration_id = kwargs.get("iteration_id", None)
 
 
 class CustomVisionError(Model):
@@ -195,19 +195,19 @@ class CustomVisionError(Model):
     """
 
     _validation = {
-        'code': {'required': True},
-        'message': {'required': True},
+        "code": {"required": True},
+        "message": {"required": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(CustomVisionError, self).__init__(**kwargs)
-        self.code = kwargs.get('code', None)
-        self.message = kwargs.get('message', None)
+        self.code = kwargs.get("code", None)
+        self.message = kwargs.get("message", None)
 
 
 class CustomVisionErrorException(HttpOperationError):
@@ -219,7 +219,7 @@ class CustomVisionErrorException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(CustomVisionErrorException, self).__init__(deserialize, response, 'CustomVisionError', *args)
+        super(CustomVisionErrorException, self).__init__(deserialize, response, "CustomVisionError", *args)
 
 
 class Domain(Model):
@@ -253,23 +253,23 @@ class Domain(Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'type': {'readonly': True},
-        'exportable': {'readonly': True},
-        'enabled': {'readonly': True},
-        'exportable_platforms': {'readonly': True},
-        'model_information': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "type": {"readonly": True},
+        "exportable": {"readonly": True},
+        "enabled": {"readonly": True},
+        "exportable_platforms": {"readonly": True},
+        "model_information": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'exportable': {'key': 'exportable', 'type': 'bool'},
-        'enabled': {'key': 'enabled', 'type': 'bool'},
-        'exportable_platforms': {'key': 'exportablePlatforms', 'type': '[str]'},
-        'model_information': {'key': 'modelInformation', 'type': 'ModelInformation'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "exportable": {"key": "exportable", "type": "bool"},
+        "enabled": {"key": "enabled", "type": "bool"},
+        "exportable_platforms": {"key": "exportablePlatforms", "type": "[str]"},
+        "model_information": {"key": "modelInformation", "type": "ModelInformation"},
     }
 
     def __init__(self, **kwargs):
@@ -316,19 +316,19 @@ class Export(Model):
     """
 
     _validation = {
-        'platform': {'readonly': True},
-        'status': {'readonly': True},
-        'download_uri': {'readonly': True},
-        'flavor': {'readonly': True},
-        'newer_version_available': {'readonly': True},
+        "platform": {"readonly": True},
+        "status": {"readonly": True},
+        "download_uri": {"readonly": True},
+        "flavor": {"readonly": True},
+        "newer_version_available": {"readonly": True},
     }
 
     _attribute_map = {
-        'platform': {'key': 'platform', 'type': 'str'},
-        'status': {'key': 'status', 'type': 'str'},
-        'download_uri': {'key': 'downloadUri', 'type': 'str'},
-        'flavor': {'key': 'flavor', 'type': 'str'},
-        'newer_version_available': {'key': 'newerVersionAvailable', 'type': 'bool'},
+        "platform": {"key": "platform", "type": "str"},
+        "status": {"key": "status", "type": "str"},
+        "download_uri": {"key": "downloadUri", "type": "str"},
+        "flavor": {"key": "flavor", "type": "str"},
+        "newer_version_available": {"key": "newerVersionAvailable", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
@@ -377,29 +377,29 @@ class Image(Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'created': {'readonly': True},
-        'width': {'readonly': True},
-        'height': {'readonly': True},
-        'resized_image_uri': {'readonly': True},
-        'thumbnail_uri': {'readonly': True},
-        'original_image_uri': {'readonly': True},
-        'tags': {'readonly': True},
-        'regions': {'readonly': True},
-        'metadata': {'readonly': True},
+        "id": {"readonly": True},
+        "created": {"readonly": True},
+        "width": {"readonly": True},
+        "height": {"readonly": True},
+        "resized_image_uri": {"readonly": True},
+        "thumbnail_uri": {"readonly": True},
+        "original_image_uri": {"readonly": True},
+        "tags": {"readonly": True},
+        "regions": {"readonly": True},
+        "metadata": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
-        'resized_image_uri': {'key': 'resizedImageUri', 'type': 'str'},
-        'thumbnail_uri': {'key': 'thumbnailUri', 'type': 'str'},
-        'original_image_uri': {'key': 'originalImageUri', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '[ImageTag]'},
-        'regions': {'key': 'regions', 'type': '[ImageRegion]'},
-        'metadata': {'key': 'metadata', 'type': '{str}'},
+        "id": {"key": "id", "type": "str"},
+        "created": {"key": "created", "type": "iso-8601"},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
+        "resized_image_uri": {"key": "resizedImageUri", "type": "str"},
+        "thumbnail_uri": {"key": "thumbnailUri", "type": "str"},
+        "original_image_uri": {"key": "originalImageUri", "type": "str"},
+        "tags": {"key": "tags", "type": "[ImageTag]"},
+        "regions": {"key": "regions", "type": "[ImageRegion]"},
+        "metadata": {"key": "metadata", "type": "{str}"},
     }
 
     def __init__(self, **kwargs):
@@ -438,15 +438,15 @@ class ImageCreateResult(Model):
     """
 
     _validation = {
-        'source_url': {'readonly': True},
-        'status': {'readonly': True},
-        'image': {'readonly': True},
+        "source_url": {"readonly": True},
+        "status": {"readonly": True},
+        "image": {"readonly": True},
     }
 
     _attribute_map = {
-        'source_url': {'key': 'sourceUrl', 'type': 'str'},
-        'status': {'key': 'status', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'Image'},
+        "source_url": {"key": "sourceUrl", "type": "str"},
+        "status": {"key": "status", "type": "str"},
+        "image": {"key": "image", "type": "Image"},
     }
 
     def __init__(self, **kwargs):
@@ -471,13 +471,13 @@ class ImageCreateSummary(Model):
     """
 
     _validation = {
-        'is_batch_successful': {'readonly': True},
-        'images': {'readonly': True},
+        "is_batch_successful": {"readonly": True},
+        "images": {"readonly": True},
     }
 
     _attribute_map = {
-        'is_batch_successful': {'key': 'isBatchSuccessful', 'type': 'bool'},
-        'images': {'key': 'images', 'type': '[ImageCreateResult]'},
+        "is_batch_successful": {"key": "isBatchSuccessful", "type": "bool"},
+        "images": {"key": "images", "type": "[ImageCreateResult]"},
     }
 
     def __init__(self, **kwargs):
@@ -501,16 +501,16 @@ class ImageFileCreateBatch(Model):
     """
 
     _attribute_map = {
-        'images': {'key': 'images', 'type': '[ImageFileCreateEntry]'},
-        'tag_ids': {'key': 'tagIds', 'type': '[str]'},
-        'metadata': {'key': 'metadata', 'type': '{str}'},
+        "images": {"key": "images", "type": "[ImageFileCreateEntry]"},
+        "tag_ids": {"key": "tagIds", "type": "[str]"},
+        "metadata": {"key": "metadata", "type": "{str}"},
     }
 
     def __init__(self, **kwargs):
         super(ImageFileCreateBatch, self).__init__(**kwargs)
-        self.images = kwargs.get('images', None)
-        self.tag_ids = kwargs.get('tag_ids', None)
-        self.metadata = kwargs.get('metadata', None)
+        self.images = kwargs.get("images", None)
+        self.tag_ids = kwargs.get("tag_ids", None)
+        self.metadata = kwargs.get("metadata", None)
 
 
 class ImageFileCreateEntry(Model):
@@ -528,18 +528,18 @@ class ImageFileCreateEntry(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'contents': {'key': 'contents', 'type': 'bytearray'},
-        'tag_ids': {'key': 'tagIds', 'type': '[str]'},
-        'regions': {'key': 'regions', 'type': '[Region]'},
+        "name": {"key": "name", "type": "str"},
+        "contents": {"key": "contents", "type": "bytearray"},
+        "tag_ids": {"key": "tagIds", "type": "[str]"},
+        "regions": {"key": "regions", "type": "[Region]"},
     }
 
     def __init__(self, **kwargs):
         super(ImageFileCreateEntry, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.contents = kwargs.get('contents', None)
-        self.tag_ids = kwargs.get('tag_ids', None)
-        self.regions = kwargs.get('regions', None)
+        self.name = kwargs.get("name", None)
+        self.contents = kwargs.get("contents", None)
+        self.tag_ids = kwargs.get("tag_ids", None)
+        self.regions = kwargs.get("regions", None)
 
 
 class ImageIdCreateBatch(Model):
@@ -557,16 +557,16 @@ class ImageIdCreateBatch(Model):
     """
 
     _attribute_map = {
-        'images': {'key': 'images', 'type': '[ImageIdCreateEntry]'},
-        'tag_ids': {'key': 'tagIds', 'type': '[str]'},
-        'metadata': {'key': 'metadata', 'type': '{str}'},
+        "images": {"key": "images", "type": "[ImageIdCreateEntry]"},
+        "tag_ids": {"key": "tagIds", "type": "[str]"},
+        "metadata": {"key": "metadata", "type": "{str}"},
     }
 
     def __init__(self, **kwargs):
         super(ImageIdCreateBatch, self).__init__(**kwargs)
-        self.images = kwargs.get('images', None)
-        self.tag_ids = kwargs.get('tag_ids', None)
-        self.metadata = kwargs.get('metadata', None)
+        self.images = kwargs.get("images", None)
+        self.tag_ids = kwargs.get("tag_ids", None)
+        self.metadata = kwargs.get("metadata", None)
 
 
 class ImageIdCreateEntry(Model):
@@ -582,16 +582,16 @@ class ImageIdCreateEntry(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'tag_ids': {'key': 'tagIds', 'type': '[str]'},
-        'regions': {'key': 'regions', 'type': '[Region]'},
+        "id": {"key": "id", "type": "str"},
+        "tag_ids": {"key": "tagIds", "type": "[str]"},
+        "regions": {"key": "regions", "type": "[Region]"},
     }
 
     def __init__(self, **kwargs):
         super(ImageIdCreateEntry, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.tag_ids = kwargs.get('tag_ids', None)
-        self.regions = kwargs.get('regions', None)
+        self.id = kwargs.get("id", None)
+        self.tag_ids = kwargs.get("tag_ids", None)
+        self.regions = kwargs.get("regions", None)
 
 
 class ImageMetadataUpdateEntry(Model):
@@ -608,16 +608,16 @@ class ImageMetadataUpdateEntry(Model):
     """
 
     _attribute_map = {
-        'image_id': {'key': 'imageId', 'type': 'str'},
-        'status': {'key': 'status', 'type': 'str'},
-        'metadata': {'key': 'metadata', 'type': '{str}'},
+        "image_id": {"key": "imageId", "type": "str"},
+        "status": {"key": "status", "type": "str"},
+        "metadata": {"key": "metadata", "type": "{str}"},
     }
 
     def __init__(self, **kwargs):
         super(ImageMetadataUpdateEntry, self).__init__(**kwargs)
-        self.image_id = kwargs.get('image_id', None)
-        self.status = kwargs.get('status', None)
-        self.metadata = kwargs.get('metadata', None)
+        self.image_id = kwargs.get("image_id", None)
+        self.status = kwargs.get("status", None)
+        self.metadata = kwargs.get("metadata", None)
 
 
 class ImageMetadataUpdateSummary(Model):
@@ -634,13 +634,13 @@ class ImageMetadataUpdateSummary(Model):
     """
 
     _validation = {
-        'is_batch_successful': {'readonly': True},
-        'images': {'readonly': True},
+        "is_batch_successful": {"readonly": True},
+        "images": {"readonly": True},
     }
 
     _attribute_map = {
-        'is_batch_successful': {'key': 'isBatchSuccessful', 'type': 'bool'},
-        'images': {'key': 'images', 'type': '[ImageMetadataUpdateEntry]'},
+        "is_batch_successful": {"key": "isBatchSuccessful", "type": "bool"},
+        "images": {"key": "images", "type": "[ImageMetadataUpdateEntry]"},
     }
 
     def __init__(self, **kwargs):
@@ -683,27 +683,27 @@ class ImagePerformance(Model):
     """
 
     _validation = {
-        'predictions': {'readonly': True},
-        'id': {'readonly': True},
-        'created': {'readonly': True},
-        'width': {'readonly': True},
-        'height': {'readonly': True},
-        'image_uri': {'readonly': True},
-        'thumbnail_uri': {'readonly': True},
-        'tags': {'readonly': True},
-        'regions': {'readonly': True},
+        "predictions": {"readonly": True},
+        "id": {"readonly": True},
+        "created": {"readonly": True},
+        "width": {"readonly": True},
+        "height": {"readonly": True},
+        "image_uri": {"readonly": True},
+        "thumbnail_uri": {"readonly": True},
+        "tags": {"readonly": True},
+        "regions": {"readonly": True},
     }
 
     _attribute_map = {
-        'predictions': {'key': 'predictions', 'type': '[Prediction]'},
-        'id': {'key': 'id', 'type': 'str'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
-        'image_uri': {'key': 'imageUri', 'type': 'str'},
-        'thumbnail_uri': {'key': 'thumbnailUri', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '[ImageTag]'},
-        'regions': {'key': 'regions', 'type': '[ImageRegion]'},
+        "predictions": {"key": "predictions", "type": "[Prediction]"},
+        "id": {"key": "id", "type": "str"},
+        "created": {"key": "created", "type": "iso-8601"},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
+        "image_uri": {"key": "imageUri", "type": "str"},
+        "thumbnail_uri": {"key": "thumbnailUri", "type": "str"},
+        "tags": {"key": "tags", "type": "[ImageTag]"},
+        "regions": {"key": "regions", "type": "[ImageRegion]"},
     }
 
     def __init__(self, **kwargs):
@@ -739,19 +739,19 @@ class ImagePrediction(Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'project': {'readonly': True},
-        'iteration': {'readonly': True},
-        'created': {'readonly': True},
-        'predictions': {'readonly': True},
+        "id": {"readonly": True},
+        "project": {"readonly": True},
+        "iteration": {"readonly": True},
+        "created": {"readonly": True},
+        "predictions": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'project': {'key': 'project', 'type': 'str'},
-        'iteration': {'key': 'iteration', 'type': 'str'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
-        'predictions': {'key': 'predictions', 'type': '[Prediction]'},
+        "id": {"key": "id", "type": "str"},
+        "project": {"key": "project", "type": "str"},
+        "iteration": {"key": "iteration", "type": "str"},
+        "created": {"key": "created", "type": "iso-8601"},
+        "predictions": {"key": "predictions", "type": "[Prediction]"},
     }
 
     def __init__(self, **kwargs):
@@ -775,12 +775,12 @@ class ImageProcessingSettings(Model):
     """
 
     _attribute_map = {
-        'augmentation_methods': {'key': 'augmentationMethods', 'type': '{bool}'},
+        "augmentation_methods": {"key": "augmentationMethods", "type": "{bool}"},
     }
 
     def __init__(self, **kwargs):
         super(ImageProcessingSettings, self).__init__(**kwargs)
-        self.augmentation_methods = kwargs.get('augmentation_methods', None)
+        self.augmentation_methods = kwargs.get("augmentation_methods", None)
 
 
 class ImageRegion(Model):
@@ -810,25 +810,25 @@ class ImageRegion(Model):
     """
 
     _validation = {
-        'region_id': {'readonly': True},
-        'tag_name': {'readonly': True},
-        'created': {'readonly': True},
-        'tag_id': {'required': True},
-        'left': {'required': True},
-        'top': {'required': True},
-        'width': {'required': True},
-        'height': {'required': True},
+        "region_id": {"readonly": True},
+        "tag_name": {"readonly": True},
+        "created": {"readonly": True},
+        "tag_id": {"required": True},
+        "left": {"required": True},
+        "top": {"required": True},
+        "width": {"required": True},
+        "height": {"required": True},
     }
 
     _attribute_map = {
-        'region_id': {'key': 'regionId', 'type': 'str'},
-        'tag_name': {'key': 'tagName', 'type': 'str'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
-        'tag_id': {'key': 'tagId', 'type': 'str'},
-        'left': {'key': 'left', 'type': 'float'},
-        'top': {'key': 'top', 'type': 'float'},
-        'width': {'key': 'width', 'type': 'float'},
-        'height': {'key': 'height', 'type': 'float'},
+        "region_id": {"key": "regionId", "type": "str"},
+        "tag_name": {"key": "tagName", "type": "str"},
+        "created": {"key": "created", "type": "iso-8601"},
+        "tag_id": {"key": "tagId", "type": "str"},
+        "left": {"key": "left", "type": "float"},
+        "top": {"key": "top", "type": "float"},
+        "width": {"key": "width", "type": "float"},
+        "height": {"key": "height", "type": "float"},
     }
 
     def __init__(self, **kwargs):
@@ -836,11 +836,11 @@ class ImageRegion(Model):
         self.region_id = None
         self.tag_name = None
         self.created = None
-        self.tag_id = kwargs.get('tag_id', None)
-        self.left = kwargs.get('left', None)
-        self.top = kwargs.get('top', None)
-        self.width = kwargs.get('width', None)
-        self.height = kwargs.get('height', None)
+        self.tag_id = kwargs.get("tag_id", None)
+        self.left = kwargs.get("left", None)
+        self.top = kwargs.get("top", None)
+        self.width = kwargs.get("width", None)
+        self.height = kwargs.get("height", None)
 
 
 class ImageRegionCreateBatch(Model):
@@ -852,12 +852,12 @@ class ImageRegionCreateBatch(Model):
     """
 
     _attribute_map = {
-        'regions': {'key': 'regions', 'type': '[ImageRegionCreateEntry]'},
+        "regions": {"key": "regions", "type": "[ImageRegionCreateEntry]"},
     }
 
     def __init__(self, **kwargs):
         super(ImageRegionCreateBatch, self).__init__(**kwargs)
-        self.regions = kwargs.get('regions', None)
+        self.regions = kwargs.get("regions", None)
 
 
 class ImageRegionCreateEntry(Model):
@@ -880,31 +880,31 @@ class ImageRegionCreateEntry(Model):
     """
 
     _validation = {
-        'image_id': {'required': True},
-        'tag_id': {'required': True},
-        'left': {'required': True},
-        'top': {'required': True},
-        'width': {'required': True},
-        'height': {'required': True},
+        "image_id": {"required": True},
+        "tag_id": {"required": True},
+        "left": {"required": True},
+        "top": {"required": True},
+        "width": {"required": True},
+        "height": {"required": True},
     }
 
     _attribute_map = {
-        'image_id': {'key': 'imageId', 'type': 'str'},
-        'tag_id': {'key': 'tagId', 'type': 'str'},
-        'left': {'key': 'left', 'type': 'float'},
-        'top': {'key': 'top', 'type': 'float'},
-        'width': {'key': 'width', 'type': 'float'},
-        'height': {'key': 'height', 'type': 'float'},
+        "image_id": {"key": "imageId", "type": "str"},
+        "tag_id": {"key": "tagId", "type": "str"},
+        "left": {"key": "left", "type": "float"},
+        "top": {"key": "top", "type": "float"},
+        "width": {"key": "width", "type": "float"},
+        "height": {"key": "height", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(ImageRegionCreateEntry, self).__init__(**kwargs)
-        self.image_id = kwargs.get('image_id', None)
-        self.tag_id = kwargs.get('tag_id', None)
-        self.left = kwargs.get('left', None)
-        self.top = kwargs.get('top', None)
-        self.width = kwargs.get('width', None)
-        self.height = kwargs.get('height', None)
+        self.image_id = kwargs.get("image_id", None)
+        self.tag_id = kwargs.get("tag_id", None)
+        self.left = kwargs.get("left", None)
+        self.top = kwargs.get("top", None)
+        self.width = kwargs.get("width", None)
+        self.height = kwargs.get("height", None)
 
 
 class ImageRegionCreateResult(Model):
@@ -936,27 +936,27 @@ class ImageRegionCreateResult(Model):
     """
 
     _validation = {
-        'image_id': {'readonly': True},
-        'region_id': {'readonly': True},
-        'tag_name': {'readonly': True},
-        'created': {'readonly': True},
-        'tag_id': {'required': True},
-        'left': {'required': True},
-        'top': {'required': True},
-        'width': {'required': True},
-        'height': {'required': True},
+        "image_id": {"readonly": True},
+        "region_id": {"readonly": True},
+        "tag_name": {"readonly": True},
+        "created": {"readonly": True},
+        "tag_id": {"required": True},
+        "left": {"required": True},
+        "top": {"required": True},
+        "width": {"required": True},
+        "height": {"required": True},
     }
 
     _attribute_map = {
-        'image_id': {'key': 'imageId', 'type': 'str'},
-        'region_id': {'key': 'regionId', 'type': 'str'},
-        'tag_name': {'key': 'tagName', 'type': 'str'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
-        'tag_id': {'key': 'tagId', 'type': 'str'},
-        'left': {'key': 'left', 'type': 'float'},
-        'top': {'key': 'top', 'type': 'float'},
-        'width': {'key': 'width', 'type': 'float'},
-        'height': {'key': 'height', 'type': 'float'},
+        "image_id": {"key": "imageId", "type": "str"},
+        "region_id": {"key": "regionId", "type": "str"},
+        "tag_name": {"key": "tagName", "type": "str"},
+        "created": {"key": "created", "type": "iso-8601"},
+        "tag_id": {"key": "tagId", "type": "str"},
+        "left": {"key": "left", "type": "float"},
+        "top": {"key": "top", "type": "float"},
+        "width": {"key": "width", "type": "float"},
+        "height": {"key": "height", "type": "float"},
     }
 
     def __init__(self, **kwargs):
@@ -965,11 +965,11 @@ class ImageRegionCreateResult(Model):
         self.region_id = None
         self.tag_name = None
         self.created = None
-        self.tag_id = kwargs.get('tag_id', None)
-        self.left = kwargs.get('left', None)
-        self.top = kwargs.get('top', None)
-        self.width = kwargs.get('width', None)
-        self.height = kwargs.get('height', None)
+        self.tag_id = kwargs.get("tag_id", None)
+        self.left = kwargs.get("left", None)
+        self.top = kwargs.get("top", None)
+        self.width = kwargs.get("width", None)
+        self.height = kwargs.get("height", None)
 
 
 class ImageRegionCreateSummary(Model):
@@ -987,16 +987,16 @@ class ImageRegionCreateSummary(Model):
     """
 
     _attribute_map = {
-        'created': {'key': 'created', 'type': '[ImageRegionCreateResult]'},
-        'duplicated': {'key': 'duplicated', 'type': '[ImageRegionCreateEntry]'},
-        'exceeded': {'key': 'exceeded', 'type': '[ImageRegionCreateEntry]'},
+        "created": {"key": "created", "type": "[ImageRegionCreateResult]"},
+        "duplicated": {"key": "duplicated", "type": "[ImageRegionCreateEntry]"},
+        "exceeded": {"key": "exceeded", "type": "[ImageRegionCreateEntry]"},
     }
 
     def __init__(self, **kwargs):
         super(ImageRegionCreateSummary, self).__init__(**kwargs)
-        self.created = kwargs.get('created', None)
-        self.duplicated = kwargs.get('duplicated', None)
-        self.exceeded = kwargs.get('exceeded', None)
+        self.created = kwargs.get("created", None)
+        self.duplicated = kwargs.get("duplicated", None)
+        self.exceeded = kwargs.get("exceeded", None)
 
 
 class ImageRegionProposal(Model):
@@ -1015,15 +1015,15 @@ class ImageRegionProposal(Model):
     """
 
     _validation = {
-        'project_id': {'readonly': True},
-        'image_id': {'readonly': True},
-        'proposals': {'readonly': True},
+        "project_id": {"readonly": True},
+        "image_id": {"readonly": True},
+        "proposals": {"readonly": True},
     }
 
     _attribute_map = {
-        'project_id': {'key': 'projectId', 'type': 'str'},
-        'image_id': {'key': 'imageId', 'type': 'str'},
-        'proposals': {'key': 'proposals', 'type': '[RegionProposal]'},
+        "project_id": {"key": "projectId", "type": "str"},
+        "image_id": {"key": "imageId", "type": "str"},
+        "proposals": {"key": "proposals", "type": "[RegionProposal]"},
     }
 
     def __init__(self, **kwargs):
@@ -1048,15 +1048,15 @@ class ImageTag(Model):
     """
 
     _validation = {
-        'tag_id': {'readonly': True},
-        'tag_name': {'readonly': True},
-        'created': {'readonly': True},
+        "tag_id": {"readonly": True},
+        "tag_name": {"readonly": True},
+        "created": {"readonly": True},
     }
 
     _attribute_map = {
-        'tag_id': {'key': 'tagId', 'type': 'str'},
-        'tag_name': {'key': 'tagName', 'type': 'str'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
+        "tag_id": {"key": "tagId", "type": "str"},
+        "tag_name": {"key": "tagName", "type": "str"},
+        "created": {"key": "created", "type": "iso-8601"},
     }
 
     def __init__(self, **kwargs):
@@ -1075,12 +1075,12 @@ class ImageTagCreateBatch(Model):
     """
 
     _attribute_map = {
-        'tags': {'key': 'tags', 'type': '[ImageTagCreateEntry]'},
+        "tags": {"key": "tags", "type": "[ImageTagCreateEntry]"},
     }
 
     def __init__(self, **kwargs):
         super(ImageTagCreateBatch, self).__init__(**kwargs)
-        self.tags = kwargs.get('tags', None)
+        self.tags = kwargs.get("tags", None)
 
 
 class ImageTagCreateEntry(Model):
@@ -1093,14 +1093,14 @@ class ImageTagCreateEntry(Model):
     """
 
     _attribute_map = {
-        'image_id': {'key': 'imageId', 'type': 'str'},
-        'tag_id': {'key': 'tagId', 'type': 'str'},
+        "image_id": {"key": "imageId", "type": "str"},
+        "tag_id": {"key": "tagId", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ImageTagCreateEntry, self).__init__(**kwargs)
-        self.image_id = kwargs.get('image_id', None)
-        self.tag_id = kwargs.get('tag_id', None)
+        self.image_id = kwargs.get("image_id", None)
+        self.tag_id = kwargs.get("tag_id", None)
 
 
 class ImageTagCreateSummary(Model):
@@ -1118,16 +1118,16 @@ class ImageTagCreateSummary(Model):
     """
 
     _attribute_map = {
-        'created': {'key': 'created', 'type': '[ImageTagCreateEntry]'},
-        'duplicated': {'key': 'duplicated', 'type': '[ImageTagCreateEntry]'},
-        'exceeded': {'key': 'exceeded', 'type': '[ImageTagCreateEntry]'},
+        "created": {"key": "created", "type": "[ImageTagCreateEntry]"},
+        "duplicated": {"key": "duplicated", "type": "[ImageTagCreateEntry]"},
+        "exceeded": {"key": "exceeded", "type": "[ImageTagCreateEntry]"},
     }
 
     def __init__(self, **kwargs):
         super(ImageTagCreateSummary, self).__init__(**kwargs)
-        self.created = kwargs.get('created', None)
-        self.duplicated = kwargs.get('duplicated', None)
-        self.exceeded = kwargs.get('exceeded', None)
+        self.created = kwargs.get("created", None)
+        self.duplicated = kwargs.get("duplicated", None)
+        self.exceeded = kwargs.get("exceeded", None)
 
 
 class ImageUrl(Model):
@@ -1140,16 +1140,16 @@ class ImageUrl(Model):
     """
 
     _validation = {
-        'url': {'required': True},
+        "url": {"required": True},
     }
 
     _attribute_map = {
-        'url': {'key': 'url', 'type': 'str'},
+        "url": {"key": "url", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ImageUrl, self).__init__(**kwargs)
-        self.url = kwargs.get('url', None)
+        self.url = kwargs.get("url", None)
 
 
 class ImageUrlCreateBatch(Model):
@@ -1167,16 +1167,16 @@ class ImageUrlCreateBatch(Model):
     """
 
     _attribute_map = {
-        'images': {'key': 'images', 'type': '[ImageUrlCreateEntry]'},
-        'tag_ids': {'key': 'tagIds', 'type': '[str]'},
-        'metadata': {'key': 'metadata', 'type': '{str}'},
+        "images": {"key": "images", "type": "[ImageUrlCreateEntry]"},
+        "tag_ids": {"key": "tagIds", "type": "[str]"},
+        "metadata": {"key": "metadata", "type": "{str}"},
     }
 
     def __init__(self, **kwargs):
         super(ImageUrlCreateBatch, self).__init__(**kwargs)
-        self.images = kwargs.get('images', None)
-        self.tag_ids = kwargs.get('tag_ids', None)
-        self.metadata = kwargs.get('metadata', None)
+        self.images = kwargs.get("images", None)
+        self.tag_ids = kwargs.get("tag_ids", None)
+        self.metadata = kwargs.get("metadata", None)
 
 
 class ImageUrlCreateEntry(Model):
@@ -1194,20 +1194,20 @@ class ImageUrlCreateEntry(Model):
     """
 
     _validation = {
-        'url': {'required': True},
+        "url": {"required": True},
     }
 
     _attribute_map = {
-        'url': {'key': 'url', 'type': 'str'},
-        'tag_ids': {'key': 'tagIds', 'type': '[str]'},
-        'regions': {'key': 'regions', 'type': '[Region]'},
+        "url": {"key": "url", "type": "str"},
+        "tag_ids": {"key": "tagIds", "type": "[str]"},
+        "regions": {"key": "regions", "type": "[Region]"},
     }
 
     def __init__(self, **kwargs):
         super(ImageUrlCreateEntry, self).__init__(**kwargs)
-        self.url = kwargs.get('url', None)
-        self.tag_ids = kwargs.get('tag_ids', None)
-        self.regions = kwargs.get('regions', None)
+        self.url = kwargs.get("url", None)
+        self.tag_ids = kwargs.get("tag_ids", None)
+        self.regions = kwargs.get("regions", None)
 
 
 class Iteration(Model):
@@ -1270,51 +1270,51 @@ class Iteration(Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'required': True},
-        'status': {'readonly': True},
-        'created': {'readonly': True},
-        'last_modified': {'readonly': True},
-        'trained_at': {'readonly': True},
-        'project_id': {'readonly': True},
-        'exportable': {'readonly': True},
-        'exportable_to': {'readonly': True},
-        'domain_id': {'readonly': True},
-        'classification_type': {'readonly': True},
-        'training_type': {'readonly': True},
-        'reserved_budget_in_hours': {'readonly': True},
-        'training_time_in_minutes': {'readonly': True},
-        'publish_name': {'readonly': True},
-        'original_publish_resource_id': {'readonly': True},
-        'custom_base_model_info': {'readonly': True},
-        'training_error_details': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"required": True},
+        "status": {"readonly": True},
+        "created": {"readonly": True},
+        "last_modified": {"readonly": True},
+        "trained_at": {"readonly": True},
+        "project_id": {"readonly": True},
+        "exportable": {"readonly": True},
+        "exportable_to": {"readonly": True},
+        "domain_id": {"readonly": True},
+        "classification_type": {"readonly": True},
+        "training_type": {"readonly": True},
+        "reserved_budget_in_hours": {"readonly": True},
+        "training_time_in_minutes": {"readonly": True},
+        "publish_name": {"readonly": True},
+        "original_publish_resource_id": {"readonly": True},
+        "custom_base_model_info": {"readonly": True},
+        "training_error_details": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'status': {'key': 'status', 'type': 'str'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
-        'last_modified': {'key': 'lastModified', 'type': 'iso-8601'},
-        'trained_at': {'key': 'trainedAt', 'type': 'iso-8601'},
-        'project_id': {'key': 'projectId', 'type': 'str'},
-        'exportable': {'key': 'exportable', 'type': 'bool'},
-        'exportable_to': {'key': 'exportableTo', 'type': '[str]'},
-        'domain_id': {'key': 'domainId', 'type': 'str'},
-        'classification_type': {'key': 'classificationType', 'type': 'str'},
-        'training_type': {'key': 'trainingType', 'type': 'str'},
-        'reserved_budget_in_hours': {'key': 'reservedBudgetInHours', 'type': 'int'},
-        'training_time_in_minutes': {'key': 'trainingTimeInMinutes', 'type': 'int'},
-        'publish_name': {'key': 'publishName', 'type': 'str'},
-        'original_publish_resource_id': {'key': 'originalPublishResourceId', 'type': 'str'},
-        'custom_base_model_info': {'key': 'customBaseModelInfo', 'type': 'CustomBaseModelInfo'},
-        'training_error_details': {'key': 'trainingErrorDetails', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "status": {"key": "status", "type": "str"},
+        "created": {"key": "created", "type": "iso-8601"},
+        "last_modified": {"key": "lastModified", "type": "iso-8601"},
+        "trained_at": {"key": "trainedAt", "type": "iso-8601"},
+        "project_id": {"key": "projectId", "type": "str"},
+        "exportable": {"key": "exportable", "type": "bool"},
+        "exportable_to": {"key": "exportableTo", "type": "[str]"},
+        "domain_id": {"key": "domainId", "type": "str"},
+        "classification_type": {"key": "classificationType", "type": "str"},
+        "training_type": {"key": "trainingType", "type": "str"},
+        "reserved_budget_in_hours": {"key": "reservedBudgetInHours", "type": "int"},
+        "training_time_in_minutes": {"key": "trainingTimeInMinutes", "type": "int"},
+        "publish_name": {"key": "publishName", "type": "str"},
+        "original_publish_resource_id": {"key": "originalPublishResourceId", "type": "str"},
+        "custom_base_model_info": {"key": "customBaseModelInfo", "type": "CustomBaseModelInfo"},
+        "training_error_details": {"key": "trainingErrorDetails", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(Iteration, self).__init__(**kwargs)
         self.id = None
-        self.name = kwargs.get('name', None)
+        self.name = kwargs.get("name", None)
         self.status = None
         self.created = None
         self.last_modified = None
@@ -1357,21 +1357,21 @@ class IterationPerformance(Model):
     """
 
     _validation = {
-        'per_tag_performance': {'readonly': True},
-        'precision': {'readonly': True},
-        'precision_std_deviation': {'readonly': True},
-        'recall': {'readonly': True},
-        'recall_std_deviation': {'readonly': True},
-        'average_precision': {'readonly': True},
+        "per_tag_performance": {"readonly": True},
+        "precision": {"readonly": True},
+        "precision_std_deviation": {"readonly": True},
+        "recall": {"readonly": True},
+        "recall_std_deviation": {"readonly": True},
+        "average_precision": {"readonly": True},
     }
 
     _attribute_map = {
-        'per_tag_performance': {'key': 'perTagPerformance', 'type': '[TagPerformance]'},
-        'precision': {'key': 'precision', 'type': 'float'},
-        'precision_std_deviation': {'key': 'precisionStdDeviation', 'type': 'float'},
-        'recall': {'key': 'recall', 'type': 'float'},
-        'recall_std_deviation': {'key': 'recallStdDeviation', 'type': 'float'},
-        'average_precision': {'key': 'averagePrecision', 'type': 'float'},
+        "per_tag_performance": {"key": "perTagPerformance", "type": "[TagPerformance]"},
+        "precision": {"key": "precision", "type": "float"},
+        "precision_std_deviation": {"key": "precisionStdDeviation", "type": "float"},
+        "recall": {"key": "recall", "type": "float"},
+        "recall_std_deviation": {"key": "recallStdDeviation", "type": "float"},
+        "average_precision": {"key": "averagePrecision", "type": "float"},
     }
 
     def __init__(self, **kwargs):
@@ -1398,18 +1398,18 @@ class ModelInformation(Model):
     """
 
     _validation = {
-        'description': {'required': True},
+        "description": {"required": True},
     }
 
     _attribute_map = {
-        'estimated_model_size_in_megabytes': {'key': 'estimatedModelSizeInMegabytes', 'type': 'int'},
-        'description': {'key': 'description', 'type': 'str'},
+        "estimated_model_size_in_megabytes": {"key": "estimatedModelSizeInMegabytes", "type": "int"},
+        "description": {"key": "description", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ModelInformation, self).__init__(**kwargs)
-        self.estimated_model_size_in_megabytes = kwargs.get('estimated_model_size_in_megabytes', None)
-        self.description = kwargs.get('description', None)
+        self.estimated_model_size_in_megabytes = kwargs.get("estimated_model_size_in_megabytes", None)
+        self.description = kwargs.get("description", None)
 
 
 class Prediction(Model):
@@ -1434,19 +1434,19 @@ class Prediction(Model):
     """
 
     _validation = {
-        'probability': {'readonly': True},
-        'tag_id': {'readonly': True},
-        'tag_name': {'readonly': True},
-        'bounding_box': {'readonly': True},
-        'tag_type': {'readonly': True},
+        "probability": {"readonly": True},
+        "tag_id": {"readonly": True},
+        "tag_name": {"readonly": True},
+        "bounding_box": {"readonly": True},
+        "tag_type": {"readonly": True},
     }
 
     _attribute_map = {
-        'probability': {'key': 'probability', 'type': 'float'},
-        'tag_id': {'key': 'tagId', 'type': 'str'},
-        'tag_name': {'key': 'tagName', 'type': 'str'},
-        'bounding_box': {'key': 'boundingBox', 'type': 'BoundingBox'},
-        'tag_type': {'key': 'tagType', 'type': 'str'},
+        "probability": {"key": "probability", "type": "float"},
+        "tag_id": {"key": "tagId", "type": "str"},
+        "tag_name": {"key": "tagName", "type": "str"},
+        "bounding_box": {"key": "boundingBox", "type": "BoundingBox"},
+        "tag_type": {"key": "tagType", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -1474,17 +1474,17 @@ class PredictionQueryResult(Model):
     """
 
     _validation = {
-        'results': {'readonly': True},
+        "results": {"readonly": True},
     }
 
     _attribute_map = {
-        'token': {'key': 'token', 'type': 'PredictionQueryToken'},
-        'results': {'key': 'results', 'type': '[StoredImagePrediction]'},
+        "token": {"key": "token", "type": "PredictionQueryToken"},
+        "results": {"key": "results", "type": "[StoredImagePrediction]"},
     }
 
     def __init__(self, **kwargs):
         super(PredictionQueryResult, self).__init__(**kwargs)
-        self.token = kwargs.get('token', None)
+        self.token = kwargs.get("token", None)
         self.results = None
 
 
@@ -1500,16 +1500,16 @@ class PredictionQueryTag(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'min_threshold': {'key': 'minThreshold', 'type': 'float'},
-        'max_threshold': {'key': 'maxThreshold', 'type': 'float'},
+        "id": {"key": "id", "type": "str"},
+        "min_threshold": {"key": "minThreshold", "type": "float"},
+        "max_threshold": {"key": "maxThreshold", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(PredictionQueryTag, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.min_threshold = kwargs.get('min_threshold', None)
-        self.max_threshold = kwargs.get('max_threshold', None)
+        self.id = kwargs.get("id", None)
+        self.min_threshold = kwargs.get("min_threshold", None)
+        self.max_threshold = kwargs.get("max_threshold", None)
 
 
 class PredictionQueryToken(Model):
@@ -1538,28 +1538,28 @@ class PredictionQueryToken(Model):
     """
 
     _attribute_map = {
-        'session': {'key': 'session', 'type': 'str'},
-        'continuation': {'key': 'continuation', 'type': 'str'},
-        'max_count': {'key': 'maxCount', 'type': 'int'},
-        'order_by': {'key': 'orderBy', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '[PredictionQueryTag]'},
-        'iteration_id': {'key': 'iterationId', 'type': 'str'},
-        'start_time': {'key': 'startTime', 'type': 'iso-8601'},
-        'end_time': {'key': 'endTime', 'type': 'iso-8601'},
-        'application': {'key': 'application', 'type': 'str'},
+        "session": {"key": "session", "type": "str"},
+        "continuation": {"key": "continuation", "type": "str"},
+        "max_count": {"key": "maxCount", "type": "int"},
+        "order_by": {"key": "orderBy", "type": "str"},
+        "tags": {"key": "tags", "type": "[PredictionQueryTag]"},
+        "iteration_id": {"key": "iterationId", "type": "str"},
+        "start_time": {"key": "startTime", "type": "iso-8601"},
+        "end_time": {"key": "endTime", "type": "iso-8601"},
+        "application": {"key": "application", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(PredictionQueryToken, self).__init__(**kwargs)
-        self.session = kwargs.get('session', None)
-        self.continuation = kwargs.get('continuation', None)
-        self.max_count = kwargs.get('max_count', None)
-        self.order_by = kwargs.get('order_by', None)
-        self.tags = kwargs.get('tags', None)
-        self.iteration_id = kwargs.get('iteration_id', None)
-        self.start_time = kwargs.get('start_time', None)
-        self.end_time = kwargs.get('end_time', None)
-        self.application = kwargs.get('application', None)
+        self.session = kwargs.get("session", None)
+        self.continuation = kwargs.get("continuation", None)
+        self.max_count = kwargs.get("max_count", None)
+        self.order_by = kwargs.get("order_by", None)
+        self.tags = kwargs.get("tags", None)
+        self.iteration_id = kwargs.get("iteration_id", None)
+        self.start_time = kwargs.get("start_time", None)
+        self.end_time = kwargs.get("end_time", None)
+        self.application = kwargs.get("application", None)
 
 
 class Project(Model):
@@ -1597,39 +1597,39 @@ class Project(Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'required': True},
-        'description': {'required': True},
-        'settings': {'required': True},
-        'created': {'readonly': True},
-        'last_modified': {'readonly': True},
-        'thumbnail_uri': {'readonly': True},
-        'dr_mode_enabled': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"required": True},
+        "description": {"required": True},
+        "settings": {"required": True},
+        "created": {"readonly": True},
+        "last_modified": {"readonly": True},
+        "thumbnail_uri": {"readonly": True},
+        "dr_mode_enabled": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'settings': {'key': 'settings', 'type': 'ProjectSettings'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
-        'last_modified': {'key': 'lastModified', 'type': 'iso-8601'},
-        'thumbnail_uri': {'key': 'thumbnailUri', 'type': 'str'},
-        'dr_mode_enabled': {'key': 'drModeEnabled', 'type': 'bool'},
-        'status': {'key': 'status', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "settings": {"key": "settings", "type": "ProjectSettings"},
+        "created": {"key": "created", "type": "iso-8601"},
+        "last_modified": {"key": "lastModified", "type": "iso-8601"},
+        "thumbnail_uri": {"key": "thumbnailUri", "type": "str"},
+        "dr_mode_enabled": {"key": "drModeEnabled", "type": "bool"},
+        "status": {"key": "status", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(Project, self).__init__(**kwargs)
         self.id = None
-        self.name = kwargs.get('name', None)
-        self.description = kwargs.get('description', None)
-        self.settings = kwargs.get('settings', None)
+        self.name = kwargs.get("name", None)
+        self.description = kwargs.get("description", None)
+        self.settings = kwargs.get("settings", None)
         self.created = None
         self.last_modified = None
         self.thumbnail_uri = None
         self.dr_mode_enabled = None
-        self.status = kwargs.get('status', None)
+        self.status = kwargs.get("status", None)
 
 
 class ProjectExport(Model):
@@ -1657,21 +1657,21 @@ class ProjectExport(Model):
     """
 
     _validation = {
-        'iteration_count': {'readonly': True},
-        'image_count': {'readonly': True},
-        'tag_count': {'readonly': True},
-        'region_count': {'readonly': True},
-        'estimated_import_time_in_ms': {'readonly': True},
-        'token': {'readonly': True},
+        "iteration_count": {"readonly": True},
+        "image_count": {"readonly": True},
+        "tag_count": {"readonly": True},
+        "region_count": {"readonly": True},
+        "estimated_import_time_in_ms": {"readonly": True},
+        "token": {"readonly": True},
     }
 
     _attribute_map = {
-        'iteration_count': {'key': 'iterationCount', 'type': 'int'},
-        'image_count': {'key': 'imageCount', 'type': 'int'},
-        'tag_count': {'key': 'tagCount', 'type': 'int'},
-        'region_count': {'key': 'regionCount', 'type': 'int'},
-        'estimated_import_time_in_ms': {'key': 'estimatedImportTimeInMS', 'type': 'int'},
-        'token': {'key': 'token', 'type': 'str'},
+        "iteration_count": {"key": "iterationCount", "type": "int"},
+        "image_count": {"key": "imageCount", "type": "int"},
+        "tag_count": {"key": "tagCount", "type": "int"},
+        "region_count": {"key": "regionCount", "type": "int"},
+        "estimated_import_time_in_ms": {"key": "estimatedImportTimeInMS", "type": "int"},
+        "token": {"key": "token", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -1719,31 +1719,31 @@ class ProjectSettings(Model):
     """
 
     _validation = {
-        'use_negative_set': {'readonly': True},
-        'detection_parameters': {'readonly': True},
-        'export_model_container_uri': {'readonly': True},
-        'notification_queue_uri': {'readonly': True},
+        "use_negative_set": {"readonly": True},
+        "detection_parameters": {"readonly": True},
+        "export_model_container_uri": {"readonly": True},
+        "notification_queue_uri": {"readonly": True},
     }
 
     _attribute_map = {
-        'domain_id': {'key': 'domainId', 'type': 'str'},
-        'classification_type': {'key': 'classificationType', 'type': 'str'},
-        'target_export_platforms': {'key': 'targetExportPlatforms', 'type': '[str]'},
-        'use_negative_set': {'key': 'useNegativeSet', 'type': 'bool'},
-        'detection_parameters': {'key': 'detectionParameters', 'type': 'str'},
-        'image_processing_settings': {'key': 'imageProcessingSettings', 'type': 'ImageProcessingSettings'},
-        'export_model_container_uri': {'key': 'exportModelContainerUri', 'type': 'str'},
-        'notification_queue_uri': {'key': 'notificationQueueUri', 'type': 'str'},
+        "domain_id": {"key": "domainId", "type": "str"},
+        "classification_type": {"key": "classificationType", "type": "str"},
+        "target_export_platforms": {"key": "targetExportPlatforms", "type": "[str]"},
+        "use_negative_set": {"key": "useNegativeSet", "type": "bool"},
+        "detection_parameters": {"key": "detectionParameters", "type": "str"},
+        "image_processing_settings": {"key": "imageProcessingSettings", "type": "ImageProcessingSettings"},
+        "export_model_container_uri": {"key": "exportModelContainerUri", "type": "str"},
+        "notification_queue_uri": {"key": "notificationQueueUri", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ProjectSettings, self).__init__(**kwargs)
-        self.domain_id = kwargs.get('domain_id', None)
-        self.classification_type = kwargs.get('classification_type', None)
-        self.target_export_platforms = kwargs.get('target_export_platforms', None)
+        self.domain_id = kwargs.get("domain_id", None)
+        self.classification_type = kwargs.get("classification_type", None)
+        self.target_export_platforms = kwargs.get("target_export_platforms", None)
         self.use_negative_set = None
         self.detection_parameters = None
-        self.image_processing_settings = kwargs.get('image_processing_settings', None)
+        self.image_processing_settings = kwargs.get("image_processing_settings", None)
         self.export_model_container_uri = None
         self.notification_queue_uri = None
 
@@ -1766,28 +1766,28 @@ class Region(Model):
     """
 
     _validation = {
-        'tag_id': {'required': True},
-        'left': {'required': True},
-        'top': {'required': True},
-        'width': {'required': True},
-        'height': {'required': True},
+        "tag_id": {"required": True},
+        "left": {"required": True},
+        "top": {"required": True},
+        "width": {"required": True},
+        "height": {"required": True},
     }
 
     _attribute_map = {
-        'tag_id': {'key': 'tagId', 'type': 'str'},
-        'left': {'key': 'left', 'type': 'float'},
-        'top': {'key': 'top', 'type': 'float'},
-        'width': {'key': 'width', 'type': 'float'},
-        'height': {'key': 'height', 'type': 'float'},
+        "tag_id": {"key": "tagId", "type": "str"},
+        "left": {"key": "left", "type": "float"},
+        "top": {"key": "top", "type": "float"},
+        "width": {"key": "width", "type": "float"},
+        "height": {"key": "height", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(Region, self).__init__(**kwargs)
-        self.tag_id = kwargs.get('tag_id', None)
-        self.left = kwargs.get('left', None)
-        self.top = kwargs.get('top', None)
-        self.width = kwargs.get('width', None)
-        self.height = kwargs.get('height', None)
+        self.tag_id = kwargs.get("tag_id", None)
+        self.left = kwargs.get("left", None)
+        self.top = kwargs.get("top", None)
+        self.width = kwargs.get("width", None)
+        self.height = kwargs.get("height", None)
 
 
 class RegionProposal(Model):
@@ -1804,13 +1804,13 @@ class RegionProposal(Model):
     """
 
     _validation = {
-        'confidence': {'readonly': True},
-        'bounding_box': {'readonly': True},
+        "confidence": {"readonly": True},
+        "bounding_box": {"readonly": True},
     }
 
     _attribute_map = {
-        'confidence': {'key': 'confidence', 'type': 'float'},
-        'bounding_box': {'key': 'boundingBox', 'type': 'BoundingBox'},
+        "confidence": {"key": "confidence", "type": "float"},
+        "bounding_box": {"key": "boundingBox", "type": "BoundingBox"},
     }
 
     def __init__(self, **kwargs):
@@ -1853,27 +1853,27 @@ class StoredImagePrediction(Model):
     """
 
     _validation = {
-        'resized_image_uri': {'readonly': True},
-        'thumbnail_uri': {'readonly': True},
-        'original_image_uri': {'readonly': True},
-        'domain': {'readonly': True},
-        'id': {'readonly': True},
-        'project': {'readonly': True},
-        'iteration': {'readonly': True},
-        'created': {'readonly': True},
-        'predictions': {'readonly': True},
+        "resized_image_uri": {"readonly": True},
+        "thumbnail_uri": {"readonly": True},
+        "original_image_uri": {"readonly": True},
+        "domain": {"readonly": True},
+        "id": {"readonly": True},
+        "project": {"readonly": True},
+        "iteration": {"readonly": True},
+        "created": {"readonly": True},
+        "predictions": {"readonly": True},
     }
 
     _attribute_map = {
-        'resized_image_uri': {'key': 'resizedImageUri', 'type': 'str'},
-        'thumbnail_uri': {'key': 'thumbnailUri', 'type': 'str'},
-        'original_image_uri': {'key': 'originalImageUri', 'type': 'str'},
-        'domain': {'key': 'domain', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'project': {'key': 'project', 'type': 'str'},
-        'iteration': {'key': 'iteration', 'type': 'str'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
-        'predictions': {'key': 'predictions', 'type': '[Prediction]'},
+        "resized_image_uri": {"key": "resizedImageUri", "type": "str"},
+        "thumbnail_uri": {"key": "thumbnailUri", "type": "str"},
+        "original_image_uri": {"key": "originalImageUri", "type": "str"},
+        "domain": {"key": "domain", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "project": {"key": "project", "type": "str"},
+        "iteration": {"key": "iteration", "type": "str"},
+        "created": {"key": "created", "type": "iso-8601"},
+        "predictions": {"key": "predictions", "type": "[Prediction]"},
     }
 
     def __init__(self, **kwargs):
@@ -1930,33 +1930,33 @@ class StoredSuggestedTagAndRegion(Model):
     """
 
     _validation = {
-        'width': {'readonly': True},
-        'height': {'readonly': True},
-        'resized_image_uri': {'readonly': True},
-        'thumbnail_uri': {'readonly': True},
-        'original_image_uri': {'readonly': True},
-        'domain': {'readonly': True},
-        'id': {'readonly': True},
-        'project': {'readonly': True},
-        'iteration': {'readonly': True},
-        'created': {'readonly': True},
-        'predictions': {'readonly': True},
-        'prediction_uncertainty': {'readonly': True},
+        "width": {"readonly": True},
+        "height": {"readonly": True},
+        "resized_image_uri": {"readonly": True},
+        "thumbnail_uri": {"readonly": True},
+        "original_image_uri": {"readonly": True},
+        "domain": {"readonly": True},
+        "id": {"readonly": True},
+        "project": {"readonly": True},
+        "iteration": {"readonly": True},
+        "created": {"readonly": True},
+        "predictions": {"readonly": True},
+        "prediction_uncertainty": {"readonly": True},
     }
 
     _attribute_map = {
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
-        'resized_image_uri': {'key': 'resizedImageUri', 'type': 'str'},
-        'thumbnail_uri': {'key': 'thumbnailUri', 'type': 'str'},
-        'original_image_uri': {'key': 'originalImageUri', 'type': 'str'},
-        'domain': {'key': 'domain', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'project': {'key': 'project', 'type': 'str'},
-        'iteration': {'key': 'iteration', 'type': 'str'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
-        'predictions': {'key': 'predictions', 'type': '[Prediction]'},
-        'prediction_uncertainty': {'key': 'predictionUncertainty', 'type': 'float'},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
+        "resized_image_uri": {"key": "resizedImageUri", "type": "str"},
+        "thumbnail_uri": {"key": "thumbnailUri", "type": "str"},
+        "original_image_uri": {"key": "originalImageUri", "type": "str"},
+        "domain": {"key": "domain", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "project": {"key": "project", "type": "str"},
+        "iteration": {"key": "iteration", "type": "str"},
+        "created": {"key": "created", "type": "iso-8601"},
+        "predictions": {"key": "predictions", "type": "[Prediction]"},
+        "prediction_uncertainty": {"key": "predictionUncertainty", "type": "float"},
     }
 
     def __init__(self, **kwargs):
@@ -1998,21 +1998,21 @@ class SuggestedTagAndRegion(Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'project': {'readonly': True},
-        'iteration': {'readonly': True},
-        'created': {'readonly': True},
-        'predictions': {'readonly': True},
-        'prediction_uncertainty': {'readonly': True},
+        "id": {"readonly": True},
+        "project": {"readonly": True},
+        "iteration": {"readonly": True},
+        "created": {"readonly": True},
+        "predictions": {"readonly": True},
+        "prediction_uncertainty": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'project': {'key': 'project', 'type': 'str'},
-        'iteration': {'key': 'iteration', 'type': 'str'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
-        'predictions': {'key': 'predictions', 'type': '[Prediction]'},
-        'prediction_uncertainty': {'key': 'predictionUncertainty', 'type': 'float'},
+        "id": {"key": "id", "type": "str"},
+        "project": {"key": "project", "type": "str"},
+        "iteration": {"key": "iteration", "type": "str"},
+        "created": {"key": "created", "type": "iso-8601"},
+        "predictions": {"key": "predictions", "type": "[Prediction]"},
+        "prediction_uncertainty": {"key": "predictionUncertainty", "type": "float"},
     }
 
     def __init__(self, **kwargs):
@@ -2042,17 +2042,17 @@ class SuggestedTagAndRegionQuery(Model):
     """
 
     _validation = {
-        'results': {'readonly': True},
+        "results": {"readonly": True},
     }
 
     _attribute_map = {
-        'token': {'key': 'token', 'type': 'SuggestedTagAndRegionQueryToken'},
-        'results': {'key': 'results', 'type': '[StoredSuggestedTagAndRegion]'},
+        "token": {"key": "token", "type": "SuggestedTagAndRegionQueryToken"},
+        "results": {"key": "results", "type": "[StoredSuggestedTagAndRegion]"},
     }
 
     def __init__(self, **kwargs):
         super(SuggestedTagAndRegionQuery, self).__init__(**kwargs)
-        self.token = kwargs.get('token', None)
+        self.token = kwargs.get("token", None)
         self.results = None
 
 
@@ -2082,22 +2082,22 @@ class SuggestedTagAndRegionQueryToken(Model):
     """
 
     _attribute_map = {
-        'tag_ids': {'key': 'tagIds', 'type': '[str]'},
-        'threshold': {'key': 'threshold', 'type': 'float'},
-        'session': {'key': 'session', 'type': 'str'},
-        'continuation': {'key': 'continuation', 'type': 'str'},
-        'max_count': {'key': 'maxCount', 'type': 'int'},
-        'sort_by': {'key': 'sortBy', 'type': 'str'},
+        "tag_ids": {"key": "tagIds", "type": "[str]"},
+        "threshold": {"key": "threshold", "type": "float"},
+        "session": {"key": "session", "type": "str"},
+        "continuation": {"key": "continuation", "type": "str"},
+        "max_count": {"key": "maxCount", "type": "int"},
+        "sort_by": {"key": "sortBy", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(SuggestedTagAndRegionQueryToken, self).__init__(**kwargs)
-        self.tag_ids = kwargs.get('tag_ids', None)
-        self.threshold = kwargs.get('threshold', None)
-        self.session = kwargs.get('session', None)
-        self.continuation = kwargs.get('continuation', None)
-        self.max_count = kwargs.get('max_count', None)
-        self.sort_by = kwargs.get('sort_by', None)
+        self.tag_ids = kwargs.get("tag_ids", None)
+        self.threshold = kwargs.get("threshold", None)
+        self.session = kwargs.get("session", None)
+        self.continuation = kwargs.get("continuation", None)
+        self.max_count = kwargs.get("max_count", None)
+        self.sort_by = kwargs.get("sort_by", None)
 
 
 class Tag(Model):
@@ -2123,27 +2123,27 @@ class Tag(Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'required': True},
-        'description': {'required': True},
-        'type': {'required': True},
-        'image_count': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"required": True},
+        "description": {"required": True},
+        "type": {"required": True},
+        "image_count": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'image_count': {'key': 'imageCount', 'type': 'int'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "image_count": {"key": "imageCount", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(Tag, self).__init__(**kwargs)
         self.id = None
-        self.name = kwargs.get('name', None)
-        self.description = kwargs.get('description', None)
-        self.type = kwargs.get('type', None)
+        self.name = kwargs.get("name", None)
+        self.description = kwargs.get("description", None)
+        self.type = kwargs.get("type", None)
         self.image_count = None
 
 
@@ -2160,14 +2160,14 @@ class TagFilter(Model):
     """
 
     _attribute_map = {
-        'tag_ids': {'key': 'tagIds', 'type': '[str]'},
-        'threshold': {'key': 'threshold', 'type': 'float'},
+        "tag_ids": {"key": "tagIds", "type": "[str]"},
+        "threshold": {"key": "threshold", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(TagFilter, self).__init__(**kwargs)
-        self.tag_ids = kwargs.get('tag_ids', None)
-        self.threshold = kwargs.get('threshold', None)
+        self.tag_ids = kwargs.get("tag_ids", None)
+        self.threshold = kwargs.get("threshold", None)
 
 
 class TagPerformance(Model):
@@ -2194,23 +2194,23 @@ class TagPerformance(Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'name': {'readonly': True},
-        'precision': {'readonly': True},
-        'precision_std_deviation': {'readonly': True},
-        'recall': {'readonly': True},
-        'recall_std_deviation': {'readonly': True},
-        'average_precision': {'readonly': True},
+        "id": {"readonly": True},
+        "name": {"readonly": True},
+        "precision": {"readonly": True},
+        "precision_std_deviation": {"readonly": True},
+        "recall": {"readonly": True},
+        "recall_std_deviation": {"readonly": True},
+        "average_precision": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'precision': {'key': 'precision', 'type': 'float'},
-        'precision_std_deviation': {'key': 'precisionStdDeviation', 'type': 'float'},
-        'recall': {'key': 'recall', 'type': 'float'},
-        'recall_std_deviation': {'key': 'recallStdDeviation', 'type': 'float'},
-        'average_precision': {'key': 'averagePrecision', 'type': 'float'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "precision": {"key": "precision", "type": "float"},
+        "precision_std_deviation": {"key": "precisionStdDeviation", "type": "float"},
+        "recall": {"key": "recall", "type": "float"},
+        "recall_std_deviation": {"key": "recallStdDeviation", "type": "float"},
+        "average_precision": {"key": "averagePrecision", "type": "float"},
     }
 
     def __init__(self, **kwargs):
@@ -2237,11 +2237,11 @@ class TrainingParameters(Model):
     """
 
     _attribute_map = {
-        'selected_tags': {'key': 'selectedTags', 'type': '[str]'},
-        'custom_base_model_info': {'key': 'customBaseModelInfo', 'type': 'CustomBaseModelInfo'},
+        "selected_tags": {"key": "selectedTags", "type": "[str]"},
+        "custom_base_model_info": {"key": "customBaseModelInfo", "type": "CustomBaseModelInfo"},
     }
 
     def __init__(self, **kwargs):
         super(TrainingParameters, self).__init__(**kwargs)
-        self.selected_tags = kwargs.get('selected_tags', None)
-        self.custom_base_model_info = kwargs.get('custom_base_model_info', None)
+        self.selected_tags = kwargs.get("selected_tags", None)
+        self.custom_base_model_info = kwargs.get("custom_base_model_info", None)

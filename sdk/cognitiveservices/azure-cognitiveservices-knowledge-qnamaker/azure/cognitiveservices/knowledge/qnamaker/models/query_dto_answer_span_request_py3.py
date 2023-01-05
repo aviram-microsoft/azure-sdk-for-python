@@ -26,14 +26,18 @@ class QueryDTOAnswerSpanRequest(AnswerSpanRequestDTO):
     """
 
     _validation = {
-        'top_answers_with_span': {'maximum': 10, 'minimum': 1},
+        "top_answers_with_span": {"maximum": 10, "minimum": 1},
     }
 
     _attribute_map = {
-        'enable': {'key': 'enable', 'type': 'bool'},
-        'score_threshold': {'key': 'scoreThreshold', 'type': 'float'},
-        'top_answers_with_span': {'key': 'topAnswersWithSpan', 'type': 'int'},
+        "enable": {"key": "enable", "type": "bool"},
+        "score_threshold": {"key": "scoreThreshold", "type": "float"},
+        "top_answers_with_span": {"key": "topAnswersWithSpan", "type": "int"},
     }
 
-    def __init__(self, *, enable: bool=None, score_threshold: float=None, top_answers_with_span: int=None, **kwargs) -> None:
-        super(QueryDTOAnswerSpanRequest, self).__init__(enable=enable, score_threshold=score_threshold, top_answers_with_span=top_answers_with_span, **kwargs)
+    def __init__(
+        self, *, enable: bool = None, score_threshold: float = None, top_answers_with_span: int = None, **kwargs
+    ) -> None:
+        super(QueryDTOAnswerSpanRequest, self).__init__(
+            enable=enable, score_threshold=score_threshold, top_answers_with_span=top_answers_with_span, **kwargs
+        )

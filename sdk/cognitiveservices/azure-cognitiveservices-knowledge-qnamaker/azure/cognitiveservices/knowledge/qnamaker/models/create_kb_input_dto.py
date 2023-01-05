@@ -27,13 +27,13 @@ class CreateKbInputDTO(Model):
     """
 
     _attribute_map = {
-        'qna_list': {'key': 'qnaList', 'type': '[QnADTO]'},
-        'urls': {'key': 'urls', 'type': '[str]'},
-        'files': {'key': 'files', 'type': '[FileDTO]'},
+        "qna_list": {"key": "qnaList", "type": "[QnADTO]"},
+        "urls": {"key": "urls", "type": "[str]"},
+        "files": {"key": "files", "type": "[FileDTO]"},
     }
 
     def __init__(self, **kwargs):
         super(CreateKbInputDTO, self).__init__(**kwargs)
-        self.qna_list = kwargs.get('qna_list', None)
-        self.urls = kwargs.get('urls', None)
-        self.files = kwargs.get('files', None)
+        self.qna_list = kwargs.get("qna_list", None)
+        self.urls = kwargs.get("urls", None)
+        self.files = kwargs.get("files", None)

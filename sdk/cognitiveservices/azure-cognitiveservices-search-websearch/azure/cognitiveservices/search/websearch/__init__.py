@@ -11,9 +11,9 @@
 
 from ._configuration import WebSearchClientConfiguration
 from ._web_search_client import WebSearchClient
-__all__ = ['WebSearchClient', 'WebSearchClientConfiguration']
+
+__all__ = ["WebSearchClient", "WebSearchClientConfiguration"]
 
 from .version import VERSION
 
 __version__ = VERSION
-

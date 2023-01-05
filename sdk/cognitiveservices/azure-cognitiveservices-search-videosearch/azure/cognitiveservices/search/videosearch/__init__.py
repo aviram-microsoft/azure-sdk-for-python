@@ -11,9 +11,9 @@
 
 from ._configuration import VideoSearchClientConfiguration
 from ._video_search_client import VideoSearchClient
-__all__ = ['VideoSearchClient', 'VideoSearchClientConfiguration']
+
+__all__ = ["VideoSearchClient", "VideoSearchClientConfiguration"]
 
 from .version import VERSION
 
 __version__ = VERSION
-

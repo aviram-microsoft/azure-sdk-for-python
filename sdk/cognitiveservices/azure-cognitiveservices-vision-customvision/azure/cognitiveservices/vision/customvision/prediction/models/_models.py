@@ -29,25 +29,25 @@ class BoundingBox(Model):
     """
 
     _validation = {
-        'left': {'required': True},
-        'top': {'required': True},
-        'width': {'required': True},
-        'height': {'required': True},
+        "left": {"required": True},
+        "top": {"required": True},
+        "width": {"required": True},
+        "height": {"required": True},
     }
 
     _attribute_map = {
-        'left': {'key': 'left', 'type': 'float'},
-        'top': {'key': 'top', 'type': 'float'},
-        'width': {'key': 'width', 'type': 'float'},
-        'height': {'key': 'height', 'type': 'float'},
+        "left": {"key": "left", "type": "float"},
+        "top": {"key": "top", "type": "float"},
+        "width": {"key": "width", "type": "float"},
+        "height": {"key": "height", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(BoundingBox, self).__init__(**kwargs)
-        self.left = kwargs.get('left', None)
-        self.top = kwargs.get('top', None)
-        self.width = kwargs.get('width', None)
-        self.height = kwargs.get('height', None)
+        self.left = kwargs.get("left", None)
+        self.top = kwargs.get("top", None)
+        self.width = kwargs.get("width", None)
+        self.height = kwargs.get("height", None)
 
 
 class CustomVisionError(Model):
@@ -137,19 +137,19 @@ class CustomVisionError(Model):
     """
 
     _validation = {
-        'code': {'required': True},
-        'message': {'required': True},
+        "code": {"required": True},
+        "message": {"required": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(CustomVisionError, self).__init__(**kwargs)
-        self.code = kwargs.get('code', None)
-        self.message = kwargs.get('message', None)
+        self.code = kwargs.get("code", None)
+        self.message = kwargs.get("message", None)
 
 
 class CustomVisionErrorException(HttpOperationError):
@@ -161,7 +161,7 @@ class CustomVisionErrorException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(CustomVisionErrorException, self).__init__(deserialize, response, 'CustomVisionError', *args)
+        super(CustomVisionErrorException, self).__init__(deserialize, response, "CustomVisionError", *args)
 
 
 class ImagePrediction(Model):
@@ -184,19 +184,19 @@ class ImagePrediction(Model):
     """
 
     _validation = {
-        'id': {'readonly': True},
-        'project': {'readonly': True},
-        'iteration': {'readonly': True},
-        'created': {'readonly': True},
-        'predictions': {'readonly': True},
+        "id": {"readonly": True},
+        "project": {"readonly": True},
+        "iteration": {"readonly": True},
+        "created": {"readonly": True},
+        "predictions": {"readonly": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'project': {'key': 'project', 'type': 'str'},
-        'iteration': {'key': 'iteration', 'type': 'str'},
-        'created': {'key': 'created', 'type': 'iso-8601'},
-        'predictions': {'key': 'predictions', 'type': '[Prediction]'},
+        "id": {"key": "id", "type": "str"},
+        "project": {"key": "project", "type": "str"},
+        "iteration": {"key": "iteration", "type": "str"},
+        "created": {"key": "created", "type": "iso-8601"},
+        "predictions": {"key": "predictions", "type": "[Prediction]"},
     }
 
     def __init__(self, **kwargs):
@@ -218,16 +218,16 @@ class ImageUrl(Model):
     """
 
     _validation = {
-        'url': {'required': True},
+        "url": {"required": True},
     }
 
     _attribute_map = {
-        'url': {'key': 'url', 'type': 'str'},
+        "url": {"key": "url", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ImageUrl, self).__init__(**kwargs)
-        self.url = kwargs.get('url', None)
+        self.url = kwargs.get("url", None)
 
 
 class Prediction(Model):
@@ -252,19 +252,19 @@ class Prediction(Model):
     """
 
     _validation = {
-        'probability': {'readonly': True},
-        'tag_id': {'readonly': True},
-        'tag_name': {'readonly': True},
-        'bounding_box': {'readonly': True},
-        'tag_type': {'readonly': True},
+        "probability": {"readonly": True},
+        "tag_id": {"readonly": True},
+        "tag_name": {"readonly": True},
+        "bounding_box": {"readonly": True},
+        "tag_type": {"readonly": True},
     }
 
     _attribute_map = {
-        'probability': {'key': 'probability', 'type': 'float'},
-        'tag_id': {'key': 'tagId', 'type': 'str'},
-        'tag_name': {'key': 'tagName', 'type': 'str'},
-        'bounding_box': {'key': 'boundingBox', 'type': 'BoundingBox'},
-        'tag_type': {'key': 'tagType', 'type': 'str'},
+        "probability": {"key": "probability", "type": "float"},
+        "tag_id": {"key": "tagId", "type": "str"},
+        "tag_name": {"key": "tagName", "type": "str"},
+        "bounding_box": {"key": "boundingBox", "type": "BoundingBox"},
+        "tag_type": {"key": "tagType", "type": "str"},
     }
 
     def __init__(self, **kwargs):

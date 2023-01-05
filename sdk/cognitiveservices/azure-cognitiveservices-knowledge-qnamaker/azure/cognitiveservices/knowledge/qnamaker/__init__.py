@@ -12,7 +12,6 @@
 from .qn_amaker_client import QnAMakerClient
 from .version import VERSION
 
-__all__ = ['QnAMakerClient']
+__all__ = ["QnAMakerClient"]
 
 __version__ = VERSION
-

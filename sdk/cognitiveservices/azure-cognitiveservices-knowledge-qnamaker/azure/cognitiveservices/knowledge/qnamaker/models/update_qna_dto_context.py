@@ -30,9 +30,9 @@ class UpdateQnaDTOContext(UpdateContextDTO):
     """
 
     _attribute_map = {
-        'prompts_to_delete': {'key': 'promptsToDelete', 'type': '[int]'},
-        'prompts_to_add': {'key': 'promptsToAdd', 'type': '[PromptDTO]'},
-        'is_context_only': {'key': 'isContextOnly', 'type': 'bool'},
+        "prompts_to_delete": {"key": "promptsToDelete", "type": "[int]"},
+        "prompts_to_add": {"key": "promptsToAdd", "type": "[PromptDTO]"},
+        "is_context_only": {"key": "isContextOnly", "type": "bool"},
     }
 
     def __init__(self, **kwargs):

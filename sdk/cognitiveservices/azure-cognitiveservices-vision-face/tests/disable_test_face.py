@@ -21,8 +21,9 @@ from devtools_testutils import mgmt_settings_fake as fake_settings
 
 CWD = dirname(realpath(__file__))
 
+
 class FaceTest(ReplayableTest):
-    FILTER_HEADERS = ReplayableTest.FILTER_HEADERS + ['Ocp-Apim-Subscription-Key']
+    FILTER_HEADERS = ReplayableTest.FILTER_HEADERS + ["Ocp-Apim-Subscription-Key"]
 
     def __init__(self, method_name):
         self._fake_settings, self._real_settings = self._load_settings()
@@ -34,26 +35,40 @@ class FaceTest(ReplayableTest):
             if self._real_settings:
                 return self._real_settings
             else:
-                raise AzureTestError('Need a mgmt_settings_real.py file to run tests live.')
+                raise AzureTestError("Need a mgmt_settings_real.py file to run tests live.")
         else:
             return self._fake_settings
 
     def _load_settings(self):
         try:
             from devtools_testutils import mgmt_settings_real as real_settings
+
             return fake_settings, real_settings
         except ImportError:
             return fake_settings, None
 
     def test_face_detect(self):
-        credentials = CognitiveServicesCredentials(
-            self.settings.CS_SUBSCRIPTION_KEY
-        )
+        credentials = CognitiveServicesCredentials(self.settings.CS_SUBSCRIPTION_KEY)
         face_client = FaceClient("https://westus2.api.cognitive.microsoft.com", credentials=credentials)
         with open(join(CWD, "facefindsimilar.queryface.jpg"), "rb") as face_fd:
             result = face_client.face.detect_with_stream(
                 face_fd,
-                return_face_attributes=['age','gender','headPose','smile','facialHair','glasses','emotion','hair','makeup','occlusion','accessories','blur','exposure','noise']
+                return_face_attributes=[
+                    "age",
+                    "gender",
+                    "headPose",
+                    "smile",
+                    "facialHair",
+                    "glasses",
+                    "emotion",
+                    "hair",
+                    "makeup",
+                    "occlusion",
+                    "accessories",
+                    "blur",
+                    "exposure",
+                    "noise",
+                ],
             )
 
         detected = result[0]
@@ -62,9 +77,7 @@ class FaceTest(ReplayableTest):
         self.assertEqual(detected.face_attributes.emotion.happiness, 1.0)
 
     def test_snapshot(self):
-        credentials = CognitiveServicesCredentials(
-            self.settings.CS_SUBSCRIPTION_KEY
-        )
+        credentials = CognitiveServicesCredentials(self.settings.CS_SUBSCRIPTION_KEY)
         face_client = FaceClient("https://westus2.api.cognitive.microsoft.com", credentials=credentials)
 
         # Create a PersonGroup.
@@ -79,9 +92,7 @@ class FaceTest(ReplayableTest):
         face_client.person_group.create(personGroupId, "test", "test")
 
         # Take a snapshot for the PersonGroup
-        apply_scope = [
-            self.settings.SUBSCRIPTION_ID
-        ]
+        apply_scope = [self.settings.SUBSCRIPTION_ID]
         snapshot_type = "PersonGroup"
 
         takeSnapshotResponse = face_client.snapshot.take(snapshot_type, personGroupId, apply_scope, raw=True)
@@ -92,10 +103,10 @@ class FaceTest(ReplayableTest):
 
         # Wait for take operation to complete.
         while operationStatus != "succeeded" and operationStatus != "failed":
-          getOperationStatusResponse = face_client.snapshot.get_operation_status(takeOperationId)
-          operationStatus = getOperationStatusResponse.status
-          if self.is_live:
-              sleep(1)
+            getOperationStatusResponse = face_client.snapshot.get_operation_status(takeOperationId)
+            operationStatus = getOperationStatusResponse.status
+            if self.is_live:
+                sleep(1)
 
         assert operationStatus == "succeeded"
 
@@ -110,10 +121,10 @@ class FaceTest(ReplayableTest):
 
         # Wait for apply operation to complete.
         while operationStatus != "succeeded" and operationStatus != "failed":
-          applyOperationStatusResponse = face_client.snapshot.get_operation_status(applyOperationId)
-          operationStatus = applyOperationStatusResponse.status
-          if self.is_live:
-              sleep(1)
+            applyOperationStatusResponse = face_client.snapshot.get_operation_status(applyOperationId)
+            operationStatus = applyOperationStatusResponse.status
+            if self.is_live:
+                sleep(1)
 
         assert operationStatus == "succeeded"
 

@@ -37,20 +37,30 @@ class ApplicationCreateObject(Model):
     """
 
     _validation = {
-        'culture': {'required': True},
-        'name': {'required': True},
+        "culture": {"required": True},
+        "name": {"required": True},
     }
 
     _attribute_map = {
-        'culture': {'key': 'culture', 'type': 'str'},
-        'domain': {'key': 'domain', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'initial_version_id': {'key': 'initialVersionId', 'type': 'str'},
-        'usage_scenario': {'key': 'usageScenario', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "culture": {"key": "culture", "type": "str"},
+        "domain": {"key": "domain", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "initial_version_id": {"key": "initialVersionId", "type": "str"},
+        "usage_scenario": {"key": "usageScenario", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, culture: str, name: str, domain: str=None, description: str=None, initial_version_id: str=None, usage_scenario: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        culture: str,
+        name: str,
+        domain: str = None,
+        description: str = None,
+        initial_version_id: str = None,
+        usage_scenario: str = None,
+        **kwargs
+    ) -> None:
         super(ApplicationCreateObject, self).__init__(**kwargs)
         self.culture = culture
         self.domain = domain
@@ -90,20 +100,35 @@ class ApplicationInfoResponse(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'culture': {'key': 'culture', 'type': 'str'},
-        'usage_scenario': {'key': 'usageScenario', 'type': 'str'},
-        'domain': {'key': 'domain', 'type': 'str'},
-        'versions_count': {'key': 'versionsCount', 'type': 'int'},
-        'created_date_time': {'key': 'createdDateTime', 'type': 'str'},
-        'endpoints': {'key': 'endpoints', 'type': 'object'},
-        'endpoint_hits_count': {'key': 'endpointHitsCount', 'type': 'int'},
-        'active_version': {'key': 'activeVersion', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "culture": {"key": "culture", "type": "str"},
+        "usage_scenario": {"key": "usageScenario", "type": "str"},
+        "domain": {"key": "domain", "type": "str"},
+        "versions_count": {"key": "versionsCount", "type": "int"},
+        "created_date_time": {"key": "createdDateTime", "type": "str"},
+        "endpoints": {"key": "endpoints", "type": "object"},
+        "endpoint_hits_count": {"key": "endpointHitsCount", "type": "int"},
+        "active_version": {"key": "activeVersion", "type": "str"},
     }
 
-    def __init__(self, *, id: str=None, name: str=None, description: str=None, culture: str=None, usage_scenario: str=None, domain: str=None, versions_count: int=None, created_date_time: str=None, endpoints=None, endpoint_hits_count: int=None, active_version: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str = None,
+        name: str = None,
+        description: str = None,
+        culture: str = None,
+        usage_scenario: str = None,
+        domain: str = None,
+        versions_count: int = None,
+        created_date_time: str = None,
+        endpoints=None,
+        endpoint_hits_count: int = None,
+        active_version: str = None,
+        **kwargs
+    ) -> None:
         super(ApplicationInfoResponse, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -129,11 +154,11 @@ class ApplicationPublishObject(Model):
     """
 
     _attribute_map = {
-        'version_id': {'key': 'versionId', 'type': 'str'},
-        'is_staging': {'key': 'isStaging', 'type': 'bool'},
+        "version_id": {"key": "versionId", "type": "str"},
+        "is_staging": {"key": "isStaging", "type": "bool"},
     }
 
-    def __init__(self, *, version_id: str=None, is_staging: bool=False, **kwargs) -> None:
+    def __init__(self, *, version_id: str = None, is_staging: bool = False, **kwargs) -> None:
         super(ApplicationPublishObject, self).__init__(**kwargs)
         self.version_id = version_id
         self.is_staging = is_staging
@@ -153,13 +178,13 @@ class ApplicationSettings(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'is_public': {'required': True},
+        "id": {"required": True},
+        "is_public": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'is_public': {'key': 'public', 'type': 'bool'},
+        "id": {"key": "id", "type": "str"},
+        "is_public": {"key": "public", "type": "bool"},
     }
 
     def __init__(self, *, id: str, is_public: bool, **kwargs) -> None:
@@ -177,10 +202,10 @@ class ApplicationSettingUpdateObject(Model):
     """
 
     _attribute_map = {
-        'is_public': {'key': 'public', 'type': 'bool'},
+        "is_public": {"key": "public", "type": "bool"},
     }
 
-    def __init__(self, *, is_public: bool=None, **kwargs) -> None:
+    def __init__(self, *, is_public: bool = None, **kwargs) -> None:
         super(ApplicationSettingUpdateObject, self).__init__(**kwargs)
         self.is_public = is_public
 
@@ -195,11 +220,11 @@ class ApplicationUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, description: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, description: str = None, **kwargs) -> None:
         super(ApplicationUpdateObject, self).__init__(**kwargs)
         self.name = name
         self.description = description
@@ -215,11 +240,11 @@ class AppVersionSettingObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'value': {'key': 'value', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "value": {"key": "value", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, value: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, value: str = None, **kwargs) -> None:
         super(AppVersionSettingObject, self).__init__(**kwargs)
         self.name = name
         self.value = value
@@ -235,11 +260,11 @@ class AvailableCulture(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'code': {'key': 'code', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "code": {"key": "code", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, code: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, code: str = None, **kwargs) -> None:
         super(AvailableCulture, self).__init__(**kwargs)
         self.name = name
         self.code = code
@@ -257,12 +282,12 @@ class AvailablePrebuiltEntityModel(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'examples': {'key': 'examples', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "examples": {"key": "examples", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, description: str=None, examples: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, description: str = None, examples: str = None, **kwargs) -> None:
         super(AvailablePrebuiltEntityModel, self).__init__(**kwargs)
         self.name = name
         self.description = description
@@ -283,15 +308,15 @@ class AzureAccountInfoObject(Model):
     """
 
     _validation = {
-        'azure_subscription_id': {'required': True},
-        'resource_group': {'required': True},
-        'account_name': {'required': True},
+        "azure_subscription_id": {"required": True},
+        "resource_group": {"required": True},
+        "account_name": {"required": True},
     }
 
     _attribute_map = {
-        'azure_subscription_id': {'key': 'azureSubscriptionId', 'type': 'str'},
-        'resource_group': {'key': 'resourceGroup', 'type': 'str'},
-        'account_name': {'key': 'accountName', 'type': 'str'},
+        "azure_subscription_id": {"key": "azureSubscriptionId", "type": "str"},
+        "resource_group": {"key": "resourceGroup", "type": "str"},
+        "account_name": {"key": "accountName", "type": "str"},
     }
 
     def __init__(self, *, azure_subscription_id: str, resource_group: str, account_name: str, **kwargs) -> None:
@@ -315,12 +340,12 @@ class BatchLabelExample(Model):
     """
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': 'LabelExampleResponse'},
-        'has_error': {'key': 'hasError', 'type': 'bool'},
-        'error': {'key': 'error', 'type': 'OperationStatus'},
+        "value": {"key": "value", "type": "LabelExampleResponse"},
+        "has_error": {"key": "hasError", "type": "bool"},
+        "error": {"key": "error", "type": "OperationStatus"},
     }
 
-    def __init__(self, *, value=None, has_error: bool=None, error=None, **kwargs) -> None:
+    def __init__(self, *, value=None, has_error: bool = None, error=None, **kwargs) -> None:
         super(BatchLabelExample, self).__init__(**kwargs)
         self.value = value
         self.has_error = has_error
@@ -353,19 +378,29 @@ class ChildEntity(Model):
     """
 
     _validation = {
-        'id': {'required': True},
+        "id": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'instance_of': {'key': 'instanceOf', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "instance_of": {"key": "instanceOf", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
     }
 
-    def __init__(self, *, id: str, name: str=None, instance_of: str=None, type_id: int=None, readable_type=None, children=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str,
+        name: str = None,
+        instance_of: str = None,
+        type_id: int = None,
+        readable_type=None,
+        children=None,
+        **kwargs
+    ) -> None:
         super(ChildEntity, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -388,12 +423,12 @@ class ChildEntityModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'children': {'key': 'children', 'type': '[ChildEntityModelCreateObject]'},
-        'name': {'key': 'name', 'type': 'str'},
-        'instance_of': {'key': 'instanceOf', 'type': 'str'},
+        "children": {"key": "children", "type": "[ChildEntityModelCreateObject]"},
+        "name": {"key": "name", "type": "str"},
+        "instance_of": {"key": "instanceOf", "type": "str"},
     }
 
-    def __init__(self, *, children=None, name: str=None, instance_of: str=None, **kwargs) -> None:
+    def __init__(self, *, children=None, name: str = None, instance_of: str = None, **kwargs) -> None:
         super(ChildEntityModelCreateObject, self).__init__(**kwargs)
         self.children = children
         self.name = name
@@ -413,12 +448,12 @@ class ClosedList(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'sub_lists': {'key': 'subLists', 'type': '[SubClosedList]'},
-        'roles': {'key': 'roles', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "sub_lists": {"key": "subLists", "type": "[SubClosedList]"},
+        "roles": {"key": "roles", "type": "[str]"},
     }
 
-    def __init__(self, *, name: str=None, sub_lists=None, roles=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, sub_lists=None, roles=None, **kwargs) -> None:
         super(ClosedList, self).__init__(**kwargs)
         self.name = name
         self.sub_lists = sub_lists
@@ -453,20 +488,22 @@ class ClosedListEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'sub_lists': {'key': 'subLists', 'type': '[SubClosedListResponse]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "sub_lists": {"key": "subLists", "type": "[SubClosedListResponse]"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, roles=None, sub_lists=None, **kwargs) -> None:
+    def __init__(
+        self, *, id: str, readable_type, name: str = None, type_id: int = None, roles=None, sub_lists=None, **kwargs
+    ) -> None:
         super(ClosedListEntityExtractor, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -487,11 +524,11 @@ class ClosedListModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'sub_lists': {'key': 'subLists', 'type': '[WordListObject]'},
-        'name': {'key': 'name', 'type': 'str'},
+        "sub_lists": {"key": "subLists", "type": "[WordListObject]"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, sub_lists=None, name: str=None, **kwargs) -> None:
+    def __init__(self, *, sub_lists=None, name: str = None, **kwargs) -> None:
         super(ClosedListModelCreateObject, self).__init__(**kwargs)
         self.sub_lists = sub_lists
         self.name = name
@@ -506,7 +543,7 @@ class ClosedListModelPatchObject(Model):
     """
 
     _attribute_map = {
-        'sub_lists': {'key': 'subLists', 'type': '[WordListObject]'},
+        "sub_lists": {"key": "subLists", "type": "[WordListObject]"},
     }
 
     def __init__(self, *, sub_lists=None, **kwargs) -> None:
@@ -525,11 +562,11 @@ class ClosedListModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'sub_lists': {'key': 'subLists', 'type': '[WordListObject]'},
-        'name': {'key': 'name', 'type': 'str'},
+        "sub_lists": {"key": "subLists", "type": "[WordListObject]"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, sub_lists=None, name: str=None, **kwargs) -> None:
+    def __init__(self, *, sub_lists=None, name: str = None, **kwargs) -> None:
         super(ClosedListModelUpdateObject, self).__init__(**kwargs)
         self.sub_lists = sub_lists
         self.name = name
@@ -543,7 +580,7 @@ class CollaboratorsArray(Model):
     """
 
     _attribute_map = {
-        'emails': {'key': 'emails', 'type': '[str]'},
+        "emails": {"key": "emails", "type": "[str]"},
     }
 
     def __init__(self, *, emails=None, **kwargs) -> None:
@@ -559,10 +596,10 @@ class CompositeChildModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, **kwargs) -> None:
         super(CompositeChildModelCreateObject, self).__init__(**kwargs)
         self.name = name
 
@@ -595,20 +632,22 @@ class CompositeEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, roles=None, children=None, **kwargs) -> None:
+    def __init__(
+        self, *, id: str, readable_type, name: str = None, type_id: int = None, roles=None, children=None, **kwargs
+    ) -> None:
         super(CompositeEntityExtractor, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -628,11 +667,11 @@ class CompositeEntityModel(Model):
     """
 
     _attribute_map = {
-        'children': {'key': 'children', 'type': '[str]'},
-        'name': {'key': 'name', 'type': 'str'},
+        "children": {"key": "children", "type": "[str]"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, children=None, name: str=None, **kwargs) -> None:
+    def __init__(self, *, children=None, name: str = None, **kwargs) -> None:
         super(CompositeEntityModel, self).__init__(**kwargs)
         self.children = children
         self.name = name
@@ -667,21 +706,32 @@ class CustomPrebuiltModel(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'custom_prebuilt_domain_name': {'key': 'customPrebuiltDomainName', 'type': 'str'},
-        'custom_prebuilt_model_name': {'key': 'customPrebuiltModelName', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "custom_prebuilt_domain_name": {"key": "customPrebuiltDomainName", "type": "str"},
+        "custom_prebuilt_model_name": {"key": "customPrebuiltModelName", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, custom_prebuilt_domain_name: str=None, custom_prebuilt_model_name: str=None, roles=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str,
+        readable_type,
+        name: str = None,
+        type_id: int = None,
+        custom_prebuilt_domain_name: str = None,
+        custom_prebuilt_model_name: str = None,
+        roles=None,
+        **kwargs
+    ) -> None:
         super(CustomPrebuiltModel, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -715,17 +765,29 @@ class EndpointInfo(Model):
     """
 
     _attribute_map = {
-        'version_id': {'key': 'versionId', 'type': 'str'},
-        'is_staging': {'key': 'isStaging', 'type': 'bool'},
-        'endpoint_url': {'key': 'endpointUrl', 'type': 'str'},
-        'region': {'key': 'region', 'type': 'str'},
-        'assigned_endpoint_key': {'key': 'assignedEndpointKey', 'type': 'str'},
-        'endpoint_region': {'key': 'endpointRegion', 'type': 'str'},
-        'failed_regions': {'key': 'failedRegions', 'type': 'str'},
-        'published_date_time': {'key': 'publishedDateTime', 'type': 'str'},
+        "version_id": {"key": "versionId", "type": "str"},
+        "is_staging": {"key": "isStaging", "type": "bool"},
+        "endpoint_url": {"key": "endpointUrl", "type": "str"},
+        "region": {"key": "region", "type": "str"},
+        "assigned_endpoint_key": {"key": "assignedEndpointKey", "type": "str"},
+        "endpoint_region": {"key": "endpointRegion", "type": "str"},
+        "failed_regions": {"key": "failedRegions", "type": "str"},
+        "published_date_time": {"key": "publishedDateTime", "type": "str"},
     }
 
-    def __init__(self, *, version_id: str=None, is_staging: bool=None, endpoint_url: str=None, region: str=None, assigned_endpoint_key: str=None, endpoint_region: str=None, failed_regions: str=None, published_date_time: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        version_id: str = None,
+        is_staging: bool = None,
+        endpoint_url: str = None,
+        region: str = None,
+        assigned_endpoint_key: str = None,
+        endpoint_region: str = None,
+        failed_regions: str = None,
+        published_date_time: str = None,
+        **kwargs
+    ) -> None:
         super(EndpointInfo, self).__init__(**kwargs)
         self.version_id = version_id
         self.is_staging = is_staging
@@ -749,11 +811,11 @@ class EnqueueTrainingResponse(Model):
     """
 
     _attribute_map = {
-        'status_id': {'key': 'statusId', 'type': 'int'},
-        'status': {'key': 'status', 'type': 'str'},
+        "status_id": {"key": "statusId", "type": "int"},
+        "status": {"key": "status", "type": "str"},
     }
 
-    def __init__(self, *, status_id: int=None, status=None, **kwargs) -> None:
+    def __init__(self, *, status_id: int = None, status=None, **kwargs) -> None:
         super(EnqueueTrainingResponse, self).__init__(**kwargs)
         self.status_id = status_id
         self.status = status
@@ -776,13 +838,15 @@ class EntitiesSuggestionExample(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'tokenized_text': {'key': 'tokenizedText', 'type': '[str]'},
-        'intent_predictions': {'key': 'intentPredictions', 'type': '[IntentPrediction]'},
-        'entity_predictions': {'key': 'entityPredictions', 'type': '[EntityPrediction]'},
+        "text": {"key": "text", "type": "str"},
+        "tokenized_text": {"key": "tokenizedText", "type": "[str]"},
+        "intent_predictions": {"key": "intentPredictions", "type": "[IntentPrediction]"},
+        "entity_predictions": {"key": "entityPredictions", "type": "[EntityPrediction]"},
     }
 
-    def __init__(self, *, text: str=None, tokenized_text=None, intent_predictions=None, entity_predictions=None, **kwargs) -> None:
+    def __init__(
+        self, *, text: str = None, tokenized_text=None, intent_predictions=None, entity_predictions=None, **kwargs
+    ) -> None:
         super(EntitiesSuggestionExample, self).__init__(**kwargs)
         self.text = text
         self.tokenized_text = tokenized_text
@@ -819,21 +883,32 @@ class EntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'custom_prebuilt_domain_name': {'key': 'customPrebuiltDomainName', 'type': 'str'},
-        'custom_prebuilt_model_name': {'key': 'customPrebuiltModelName', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "custom_prebuilt_domain_name": {"key": "customPrebuiltDomainName", "type": "str"},
+        "custom_prebuilt_model_name": {"key": "customPrebuiltModelName", "type": "str"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, roles=None, custom_prebuilt_domain_name: str=None, custom_prebuilt_model_name: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str,
+        readable_type,
+        name: str = None,
+        type_id: int = None,
+        roles=None,
+        custom_prebuilt_domain_name: str = None,
+        custom_prebuilt_model_name: str = None,
+        **kwargs
+    ) -> None:
         super(EntityExtractor, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -868,21 +943,31 @@ class EntityLabel(Model):
     """
 
     _validation = {
-        'entity_name': {'required': True},
-        'start_token_index': {'required': True},
-        'end_token_index': {'required': True},
+        "entity_name": {"required": True},
+        "start_token_index": {"required": True},
+        "end_token_index": {"required": True},
     }
 
     _attribute_map = {
-        'entity_name': {'key': 'entityName', 'type': 'str'},
-        'start_token_index': {'key': 'startTokenIndex', 'type': 'int'},
-        'end_token_index': {'key': 'endTokenIndex', 'type': 'int'},
-        'role': {'key': 'role', 'type': 'str'},
-        'role_id': {'key': 'roleId', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[EntityLabel]'},
+        "entity_name": {"key": "entityName", "type": "str"},
+        "start_token_index": {"key": "startTokenIndex", "type": "int"},
+        "end_token_index": {"key": "endTokenIndex", "type": "int"},
+        "role": {"key": "role", "type": "str"},
+        "role_id": {"key": "roleId", "type": "str"},
+        "children": {"key": "children", "type": "[EntityLabel]"},
     }
 
-    def __init__(self, *, entity_name: str, start_token_index: int, end_token_index: int, role: str=None, role_id: str=None, children=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        entity_name: str,
+        start_token_index: int,
+        end_token_index: int,
+        role: str = None,
+        role_id: str = None,
+        children=None,
+        **kwargs
+    ) -> None:
         super(EntityLabel, self).__init__(**kwargs)
         self.entity_name = entity_name
         self.start_token_index = start_token_index
@@ -914,20 +999,22 @@ class EntityLabelObject(Model):
     """
 
     _validation = {
-        'entity_name': {'required': True},
-        'start_char_index': {'required': True},
-        'end_char_index': {'required': True},
+        "entity_name": {"required": True},
+        "start_char_index": {"required": True},
+        "end_char_index": {"required": True},
     }
 
     _attribute_map = {
-        'entity_name': {'key': 'entityName', 'type': 'str'},
-        'start_char_index': {'key': 'startCharIndex', 'type': 'int'},
-        'end_char_index': {'key': 'endCharIndex', 'type': 'int'},
-        'role': {'key': 'role', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[EntityLabelObject]'},
+        "entity_name": {"key": "entityName", "type": "str"},
+        "start_char_index": {"key": "startCharIndex", "type": "int"},
+        "end_char_index": {"key": "endCharIndex", "type": "int"},
+        "role": {"key": "role", "type": "str"},
+        "children": {"key": "children", "type": "[EntityLabelObject]"},
     }
 
-    def __init__(self, *, entity_name: str, start_char_index: int, end_char_index: int, role: str=None, children=None, **kwargs) -> None:
+    def __init__(
+        self, *, entity_name: str, start_char_index: int, end_char_index: int, role: str = None, children=None, **kwargs
+    ) -> None:
         super(EntityLabelObject, self).__init__(**kwargs)
         self.entity_name = entity_name
         self.start_char_index = start_char_index
@@ -947,11 +1034,11 @@ class EntityModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'children': {'key': 'children', 'type': '[ChildEntityModelCreateObject]'},
-        'name': {'key': 'name', 'type': 'str'},
+        "children": {"key": "children", "type": "[ChildEntityModelCreateObject]"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, children=None, name: str=None, **kwargs) -> None:
+    def __init__(self, *, children=None, name: str = None, **kwargs) -> None:
         super(EntityModelCreateObject, self).__init__(**kwargs)
         self.children = children
         self.name = name
@@ -979,18 +1066,18 @@ class ModelInfo(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, **kwargs) -> None:
+    def __init__(self, *, id: str, readable_type, name: str = None, type_id: int = None, **kwargs) -> None:
         super(ModelInfo, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -1023,19 +1110,19 @@ class EntityModelInfo(ModelInfo):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, roles=None, **kwargs) -> None:
+    def __init__(self, *, id: str, readable_type, name: str = None, type_id: int = None, roles=None, **kwargs) -> None:
         super(EntityModelInfo, self).__init__(id=id, name=name, type_id=type_id, readable_type=readable_type, **kwargs)
         self.roles = roles
 
@@ -1050,11 +1137,11 @@ class EntityModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'instance_of': {'key': 'instanceOf', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "instance_of": {"key": "instanceOf", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, instance_of: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, instance_of: str = None, **kwargs) -> None:
         super(EntityModelUpdateObject, self).__init__(**kwargs)
         self.name = name
         self.instance_of = instance_of
@@ -1081,21 +1168,23 @@ class EntityPrediction(Model):
     """
 
     _validation = {
-        'entity_name': {'required': True},
-        'start_token_index': {'required': True},
-        'end_token_index': {'required': True},
-        'phrase': {'required': True},
+        "entity_name": {"required": True},
+        "start_token_index": {"required": True},
+        "end_token_index": {"required": True},
+        "phrase": {"required": True},
     }
 
     _attribute_map = {
-        'entity_name': {'key': 'entityName', 'type': 'str'},
-        'start_token_index': {'key': 'startTokenIndex', 'type': 'int'},
-        'end_token_index': {'key': 'endTokenIndex', 'type': 'int'},
-        'phrase': {'key': 'phrase', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[EntityPrediction]'},
+        "entity_name": {"key": "entityName", "type": "str"},
+        "start_token_index": {"key": "startTokenIndex", "type": "int"},
+        "end_token_index": {"key": "endTokenIndex", "type": "int"},
+        "phrase": {"key": "phrase", "type": "str"},
+        "children": {"key": "children", "type": "[EntityPrediction]"},
     }
 
-    def __init__(self, *, entity_name: str, start_token_index: int, end_token_index: int, phrase: str, children=None, **kwargs) -> None:
+    def __init__(
+        self, *, entity_name: str, start_token_index: int, end_token_index: int, phrase: str, children=None, **kwargs
+    ) -> None:
         super(EntityPrediction, self).__init__(**kwargs)
         self.entity_name = entity_name
         self.start_token_index = start_token_index
@@ -1114,11 +1203,11 @@ class EntityRole(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, id: str=None, name: str=None, **kwargs) -> None:
+    def __init__(self, *, id: str = None, name: str = None, **kwargs) -> None:
         super(EntityRole, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -1132,10 +1221,10 @@ class EntityRoleCreateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, **kwargs) -> None:
         super(EntityRoleCreateObject, self).__init__(**kwargs)
         self.name = name
 
@@ -1148,10 +1237,10 @@ class EntityRoleUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, **kwargs) -> None:
         super(EntityRoleUpdateObject, self).__init__(**kwargs)
         self.name = name
 
@@ -1167,11 +1256,11 @@ class ErrorResponse(Model):
     """
 
     _attribute_map = {
-        'additional_properties': {'key': '', 'type': '{object}'},
-        'error_type': {'key': 'errorType', 'type': 'str'},
+        "additional_properties": {"key": "", "type": "{object}"},
+        "error_type": {"key": "errorType", "type": "str"},
     }
 
-    def __init__(self, *, additional_properties=None, error_type: str=None, **kwargs) -> None:
+    def __init__(self, *, additional_properties=None, error_type: str = None, **kwargs) -> None:
         super(ErrorResponse, self).__init__(**kwargs)
         self.additional_properties = additional_properties
         self.error_type = error_type
@@ -1186,7 +1275,7 @@ class ErrorResponseException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(ErrorResponseException, self).__init__(deserialize, response, 'ErrorResponse', *args)
+        super(ErrorResponseException, self).__init__(deserialize, response, "ErrorResponse", *args)
 
 
 class ExampleLabelObject(Model):
@@ -1204,12 +1293,12 @@ class ExampleLabelObject(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'entity_labels': {'key': 'entityLabels', 'type': '[EntityLabelObject]'},
-        'intent_name': {'key': 'intentName', 'type': 'str'},
+        "text": {"key": "text", "type": "str"},
+        "entity_labels": {"key": "entityLabels", "type": "[EntityLabelObject]"},
+        "intent_name": {"key": "intentName", "type": "str"},
     }
 
-    def __init__(self, *, text: str=None, entity_labels=None, intent_name: str=None, **kwargs) -> None:
+    def __init__(self, *, text: str = None, entity_labels=None, intent_name: str = None, **kwargs) -> None:
         super(ExampleLabelObject, self).__init__(**kwargs)
         self.text = text
         self.entity_labels = entity_labels
@@ -1226,11 +1315,11 @@ class ExplicitListItem(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'long'},
-        'explicit_list_item': {'key': 'explicitListItem', 'type': 'str'},
+        "id": {"key": "id", "type": "long"},
+        "explicit_list_item": {"key": "explicitListItem", "type": "str"},
     }
 
-    def __init__(self, *, id: int=None, explicit_list_item: str=None, **kwargs) -> None:
+    def __init__(self, *, id: int = None, explicit_list_item: str = None, **kwargs) -> None:
         super(ExplicitListItem, self).__init__(**kwargs)
         self.id = id
         self.explicit_list_item = explicit_list_item
@@ -1244,10 +1333,10 @@ class ExplicitListItemCreateObject(Model):
     """
 
     _attribute_map = {
-        'explicit_list_item': {'key': 'explicitListItem', 'type': 'str'},
+        "explicit_list_item": {"key": "explicitListItem", "type": "str"},
     }
 
-    def __init__(self, *, explicit_list_item: str=None, **kwargs) -> None:
+    def __init__(self, *, explicit_list_item: str = None, **kwargs) -> None:
         super(ExplicitListItemCreateObject, self).__init__(**kwargs)
         self.explicit_list_item = explicit_list_item
 
@@ -1260,10 +1349,10 @@ class ExplicitListItemUpdateObject(Model):
     """
 
     _attribute_map = {
-        'explicit_list_item': {'key': 'explicitListItem', 'type': 'str'},
+        "explicit_list_item": {"key": "explicitListItem", "type": "str"},
     }
 
-    def __init__(self, *, explicit_list_item: str=None, **kwargs) -> None:
+    def __init__(self, *, explicit_list_item: str = None, **kwargs) -> None:
         super(ExplicitListItemUpdateObject, self).__init__(**kwargs)
         self.explicit_list_item = explicit_list_item
 
@@ -1283,13 +1372,15 @@ class FeatureInfoObject(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'name': {'key': 'name', 'type': 'str'},
-        'is_active': {'key': 'isActive', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "is_active": {"key": "isActive", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
     }
 
-    def __init__(self, *, id: int=None, name: str=None, is_active: bool=None, enabled_for_all_models: bool=None, **kwargs) -> None:
+    def __init__(
+        self, *, id: int = None, name: str = None, is_active: bool = None, enabled_for_all_models: bool = None, **kwargs
+    ) -> None:
         super(FeatureInfoObject, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -1309,8 +1400,8 @@ class FeaturesResponseObject(Model):
     """
 
     _attribute_map = {
-        'phraselist_features': {'key': 'phraselistFeatures', 'type': '[PhraseListFeatureInfo]'},
-        'pattern_features': {'key': 'patternFeatures', 'type': '[PatternFeatureInfo]'},
+        "phraselist_features": {"key": "phraselistFeatures", "type": "[PhraseListFeatureInfo]"},
+        "pattern_features": {"key": "patternFeatures", "type": "[PatternFeatureInfo]"},
     }
 
     def __init__(self, *, phraselist_features=None, pattern_features=None, **kwargs) -> None:
@@ -1345,20 +1436,38 @@ class HierarchicalChildEntity(ChildEntity):
     """
 
     _validation = {
-        'id': {'required': True},
+        "id": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'instance_of': {'key': 'instanceOf', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "instance_of": {"key": "instanceOf", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
     }
 
-    def __init__(self, *, id: str, name: str=None, instance_of: str=None, type_id: int=None, readable_type=None, children=None, **kwargs) -> None:
-        super(HierarchicalChildEntity, self).__init__(id=id, name=name, instance_of=instance_of, type_id=type_id, readable_type=readable_type, children=children, **kwargs)
+    def __init__(
+        self,
+        *,
+        id: str,
+        name: str = None,
+        instance_of: str = None,
+        type_id: int = None,
+        readable_type=None,
+        children=None,
+        **kwargs
+    ) -> None:
+        super(HierarchicalChildEntity, self).__init__(
+            id=id,
+            name=name,
+            instance_of=instance_of,
+            type_id=type_id,
+            readable_type=readable_type,
+            children=children,
+            **kwargs
+        )
 
 
 class HierarchicalChildModelUpdateObject(Model):
@@ -1369,10 +1478,10 @@ class HierarchicalChildModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, **kwargs) -> None:
         super(HierarchicalChildModelUpdateObject, self).__init__(**kwargs)
         self.name = name
 
@@ -1405,20 +1514,22 @@ class HierarchicalEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, roles=None, children=None, **kwargs) -> None:
+    def __init__(
+        self, *, id: str, readable_type, name: str = None, type_id: int = None, roles=None, children=None, **kwargs
+    ) -> None:
         super(HierarchicalEntityExtractor, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -1447,14 +1558,14 @@ class HierarchicalModel(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[JsonChild]'},
-        'features': {'key': 'features', 'type': '[JsonModelFeatureInformation]'},
-        'roles': {'key': 'roles', 'type': '[str]'},
-        'inherits': {'key': 'inherits', 'type': 'PrebuiltDomainObject'},
+        "name": {"key": "name", "type": "str"},
+        "children": {"key": "children", "type": "[JsonChild]"},
+        "features": {"key": "features", "type": "[JsonModelFeatureInformation]"},
+        "roles": {"key": "roles", "type": "[str]"},
+        "inherits": {"key": "inherits", "type": "PrebuiltDomainObject"},
     }
 
-    def __init__(self, *, name: str=None, children=None, features=None, roles=None, inherits=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, children=None, features=None, roles=None, inherits=None, **kwargs) -> None:
         super(HierarchicalModel, self).__init__(**kwargs)
         self.name = name
         self.children = children
@@ -1478,13 +1589,13 @@ class HierarchicalModelV2(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[str]'},
-        'inherits': {'key': 'inherits', 'type': 'PrebuiltDomainObject'},
-        'roles': {'key': 'roles', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "children": {"key": "children", "type": "[str]"},
+        "inherits": {"key": "inherits", "type": "PrebuiltDomainObject"},
+        "roles": {"key": "roles", "type": "[str]"},
     }
 
-    def __init__(self, *, name: str=None, children=None, inherits=None, roles=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, children=None, inherits=None, roles=None, **kwargs) -> None:
         super(HierarchicalModelV2, self).__init__(**kwargs)
         self.name = name
         self.children = children
@@ -1518,20 +1629,30 @@ class IntentClassifier(ModelInfo):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'custom_prebuilt_domain_name': {'key': 'customPrebuiltDomainName', 'type': 'str'},
-        'custom_prebuilt_model_name': {'key': 'customPrebuiltModelName', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "custom_prebuilt_domain_name": {"key": "customPrebuiltDomainName", "type": "str"},
+        "custom_prebuilt_model_name": {"key": "customPrebuiltModelName", "type": "str"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, custom_prebuilt_domain_name: str=None, custom_prebuilt_model_name: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str,
+        readable_type,
+        name: str = None,
+        type_id: int = None,
+        custom_prebuilt_domain_name: str = None,
+        custom_prebuilt_model_name: str = None,
+        **kwargs
+    ) -> None:
         super(IntentClassifier, self).__init__(id=id, name=name, type_id=type_id, readable_type=readable_type, **kwargs)
         self.custom_prebuilt_domain_name = custom_prebuilt_domain_name
         self.custom_prebuilt_model_name = custom_prebuilt_model_name
@@ -1547,11 +1668,11 @@ class IntentPrediction(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'score': {'key': 'score', 'type': 'float'},
+        "name": {"key": "name", "type": "str"},
+        "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, *, name: str=None, score: float=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, score: float = None, **kwargs) -> None:
         super(IntentPrediction, self).__init__(**kwargs)
         self.name = name
         self.score = score
@@ -1574,13 +1695,15 @@ class IntentsSuggestionExample(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'tokenized_text': {'key': 'tokenizedText', 'type': '[str]'},
-        'intent_predictions': {'key': 'intentPredictions', 'type': '[IntentPrediction]'},
-        'entity_predictions': {'key': 'entityPredictions', 'type': '[EntityPrediction]'},
+        "text": {"key": "text", "type": "str"},
+        "tokenized_text": {"key": "tokenizedText", "type": "[str]"},
+        "intent_predictions": {"key": "intentPredictions", "type": "[IntentPrediction]"},
+        "entity_predictions": {"key": "entityPredictions", "type": "[EntityPrediction]"},
     }
 
-    def __init__(self, *, text: str=None, tokenized_text=None, intent_predictions=None, entity_predictions=None, **kwargs) -> None:
+    def __init__(
+        self, *, text: str = None, tokenized_text=None, intent_predictions=None, entity_predictions=None, **kwargs
+    ) -> None:
         super(IntentsSuggestionExample, self).__init__(**kwargs)
         self.text = text
         self.tokenized_text = tokenized_text
@@ -1604,13 +1727,13 @@ class JsonChild(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'instance_of': {'key': 'instanceOf', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[JsonChild]'},
-        'features': {'key': 'features', 'type': '[JsonModelFeatureInformation]'},
+        "name": {"key": "name", "type": "str"},
+        "instance_of": {"key": "instanceOf", "type": "str"},
+        "children": {"key": "children", "type": "[JsonChild]"},
+        "features": {"key": "features", "type": "[JsonModelFeatureInformation]"},
     }
 
-    def __init__(self, *, name: str=None, instance_of: str=None, children=None, features=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, instance_of: str = None, children=None, features=None, **kwargs) -> None:
         super(JsonChild, self).__init__(**kwargs)
         self.name = name
         self.instance_of = instance_of
@@ -1639,20 +1762,20 @@ class JSONEntity(Model):
     """
 
     _validation = {
-        'start_pos': {'required': True},
-        'end_pos': {'required': True},
-        'entity': {'required': True},
+        "start_pos": {"required": True},
+        "end_pos": {"required": True},
+        "entity": {"required": True},
     }
 
     _attribute_map = {
-        'start_pos': {'key': 'startPos', 'type': 'int'},
-        'end_pos': {'key': 'endPos', 'type': 'int'},
-        'entity': {'key': 'entity', 'type': 'str'},
-        'role': {'key': 'role', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[JSONEntity]'},
+        "start_pos": {"key": "startPos", "type": "int"},
+        "end_pos": {"key": "endPos", "type": "int"},
+        "entity": {"key": "entity", "type": "str"},
+        "role": {"key": "role", "type": "str"},
+        "children": {"key": "children", "type": "[JSONEntity]"},
     }
 
-    def __init__(self, *, start_pos: int, end_pos: int, entity: str, role: str=None, children=None, **kwargs) -> None:
+    def __init__(self, *, start_pos: int, end_pos: int, entity: str, role: str = None, children=None, **kwargs) -> None:
         super(JSONEntity, self).__init__(**kwargs)
         self.start_pos = start_pos
         self.end_pos = end_pos
@@ -1686,14 +1809,23 @@ class JSONModelFeature(Model):
     """
 
     _attribute_map = {
-        'activated': {'key': 'activated', 'type': 'bool'},
-        'name': {'key': 'name', 'type': 'str'},
-        'words': {'key': 'words', 'type': 'str'},
-        'mode': {'key': 'mode', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
+        "activated": {"key": "activated", "type": "bool"},
+        "name": {"key": "name", "type": "str"},
+        "words": {"key": "words", "type": "str"},
+        "mode": {"key": "mode", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
     }
 
-    def __init__(self, *, activated: bool=None, name: str=None, words: str=None, mode: bool=None, enabled_for_all_models: bool=True, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        activated: bool = None,
+        name: str = None,
+        words: str = None,
+        mode: bool = None,
+        enabled_for_all_models: bool = True,
+        **kwargs
+    ) -> None:
         super(JSONModelFeature, self).__init__(**kwargs)
         self.activated = activated
         self.name = name
@@ -1713,11 +1845,11 @@ class JsonModelFeatureInformation(Model):
     """
 
     _attribute_map = {
-        'model_name': {'key': 'modelName', 'type': 'str'},
-        'feature_name': {'key': 'featureName', 'type': 'str'},
+        "model_name": {"key": "modelName", "type": "str"},
+        "feature_name": {"key": "featureName", "type": "str"},
     }
 
-    def __init__(self, *, model_name: str=None, feature_name: str=None, **kwargs) -> None:
+    def __init__(self, *, model_name: str = None, feature_name: str = None, **kwargs) -> None:
         super(JsonModelFeatureInformation, self).__init__(**kwargs)
         self.model_name = model_name
         self.feature_name = feature_name
@@ -1735,12 +1867,12 @@ class JSONRegexFeature(Model):
     """
 
     _attribute_map = {
-        'pattern': {'key': 'pattern', 'type': 'str'},
-        'activated': {'key': 'activated', 'type': 'bool'},
-        'name': {'key': 'name', 'type': 'str'},
+        "pattern": {"key": "pattern", "type": "str"},
+        "activated": {"key": "activated", "type": "bool"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, pattern: str=None, activated: bool=None, name: str=None, **kwargs) -> None:
+    def __init__(self, *, pattern: str = None, activated: bool = None, name: str = None, **kwargs) -> None:
         super(JSONRegexFeature, self).__init__(**kwargs)
         self.pattern = pattern
         self.activated = activated
@@ -1760,12 +1892,12 @@ class JSONUtterance(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'intent': {'key': 'intent', 'type': 'str'},
-        'entities': {'key': 'entities', 'type': '[JSONEntity]'},
+        "text": {"key": "text", "type": "str"},
+        "intent": {"key": "intent", "type": "str"},
+        "entities": {"key": "entities", "type": "[JSONEntity]"},
     }
 
-    def __init__(self, *, text: str=None, intent: str=None, entities=None, **kwargs) -> None:
+    def __init__(self, *, text: str = None, intent: str = None, entities=None, **kwargs) -> None:
         super(JSONUtterance, self).__init__(**kwargs)
         self.text = text
         self.intent = intent
@@ -1796,16 +1928,27 @@ class LabeledUtterance(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'text': {'key': 'text', 'type': 'str'},
-        'tokenized_text': {'key': 'tokenizedText', 'type': '[str]'},
-        'intent_label': {'key': 'intentLabel', 'type': 'str'},
-        'entity_labels': {'key': 'entityLabels', 'type': '[EntityLabel]'},
-        'intent_predictions': {'key': 'intentPredictions', 'type': '[IntentPrediction]'},
-        'entity_predictions': {'key': 'entityPredictions', 'type': '[EntityPrediction]'},
+        "id": {"key": "id", "type": "int"},
+        "text": {"key": "text", "type": "str"},
+        "tokenized_text": {"key": "tokenizedText", "type": "[str]"},
+        "intent_label": {"key": "intentLabel", "type": "str"},
+        "entity_labels": {"key": "entityLabels", "type": "[EntityLabel]"},
+        "intent_predictions": {"key": "intentPredictions", "type": "[IntentPrediction]"},
+        "entity_predictions": {"key": "entityPredictions", "type": "[EntityPrediction]"},
     }
 
-    def __init__(self, *, id: int=None, text: str=None, tokenized_text=None, intent_label: str=None, entity_labels=None, intent_predictions=None, entity_predictions=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: int = None,
+        text: str = None,
+        tokenized_text=None,
+        intent_label: str = None,
+        entity_labels=None,
+        intent_predictions=None,
+        entity_predictions=None,
+        **kwargs
+    ) -> None:
         super(LabeledUtterance, self).__init__(**kwargs)
         self.id = id
         self.text = text
@@ -1826,11 +1969,11 @@ class LabelExampleResponse(Model):
     """
 
     _attribute_map = {
-        'utterance_text': {'key': 'UtteranceText', 'type': 'str'},
-        'example_id': {'key': 'ExampleId', 'type': 'int'},
+        "utterance_text": {"key": "UtteranceText", "type": "str"},
+        "example_id": {"key": "ExampleId", "type": "int"},
     }
 
-    def __init__(self, *, utterance_text: str=None, example_id: int=None, **kwargs) -> None:
+    def __init__(self, *, utterance_text: str = None, example_id: int = None, **kwargs) -> None:
         super(LabelExampleResponse, self).__init__(**kwargs)
         self.utterance_text = utterance_text
         self.example_id = example_id
@@ -1846,11 +1989,11 @@ class LabelTextObject(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'text': {'key': 'text', 'type': 'str'},
+        "id": {"key": "id", "type": "int"},
+        "text": {"key": "text", "type": "str"},
     }
 
-    def __init__(self, *, id: int=None, text: str=None, **kwargs) -> None:
+    def __init__(self, *, id: int = None, text: str = None, **kwargs) -> None:
         super(LabelTextObject, self).__init__(**kwargs)
         self.id = id
         self.text = text
@@ -1909,26 +2052,47 @@ class LuisApp(Model):
     """
 
     _attribute_map = {
-        'additional_properties': {'key': '', 'type': '{object}'},
-        'name': {'key': 'name', 'type': 'str'},
-        'version_id': {'key': 'versionId', 'type': 'str'},
-        'desc': {'key': 'desc', 'type': 'str'},
-        'culture': {'key': 'culture', 'type': 'str'},
-        'intents': {'key': 'intents', 'type': '[HierarchicalModel]'},
-        'entities': {'key': 'entities', 'type': '[HierarchicalModel]'},
-        'closed_lists': {'key': 'closedLists', 'type': '[ClosedList]'},
-        'composites': {'key': 'composites', 'type': '[HierarchicalModel]'},
-        'hierarchicals': {'key': 'hierarchicals', 'type': '[HierarchicalModel]'},
-        'pattern_any_entities': {'key': 'patternAnyEntities', 'type': '[PatternAny]'},
-        'regex_entities': {'key': 'regex_entities', 'type': '[RegexEntity]'},
-        'prebuilt_entities': {'key': 'prebuiltEntities', 'type': '[PrebuiltEntity]'},
-        'regex_features': {'key': 'regex_features', 'type': '[JSONRegexFeature]'},
-        'phraselists': {'key': 'phraselists', 'type': '[JSONModelFeature]'},
-        'patterns': {'key': 'patterns', 'type': '[PatternRule]'},
-        'utterances': {'key': 'utterances', 'type': '[JSONUtterance]'},
+        "additional_properties": {"key": "", "type": "{object}"},
+        "name": {"key": "name", "type": "str"},
+        "version_id": {"key": "versionId", "type": "str"},
+        "desc": {"key": "desc", "type": "str"},
+        "culture": {"key": "culture", "type": "str"},
+        "intents": {"key": "intents", "type": "[HierarchicalModel]"},
+        "entities": {"key": "entities", "type": "[HierarchicalModel]"},
+        "closed_lists": {"key": "closedLists", "type": "[ClosedList]"},
+        "composites": {"key": "composites", "type": "[HierarchicalModel]"},
+        "hierarchicals": {"key": "hierarchicals", "type": "[HierarchicalModel]"},
+        "pattern_any_entities": {"key": "patternAnyEntities", "type": "[PatternAny]"},
+        "regex_entities": {"key": "regex_entities", "type": "[RegexEntity]"},
+        "prebuilt_entities": {"key": "prebuiltEntities", "type": "[PrebuiltEntity]"},
+        "regex_features": {"key": "regex_features", "type": "[JSONRegexFeature]"},
+        "phraselists": {"key": "phraselists", "type": "[JSONModelFeature]"},
+        "patterns": {"key": "patterns", "type": "[PatternRule]"},
+        "utterances": {"key": "utterances", "type": "[JSONUtterance]"},
     }
 
-    def __init__(self, *, additional_properties=None, name: str=None, version_id: str=None, desc: str=None, culture: str=None, intents=None, entities=None, closed_lists=None, composites=None, hierarchicals=None, pattern_any_entities=None, regex_entities=None, prebuilt_entities=None, regex_features=None, phraselists=None, patterns=None, utterances=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        additional_properties=None,
+        name: str = None,
+        version_id: str = None,
+        desc: str = None,
+        culture: str = None,
+        intents=None,
+        entities=None,
+        closed_lists=None,
+        composites=None,
+        hierarchicals=None,
+        pattern_any_entities=None,
+        regex_entities=None,
+        prebuilt_entities=None,
+        regex_features=None,
+        phraselists=None,
+        patterns=None,
+        utterances=None,
+        **kwargs
+    ) -> None:
         super(LuisApp, self).__init__(**kwargs)
         self.additional_properties = additional_properties
         self.name = name
@@ -2001,26 +2165,47 @@ class LuisAppV2(Model):
     """
 
     _attribute_map = {
-        'additional_properties': {'key': '', 'type': '{object}'},
-        'luis_schema_version': {'key': 'luis_schema_version', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'version_id': {'key': 'versionId', 'type': 'str'},
-        'desc': {'key': 'desc', 'type': 'str'},
-        'culture': {'key': 'culture', 'type': 'str'},
-        'intents': {'key': 'intents', 'type': '[HierarchicalModelV2]'},
-        'entities': {'key': 'entities', 'type': '[HierarchicalModelV2]'},
-        'closed_lists': {'key': 'closedLists', 'type': '[ClosedList]'},
-        'composites': {'key': 'composites', 'type': '[HierarchicalModelV2]'},
-        'pattern_any_entities': {'key': 'patternAnyEntities', 'type': '[PatternAny]'},
-        'regex_entities': {'key': 'regex_entities', 'type': '[RegexEntity]'},
-        'prebuilt_entities': {'key': 'prebuiltEntities', 'type': '[PrebuiltEntity]'},
-        'regex_features': {'key': 'regex_features', 'type': '[JSONRegexFeature]'},
-        'model_features': {'key': 'model_features', 'type': '[JSONModelFeature]'},
-        'patterns': {'key': 'patterns', 'type': '[PatternRule]'},
-        'utterances': {'key': 'utterances', 'type': '[JSONUtterance]'},
+        "additional_properties": {"key": "", "type": "{object}"},
+        "luis_schema_version": {"key": "luis_schema_version", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "version_id": {"key": "versionId", "type": "str"},
+        "desc": {"key": "desc", "type": "str"},
+        "culture": {"key": "culture", "type": "str"},
+        "intents": {"key": "intents", "type": "[HierarchicalModelV2]"},
+        "entities": {"key": "entities", "type": "[HierarchicalModelV2]"},
+        "closed_lists": {"key": "closedLists", "type": "[ClosedList]"},
+        "composites": {"key": "composites", "type": "[HierarchicalModelV2]"},
+        "pattern_any_entities": {"key": "patternAnyEntities", "type": "[PatternAny]"},
+        "regex_entities": {"key": "regex_entities", "type": "[RegexEntity]"},
+        "prebuilt_entities": {"key": "prebuiltEntities", "type": "[PrebuiltEntity]"},
+        "regex_features": {"key": "regex_features", "type": "[JSONRegexFeature]"},
+        "model_features": {"key": "model_features", "type": "[JSONModelFeature]"},
+        "patterns": {"key": "patterns", "type": "[PatternRule]"},
+        "utterances": {"key": "utterances", "type": "[JSONUtterance]"},
     }
 
-    def __init__(self, *, additional_properties=None, luis_schema_version: str=None, name: str=None, version_id: str=None, desc: str=None, culture: str=None, intents=None, entities=None, closed_lists=None, composites=None, pattern_any_entities=None, regex_entities=None, prebuilt_entities=None, regex_features=None, model_features=None, patterns=None, utterances=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        additional_properties=None,
+        luis_schema_version: str = None,
+        name: str = None,
+        version_id: str = None,
+        desc: str = None,
+        culture: str = None,
+        intents=None,
+        entities=None,
+        closed_lists=None,
+        composites=None,
+        pattern_any_entities=None,
+        regex_entities=None,
+        prebuilt_entities=None,
+        regex_features=None,
+        model_features=None,
+        patterns=None,
+        utterances=None,
+        **kwargs
+    ) -> None:
         super(LuisAppV2, self).__init__(**kwargs)
         self.additional_properties = additional_properties
         self.luis_schema_version = luis_schema_version
@@ -2049,10 +2234,10 @@ class ModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, **kwargs) -> None:
         super(ModelCreateObject, self).__init__(**kwargs)
         self.name = name
 
@@ -2070,12 +2255,12 @@ class ModelFeatureInformation(Model):
     """
 
     _attribute_map = {
-        'model_name': {'key': 'modelName', 'type': 'str'},
-        'feature_name': {'key': 'featureName', 'type': 'str'},
-        'is_required': {'key': 'isRequired', 'type': 'bool'},
+        "model_name": {"key": "modelName", "type": "str"},
+        "feature_name": {"key": "featureName", "type": "str"},
+        "is_required": {"key": "isRequired", "type": "bool"},
     }
 
-    def __init__(self, *, model_name: str=None, feature_name: str=None, is_required: bool=None, **kwargs) -> None:
+    def __init__(self, *, model_name: str = None, feature_name: str = None, is_required: bool = None, **kwargs) -> None:
         super(ModelFeatureInformation, self).__init__(**kwargs)
         self.model_name = model_name
         self.feature_name = feature_name
@@ -2122,25 +2307,40 @@ class ModelInfoResponse(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
-        'sub_lists': {'key': 'subLists', 'type': '[SubClosedListResponse]'},
-        'custom_prebuilt_domain_name': {'key': 'customPrebuiltDomainName', 'type': 'str'},
-        'custom_prebuilt_model_name': {'key': 'customPrebuiltModelName', 'type': 'str'},
-        'regex_pattern': {'key': 'regexPattern', 'type': 'str'},
-        'explicit_list': {'key': 'explicitList', 'type': '[ExplicitListItem]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
+        "sub_lists": {"key": "subLists", "type": "[SubClosedListResponse]"},
+        "custom_prebuilt_domain_name": {"key": "customPrebuiltDomainName", "type": "str"},
+        "custom_prebuilt_model_name": {"key": "customPrebuiltModelName", "type": "str"},
+        "regex_pattern": {"key": "regexPattern", "type": "str"},
+        "explicit_list": {"key": "explicitList", "type": "[ExplicitListItem]"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, roles=None, children=None, sub_lists=None, custom_prebuilt_domain_name: str=None, custom_prebuilt_model_name: str=None, regex_pattern: str=None, explicit_list=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str,
+        readable_type,
+        name: str = None,
+        type_id: int = None,
+        roles=None,
+        children=None,
+        sub_lists=None,
+        custom_prebuilt_domain_name: str = None,
+        custom_prebuilt_model_name: str = None,
+        regex_pattern: str = None,
+        explicit_list=None,
+        **kwargs
+    ) -> None:
         super(ModelInfoResponse, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -2173,14 +2373,23 @@ class ModelTrainingDetails(Model):
     """
 
     _attribute_map = {
-        'status_id': {'key': 'statusId', 'type': 'int'},
-        'status': {'key': 'status', 'type': 'str'},
-        'example_count': {'key': 'exampleCount', 'type': 'int'},
-        'training_date_time': {'key': 'trainingDateTime', 'type': 'iso-8601'},
-        'failure_reason': {'key': 'failureReason', 'type': 'str'},
+        "status_id": {"key": "statusId", "type": "int"},
+        "status": {"key": "status", "type": "str"},
+        "example_count": {"key": "exampleCount", "type": "int"},
+        "training_date_time": {"key": "trainingDateTime", "type": "iso-8601"},
+        "failure_reason": {"key": "failureReason", "type": "str"},
     }
 
-    def __init__(self, *, status_id: int=None, status=None, example_count: int=None, training_date_time=None, failure_reason: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        status_id: int = None,
+        status=None,
+        example_count: int = None,
+        training_date_time=None,
+        failure_reason: str = None,
+        **kwargs
+    ) -> None:
         super(ModelTrainingDetails, self).__init__(**kwargs)
         self.status_id = status_id
         self.status = status
@@ -2200,11 +2409,11 @@ class ModelTrainingInfo(Model):
     """
 
     _attribute_map = {
-        'model_id': {'key': 'modelId', 'type': 'str'},
-        'details': {'key': 'details', 'type': 'ModelTrainingDetails'},
+        "model_id": {"key": "modelId", "type": "str"},
+        "details": {"key": "details", "type": "ModelTrainingDetails"},
     }
 
-    def __init__(self, *, model_id: str=None, details=None, **kwargs) -> None:
+    def __init__(self, *, model_id: str = None, details=None, **kwargs) -> None:
         super(ModelTrainingInfo, self).__init__(**kwargs)
         self.model_id = model_id
         self.details = details
@@ -2218,10 +2427,10 @@ class ModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, **kwargs) -> None:
         super(ModelUpdateObject, self).__init__(**kwargs)
         self.name = name
 
@@ -2258,22 +2467,34 @@ class NDepthEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'custom_prebuilt_domain_name': {'key': 'customPrebuiltDomainName', 'type': 'str'},
-        'custom_prebuilt_model_name': {'key': 'customPrebuiltModelName', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "custom_prebuilt_domain_name": {"key": "customPrebuiltDomainName", "type": "str"},
+        "custom_prebuilt_model_name": {"key": "customPrebuiltModelName", "type": "str"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, roles=None, custom_prebuilt_domain_name: str=None, custom_prebuilt_model_name: str=None, children=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str,
+        readable_type,
+        name: str = None,
+        type_id: int = None,
+        roles=None,
+        custom_prebuilt_domain_name: str = None,
+        custom_prebuilt_model_name: str = None,
+        children=None,
+        **kwargs
+    ) -> None:
         super(NDepthEntityExtractor, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -2295,11 +2516,11 @@ class OperationError(Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
-    def __init__(self, *, code: str=None, message: str=None, **kwargs) -> None:
+    def __init__(self, *, code: str = None, message: str = None, **kwargs) -> None:
         super(OperationError, self).__init__(**kwargs)
         self.code = code
         self.message = message
@@ -2317,11 +2538,11 @@ class OperationStatus(Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
-    def __init__(self, *, code=None, message: str=None, **kwargs) -> None:
+    def __init__(self, *, code=None, message: str = None, **kwargs) -> None:
         super(OperationStatus, self).__init__(**kwargs)
         self.code = code
         self.message = message
@@ -2339,12 +2560,12 @@ class PatternAny(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'explicit_list': {'key': 'explicitList', 'type': '[str]'},
-        'roles': {'key': 'roles', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "explicit_list": {"key": "explicitList", "type": "[str]"},
+        "roles": {"key": "roles", "type": "[str]"},
     }
 
-    def __init__(self, *, name: str=None, explicit_list=None, roles=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, explicit_list=None, roles=None, **kwargs) -> None:
         super(PatternAny, self).__init__(**kwargs)
         self.name = name
         self.explicit_list = explicit_list
@@ -2379,20 +2600,22 @@ class PatternAnyEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'explicit_list': {'key': 'explicitList', 'type': '[ExplicitListItem]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "explicit_list": {"key": "explicitList", "type": "[ExplicitListItem]"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, roles=None, explicit_list=None, **kwargs) -> None:
+    def __init__(
+        self, *, id: str, readable_type, name: str = None, type_id: int = None, roles=None, explicit_list=None, **kwargs
+    ) -> None:
         super(PatternAnyEntityExtractor, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -2412,11 +2635,11 @@ class PatternAnyModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'explicit_list': {'key': 'explicitList', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "explicit_list": {"key": "explicitList", "type": "[str]"},
     }
 
-    def __init__(self, *, name: str=None, explicit_list=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, explicit_list=None, **kwargs) -> None:
         super(PatternAnyModelCreateObject, self).__init__(**kwargs)
         self.name = name
         self.explicit_list = explicit_list
@@ -2432,11 +2655,11 @@ class PatternAnyModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'explicit_list': {'key': 'explicitList', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "explicit_list": {"key": "explicitList", "type": "[str]"},
     }
 
-    def __init__(self, *, name: str=None, explicit_list=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, explicit_list=None, **kwargs) -> None:
         super(PatternAnyModelUpdateObject, self).__init__(**kwargs)
         self.name = name
         self.explicit_list = explicit_list
@@ -2459,15 +2682,26 @@ class PatternFeatureInfo(FeatureInfoObject):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'name': {'key': 'name', 'type': 'str'},
-        'is_active': {'key': 'isActive', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
-        'pattern': {'key': 'pattern', 'type': 'str'},
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "is_active": {"key": "isActive", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
+        "pattern": {"key": "pattern", "type": "str"},
     }
 
-    def __init__(self, *, id: int=None, name: str=None, is_active: bool=None, enabled_for_all_models: bool=None, pattern: str=None, **kwargs) -> None:
-        super(PatternFeatureInfo, self).__init__(id=id, name=name, is_active=is_active, enabled_for_all_models=enabled_for_all_models, **kwargs)
+    def __init__(
+        self,
+        *,
+        id: int = None,
+        name: str = None,
+        is_active: bool = None,
+        enabled_for_all_models: bool = None,
+        pattern: str = None,
+        **kwargs
+    ) -> None:
+        super(PatternFeatureInfo, self).__init__(
+            id=id, name=name, is_active=is_active, enabled_for_all_models=enabled_for_all_models, **kwargs
+        )
         self.pattern = pattern
 
 
@@ -2481,11 +2715,11 @@ class PatternRule(Model):
     """
 
     _attribute_map = {
-        'pattern': {'key': 'pattern', 'type': 'str'},
-        'intent': {'key': 'intent', 'type': 'str'},
+        "pattern": {"key": "pattern", "type": "str"},
+        "intent": {"key": "intent", "type": "str"},
     }
 
-    def __init__(self, *, pattern: str=None, intent: str=None, **kwargs) -> None:
+    def __init__(self, *, pattern: str = None, intent: str = None, **kwargs) -> None:
         super(PatternRule, self).__init__(**kwargs)
         self.pattern = pattern
         self.intent = intent
@@ -2501,11 +2735,11 @@ class PatternRuleCreateObject(Model):
     """
 
     _attribute_map = {
-        'pattern': {'key': 'pattern', 'type': 'str'},
-        'intent': {'key': 'intent', 'type': 'str'},
+        "pattern": {"key": "pattern", "type": "str"},
+        "intent": {"key": "intent", "type": "str"},
     }
 
-    def __init__(self, *, pattern: str=None, intent: str=None, **kwargs) -> None:
+    def __init__(self, *, pattern: str = None, intent: str = None, **kwargs) -> None:
         super(PatternRuleCreateObject, self).__init__(**kwargs)
         self.pattern = pattern
         self.intent = intent
@@ -2523,12 +2757,12 @@ class PatternRuleInfo(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'pattern': {'key': 'pattern', 'type': 'str'},
-        'intent': {'key': 'intent', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "pattern": {"key": "pattern", "type": "str"},
+        "intent": {"key": "intent", "type": "str"},
     }
 
-    def __init__(self, *, id: str=None, pattern: str=None, intent: str=None, **kwargs) -> None:
+    def __init__(self, *, id: str = None, pattern: str = None, intent: str = None, **kwargs) -> None:
         super(PatternRuleInfo, self).__init__(**kwargs)
         self.id = id
         self.pattern = pattern
@@ -2547,12 +2781,12 @@ class PatternRuleUpdateObject(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'pattern': {'key': 'pattern', 'type': 'str'},
-        'intent': {'key': 'intent', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "pattern": {"key": "pattern", "type": "str"},
+        "intent": {"key": "intent", "type": "str"},
     }
 
-    def __init__(self, *, id: str=None, pattern: str=None, intent: str=None, **kwargs) -> None:
+    def __init__(self, *, id: str = None, pattern: str = None, intent: str = None, **kwargs) -> None:
         super(PatternRuleUpdateObject, self).__init__(**kwargs)
         self.id = id
         self.pattern = pattern
@@ -2570,8 +2804,8 @@ class PersonalAssistantsResponse(Model):
     """
 
     _attribute_map = {
-        'endpoint_keys': {'key': 'endpointKeys', 'type': '[str]'},
-        'endpoint_urls': {'key': 'endpointUrls', 'type': '{str}'},
+        "endpoint_keys": {"key": "endpointKeys", "type": "[str]"},
+        "endpoint_urls": {"key": "endpointUrls", "type": "{str}"},
     }
 
     def __init__(self, *, endpoint_keys=None, endpoint_urls=None, **kwargs) -> None:
@@ -2603,13 +2837,21 @@ class PhraselistCreateObject(Model):
     """
 
     _attribute_map = {
-        'phrases': {'key': 'phrases', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'is_exchangeable': {'key': 'isExchangeable', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
+        "phrases": {"key": "phrases", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "is_exchangeable": {"key": "isExchangeable", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
     }
 
-    def __init__(self, *, phrases: str=None, name: str=None, is_exchangeable: bool=True, enabled_for_all_models: bool=True, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        phrases: str = None,
+        name: str = None,
+        is_exchangeable: bool = True,
+        enabled_for_all_models: bool = True,
+        **kwargs
+    ) -> None:
         super(PhraselistCreateObject, self).__init__(**kwargs)
         self.phrases = phrases
         self.name = name
@@ -2646,16 +2888,28 @@ class PhraseListFeatureInfo(FeatureInfoObject):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'name': {'key': 'name', 'type': 'str'},
-        'is_active': {'key': 'isActive', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
-        'phrases': {'key': 'phrases', 'type': 'str'},
-        'is_exchangeable': {'key': 'isExchangeable', 'type': 'bool'},
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "is_active": {"key": "isActive", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
+        "phrases": {"key": "phrases", "type": "str"},
+        "is_exchangeable": {"key": "isExchangeable", "type": "bool"},
     }
 
-    def __init__(self, *, id: int=None, name: str=None, is_active: bool=None, enabled_for_all_models: bool=None, phrases: str=None, is_exchangeable: bool=None, **kwargs) -> None:
-        super(PhraseListFeatureInfo, self).__init__(id=id, name=name, is_active=is_active, enabled_for_all_models=enabled_for_all_models, **kwargs)
+    def __init__(
+        self,
+        *,
+        id: int = None,
+        name: str = None,
+        is_active: bool = None,
+        enabled_for_all_models: bool = None,
+        phrases: str = None,
+        is_exchangeable: bool = None,
+        **kwargs
+    ) -> None:
+        super(PhraseListFeatureInfo, self).__init__(
+            id=id, name=name, is_active=is_active, enabled_for_all_models=enabled_for_all_models, **kwargs
+        )
         self.phrases = phrases
         self.is_exchangeable = is_exchangeable
 
@@ -2689,14 +2943,23 @@ class PhraselistUpdateObject(Model):
     """
 
     _attribute_map = {
-        'phrases': {'key': 'phrases', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'is_active': {'key': 'isActive', 'type': 'bool'},
-        'is_exchangeable': {'key': 'isExchangeable', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
+        "phrases": {"key": "phrases", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "is_active": {"key": "isActive", "type": "bool"},
+        "is_exchangeable": {"key": "isExchangeable", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
     }
 
-    def __init__(self, *, phrases: str=None, name: str=None, is_active: bool=True, is_exchangeable: bool=True, enabled_for_all_models: bool=True, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        phrases: str = None,
+        name: str = None,
+        is_active: bool = True,
+        is_exchangeable: bool = True,
+        enabled_for_all_models: bool = True,
+        **kwargs
+    ) -> None:
         super(PhraselistUpdateObject, self).__init__(**kwargs)
         self.phrases = phrases
         self.name = name
@@ -2725,15 +2988,25 @@ class PrebuiltDomain(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'culture': {'key': 'culture', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'examples': {'key': 'examples', 'type': 'str'},
-        'intents': {'key': 'intents', 'type': '[PrebuiltDomainItem]'},
-        'entities': {'key': 'entities', 'type': '[PrebuiltDomainItem]'},
+        "name": {"key": "name", "type": "str"},
+        "culture": {"key": "culture", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "examples": {"key": "examples", "type": "str"},
+        "intents": {"key": "intents", "type": "[PrebuiltDomainItem]"},
+        "entities": {"key": "entities", "type": "[PrebuiltDomainItem]"},
     }
 
-    def __init__(self, *, name: str=None, culture: str=None, description: str=None, examples: str=None, intents=None, entities=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        name: str = None,
+        culture: str = None,
+        description: str = None,
+        examples: str = None,
+        intents=None,
+        entities=None,
+        **kwargs
+    ) -> None:
         super(PrebuiltDomain, self).__init__(**kwargs)
         self.name = name
         self.culture = culture
@@ -2752,10 +3025,10 @@ class PrebuiltDomainCreateBaseObject(Model):
     """
 
     _attribute_map = {
-        'domain_name': {'key': 'domainName', 'type': 'str'},
+        "domain_name": {"key": "domainName", "type": "str"},
     }
 
-    def __init__(self, *, domain_name: str=None, **kwargs) -> None:
+    def __init__(self, *, domain_name: str = None, **kwargs) -> None:
         super(PrebuiltDomainCreateBaseObject, self).__init__(**kwargs)
         self.domain_name = domain_name
 
@@ -2771,11 +3044,11 @@ class PrebuiltDomainCreateObject(Model):
     """
 
     _attribute_map = {
-        'domain_name': {'key': 'domainName', 'type': 'str'},
-        'culture': {'key': 'culture', 'type': 'str'},
+        "domain_name": {"key": "domainName", "type": "str"},
+        "culture": {"key": "culture", "type": "str"},
     }
 
-    def __init__(self, *, domain_name: str=None, culture: str=None, **kwargs) -> None:
+    def __init__(self, *, domain_name: str = None, culture: str = None, **kwargs) -> None:
         super(PrebuiltDomainCreateObject, self).__init__(**kwargs)
         self.domain_name = domain_name
         self.culture = culture
@@ -2793,12 +3066,12 @@ class PrebuiltDomainItem(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'examples': {'key': 'examples', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "examples": {"key": "examples", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, description: str=None, examples: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, description: str = None, examples: str = None, **kwargs) -> None:
         super(PrebuiltDomainItem, self).__init__(**kwargs)
         self.name = name
         self.description = description
@@ -2816,11 +3089,11 @@ class PrebuiltDomainModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'domain_name': {'key': 'domainName', 'type': 'str'},
-        'model_name': {'key': 'modelName', 'type': 'str'},
+        "domain_name": {"key": "domainName", "type": "str"},
+        "model_name": {"key": "modelName", "type": "str"},
     }
 
-    def __init__(self, *, domain_name: str=None, model_name: str=None, **kwargs) -> None:
+    def __init__(self, *, domain_name: str = None, model_name: str = None, **kwargs) -> None:
         super(PrebuiltDomainModelCreateObject, self).__init__(**kwargs)
         self.domain_name = domain_name
         self.model_name = model_name
@@ -2836,11 +3109,11 @@ class PrebuiltDomainObject(Model):
     """
 
     _attribute_map = {
-        'domain_name': {'key': 'domain_name', 'type': 'str'},
-        'model_name': {'key': 'model_name', 'type': 'str'},
+        "domain_name": {"key": "domain_name", "type": "str"},
+        "model_name": {"key": "model_name", "type": "str"},
     }
 
-    def __init__(self, *, domain_name: str=None, model_name: str=None, **kwargs) -> None:
+    def __init__(self, *, domain_name: str = None, model_name: str = None, **kwargs) -> None:
         super(PrebuiltDomainObject, self).__init__(**kwargs)
         self.domain_name = domain_name
         self.model_name = model_name
@@ -2856,11 +3129,11 @@ class PrebuiltEntity(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "roles": {"key": "roles", "type": "[str]"},
     }
 
-    def __init__(self, *, name: str=None, roles=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, roles=None, **kwargs) -> None:
         super(PrebuiltEntity, self).__init__(**kwargs)
         self.name = name
         self.roles = roles
@@ -2891,19 +3164,19 @@ class PrebuiltEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, roles=None, **kwargs) -> None:
+    def __init__(self, *, id: str, readable_type, name: str = None, type_id: int = None, roles=None, **kwargs) -> None:
         super(PrebuiltEntityExtractor, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -2935,18 +3208,40 @@ class ProductionOrStagingEndpointInfo(EndpointInfo):
     """
 
     _attribute_map = {
-        'version_id': {'key': 'versionId', 'type': 'str'},
-        'is_staging': {'key': 'isStaging', 'type': 'bool'},
-        'endpoint_url': {'key': 'endpointUrl', 'type': 'str'},
-        'region': {'key': 'region', 'type': 'str'},
-        'assigned_endpoint_key': {'key': 'assignedEndpointKey', 'type': 'str'},
-        'endpoint_region': {'key': 'endpointRegion', 'type': 'str'},
-        'failed_regions': {'key': 'failedRegions', 'type': 'str'},
-        'published_date_time': {'key': 'publishedDateTime', 'type': 'str'},
+        "version_id": {"key": "versionId", "type": "str"},
+        "is_staging": {"key": "isStaging", "type": "bool"},
+        "endpoint_url": {"key": "endpointUrl", "type": "str"},
+        "region": {"key": "region", "type": "str"},
+        "assigned_endpoint_key": {"key": "assignedEndpointKey", "type": "str"},
+        "endpoint_region": {"key": "endpointRegion", "type": "str"},
+        "failed_regions": {"key": "failedRegions", "type": "str"},
+        "published_date_time": {"key": "publishedDateTime", "type": "str"},
     }
 
-    def __init__(self, *, version_id: str=None, is_staging: bool=None, endpoint_url: str=None, region: str=None, assigned_endpoint_key: str=None, endpoint_region: str=None, failed_regions: str=None, published_date_time: str=None, **kwargs) -> None:
-        super(ProductionOrStagingEndpointInfo, self).__init__(version_id=version_id, is_staging=is_staging, endpoint_url=endpoint_url, region=region, assigned_endpoint_key=assigned_endpoint_key, endpoint_region=endpoint_region, failed_regions=failed_regions, published_date_time=published_date_time, **kwargs)
+    def __init__(
+        self,
+        *,
+        version_id: str = None,
+        is_staging: bool = None,
+        endpoint_url: str = None,
+        region: str = None,
+        assigned_endpoint_key: str = None,
+        endpoint_region: str = None,
+        failed_regions: str = None,
+        published_date_time: str = None,
+        **kwargs
+    ) -> None:
+        super(ProductionOrStagingEndpointInfo, self).__init__(
+            version_id=version_id,
+            is_staging=is_staging,
+            endpoint_url=endpoint_url,
+            region=region,
+            assigned_endpoint_key=assigned_endpoint_key,
+            endpoint_region=endpoint_region,
+            failed_regions=failed_regions,
+            published_date_time=published_date_time,
+            **kwargs
+        )
 
 
 class PublishSettings(Model):
@@ -2968,20 +3263,28 @@ class PublishSettings(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'is_sentiment_analysis_enabled': {'required': True},
-        'is_speech_enabled': {'required': True},
-        'is_spell_checker_enabled': {'required': True},
+        "id": {"required": True},
+        "is_sentiment_analysis_enabled": {"required": True},
+        "is_speech_enabled": {"required": True},
+        "is_spell_checker_enabled": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'is_sentiment_analysis_enabled': {'key': 'sentimentAnalysis', 'type': 'bool'},
-        'is_speech_enabled': {'key': 'speech', 'type': 'bool'},
-        'is_spell_checker_enabled': {'key': 'spellChecker', 'type': 'bool'},
+        "id": {"key": "id", "type": "str"},
+        "is_sentiment_analysis_enabled": {"key": "sentimentAnalysis", "type": "bool"},
+        "is_speech_enabled": {"key": "speech", "type": "bool"},
+        "is_spell_checker_enabled": {"key": "spellChecker", "type": "bool"},
     }
 
-    def __init__(self, *, id: str, is_sentiment_analysis_enabled: bool, is_speech_enabled: bool, is_spell_checker_enabled: bool, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str,
+        is_sentiment_analysis_enabled: bool,
+        is_speech_enabled: bool,
+        is_spell_checker_enabled: bool,
+        **kwargs
+    ) -> None:
         super(PublishSettings, self).__init__(**kwargs)
         self.id = id
         self.is_sentiment_analysis_enabled = is_sentiment_analysis_enabled
@@ -3003,12 +3306,14 @@ class PublishSettingUpdateObject(Model):
     """
 
     _attribute_map = {
-        'sentiment_analysis': {'key': 'sentimentAnalysis', 'type': 'bool'},
-        'speech': {'key': 'speech', 'type': 'bool'},
-        'spell_checker': {'key': 'spellChecker', 'type': 'bool'},
+        "sentiment_analysis": {"key": "sentimentAnalysis", "type": "bool"},
+        "speech": {"key": "speech", "type": "bool"},
+        "spell_checker": {"key": "spellChecker", "type": "bool"},
     }
 
-    def __init__(self, *, sentiment_analysis: bool=None, speech: bool=None, spell_checker: bool=None, **kwargs) -> None:
+    def __init__(
+        self, *, sentiment_analysis: bool = None, speech: bool = None, spell_checker: bool = None, **kwargs
+    ) -> None:
         super(PublishSettingUpdateObject, self).__init__(**kwargs)
         self.sentiment_analysis = sentiment_analysis
         self.speech = speech
@@ -3027,12 +3332,12 @@ class RegexEntity(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'regex_pattern': {'key': 'regexPattern', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "regex_pattern": {"key": "regexPattern", "type": "str"},
+        "roles": {"key": "roles", "type": "[str]"},
     }
 
-    def __init__(self, *, name: str=None, regex_pattern: str=None, roles=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, regex_pattern: str = None, roles=None, **kwargs) -> None:
         super(RegexEntity, self).__init__(**kwargs)
         self.name = name
         self.regex_pattern = regex_pattern
@@ -3066,20 +3371,30 @@ class RegexEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'regex_pattern': {'key': 'regexPattern', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "regex_pattern": {"key": "regexPattern", "type": "str"},
     }
 
-    def __init__(self, *, id: str, readable_type, name: str=None, type_id: int=None, roles=None, regex_pattern: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str,
+        readable_type,
+        name: str = None,
+        type_id: int = None,
+        roles=None,
+        regex_pattern: str = None,
+        **kwargs
+    ) -> None:
         super(RegexEntityExtractor, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -3099,11 +3414,11 @@ class RegexModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'regex_pattern': {'key': 'regexPattern', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "regex_pattern": {"key": "regexPattern", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, regex_pattern: str=None, name: str=None, **kwargs) -> None:
+    def __init__(self, *, regex_pattern: str = None, name: str = None, **kwargs) -> None:
         super(RegexModelCreateObject, self).__init__(**kwargs)
         self.regex_pattern = regex_pattern
         self.name = name
@@ -3119,11 +3434,11 @@ class RegexModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'regex_pattern': {'key': 'regexPattern', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "regex_pattern": {"key": "regexPattern", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
-    def __init__(self, *, regex_pattern: str=None, name: str=None, **kwargs) -> None:
+    def __init__(self, *, regex_pattern: str = None, name: str = None, **kwargs) -> None:
         super(RegexModelUpdateObject, self).__init__(**kwargs)
         self.regex_pattern = regex_pattern
         self.name = name
@@ -3139,11 +3454,11 @@ class SubClosedList(Model):
     """
 
     _attribute_map = {
-        'canonical_form': {'key': 'canonicalForm', 'type': 'str'},
-        'list': {'key': 'list', 'type': '[str]'},
+        "canonical_form": {"key": "canonicalForm", "type": "str"},
+        "list": {"key": "list", "type": "[str]"},
     }
 
-    def __init__(self, *, canonical_form: str=None, list=None, **kwargs) -> None:
+    def __init__(self, *, canonical_form: str = None, list=None, **kwargs) -> None:
         super(SubClosedList, self).__init__(**kwargs)
         self.canonical_form = canonical_form
         self.list = list
@@ -3161,12 +3476,12 @@ class SubClosedListResponse(SubClosedList):
     """
 
     _attribute_map = {
-        'canonical_form': {'key': 'canonicalForm', 'type': 'str'},
-        'list': {'key': 'list', 'type': '[str]'},
-        'id': {'key': 'id', 'type': 'int'},
+        "canonical_form": {"key": "canonicalForm", "type": "str"},
+        "list": {"key": "list", "type": "[str]"},
+        "id": {"key": "id", "type": "int"},
     }
 
-    def __init__(self, *, canonical_form: str=None, list=None, id: int=None, **kwargs) -> None:
+    def __init__(self, *, canonical_form: str = None, list=None, id: int = None, **kwargs) -> None:
         super(SubClosedListResponse, self).__init__(canonical_form=canonical_form, list=list, **kwargs)
         self.id = id
 
@@ -3179,10 +3494,10 @@ class TaskUpdateObject(Model):
     """
 
     _attribute_map = {
-        'version': {'key': 'version', 'type': 'str'},
+        "version": {"key": "version", "type": "str"},
     }
 
-    def __init__(self, *, version: str=None, **kwargs) -> None:
+    def __init__(self, *, version: str = None, **kwargs) -> None:
         super(TaskUpdateObject, self).__init__(**kwargs)
         self.version = version
 
@@ -3197,11 +3512,11 @@ class UserAccessList(Model):
     """
 
     _attribute_map = {
-        'owner': {'key': 'owner', 'type': 'str'},
-        'emails': {'key': 'emails', 'type': '[str]'},
+        "owner": {"key": "owner", "type": "str"},
+        "emails": {"key": "emails", "type": "[str]"},
     }
 
-    def __init__(self, *, owner: str=None, emails=None, **kwargs) -> None:
+    def __init__(self, *, owner: str = None, emails=None, **kwargs) -> None:
         super(UserAccessList, self).__init__(**kwargs)
         self.owner = owner
         self.emails = emails
@@ -3215,10 +3530,10 @@ class UserCollaborator(Model):
     """
 
     _attribute_map = {
-        'email': {'key': 'email', 'type': 'str'},
+        "email": {"key": "email", "type": "str"},
     }
 
-    def __init__(self, *, email: str=None, **kwargs) -> None:
+    def __init__(self, *, email: str = None, **kwargs) -> None:
         super(UserCollaborator, self).__init__(**kwargs)
         self.email = email
 
@@ -3258,26 +3573,42 @@ class VersionInfo(Model):
     """
 
     _validation = {
-        'version': {'required': True},
-        'training_status': {'required': True},
+        "version": {"required": True},
+        "training_status": {"required": True},
     }
 
     _attribute_map = {
-        'version': {'key': 'version', 'type': 'str'},
-        'created_date_time': {'key': 'createdDateTime', 'type': 'iso-8601'},
-        'last_modified_date_time': {'key': 'lastModifiedDateTime', 'type': 'iso-8601'},
-        'last_trained_date_time': {'key': 'lastTrainedDateTime', 'type': 'iso-8601'},
-        'last_published_date_time': {'key': 'lastPublishedDateTime', 'type': 'iso-8601'},
-        'endpoint_url': {'key': 'endpointUrl', 'type': 'str'},
-        'assigned_endpoint_key': {'key': 'assignedEndpointKey', 'type': '{str}'},
-        'external_api_keys': {'key': 'externalApiKeys', 'type': 'object'},
-        'intents_count': {'key': 'intentsCount', 'type': 'int'},
-        'entities_count': {'key': 'entitiesCount', 'type': 'int'},
-        'endpoint_hits_count': {'key': 'endpointHitsCount', 'type': 'int'},
-        'training_status': {'key': 'trainingStatus', 'type': 'TrainingStatus'},
+        "version": {"key": "version", "type": "str"},
+        "created_date_time": {"key": "createdDateTime", "type": "iso-8601"},
+        "last_modified_date_time": {"key": "lastModifiedDateTime", "type": "iso-8601"},
+        "last_trained_date_time": {"key": "lastTrainedDateTime", "type": "iso-8601"},
+        "last_published_date_time": {"key": "lastPublishedDateTime", "type": "iso-8601"},
+        "endpoint_url": {"key": "endpointUrl", "type": "str"},
+        "assigned_endpoint_key": {"key": "assignedEndpointKey", "type": "{str}"},
+        "external_api_keys": {"key": "externalApiKeys", "type": "object"},
+        "intents_count": {"key": "intentsCount", "type": "int"},
+        "entities_count": {"key": "entitiesCount", "type": "int"},
+        "endpoint_hits_count": {"key": "endpointHitsCount", "type": "int"},
+        "training_status": {"key": "trainingStatus", "type": "TrainingStatus"},
     }
 
-    def __init__(self, *, version: str, training_status, created_date_time=None, last_modified_date_time=None, last_trained_date_time=None, last_published_date_time=None, endpoint_url: str=None, assigned_endpoint_key=None, external_api_keys=None, intents_count: int=None, entities_count: int=None, endpoint_hits_count: int=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        version: str,
+        training_status,
+        created_date_time=None,
+        last_modified_date_time=None,
+        last_trained_date_time=None,
+        last_published_date_time=None,
+        endpoint_url: str = None,
+        assigned_endpoint_key=None,
+        external_api_keys=None,
+        intents_count: int = None,
+        entities_count: int = None,
+        endpoint_hits_count: int = None,
+        **kwargs
+    ) -> None:
         super(VersionInfo, self).__init__(**kwargs)
         self.version = version
         self.created_date_time = created_date_time
@@ -3303,11 +3634,11 @@ class WordListBaseUpdateObject(Model):
     """
 
     _attribute_map = {
-        'canonical_form': {'key': 'canonicalForm', 'type': 'str'},
-        'list': {'key': 'list', 'type': '[str]'},
+        "canonical_form": {"key": "canonicalForm", "type": "str"},
+        "list": {"key": "list", "type": "[str]"},
     }
 
-    def __init__(self, *, canonical_form: str=None, list=None, **kwargs) -> None:
+    def __init__(self, *, canonical_form: str = None, list=None, **kwargs) -> None:
         super(WordListBaseUpdateObject, self).__init__(**kwargs)
         self.canonical_form = canonical_form
         self.list = list
@@ -3323,11 +3654,11 @@ class WordListObject(Model):
     """
 
     _attribute_map = {
-        'canonical_form': {'key': 'canonicalForm', 'type': 'str'},
-        'list': {'key': 'list', 'type': '[str]'},
+        "canonical_form": {"key": "canonicalForm", "type": "str"},
+        "list": {"key": "list", "type": "[str]"},
     }
 
-    def __init__(self, *, canonical_form: str=None, list=None, **kwargs) -> None:
+    def __init__(self, *, canonical_form: str = None, list=None, **kwargs) -> None:
         super(WordListObject, self).__init__(**kwargs)
         self.canonical_form = canonical_form
         self.list = list

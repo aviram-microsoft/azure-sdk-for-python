@@ -24,11 +24,11 @@ class RecipesModule(Model):
     """
 
     _validation = {
-        'value': {'readonly': True},
+        "value": {"readonly": True},
     }
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[Recipe]'},
+        "value": {"key": "value", "type": "[Recipe]"},
     }
 
     def __init__(self, **kwargs) -> None:

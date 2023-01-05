@@ -11,9 +11,9 @@
 
 from ._configuration import NewsSearchClientConfiguration
 from ._news_search_client import NewsSearchClient
-__all__ = ['NewsSearchClient', 'NewsSearchClientConfiguration']
+
+__all__ = ["NewsSearchClient", "NewsSearchClientConfiguration"]
 
 from .version import VERSION
 
 __version__ = VERSION
-

@@ -22,9 +22,9 @@ class Filters(Model):
     """
 
     _attribute_map = {
-        'site': {'key': 'site', 'type': 'str'},
+        "site": {"key": "site", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(Filters, self).__init__(**kwargs)
-        self.site = kwargs.get('site', None)
+        self.site = kwargs.get("site", None)

@@ -21,7 +21,7 @@ class KnowledgebasesDTO(Model):
     """
 
     _attribute_map = {
-        'knowledgebases': {'key': 'knowledgebases', 'type': '[KnowledgebaseDTO]'},
+        "knowledgebases": {"key": "knowledgebases", "type": "[KnowledgebaseDTO]"},
     }
 
     def __init__(self, *, knowledgebases=None, **kwargs) -> None:

@@ -11,9 +11,9 @@
 
 from ._configuration import EntitySearchClientConfiguration
 from ._entity_search_client import EntitySearchClient
-__all__ = ['EntitySearchClient', 'EntitySearchClientConfiguration']
+
+__all__ = ["EntitySearchClient", "EntitySearchClientConfiguration"]
 
 from .version import VERSION
 
 __version__ = VERSION
-

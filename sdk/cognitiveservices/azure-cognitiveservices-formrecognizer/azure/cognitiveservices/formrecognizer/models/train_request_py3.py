@@ -22,11 +22,11 @@ class TrainRequest(Model):
     """
 
     _validation = {
-        'source': {'required': True, 'max_length': 2048, 'min_length': 0},
+        "source": {"required": True, "max_length": 2048, "min_length": 0},
     }
 
     _attribute_map = {
-        'source': {'key': 'source', 'type': 'str'},
+        "source": {"key": "source", "type": "str"},
     }
 
     def __init__(self, *, source: str, **kwargs) -> None:

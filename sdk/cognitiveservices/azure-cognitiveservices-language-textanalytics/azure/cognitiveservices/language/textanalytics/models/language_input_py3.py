@@ -24,12 +24,12 @@ class LanguageInput(Model):
     """
 
     _attribute_map = {
-        'country_hint': {'key': 'countryHint', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'text': {'key': 'text', 'type': 'str'},
+        "country_hint": {"key": "countryHint", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "text": {"key": "text", "type": "str"},
     }
 
-    def __init__(self, *, country_hint: str=None, id: str=None, text: str=None, **kwargs) -> None:
+    def __init__(self, *, country_hint: str = None, id: str = None, text: str = None, **kwargs) -> None:
         super(LanguageInput, self).__init__(**kwargs)
         self.country_hint = country_hint
         self.id = id

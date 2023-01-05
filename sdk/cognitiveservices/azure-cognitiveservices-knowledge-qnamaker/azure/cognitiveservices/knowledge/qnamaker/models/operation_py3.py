@@ -37,16 +37,27 @@ class Operation(Model):
     """
 
     _attribute_map = {
-        'operation_state': {'key': 'operationState', 'type': 'str'},
-        'created_timestamp': {'key': 'createdTimestamp', 'type': 'str'},
-        'last_action_timestamp': {'key': 'lastActionTimestamp', 'type': 'str'},
-        'resource_location': {'key': 'resourceLocation', 'type': 'str'},
-        'user_id': {'key': 'userId', 'type': 'str'},
-        'operation_id': {'key': 'operationId', 'type': 'str'},
-        'error_response': {'key': 'errorResponse', 'type': 'ErrorResponse'},
+        "operation_state": {"key": "operationState", "type": "str"},
+        "created_timestamp": {"key": "createdTimestamp", "type": "str"},
+        "last_action_timestamp": {"key": "lastActionTimestamp", "type": "str"},
+        "resource_location": {"key": "resourceLocation", "type": "str"},
+        "user_id": {"key": "userId", "type": "str"},
+        "operation_id": {"key": "operationId", "type": "str"},
+        "error_response": {"key": "errorResponse", "type": "ErrorResponse"},
     }
 
-    def __init__(self, *, operation_state=None, created_timestamp: str=None, last_action_timestamp: str=None, resource_location: str=None, user_id: str=None, operation_id: str=None, error_response=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        operation_state=None,
+        created_timestamp: str = None,
+        last_action_timestamp: str = None,
+        resource_location: str = None,
+        user_id: str = None,
+        operation_id: str = None,
+        error_response=None,
+        **kwargs
+    ) -> None:
         super(Operation, self).__init__(**kwargs)
         self.operation_state = operation_state
         self.created_timestamp = created_timestamp

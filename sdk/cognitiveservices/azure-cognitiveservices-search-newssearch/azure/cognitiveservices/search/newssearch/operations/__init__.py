@@ -12,5 +12,5 @@
 from ._news_operations import NewsOperations
 
 __all__ = [
-    'NewsOperations',
+    "NewsOperations",
 ]

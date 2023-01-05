@@ -41,25 +41,25 @@ class KnowledgebaseDTO(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'host_name': {'key': 'hostName', 'type': 'str'},
-        'last_accessed_timestamp': {'key': 'lastAccessedTimestamp', 'type': 'str'},
-        'last_changed_timestamp': {'key': 'lastChangedTimestamp', 'type': 'str'},
-        'last_published_timestamp': {'key': 'lastPublishedTimestamp', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'user_id': {'key': 'userId', 'type': 'str'},
-        'urls': {'key': 'urls', 'type': '[str]'},
-        'sources': {'key': 'sources', 'type': '[str]'},
+        "id": {"key": "id", "type": "str"},
+        "host_name": {"key": "hostName", "type": "str"},
+        "last_accessed_timestamp": {"key": "lastAccessedTimestamp", "type": "str"},
+        "last_changed_timestamp": {"key": "lastChangedTimestamp", "type": "str"},
+        "last_published_timestamp": {"key": "lastPublishedTimestamp", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "user_id": {"key": "userId", "type": "str"},
+        "urls": {"key": "urls", "type": "[str]"},
+        "sources": {"key": "sources", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(KnowledgebaseDTO, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.host_name = kwargs.get('host_name', None)
-        self.last_accessed_timestamp = kwargs.get('last_accessed_timestamp', None)
-        self.last_changed_timestamp = kwargs.get('last_changed_timestamp', None)
-        self.last_published_timestamp = kwargs.get('last_published_timestamp', None)
-        self.name = kwargs.get('name', None)
-        self.user_id = kwargs.get('user_id', None)
-        self.urls = kwargs.get('urls', None)
-        self.sources = kwargs.get('sources', None)
+        self.id = kwargs.get("id", None)
+        self.host_name = kwargs.get("host_name", None)
+        self.last_accessed_timestamp = kwargs.get("last_accessed_timestamp", None)
+        self.last_changed_timestamp = kwargs.get("last_changed_timestamp", None)
+        self.last_published_timestamp = kwargs.get("last_published_timestamp", None)
+        self.name = kwargs.get("name", None)
+        self.user_id = kwargs.get("user_id", None)
+        self.urls = kwargs.get("urls", None)
+        self.sources = kwargs.get("sources", None)

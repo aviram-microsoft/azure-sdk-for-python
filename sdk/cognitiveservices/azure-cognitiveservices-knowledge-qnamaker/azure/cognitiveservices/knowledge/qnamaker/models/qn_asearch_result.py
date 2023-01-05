@@ -38,23 +38,23 @@ class QnASearchResult(Model):
     """
 
     _attribute_map = {
-        'questions': {'key': 'questions', 'type': '[str]'},
-        'answer': {'key': 'answer', 'type': 'str'},
-        'score': {'key': 'score', 'type': 'float'},
-        'id': {'key': 'id', 'type': 'int'},
-        'source': {'key': 'source', 'type': 'str'},
-        'metadata': {'key': 'metadata', 'type': '[MetadataDTO]'},
-        'context': {'key': 'context', 'type': 'QnASearchResultContext'},
-        'answer_span': {'key': 'answerSpan', 'type': 'QnASearchResultAnswerSpan'},
+        "questions": {"key": "questions", "type": "[str]"},
+        "answer": {"key": "answer", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+        "id": {"key": "id", "type": "int"},
+        "source": {"key": "source", "type": "str"},
+        "metadata": {"key": "metadata", "type": "[MetadataDTO]"},
+        "context": {"key": "context", "type": "QnASearchResultContext"},
+        "answer_span": {"key": "answerSpan", "type": "QnASearchResultAnswerSpan"},
     }
 
     def __init__(self, **kwargs):
         super(QnASearchResult, self).__init__(**kwargs)
-        self.questions = kwargs.get('questions', None)
-        self.answer = kwargs.get('answer', None)
-        self.score = kwargs.get('score', None)
-        self.id = kwargs.get('id', None)
-        self.source = kwargs.get('source', None)
-        self.metadata = kwargs.get('metadata', None)
-        self.context = kwargs.get('context', None)
-        self.answer_span = kwargs.get('answer_span', None)
+        self.questions = kwargs.get("questions", None)
+        self.answer = kwargs.get("answer", None)
+        self.score = kwargs.get("score", None)
+        self.id = kwargs.get("id", None)
+        self.source = kwargs.get("source", None)
+        self.metadata = kwargs.get("metadata", None)
+        self.context = kwargs.get("context", None)
+        self.answer_span = kwargs.get("answer_span", None)

@@ -26,17 +26,17 @@ class AnswerSpanRequestDTO(Model):
     """
 
     _validation = {
-        'top_answers_with_span': {'maximum': 10, 'minimum': 1},
+        "top_answers_with_span": {"maximum": 10, "minimum": 1},
     }
 
     _attribute_map = {
-        'enable': {'key': 'enable', 'type': 'bool'},
-        'score_threshold': {'key': 'scoreThreshold', 'type': 'float'},
-        'top_answers_with_span': {'key': 'topAnswersWithSpan', 'type': 'int'},
+        "enable": {"key": "enable", "type": "bool"},
+        "score_threshold": {"key": "scoreThreshold", "type": "float"},
+        "top_answers_with_span": {"key": "topAnswersWithSpan", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(AnswerSpanRequestDTO, self).__init__(**kwargs)
-        self.enable = kwargs.get('enable', None)
-        self.score_threshold = kwargs.get('score_threshold', None)
-        self.top_answers_with_span = kwargs.get('top_answers_with_span', None)
+        self.enable = kwargs.get("enable", None)
+        self.score_threshold = kwargs.get("score_threshold", None)
+        self.top_answers_with_span = kwargs.get("top_answers_with_span", None)

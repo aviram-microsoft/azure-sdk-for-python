@@ -28,16 +28,16 @@ class ImageTagRegion(Model):
     """
 
     _validation = {
-        'query_rectangle': {'required': True},
-        'display_rectangle': {'required': True},
+        "query_rectangle": {"required": True},
+        "display_rectangle": {"required": True},
     }
 
     _attribute_map = {
-        'query_rectangle': {'key': 'queryRectangle', 'type': 'NormalizedQuadrilateral'},
-        'display_rectangle': {'key': 'displayRectangle', 'type': 'NormalizedQuadrilateral'},
+        "query_rectangle": {"key": "queryRectangle", "type": "NormalizedQuadrilateral"},
+        "display_rectangle": {"key": "displayRectangle", "type": "NormalizedQuadrilateral"},
     }
 
     def __init__(self, **kwargs):
         super(ImageTagRegion, self).__init__(**kwargs)
-        self.query_rectangle = kwargs.get('query_rectangle', None)
-        self.display_rectangle = kwargs.get('display_rectangle', None)
+        self.query_rectangle = kwargs.get("query_rectangle", None)
+        self.display_rectangle = kwargs.get("display_rectangle", None)

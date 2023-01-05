@@ -37,23 +37,34 @@ class QnADTO(Model):
     """
 
     _validation = {
-        'answer': {'required': True, 'max_length': 25000, 'min_length': 1},
-        'source': {'max_length': 300},
-        'questions': {'required': True},
-        'last_updated_timestamp': {'max_length': 300},
+        "answer": {"required": True, "max_length": 25000, "min_length": 1},
+        "source": {"max_length": 300},
+        "questions": {"required": True},
+        "last_updated_timestamp": {"max_length": 300},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'answer': {'key': 'answer', 'type': 'str'},
-        'source': {'key': 'source', 'type': 'str'},
-        'questions': {'key': 'questions', 'type': '[str]'},
-        'metadata': {'key': 'metadata', 'type': '[MetadataDTO]'},
-        'context': {'key': 'context', 'type': 'QnADTOContext'},
-        'last_updated_timestamp': {'key': 'lastUpdatedTimestamp', 'type': 'str'},
+        "id": {"key": "id", "type": "int"},
+        "answer": {"key": "answer", "type": "str"},
+        "source": {"key": "source", "type": "str"},
+        "questions": {"key": "questions", "type": "[str]"},
+        "metadata": {"key": "metadata", "type": "[MetadataDTO]"},
+        "context": {"key": "context", "type": "QnADTOContext"},
+        "last_updated_timestamp": {"key": "lastUpdatedTimestamp", "type": "str"},
     }
 
-    def __init__(self, *, answer: str, questions, id: int=None, source: str=None, metadata=None, context=None, last_updated_timestamp: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        answer: str,
+        questions,
+        id: int = None,
+        source: str = None,
+        metadata=None,
+        context=None,
+        last_updated_timestamp: str = None,
+        **kwargs
+    ) -> None:
         super(QnADTO, self).__init__(**kwargs)
         self.id = id
         self.answer = answer

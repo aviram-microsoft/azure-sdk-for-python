@@ -24,11 +24,11 @@ class RelatedSearchesModule(Model):
     """
 
     _validation = {
-        'value': {'readonly': True},
+        "value": {"readonly": True},
     }
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[Query]'},
+        "value": {"key": "value", "type": "[Query]"},
     }
 
     def __init__(self, **kwargs):

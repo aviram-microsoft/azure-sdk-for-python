@@ -26,16 +26,14 @@ class ResponseBase(Model):
     """
 
     _validation = {
-        '_type': {'required': True},
+        "_type": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Identifiable': 'Identifiable'}
-    }
+    _subtype_map = {"_type": {"Identifiable": "Identifiable"}}
 
     def __init__(self, **kwargs):
         super(ResponseBase, self).__init__(**kwargs)
@@ -60,23 +58,21 @@ class Identifiable(ResponseBase):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Response': 'Response'}
-    }
+    _subtype_map = {"_type": {"Response": "Response"}}
 
     def __init__(self, **kwargs):
         super(Identifiable, self).__init__(**kwargs)
         self.id = None
-        self._type = 'Identifiable'
+        self._type = "Identifiable"
 
 
 class Response(Identifiable):
@@ -104,28 +100,33 @@ class Response(Identifiable):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
     }
 
     _subtype_map = {
-        '_type': {'Thing': 'Thing', 'SearchResponse': 'SearchResponse', 'Answer': 'Answer', 'ErrorResponse': 'ErrorResponse'}
+        "_type": {
+            "Thing": "Thing",
+            "SearchResponse": "SearchResponse",
+            "Answer": "Answer",
+            "ErrorResponse": "ErrorResponse",
+        }
     }
 
     def __init__(self, **kwargs):
         super(Response, self).__init__(**kwargs)
         self.contractual_rules = None
         self.web_search_url = None
-        self._type = 'Response'
+        self._type = "Response"
 
 
 class Thing(Response):
@@ -170,33 +171,38 @@ class Thing(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
     }
 
     _subtype_map = {
-        '_type': {'Place': 'Place', 'Organization': 'Organization', 'CreativeWork': 'CreativeWork', 'Intangible': 'Intangible'}
+        "_type": {
+            "Place": "Place",
+            "Organization": "Organization",
+            "CreativeWork": "CreativeWork",
+            "Intangible": "Intangible",
+        }
     }
 
     def __init__(self, **kwargs):
@@ -207,7 +213,7 @@ class Thing(Response):
         self.description = None
         self.entity_presentation_info = None
         self.bing_id = None
-        self._type = 'Thing'
+        self._type = "Thing"
 
 
 class Place(Thing):
@@ -257,44 +263,48 @@ class Place(Thing):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'address': {'readonly': True},
-        'telephone': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "address": {"readonly": True},
+        "telephone": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'address': {'key': 'address', 'type': 'PostalAddress'},
-        'telephone': {'key': 'telephone', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "address": {"key": "address", "type": "PostalAddress"},
+        "telephone": {"key": "telephone", "type": "str"},
     }
 
     _subtype_map = {
-        '_type': {'CivicStructure': 'CivicStructure', 'LocalBusiness': 'LocalBusiness', 'TouristAttraction': 'TouristAttraction'}
+        "_type": {
+            "CivicStructure": "CivicStructure",
+            "LocalBusiness": "LocalBusiness",
+            "TouristAttraction": "TouristAttraction",
+        }
     }
 
     def __init__(self, **kwargs):
         super(Place, self).__init__(**kwargs)
         self.address = None
         self.telephone = None
-        self._type = 'Place'
+        self._type = "Place"
 
 
 class CivicStructure(Place):
@@ -344,42 +354,40 @@ class CivicStructure(Place):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'address': {'readonly': True},
-        'telephone': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "address": {"readonly": True},
+        "telephone": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'address': {'key': 'address', 'type': 'PostalAddress'},
-        'telephone': {'key': 'telephone', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "address": {"key": "address", "type": "PostalAddress"},
+        "telephone": {"key": "telephone", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Airport': 'Airport'}
-    }
+    _subtype_map = {"_type": {"Airport": "Airport"}}
 
     def __init__(self, **kwargs):
         super(CivicStructure, self).__init__(**kwargs)
-        self._type = 'CivicStructure'
+        self._type = "CivicStructure"
 
 
 class Airport(CivicStructure):
@@ -430,44 +438,44 @@ class Airport(CivicStructure):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'address': {'readonly': True},
-        'telephone': {'readonly': True},
-        'iata_code': {'readonly': True},
-        'icao_code': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "address": {"readonly": True},
+        "telephone": {"readonly": True},
+        "iata_code": {"readonly": True},
+        "icao_code": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'address': {'key': 'address', 'type': 'PostalAddress'},
-        'telephone': {'key': 'telephone', 'type': 'str'},
-        'iata_code': {'key': 'iataCode', 'type': 'str'},
-        'icao_code': {'key': 'icaoCode', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "address": {"key": "address", "type": "PostalAddress"},
+        "telephone": {"key": "telephone", "type": "str"},
+        "iata_code": {"key": "iataCode", "type": "str"},
+        "icao_code": {"key": "icaoCode", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(Airport, self).__init__(**kwargs)
         self.iata_code = None
         self.icao_code = None
-        self._type = 'Airport'
+        self._type = "Airport"
 
 
 class Answer(Response):
@@ -494,26 +502,24 @@ class Answer(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'SearchResultsAnswer': 'SearchResultsAnswer'}
-    }
+    _subtype_map = {"_type": {"SearchResultsAnswer": "SearchResultsAnswer"}}
 
     def __init__(self, **kwargs):
         super(Answer, self).__init__(**kwargs)
-        self._type = 'Answer'
+        self._type = "Answer"
 
 
 class ContractualRulesContractualRule(Model):
@@ -535,18 +541,16 @@ class ContractualRulesContractualRule(Model):
     """
 
     _validation = {
-        'target_property_name': {'readonly': True},
-        '_type': {'required': True},
+        "target_property_name": {"readonly": True},
+        "_type": {"required": True},
     }
 
     _attribute_map = {
-        'target_property_name': {'key': 'targetPropertyName', 'type': 'str'},
-        '_type': {'key': '_type', 'type': 'str'},
+        "target_property_name": {"key": "targetPropertyName", "type": "str"},
+        "_type": {"key": "_type", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'ContractualRules/Attribution': 'ContractualRulesAttribution'}
-    }
+    _subtype_map = {"_type": {"ContractualRules/Attribution": "ContractualRulesAttribution"}}
 
     def __init__(self, **kwargs):
         super(ContractualRulesContractualRule, self).__init__(**kwargs)
@@ -581,25 +585,30 @@ class ContractualRulesAttribution(ContractualRulesContractualRule):
     """
 
     _validation = {
-        'target_property_name': {'readonly': True},
-        '_type': {'required': True},
-        'must_be_close_to_content': {'readonly': True},
+        "target_property_name": {"readonly": True},
+        "_type": {"required": True},
+        "must_be_close_to_content": {"readonly": True},
     }
 
     _attribute_map = {
-        'target_property_name': {'key': 'targetPropertyName', 'type': 'str'},
-        '_type': {'key': '_type', 'type': 'str'},
-        'must_be_close_to_content': {'key': 'mustBeCloseToContent', 'type': 'bool'},
+        "target_property_name": {"key": "targetPropertyName", "type": "str"},
+        "_type": {"key": "_type", "type": "str"},
+        "must_be_close_to_content": {"key": "mustBeCloseToContent", "type": "bool"},
     }
 
     _subtype_map = {
-        '_type': {'ContractualRules/LicenseAttribution': 'ContractualRulesLicenseAttribution', 'ContractualRules/LinkAttribution': 'ContractualRulesLinkAttribution', 'ContractualRules/MediaAttribution': 'ContractualRulesMediaAttribution', 'ContractualRules/TextAttribution': 'ContractualRulesTextAttribution'}
+        "_type": {
+            "ContractualRules/LicenseAttribution": "ContractualRulesLicenseAttribution",
+            "ContractualRules/LinkAttribution": "ContractualRulesLinkAttribution",
+            "ContractualRules/MediaAttribution": "ContractualRulesMediaAttribution",
+            "ContractualRules/TextAttribution": "ContractualRulesTextAttribution",
+        }
     }
 
     def __init__(self, **kwargs):
         super(ContractualRulesAttribution, self).__init__(**kwargs)
         self.must_be_close_to_content = None
-        self._type = 'ContractualRules/Attribution'
+        self._type = "ContractualRules/Attribution"
 
 
 class ContractualRulesLicenseAttribution(ContractualRulesAttribution):
@@ -629,26 +638,26 @@ class ContractualRulesLicenseAttribution(ContractualRulesAttribution):
     """
 
     _validation = {
-        'target_property_name': {'readonly': True},
-        '_type': {'required': True},
-        'must_be_close_to_content': {'readonly': True},
-        'license': {'readonly': True},
-        'license_notice': {'readonly': True},
+        "target_property_name": {"readonly": True},
+        "_type": {"required": True},
+        "must_be_close_to_content": {"readonly": True},
+        "license": {"readonly": True},
+        "license_notice": {"readonly": True},
     }
 
     _attribute_map = {
-        'target_property_name': {'key': 'targetPropertyName', 'type': 'str'},
-        '_type': {'key': '_type', 'type': 'str'},
-        'must_be_close_to_content': {'key': 'mustBeCloseToContent', 'type': 'bool'},
-        'license': {'key': 'license', 'type': 'License'},
-        'license_notice': {'key': 'licenseNotice', 'type': 'str'},
+        "target_property_name": {"key": "targetPropertyName", "type": "str"},
+        "_type": {"key": "_type", "type": "str"},
+        "must_be_close_to_content": {"key": "mustBeCloseToContent", "type": "bool"},
+        "license": {"key": "license", "type": "License"},
+        "license_notice": {"key": "licenseNotice", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ContractualRulesLicenseAttribution, self).__init__(**kwargs)
         self.license = None
         self.license_notice = None
-        self._type = 'ContractualRules/LicenseAttribution'
+        self._type = "ContractualRules/LicenseAttribution"
 
 
 class ContractualRulesLinkAttribution(ContractualRulesAttribution):
@@ -681,29 +690,29 @@ class ContractualRulesLinkAttribution(ContractualRulesAttribution):
     """
 
     _validation = {
-        'target_property_name': {'readonly': True},
-        '_type': {'required': True},
-        'must_be_close_to_content': {'readonly': True},
-        'text': {'required': True},
-        'url': {'required': True},
-        'optional_for_list_display': {'readonly': True},
+        "target_property_name": {"readonly": True},
+        "_type": {"required": True},
+        "must_be_close_to_content": {"readonly": True},
+        "text": {"required": True},
+        "url": {"required": True},
+        "optional_for_list_display": {"readonly": True},
     }
 
     _attribute_map = {
-        'target_property_name': {'key': 'targetPropertyName', 'type': 'str'},
-        '_type': {'key': '_type', 'type': 'str'},
-        'must_be_close_to_content': {'key': 'mustBeCloseToContent', 'type': 'bool'},
-        'text': {'key': 'text', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'optional_for_list_display': {'key': 'optionalForListDisplay', 'type': 'bool'},
+        "target_property_name": {"key": "targetPropertyName", "type": "str"},
+        "_type": {"key": "_type", "type": "str"},
+        "must_be_close_to_content": {"key": "mustBeCloseToContent", "type": "bool"},
+        "text": {"key": "text", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "optional_for_list_display": {"key": "optionalForListDisplay", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(ContractualRulesLinkAttribution, self).__init__(**kwargs)
-        self.text = kwargs.get('text', None)
-        self.url = kwargs.get('url', None)
+        self.text = kwargs.get("text", None)
+        self.url = kwargs.get("url", None)
         self.optional_for_list_display = None
-        self._type = 'ContractualRules/LinkAttribution'
+        self._type = "ContractualRules/LinkAttribution"
 
 
 class ContractualRulesMediaAttribution(ContractualRulesAttribution):
@@ -732,23 +741,23 @@ class ContractualRulesMediaAttribution(ContractualRulesAttribution):
     """
 
     _validation = {
-        'target_property_name': {'readonly': True},
-        '_type': {'required': True},
-        'must_be_close_to_content': {'readonly': True},
-        'url': {'readonly': True},
+        "target_property_name": {"readonly": True},
+        "_type": {"required": True},
+        "must_be_close_to_content": {"readonly": True},
+        "url": {"readonly": True},
     }
 
     _attribute_map = {
-        'target_property_name': {'key': 'targetPropertyName', 'type': 'str'},
-        '_type': {'key': '_type', 'type': 'str'},
-        'must_be_close_to_content': {'key': 'mustBeCloseToContent', 'type': 'bool'},
-        'url': {'key': 'url', 'type': 'str'},
+        "target_property_name": {"key": "targetPropertyName", "type": "str"},
+        "_type": {"key": "_type", "type": "str"},
+        "must_be_close_to_content": {"key": "mustBeCloseToContent", "type": "bool"},
+        "url": {"key": "url", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ContractualRulesMediaAttribution, self).__init__(**kwargs)
         self.url = None
-        self._type = 'ContractualRules/MediaAttribution'
+        self._type = "ContractualRules/MediaAttribution"
 
 
 class ContractualRulesTextAttribution(ContractualRulesAttribution):
@@ -782,26 +791,26 @@ class ContractualRulesTextAttribution(ContractualRulesAttribution):
     """
 
     _validation = {
-        'target_property_name': {'readonly': True},
-        '_type': {'required': True},
-        'must_be_close_to_content': {'readonly': True},
-        'text': {'required': True},
-        'optional_for_list_display': {'readonly': True},
+        "target_property_name": {"readonly": True},
+        "_type": {"required": True},
+        "must_be_close_to_content": {"readonly": True},
+        "text": {"required": True},
+        "optional_for_list_display": {"readonly": True},
     }
 
     _attribute_map = {
-        'target_property_name': {'key': 'targetPropertyName', 'type': 'str'},
-        '_type': {'key': '_type', 'type': 'str'},
-        'must_be_close_to_content': {'key': 'mustBeCloseToContent', 'type': 'bool'},
-        'text': {'key': 'text', 'type': 'str'},
-        'optional_for_list_display': {'key': 'optionalForListDisplay', 'type': 'bool'},
+        "target_property_name": {"key": "targetPropertyName", "type": "str"},
+        "_type": {"key": "_type", "type": "str"},
+        "must_be_close_to_content": {"key": "mustBeCloseToContent", "type": "bool"},
+        "text": {"key": "text", "type": "str"},
+        "optional_for_list_display": {"key": "optionalForListDisplay", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(ContractualRulesTextAttribution, self).__init__(**kwargs)
-        self.text = kwargs.get('text', None)
+        self.text = kwargs.get("text", None)
         self.optional_for_list_display = None
-        self._type = 'ContractualRules/TextAttribution'
+        self._type = "ContractualRules/TextAttribution"
 
 
 class CreativeWork(Thing):
@@ -853,47 +862,45 @@ class CreativeWork(Thing):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'MediaObject': 'MediaObject', 'License': 'License'}
-    }
+    _subtype_map = {"_type": {"MediaObject": "MediaObject", "License": "License"}}
 
     def __init__(self, **kwargs):
         super(CreativeWork, self).__init__(**kwargs)
         self.thumbnail_url = None
         self.provider = None
         self.text = None
-        self._type = 'CreativeWork'
+        self._type = "CreativeWork"
 
 
 class LocalBusiness(Place):
@@ -952,45 +959,49 @@ class LocalBusiness(Place):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'address': {'readonly': True},
-        'telephone': {'readonly': True},
-        'price_range': {'readonly': True},
-        'panoramas': {'readonly': True},
-        'is_permanently_closed': {'readonly': True},
-        'tag_line': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "address": {"readonly": True},
+        "telephone": {"readonly": True},
+        "price_range": {"readonly": True},
+        "panoramas": {"readonly": True},
+        "is_permanently_closed": {"readonly": True},
+        "tag_line": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'address': {'key': 'address', 'type': 'PostalAddress'},
-        'telephone': {'key': 'telephone', 'type': 'str'},
-        'price_range': {'key': 'priceRange', 'type': 'str'},
-        'panoramas': {'key': 'panoramas', 'type': '[ImageObject]'},
-        'is_permanently_closed': {'key': 'isPermanentlyClosed', 'type': 'bool'},
-        'tag_line': {'key': 'tagLine', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "address": {"key": "address", "type": "PostalAddress"},
+        "telephone": {"key": "telephone", "type": "str"},
+        "price_range": {"key": "priceRange", "type": "str"},
+        "panoramas": {"key": "panoramas", "type": "[ImageObject]"},
+        "is_permanently_closed": {"key": "isPermanentlyClosed", "type": "bool"},
+        "tag_line": {"key": "tagLine", "type": "str"},
     }
 
     _subtype_map = {
-        '_type': {'EntertainmentBusiness': 'EntertainmentBusiness', 'FoodEstablishment': 'FoodEstablishment', 'LodgingBusiness': 'LodgingBusiness'}
+        "_type": {
+            "EntertainmentBusiness": "EntertainmentBusiness",
+            "FoodEstablishment": "FoodEstablishment",
+            "LodgingBusiness": "LodgingBusiness",
+        }
     }
 
     def __init__(self, **kwargs):
@@ -999,7 +1010,7 @@ class LocalBusiness(Place):
         self.panoramas = None
         self.is_permanently_closed = None
         self.tag_line = None
-        self._type = 'LocalBusiness'
+        self._type = "LocalBusiness"
 
 
 class EntertainmentBusiness(LocalBusiness):
@@ -1058,50 +1069,48 @@ class EntertainmentBusiness(LocalBusiness):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'address': {'readonly': True},
-        'telephone': {'readonly': True},
-        'price_range': {'readonly': True},
-        'panoramas': {'readonly': True},
-        'is_permanently_closed': {'readonly': True},
-        'tag_line': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "address": {"readonly": True},
+        "telephone": {"readonly": True},
+        "price_range": {"readonly": True},
+        "panoramas": {"readonly": True},
+        "is_permanently_closed": {"readonly": True},
+        "tag_line": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'address': {'key': 'address', 'type': 'PostalAddress'},
-        'telephone': {'key': 'telephone', 'type': 'str'},
-        'price_range': {'key': 'priceRange', 'type': 'str'},
-        'panoramas': {'key': 'panoramas', 'type': '[ImageObject]'},
-        'is_permanently_closed': {'key': 'isPermanentlyClosed', 'type': 'bool'},
-        'tag_line': {'key': 'tagLine', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "address": {"key": "address", "type": "PostalAddress"},
+        "telephone": {"key": "telephone", "type": "str"},
+        "price_range": {"key": "priceRange", "type": "str"},
+        "panoramas": {"key": "panoramas", "type": "[ImageObject]"},
+        "is_permanently_closed": {"key": "isPermanentlyClosed", "type": "bool"},
+        "tag_line": {"key": "tagLine", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'MovieTheater': 'MovieTheater'}
-    }
+    _subtype_map = {"_type": {"MovieTheater": "MovieTheater"}}
 
     def __init__(self, **kwargs):
         super(EntertainmentBusiness, self).__init__(**kwargs)
-        self._type = 'EntertainmentBusiness'
+        self._type = "EntertainmentBusiness"
 
 
 class SearchResultsAnswer(Answer):
@@ -1131,29 +1140,27 @@ class SearchResultsAnswer(Answer):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'query_context': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "query_context": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
     }
 
-    _subtype_map = {
-        '_type': {'Entities': 'Entities', 'Places': 'Places'}
-    }
+    _subtype_map = {"_type": {"Entities": "Entities", "Places": "Places"}}
 
     def __init__(self, **kwargs):
         super(SearchResultsAnswer, self).__init__(**kwargs)
         self.query_context = None
-        self._type = 'SearchResultsAnswer'
+        self._type = "SearchResultsAnswer"
 
 
 class Entities(SearchResultsAnswer):
@@ -1196,30 +1203,30 @@ class Entities(SearchResultsAnswer):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'query_context': {'readonly': True},
-        'query_scenario': {'readonly': True},
-        'value': {'required': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "query_context": {"readonly": True},
+        "query_scenario": {"readonly": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'query_scenario': {'key': 'queryScenario', 'type': 'str'},
-        'value': {'key': 'value', 'type': '[Thing]'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "query_scenario": {"key": "queryScenario", "type": "str"},
+        "value": {"key": "value", "type": "[Thing]"},
     }
 
     def __init__(self, **kwargs):
         super(Entities, self).__init__(**kwargs)
         self.query_scenario = None
-        self.value = kwargs.get('value', None)
-        self._type = 'Entities'
+        self.value = kwargs.get("value", None)
+        self._type = "Entities"
 
 
 class EntitiesEntityPresentationInfo(Model):
@@ -1248,20 +1255,20 @@ class EntitiesEntityPresentationInfo(Model):
     """
 
     _validation = {
-        'entity_scenario': {'required': True},
-        'entity_type_hints': {'readonly': True},
-        'entity_type_display_hint': {'readonly': True},
+        "entity_scenario": {"required": True},
+        "entity_type_hints": {"readonly": True},
+        "entity_type_display_hint": {"readonly": True},
     }
 
     _attribute_map = {
-        'entity_scenario': {'key': 'entityScenario', 'type': 'str'},
-        'entity_type_hints': {'key': 'entityTypeHints', 'type': '[str]'},
-        'entity_type_display_hint': {'key': 'entityTypeDisplayHint', 'type': 'str'},
+        "entity_scenario": {"key": "entityScenario", "type": "str"},
+        "entity_type_hints": {"key": "entityTypeHints", "type": "[str]"},
+        "entity_type_display_hint": {"key": "entityTypeDisplayHint", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(EntitiesEntityPresentationInfo, self).__init__(**kwargs)
-        self.entity_scenario = kwargs.get('entity_scenario', "DominantEntity")
+        self.entity_scenario = kwargs.get("entity_scenario", "DominantEntity")
         self.entity_type_hints = None
         self.entity_type_display_hint = None
 
@@ -1299,28 +1306,28 @@ class Error(Model):
     """
 
     _validation = {
-        'code': {'required': True},
-        'sub_code': {'readonly': True},
-        'message': {'required': True},
-        'more_details': {'readonly': True},
-        'parameter': {'readonly': True},
-        'value': {'readonly': True},
+        "code": {"required": True},
+        "sub_code": {"readonly": True},
+        "message": {"required": True},
+        "more_details": {"readonly": True},
+        "parameter": {"readonly": True},
+        "value": {"readonly": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'sub_code': {'key': 'subCode', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
-        'more_details': {'key': 'moreDetails', 'type': 'str'},
-        'parameter': {'key': 'parameter', 'type': 'str'},
-        'value': {'key': 'value', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "sub_code": {"key": "subCode", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "more_details": {"key": "moreDetails", "type": "str"},
+        "parameter": {"key": "parameter", "type": "str"},
+        "value": {"key": "value", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(Error, self).__init__(**kwargs)
-        self.code = kwargs.get('code', "None")
+        self.code = kwargs.get("code", "None")
         self.sub_code = None
-        self.message = kwargs.get('message', None)
+        self.message = kwargs.get("message", None)
         self.more_details = None
         self.parameter = None
         self.value = None
@@ -1351,25 +1358,25 @@ class ErrorResponse(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'errors': {'required': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "errors": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'errors': {'key': 'errors', 'type': '[Error]'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "errors": {"key": "errors", "type": "[Error]"},
     }
 
     def __init__(self, **kwargs):
         super(ErrorResponse, self).__init__(**kwargs)
-        self.errors = kwargs.get('errors', None)
-        self._type = 'ErrorResponse'
+        self.errors = kwargs.get("errors", None)
+        self._type = "ErrorResponse"
 
 
 class ErrorResponseException(HttpOperationError):
@@ -1381,7 +1388,7 @@ class ErrorResponseException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(ErrorResponseException, self).__init__(deserialize, response, 'ErrorResponse', *args)
+        super(ErrorResponseException, self).__init__(deserialize, response, "ErrorResponse", *args)
 
 
 class FoodEstablishment(LocalBusiness):
@@ -1440,50 +1447,48 @@ class FoodEstablishment(LocalBusiness):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'address': {'readonly': True},
-        'telephone': {'readonly': True},
-        'price_range': {'readonly': True},
-        'panoramas': {'readonly': True},
-        'is_permanently_closed': {'readonly': True},
-        'tag_line': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "address": {"readonly": True},
+        "telephone": {"readonly": True},
+        "price_range": {"readonly": True},
+        "panoramas": {"readonly": True},
+        "is_permanently_closed": {"readonly": True},
+        "tag_line": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'address': {'key': 'address', 'type': 'PostalAddress'},
-        'telephone': {'key': 'telephone', 'type': 'str'},
-        'price_range': {'key': 'priceRange', 'type': 'str'},
-        'panoramas': {'key': 'panoramas', 'type': '[ImageObject]'},
-        'is_permanently_closed': {'key': 'isPermanentlyClosed', 'type': 'bool'},
-        'tag_line': {'key': 'tagLine', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "address": {"key": "address", "type": "PostalAddress"},
+        "telephone": {"key": "telephone", "type": "str"},
+        "price_range": {"key": "priceRange", "type": "str"},
+        "panoramas": {"key": "panoramas", "type": "[ImageObject]"},
+        "is_permanently_closed": {"key": "isPermanentlyClosed", "type": "bool"},
+        "tag_line": {"key": "tagLine", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Restaurant': 'Restaurant'}
-    }
+    _subtype_map = {"_type": {"Restaurant": "Restaurant"}}
 
     def __init__(self, **kwargs):
         super(FoodEstablishment, self).__init__(**kwargs)
-        self._type = 'FoodEstablishment'
+        self._type = "FoodEstablishment"
 
 
 class LodgingBusiness(LocalBusiness):
@@ -1542,50 +1547,48 @@ class LodgingBusiness(LocalBusiness):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'address': {'readonly': True},
-        'telephone': {'readonly': True},
-        'price_range': {'readonly': True},
-        'panoramas': {'readonly': True},
-        'is_permanently_closed': {'readonly': True},
-        'tag_line': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "address": {"readonly": True},
+        "telephone": {"readonly": True},
+        "price_range": {"readonly": True},
+        "panoramas": {"readonly": True},
+        "is_permanently_closed": {"readonly": True},
+        "tag_line": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'address': {'key': 'address', 'type': 'PostalAddress'},
-        'telephone': {'key': 'telephone', 'type': 'str'},
-        'price_range': {'key': 'priceRange', 'type': 'str'},
-        'panoramas': {'key': 'panoramas', 'type': '[ImageObject]'},
-        'is_permanently_closed': {'key': 'isPermanentlyClosed', 'type': 'bool'},
-        'tag_line': {'key': 'tagLine', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "address": {"key": "address", "type": "PostalAddress"},
+        "telephone": {"key": "telephone", "type": "str"},
+        "price_range": {"key": "priceRange", "type": "str"},
+        "panoramas": {"key": "panoramas", "type": "[ImageObject]"},
+        "is_permanently_closed": {"key": "isPermanentlyClosed", "type": "bool"},
+        "tag_line": {"key": "tagLine", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Hotel': 'Hotel'}
-    }
+    _subtype_map = {"_type": {"Hotel": "Hotel"}}
 
     def __init__(self, **kwargs):
         super(LodgingBusiness, self).__init__(**kwargs)
-        self._type = 'LodgingBusiness'
+        self._type = "LodgingBusiness"
 
 
 class Hotel(LodgingBusiness):
@@ -1645,52 +1648,52 @@ class Hotel(LodgingBusiness):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'address': {'readonly': True},
-        'telephone': {'readonly': True},
-        'price_range': {'readonly': True},
-        'panoramas': {'readonly': True},
-        'is_permanently_closed': {'readonly': True},
-        'tag_line': {'readonly': True},
-        'hotel_class': {'readonly': True},
-        'amenities': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "address": {"readonly": True},
+        "telephone": {"readonly": True},
+        "price_range": {"readonly": True},
+        "panoramas": {"readonly": True},
+        "is_permanently_closed": {"readonly": True},
+        "tag_line": {"readonly": True},
+        "hotel_class": {"readonly": True},
+        "amenities": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'address': {'key': 'address', 'type': 'PostalAddress'},
-        'telephone': {'key': 'telephone', 'type': 'str'},
-        'price_range': {'key': 'priceRange', 'type': 'str'},
-        'panoramas': {'key': 'panoramas', 'type': '[ImageObject]'},
-        'is_permanently_closed': {'key': 'isPermanentlyClosed', 'type': 'bool'},
-        'tag_line': {'key': 'tagLine', 'type': 'str'},
-        'hotel_class': {'key': 'hotelClass', 'type': 'str'},
-        'amenities': {'key': 'amenities', 'type': '[str]'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "address": {"key": "address", "type": "PostalAddress"},
+        "telephone": {"key": "telephone", "type": "str"},
+        "price_range": {"key": "priceRange", "type": "str"},
+        "panoramas": {"key": "panoramas", "type": "[ImageObject]"},
+        "is_permanently_closed": {"key": "isPermanentlyClosed", "type": "bool"},
+        "tag_line": {"key": "tagLine", "type": "str"},
+        "hotel_class": {"key": "hotelClass", "type": "str"},
+        "amenities": {"key": "amenities", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(Hotel, self).__init__(**kwargs)
         self.hotel_class = None
         self.amenities = None
-        self._type = 'Hotel'
+        self._type = "Hotel"
 
 
 class MediaObject(CreativeWork):
@@ -1751,48 +1754,46 @@ class MediaObject(CreativeWork):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
-        'content_url': {'readonly': True},
-        'host_page_url': {'readonly': True},
-        'width': {'readonly': True},
-        'height': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
+        "content_url": {"readonly": True},
+        "host_page_url": {"readonly": True},
+        "width": {"readonly": True},
+        "height": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
-        'content_url': {'key': 'contentUrl', 'type': 'str'},
-        'host_page_url': {'key': 'hostPageUrl', 'type': 'str'},
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
+        "content_url": {"key": "contentUrl", "type": "str"},
+        "host_page_url": {"key": "hostPageUrl", "type": "str"},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
     }
 
-    _subtype_map = {
-        '_type': {'ImageObject': 'ImageObject'}
-    }
+    _subtype_map = {"_type": {"ImageObject": "ImageObject"}}
 
     def __init__(self, **kwargs):
         super(MediaObject, self).__init__(**kwargs)
@@ -1800,7 +1801,7 @@ class MediaObject(CreativeWork):
         self.host_page_url = None
         self.width = None
         self.height = None
-        self._type = 'MediaObject'
+        self._type = "MediaObject"
 
 
 class ImageObject(MediaObject):
@@ -1861,51 +1862,51 @@ class ImageObject(MediaObject):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
-        'content_url': {'readonly': True},
-        'host_page_url': {'readonly': True},
-        'width': {'readonly': True},
-        'height': {'readonly': True},
-        'thumbnail': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
+        "content_url": {"readonly": True},
+        "host_page_url": {"readonly": True},
+        "width": {"readonly": True},
+        "height": {"readonly": True},
+        "thumbnail": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
-        'content_url': {'key': 'contentUrl', 'type': 'str'},
-        'host_page_url': {'key': 'hostPageUrl', 'type': 'str'},
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
-        'thumbnail': {'key': 'thumbnail', 'type': 'ImageObject'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
+        "content_url": {"key": "contentUrl", "type": "str"},
+        "host_page_url": {"key": "hostPageUrl", "type": "str"},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
+        "thumbnail": {"key": "thumbnail", "type": "ImageObject"},
     }
 
     def __init__(self, **kwargs):
         super(ImageObject, self).__init__(**kwargs)
         self.thumbnail = None
-        self._type = 'ImageObject'
+        self._type = "ImageObject"
 
 
 class Intangible(Thing):
@@ -1950,38 +1951,36 @@ class Intangible(Thing):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'StructuredValue': 'StructuredValue'}
-    }
+    _subtype_map = {"_type": {"StructuredValue": "StructuredValue"}}
 
     def __init__(self, **kwargs):
         super(Intangible, self).__init__(**kwargs)
-        self._type = 'Intangible'
+        self._type = "Intangible"
 
 
 class License(CreativeWork):
@@ -2030,40 +2029,40 @@ class License(CreativeWork):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'text': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "text": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'text': {'key': 'text', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "text": {"key": "text", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(License, self).__init__(**kwargs)
-        self._type = 'License'
+        self._type = "License"
 
 
 class MovieTheater(EntertainmentBusiness):
@@ -2121,49 +2120,49 @@ class MovieTheater(EntertainmentBusiness):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'address': {'readonly': True},
-        'telephone': {'readonly': True},
-        'price_range': {'readonly': True},
-        'panoramas': {'readonly': True},
-        'is_permanently_closed': {'readonly': True},
-        'tag_line': {'readonly': True},
-        'screen_count': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "address": {"readonly": True},
+        "telephone": {"readonly": True},
+        "price_range": {"readonly": True},
+        "panoramas": {"readonly": True},
+        "is_permanently_closed": {"readonly": True},
+        "tag_line": {"readonly": True},
+        "screen_count": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'address': {'key': 'address', 'type': 'PostalAddress'},
-        'telephone': {'key': 'telephone', 'type': 'str'},
-        'price_range': {'key': 'priceRange', 'type': 'str'},
-        'panoramas': {'key': 'panoramas', 'type': '[ImageObject]'},
-        'is_permanently_closed': {'key': 'isPermanentlyClosed', 'type': 'bool'},
-        'tag_line': {'key': 'tagLine', 'type': 'str'},
-        'screen_count': {'key': 'screenCount', 'type': 'int'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "address": {"key": "address", "type": "PostalAddress"},
+        "telephone": {"key": "telephone", "type": "str"},
+        "price_range": {"key": "priceRange", "type": "str"},
+        "panoramas": {"key": "panoramas", "type": "[ImageObject]"},
+        "is_permanently_closed": {"key": "isPermanentlyClosed", "type": "bool"},
+        "tag_line": {"key": "tagLine", "type": "str"},
+        "screen_count": {"key": "screenCount", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(MovieTheater, self).__init__(**kwargs)
         self.screen_count = None
-        self._type = 'MovieTheater'
+        self._type = "MovieTheater"
 
 
 class Organization(Thing):
@@ -2205,34 +2204,34 @@ class Organization(Thing):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(Organization, self).__init__(**kwargs)
-        self._type = 'Organization'
+        self._type = "Organization"
 
 
 class Places(SearchResultsAnswer):
@@ -2263,27 +2262,27 @@ class Places(SearchResultsAnswer):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'query_context': {'readonly': True},
-        'value': {'required': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "query_context": {"readonly": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'value': {'key': 'value', 'type': '[Thing]'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "value": {"key": "value", "type": "[Thing]"},
     }
 
     def __init__(self, **kwargs):
         super(Places, self).__init__(**kwargs)
-        self.value = kwargs.get('value', None)
-        self._type = 'Places'
+        self.value = kwargs.get("value", None)
+        self._type = "Places"
 
 
 class StructuredValue(Intangible):
@@ -2328,38 +2327,36 @@ class StructuredValue(Intangible):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'PostalAddress': 'PostalAddress'}
-    }
+    _subtype_map = {"_type": {"PostalAddress": "PostalAddress"}}
 
     def __init__(self, **kwargs):
         super(StructuredValue, self).__init__(**kwargs)
-        self._type = 'StructuredValue'
+        self._type = "StructuredValue"
 
 
 class PostalAddress(StructuredValue):
@@ -2432,51 +2429,51 @@ class PostalAddress(StructuredValue):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'street_address': {'readonly': True},
-        'address_locality': {'readonly': True},
-        'address_subregion': {'readonly': True},
-        'address_region': {'readonly': True},
-        'postal_code': {'readonly': True},
-        'post_office_box_number': {'readonly': True},
-        'address_country': {'readonly': True},
-        'country_iso': {'readonly': True},
-        'neighborhood': {'readonly': True},
-        'address_region_abbreviation': {'readonly': True},
-        'text': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "street_address": {"readonly": True},
+        "address_locality": {"readonly": True},
+        "address_subregion": {"readonly": True},
+        "address_region": {"readonly": True},
+        "postal_code": {"readonly": True},
+        "post_office_box_number": {"readonly": True},
+        "address_country": {"readonly": True},
+        "country_iso": {"readonly": True},
+        "neighborhood": {"readonly": True},
+        "address_region_abbreviation": {"readonly": True},
+        "text": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'street_address': {'key': 'streetAddress', 'type': 'str'},
-        'address_locality': {'key': 'addressLocality', 'type': 'str'},
-        'address_subregion': {'key': 'addressSubregion', 'type': 'str'},
-        'address_region': {'key': 'addressRegion', 'type': 'str'},
-        'postal_code': {'key': 'postalCode', 'type': 'str'},
-        'post_office_box_number': {'key': 'postOfficeBoxNumber', 'type': 'str'},
-        'address_country': {'key': 'addressCountry', 'type': 'str'},
-        'country_iso': {'key': 'countryIso', 'type': 'str'},
-        'neighborhood': {'key': 'neighborhood', 'type': 'str'},
-        'address_region_abbreviation': {'key': 'addressRegionAbbreviation', 'type': 'str'},
-        'text': {'key': 'text', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "street_address": {"key": "streetAddress", "type": "str"},
+        "address_locality": {"key": "addressLocality", "type": "str"},
+        "address_subregion": {"key": "addressSubregion", "type": "str"},
+        "address_region": {"key": "addressRegion", "type": "str"},
+        "postal_code": {"key": "postalCode", "type": "str"},
+        "post_office_box_number": {"key": "postOfficeBoxNumber", "type": "str"},
+        "address_country": {"key": "addressCountry", "type": "str"},
+        "country_iso": {"key": "countryIso", "type": "str"},
+        "neighborhood": {"key": "neighborhood", "type": "str"},
+        "address_region_abbreviation": {"key": "addressRegionAbbreviation", "type": "str"},
+        "text": {"key": "text", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2492,7 +2489,7 @@ class PostalAddress(StructuredValue):
         self.neighborhood = None
         self.address_region_abbreviation = None
         self.text = None
-        self._type = 'PostalAddress'
+        self._type = "PostalAddress"
 
 
 class QueryContext(Model):
@@ -2536,24 +2533,24 @@ class QueryContext(Model):
     """
 
     _validation = {
-        'original_query': {'required': True},
-        'altered_query': {'readonly': True},
-        'alteration_override_query': {'readonly': True},
-        'adult_intent': {'readonly': True},
-        'ask_user_for_location': {'readonly': True},
+        "original_query": {"required": True},
+        "altered_query": {"readonly": True},
+        "alteration_override_query": {"readonly": True},
+        "adult_intent": {"readonly": True},
+        "ask_user_for_location": {"readonly": True},
     }
 
     _attribute_map = {
-        'original_query': {'key': 'originalQuery', 'type': 'str'},
-        'altered_query': {'key': 'alteredQuery', 'type': 'str'},
-        'alteration_override_query': {'key': 'alterationOverrideQuery', 'type': 'str'},
-        'adult_intent': {'key': 'adultIntent', 'type': 'bool'},
-        'ask_user_for_location': {'key': 'askUserForLocation', 'type': 'bool'},
+        "original_query": {"key": "originalQuery", "type": "str"},
+        "altered_query": {"key": "alteredQuery", "type": "str"},
+        "alteration_override_query": {"key": "alterationOverrideQuery", "type": "str"},
+        "adult_intent": {"key": "adultIntent", "type": "bool"},
+        "ask_user_for_location": {"key": "askUserForLocation", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(QueryContext, self).__init__(**kwargs)
-        self.original_query = kwargs.get('original_query', None)
+        self.original_query = kwargs.get("original_query", None)
         self.altered_query = None
         self.alteration_override_query = None
         self.adult_intent = None
@@ -2621,49 +2618,49 @@ class Restaurant(FoodEstablishment):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'address': {'readonly': True},
-        'telephone': {'readonly': True},
-        'price_range': {'readonly': True},
-        'panoramas': {'readonly': True},
-        'is_permanently_closed': {'readonly': True},
-        'tag_line': {'readonly': True},
-        'accepts_reservations': {'readonly': True},
-        'reservation_url': {'readonly': True},
-        'serves_cuisine': {'readonly': True},
-        'menu_url': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "address": {"readonly": True},
+        "telephone": {"readonly": True},
+        "price_range": {"readonly": True},
+        "panoramas": {"readonly": True},
+        "is_permanently_closed": {"readonly": True},
+        "tag_line": {"readonly": True},
+        "accepts_reservations": {"readonly": True},
+        "reservation_url": {"readonly": True},
+        "serves_cuisine": {"readonly": True},
+        "menu_url": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'address': {'key': 'address', 'type': 'PostalAddress'},
-        'telephone': {'key': 'telephone', 'type': 'str'},
-        'price_range': {'key': 'priceRange', 'type': 'str'},
-        'panoramas': {'key': 'panoramas', 'type': '[ImageObject]'},
-        'is_permanently_closed': {'key': 'isPermanentlyClosed', 'type': 'bool'},
-        'tag_line': {'key': 'tagLine', 'type': 'str'},
-        'accepts_reservations': {'key': 'acceptsReservations', 'type': 'bool'},
-        'reservation_url': {'key': 'reservationUrl', 'type': 'str'},
-        'serves_cuisine': {'key': 'servesCuisine', 'type': '[str]'},
-        'menu_url': {'key': 'menuUrl', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "address": {"key": "address", "type": "PostalAddress"},
+        "telephone": {"key": "telephone", "type": "str"},
+        "price_range": {"key": "priceRange", "type": "str"},
+        "panoramas": {"key": "panoramas", "type": "[ImageObject]"},
+        "is_permanently_closed": {"key": "isPermanentlyClosed", "type": "bool"},
+        "tag_line": {"key": "tagLine", "type": "str"},
+        "accepts_reservations": {"key": "acceptsReservations", "type": "bool"},
+        "reservation_url": {"key": "reservationUrl", "type": "str"},
+        "serves_cuisine": {"key": "servesCuisine", "type": "[str]"},
+        "menu_url": {"key": "menuUrl", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2672,7 +2669,7 @@ class Restaurant(FoodEstablishment):
         self.reservation_url = None
         self.serves_cuisine = None
         self.menu_url = None
-        self._type = 'Restaurant'
+        self._type = "Restaurant"
 
 
 class SearchResponse(Response):
@@ -2710,23 +2707,23 @@ class SearchResponse(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'query_context': {'readonly': True},
-        'entities': {'readonly': True},
-        'places': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "query_context": {"readonly": True},
+        "entities": {"readonly": True},
+        "places": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'query_context': {'key': 'queryContext', 'type': 'QueryContext'},
-        'entities': {'key': 'entities', 'type': 'Entities'},
-        'places': {'key': 'places', 'type': 'Places'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "query_context": {"key": "queryContext", "type": "QueryContext"},
+        "entities": {"key": "entities", "type": "Entities"},
+        "places": {"key": "places", "type": "Places"},
     }
 
     def __init__(self, **kwargs):
@@ -2734,7 +2731,7 @@ class SearchResponse(Response):
         self.query_context = None
         self.entities = None
         self.places = None
-        self._type = 'SearchResponse'
+        self._type = "SearchResponse"
 
 
 class TouristAttraction(Place):
@@ -2781,35 +2778,35 @@ class TouristAttraction(Place):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'contractual_rules': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'entity_presentation_info': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'address': {'readonly': True},
-        'telephone': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "contractual_rules": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "entity_presentation_info": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "address": {"readonly": True},
+        "telephone": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'contractual_rules': {'key': 'contractualRules', 'type': '[ContractualRulesContractualRule]'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'entity_presentation_info': {'key': 'entityPresentationInfo', 'type': 'EntitiesEntityPresentationInfo'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'address': {'key': 'address', 'type': 'PostalAddress'},
-        'telephone': {'key': 'telephone', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "contractual_rules": {"key": "contractualRules", "type": "[ContractualRulesContractualRule]"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "entity_presentation_info": {"key": "entityPresentationInfo", "type": "EntitiesEntityPresentationInfo"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "address": {"key": "address", "type": "PostalAddress"},
+        "telephone": {"key": "telephone", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(TouristAttraction, self).__init__(**kwargs)
-        self._type = 'TouristAttraction'
+        self._type = "TouristAttraction"

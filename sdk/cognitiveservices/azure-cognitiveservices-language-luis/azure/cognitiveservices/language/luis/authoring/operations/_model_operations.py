@@ -35,8 +35,7 @@ class ModelOperations(object):
 
         self.config = config
 
-    def add_intent(
-            self, app_id, version_id, name=None, custom_headers=None, raw=False, **operation_config):
+    def add_intent(self, app_id, version_id, name=None, custom_headers=None, raw=False, **operation_config):
         """Adds an intent to a version of the application.
 
         :param app_id: The application ID.
@@ -58,11 +57,11 @@ class ModelOperations(object):
         intent_create_object = models.ModelCreateObject(name=name)
 
         # Construct URL
-        url = self.add_intent.metadata['url']
+        url = self.add_intent.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -71,13 +70,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(intent_create_object, 'ModelCreateObject')
+        body_content = self._serialize.body(intent_create_object, "ModelCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -88,17 +87,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_intent.metadata = {'url': '/apps/{appId}/versions/{versionId}/intents'}
 
-    def list_intents(
-            self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+    add_intent.metadata = {"url": "/apps/{appId}/versions/{versionId}/intents"}
+
+    def list_intents(self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
         """Gets information about the intent models in a version of the
         application.
 
@@ -124,24 +123,24 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_intents.metadata['url']
+        url = self.list_intents.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -154,17 +153,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[IntentClassifier]', response)
+            deserialized = self._deserialize("[IntentClassifier]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_intents.metadata = {'url': '/apps/{appId}/versions/{versionId}/intents'}
+
+    list_intents.metadata = {"url": "/apps/{appId}/versions/{versionId}/intents"}
 
     def add_entity(
-            self, app_id, version_id, children=None, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, children=None, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Adds an entity extractor to a version of the application.
 
         :param app_id: The application ID.
@@ -189,11 +190,11 @@ class ModelOperations(object):
         entity_model_create_object = models.EntityModelCreateObject(children=children, name=name)
 
         # Construct URL
-        url = self.add_entity.metadata['url']
+        url = self.add_entity.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -202,13 +203,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_model_create_object, 'EntityModelCreateObject')
+        body_content = self._serialize.body(entity_model_create_object, "EntityModelCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -219,17 +220,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_entity.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities'}
 
-    def list_entities(
-            self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+    add_entity.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities"}
+
+    def list_entities(self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
         """Gets information about all the simple entity models in a version of the
         application.
 
@@ -255,24 +256,24 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_entities.metadata['url']
+        url = self.list_entities.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -285,17 +286,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[NDepthEntityExtractor]', response)
+            deserialized = self._deserialize("[NDepthEntityExtractor]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_entities.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities'}
+
+    list_entities.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities"}
 
     def list_hierarchical_entities(
-            self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets information about all the hierarchical entity models in a version
         of the application.
 
@@ -321,24 +324,24 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_hierarchical_entities.metadata['url']
+        url = self.list_hierarchical_entities.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -351,17 +354,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[HierarchicalEntityExtractor]', response)
+            deserialized = self._deserialize("[HierarchicalEntityExtractor]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_hierarchical_entities.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities'}
+
+    list_hierarchical_entities.metadata = {"url": "/apps/{appId}/versions/{versionId}/hierarchicalentities"}
 
     def list_composite_entities(
-            self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets information about all the composite entity models in a version of
         the application.
 
@@ -387,24 +392,24 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_composite_entities.metadata['url']
+        url = self.list_composite_entities.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -417,17 +422,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[CompositeEntityExtractor]', response)
+            deserialized = self._deserialize("[CompositeEntityExtractor]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_composite_entities.metadata = {'url': '/apps/{appId}/versions/{versionId}/compositeentities'}
+
+    list_composite_entities.metadata = {"url": "/apps/{appId}/versions/{versionId}/compositeentities"}
 
     def list_closed_lists(
-            self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets information about all the list entity models in a version of the
         application.
 
@@ -453,24 +460,24 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_closed_lists.metadata['url']
+        url = self.list_closed_lists.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -483,17 +490,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[ClosedListEntityExtractor]', response)
+            deserialized = self._deserialize("[ClosedListEntityExtractor]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_closed_lists.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists'}
+
+    list_closed_lists.metadata = {"url": "/apps/{appId}/versions/{versionId}/closedlists"}
 
     def add_closed_list(
-            self, app_id, version_id, sub_lists=None, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, sub_lists=None, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Adds a list entity model to a version of the application.
 
         :param app_id: The application ID.
@@ -518,11 +527,11 @@ class ModelOperations(object):
         closed_list_model_create_object = models.ClosedListModelCreateObject(sub_lists=sub_lists, name=name)
 
         # Construct URL
-        url = self.add_closed_list.metadata['url']
+        url = self.add_closed_list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -531,13 +540,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(closed_list_model_create_object, 'ClosedListModelCreateObject')
+        body_content = self._serialize.body(closed_list_model_create_object, "ClosedListModelCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -548,17 +557,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_closed_list.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists'}
+
+    add_closed_list.metadata = {"url": "/apps/{appId}/versions/{versionId}/closedlists"}
 
     def add_prebuilt(
-            self, app_id, version_id, prebuilt_extractor_names, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, prebuilt_extractor_names, custom_headers=None, raw=False, **operation_config
+    ):
         """Adds a list of prebuilt entities to a version of the application.
 
         :param app_id: The application ID.
@@ -581,11 +592,11 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.add_prebuilt.metadata['url']
+        url = self.add_prebuilt.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -594,13 +605,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(prebuilt_extractor_names, '[str]')
+        body_content = self._serialize.body(prebuilt_extractor_names, "[str]")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -611,17 +622,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('[PrebuiltEntityExtractor]', response)
+            deserialized = self._deserialize("[PrebuiltEntityExtractor]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_prebuilt.metadata = {'url': '/apps/{appId}/versions/{versionId}/prebuilts'}
 
-    def list_prebuilts(
-            self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+    add_prebuilt.metadata = {"url": "/apps/{appId}/versions/{versionId}/prebuilts"}
+
+    def list_prebuilts(self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
         """Gets information about all the prebuilt entities in a version of the
         application.
 
@@ -647,24 +658,24 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_prebuilts.metadata['url']
+        url = self.list_prebuilts.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -677,17 +688,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[PrebuiltEntityExtractor]', response)
+            deserialized = self._deserialize("[PrebuiltEntityExtractor]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_prebuilts.metadata = {'url': '/apps/{appId}/versions/{versionId}/prebuilts'}
 
-    def list_prebuilt_entities(
-            self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
+    list_prebuilts.metadata = {"url": "/apps/{appId}/versions/{versionId}/prebuilts"}
+
+    def list_prebuilt_entities(self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
         """Gets all the available prebuilt entities in a version of the
         application.
 
@@ -708,11 +719,11 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_prebuilt_entities.metadata['url']
+        url = self.list_prebuilt_entities.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -721,7 +732,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -734,17 +745,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[AvailablePrebuiltEntityModel]', response)
+            deserialized = self._deserialize("[AvailablePrebuiltEntityModel]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_prebuilt_entities.metadata = {'url': '/apps/{appId}/versions/{versionId}/listprebuilts'}
 
-    def list_models(
-            self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+    list_prebuilt_entities.metadata = {"url": "/apps/{appId}/versions/{versionId}/listprebuilts"}
+
+    def list_models(self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
         """Gets information about all the intent and entity models in a version of
         the application.
 
@@ -770,24 +781,24 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_models.metadata['url']
+        url = self.list_models.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -800,17 +811,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[ModelInfoResponse]', response)
+            deserialized = self._deserialize("[ModelInfoResponse]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_models.metadata = {'url': '/apps/{appId}/versions/{versionId}/models'}
+
+    list_models.metadata = {"url": "/apps/{appId}/versions/{versionId}/models"}
 
     def examples_method(
-            self, app_id, version_id, model_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, model_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets the example utterances for the given intent or entity model in a
         version of the application.
 
@@ -838,25 +851,25 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.examples_method.metadata['url']
+        url = self.examples_method.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'modelId': self._serialize.url("model_id", model_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "modelId": self._serialize.url("model_id", model_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -869,17 +882,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[LabelTextObject]', response)
+            deserialized = self._deserialize("[LabelTextObject]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    examples_method.metadata = {'url': '/apps/{appId}/versions/{versionId}/models/{modelId}/examples'}
 
-    def get_intent(
-            self, app_id, version_id, intent_id, custom_headers=None, raw=False, **operation_config):
+    examples_method.metadata = {"url": "/apps/{appId}/versions/{versionId}/models/{modelId}/examples"}
+
+    def get_intent(self, app_id, version_id, intent_id, custom_headers=None, raw=False, **operation_config):
         """Gets information about the intent model in a version of the
         application.
 
@@ -902,12 +915,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_intent.metadata['url']
+        url = self.get_intent.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'intentId': self._serialize.url("intent_id", intent_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "intentId": self._serialize.url("intent_id", intent_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -916,7 +929,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -929,17 +942,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('IntentClassifier', response)
+            deserialized = self._deserialize("IntentClassifier", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_intent.metadata = {'url': '/apps/{appId}/versions/{versionId}/intents/{intentId}'}
+
+    get_intent.metadata = {"url": "/apps/{appId}/versions/{versionId}/intents/{intentId}"}
 
     def update_intent(
-            self, app_id, version_id, intent_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, intent_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Updates the name of an intent in a version of the application.
 
         :param app_id: The application ID.
@@ -965,12 +980,12 @@ class ModelOperations(object):
         model_update_object = models.ModelUpdateObject(name=name)
 
         # Construct URL
-        url = self.update_intent.metadata['url']
+        url = self.update_intent.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'intentId': self._serialize.url("intent_id", intent_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "intentId": self._serialize.url("intent_id", intent_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -979,13 +994,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(model_update_object, 'ModelUpdateObject')
+        body_content = self._serialize.body(model_update_object, "ModelUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -996,17 +1011,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_intent.metadata = {'url': '/apps/{appId}/versions/{versionId}/intents/{intentId}'}
+
+    update_intent.metadata = {"url": "/apps/{appId}/versions/{versionId}/intents/{intentId}"}
 
     def delete_intent(
-            self, app_id, version_id, intent_id, delete_utterances=False, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, intent_id, delete_utterances=False, custom_headers=None, raw=False, **operation_config
+    ):
         """Deletes an intent from a version of the application.
 
         :param app_id: The application ID.
@@ -1032,23 +1049,23 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_intent.metadata['url']
+        url = self.delete_intent.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'intentId': self._serialize.url("intent_id", intent_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "intentId": self._serialize.url("intent_id", intent_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if delete_utterances is not None:
-            query_parameters['deleteUtterances'] = self._serialize.query("delete_utterances", delete_utterances, 'bool')
+            query_parameters["deleteUtterances"] = self._serialize.query("delete_utterances", delete_utterances, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1061,17 +1078,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_intent.metadata = {'url': '/apps/{appId}/versions/{versionId}/intents/{intentId}'}
 
-    def get_entity(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+    delete_intent.metadata = {"url": "/apps/{appId}/versions/{versionId}/intents/{intentId}"}
+
+    def get_entity(self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
         """Gets information about an entity model in a version of the application.
 
         :param app_id: The application ID.
@@ -1093,12 +1110,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_entity.metadata['url']
+        url = self.get_entity.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1107,7 +1124,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1120,17 +1137,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('NDepthEntityExtractor', response)
+            deserialized = self._deserialize("NDepthEntityExtractor", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_entity.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}'}
 
-    def delete_entity(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+    get_entity.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}"}
+
+    def delete_entity(self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
         """Deletes an entity or a child from a version of the application.
 
         :param app_id: The application ID.
@@ -1153,12 +1170,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_entity.metadata['url']
+        url = self.delete_entity.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1167,7 +1184,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1180,17 +1197,27 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_entity.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}'}
+
+    delete_entity.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}"}
 
     def update_entity_child(
-            self, app_id, version_id, entity_id, name=None, instance_of=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        entity_id,
+        name=None,
+        instance_of=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Updates the name of an entity extractor or the name and instanceOf
         model of a child entity extractor.
 
@@ -1220,12 +1247,12 @@ class ModelOperations(object):
         entity_model_update_object = models.EntityModelUpdateObject(name=name, instance_of=instance_of)
 
         # Construct URL
-        url = self.update_entity_child.metadata['url']
+        url = self.update_entity_child.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1234,13 +1261,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_model_update_object, 'EntityModelUpdateObject')
+        body_content = self._serialize.body(entity_model_update_object, "EntityModelUpdateObject")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -1251,17 +1278,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_entity_child.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}'}
 
-    def get_intent_features(
-            self, app_id, version_id, intent_id, custom_headers=None, raw=False, **operation_config):
+    update_entity_child.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}"}
+
+    def get_intent_features(self, app_id, version_id, intent_id, custom_headers=None, raw=False, **operation_config):
         """Gets the information of the features used by the intent in a version of
         the application.
 
@@ -1284,12 +1311,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_intent_features.metadata['url']
+        url = self.get_intent_features.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'intentId': self._serialize.url("intent_id", intent_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "intentId": self._serialize.url("intent_id", intent_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1298,7 +1325,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1311,17 +1338,26 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[ModelFeatureInformation]', response)
+            deserialized = self._deserialize("[ModelFeatureInformation]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_intent_features.metadata = {'url': '/apps/{appId}/versions/{versionId}/intents/{intentId}/features'}
+
+    get_intent_features.metadata = {"url": "/apps/{appId}/versions/{versionId}/intents/{intentId}/features"}
 
     def replace_intent_features(
-            self, app_id, version_id, intent_id, feature_relations_update_object, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        intent_id,
+        feature_relations_update_object,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Updates the information of the features used by the intent in a version
         of the application.
 
@@ -1348,12 +1384,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.replace_intent_features.metadata['url']
+        url = self.replace_intent_features.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'intentId': self._serialize.url("intent_id", intent_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "intentId": self._serialize.url("intent_id", intent_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1362,13 +1398,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(feature_relations_update_object, '[ModelFeatureInformation]')
+        body_content = self._serialize.body(feature_relations_update_object, "[ModelFeatureInformation]")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -1379,17 +1415,26 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    replace_intent_features.metadata = {'url': '/apps/{appId}/versions/{versionId}/intents/{intentId}/features'}
+
+    replace_intent_features.metadata = {"url": "/apps/{appId}/versions/{versionId}/intents/{intentId}/features"}
 
     def delete_intent_feature(
-            self, app_id, version_id, intent_id, feature_relation_delete_object, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        intent_id,
+        feature_relation_delete_object,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Deletes a relation from the feature relations used by the intent in a
         version of the application.
 
@@ -1416,12 +1461,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_intent_feature.metadata['url']
+        url = self.delete_intent_feature.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'intentId': self._serialize.url("intent_id", intent_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "intentId": self._serialize.url("intent_id", intent_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1430,13 +1475,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(feature_relation_delete_object, 'ModelFeatureInformation')
+        body_content = self._serialize.body(feature_relation_delete_object, "ModelFeatureInformation")
 
         # Construct and send request
         request = self._client.delete(url, query_parameters, header_parameters, body_content)
@@ -1447,17 +1492,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_intent_feature.metadata = {'url': '/apps/{appId}/versions/{versionId}/intents/{intentId}/features'}
 
-    def get_entity_features(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+    delete_intent_feature.metadata = {"url": "/apps/{appId}/versions/{versionId}/intents/{intentId}/features"}
+
+    def get_entity_features(self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
         """Gets the information of the features used by the entity in a version of
         the application.
 
@@ -1480,12 +1525,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_entity_features.metadata['url']
+        url = self.get_entity_features.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1494,7 +1539,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1507,17 +1552,26 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[ModelFeatureInformation]', response)
+            deserialized = self._deserialize("[ModelFeatureInformation]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_entity_features.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}/features'}
+
+    get_entity_features.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}/features"}
 
     def replace_entity_features(
-            self, app_id, version_id, entity_id, feature_relations_update_object, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        entity_id,
+        feature_relations_update_object,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Updates the information of the features used by the entity in a version
         of the application.
 
@@ -1544,12 +1598,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.replace_entity_features.metadata['url']
+        url = self.replace_entity_features.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1558,13 +1612,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(feature_relations_update_object, '[ModelFeatureInformation]')
+        body_content = self._serialize.body(feature_relations_update_object, "[ModelFeatureInformation]")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -1575,17 +1629,26 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    replace_entity_features.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}/features'}
+
+    replace_entity_features.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}/features"}
 
     def delete_entity_feature(
-            self, app_id, version_id, entity_id, feature_relation_delete_object, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        entity_id,
+        feature_relation_delete_object,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Deletes a relation from the feature relations used by the entity in a
         version of the application.
 
@@ -1612,12 +1675,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_entity_feature.metadata['url']
+        url = self.delete_entity_feature.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1626,13 +1689,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(feature_relation_delete_object, 'ModelFeatureInformation')
+        body_content = self._serialize.body(feature_relation_delete_object, "ModelFeatureInformation")
 
         # Construct and send request
         request = self._client.delete(url, query_parameters, header_parameters, body_content)
@@ -1643,17 +1706,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_entity_feature.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}/features'}
+
+    delete_entity_feature.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}/features"}
 
     def get_hierarchical_entity(
-            self, app_id, version_id, h_entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, h_entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets information about a hierarchical entity in a version of the
         application.
 
@@ -1676,12 +1741,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_hierarchical_entity.metadata['url']
+        url = self.get_hierarchical_entity.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'hEntityId': self._serialize.url("h_entity_id", h_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "hEntityId": self._serialize.url("h_entity_id", h_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1690,7 +1755,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1703,17 +1768,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('HierarchicalEntityExtractor', response)
+            deserialized = self._deserialize("HierarchicalEntityExtractor", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_hierarchical_entity.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}'}
+
+    get_hierarchical_entity.metadata = {"url": "/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}"}
 
     def update_hierarchical_entity(
-            self, app_id, version_id, h_entity_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, h_entity_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Updates the name of a hierarchical entity model in a version of the
         application.
 
@@ -1740,12 +1807,12 @@ class ModelOperations(object):
         model_update_object = models.ModelUpdateObject(name=name)
 
         # Construct URL
-        url = self.update_hierarchical_entity.metadata['url']
+        url = self.update_hierarchical_entity.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'hEntityId': self._serialize.url("h_entity_id", h_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "hEntityId": self._serialize.url("h_entity_id", h_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1754,13 +1821,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(model_update_object, 'ModelUpdateObject')
+        body_content = self._serialize.body(model_update_object, "ModelUpdateObject")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -1771,17 +1838,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_hierarchical_entity.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}'}
+
+    update_hierarchical_entity.metadata = {"url": "/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}"}
 
     def delete_hierarchical_entity(
-            self, app_id, version_id, h_entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, h_entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Deletes a hierarchical entity from a version of the application.
 
         :param app_id: The application ID.
@@ -1803,12 +1872,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_hierarchical_entity.metadata['url']
+        url = self.delete_hierarchical_entity.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'hEntityId': self._serialize.url("h_entity_id", h_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "hEntityId": self._serialize.url("h_entity_id", h_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1817,7 +1886,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1830,17 +1899,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_hierarchical_entity.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}'}
 
-    def get_composite_entity(
-            self, app_id, version_id, c_entity_id, custom_headers=None, raw=False, **operation_config):
+    delete_hierarchical_entity.metadata = {"url": "/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}"}
+
+    def get_composite_entity(self, app_id, version_id, c_entity_id, custom_headers=None, raw=False, **operation_config):
         """Gets information about a composite entity in a version of the
         application.
 
@@ -1863,12 +1932,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_composite_entity.metadata['url']
+        url = self.get_composite_entity.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'cEntityId': self._serialize.url("c_entity_id", c_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "cEntityId": self._serialize.url("c_entity_id", c_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1877,7 +1946,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1890,17 +1959,27 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('CompositeEntityExtractor', response)
+            deserialized = self._deserialize("CompositeEntityExtractor", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_composite_entity.metadata = {'url': '/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}'}
+
+    get_composite_entity.metadata = {"url": "/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}"}
 
     def update_composite_entity(
-            self, app_id, version_id, c_entity_id, children=None, name=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        c_entity_id,
+        children=None,
+        name=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Updates a composite entity in a version of the application.
 
         :param app_id: The application ID.
@@ -1928,12 +2007,12 @@ class ModelOperations(object):
         composite_model_update_object = models.CompositeEntityModel(children=children, name=name)
 
         # Construct URL
-        url = self.update_composite_entity.metadata['url']
+        url = self.update_composite_entity.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'cEntityId': self._serialize.url("c_entity_id", c_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "cEntityId": self._serialize.url("c_entity_id", c_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1942,13 +2021,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(composite_model_update_object, 'CompositeEntityModel')
+        body_content = self._serialize.body(composite_model_update_object, "CompositeEntityModel")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -1959,17 +2038,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_composite_entity.metadata = {'url': '/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}'}
+
+    update_composite_entity.metadata = {"url": "/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}"}
 
     def delete_composite_entity(
-            self, app_id, version_id, c_entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, c_entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Deletes a composite entity from a version of the application.
 
         :param app_id: The application ID.
@@ -1991,12 +2072,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_composite_entity.metadata['url']
+        url = self.delete_composite_entity.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'cEntityId': self._serialize.url("c_entity_id", c_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "cEntityId": self._serialize.url("c_entity_id", c_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2005,7 +2086,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2018,17 +2099,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_composite_entity.metadata = {'url': '/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}'}
 
-    def get_closed_list(
-            self, app_id, version_id, cl_entity_id, custom_headers=None, raw=False, **operation_config):
+    delete_composite_entity.metadata = {"url": "/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}"}
+
+    def get_closed_list(self, app_id, version_id, cl_entity_id, custom_headers=None, raw=False, **operation_config):
         """Gets information about a list entity in a version of the application.
 
         :param app_id: The application ID.
@@ -2050,12 +2131,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_closed_list.metadata['url']
+        url = self.get_closed_list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'clEntityId': self._serialize.url("cl_entity_id", cl_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "clEntityId": self._serialize.url("cl_entity_id", cl_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2064,7 +2145,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2077,17 +2158,27 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ClosedListEntityExtractor', response)
+            deserialized = self._deserialize("ClosedListEntityExtractor", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_closed_list.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}'}
+
+    get_closed_list.metadata = {"url": "/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}"}
 
     def update_closed_list(
-            self, app_id, version_id, cl_entity_id, sub_lists=None, name=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        cl_entity_id,
+        sub_lists=None,
+        name=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Updates the list entity in a version of the application.
 
         :param app_id: The application ID.
@@ -2116,12 +2207,12 @@ class ModelOperations(object):
         closed_list_model_update_object = models.ClosedListModelUpdateObject(sub_lists=sub_lists, name=name)
 
         # Construct URL
-        url = self.update_closed_list.metadata['url']
+        url = self.update_closed_list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'clEntityId': self._serialize.url("cl_entity_id", cl_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "clEntityId": self._serialize.url("cl_entity_id", cl_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2130,13 +2221,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(closed_list_model_update_object, 'ClosedListModelUpdateObject')
+        body_content = self._serialize.body(closed_list_model_update_object, "ClosedListModelUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -2147,17 +2238,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_closed_list.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}'}
+
+    update_closed_list.metadata = {"url": "/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}"}
 
     def patch_closed_list(
-            self, app_id, version_id, cl_entity_id, sub_lists=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, cl_entity_id, sub_lists=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Adds a batch of sublists to an existing list entity in a version of the
         application.
 
@@ -2185,12 +2278,12 @@ class ModelOperations(object):
         closed_list_model_patch_object = models.ClosedListModelPatchObject(sub_lists=sub_lists)
 
         # Construct URL
-        url = self.patch_closed_list.metadata['url']
+        url = self.patch_closed_list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'clEntityId': self._serialize.url("cl_entity_id", cl_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "clEntityId": self._serialize.url("cl_entity_id", cl_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2199,13 +2292,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(closed_list_model_patch_object, 'ClosedListModelPatchObject')
+        body_content = self._serialize.body(closed_list_model_patch_object, "ClosedListModelPatchObject")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -2216,17 +2309,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    patch_closed_list.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}'}
 
-    def delete_closed_list(
-            self, app_id, version_id, cl_entity_id, custom_headers=None, raw=False, **operation_config):
+    patch_closed_list.metadata = {"url": "/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}"}
+
+    def delete_closed_list(self, app_id, version_id, cl_entity_id, custom_headers=None, raw=False, **operation_config):
         """Deletes a list entity model from a version of the application.
 
         :param app_id: The application ID.
@@ -2248,12 +2341,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_closed_list.metadata['url']
+        url = self.delete_closed_list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'clEntityId': self._serialize.url("cl_entity_id", cl_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "clEntityId": self._serialize.url("cl_entity_id", cl_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2262,7 +2355,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2275,17 +2368,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_closed_list.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}'}
 
-    def get_prebuilt(
-            self, app_id, version_id, prebuilt_id, custom_headers=None, raw=False, **operation_config):
+    delete_closed_list.metadata = {"url": "/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}"}
+
+    def get_prebuilt(self, app_id, version_id, prebuilt_id, custom_headers=None, raw=False, **operation_config):
         """Gets information about a prebuilt entity model in a version of the
         application.
 
@@ -2308,12 +2401,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_prebuilt.metadata['url']
+        url = self.get_prebuilt.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'prebuiltId': self._serialize.url("prebuilt_id", prebuilt_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "prebuiltId": self._serialize.url("prebuilt_id", prebuilt_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2322,7 +2415,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2335,17 +2428,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PrebuiltEntityExtractor', response)
+            deserialized = self._deserialize("PrebuiltEntityExtractor", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_prebuilt.metadata = {'url': '/apps/{appId}/versions/{versionId}/prebuilts/{prebuiltId}'}
 
-    def delete_prebuilt(
-            self, app_id, version_id, prebuilt_id, custom_headers=None, raw=False, **operation_config):
+    get_prebuilt.metadata = {"url": "/apps/{appId}/versions/{versionId}/prebuilts/{prebuiltId}"}
+
+    def delete_prebuilt(self, app_id, version_id, prebuilt_id, custom_headers=None, raw=False, **operation_config):
         """Deletes a prebuilt entity extractor from a version of the application.
 
         :param app_id: The application ID.
@@ -2367,12 +2460,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_prebuilt.metadata['url']
+        url = self.delete_prebuilt.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'prebuiltId': self._serialize.url("prebuilt_id", prebuilt_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "prebuiltId": self._serialize.url("prebuilt_id", prebuilt_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2381,7 +2474,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2394,17 +2487,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_prebuilt.metadata = {'url': '/apps/{appId}/versions/{versionId}/prebuilts/{prebuiltId}'}
+
+    delete_prebuilt.metadata = {"url": "/apps/{appId}/versions/{versionId}/prebuilts/{prebuiltId}"}
 
     def delete_sub_list(
-            self, app_id, version_id, cl_entity_id, sub_list_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, cl_entity_id, sub_list_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Deletes a sublist of a specific list entity model from a version of the
         application.
 
@@ -2429,13 +2524,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_sub_list.metadata['url']
+        url = self.delete_sub_list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'clEntityId': self._serialize.url("cl_entity_id", cl_entity_id, 'str'),
-            'subListId': self._serialize.url("sub_list_id", sub_list_id, 'long')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "clEntityId": self._serialize.url("cl_entity_id", cl_entity_id, "str"),
+            "subListId": self._serialize.url("sub_list_id", sub_list_id, "long"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2444,7 +2539,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2457,17 +2552,30 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_sub_list.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}/sublists/{subListId}'}
+
+    delete_sub_list.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}/sublists/{subListId}"
+    }
 
     def update_sub_list(
-            self, app_id, version_id, cl_entity_id, sub_list_id, canonical_form=None, list=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        cl_entity_id,
+        sub_list_id,
+        canonical_form=None,
+        list=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Updates one of the list entity's sublists in a version of the
         application.
 
@@ -2498,13 +2606,13 @@ class ModelOperations(object):
         word_list_base_update_object = models.WordListBaseUpdateObject(canonical_form=canonical_form, list=list)
 
         # Construct URL
-        url = self.update_sub_list.metadata['url']
+        url = self.update_sub_list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'clEntityId': self._serialize.url("cl_entity_id", cl_entity_id, 'str'),
-            'subListId': self._serialize.url("sub_list_id", sub_list_id, 'long')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "clEntityId": self._serialize.url("cl_entity_id", cl_entity_id, "str"),
+            "subListId": self._serialize.url("sub_list_id", sub_list_id, "long"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2513,13 +2621,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(word_list_base_update_object, 'WordListBaseUpdateObject')
+        body_content = self._serialize.body(word_list_base_update_object, "WordListBaseUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -2530,17 +2638,29 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_sub_list.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}/sublists/{subListId}'}
+
+    update_sub_list.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}/sublists/{subListId}"
+    }
 
     def list_intent_suggestions(
-            self, app_id, version_id, intent_id, take=100, enable_nested_children=False, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        intent_id,
+        take=100,
+        enable_nested_children=False,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Suggests example utterances that would improve the accuracy of the
         intent model in a version of the application.
 
@@ -2568,25 +2688,27 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_intent_suggestions.metadata['url']
+        url = self.list_intent_suggestions.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'intentId': self._serialize.url("intent_id", intent_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "intentId": self._serialize.url("intent_id", intent_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
         if enable_nested_children is not None:
-            query_parameters['enableNestedChildren'] = self._serialize.query("enable_nested_children", enable_nested_children, 'bool')
+            query_parameters["enableNestedChildren"] = self._serialize.query(
+                "enable_nested_children", enable_nested_children, "bool"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2599,17 +2721,27 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[IntentsSuggestionExample]', response)
+            deserialized = self._deserialize("[IntentsSuggestionExample]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_intent_suggestions.metadata = {'url': '/apps/{appId}/versions/{versionId}/intents/{intentId}/suggest'}
+
+    list_intent_suggestions.metadata = {"url": "/apps/{appId}/versions/{versionId}/intents/{intentId}/suggest"}
 
     def list_entity_suggestions(
-            self, app_id, version_id, entity_id, take=100, enable_nested_children=False, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        entity_id,
+        take=100,
+        enable_nested_children=False,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Get suggested example utterances that would improve the accuracy of the
         entity model in a version of the application.
 
@@ -2637,25 +2769,27 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_entity_suggestions.metadata['url']
+        url = self.list_entity_suggestions.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
         if enable_nested_children is not None:
-            query_parameters['enableNestedChildren'] = self._serialize.query("enable_nested_children", enable_nested_children, 'bool')
+            query_parameters["enableNestedChildren"] = self._serialize.query(
+                "enable_nested_children", enable_nested_children, "bool"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2668,17 +2802,27 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[EntitiesSuggestionExample]', response)
+            deserialized = self._deserialize("[EntitiesSuggestionExample]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_entity_suggestions.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}/suggest'}
+
+    list_entity_suggestions.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}/suggest"}
 
     def add_sub_list(
-            self, app_id, version_id, cl_entity_id, canonical_form=None, list=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        cl_entity_id,
+        canonical_form=None,
+        list=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Adds a sublist to an existing list entity in a version of the
         application.
 
@@ -2705,12 +2849,12 @@ class ModelOperations(object):
         word_list_create_object = models.WordListObject(canonical_form=canonical_form, list=list)
 
         # Construct URL
-        url = self.add_sub_list.metadata['url']
+        url = self.add_sub_list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'clEntityId': self._serialize.url("cl_entity_id", cl_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "clEntityId": self._serialize.url("cl_entity_id", cl_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2719,13 +2863,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(word_list_create_object, 'WordListObject')
+        body_content = self._serialize.body(word_list_create_object, "WordListObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -2736,17 +2880,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('long', response)
+            deserialized = self._deserialize("long", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_sub_list.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}/sublists'}
+
+    add_sub_list.metadata = {"url": "/apps/{appId}/versions/{versionId}/closedlists/{clEntityId}/sublists"}
 
     def add_custom_prebuilt_domain(
-            self, app_id, version_id, domain_name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, domain_name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Adds a customizable prebuilt domain along with all of its intent and
         entity models in a version of the application.
 
@@ -2769,11 +2915,11 @@ class ModelOperations(object):
         prebuilt_domain_object = models.PrebuiltDomainCreateBaseObject(domain_name=domain_name)
 
         # Construct URL
-        url = self.add_custom_prebuilt_domain.metadata['url']
+        url = self.add_custom_prebuilt_domain.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2782,13 +2928,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(prebuilt_domain_object, 'PrebuiltDomainCreateBaseObject')
+        body_content = self._serialize.body(prebuilt_domain_object, "PrebuiltDomainCreateBaseObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -2799,17 +2945,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('[str]', response)
+            deserialized = self._deserialize("[str]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_custom_prebuilt_domain.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltdomains'}
+
+    add_custom_prebuilt_domain.metadata = {"url": "/apps/{appId}/versions/{versionId}/customprebuiltdomains"}
 
     def add_custom_prebuilt_intent(
-            self, app_id, version_id, domain_name=None, model_name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, domain_name=None, model_name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Adds a customizable prebuilt intent model to a version of the
         application.
 
@@ -2831,14 +2979,16 @@ class ModelOperations(object):
         :raises:
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
-        prebuilt_domain_model_create_object = models.PrebuiltDomainModelCreateObject(domain_name=domain_name, model_name=model_name)
+        prebuilt_domain_model_create_object = models.PrebuiltDomainModelCreateObject(
+            domain_name=domain_name, model_name=model_name
+        )
 
         # Construct URL
-        url = self.add_custom_prebuilt_intent.metadata['url']
+        url = self.add_custom_prebuilt_intent.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2847,13 +2997,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(prebuilt_domain_model_create_object, 'PrebuiltDomainModelCreateObject')
+        body_content = self._serialize.body(prebuilt_domain_model_create_object, "PrebuiltDomainModelCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -2864,17 +3014,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_custom_prebuilt_intent.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltintents'}
 
-    def list_custom_prebuilt_intents(
-            self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
+    add_custom_prebuilt_intent.metadata = {"url": "/apps/{appId}/versions/{versionId}/customprebuiltintents"}
+
+    def list_custom_prebuilt_intents(self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
         """Gets information about customizable prebuilt intents added to a version
         of the application.
 
@@ -2895,11 +3045,11 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_custom_prebuilt_intents.metadata['url']
+        url = self.list_custom_prebuilt_intents.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2908,7 +3058,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2921,17 +3071,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[IntentClassifier]', response)
+            deserialized = self._deserialize("[IntentClassifier]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_custom_prebuilt_intents.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltintents'}
+
+    list_custom_prebuilt_intents.metadata = {"url": "/apps/{appId}/versions/{versionId}/customprebuiltintents"}
 
     def add_custom_prebuilt_entity(
-            self, app_id, version_id, domain_name=None, model_name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, domain_name=None, model_name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Adds a prebuilt entity model to a version of the application.
 
         :param app_id: The application ID.
@@ -2952,14 +3104,16 @@ class ModelOperations(object):
         :raises:
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
-        prebuilt_domain_model_create_object = models.PrebuiltDomainModelCreateObject(domain_name=domain_name, model_name=model_name)
+        prebuilt_domain_model_create_object = models.PrebuiltDomainModelCreateObject(
+            domain_name=domain_name, model_name=model_name
+        )
 
         # Construct URL
-        url = self.add_custom_prebuilt_entity.metadata['url']
+        url = self.add_custom_prebuilt_entity.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2968,13 +3122,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(prebuilt_domain_model_create_object, 'PrebuiltDomainModelCreateObject')
+        body_content = self._serialize.body(prebuilt_domain_model_create_object, "PrebuiltDomainModelCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -2985,17 +3139,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_custom_prebuilt_entity.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltentities'}
 
-    def list_custom_prebuilt_entities(
-            self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
+    add_custom_prebuilt_entity.metadata = {"url": "/apps/{appId}/versions/{versionId}/customprebuiltentities"}
+
+    def list_custom_prebuilt_entities(self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
         """Gets all prebuilt entities used in a version of the application.
 
         :param app_id: The application ID.
@@ -3015,11 +3169,11 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_custom_prebuilt_entities.metadata['url']
+        url = self.list_custom_prebuilt_entities.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3028,7 +3182,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3041,17 +3195,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[EntityExtractor]', response)
+            deserialized = self._deserialize("[EntityExtractor]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_custom_prebuilt_entities.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltentities'}
 
-    def list_custom_prebuilt_models(
-            self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
+    list_custom_prebuilt_entities.metadata = {"url": "/apps/{appId}/versions/{versionId}/customprebuiltentities"}
+
+    def list_custom_prebuilt_models(self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
         """Gets all prebuilt intent and entity model information used in a version
         of this application.
 
@@ -3072,11 +3226,11 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_custom_prebuilt_models.metadata['url']
+        url = self.list_custom_prebuilt_models.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3085,7 +3239,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3098,17 +3252,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[CustomPrebuiltModel]', response)
+            deserialized = self._deserialize("[CustomPrebuiltModel]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_custom_prebuilt_models.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltmodels'}
+
+    list_custom_prebuilt_models.metadata = {"url": "/apps/{appId}/versions/{versionId}/customprebuiltmodels"}
 
     def delete_custom_prebuilt_domain(
-            self, app_id, version_id, domain_name, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, domain_name, custom_headers=None, raw=False, **operation_config
+    ):
         """Deletes a prebuilt domain's models in a version of the application.
 
         :param app_id: The application ID.
@@ -3130,12 +3286,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_custom_prebuilt_domain.metadata['url']
+        url = self.delete_custom_prebuilt_domain.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'domainName': self._serialize.url("domain_name", domain_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "domainName": self._serialize.url("domain_name", domain_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3144,7 +3300,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3157,17 +3313,28 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_custom_prebuilt_domain.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltdomains/{domainName}'}
+
+    delete_custom_prebuilt_domain.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/customprebuiltdomains/{domainName}"
+    }
 
     def add_entity_child(
-            self, app_id, version_id, entity_id, child_entity_model_create_object, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        entity_id,
+        child_entity_model_create_object,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Creates a single child in an existing entity model hierarchy in a
         version of the application.
 
@@ -3192,12 +3359,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.add_entity_child.metadata['url']
+        url = self.add_entity_child.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3206,13 +3373,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(child_entity_model_create_object, 'ChildEntityModelCreateObject')
+        body_content = self._serialize.body(child_entity_model_create_object, "ChildEntityModelCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -3223,17 +3390,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_entity_child.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}/children'}
+
+    add_entity_child.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}/children"}
 
     def get_hierarchical_entity_child(
-            self, app_id, version_id, h_entity_id, h_child_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, h_entity_id, h_child_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets information about the child's model contained in an hierarchical
         entity child model in a version of the application.
 
@@ -3258,13 +3427,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_hierarchical_entity_child.metadata['url']
+        url = self.get_hierarchical_entity_child.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'hEntityId': self._serialize.url("h_entity_id", h_entity_id, 'str'),
-            'hChildId': self._serialize.url("h_child_id", h_child_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "hEntityId": self._serialize.url("h_entity_id", h_entity_id, "str"),
+            "hChildId": self._serialize.url("h_child_id", h_child_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3273,7 +3442,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3286,17 +3455,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('HierarchicalChildEntity', response)
+            deserialized = self._deserialize("HierarchicalChildEntity", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_hierarchical_entity_child.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/children/{hChildId}'}
+
+    get_hierarchical_entity_child.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/children/{hChildId}"
+    }
 
     def update_hierarchical_entity_child(
-            self, app_id, version_id, h_entity_id, h_child_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, h_entity_id, h_child_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Renames a single child in an existing hierarchical entity model in a
         version of the application.
 
@@ -3325,13 +3498,13 @@ class ModelOperations(object):
         hierarchical_child_model_update_object = models.HierarchicalChildModelUpdateObject(name=name)
 
         # Construct URL
-        url = self.update_hierarchical_entity_child.metadata['url']
+        url = self.update_hierarchical_entity_child.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'hEntityId': self._serialize.url("h_entity_id", h_entity_id, 'str'),
-            'hChildId': self._serialize.url("h_child_id", h_child_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "hEntityId": self._serialize.url("h_entity_id", h_entity_id, "str"),
+            "hChildId": self._serialize.url("h_child_id", h_child_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3340,13 +3513,15 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(hierarchical_child_model_update_object, 'HierarchicalChildModelUpdateObject')
+        body_content = self._serialize.body(
+            hierarchical_child_model_update_object, "HierarchicalChildModelUpdateObject"
+        )
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -3357,17 +3532,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_hierarchical_entity_child.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/children/{hChildId}'}
+
+    update_hierarchical_entity_child.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/children/{hChildId}"
+    }
 
     def delete_hierarchical_entity_child(
-            self, app_id, version_id, h_entity_id, h_child_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, h_entity_id, h_child_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Deletes a hierarchical entity extractor child in a version of the
         application.
 
@@ -3392,13 +3571,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_hierarchical_entity_child.metadata['url']
+        url = self.delete_hierarchical_entity_child.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'hEntityId': self._serialize.url("h_entity_id", h_entity_id, 'str'),
-            'hChildId': self._serialize.url("h_child_id", h_child_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "hEntityId": self._serialize.url("h_entity_id", h_entity_id, "str"),
+            "hChildId": self._serialize.url("h_child_id", h_child_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3407,7 +3586,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3420,17 +3599,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_hierarchical_entity_child.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/children/{hChildId}'}
+
+    delete_hierarchical_entity_child.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/children/{hChildId}"
+    }
 
     def add_composite_entity_child(
-            self, app_id, version_id, c_entity_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, c_entity_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Creates a single child in an existing composite entity model in a
         version of the application.
 
@@ -3455,12 +3638,12 @@ class ModelOperations(object):
         composite_child_model_create_object = models.CompositeChildModelCreateObject(name=name)
 
         # Construct URL
-        url = self.add_composite_entity_child.metadata['url']
+        url = self.add_composite_entity_child.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'cEntityId': self._serialize.url("c_entity_id", c_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "cEntityId": self._serialize.url("c_entity_id", c_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3469,13 +3652,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(composite_child_model_create_object, 'CompositeChildModelCreateObject')
+        body_content = self._serialize.body(composite_child_model_create_object, "CompositeChildModelCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -3486,17 +3669,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_composite_entity_child.metadata = {'url': '/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/children'}
+
+    add_composite_entity_child.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/children"
+    }
 
     def delete_composite_entity_child(
-            self, app_id, version_id, c_entity_id, c_child_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, c_entity_id, c_child_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Deletes a composite entity extractor child from a version of the
         application.
 
@@ -3521,13 +3708,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_composite_entity_child.metadata['url']
+        url = self.delete_composite_entity_child.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'cEntityId': self._serialize.url("c_entity_id", c_entity_id, 'str'),
-            'cChildId': self._serialize.url("c_child_id", c_child_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "cEntityId": self._serialize.url("c_entity_id", c_entity_id, "str"),
+            "cChildId": self._serialize.url("c_child_id", c_child_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3536,7 +3723,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3549,17 +3736,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_composite_entity_child.metadata = {'url': '/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/children/{cChildId}'}
+
+    delete_composite_entity_child.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/children/{cChildId}"
+    }
 
     def list_regex_entity_infos(
-            self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets information about the regular expression entity models in a
         version of the application.
 
@@ -3585,24 +3776,24 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_regex_entity_infos.metadata['url']
+        url = self.list_regex_entity_infos.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3615,17 +3806,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[RegexEntityExtractor]', response)
+            deserialized = self._deserialize("[RegexEntityExtractor]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_regex_entity_infos.metadata = {'url': '/apps/{appId}/versions/{versionId}/regexentities'}
+
+    list_regex_entity_infos.metadata = {"url": "/apps/{appId}/versions/{versionId}/regexentities"}
 
     def create_regex_entity_model(
-            self, app_id, version_id, regex_pattern=None, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, regex_pattern=None, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Adds a regular expression entity model to a version of the application.
 
         :param app_id: The application ID.
@@ -3649,11 +3842,11 @@ class ModelOperations(object):
         regex_entity_extractor_create_obj = models.RegexModelCreateObject(regex_pattern=regex_pattern, name=name)
 
         # Construct URL
-        url = self.create_regex_entity_model.metadata['url']
+        url = self.create_regex_entity_model.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3662,13 +3855,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(regex_entity_extractor_create_obj, 'RegexModelCreateObject')
+        body_content = self._serialize.body(regex_entity_extractor_create_obj, "RegexModelCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -3679,17 +3872,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_regex_entity_model.metadata = {'url': '/apps/{appId}/versions/{versionId}/regexentities'}
+
+    create_regex_entity_model.metadata = {"url": "/apps/{appId}/versions/{versionId}/regexentities"}
 
     def list_pattern_any_entity_infos(
-            self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, skip=0, take=100, custom_headers=None, raw=False, **operation_config
+    ):
         """Get information about the Pattern.Any entity models in a version of the
         application.
 
@@ -3715,24 +3910,24 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_pattern_any_entity_infos.metadata['url']
+        url = self.list_pattern_any_entity_infos.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3745,17 +3940,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[PatternAnyEntityExtractor]', response)
+            deserialized = self._deserialize("[PatternAnyEntityExtractor]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_pattern_any_entity_infos.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities'}
+
+    list_pattern_any_entity_infos.metadata = {"url": "/apps/{appId}/versions/{versionId}/patternanyentities"}
 
     def create_pattern_any_entity_model(
-            self, app_id, version_id, name=None, explicit_list=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, name=None, explicit_list=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Adds a pattern.any entity extractor to a version of the application.
 
         :param app_id: The application ID.
@@ -3779,11 +3976,11 @@ class ModelOperations(object):
         extractor_create_object = models.PatternAnyModelCreateObject(name=name, explicit_list=explicit_list)
 
         # Construct URL
-        url = self.create_pattern_any_entity_model.metadata['url']
+        url = self.create_pattern_any_entity_model.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3792,13 +3989,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(extractor_create_object, 'PatternAnyModelCreateObject')
+        body_content = self._serialize.body(extractor_create_object, "PatternAnyModelCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -3809,17 +4006,17 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_pattern_any_entity_model.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities'}
 
-    def list_entity_roles(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+    create_pattern_any_entity_model.metadata = {"url": "/apps/{appId}/versions/{versionId}/patternanyentities"}
+
+    def list_entity_roles(self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
         """Get all roles for an entity in a version of the application.
 
         :param app_id: The application ID.
@@ -3841,12 +4038,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_entity_roles.metadata['url']
+        url = self.list_entity_roles.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3855,7 +4052,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3868,17 +4065,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[EntityRole]', response)
+            deserialized = self._deserialize("[EntityRole]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_entity_roles.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}/roles'}
+
+    list_entity_roles.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}/roles"}
 
     def create_entity_role(
-            self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Create an entity role in a version of the application.
 
         :param app_id: The application ID.
@@ -3902,12 +4101,12 @@ class ModelOperations(object):
         entity_role_create_object = models.EntityRoleCreateObject(name=name)
 
         # Construct URL
-        url = self.create_entity_role.metadata['url']
+        url = self.create_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3916,13 +4115,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_create_object, 'EntityRoleCreateObject')
+        body_content = self._serialize.body(entity_role_create_object, "EntityRoleCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -3933,17 +4132,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}/roles'}
+
+    create_entity_role.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}/roles"}
 
     def list_prebuilt_entity_roles(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get a prebuilt entity's roles in a version of the application.
 
         :param app_id: The application ID.
@@ -3965,12 +4166,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_prebuilt_entity_roles.metadata['url']
+        url = self.list_prebuilt_entity_roles.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3979,7 +4180,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3992,17 +4193,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[EntityRole]', response)
+            deserialized = self._deserialize("[EntityRole]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_prebuilt_entity_roles.metadata = {'url': '/apps/{appId}/versions/{versionId}/prebuilts/{entityId}/roles'}
+
+    list_prebuilt_entity_roles.metadata = {"url": "/apps/{appId}/versions/{versionId}/prebuilts/{entityId}/roles"}
 
     def create_prebuilt_entity_role(
-            self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Create a role for a prebuilt entity in a version of the application.
 
         :param app_id: The application ID.
@@ -4026,12 +4229,12 @@ class ModelOperations(object):
         entity_role_create_object = models.EntityRoleCreateObject(name=name)
 
         # Construct URL
-        url = self.create_prebuilt_entity_role.metadata['url']
+        url = self.create_prebuilt_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4040,13 +4243,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_create_object, 'EntityRoleCreateObject')
+        body_content = self._serialize.body(entity_role_create_object, "EntityRoleCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -4057,17 +4260,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_prebuilt_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/prebuilts/{entityId}/roles'}
+
+    create_prebuilt_entity_role.metadata = {"url": "/apps/{appId}/versions/{versionId}/prebuilts/{entityId}/roles"}
 
     def list_closed_list_entity_roles(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get all roles for a list entity in a version of the application.
 
         :param app_id: The application ID.
@@ -4089,12 +4294,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_closed_list_entity_roles.metadata['url']
+        url = self.list_closed_list_entity_roles.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4103,7 +4308,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -4116,17 +4321,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[EntityRole]', response)
+            deserialized = self._deserialize("[EntityRole]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_closed_list_entity_roles.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{entityId}/roles'}
+
+    list_closed_list_entity_roles.metadata = {"url": "/apps/{appId}/versions/{versionId}/closedlists/{entityId}/roles"}
 
     def create_closed_list_entity_role(
-            self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Create a role for a list entity in a version of the application.
 
         :param app_id: The application ID.
@@ -4150,12 +4357,12 @@ class ModelOperations(object):
         entity_role_create_object = models.EntityRoleCreateObject(name=name)
 
         # Construct URL
-        url = self.create_closed_list_entity_role.metadata['url']
+        url = self.create_closed_list_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4164,13 +4371,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_create_object, 'EntityRoleCreateObject')
+        body_content = self._serialize.body(entity_role_create_object, "EntityRoleCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -4181,17 +4388,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_closed_list_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{entityId}/roles'}
+
+    create_closed_list_entity_role.metadata = {"url": "/apps/{appId}/versions/{versionId}/closedlists/{entityId}/roles"}
 
     def list_regex_entity_roles(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get all roles for a regular expression entity in a version of the
         application.
 
@@ -4214,12 +4423,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_regex_entity_roles.metadata['url']
+        url = self.list_regex_entity_roles.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4228,7 +4437,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -4241,17 +4450,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[EntityRole]', response)
+            deserialized = self._deserialize("[EntityRole]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_regex_entity_roles.metadata = {'url': '/apps/{appId}/versions/{versionId}/regexentities/{entityId}/roles'}
+
+    list_regex_entity_roles.metadata = {"url": "/apps/{appId}/versions/{versionId}/regexentities/{entityId}/roles"}
 
     def create_regex_entity_role(
-            self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Create a role for an regular expression entity in a version of the
         application.
 
@@ -4276,12 +4487,12 @@ class ModelOperations(object):
         entity_role_create_object = models.EntityRoleCreateObject(name=name)
 
         # Construct URL
-        url = self.create_regex_entity_role.metadata['url']
+        url = self.create_regex_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4290,13 +4501,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_create_object, 'EntityRoleCreateObject')
+        body_content = self._serialize.body(entity_role_create_object, "EntityRoleCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -4307,17 +4518,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_regex_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/regexentities/{entityId}/roles'}
+
+    create_regex_entity_role.metadata = {"url": "/apps/{appId}/versions/{versionId}/regexentities/{entityId}/roles"}
 
     def list_composite_entity_roles(
-            self, app_id, version_id, c_entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, c_entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get all roles for a composite entity in a version of the application.
 
         :param app_id: The application ID.
@@ -4339,12 +4552,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_composite_entity_roles.metadata['url']
+        url = self.list_composite_entity_roles.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'cEntityId': self._serialize.url("c_entity_id", c_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "cEntityId": self._serialize.url("c_entity_id", c_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4353,7 +4566,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -4366,17 +4579,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[EntityRole]', response)
+            deserialized = self._deserialize("[EntityRole]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_composite_entity_roles.metadata = {'url': '/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/roles'}
+
+    list_composite_entity_roles.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/roles"
+    }
 
     def create_composite_entity_role(
-            self, app_id, version_id, c_entity_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, c_entity_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Create a role for a composite entity in a version of the application.
 
         :param app_id: The application ID.
@@ -4400,12 +4617,12 @@ class ModelOperations(object):
         entity_role_create_object = models.EntityRoleCreateObject(name=name)
 
         # Construct URL
-        url = self.create_composite_entity_role.metadata['url']
+        url = self.create_composite_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'cEntityId': self._serialize.url("c_entity_id", c_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "cEntityId": self._serialize.url("c_entity_id", c_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4414,13 +4631,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_create_object, 'EntityRoleCreateObject')
+        body_content = self._serialize.body(entity_role_create_object, "EntityRoleCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -4431,17 +4648,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_composite_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/roles'}
+
+    create_composite_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/roles"
+    }
 
     def list_pattern_any_entity_roles(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get all roles for a Pattern.any entity in a version of the application.
 
         :param app_id: The application ID.
@@ -4463,12 +4684,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_pattern_any_entity_roles.metadata['url']
+        url = self.list_pattern_any_entity_roles.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4477,7 +4698,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -4490,17 +4711,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[EntityRole]', response)
+            deserialized = self._deserialize("[EntityRole]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_pattern_any_entity_roles.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/roles'}
+
+    list_pattern_any_entity_roles.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/roles"
+    }
 
     def create_pattern_any_entity_role(
-            self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Create a role for an Pattern.any entity in a version of the
         application.
 
@@ -4525,12 +4750,12 @@ class ModelOperations(object):
         entity_role_create_object = models.EntityRoleCreateObject(name=name)
 
         # Construct URL
-        url = self.create_pattern_any_entity_role.metadata['url']
+        url = self.create_pattern_any_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4539,13 +4764,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_create_object, 'EntityRoleCreateObject')
+        body_content = self._serialize.body(entity_role_create_object, "EntityRoleCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -4556,17 +4781,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_pattern_any_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/roles'}
+
+    create_pattern_any_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/roles"
+    }
 
     def list_hierarchical_entity_roles(
-            self, app_id, version_id, h_entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, h_entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get all roles for a hierarchical entity in a version of the
         application.
 
@@ -4589,12 +4818,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_hierarchical_entity_roles.metadata['url']
+        url = self.list_hierarchical_entity_roles.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'hEntityId': self._serialize.url("h_entity_id", h_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "hEntityId": self._serialize.url("h_entity_id", h_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4603,7 +4832,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -4616,17 +4845,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[EntityRole]', response)
+            deserialized = self._deserialize("[EntityRole]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_hierarchical_entity_roles.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/roles'}
+
+    list_hierarchical_entity_roles.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/roles"
+    }
 
     def create_hierarchical_entity_role(
-            self, app_id, version_id, h_entity_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, h_entity_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Create a role for an hierarchical entity in a version of the
         application.
 
@@ -4651,12 +4884,12 @@ class ModelOperations(object):
         entity_role_create_object = models.EntityRoleCreateObject(name=name)
 
         # Construct URL
-        url = self.create_hierarchical_entity_role.metadata['url']
+        url = self.create_hierarchical_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'hEntityId': self._serialize.url("h_entity_id", h_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "hEntityId": self._serialize.url("h_entity_id", h_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4665,13 +4898,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_create_object, 'EntityRoleCreateObject')
+        body_content = self._serialize.body(entity_role_create_object, "EntityRoleCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -4682,17 +4915,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_hierarchical_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/roles'}
+
+    create_hierarchical_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/roles"
+    }
 
     def list_custom_prebuilt_entity_roles(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get all roles for a prebuilt entity in a version of the application.
 
         :param app_id: The application ID.
@@ -4714,12 +4951,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_custom_prebuilt_entity_roles.metadata['url']
+        url = self.list_custom_prebuilt_entity_roles.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4728,7 +4965,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -4741,17 +4978,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[EntityRole]', response)
+            deserialized = self._deserialize("[EntityRole]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_custom_prebuilt_entity_roles.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltentities/{entityId}/roles'}
+
+    list_custom_prebuilt_entity_roles.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/customprebuiltentities/{entityId}/roles"
+    }
 
     def create_custom_prebuilt_entity_role(
-            self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Create a role for a prebuilt entity in a version of the application.
 
         :param app_id: The application ID.
@@ -4775,12 +5016,12 @@ class ModelOperations(object):
         entity_role_create_object = models.EntityRoleCreateObject(name=name)
 
         # Construct URL
-        url = self.create_custom_prebuilt_entity_role.metadata['url']
+        url = self.create_custom_prebuilt_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4789,13 +5030,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_create_object, 'EntityRoleCreateObject')
+        body_content = self._serialize.body(entity_role_create_object, "EntityRoleCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -4806,17 +5047,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_custom_prebuilt_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltentities/{entityId}/roles'}
 
-    def get_explicit_list(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+    create_custom_prebuilt_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/customprebuiltentities/{entityId}/roles"
+    }
+
+    def get_explicit_list(self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
         """Get the explicit (exception) list of the pattern.any entity in a
         version of the application.
 
@@ -4839,12 +5082,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_explicit_list.metadata['url']
+        url = self.get_explicit_list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4853,7 +5096,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -4866,17 +5109,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[ExplicitListItem]', response)
+            deserialized = self._deserialize("[ExplicitListItem]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_explicit_list.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/explicitlist'}
+
+    get_explicit_list.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/explicitlist"
+    }
 
     def add_explicit_list_item(
-            self, app_id, version_id, entity_id, explicit_list_item=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, explicit_list_item=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Add a new exception to the explicit list for the Pattern.Any entity in
         a version of the application.
 
@@ -4901,12 +5148,12 @@ class ModelOperations(object):
         item = models.ExplicitListItemCreateObject(explicit_list_item=explicit_list_item)
 
         # Construct URL
-        url = self.add_explicit_list_item.metadata['url']
+        url = self.add_explicit_list_item.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4915,13 +5162,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(item, 'ExplicitListItemCreateObject')
+        body_content = self._serialize.body(item, "ExplicitListItemCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -4932,17 +5179,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('int', response)
+            deserialized = self._deserialize("int", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_explicit_list_item.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/explicitlist'}
+
+    add_explicit_list_item.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/explicitlist"
+    }
 
     def get_regex_entity_entity_info(
-            self, app_id, version_id, regex_entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, regex_entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets information about a regular expression entity in a version of the
         application.
 
@@ -4965,12 +5216,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_regex_entity_entity_info.metadata['url']
+        url = self.get_regex_entity_entity_info.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'regexEntityId': self._serialize.url("regex_entity_id", regex_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "regexEntityId": self._serialize.url("regex_entity_id", regex_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -4979,7 +5230,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -4992,17 +5243,27 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('RegexEntityExtractor', response)
+            deserialized = self._deserialize("RegexEntityExtractor", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_regex_entity_entity_info.metadata = {'url': '/apps/{appId}/versions/{versionId}/regexentities/{regexEntityId}'}
+
+    get_regex_entity_entity_info.metadata = {"url": "/apps/{appId}/versions/{versionId}/regexentities/{regexEntityId}"}
 
     def update_regex_entity_model(
-            self, app_id, version_id, regex_entity_id, regex_pattern=None, name=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        regex_entity_id,
+        regex_pattern=None,
+        name=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Updates the regular expression entity in a version of the application.
 
         :param app_id: The application ID.
@@ -5030,12 +5291,12 @@ class ModelOperations(object):
         regex_entity_update_object = models.RegexModelUpdateObject(regex_pattern=regex_pattern, name=name)
 
         # Construct URL
-        url = self.update_regex_entity_model.metadata['url']
+        url = self.update_regex_entity_model.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'regexEntityId': self._serialize.url("regex_entity_id", regex_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "regexEntityId": self._serialize.url("regex_entity_id", regex_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5044,13 +5305,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(regex_entity_update_object, 'RegexModelUpdateObject')
+        body_content = self._serialize.body(regex_entity_update_object, "RegexModelUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -5061,17 +5322,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_regex_entity_model.metadata = {'url': '/apps/{appId}/versions/{versionId}/regexentities/{regexEntityId}'}
+
+    update_regex_entity_model.metadata = {"url": "/apps/{appId}/versions/{versionId}/regexentities/{regexEntityId}"}
 
     def delete_regex_entity_model(
-            self, app_id, version_id, regex_entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, regex_entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Deletes a regular expression entity from a version of the application.
 
         :param app_id: The application ID.
@@ -5093,12 +5356,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_regex_entity_model.metadata['url']
+        url = self.delete_regex_entity_model.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'regexEntityId': self._serialize.url("regex_entity_id", regex_entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "regexEntityId": self._serialize.url("regex_entity_id", regex_entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5107,7 +5370,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -5120,17 +5383,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_regex_entity_model.metadata = {'url': '/apps/{appId}/versions/{versionId}/regexentities/{regexEntityId}'}
+
+    delete_regex_entity_model.metadata = {"url": "/apps/{appId}/versions/{versionId}/regexentities/{regexEntityId}"}
 
     def get_pattern_any_entity_info(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets information about the Pattern.Any model in a version of the
         application.
 
@@ -5153,12 +5418,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_pattern_any_entity_info.metadata['url']
+        url = self.get_pattern_any_entity_info.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5167,7 +5432,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -5180,17 +5445,27 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PatternAnyEntityExtractor', response)
+            deserialized = self._deserialize("PatternAnyEntityExtractor", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_pattern_any_entity_info.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}'}
+
+    get_pattern_any_entity_info.metadata = {"url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}"}
 
     def update_pattern_any_entity_model(
-            self, app_id, version_id, entity_id, name=None, explicit_list=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        entity_id,
+        name=None,
+        explicit_list=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Updates the name and explicit (exception) list of a Pattern.Any entity
         model in a version of the application.
 
@@ -5219,12 +5494,12 @@ class ModelOperations(object):
         pattern_any_update_object = models.PatternAnyModelUpdateObject(name=name, explicit_list=explicit_list)
 
         # Construct URL
-        url = self.update_pattern_any_entity_model.metadata['url']
+        url = self.update_pattern_any_entity_model.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5233,13 +5508,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(pattern_any_update_object, 'PatternAnyModelUpdateObject')
+        body_content = self._serialize.body(pattern_any_update_object, "PatternAnyModelUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -5250,17 +5525,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_pattern_any_entity_model.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}'}
+
+    update_pattern_any_entity_model.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}"
+    }
 
     def delete_pattern_any_entity_model(
-            self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Deletes a Pattern.Any entity extractor from a version of the
         application.
 
@@ -5283,12 +5562,12 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_pattern_any_entity_model.metadata['url']
+        url = self.delete_pattern_any_entity_model.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5297,7 +5576,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -5310,17 +5589,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_pattern_any_entity_model.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}'}
+
+    delete_pattern_any_entity_model.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}"
+    }
 
     def get_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get one role for a given entity in a version of the application.
 
         :param app_id: The application ID.
@@ -5344,13 +5627,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_entity_role.metadata['url']
+        url = self.get_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5359,7 +5642,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -5372,17 +5655,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('EntityRole', response)
+            deserialized = self._deserialize("EntityRole", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}/roles/{roleId}'}
+
+    get_entity_role.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}/roles/{roleId}"}
 
     def update_entity_role(
-            self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Update a role for a given entity in a version of the application.
 
         :param app_id: The application ID.
@@ -5410,13 +5695,13 @@ class ModelOperations(object):
         entity_role_update_object = models.EntityRoleUpdateObject(name=name)
 
         # Construct URL
-        url = self.update_entity_role.metadata['url']
+        url = self.update_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5425,13 +5710,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_update_object, 'EntityRoleUpdateObject')
+        body_content = self._serialize.body(entity_role_update_object, "EntityRoleUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -5442,17 +5727,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}/roles/{roleId}'}
+
+    update_entity_role.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}/roles/{roleId}"}
 
     def delete_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Delete an entity role in a version of the application.
 
         :param app_id: The application ID.
@@ -5476,13 +5763,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_entity_role.metadata['url']
+        url = self.delete_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5491,7 +5778,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -5504,17 +5791,19 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/entities/{entityId}/roles/{roleId}'}
+
+    delete_entity_role.metadata = {"url": "/apps/{appId}/versions/{versionId}/entities/{entityId}/roles/{roleId}"}
 
     def get_prebuilt_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get one role for a given prebuilt entity in a version of the
         application.
 
@@ -5539,13 +5828,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_prebuilt_entity_role.metadata['url']
+        url = self.get_prebuilt_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5554,7 +5843,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -5567,17 +5856,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('EntityRole', response)
+            deserialized = self._deserialize("EntityRole", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_prebuilt_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/prebuilts/{entityId}/roles/{roleId}'}
+
+    get_prebuilt_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/prebuilts/{entityId}/roles/{roleId}"
+    }
 
     def update_prebuilt_entity_role(
-            self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Update a role for a given prebuilt entity in a version of the
         application.
 
@@ -5606,13 +5899,13 @@ class ModelOperations(object):
         entity_role_update_object = models.EntityRoleUpdateObject(name=name)
 
         # Construct URL
-        url = self.update_prebuilt_entity_role.metadata['url']
+        url = self.update_prebuilt_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5621,13 +5914,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_update_object, 'EntityRoleUpdateObject')
+        body_content = self._serialize.body(entity_role_update_object, "EntityRoleUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -5638,17 +5931,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_prebuilt_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/prebuilts/{entityId}/roles/{roleId}'}
+
+    update_prebuilt_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/prebuilts/{entityId}/roles/{roleId}"
+    }
 
     def delete_prebuilt_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Delete a role in a prebuilt entity in a version of the application.
 
         :param app_id: The application ID.
@@ -5672,13 +5969,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_prebuilt_entity_role.metadata['url']
+        url = self.delete_prebuilt_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5687,7 +5984,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -5700,17 +5997,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_prebuilt_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/prebuilts/{entityId}/roles/{roleId}'}
+
+    delete_prebuilt_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/prebuilts/{entityId}/roles/{roleId}"
+    }
 
     def get_closed_list_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get one role for a given list entity in a version of the application.
 
         :param app_id: The application ID.
@@ -5734,13 +6035,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_closed_list_entity_role.metadata['url']
+        url = self.get_closed_list_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5749,7 +6050,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -5762,17 +6063,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('EntityRole', response)
+            deserialized = self._deserialize("EntityRole", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_closed_list_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{entityId}/roles/{roleId}'}
+
+    get_closed_list_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/closedlists/{entityId}/roles/{roleId}"
+    }
 
     def update_closed_list_entity_role(
-            self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Update a role for a given list entity in a version of the application.
 
         :param app_id: The application ID.
@@ -5800,13 +6105,13 @@ class ModelOperations(object):
         entity_role_update_object = models.EntityRoleUpdateObject(name=name)
 
         # Construct URL
-        url = self.update_closed_list_entity_role.metadata['url']
+        url = self.update_closed_list_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5815,13 +6120,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_update_object, 'EntityRoleUpdateObject')
+        body_content = self._serialize.body(entity_role_update_object, "EntityRoleUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -5832,17 +6137,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_closed_list_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{entityId}/roles/{roleId}'}
+
+    update_closed_list_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/closedlists/{entityId}/roles/{roleId}"
+    }
 
     def delete_closed_list_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Delete a role for a given list entity in a version of the application.
 
         :param app_id: The application ID.
@@ -5866,13 +6175,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_closed_list_entity_role.metadata['url']
+        url = self.delete_closed_list_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5881,7 +6190,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -5894,17 +6203,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_closed_list_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/closedlists/{entityId}/roles/{roleId}'}
+
+    delete_closed_list_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/closedlists/{entityId}/roles/{roleId}"
+    }
 
     def get_regex_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get one role for a given regular expression entity in a version of the
         application.
 
@@ -5929,13 +6242,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_regex_entity_role.metadata['url']
+        url = self.get_regex_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -5944,7 +6257,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -5957,17 +6270,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('EntityRole', response)
+            deserialized = self._deserialize("EntityRole", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_regex_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/regexentities/{entityId}/roles/{roleId}'}
+
+    get_regex_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/regexentities/{entityId}/roles/{roleId}"
+    }
 
     def update_regex_entity_role(
-            self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Update a role for a given regular expression entity in a version of the
         application.
 
@@ -5996,13 +6313,13 @@ class ModelOperations(object):
         entity_role_update_object = models.EntityRoleUpdateObject(name=name)
 
         # Construct URL
-        url = self.update_regex_entity_role.metadata['url']
+        url = self.update_regex_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6011,13 +6328,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_update_object, 'EntityRoleUpdateObject')
+        body_content = self._serialize.body(entity_role_update_object, "EntityRoleUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -6028,17 +6345,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_regex_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/regexentities/{entityId}/roles/{roleId}'}
+
+    update_regex_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/regexentities/{entityId}/roles/{roleId}"
+    }
 
     def delete_regex_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Delete a role for a given regular expression in a version of the
         application.
 
@@ -6063,13 +6384,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_regex_entity_role.metadata['url']
+        url = self.delete_regex_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6078,7 +6399,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -6091,17 +6412,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_regex_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/regexentities/{entityId}/roles/{roleId}'}
+
+    delete_regex_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/regexentities/{entityId}/roles/{roleId}"
+    }
 
     def get_composite_entity_role(
-            self, app_id, version_id, c_entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, c_entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get one role for a given composite entity in a version of the
         application.
 
@@ -6126,13 +6451,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_composite_entity_role.metadata['url']
+        url = self.get_composite_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'cEntityId': self._serialize.url("c_entity_id", c_entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "cEntityId": self._serialize.url("c_entity_id", c_entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6141,7 +6466,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -6154,17 +6479,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('EntityRole', response)
+            deserialized = self._deserialize("EntityRole", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_composite_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/roles/{roleId}'}
+
+    get_composite_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/roles/{roleId}"
+    }
 
     def update_composite_entity_role(
-            self, app_id, version_id, c_entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, c_entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Update a role for a given composite entity in a version of the
         application.
 
@@ -6193,13 +6522,13 @@ class ModelOperations(object):
         entity_role_update_object = models.EntityRoleUpdateObject(name=name)
 
         # Construct URL
-        url = self.update_composite_entity_role.metadata['url']
+        url = self.update_composite_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'cEntityId': self._serialize.url("c_entity_id", c_entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "cEntityId": self._serialize.url("c_entity_id", c_entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6208,13 +6537,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_update_object, 'EntityRoleUpdateObject')
+        body_content = self._serialize.body(entity_role_update_object, "EntityRoleUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -6225,17 +6554,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_composite_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/roles/{roleId}'}
+
+    update_composite_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/roles/{roleId}"
+    }
 
     def delete_composite_entity_role(
-            self, app_id, version_id, c_entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, c_entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Delete a role for a given composite entity in a version of the
         application.
 
@@ -6260,13 +6593,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_composite_entity_role.metadata['url']
+        url = self.delete_composite_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'cEntityId': self._serialize.url("c_entity_id", c_entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "cEntityId": self._serialize.url("c_entity_id", c_entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6275,7 +6608,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -6288,17 +6621,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_composite_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/roles/{roleId}'}
+
+    delete_composite_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/compositeentities/{cEntityId}/roles/{roleId}"
+    }
 
     def get_pattern_any_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get one role for a given Pattern.any entity in a version of the
         application.
 
@@ -6323,13 +6660,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_pattern_any_entity_role.metadata['url']
+        url = self.get_pattern_any_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6338,7 +6675,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -6351,17 +6688,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('EntityRole', response)
+            deserialized = self._deserialize("EntityRole", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_pattern_any_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/roles/{roleId}'}
+
+    get_pattern_any_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/roles/{roleId}"
+    }
 
     def update_pattern_any_entity_role(
-            self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Update a role for a given Pattern.any entity in a version of the
         application.
 
@@ -6390,13 +6731,13 @@ class ModelOperations(object):
         entity_role_update_object = models.EntityRoleUpdateObject(name=name)
 
         # Construct URL
-        url = self.update_pattern_any_entity_role.metadata['url']
+        url = self.update_pattern_any_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6405,13 +6746,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_update_object, 'EntityRoleUpdateObject')
+        body_content = self._serialize.body(entity_role_update_object, "EntityRoleUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -6422,17 +6763,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_pattern_any_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/roles/{roleId}'}
+
+    update_pattern_any_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/roles/{roleId}"
+    }
 
     def delete_pattern_any_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Delete a role for a given Pattern.any entity in a version of the
         application.
 
@@ -6457,13 +6802,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_pattern_any_entity_role.metadata['url']
+        url = self.delete_pattern_any_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6472,7 +6817,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -6485,17 +6830,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_pattern_any_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/roles/{roleId}'}
+
+    delete_pattern_any_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/roles/{roleId}"
+    }
 
     def get_hierarchical_entity_role(
-            self, app_id, version_id, h_entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, h_entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get one role for a given hierarchical entity in a version of the
         application.
 
@@ -6520,13 +6869,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_hierarchical_entity_role.metadata['url']
+        url = self.get_hierarchical_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'hEntityId': self._serialize.url("h_entity_id", h_entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "hEntityId": self._serialize.url("h_entity_id", h_entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6535,7 +6884,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -6548,17 +6897,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('EntityRole', response)
+            deserialized = self._deserialize("EntityRole", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_hierarchical_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/roles/{roleId}'}
+
+    get_hierarchical_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/roles/{roleId}"
+    }
 
     def update_hierarchical_entity_role(
-            self, app_id, version_id, h_entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, h_entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Update a role for a given hierarchical entity in a version of the
         application.
 
@@ -6587,13 +6940,13 @@ class ModelOperations(object):
         entity_role_update_object = models.EntityRoleUpdateObject(name=name)
 
         # Construct URL
-        url = self.update_hierarchical_entity_role.metadata['url']
+        url = self.update_hierarchical_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'hEntityId': self._serialize.url("h_entity_id", h_entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "hEntityId": self._serialize.url("h_entity_id", h_entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6602,13 +6955,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_update_object, 'EntityRoleUpdateObject')
+        body_content = self._serialize.body(entity_role_update_object, "EntityRoleUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -6619,17 +6972,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_hierarchical_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/roles/{roleId}'}
+
+    update_hierarchical_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/roles/{roleId}"
+    }
 
     def delete_hierarchical_entity_role(
-            self, app_id, version_id, h_entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, h_entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Delete a role for a given hierarchical role in a version of the
         application.
 
@@ -6654,13 +7011,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_hierarchical_entity_role.metadata['url']
+        url = self.delete_hierarchical_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'hEntityId': self._serialize.url("h_entity_id", h_entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "hEntityId": self._serialize.url("h_entity_id", h_entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6669,7 +7026,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -6682,17 +7039,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_hierarchical_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/roles/{roleId}'}
+
+    delete_hierarchical_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/hierarchicalentities/{hEntityId}/roles/{roleId}"
+    }
 
     def get_custom_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get one role for a given prebuilt entity in a version of the
         application.
 
@@ -6717,13 +7078,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_custom_entity_role.metadata['url']
+        url = self.get_custom_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6732,7 +7093,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -6745,17 +7106,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('EntityRole', response)
+            deserialized = self._deserialize("EntityRole", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_custom_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltentities/{entityId}/roles/{roleId}'}
+
+    get_custom_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/customprebuiltentities/{entityId}/roles/{roleId}"
+    }
 
     def update_custom_prebuilt_entity_role(
-            self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, name=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Update a role for a given prebuilt entity in a version of the
         application.
 
@@ -6784,13 +7149,13 @@ class ModelOperations(object):
         entity_role_update_object = models.EntityRoleUpdateObject(name=name)
 
         # Construct URL
-        url = self.update_custom_prebuilt_entity_role.metadata['url']
+        url = self.update_custom_prebuilt_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6799,13 +7164,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(entity_role_update_object, 'EntityRoleUpdateObject')
+        body_content = self._serialize.body(entity_role_update_object, "EntityRoleUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -6816,17 +7181,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_custom_prebuilt_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltentities/{entityId}/roles/{roleId}'}
+
+    update_custom_prebuilt_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/customprebuiltentities/{entityId}/roles/{roleId}"
+    }
 
     def delete_custom_entity_role(
-            self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, role_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Delete a role for a given prebuilt entity in a version of the
         application.
 
@@ -6851,13 +7220,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_custom_entity_role.metadata['url']
+        url = self.delete_custom_entity_role.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'roleId': self._serialize.url("role_id", role_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "roleId": self._serialize.url("role_id", role_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6866,7 +7235,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -6879,17 +7248,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_custom_entity_role.metadata = {'url': '/apps/{appId}/versions/{versionId}/customprebuiltentities/{entityId}/roles/{roleId}'}
+
+    delete_custom_entity_role.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/customprebuiltentities/{entityId}/roles/{roleId}"
+    }
 
     def get_explicit_list_item(
-            self, app_id, version_id, entity_id, item_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, item_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Get the explicit (exception) list of the pattern.any entity in a
         version of the application.
 
@@ -6914,13 +7287,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_explicit_list_item.metadata['url']
+        url = self.get_explicit_list_item.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'itemId': self._serialize.url("item_id", item_id, 'long')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "itemId": self._serialize.url("item_id", item_id, "long"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6929,7 +7302,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -6942,17 +7315,29 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ExplicitListItem', response)
+            deserialized = self._deserialize("ExplicitListItem", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_explicit_list_item.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/explicitlist/{itemId}'}
+
+    get_explicit_list_item.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/explicitlist/{itemId}"
+    }
 
     def update_explicit_list_item(
-            self, app_id, version_id, entity_id, item_id, explicit_list_item=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        entity_id,
+        item_id,
+        explicit_list_item=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Updates an explicit (exception) list item for a Pattern.Any entity in a
         version of the application.
 
@@ -6981,13 +7366,13 @@ class ModelOperations(object):
         item = models.ExplicitListItemUpdateObject(explicit_list_item=explicit_list_item)
 
         # Construct URL
-        url = self.update_explicit_list_item.metadata['url']
+        url = self.update_explicit_list_item.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'itemId': self._serialize.url("item_id", item_id, 'long')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "itemId": self._serialize.url("item_id", item_id, "long"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -6996,13 +7381,13 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(item, 'ExplicitListItemUpdateObject')
+        body_content = self._serialize.body(item, "ExplicitListItemUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -7013,17 +7398,21 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_explicit_list_item.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/explicitlist/{itemId}'}
+
+    update_explicit_list_item.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/explicitlist/{itemId}"
+    }
 
     def delete_explicit_list_item(
-            self, app_id, version_id, entity_id, item_id, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, entity_id, item_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Delete an item from the explicit (exception) list for a Pattern.any
         entity in a version of the application.
 
@@ -7048,13 +7437,13 @@ class ModelOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete_explicit_list_item.metadata['url']
+        url = self.delete_explicit_list_item.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'entityId': self._serialize.url("entity_id", entity_id, 'str'),
-            'itemId': self._serialize.url("item_id", item_id, 'long')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "entityId": self._serialize.url("entity_id", entity_id, "str"),
+            "itemId": self._serialize.url("item_id", item_id, "long"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -7063,7 +7452,7 @@ class ModelOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -7076,11 +7465,14 @@ class ModelOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete_explicit_list_item.metadata = {'url': '/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/explicitlist/{itemId}'}
+
+    delete_explicit_list_item.metadata = {
+        "url": "/apps/{appId}/versions/{versionId}/patternanyentities/{entityId}/explicitlist/{itemId}"
+    }

@@ -19,12 +19,12 @@ from ._large_face_list_operations import LargeFaceListOperations
 from ._snapshot_operations import SnapshotOperations
 
 __all__ = [
-    'FaceOperations',
-    'PersonGroupPersonOperations',
-    'PersonGroupOperations',
-    'FaceListOperations',
-    'LargePersonGroupPersonOperations',
-    'LargePersonGroupOperations',
-    'LargeFaceListOperations',
-    'SnapshotOperations',
+    "FaceOperations",
+    "PersonGroupPersonOperations",
+    "PersonGroupOperations",
+    "FaceListOperations",
+    "LargePersonGroupPersonOperations",
+    "LargePersonGroupOperations",
+    "LargeFaceListOperations",
+    "SnapshotOperations",
 ]

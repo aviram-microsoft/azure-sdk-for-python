@@ -27,11 +27,11 @@ class VisualSearchRequest(Model):
     """
 
     _attribute_map = {
-        'image_info': {'key': 'imageInfo', 'type': 'ImageInfo'},
-        'knowledge_request': {'key': 'knowledgeRequest', 'type': 'KnowledgeRequest'},
+        "image_info": {"key": "imageInfo", "type": "ImageInfo"},
+        "knowledge_request": {"key": "knowledgeRequest", "type": "KnowledgeRequest"},
     }
 
     def __init__(self, **kwargs):
         super(VisualSearchRequest, self).__init__(**kwargs)
-        self.image_info = kwargs.get('image_info', None)
-        self.knowledge_request = kwargs.get('knowledge_request', None)
+        self.image_info = kwargs.get("image_info", None)
+        self.knowledge_request = kwargs.get("knowledge_request", None)

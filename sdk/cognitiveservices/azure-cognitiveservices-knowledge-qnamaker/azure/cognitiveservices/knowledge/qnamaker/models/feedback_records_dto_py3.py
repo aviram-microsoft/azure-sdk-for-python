@@ -21,7 +21,7 @@ class FeedbackRecordsDTO(Model):
     """
 
     _attribute_map = {
-        'feedback_records': {'key': 'feedbackRecords', 'type': '[FeedbackRecordDTO]'},
+        "feedback_records": {"key": "feedbackRecords", "type": "[FeedbackRecordDTO]"},
     }
 
     def __init__(self, *, feedback_records=None, **kwargs) -> None:

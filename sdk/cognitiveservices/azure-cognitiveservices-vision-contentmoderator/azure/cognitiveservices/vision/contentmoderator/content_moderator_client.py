@@ -35,18 +35,17 @@ class ContentModeratorClientConfiguration(Configuration):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         if endpoint is None:
             raise ValueError("Parameter 'endpoint' must not be None.")
         if credentials is None:
             raise ValueError("Parameter 'credentials' must not be None.")
-        base_url = '{Endpoint}'
+        base_url = "{Endpoint}"
 
         super(ContentModeratorClientConfiguration, self).__init__(base_url)
 
-        self.add_user_agent('azure-cognitiveservices-vision-contentmoderator/{}'.format(VERSION))
+        self.add_user_agent("azure-cognitiveservices-vision-contentmoderator/{}".format(VERSION))
 
         self.endpoint = endpoint
         self.credentials = credentials
@@ -84,28 +83,28 @@ class ContentModeratorClient(SDKClient):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         self.config = ContentModeratorClientConfiguration(endpoint, credentials)
         super(ContentModeratorClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = '1.0'
+        self.api_version = "1.0"
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
-        self.image_moderation = ImageModerationOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.text_moderation = TextModerationOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+        self.image_moderation = ImageModerationOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.text_moderation = TextModerationOperations(self._client, self.config, self._serialize, self._deserialize)
         self.list_management_image_lists = ListManagementImageListsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+            self._client, self.config, self._serialize, self._deserialize
+        )
         self.list_management_term_lists = ListManagementTermListsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+            self._client, self.config, self._serialize, self._deserialize
+        )
         self.list_management_image = ListManagementImageOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+            self._client, self.config, self._serialize, self._deserialize
+        )
         self.list_management_term = ListManagementTermOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.reviews = ReviewsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+            self._client, self.config, self._serialize, self._deserialize
+        )
+        self.reviews = ReviewsOperations(self._client, self.config, self._serialize, self._deserialize)

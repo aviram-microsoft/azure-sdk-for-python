@@ -31,14 +31,12 @@ class CustomVisionTrainingClient(CustomVisionTrainingClientOperationsMixin, SDKC
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         self.config = CustomVisionTrainingClientConfiguration(endpoint, credentials)
         super(CustomVisionTrainingClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = '3.4-preview'
+        self.api_version = "3.4-preview"
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
-

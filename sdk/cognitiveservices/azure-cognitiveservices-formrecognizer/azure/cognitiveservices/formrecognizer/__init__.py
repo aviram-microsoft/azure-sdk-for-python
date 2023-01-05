@@ -12,7 +12,6 @@
 from .form_recognizer_client import FormRecognizerClient
 from .version import VERSION
 
-__all__ = ['FormRecognizerClient']
+__all__ = ["FormRecognizerClient"]
 
 __version__ = VERSION
-

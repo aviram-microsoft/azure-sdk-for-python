@@ -28,12 +28,12 @@ class TrainResult(Model):
     """
 
     _attribute_map = {
-        'model_id': {'key': 'modelId', 'type': 'str'},
-        'training_documents': {'key': 'trainingDocuments', 'type': '[FormDocumentReport]'},
-        'errors': {'key': 'errors', 'type': '[FormOperationError]'},
+        "model_id": {"key": "modelId", "type": "str"},
+        "training_documents": {"key": "trainingDocuments", "type": "[FormDocumentReport]"},
+        "errors": {"key": "errors", "type": "[FormOperationError]"},
     }
 
-    def __init__(self, *, model_id: str=None, training_documents=None, errors=None, **kwargs) -> None:
+    def __init__(self, *, model_id: str = None, training_documents=None, errors=None, **kwargs) -> None:
         super(TrainResult, self).__init__(**kwargs)
         self.model_id = model_id
         self.training_documents = training_documents

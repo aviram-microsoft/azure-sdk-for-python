@@ -22,8 +22,8 @@ class QueryDTOContext(QueryContextDTO):
     """
 
     _attribute_map = {
-        'previous_qna_id': {'key': 'previousQnaId', 'type': 'int'},
-        'previous_user_query': {'key': 'previousUserQuery', 'type': 'str'},
+        "previous_qna_id": {"key": "previousQnaId", "type": "int"},
+        "previous_user_query": {"key": "previousUserQuery", "type": "str"},
     }
 
     def __init__(self, **kwargs):

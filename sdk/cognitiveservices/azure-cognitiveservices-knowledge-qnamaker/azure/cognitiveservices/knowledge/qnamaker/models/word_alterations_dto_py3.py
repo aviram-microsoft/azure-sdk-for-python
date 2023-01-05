@@ -23,11 +23,11 @@ class WordAlterationsDTO(Model):
     """
 
     _validation = {
-        'word_alterations': {'required': True},
+        "word_alterations": {"required": True},
     }
 
     _attribute_map = {
-        'word_alterations': {'key': 'wordAlterations', 'type': '[AlterationsDTO]'},
+        "word_alterations": {"key": "wordAlterations", "type": "[AlterationsDTO]"},
     }
 
     def __init__(self, *, word_alterations, **kwargs) -> None:

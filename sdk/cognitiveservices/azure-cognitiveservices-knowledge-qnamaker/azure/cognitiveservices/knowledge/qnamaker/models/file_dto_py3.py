@@ -25,13 +25,13 @@ class FileDTO(Model):
     """
 
     _validation = {
-        'file_name': {'required': True, 'max_length': 200, 'min_length': 1},
-        'file_uri': {'required': True},
+        "file_name": {"required": True, "max_length": 200, "min_length": 1},
+        "file_uri": {"required": True},
     }
 
     _attribute_map = {
-        'file_name': {'key': 'fileName', 'type': 'str'},
-        'file_uri': {'key': 'fileUri', 'type': 'str'},
+        "file_name": {"key": "fileName", "type": "str"},
+        "file_uri": {"key": "fileUri", "type": "str"},
     }
 
     def __init__(self, *, file_name: str, file_uri: str, **kwargs) -> None:

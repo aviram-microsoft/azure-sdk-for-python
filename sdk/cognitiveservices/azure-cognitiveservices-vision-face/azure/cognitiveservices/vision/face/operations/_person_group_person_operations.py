@@ -35,8 +35,7 @@ class PersonGroupPersonOperations(object):
 
         self.config = config
 
-    def create(
-            self, person_group_id, name=None, user_data=None, custom_headers=None, raw=False, **operation_config):
+    def create(self, person_group_id, name=None, user_data=None, custom_headers=None, raw=False, **operation_config):
         """Create a new person in a specified person group.
 
         :param person_group_id: Id referencing a particular person group.
@@ -59,10 +58,12 @@ class PersonGroupPersonOperations(object):
         body = models.NameAndUserDataContract(name=name, user_data=user_data)
 
         # Construct URL
-        url = self.create.metadata['url']
+        url = self.create.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'personGroupId': self._serialize.url("person_group_id", person_group_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "personGroupId": self._serialize.url(
+                "person_group_id", person_group_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -71,13 +72,13 @@ class PersonGroupPersonOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'NameAndUserDataContract')
+        body_content = self._serialize.body(body, "NameAndUserDataContract")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -88,17 +89,17 @@ class PersonGroupPersonOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Person', response)
+            deserialized = self._deserialize("Person", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create.metadata = {'url': '/persongroups/{personGroupId}/persons'}
 
-    def list(
-            self, person_group_id, start=None, top=None, custom_headers=None, raw=False, **operation_config):
+    create.metadata = {"url": "/persongroups/{personGroupId}/persons"}
+
+    def list(self, person_group_id, start=None, top=None, custom_headers=None, raw=False, **operation_config):
         """List all persons in a person group, and retrieve person information
         (including personId, name, userData and persistedFaceIds of registered
         faces of the person).
@@ -123,23 +124,25 @@ class PersonGroupPersonOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.list.metadata['url']
+        url = self.list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'personGroupId': self._serialize.url("person_group_id", person_group_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "personGroupId": self._serialize.url(
+                "person_group_id", person_group_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if start is not None:
-            query_parameters['start'] = self._serialize.query("start", start, 'str')
+            query_parameters["start"] = self._serialize.query("start", start, "str")
         if top is not None:
-            query_parameters['top'] = self._serialize.query("top", top, 'int', maximum=1000, minimum=1)
+            query_parameters["top"] = self._serialize.query("top", top, "int", maximum=1000, minimum=1)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -152,17 +155,17 @@ class PersonGroupPersonOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[Person]', response)
+            deserialized = self._deserialize("[Person]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list.metadata = {'url': '/persongroups/{personGroupId}/persons'}
 
-    def delete(
-            self, person_group_id, person_id, custom_headers=None, raw=False, **operation_config):
+    list.metadata = {"url": "/persongroups/{personGroupId}/persons"}
+
+    def delete(self, person_group_id, person_id, custom_headers=None, raw=False, **operation_config):
         """Delete an existing person from a person group. The persistedFaceId,
         userData, person name and face feature in the person entry will all be
         deleted.
@@ -182,11 +185,13 @@ class PersonGroupPersonOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.delete.metadata['url']
+        url = self.delete.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'personGroupId': self._serialize.url("person_group_id", person_group_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$'),
-            'personId': self._serialize.url("person_id", person_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "personGroupId": self._serialize.url(
+                "person_group_id", person_group_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
+            "personId": self._serialize.url("person_id", person_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -208,10 +213,10 @@ class PersonGroupPersonOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete.metadata = {'url': '/persongroups/{personGroupId}/persons/{personId}'}
 
-    def get(
-            self, person_group_id, person_id, custom_headers=None, raw=False, **operation_config):
+    delete.metadata = {"url": "/persongroups/{personGroupId}/persons/{personId}"}
+
+    def get(self, person_group_id, person_id, custom_headers=None, raw=False, **operation_config):
         """Retrieve a person's information, including registered persisted faces,
         name and userData.
 
@@ -231,11 +236,13 @@ class PersonGroupPersonOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.get.metadata['url']
+        url = self.get.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'personGroupId': self._serialize.url("person_group_id", person_group_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$'),
-            'personId': self._serialize.url("person_id", person_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "personGroupId": self._serialize.url(
+                "person_group_id", person_group_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
+            "personId": self._serialize.url("person_id", person_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -244,7 +251,7 @@ class PersonGroupPersonOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -257,17 +264,19 @@ class PersonGroupPersonOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Person', response)
+            deserialized = self._deserialize("Person", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get.metadata = {'url': '/persongroups/{personGroupId}/persons/{personId}'}
+
+    get.metadata = {"url": "/persongroups/{personGroupId}/persons/{personId}"}
 
     def update(
-            self, person_group_id, person_id, name=None, user_data=None, custom_headers=None, raw=False, **operation_config):
+        self, person_group_id, person_id, name=None, user_data=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Update name or userData of a person.
 
         :param person_group_id: Id referencing a particular person group.
@@ -291,11 +300,13 @@ class PersonGroupPersonOperations(object):
         body = models.NameAndUserDataContract(name=name, user_data=user_data)
 
         # Construct URL
-        url = self.update.metadata['url']
+        url = self.update.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'personGroupId': self._serialize.url("person_group_id", person_group_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$'),
-            'personId': self._serialize.url("person_id", person_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "personGroupId": self._serialize.url(
+                "person_group_id", person_group_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
+            "personId": self._serialize.url("person_id", person_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -304,12 +315,12 @@ class PersonGroupPersonOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'NameAndUserDataContract')
+        body_content = self._serialize.body(body, "NameAndUserDataContract")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -321,10 +332,12 @@ class PersonGroupPersonOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    update.metadata = {'url': '/persongroups/{personGroupId}/persons/{personId}'}
+
+    update.metadata = {"url": "/persongroups/{personGroupId}/persons/{personId}"}
 
     def delete_face(
-            self, person_group_id, person_id, persisted_face_id, custom_headers=None, raw=False, **operation_config):
+        self, person_group_id, person_id, persisted_face_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Delete a face from a person in a person group by specified
         personGroupId, personId and persistedFaceId.
         <br /> Adding/deleting faces to/from a same person will be processed
@@ -349,12 +362,14 @@ class PersonGroupPersonOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.delete_face.metadata['url']
+        url = self.delete_face.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'personGroupId': self._serialize.url("person_group_id", person_group_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$'),
-            'personId': self._serialize.url("person_id", person_id, 'str'),
-            'persistedFaceId': self._serialize.url("persisted_face_id", persisted_face_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "personGroupId": self._serialize.url(
+                "person_group_id", person_group_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
+            "personId": self._serialize.url("person_id", person_id, "str"),
+            "persistedFaceId": self._serialize.url("persisted_face_id", persisted_face_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -376,10 +391,12 @@ class PersonGroupPersonOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete_face.metadata = {'url': '/persongroups/{personGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}'}
+
+    delete_face.metadata = {"url": "/persongroups/{personGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}"}
 
     def get_face(
-            self, person_group_id, person_id, persisted_face_id, custom_headers=None, raw=False, **operation_config):
+        self, person_group_id, person_id, persisted_face_id, custom_headers=None, raw=False, **operation_config
+    ):
         """Retrieve information about a persisted face (specified by
         persistedFaceId, personId and its belonging personGroupId).
 
@@ -402,12 +419,14 @@ class PersonGroupPersonOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.get_face.metadata['url']
+        url = self.get_face.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'personGroupId': self._serialize.url("person_group_id", person_group_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$'),
-            'personId': self._serialize.url("person_id", person_id, 'str'),
-            'persistedFaceId': self._serialize.url("persisted_face_id", persisted_face_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "personGroupId": self._serialize.url(
+                "person_group_id", person_group_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
+            "personId": self._serialize.url("person_id", person_id, "str"),
+            "persistedFaceId": self._serialize.url("persisted_face_id", persisted_face_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -416,7 +435,7 @@ class PersonGroupPersonOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -429,17 +448,26 @@ class PersonGroupPersonOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PersistedFace', response)
+            deserialized = self._deserialize("PersistedFace", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_face.metadata = {'url': '/persongroups/{personGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}'}
+
+    get_face.metadata = {"url": "/persongroups/{personGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}"}
 
     def update_face(
-            self, person_group_id, person_id, persisted_face_id, user_data=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        person_group_id,
+        person_id,
+        persisted_face_id,
+        user_data=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Add a face to a person into a person group for face identification or
         verification. To deal with an image contains multiple faces, input face
         can be specified as an image with a targetFace rectangle. It returns a
@@ -495,12 +523,14 @@ class PersonGroupPersonOperations(object):
         body = models.UpdateFaceRequest(user_data=user_data)
 
         # Construct URL
-        url = self.update_face.metadata['url']
+        url = self.update_face.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'personGroupId': self._serialize.url("person_group_id", person_group_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$'),
-            'personId': self._serialize.url("person_id", person_id, 'str'),
-            'persistedFaceId': self._serialize.url("persisted_face_id", persisted_face_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "personGroupId": self._serialize.url(
+                "person_group_id", person_group_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
+            "personId": self._serialize.url("person_id", person_id, "str"),
+            "persistedFaceId": self._serialize.url("persisted_face_id", persisted_face_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -509,12 +539,12 @@ class PersonGroupPersonOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'UpdateFaceRequest')
+        body_content = self._serialize.body(body, "UpdateFaceRequest")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -526,10 +556,21 @@ class PersonGroupPersonOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    update_face.metadata = {'url': '/persongroups/{personGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}'}
+
+    update_face.metadata = {"url": "/persongroups/{personGroupId}/persons/{personId}/persistedfaces/{persistedFaceId}"}
 
     def add_face_from_url(
-            self, person_group_id, person_id, url, user_data=None, target_face=None, detection_model="detection_01", custom_headers=None, raw=False, **operation_config):
+        self,
+        person_group_id,
+        person_id,
+        url,
+        user_data=None,
+        target_face=None,
+        detection_model="detection_01",
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Add a face to a person into a person group for face identification or
         verification. To deal with an image contains multiple faces, input face
         can be specified as an image with a targetFace rectangle. It returns a
@@ -606,32 +647,34 @@ class PersonGroupPersonOperations(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.add_face_from_url.metadata['url']
+        url = self.add_face_from_url.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'personGroupId': self._serialize.url("person_group_id", person_group_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$'),
-            'personId': self._serialize.url("person_id", person_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "personGroupId": self._serialize.url(
+                "person_group_id", person_group_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
+            "personId": self._serialize.url("person_id", person_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if user_data is not None:
-            query_parameters['userData'] = self._serialize.query("user_data", user_data, 'str', max_length=1024)
+            query_parameters["userData"] = self._serialize.query("user_data", user_data, "str", max_length=1024)
         if target_face is not None:
-            query_parameters['targetFace'] = self._serialize.query("target_face", target_face, '[int]', div=',')
+            query_parameters["targetFace"] = self._serialize.query("target_face", target_face, "[int]", div=",")
         if detection_model is not None:
-            query_parameters['detectionModel'] = self._serialize.query("detection_model", detection_model, 'str')
+            query_parameters["detectionModel"] = self._serialize.query("detection_model", detection_model, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -642,17 +685,29 @@ class PersonGroupPersonOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PersistedFace', response)
+            deserialized = self._deserialize("PersistedFace", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_face_from_url.metadata = {'url': '/persongroups/{personGroupId}/persons/{personId}/persistedfaces'}
+
+    add_face_from_url.metadata = {"url": "/persongroups/{personGroupId}/persons/{personId}/persistedfaces"}
 
     def add_face_from_stream(
-            self, person_group_id, person_id, image, user_data=None, target_face=None, detection_model="detection_01", custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        person_group_id,
+        person_id,
+        image,
+        user_data=None,
+        target_face=None,
+        detection_model="detection_01",
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """Add a face to a person into a person group for face identification or
         verification. To deal with an image contains multiple faces, input face
         can be specified as an image with a targetFace rectangle. It returns a
@@ -732,27 +787,29 @@ class PersonGroupPersonOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.add_face_from_stream.metadata['url']
+        url = self.add_face_from_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'personGroupId': self._serialize.url("person_group_id", person_group_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$'),
-            'personId': self._serialize.url("person_id", person_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "personGroupId": self._serialize.url(
+                "person_group_id", person_group_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
+            "personId": self._serialize.url("person_id", person_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if user_data is not None:
-            query_parameters['userData'] = self._serialize.query("user_data", user_data, 'str', max_length=1024)
+            query_parameters["userData"] = self._serialize.query("user_data", user_data, "str", max_length=1024)
         if target_face is not None:
-            query_parameters['targetFace'] = self._serialize.query("target_face", target_face, '[int]', div=',')
+            query_parameters["targetFace"] = self._serialize.query("target_face", target_face, "[int]", div=",")
         if detection_model is not None:
-            query_parameters['detectionModel'] = self._serialize.query("detection_model", detection_model, 'str')
+            query_parameters["detectionModel"] = self._serialize.query("detection_model", detection_model, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -768,11 +825,12 @@ class PersonGroupPersonOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PersistedFace', response)
+            deserialized = self._deserialize("PersistedFace", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_face_from_stream.metadata = {'url': '/persongroups/{personGroupId}/persons/{personId}/persistedfaces'}
+
+    add_face_from_stream.metadata = {"url": "/persongroups/{personGroupId}/persons/{personId}/persistedfaces"}

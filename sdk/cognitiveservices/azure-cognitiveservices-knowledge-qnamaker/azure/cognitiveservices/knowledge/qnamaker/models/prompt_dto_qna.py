@@ -37,20 +37,20 @@ class PromptDTOQna(QnADTO):
     """
 
     _validation = {
-        'answer': {'required': True, 'max_length': 25000, 'min_length': 1},
-        'source': {'max_length': 300},
-        'questions': {'required': True},
-        'last_updated_timestamp': {'max_length': 300},
+        "answer": {"required": True, "max_length": 25000, "min_length": 1},
+        "source": {"max_length": 300},
+        "questions": {"required": True},
+        "last_updated_timestamp": {"max_length": 300},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'answer': {'key': 'answer', 'type': 'str'},
-        'source': {'key': 'source', 'type': 'str'},
-        'questions': {'key': 'questions', 'type': '[str]'},
-        'metadata': {'key': 'metadata', 'type': '[MetadataDTO]'},
-        'context': {'key': 'context', 'type': 'QnADTOContext'},
-        'last_updated_timestamp': {'key': 'lastUpdatedTimestamp', 'type': 'str'},
+        "id": {"key": "id", "type": "int"},
+        "answer": {"key": "answer", "type": "str"},
+        "source": {"key": "source", "type": "str"},
+        "questions": {"key": "questions", "type": "[str]"},
+        "metadata": {"key": "metadata", "type": "[MetadataDTO]"},
+        "context": {"key": "context", "type": "QnADTOContext"},
+        "last_updated_timestamp": {"key": "lastUpdatedTimestamp", "type": "str"},
     }
 
     def __init__(self, **kwargs):

@@ -33,8 +33,7 @@ class AlterationsOperations(object):
 
         self.config = config
 
-    def get(
-            self, custom_headers=None, raw=False, **operation_config):
+    def get(self, custom_headers=None, raw=False, **operation_config):
         """Download alterations from runtime.
 
         :param dict custom_headers: headers that will be added to the request
@@ -50,9 +49,9 @@ class AlterationsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get.metadata['url']
+        url = self.get.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -61,7 +60,7 @@ class AlterationsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -75,17 +74,17 @@ class AlterationsOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('WordAlterationsDTO', response)
+            deserialized = self._deserialize("WordAlterationsDTO", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get.metadata = {'url': '/alterations'}
 
-    def replace(
-            self, word_alterations, custom_headers=None, raw=False, **operation_config):
+    get.metadata = {"url": "/alterations"}
+
+    def replace(self, word_alterations, custom_headers=None, raw=False, **operation_config):
         """Replace alterations data.
 
         :param word_alterations: Collection of word alterations.
@@ -104,9 +103,9 @@ class AlterationsOperations(object):
         word_alterations1 = models.WordAlterationsDTO(word_alterations=word_alterations)
 
         # Construct URL
-        url = self.replace.metadata['url']
+        url = self.replace.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -115,12 +114,12 @@ class AlterationsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(word_alterations1, 'WordAlterationsDTO')
+        body_content = self._serialize.body(word_alterations1, "WordAlterationsDTO")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -132,10 +131,10 @@ class AlterationsOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    replace.metadata = {'url': '/alterations'}
 
-    def get_alterations_for_kb(
-            self, kb_id, custom_headers=None, raw=False, **operation_config):
+    replace.metadata = {"url": "/alterations"}
+
+    def get_alterations_for_kb(self, kb_id, custom_headers=None, raw=False, **operation_config):
         """Download alterations per Knowledgebase (QnAMaker Managed).
 
         :param kb_id: Knowledgebase id.
@@ -153,10 +152,10 @@ class AlterationsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_alterations_for_kb.metadata['url']
+        url = self.get_alterations_for_kb.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'kbId': self._serialize.url("kb_id", kb_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "kbId": self._serialize.url("kb_id", kb_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -165,7 +164,7 @@ class AlterationsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -179,17 +178,17 @@ class AlterationsOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('WordAlterationsDTO', response)
+            deserialized = self._deserialize("WordAlterationsDTO", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_alterations_for_kb.metadata = {'url': '/alterations/{kbId}'}
 
-    def replace_alterations_for_kb(
-            self, kb_id, word_alterations, custom_headers=None, raw=False, **operation_config):
+    get_alterations_for_kb.metadata = {"url": "/alterations/{kbId}"}
+
+    def replace_alterations_for_kb(self, kb_id, word_alterations, custom_headers=None, raw=False, **operation_config):
         """Replace alterations data per Knowledgebase (QnAMaker Managed).
 
         :param kb_id: Knowledgebase id.
@@ -210,10 +209,10 @@ class AlterationsOperations(object):
         word_alterations1 = models.WordAlterationsDTO(word_alterations=word_alterations)
 
         # Construct URL
-        url = self.replace_alterations_for_kb.metadata['url']
+        url = self.replace_alterations_for_kb.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'kbId': self._serialize.url("kb_id", kb_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "kbId": self._serialize.url("kb_id", kb_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -222,12 +221,12 @@ class AlterationsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(word_alterations1, 'WordAlterationsDTO')
+        body_content = self._serialize.body(word_alterations1, "WordAlterationsDTO")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -239,4 +238,5 @@ class AlterationsOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    replace_alterations_for_kb.metadata = {'url': '/alterations/{kbId}'}
+
+    replace_alterations_for_kb.metadata = {"url": "/alterations/{kbId}"}

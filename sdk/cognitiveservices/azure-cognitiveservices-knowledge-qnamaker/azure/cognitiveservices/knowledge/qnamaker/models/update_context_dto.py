@@ -30,13 +30,13 @@ class UpdateContextDTO(Model):
     """
 
     _attribute_map = {
-        'prompts_to_delete': {'key': 'promptsToDelete', 'type': '[int]'},
-        'prompts_to_add': {'key': 'promptsToAdd', 'type': '[PromptDTO]'},
-        'is_context_only': {'key': 'isContextOnly', 'type': 'bool'},
+        "prompts_to_delete": {"key": "promptsToDelete", "type": "[int]"},
+        "prompts_to_add": {"key": "promptsToAdd", "type": "[PromptDTO]"},
+        "is_context_only": {"key": "isContextOnly", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(UpdateContextDTO, self).__init__(**kwargs)
-        self.prompts_to_delete = kwargs.get('prompts_to_delete', None)
-        self.prompts_to_add = kwargs.get('prompts_to_add', None)
-        self.is_context_only = kwargs.get('is_context_only', None)
+        self.prompts_to_delete = kwargs.get("prompts_to_delete", None)
+        self.prompts_to_add = kwargs.get("prompts_to_add", None)
+        self.is_context_only = kwargs.get("is_context_only", None)

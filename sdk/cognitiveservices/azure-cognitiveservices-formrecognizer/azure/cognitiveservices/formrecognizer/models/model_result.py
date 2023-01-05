@@ -27,15 +27,15 @@ class ModelResult(Model):
     """
 
     _attribute_map = {
-        'model_id': {'key': 'modelId', 'type': 'str'},
-        'status': {'key': 'status', 'type': 'str'},
-        'created_date_time': {'key': 'createdDateTime', 'type': 'iso-8601'},
-        'last_updated_date_time': {'key': 'lastUpdatedDateTime', 'type': 'iso-8601'},
+        "model_id": {"key": "modelId", "type": "str"},
+        "status": {"key": "status", "type": "str"},
+        "created_date_time": {"key": "createdDateTime", "type": "iso-8601"},
+        "last_updated_date_time": {"key": "lastUpdatedDateTime", "type": "iso-8601"},
     }
 
     def __init__(self, **kwargs):
         super(ModelResult, self).__init__(**kwargs)
-        self.model_id = kwargs.get('model_id', None)
-        self.status = kwargs.get('status', None)
-        self.created_date_time = kwargs.get('created_date_time', None)
-        self.last_updated_date_time = kwargs.get('last_updated_date_time', None)
+        self.model_id = kwargs.get("model_id", None)
+        self.status = kwargs.get("status", None)
+        self.created_date_time = kwargs.get("created_date_time", None)
+        self.last_updated_date_time = kwargs.get("last_updated_date_time", None)

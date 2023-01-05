@@ -33,18 +33,17 @@ class QnAMakerClientConfiguration(Configuration):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         if endpoint is None:
             raise ValueError("Parameter 'endpoint' must not be None.")
         if credentials is None:
             raise ValueError("Parameter 'credentials' must not be None.")
-        base_url = '{Endpoint}/qnamaker/v5.0-preview.1'
+        base_url = "{Endpoint}/qnamaker/v5.0-preview.1"
 
         super(QnAMakerClientConfiguration, self).__init__(base_url)
 
-        self.add_user_agent('azure-cognitiveservices-knowledge-qnamaker/{}'.format(VERSION))
+        self.add_user_agent("azure-cognitiveservices-knowledge-qnamaker/{}".format(VERSION))
 
         self.endpoint = endpoint
         self.credentials = credentials
@@ -75,24 +74,20 @@ class QnAMakerClient(SDKClient):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         self.config = QnAMakerClientConfiguration(endpoint, credentials)
         super(QnAMakerClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = 'v5.0-preview.1'
+        self.api_version = "v5.0-preview.1"
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
         self.endpoint_settings = EndpointSettingsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.endpoint_keys = EndpointKeysOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.alterations = AlterationsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.knowledgebase = KnowledgebaseOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.operations = Operations(
-            self._client, self.config, self._serialize, self._deserialize)
+            self._client, self.config, self._serialize, self._deserialize
+        )
+        self.endpoint_keys = EndpointKeysOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.alterations = AlterationsOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.knowledgebase = KnowledgebaseOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.operations = Operations(self._client, self.config, self._serialize, self._deserialize)

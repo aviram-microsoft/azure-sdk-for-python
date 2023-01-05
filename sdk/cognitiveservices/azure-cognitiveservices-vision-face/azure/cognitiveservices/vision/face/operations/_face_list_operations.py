@@ -36,7 +36,15 @@ class FaceListOperations(object):
         self.config = config
 
     def create(
-            self, face_list_id, name, user_data=None, recognition_model="recognition_01", custom_headers=None, raw=False, **operation_config):
+        self,
+        face_list_id,
+        name,
+        user_data=None,
+        recognition_model="recognition_01",
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Create an empty face list with user-specified faceListId, name, an
         optional userData and recognitionModel. Up to 64 face lists are allowed
         in one subscription.
@@ -94,10 +102,12 @@ class FaceListOperations(object):
         body = models.MetaDataContract(name=name, user_data=user_data, recognition_model=recognition_model)
 
         # Construct URL
-        url = self.create.metadata['url']
+        url = self.create.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'faceListId': self._serialize.url("face_list_id", face_list_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "faceListId": self._serialize.url(
+                "face_list_id", face_list_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -106,12 +116,12 @@ class FaceListOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'MetaDataContract')
+        body_content = self._serialize.body(body, "MetaDataContract")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -123,10 +133,10 @@ class FaceListOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    create.metadata = {'url': '/facelists/{faceListId}'}
 
-    def get(
-            self, face_list_id, return_recognition_model=False, custom_headers=None, raw=False, **operation_config):
+    create.metadata = {"url": "/facelists/{faceListId}"}
+
+    def get(self, face_list_id, return_recognition_model=False, custom_headers=None, raw=False, **operation_config):
         """Retrieve a face list’s faceListId, name, userData, recognitionModel and
         faces in the face list.
         .
@@ -148,21 +158,25 @@ class FaceListOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.get.metadata['url']
+        url = self.get.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'faceListId': self._serialize.url("face_list_id", face_list_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "faceListId": self._serialize.url(
+                "face_list_id", face_list_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if return_recognition_model is not None:
-            query_parameters['returnRecognitionModel'] = self._serialize.query("return_recognition_model", return_recognition_model, 'bool')
+            query_parameters["returnRecognitionModel"] = self._serialize.query(
+                "return_recognition_model", return_recognition_model, "bool"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -175,17 +189,17 @@ class FaceListOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('FaceList', response)
+            deserialized = self._deserialize("FaceList", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get.metadata = {'url': '/facelists/{faceListId}'}
 
-    def update(
-            self, face_list_id, name=None, user_data=None, custom_headers=None, raw=False, **operation_config):
+    get.metadata = {"url": "/facelists/{faceListId}"}
+
+    def update(self, face_list_id, name=None, user_data=None, custom_headers=None, raw=False, **operation_config):
         """Update information of a face list.
 
         :param face_list_id: Id referencing a particular face list.
@@ -207,10 +221,12 @@ class FaceListOperations(object):
         body = models.NameAndUserDataContract(name=name, user_data=user_data)
 
         # Construct URL
-        url = self.update.metadata['url']
+        url = self.update.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'faceListId': self._serialize.url("face_list_id", face_list_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "faceListId": self._serialize.url(
+                "face_list_id", face_list_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -219,12 +235,12 @@ class FaceListOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'NameAndUserDataContract')
+        body_content = self._serialize.body(body, "NameAndUserDataContract")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -236,10 +252,10 @@ class FaceListOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    update.metadata = {'url': '/facelists/{faceListId}'}
 
-    def delete(
-            self, face_list_id, custom_headers=None, raw=False, **operation_config):
+    update.metadata = {"url": "/facelists/{faceListId}"}
+
+    def delete(self, face_list_id, custom_headers=None, raw=False, **operation_config):
         """Delete a specified face list.
 
         :param face_list_id: Id referencing a particular face list.
@@ -255,10 +271,12 @@ class FaceListOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.delete.metadata['url']
+        url = self.delete.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'faceListId': self._serialize.url("face_list_id", face_list_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "faceListId": self._serialize.url(
+                "face_list_id", face_list_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -280,10 +298,10 @@ class FaceListOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete.metadata = {'url': '/facelists/{faceListId}'}
 
-    def list(
-            self, return_recognition_model=False, custom_headers=None, raw=False, **operation_config):
+    delete.metadata = {"url": "/facelists/{faceListId}"}
+
+    def list(self, return_recognition_model=False, custom_headers=None, raw=False, **operation_config):
         """List face lists’ faceListId, name, userData and recognitionModel. <br
         />
         To get face information inside faceList use [FaceList -
@@ -305,20 +323,22 @@ class FaceListOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.list.metadata['url']
+        url = self.list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if return_recognition_model is not None:
-            query_parameters['returnRecognitionModel'] = self._serialize.query("return_recognition_model", return_recognition_model, 'bool')
+            query_parameters["returnRecognitionModel"] = self._serialize.query(
+                "return_recognition_model", return_recognition_model, "bool"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -331,17 +351,17 @@ class FaceListOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[FaceList]', response)
+            deserialized = self._deserialize("[FaceList]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list.metadata = {'url': '/facelists'}
 
-    def delete_face(
-            self, face_list_id, persisted_face_id, custom_headers=None, raw=False, **operation_config):
+    list.metadata = {"url": "/facelists"}
+
+    def delete_face(self, face_list_id, persisted_face_id, custom_headers=None, raw=False, **operation_config):
         """Delete a face from a face list by specified faceListId and
         persistedFaceId.
         <br /> Adding/deleting faces to/from a same face list are processed
@@ -363,11 +383,13 @@ class FaceListOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.delete_face.metadata['url']
+        url = self.delete_face.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'faceListId': self._serialize.url("face_list_id", face_list_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$'),
-            'persistedFaceId': self._serialize.url("persisted_face_id", persisted_face_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "faceListId": self._serialize.url(
+                "face_list_id", face_list_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
+            "persistedFaceId": self._serialize.url("persisted_face_id", persisted_face_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -389,10 +411,20 @@ class FaceListOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete_face.metadata = {'url': '/facelists/{faceListId}/persistedfaces/{persistedFaceId}'}
+
+    delete_face.metadata = {"url": "/facelists/{faceListId}/persistedfaces/{persistedFaceId}"}
 
     def add_face_from_url(
-            self, face_list_id, url, user_data=None, target_face=None, detection_model="detection_01", custom_headers=None, raw=False, **operation_config):
+        self,
+        face_list_id,
+        url,
+        user_data=None,
+        target_face=None,
+        detection_model="detection_01",
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Add a face to a specified face list, up to 1,000 faces.
         <br /> To deal with an image contains multiple faces, input face can be
         specified as an image with a targetFace rectangle. It returns a
@@ -463,31 +495,33 @@ class FaceListOperations(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.add_face_from_url.metadata['url']
+        url = self.add_face_from_url.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'faceListId': self._serialize.url("face_list_id", face_list_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "faceListId": self._serialize.url(
+                "face_list_id", face_list_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if user_data is not None:
-            query_parameters['userData'] = self._serialize.query("user_data", user_data, 'str', max_length=1024)
+            query_parameters["userData"] = self._serialize.query("user_data", user_data, "str", max_length=1024)
         if target_face is not None:
-            query_parameters['targetFace'] = self._serialize.query("target_face", target_face, '[int]', div=',')
+            query_parameters["targetFace"] = self._serialize.query("target_face", target_face, "[int]", div=",")
         if detection_model is not None:
-            query_parameters['detectionModel'] = self._serialize.query("detection_model", detection_model, 'str')
+            query_parameters["detectionModel"] = self._serialize.query("detection_model", detection_model, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -498,17 +532,28 @@ class FaceListOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PersistedFace', response)
+            deserialized = self._deserialize("PersistedFace", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_face_from_url.metadata = {'url': '/facelists/{faceListId}/persistedfaces'}
+
+    add_face_from_url.metadata = {"url": "/facelists/{faceListId}/persistedfaces"}
 
     def add_face_from_stream(
-            self, face_list_id, image, user_data=None, target_face=None, detection_model="detection_01", custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        face_list_id,
+        image,
+        user_data=None,
+        target_face=None,
+        detection_model="detection_01",
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """Add a face to a specified face list, up to 1,000 faces.
         <br /> To deal with an image contains multiple faces, input face can be
         specified as an image with a targetFace rectangle. It returns a
@@ -582,26 +627,28 @@ class FaceListOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.add_face_from_stream.metadata['url']
+        url = self.add_face_from_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'faceListId': self._serialize.url("face_list_id", face_list_id, 'str', max_length=64, pattern=r'^[a-z0-9-_]+$')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "faceListId": self._serialize.url(
+                "face_list_id", face_list_id, "str", max_length=64, pattern=r"^[a-z0-9-_]+$"
+            ),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if user_data is not None:
-            query_parameters['userData'] = self._serialize.query("user_data", user_data, 'str', max_length=1024)
+            query_parameters["userData"] = self._serialize.query("user_data", user_data, "str", max_length=1024)
         if target_face is not None:
-            query_parameters['targetFace'] = self._serialize.query("target_face", target_face, '[int]', div=',')
+            query_parameters["targetFace"] = self._serialize.query("target_face", target_face, "[int]", div=",")
         if detection_model is not None:
-            query_parameters['detectionModel'] = self._serialize.query("detection_model", detection_model, 'str')
+            query_parameters["detectionModel"] = self._serialize.query("detection_model", detection_model, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -617,11 +664,12 @@ class FaceListOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PersistedFace', response)
+            deserialized = self._deserialize("PersistedFace", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_face_from_stream.metadata = {'url': '/facelists/{faceListId}/persistedfaces'}
+
+    add_face_from_stream.metadata = {"url": "/facelists/{faceListId}/persistedfaces"}

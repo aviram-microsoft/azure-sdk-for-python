@@ -1,0 +1,2431 @@
+clients:
+- apiVersions: []
+  builderPadName: trial_matcher
+  description: TrialMatcherClient.
+  legacyFilename: trial_matcher_client
+  name: TrialMatcherClient
+  operationGroups:
+  - className: TrialMatcherClientOperationsMixin
+    clientName: TrialMatcherClient
+    operations:
+    - apiVersions:
+      - null
+      bodyParameter:
+        clientName: body
+        contentTypes:
+        - application/json
+        defaultContentType: application/json
+        description: The body of a Trial Matcher request.
+        inOverload: false
+        location: body
+        optional: false
+        restApiName: body
+        type: &id090
+          type: combined
+          types:
+          - &id009
+            description: The body of the Trial Matcher request.
+            discriminatedSubtypes: {}
+            name: TrialMatcherRequest
+            parents:
+            - &id021
+              description: The generic part of the Health Decision Support request,
+                common to all models.
+              discriminatedSubtypes: {}
+              name: Request
+              parents: []
+              properties:
+              - clientName: patients
+                description: The list of patients, including their clinical information
+                  and data.
+                optional: false
+                readonly: false
+                restApiName: patients
+                type: &id039
+                  elementType: &id028
+                    description: A patient record, including their clinical information
+                      and data.
+                    discriminatedSubtypes: {}
+                    name: Patient
+                    parents: []
+                    properties:
+                    - clientName: id
+                      description: 'A given identifier for the patient. Has to be
+                        unique across all patients in a
+
+                        single request.'
+                      optional: false
+                      pylintDisable: redefined-builtin
+                      readonly: false
+                      restApiName: id
+                      type: &id001
+                        type: string
+                    - clientName: info
+                      description: 'Patient structured information, including demographics
+                        and known structured
+
+                        clinical information.'
+                      optional: true
+                      readonly: false
+                      restApiName: info
+                      type: &id029
+                        description: 'Patient structured information, including demographics
+                          and known structured
+
+                          clinical information.'
+                        discriminatedSubtypes: {}
+                        name: PatientInfo
+                        parents: []
+                        properties:
+                        - clientName: gender
+                          description: The patient's gender.
+                          optional: true
+                          readonly: false
+                          restApiName: gender
+                          type: &id030
+                            description: PatientInfoGender.
+                            name: PatientInfoGender
+                            snakeCaseName: patient_info_gender
+                            type: enum
+                            valueType:
+                              type: string
+                            values:
+                            - description: ''
+                              name: FEMALE
+                              value: female
+                            - description: ''
+                              name: MALE
+                              value: male
+                            - description: ''
+                              name: UNSPECIFIED
+                              value: unspecified
+                        - clientName: birth_date
+                          description: The patient's date of birth.
+                          optional: true
+                          readonly: false
+                          restApiName: birthDate
+                          type: &id019
+                            type: date
+                        - clientName: clinical_info
+                          description: Known clinical information for the patient,
+                            structured.
+                          optional: true
+                          readonly: false
+                          restApiName: clinicalInfo
+                          type: &id032
+                            elementType: &id031
+                              description: 'A piece of clinical information, expressed
+                                as a code in a clinical coding
+
+                                system.'
+                              discriminatedSubtypes: {}
+                              name: ClinicalCodedElement
+                              parents: []
+                              properties:
+                              - clientName: system
+                                description: The clinical coding system, e.g. ICD-10,
+                                  SNOMED-CT, UMLS.
+                                optional: false
+                                readonly: false
+                                restApiName: system
+                                type: *id001
+                              - clientName: code
+                                description: The code within the given clinical coding
+                                  system.
+                                optional: false
+                                readonly: false
+                                restApiName: code
+                                type: *id001
+                              - clientName: name
+                                description: The name of this coded concept in the
+                                  coding system.
+                                optional: true
+                                readonly: false
+                                restApiName: name
+                                type: *id001
+                              - clientName: value
+                                description: A value associated with the code within
+                                  the given clinical coding system.
+                                optional: true
+                                readonly: false
+                                restApiName: value
+                                type: *id001
+                              snakeCaseName: clinical_coded_element
+                              type: model
+                            type: list
+                        snakeCaseName: patient_info
+                        type: model
+                    - clientName: data
+                      description: Patient unstructured clinical data, given as documents.
+                      optional: true
+                      readonly: false
+                      restApiName: data
+                      type: &id038
+                        elementType: &id033
+                          description: 'A clinical document related to a patient.
+                            Document here is in the wide sense -
+
+                            not just a text document (note).'
+                          discriminatedSubtypes: {}
+                          name: PatientDocument
+                          parents: []
+                          properties:
+                          - clientName: type
+                            description: 'The type of the patient document, such as
+                              ''note'' (text document) or
+
+                              ''fhirBundle'' (FHIR JSON document).'
+                            optional: false
+                            readonly: false
+                            restApiName: type
+                            type: &id034
+                              description: DocumentType.
+                              name: DocumentType
+                              snakeCaseName: document_type
+                              type: enum
+                              valueType:
+                                type: string
+                              values:
+                              - description: ''
+                                name: NOTE
+                                value: note
+                              - description: ''
+                                name: FHIR_BUNDLE
+                                value: fhirBundle
+                              - description: ''
+                                name: DICOM
+                                value: dicom
+                              - description: ''
+                                name: GENOMIC_SEQUENCING
+                                value: genomicSequencing
+                          - clientName: clinical_type
+                            description: The type of the clinical document.
+                            optional: true
+                            readonly: false
+                            restApiName: clinicalType
+                            type: &id035
+                              description: ClinicalDocumentType.
+                              name: ClinicalDocumentType
+                              snakeCaseName: clinical_document_type
+                              type: enum
+                              valueType:
+                                type: string
+                              values:
+                              - description: ''
+                                name: CONSULTATION
+                                value: consultation
+                              - description: ''
+                                name: DISCHARGE_SUMMARY
+                                value: dischargeSummary
+                              - description: ''
+                                name: HISTORY_AND_PHYSICAL
+                                value: historyAndPhysical
+                              - description: ''
+                                name: PROCEDURE
+                                value: procedure
+                              - description: ''
+                                name: PROGRESS
+                                value: progress
+                              - description: ''
+                                name: IMAGING
+                                value: imaging
+                              - description: ''
+                                name: LABORATORY
+                                value: laboratory
+                              - description: ''
+                                name: PATHOLOGY
+                                value: pathology
+                          - clientName: id
+                            description: 'A given identifier for the document. Has
+                              to be unique across all documents for
+
+                              a single patient.'
+                            optional: false
+                            pylintDisable: redefined-builtin
+                            readonly: false
+                            restApiName: id
+                            type: *id001
+                          - clientName: language
+                            description: A 2 letter ISO 639-1 representation of the
+                              language of the document.
+                            optional: true
+                            readonly: false
+                            restApiName: language
+                            type: *id001
+                          - clientName: created_date_time
+                            description: The date and time when the document was created.
+                            optional: true
+                            readonly: false
+                            restApiName: createdDateTime
+                            type: &id010
+                              format: date-time
+                              type: datetime
+                          - clientName: content
+                            description: The content of the patient document.
+                            optional: false
+                            readonly: false
+                            restApiName: content
+                            type: &id036
+                              description: The content of the patient document.
+                              discriminatedSubtypes: {}
+                              name: DocumentContent
+                              parents: []
+                              properties:
+                              - clientName: source_type
+                                description: 'The type of the content''s source. :code:`<br
+                                  />`In case the source type is ''inline'',
+
+                                  the content is given as a string (for instance,
+                                  text). :code:`<br />`In case the source
+
+                                  type is ''reference'', the content is given as a
+                                  URI.'
+                                optional: false
+                                readonly: false
+                                restApiName: sourceType
+                                type: &id037
+                                  description: DocumentContentSourceType.
+                                  name: DocumentContentSourceType
+                                  snakeCaseName: document_content_source_type
+                                  type: enum
+                                  valueType:
+                                    type: string
+                                  values:
+                                  - description: ''
+                                    name: INLINE
+                                    value: inline
+                                  - description: ''
+                                    name: REFERENCE
+                                    value: reference
+                              - clientName: value
+                                description: 'The content of the document, given either
+                                  inline (as a string) or as a
+
+                                  reference (URI).'
+                                optional: false
+                                readonly: false
+                                restApiName: value
+                                type: *id001
+                              snakeCaseName: document_content
+                              type: model
+                          snakeCaseName: patient_document
+                          type: model
+                        type: list
+                    snakeCaseName: patient
+                    type: model
+                  type: list
+              snakeCaseName: request
+              type: model
+            properties:
+            - clientName: configuration
+              description: Configuration affecting the Trial Matcher model's inference.
+              optional: true
+              readonly: false
+              restApiName: configuration
+              type: &id040
+                description: Configuration affecting the Trial Matcher model's inference.
+                discriminatedSubtypes: {}
+                name: TrialMatcherModelConfiguration
+                parents:
+                - &id022
+                  description: General configuration common to all models.
+                  discriminatedSubtypes: {}
+                  name: ModelConfiguration
+                  parents: []
+                  properties:
+                  - clientName: verbose
+                    description: An indication whether the model should produce verbose
+                      output.
+                    optional: true
+                    readonly: false
+                    restApiName: verbose
+                    type: &id002
+                      type: boolean
+                  - clientName: include_evidence
+                    description: 'An indication whether the model''s output should
+                      include evidence for the
+
+                      inferences.'
+                    optional: true
+                    readonly: false
+                    restApiName: includeEvidence
+                    type: *id002
+                  snakeCaseName: model_configuration
+                  type: model
+                properties:
+                - clientName: clinical_trials
+                  description: 'The clinical trials that the patient(s) should be
+                    matched to. :code:`<br />`The trial
+
+                    selection can be given as a list of custom clinical trials and/or
+                    a list of
+
+                    filters to known clinical trial registries. In case both are given,
+                    the
+
+                    resulting trial set is a union of the two sets.'
+                  optional: false
+                  readonly: false
+                  restApiName: clinicalTrials
+                  type: &id041
+                    description: 'The clinical trials that the patient(s) should be
+                      matched to. :code:`<br />`The trial
+
+                      selection can be given as a list of custom clinical trials and/or
+                      a list of
+
+                      filters to known clinical trial registries. In case both are
+                      given, the
+
+                      resulting trial set is a union of the two sets.'
+                    discriminatedSubtypes: {}
+                    name: ClinicalTrials
+                    parents: []
+                    properties:
+                    - clientName: custom_trials
+                      description: A list of clinical trials.
+                      optional: true
+                      readonly: false
+                      restApiName: customTrials
+                      type: &id053
+                        elementType: &id042
+                          description: A description of a clinical trial.
+                          discriminatedSubtypes: {}
+                          name: ClinicalTrialDetails
+                          parents: []
+                          properties:
+                          - clientName: id
+                            description: 'A given identifier for the clinical trial.
+                              Has to be unique within a list of
+
+                              clinical trials.'
+                            optional: false
+                            pylintDisable: redefined-builtin
+                            readonly: false
+                            restApiName: id
+                            type: *id001
+                          - clientName: eligibility_criteria_text
+                            description: 'The eligibility criteria of the clinical
+                              trial (inclusion and exclusion), given
+
+                              as text.'
+                            optional: true
+                            readonly: false
+                            restApiName: eligibilityCriteriaText
+                            type: *id001
+                          - clientName: demographics
+                            description: Demographic criteria for a clinical trial.
+                            optional: true
+                            readonly: false
+                            restApiName: demographics
+                            type: &id043
+                              description: Demographic criteria for a clinical trial.
+                              discriminatedSubtypes: {}
+                              name: ClinicalTrialDemographics
+                              parents: []
+                              properties:
+                              - clientName: accepted_genders
+                                description: A list of genders accepted by a clinical
+                                  trial.
+                                optional: true
+                                readonly: false
+                                restApiName: acceptedGenders
+                                type: &id045
+                                  elementType: &id044
+                                    description: ClinicalTrialAcceptedGender.
+                                    name: ClinicalTrialAcceptedGender
+                                    snakeCaseName: clinical_trial_accepted_gender
+                                    type: enum
+                                    valueType:
+                                      type: string
+                                    values:
+                                    - description: ''
+                                      name: FEMALE
+                                      value: female
+                                    - description: ''
+                                      name: MALE
+                                      value: male
+                                  type: list
+                              - clientName: accepted_age_range
+                                description: 'A definition of the range of ages accepted
+                                  by a clinical trial. Contains a
+
+                                  minimum age and/or a maximum age.'
+                                optional: true
+                                readonly: false
+                                restApiName: acceptedAgeRange
+                                type: &id046
+                                  description: 'A definition of the range of ages
+                                    accepted by a clinical trial. Contains a
+
+                                    minimum age and/or a maximum age.'
+                                  discriminatedSubtypes: {}
+                                  name: ClinicalTrialDemographicsAcceptedAgeRange
+                                  parents: []
+                                  properties:
+                                  - clientName: minimum_age
+                                    description: A person's age, given as a number
+                                      (value) and a unit (e.g. years, months).
+                                    optional: true
+                                    readonly: false
+                                    restApiName: minimumAge
+                                    type: &id003
+                                      description: A person's age, given as a number
+                                        (value) and a unit (e.g. years, months).
+                                      discriminatedSubtypes: {}
+                                      name: Age
+                                      parents: []
+                                      properties:
+                                      - clientName: unit
+                                        description: Possible units for a person's
+                                          age.
+                                        optional: false
+                                        readonly: false
+                                        restApiName: unit
+                                        type: &id047
+                                          description: AgeUnit.
+                                          name: AgeUnit
+                                          snakeCaseName: age_unit
+                                          type: enum
+                                          valueType:
+                                            type: string
+                                          values:
+                                          - description: ''
+                                            name: YEARS
+                                            value: years
+                                          - description: ''
+                                            name: MONTHS
+                                            value: months
+                                          - description: ''
+                                            name: DAYS
+                                            value: days
+                                      - clientName: value
+                                        description: The number of years/months/days
+                                          that represents the person's age.
+                                        optional: false
+                                        readonly: false
+                                        restApiName: value
+                                        type: &id008
+                                          type: float
+                                      snakeCaseName: age
+                                      type: model
+                                  - clientName: maximum_age
+                                    description: A person's age, given as a number
+                                      (value) and a unit (e.g. years, months).
+                                    optional: true
+                                    readonly: false
+                                    restApiName: maximumAge
+                                    type: *id003
+                                  snakeCaseName: clinical_trial_demographics_accepted_age_range
+                                  type: model
+                              snakeCaseName: clinical_trial_demographics
+                              type: model
+                          - clientName: metadata
+                            description: Trial data which is of interest to the potential
+                              participant.
+                            optional: false
+                            readonly: false
+                            restApiName: metadata
+                            type: &id018
+                              description: Trial data which is of interest to the
+                                potential participant.
+                              discriminatedSubtypes: {}
+                              name: ClinicalTrialMetadata
+                              parents: []
+                              properties:
+                              - clientName: phases
+                                description: 'Phases which are relevant for the clinical
+                                  trial. :code:`<br />`Each clinical trial can
+
+                                  be in a certain phase or in multiple phases.'
+                                optional: true
+                                readonly: false
+                                restApiName: phases
+                                type: &id007
+                                  elementType: &id048
+                                    description: ClinicalTrialPhase.
+                                    name: ClinicalTrialPhase
+                                    snakeCaseName: clinical_trial_phase
+                                    type: enum
+                                    valueType:
+                                      type: string
+                                    values:
+                                    - description: ''
+                                      name: NOT_APPLICABLE
+                                      value: notApplicable
+                                    - description: ''
+                                      name: EARLY_PHASE1
+                                      value: earlyPhase1
+                                    - description: ''
+                                      name: PHASE1
+                                      value: phase1
+                                    - description: ''
+                                      name: PHASE2
+                                      value: phase2
+                                    - description: ''
+                                      name: PHASE3
+                                      value: phase3
+                                    - description: ''
+                                      name: PHASE4
+                                      value: phase4
+                                  type: list
+                              - clientName: study_type
+                                description: Possible study types of a clinical trial.
+                                optional: true
+                                readonly: false
+                                restApiName: studyType
+                                type: &id005
+                                  description: ClinicalTrialStudyType.
+                                  name: ClinicalTrialStudyType
+                                  snakeCaseName: clinical_trial_study_type
+                                  type: enum
+                                  valueType:
+                                    type: string
+                                  values:
+                                  - description: ''
+                                    name: INTERVENTIONAL
+                                    value: interventional
+                                  - description: ''
+                                    name: OBSERVATIONAL
+                                    value: observational
+                                  - description: ''
+                                    name: EXPANDED_ACCESS
+                                    value: expandedAccess
+                                  - description: ''
+                                    name: PATIENT_REGISTRIES
+                                    value: patientRegistries
+                              - clientName: recruitment_status
+                                description: Possible recruitment status of a clinical
+                                  trial.
+                                optional: true
+                                readonly: false
+                                restApiName: recruitmentStatus
+                                type: &id006
+                                  description: ClinicalTrialRecruitmentStatus.
+                                  name: ClinicalTrialRecruitmentStatus
+                                  snakeCaseName: clinical_trial_recruitment_status
+                                  type: enum
+                                  valueType:
+                                    type: string
+                                  values:
+                                  - description: ''
+                                    name: UNKNOWN_STATUS
+                                    value: unknownStatus
+                                  - description: ''
+                                    name: NOT_YET_RECRUITING
+                                    value: notYetRecruiting
+                                  - description: ''
+                                    name: RECRUITING
+                                    value: recruiting
+                                  - description: ''
+                                    name: ENROLLING_BY_INVITATION
+                                    value: enrollingByInvitation
+                              - clientName: conditions
+                                description: 'Medical conditions and their synonyms
+                                  which are relevant for the clinical
+
+                                  trial, given as strings.'
+                                optional: false
+                                readonly: false
+                                restApiName: conditions
+                                type: &id004
+                                  elementType: *id001
+                                  type: list
+                              - clientName: sponsors
+                                description: Sponsors/collaborators involved with
+                                  the trial.
+                                optional: true
+                                readonly: false
+                                restApiName: sponsors
+                                type: *id004
+                              - clientName: contacts
+                                description: 'Contact details of the trial administrators,
+                                  for patients that want to
+
+                                  participate in the trial.'
+                                optional: true
+                                readonly: false
+                                restApiName: contacts
+                                type: &id050
+                                  elementType: &id049
+                                    description: A person's contact details.
+                                    discriminatedSubtypes: {}
+                                    name: ContactDetails
+                                    parents: []
+                                    properties:
+                                    - clientName: name
+                                      description: The person's name.
+                                      optional: true
+                                      readonly: false
+                                      restApiName: name
+                                      type: *id001
+                                    - clientName: email
+                                      description: The person's email.
+                                      optional: true
+                                      readonly: false
+                                      restApiName: email
+                                      type: *id001
+                                    - clientName: phone
+                                      description: A person's phone number.
+                                      optional: true
+                                      readonly: false
+                                      restApiName: phone
+                                      type: *id001
+                                    snakeCaseName: contact_details
+                                    type: model
+                                  type: list
+                              - clientName: facilities
+                                description: Research facilities where the clinical
+                                  trial is conducted.
+                                optional: true
+                                readonly: false
+                                restApiName: facilities
+                                type: &id052
+                                  elementType: &id051
+                                    description: Details of a research facility where
+                                      a clinical trial is conducted.
+                                    discriminatedSubtypes: {}
+                                    name: ClinicalTrialResearchFacility
+                                    parents: []
+                                    properties:
+                                    - clientName: city
+                                      description: City name.
+                                      optional: true
+                                      readonly: false
+                                      restApiName: city
+                                      type: *id001
+                                    - clientName: state
+                                      description: State name.
+                                      optional: true
+                                      readonly: false
+                                      restApiName: state
+                                      type: *id001
+                                    - clientName: country
+                                      description: Country name.
+                                      optional: false
+                                      readonly: false
+                                      restApiName: country
+                                      type: *id001
+                                    - clientName: name
+                                      description: The facility's name.
+                                      optional: false
+                                      readonly: false
+                                      restApiName: name
+                                      type: *id001
+                                    snakeCaseName: clinical_trial_research_facility
+                                    type: model
+                                  type: list
+                              snakeCaseName: clinical_trial_metadata
+                              type: model
+                          snakeCaseName: clinical_trial_details
+                          type: model
+                        type: list
+                    - clientName: registry_filters
+                      description: 'A list of filters, each one creating a selection
+                        of trials from a given
+
+                        clinical trial registry.'
+                      optional: true
+                      readonly: false
+                      restApiName: registryFilters
+                      type: &id070
+                        elementType: &id054
+                          description: 'A filter defining a subset of clinical trials
+                            from a given clinical trial
+
+                            registry (e.g. clinicaltrials.gov).'
+                          discriminatedSubtypes: {}
+                          name: ClinicalTrialRegistryFilter
+                          parents: []
+                          properties:
+                          - clientName: conditions
+                            description: 'Trials with any of the given medical conditions
+                              will be included in the
+
+                              selection (provided that other limitations are satisfied).
+                              Leaving this list
+
+                              empty will not limit the medical conditions.'
+                            optional: true
+                            readonly: false
+                            restApiName: conditions
+                            type: *id004
+                          - clientName: study_types
+                            description: 'Trials with any of the given study types
+                              will be included in the selection
+
+                              (provided that other limitations are satisfied). Leaving
+                              this list empty will
+
+                              not limit the study types.'
+                            optional: true
+                            readonly: false
+                            restApiName: studyTypes
+                            type: &id055
+                              elementType: *id005
+                              type: list
+                          - clientName: recruitment_statuses
+                            description: 'Trials with any of the given recruitment
+                              statuses will be included in the
+
+                              selection (provided that other limitations are satisfied).
+                              Leaving this list
+
+                              empty will not limit the recruitment statuses.'
+                            optional: true
+                            readonly: false
+                            restApiName: recruitmentStatuses
+                            type: &id056
+                              elementType: *id006
+                              type: list
+                          - clientName: sponsors
+                            description: 'Trials with any of the given sponsors will
+                              be included in the selection
+
+                              (provided that other limitations are satisfied). Leaving
+                              this list empty will
+
+                              not limit the sponsors.'
+                            optional: true
+                            readonly: false
+                            restApiName: sponsors
+                            type: *id004
+                          - clientName: phases
+                            description: 'Trials with any of the given phases will
+                              be included in the selection (provided
+
+                              that other limitations are satisfied). Leaving this
+                              list empty will not limit
+
+                              the phases.'
+                            optional: true
+                            readonly: false
+                            restApiName: phases
+                            type: *id007
+                          - clientName: purposes
+                            description: 'Trials with any of the given purposes will
+                              be included in the selection
+
+                              (provided that other limitations are satisfied). Leaving
+                              this list empty will
+
+                              not limit the purposes.'
+                            optional: true
+                            readonly: false
+                            restApiName: purposes
+                            type: &id058
+                              elementType: &id057
+                                description: ClinicalTrialPurpose.
+                                name: ClinicalTrialPurpose
+                                snakeCaseName: clinical_trial_purpose
+                                type: enum
+                                valueType:
+                                  type: string
+                                values:
+                                - description: ''
+                                  name: NOT_APPLICABLE
+                                  value: notApplicable
+                                - description: ''
+                                  name: SCREENING
+                                  value: screening
+                                - description: ''
+                                  name: DIAGNOSTIC
+                                  value: diagnostic
+                                - description: ''
+                                  name: PREVENTION
+                                  value: prevention
+                                - description: ''
+                                  name: HEALTH_SERVICES_RESEARCH
+                                  value: healthServicesResearch
+                                - description: ''
+                                  name: TREATMENT
+                                  value: treatment
+                                - description: ''
+                                  name: DEVICE_FEASIBILITY
+                                  value: deviceFeasibility
+                                - description: ''
+                                  name: SUPPORTIVE_CARE
+                                  value: supportiveCare
+                                - description: ''
+                                  name: BASIC_SCIENCE
+                                  value: basicScience
+                                - description: ''
+                                  name: OTHER
+                                  value: other
+                              type: list
+                          - clientName: ids
+                            description: 'Trials with any of the given identifiers
+                              will be included in the selection
+
+                              (provided that other limitations are satisfied). Leaving
+                              this list empty will
+
+                              not limit the trial identifiers.'
+                            optional: true
+                            readonly: false
+                            restApiName: ids
+                            type: *id004
+                          - clientName: sources
+                            description: 'Trials with any of the given sources will
+                              be included in the selection
+
+                              (provided that other limitations are satisfied). Leaving
+                              this list empty will
+
+                              not limit the sources.'
+                            optional: true
+                            readonly: false
+                            restApiName: sources
+                            type: &id059
+                              elementType: &id017
+                                description: ClinicalTrialSource.
+                                name: ClinicalTrialSource
+                                snakeCaseName: clinical_trial_source
+                                type: enum
+                                valueType:
+                                  type: string
+                                values:
+                                - description: ''
+                                  name: CUSTOM
+                                  value: custom
+                                - description: ''
+                                  name: CLINICALTRIALS_GOV
+                                  value: clinicaltrials.gov
+                              type: list
+                          - clientName: facility_names
+                            description: 'Trials with any of the given facility names
+                              will be included in the selection
+
+                              (provided that other limitations are satisfied). Leaving
+                              this list empty will
+
+                              not limit the trial facility names.'
+                            optional: true
+                            readonly: false
+                            restApiName: facilityNames
+                            type: *id004
+                          - clientName: facility_locations
+                            description: 'Trials with any of the given facility locations
+                              will be included in the
+
+                              selection (provided that other limitations are satisfied).
+                              Leaving this list
+
+                              empty will not limit the trial facility locations.'
+                            optional: true
+                            readonly: false
+                            restApiName: facilityLocations
+                            type: &id061
+                              elementType: &id060
+                                description: 'A location given as a combination of
+                                  city/state/country. It could specify a
+
+                                  city, a state or a country.:code:`<br />`In case
+                                  a city is specified, either state +
+
+                                  country or country (for countries where there are
+                                  no states) should be added.
+
+                                  In case a state is specified (without a city), country
+                                  should be added.'
+                                discriminatedSubtypes: {}
+                                name: Location
+                                parents: []
+                                properties:
+                                - clientName: city
+                                  description: City name.
+                                  optional: true
+                                  readonly: false
+                                  restApiName: city
+                                  type: *id001
+                                - clientName: state
+                                  description: State name.
+                                  optional: true
+                                  readonly: false
+                                  restApiName: state
+                                  type: *id001
+                                - clientName: country
+                                  description: Country name.
+                                  optional: false
+                                  readonly: false
+                                  restApiName: country
+                                  type: *id001
+                                snakeCaseName: location
+                                type: model
+                              type: list
+                          - clientName: facility_areas
+                            description: 'Trials with any of the given facility area
+                              boundaries will be included in the
+
+                              selection (provided that other limitations are satisfied).
+                              Leaving this list
+
+                              empty will not limit the trial facility area boundaries.'
+                            optional: true
+                            readonly: false
+                            restApiName: facilityAreas
+                            type: &id069
+                              elementType: &id062
+                                description: 'A geographical area, expressed as a
+                                  ``Circle`` geometry represented using a
+
+                                  ``GeoJSON Feature`` (see `GeoJSON spec <https://tools.ietf.org/html/rfc7946>`_\
+                                  ).'
+                                discriminatedSubtypes: {}
+                                name: Area
+                                parents: []
+                                properties:
+                                - clientName: type
+                                  description: '``GeoJSON`` type.'
+                                  optional: false
+                                  readonly: false
+                                  restApiName: type
+                                  type: &id063
+                                    description: GeoJsonType.
+                                    name: GeoJsonType
+                                    snakeCaseName: geo_json_type
+                                    type: enum
+                                    valueType:
+                                      type: string
+                                    values:
+                                    - description: ''
+                                      name: FEATURE
+                                      value: Feature
+                                - clientName: geometry
+                                  description: '``GeoJSON`` geometry, representing
+                                    the area circle''s center.'
+                                  optional: false
+                                  readonly: false
+                                  restApiName: geometry
+                                  type: &id064
+                                    description: '``GeoJSON`` geometry, representing
+                                      the area circle''s center.'
+                                    discriminatedSubtypes: {}
+                                    name: AreaGeometry
+                                    parents: []
+                                    properties:
+                                    - clientName: type
+                                      description: '``GeoJSON`` geometry type.'
+                                      optional: false
+                                      readonly: false
+                                      restApiName: type
+                                      type: &id065
+                                        description: GeoJsonGeometryType.
+                                        name: GeoJsonGeometryType
+                                        snakeCaseName: geo_json_geometry_type
+                                        type: enum
+                                        valueType:
+                                          type: string
+                                        values:
+                                        - description: ''
+                                          name: POINT
+                                          value: Point
+                                    - clientName: coordinates
+                                      description: 'Coordinates of the area circle''s
+                                        center, represented according to the ``GeoJSON``
+
+                                        standard. :code:`<br />`This is an array of
+                                        2 decimal numbers, longitude and latitude
+
+                                        (precisely in this order).'
+                                      optional: false
+                                      readonly: false
+                                      restApiName: coordinates
+                                      type: &id066
+                                        elementType: *id008
+                                        type: list
+                                    snakeCaseName: area_geometry
+                                    type: model
+                                - clientName: properties
+                                  description: '``GeoJSON`` object properties.'
+                                  optional: false
+                                  readonly: false
+                                  restApiName: properties
+                                  type: &id067
+                                    description: '``GeoJSON`` object properties.'
+                                    discriminatedSubtypes: {}
+                                    name: AreaProperties
+                                    parents: []
+                                    properties:
+                                    - clientName: sub_type
+                                      description: '``GeoJSON`` object sub-type.'
+                                      optional: false
+                                      readonly: false
+                                      restApiName: subType
+                                      type: &id068
+                                        description: GeoJsonPropertiesSubType.
+                                        name: GeoJsonPropertiesSubType
+                                        snakeCaseName: geo_json_properties_sub_type
+                                        type: enum
+                                        valueType:
+                                          type: string
+                                        values:
+                                        - description: ''
+                                          name: CIRCLE
+                                          value: Circle
+                                    - clientName: radius
+                                      description: The radius of the area's circle,
+                                        in meters.
+                                      optional: false
+                                      readonly: false
+                                      restApiName: radius
+                                      type: *id008
+                                    snakeCaseName: area_properties
+                                    type: model
+                                snakeCaseName: area
+                                type: model
+                              type: list
+                          snakeCaseName: clinical_trial_registry_filter
+                          type: model
+                        type: list
+                    snakeCaseName: clinical_trials
+                    type: model
+                snakeCaseName: trial_matcher_model_configuration
+                type: model
+            snakeCaseName: trial_matcher_request
+            type: model
+          - &id011
+            type: binary
+      description: Creates a Trial Matcher job with the given request body.
+      discriminator: basic
+      exceptions:
+      - discriminator: basic
+        headers: []
+        statusCodes:
+        - default
+      groupName: ''
+      isOverload: false
+      method: POST
+      name: create_job
+      overloads:
+      - apiVersions:
+        - null
+        bodyParameter:
+          clientName: body
+          contentTypes:
+          - application/json
+          defaultContentType: application/json
+          description: The body of a Trial Matcher request.
+          inOverload: false
+          location: body
+          optional: false
+          restApiName: body
+          type: *id009
+        description: Creates a Trial Matcher job with the given request body.
+        discriminator: basic
+        exceptions:
+        - discriminator: basic
+          headers: []
+          statusCodes:
+          - default
+        groupName: ''
+        isOverload: true
+        method: POST
+        name: create_job
+        overloads: []
+        parameters:
+        - clientName: repeatability_request_id
+          description: An opaque, globally-unique, client-generated string identifier
+            for the request.
+          implementation: Method
+          inOverload: false
+          location: header
+          optional: true
+          restApiName: Repeatability-Request-ID
+          skipUrlEncoding: false
+          type: *id001
+        - clientName: repeatability_first_sent
+          description: Specifies the date and time at which the request was first
+            created.
+          implementation: Method
+          inOverload: false
+          location: header
+          optional: true
+          restApiName: Repeatability-First-Sent
+          skipUrlEncoding: false
+          type: *id010
+        - clientDefaultValue: 2022-01-01-preview
+          clientName: api_version
+          description: The API version to use for this operation.
+          implementation: Client
+          inOverload: false
+          in_docstring: false
+          location: query
+          optional: false
+          restApiName: api-version
+          skipUrlEncoding: false
+          type: &id012
+            apiVersions: []
+            clientDefaultValue: null
+            type: constant
+            value: 2022-01-01-preview
+            valueType: *id001
+            xmlMetadata: {}
+        - checkClientInput: false
+          clientDefaultValue: application/json
+          clientName: content_type
+          delimiter: null
+          description: Body Parameter content-type. Content type parameter for JSON
+            body.
+          implementation: Method
+          inDocstring: true
+          inOverload: true
+          inOverriden: false
+          location: header
+          optional: true
+          restApiName: Content-Type
+          type: *id001
+        responses:
+        - discriminator: operation
+          headers:
+          - restApiName: Retry-After
+            type: &id013
+              type: integer
+          - restApiName: Repeatability-Result
+            type: &id014
+              description: RepeatabilityResult.
+              name: RepeatabilityResult
+              snakeCaseName: repeatability_result
+              type: enum
+              valueType:
+                type: string
+              values:
+              - description: ''
+                name: ACCEPTED
+                value: accepted
+              - description: ''
+                name: REJECTED
+                value: rejected
+          - restApiName: Operation-Location
+            type: *id001
+          statusCodes:
+          - 202
+        summary: Create Trial Matcher job.
+        url: /trialmatcher/jobs
+      - apiVersions:
+        - null
+        bodyParameter:
+          clientName: body
+          contentTypes:
+          - application/json
+          defaultContentType: application/json
+          description: The body of a Trial Matcher request.
+          inOverload: false
+          location: body
+          optional: false
+          restApiName: body
+          type: *id011
+        description: Creates a Trial Matcher job with the given request body.
+        discriminator: basic
+        exceptions:
+        - discriminator: basic
+          headers: []
+          statusCodes:
+          - default
+        groupName: ''
+        isOverload: true
+        method: POST
+        name: create_job
+        overloads: []
+        parameters:
+        - clientName: repeatability_request_id
+          description: An opaque, globally-unique, client-generated string identifier
+            for the request.
+          implementation: Method
+          inOverload: false
+          location: header
+          optional: true
+          restApiName: Repeatability-Request-ID
+          skipUrlEncoding: false
+          type: *id001
+        - clientName: repeatability_first_sent
+          description: Specifies the date and time at which the request was first
+            created.
+          implementation: Method
+          inOverload: false
+          location: header
+          optional: true
+          restApiName: Repeatability-First-Sent
+          skipUrlEncoding: false
+          type: *id010
+        - clientDefaultValue: 2022-01-01-preview
+          clientName: api_version
+          description: The API version to use for this operation.
+          implementation: Client
+          inOverload: false
+          in_docstring: false
+          location: query
+          optional: false
+          restApiName: api-version
+          skipUrlEncoding: false
+          type: *id012
+        - checkClientInput: false
+          clientDefaultValue: application/json
+          clientName: content_type
+          delimiter: null
+          description: Body Parameter content-type. Content type parameter for binary
+            body.
+          implementation: Method
+          inDocstring: true
+          inOverload: true
+          inOverriden: false
+          location: header
+          optional: true
+          restApiName: Content-Type
+          type: *id001
+        responses:
+        - discriminator: operation
+          headers:
+          - restApiName: Retry-After
+            type: *id013
+          - restApiName: Repeatability-Result
+            type: *id014
+          - restApiName: Operation-Location
+            type: *id001
+          statusCodes:
+          - 202
+        summary: Create Trial Matcher job.
+        url: /trialmatcher/jobs
+      parameters:
+      - clientName: repeatability_request_id
+        description: An opaque, globally-unique, client-generated string identifier
+          for the request.
+        implementation: Method
+        inOverload: false
+        location: header
+        optional: true
+        restApiName: Repeatability-Request-ID
+        skipUrlEncoding: false
+        type: *id001
+      - clientName: repeatability_first_sent
+        description: Specifies the date and time at which the request was first created.
+        implementation: Method
+        inOverload: false
+        location: header
+        optional: true
+        restApiName: Repeatability-First-Sent
+        skipUrlEncoding: false
+        type: *id010
+      - &id020
+        clientDefaultValue: 2022-01-01-preview
+        clientName: api_version
+        description: The API version to use for this operation.
+        implementation: Client
+        inOverload: false
+        in_docstring: false
+        location: query
+        optional: false
+        restApiName: api-version
+        skipUrlEncoding: false
+        type: *id012
+      - checkClientInput: false
+        clientDefaultValue: null
+        clientName: content_type
+        delimiter: null
+        description: 'Body parameter Content-Type. Known values are: application/json.'
+        implementation: Method
+        inDocstring: true
+        inOverload: false
+        inOverriden: true
+        location: header
+        optional: true
+        restApiName: Content-Type
+        type: *id001
+      responses:
+      - discriminator: operation
+        headers:
+        - restApiName: Retry-After
+          type: *id013
+        - restApiName: Repeatability-Result
+          type: *id014
+        - restApiName: Operation-Location
+          type: *id001
+        statusCodes:
+        - 202
+      summary: Create Trial Matcher job.
+      url: /trialmatcher/jobs
+    - apiVersions:
+      - null
+      description: Gets the status and details of the Trial Matcher job.
+      discriminator: basic
+      exceptions:
+      - discriminator: basic
+        headers: []
+        statusCodes:
+        - default
+      groupName: ''
+      isOverload: false
+      method: GET
+      name: get_job
+      overloads: []
+      parameters:
+      - clientName: job_id
+        description: A processing job identifier.
+        implementation: Method
+        inOverload: false
+        location: path
+        optional: false
+        restApiName: jobId
+        skipUrlEncoding: false
+        type: *id001
+      - clientDefaultValue: 2022-01-01-preview
+        clientName: api_version
+        description: The API version to use for this operation.
+        implementation: Client
+        inOverload: false
+        in_docstring: false
+        location: query
+        optional: false
+        restApiName: api-version
+        skipUrlEncoding: false
+        type: *id012
+      - checkClientInput: false
+        clientDefaultValue: application/json
+        clientName: accept
+        delimiter: null
+        description: Accept header.
+        explode: false
+        groupedBy: null
+        implementation: Method
+        inDocstring: true
+        inOverload: false
+        inOverriden: false
+        location: header
+        optional: false
+        restApiName: Accept
+        skipUrlEncoding: false
+        type: &id025
+          apiVersions: []
+          clientDefaultValue: null
+          type: constant
+          value: application/json
+          valueType: *id001
+          xmlMetadata: {}
+      responses:
+      - discriminator: operation
+        headers: []
+        statusCodes:
+        - 200
+        type: &id071
+          description: TrialMatcherResponse.
+          discriminatedSubtypes: {}
+          name: TrialMatcherResponse
+          parents: []
+          properties:
+          - clientName: job_id
+            description: A processing job identifier.
+            optional: false
+            readonly: true
+            restApiName: jobId
+            type: *id001
+          - clientName: created_date_time
+            description: The date and time when the processing job was created.
+            optional: false
+            readonly: false
+            restApiName: createdDateTime
+            type: *id010
+          - clientName: expiration_date_time
+            description: The date and time when the processing job is set to expire.
+            optional: false
+            readonly: false
+            restApiName: expirationDateTime
+            type: *id010
+          - clientName: last_update_date_time
+            description: The date and time when the processing job was last updated.
+            optional: false
+            readonly: false
+            restApiName: lastUpdateDateTime
+            type: *id010
+          - clientName: status
+            description: The status of the processing job.
+            optional: false
+            readonly: false
+            restApiName: status
+            type: &id026
+              description: JobStatus.
+              name: JobStatus
+              snakeCaseName: job_status
+              type: enum
+              valueType:
+                type: string
+              values:
+              - description: ''
+                name: NOT_STARTED
+                value: notStarted
+              - description: ''
+                name: RUNNING
+                value: running
+              - description: ''
+                name: SUCCEEDED
+                value: succeeded
+              - description: ''
+                name: FAILED
+                value: failed
+              - description: ''
+                name: PARTIALLY_COMPLETED
+                value: partiallyCompleted
+          - clientName: errors
+            description: An array of errors, if any errors occurred during the processing
+              job.
+            optional: true
+            readonly: false
+            restApiName: errors
+            type: &id027
+              elementType: &id015
+                description: Error information.
+                discriminatedSubtypes: {}
+                name: Error
+                parents: []
+                properties:
+                - clientName: code
+                  description: Error code.
+                  optional: false
+                  readonly: false
+                  restApiName: code
+                  type: *id001
+                - clientName: message
+                  description: A human-readable error message.
+                  optional: false
+                  readonly: false
+                  restApiName: message
+                  type: *id001
+                - clientName: target
+                  description: Target of the particular error (e.g., the name of the
+                    property in error).
+                  optional: true
+                  readonly: false
+                  restApiName: target
+                  type: *id001
+                - clientName: details
+                  description: A list of related errors that occurred during the request.
+                  optional: true
+                  readonly: false
+                  restApiName: details
+                  type:
+                    elementType: *id015
+                    type: list
+                - clientName: innererror
+                  description: An object containing more specific information about
+                    the error.
+                  optional: true
+                  readonly: false
+                  restApiName: innererror
+                  type: &id016
+                    description: An object containing more specific information about
+                      the error.
+                    discriminatedSubtypes: {}
+                    name: InnerError
+                    parents: []
+                    properties:
+                    - clientName: code
+                      description: Error code.
+                      optional: false
+                      readonly: false
+                      restApiName: code
+                      type: *id001
+                    - clientName: message
+                      description: Error message.
+                      optional: true
+                      readonly: false
+                      restApiName: message
+                      type: *id001
+                    - clientName: innererror
+                      description: An object containing more specific information
+                        about the error.
+                      optional: true
+                      readonly: false
+                      restApiName: innererror
+                      type: *id016
+                    snakeCaseName: inner_error
+                    type: model
+                snakeCaseName: error
+                type: model
+              type: list
+          - clientName: results
+            description: The inference results for the Trial Matcher request.
+            optional: true
+            readonly: false
+            restApiName: results
+            type: &id072
+              description: The inference results for the Trial Matcher request.
+              discriminatedSubtypes: {}
+              name: TrialMatcherResults
+              parents: []
+              properties:
+              - clientName: patients
+                description: Results for the patients given in the request.
+                optional: false
+                readonly: false
+                restApiName: patients
+                type: &id078
+                  elementType: &id073
+                    description: The results of the model's work for a single patient.
+                    discriminatedSubtypes: {}
+                    name: TrialMatcherPatientResult
+                    parents: []
+                    properties:
+                    - clientName: id
+                      description: The identifier given for the patient in the request.
+                      optional: false
+                      pylintDisable: redefined-builtin
+                      readonly: false
+                      restApiName: id
+                      type: *id001
+                    - clientName: inferences
+                      description: The model's inferences for the given patient.
+                      optional: false
+                      readonly: false
+                      restApiName: inferences
+                      type: &id075
+                        elementType: &id074
+                          description: An inference made by the Trial Matcher model
+                            regarding a patient.
+                          discriminatedSubtypes: {}
+                          name: TrialMatcherInference
+                          parents: []
+                          properties:
+                          - clientName: value
+                            description: The value of the inference, as relevant for
+                              the given inference type.
+                            optional: false
+                            readonly: false
+                            restApiName: value
+                            type: *id001
+                          - clientName: description
+                            description: The description corresponding to the inference
+                              value.
+                            optional: true
+                            readonly: false
+                            restApiName: description
+                            type: *id001
+                          - clientName: confidence_score
+                            description: Confidence score for this inference.
+                            optional: true
+                            readonly: false
+                            restApiName: confidenceScore
+                            type: *id008
+                          - clientName: id
+                            description: The identifier of the clinical trial.
+                            optional: true
+                            pylintDisable: redefined-builtin
+                            readonly: false
+                            restApiName: id
+                            type: *id001
+                          - clientName: source
+                            description: Possible sources of a clinical trial.
+                            optional: true
+                            readonly: false
+                            restApiName: source
+                            type: *id017
+                          - clientName: metadata
+                            description: Trial data which is of interest to the potential
+                              participant.
+                            optional: true
+                            readonly: false
+                            restApiName: metadata
+                            type: *id018
+                          snakeCaseName: trial_matcher_inference
+                          type: model
+                        type: list
+                    - clientName: needed_clinical_info
+                      description: 'Clinical information which is needed to provide
+                        better trial matching results
+
+                        for the patient.'
+                      optional: true
+                      readonly: false
+                      restApiName: neededClinicalInfo
+                      type: &id077
+                        elementType: &id076
+                          description: 'A piece of clinical information, expressed
+                            as a code in a clinical coding
+
+                            system, extended by semantic information.'
+                          discriminatedSubtypes: {}
+                          name: ExtendedClinicalCodedElement
+                          parents: []
+                          properties:
+                          - clientName: system
+                            description: The clinical coding system, e.g. ICD-10,
+                              SNOMED-CT, UMLS.
+                            optional: false
+                            readonly: false
+                            restApiName: system
+                            type: *id001
+                          - clientName: code
+                            description: The code within the given clinical coding
+                              system.
+                            optional: false
+                            readonly: false
+                            restApiName: code
+                            type: *id001
+                          - clientName: name
+                            description: The name of this coded concept in the coding
+                              system.
+                            optional: true
+                            readonly: false
+                            restApiName: name
+                            type: *id001
+                          - clientName: value
+                            description: A value associated with the code within the
+                              given clinical coding system.
+                            optional: true
+                            readonly: false
+                            restApiName: value
+                            type: *id001
+                          - clientName: semantic_type
+                            description: 'The `UMLS semantic
+
+                              type <https://www.nlm.nih.gov/research/umls/META3_current_semantic_types.html>`_
+
+                              associated with the coded concept.'
+                            optional: true
+                            readonly: false
+                            restApiName: semanticType
+                            type: *id001
+                          - clientName: category
+                            description: 'The bio-medical category related to the
+                              coded concept, e.g. Diagnosis, Symptom,
+
+                              Medication, Examination.'
+                            optional: true
+                            readonly: false
+                            restApiName: category
+                            type: *id001
+                          snakeCaseName: extended_clinical_coded_element
+                          type: model
+                        type: list
+                    snakeCaseName: trial_matcher_patient_result
+                    type: model
+                  type: list
+              - clientName: model_version
+                description: The version of the model used for inference, expressed
+                  as the model date.
+                optional: false
+                readonly: false
+                restApiName: modelVersion
+                type: *id019
+              - clientName: knowledge_graph_last_update_date
+                description: The date when the clinical trials knowledge graph was
+                  last updated.
+                optional: true
+                readonly: false
+                restApiName: knowledgeGraphLastUpdateDate
+                type: *id019
+              snakeCaseName: trial_matcher_results
+              type: model
+          snakeCaseName: trial_matcher_response
+          type: model
+      summary: Get Trial Matcher job details.
+      url: /trialmatcher/jobs/{jobId}
+    propertyName: ''
+  parameters:
+  - &id024
+    clientName: endpoint
+    description: 'Supported Cognitive Services endpoints (protocol and hostname, for
+      example:
+
+      https://westus2.api.cognitive.microsoft.com).'
+    implementation: Client
+    inOverload: false
+    location: endpointPath
+    optional: false
+    restApiName: endpoint
+    skipUrlEncoding: true
+    type: *id001
+  - clientName: credential
+    description: Credential needed for the client to connect to Azure.
+    implementation: Client
+    inOverload: false
+    location: other
+    optional: false
+    restApiName: credential
+    skipUrlEncoding: true
+    type: &id079
+      policy:
+        key: Ocp-Apim-Subscription-Key
+        type: AzureKeyCredentialPolicy
+      type: Key
+  - *id020
+  url: '{endpoint}/healthdecisionsupport'
+- apiVersions: []
+  builderPadName: onco_phenotype
+  description: OncoPhenotypeClient.
+  legacyFilename: onco_phenotype_client
+  name: OncoPhenotypeClient
+  operationGroups:
+  - className: OncoPhenotypeClientOperationsMixin
+    clientName: OncoPhenotypeClient
+    operations:
+    - apiVersions:
+      - null
+      bodyParameter:
+        clientName: body
+        contentTypes:
+        - application/json
+        defaultContentType: application/json
+        description: The body of an Onco Phenotype request.
+        inOverload: false
+        location: body
+        optional: false
+        restApiName: body
+        type: &id091
+          type: combined
+          types:
+          - &id023
+            description: The body of the Onco Phenotype request.
+            discriminatedSubtypes: {}
+            name: OncoPhenotypeRequest
+            parents:
+            - *id021
+            properties:
+            - clientName: configuration
+              description: Configuration affecting the Onco Phenotype model's inference.
+              optional: true
+              readonly: false
+              restApiName: configuration
+              type: &id080
+                description: Configuration affecting the Onco Phenotype model's inference.
+                discriminatedSubtypes: {}
+                name: OncoPhenotypeModelConfiguration
+                parents:
+                - *id022
+                properties:
+                - clientName: inference_types
+                  description: 'A list of inference types to be inferred for the current
+                    request. :code:`<br />`This
+
+                    could be used if only part of the Onco Phenotype inferences are
+                    required. If
+
+                    this list is omitted or empty, the model will return all the inference
+                    types.'
+                  optional: true
+                  readonly: false
+                  restApiName: inferenceTypes
+                  type: &id082
+                    elementType: &id081
+                      description: OncoPhenotypeInferenceType.
+                      name: OncoPhenotypeInferenceType
+                      snakeCaseName: onco_phenotype_inference_type
+                      type: enum
+                      valueType:
+                        type: string
+                      values:
+                      - description: ''
+                        name: TUMOR_SITE
+                        value: tumorSite
+                      - description: ''
+                        name: HISTOLOGY
+                        value: histology
+                      - description: ''
+                        name: CLINICAL_STAGE_T
+                        value: clinicalStageT
+                      - description: ''
+                        name: CLINICAL_STAGE_N
+                        value: clinicalStageN
+                      - description: ''
+                        name: CLINICAL_STAGE_M
+                        value: clinicalStageM
+                      - description: ''
+                        name: PATHOLOGIC_STAGE_T
+                        value: pathologicStageT
+                      - description: ''
+                        name: PATHOLOGIC_STAGE_N
+                        value: pathologicStageN
+                      - description: ''
+                        name: PATHOLOGIC_STAGE_M
+                        value: pathologicStageM
+                    type: list
+                - clientDefaultValue: false
+                  clientName: check_for_cancer_case
+                  description: 'An indication whether to perform a preliminary step
+                    on the patient''s documents
+
+                    to determine whether they relate to a Cancer case.'
+                  optional: true
+                  readonly: false
+                  restApiName: checkForCancerCase
+                  type: *id002
+                snakeCaseName: onco_phenotype_model_configuration
+                type: model
+            snakeCaseName: onco_phenotype_request
+            type: model
+          - *id011
+      description: Creates an Onco Phenotype job with the given request body.
+      discriminator: basic
+      exceptions:
+      - discriminator: basic
+        headers: []
+        statusCodes:
+        - default
+      groupName: ''
+      isOverload: false
+      method: POST
+      name: create_job
+      overloads:
+      - apiVersions:
+        - null
+        bodyParameter:
+          clientName: body
+          contentTypes:
+          - application/json
+          defaultContentType: application/json
+          description: The body of an Onco Phenotype request.
+          inOverload: false
+          location: body
+          optional: false
+          restApiName: body
+          type: *id023
+        description: Creates an Onco Phenotype job with the given request body.
+        discriminator: basic
+        exceptions:
+        - discriminator: basic
+          headers: []
+          statusCodes:
+          - default
+        groupName: ''
+        isOverload: true
+        method: POST
+        name: create_job
+        overloads: []
+        parameters:
+        - clientName: endpoint
+          description: 'Supported Cognitive Services endpoints (protocol and hostname,
+            for example:
+
+            https://westus2.api.cognitive.microsoft.com).'
+          implementation: Client
+          inOverload: false
+          location: endpointPath
+          optional: false
+          restApiName: endpoint
+          skipUrlEncoding: true
+          type: *id001
+        - clientName: repeatability_request_id
+          description: An opaque, globally-unique, client-generated string identifier
+            for the request.
+          implementation: Method
+          inOverload: false
+          location: header
+          optional: true
+          restApiName: Repeatability-Request-ID
+          skipUrlEncoding: false
+          type: *id001
+        - clientName: repeatability_first_sent
+          description: Specifies the date and time at which the request was first
+            created.
+          implementation: Method
+          inOverload: false
+          location: header
+          optional: true
+          restApiName: Repeatability-First-Sent
+          skipUrlEncoding: false
+          type: *id010
+        - clientDefaultValue: 2022-01-01-preview
+          clientName: api_version
+          description: The API version to use for this operation.
+          implementation: Client
+          inOverload: false
+          in_docstring: false
+          location: query
+          optional: false
+          restApiName: api-version
+          skipUrlEncoding: false
+          type: *id012
+        - checkClientInput: false
+          clientDefaultValue: application/json
+          clientName: content_type
+          delimiter: null
+          description: Body Parameter content-type. Content type parameter for JSON
+            body.
+          implementation: Method
+          inDocstring: true
+          inOverload: true
+          inOverriden: false
+          location: header
+          optional: true
+          restApiName: Content-Type
+          type: *id001
+        responses:
+        - discriminator: operation
+          headers:
+          - restApiName: Retry-After
+            type: *id013
+          - restApiName: Repeatability-Result
+            type: *id014
+          - restApiName: Operation-Location
+            type: *id001
+          statusCodes:
+          - 202
+        summary: Create Onco Phenotype job.
+        url: /oncophenotype/jobs
+      - apiVersions:
+        - null
+        bodyParameter:
+          clientName: body
+          contentTypes:
+          - application/json
+          defaultContentType: application/json
+          description: The body of an Onco Phenotype request.
+          inOverload: false
+          location: body
+          optional: false
+          restApiName: body
+          type: *id011
+        description: Creates an Onco Phenotype job with the given request body.
+        discriminator: basic
+        exceptions:
+        - discriminator: basic
+          headers: []
+          statusCodes:
+          - default
+        groupName: ''
+        isOverload: true
+        method: POST
+        name: create_job
+        overloads: []
+        parameters:
+        - clientName: endpoint
+          description: 'Supported Cognitive Services endpoints (protocol and hostname,
+            for example:
+
+            https://westus2.api.cognitive.microsoft.com).'
+          implementation: Client
+          inOverload: false
+          location: endpointPath
+          optional: false
+          restApiName: endpoint
+          skipUrlEncoding: true
+          type: *id001
+        - clientName: repeatability_request_id
+          description: An opaque, globally-unique, client-generated string identifier
+            for the request.
+          implementation: Method
+          inOverload: false
+          location: header
+          optional: true
+          restApiName: Repeatability-Request-ID
+          skipUrlEncoding: false
+          type: *id001
+        - clientName: repeatability_first_sent
+          description: Specifies the date and time at which the request was first
+            created.
+          implementation: Method
+          inOverload: false
+          location: header
+          optional: true
+          restApiName: Repeatability-First-Sent
+          skipUrlEncoding: false
+          type: *id010
+        - clientDefaultValue: 2022-01-01-preview
+          clientName: api_version
+          description: The API version to use for this operation.
+          implementation: Client
+          inOverload: false
+          in_docstring: false
+          location: query
+          optional: false
+          restApiName: api-version
+          skipUrlEncoding: false
+          type: *id012
+        - checkClientInput: false
+          clientDefaultValue: application/json
+          clientName: content_type
+          delimiter: null
+          description: Body Parameter content-type. Content type parameter for binary
+            body.
+          implementation: Method
+          inDocstring: true
+          inOverload: true
+          inOverriden: false
+          location: header
+          optional: true
+          restApiName: Content-Type
+          type: *id001
+        responses:
+        - discriminator: operation
+          headers:
+          - restApiName: Retry-After
+            type: *id013
+          - restApiName: Repeatability-Result
+            type: *id014
+          - restApiName: Operation-Location
+            type: *id001
+          statusCodes:
+          - 202
+        summary: Create Onco Phenotype job.
+        url: /oncophenotype/jobs
+      parameters:
+      - *id024
+      - clientName: repeatability_request_id
+        description: An opaque, globally-unique, client-generated string identifier
+          for the request.
+        implementation: Method
+        inOverload: false
+        location: header
+        optional: true
+        restApiName: Repeatability-Request-ID
+        skipUrlEncoding: false
+        type: *id001
+      - clientName: repeatability_first_sent
+        description: Specifies the date and time at which the request was first created.
+        implementation: Method
+        inOverload: false
+        location: header
+        optional: true
+        restApiName: Repeatability-First-Sent
+        skipUrlEncoding: false
+        type: *id010
+      - clientDefaultValue: 2022-01-01-preview
+        clientName: api_version
+        description: The API version to use for this operation.
+        implementation: Client
+        inOverload: false
+        in_docstring: false
+        location: query
+        optional: false
+        restApiName: api-version
+        skipUrlEncoding: false
+        type: *id012
+      - checkClientInput: false
+        clientDefaultValue: null
+        clientName: content_type
+        delimiter: null
+        description: 'Body parameter Content-Type. Known values are: application/json.'
+        implementation: Method
+        inDocstring: true
+        inOverload: false
+        inOverriden: true
+        location: header
+        optional: true
+        restApiName: Content-Type
+        type: *id001
+      responses:
+      - discriminator: operation
+        headers:
+        - restApiName: Retry-After
+          type: *id013
+        - restApiName: Repeatability-Result
+          type: *id014
+        - restApiName: Operation-Location
+          type: *id001
+        statusCodes:
+        - 202
+      summary: Create Onco Phenotype job.
+      url: /oncophenotype/jobs
+    - apiVersions:
+      - null
+      description: Gets the status and details of the Onco Phenotype job.
+      discriminator: basic
+      exceptions:
+      - discriminator: basic
+        headers: []
+        statusCodes:
+        - default
+      groupName: ''
+      isOverload: false
+      method: GET
+      name: get_job
+      overloads: []
+      parameters:
+      - *id024
+      - clientName: job_id
+        description: A processing job identifier.
+        implementation: Method
+        inOverload: false
+        location: path
+        optional: false
+        restApiName: jobId
+        skipUrlEncoding: false
+        type: *id001
+      - clientDefaultValue: 2022-01-01-preview
+        clientName: api_version
+        description: The API version to use for this operation.
+        implementation: Client
+        inOverload: false
+        in_docstring: false
+        location: query
+        optional: false
+        restApiName: api-version
+        skipUrlEncoding: false
+        type: *id012
+      - checkClientInput: false
+        clientDefaultValue: application/json
+        clientName: accept
+        delimiter: null
+        description: Accept header.
+        explode: false
+        groupedBy: null
+        implementation: Method
+        inDocstring: true
+        inOverload: false
+        inOverriden: false
+        location: header
+        optional: false
+        restApiName: Accept
+        skipUrlEncoding: false
+        type: *id025
+      responses:
+      - discriminator: operation
+        headers: []
+        statusCodes:
+        - 200
+        type: &id083
+          description: OncoPhenotypeResponse.
+          discriminatedSubtypes: {}
+          name: OncoPhenotypeResponse
+          parents: []
+          properties:
+          - clientName: job_id
+            description: A processing job identifier.
+            optional: false
+            readonly: true
+            restApiName: jobId
+            type: *id001
+          - clientName: created_date_time
+            description: The date and time when the processing job was created.
+            optional: false
+            readonly: false
+            restApiName: createdDateTime
+            type: *id010
+          - clientName: expiration_date_time
+            description: The date and time when the processing job is set to expire.
+            optional: false
+            readonly: false
+            restApiName: expirationDateTime
+            type: *id010
+          - clientName: last_update_date_time
+            description: The date and time when the processing job was last updated.
+            optional: false
+            readonly: false
+            restApiName: lastUpdateDateTime
+            type: *id010
+          - clientName: status
+            description: The status of the processing job.
+            optional: false
+            readonly: false
+            restApiName: status
+            type: *id026
+          - clientName: errors
+            description: An array of errors, if any errors occurred during the processing
+              job.
+            optional: true
+            readonly: false
+            restApiName: errors
+            type: *id027
+          - clientName: results
+            description: The inference results for the Onco Phenotype request.
+            optional: true
+            readonly: false
+            restApiName: results
+            type: &id084
+              description: The inference results for the Onco Phenotype request.
+              discriminatedSubtypes: {}
+              name: OncoPhenotypeResults
+              parents: []
+              properties:
+              - clientName: patients
+                description: Results for the patients given in the request.
+                optional: false
+                readonly: false
+                restApiName: patients
+                type: &id088
+                  elementType: &id085
+                    description: The results of the model's work for a single patient.
+                    discriminatedSubtypes: {}
+                    name: OncoPhenotypePatientResult
+                    parents: []
+                    properties:
+                    - clientName: id
+                      description: The identifier given for the patient in the request.
+                      optional: false
+                      pylintDisable: redefined-builtin
+                      readonly: false
+                      restApiName: id
+                      type: *id001
+                    - clientName: inferences
+                      description: The model's inferences for the given patient.
+                      optional: false
+                      readonly: false
+                      restApiName: inferences
+                      type: &id087
+                        elementType: &id086
+                          description: An inference made by the Onco Phenotype model
+                            regarding a patient.
+                          discriminatedSubtypes: {}
+                          name: OncoPhenotypeInference
+                          parents: []
+                          properties:
+                          - clientName: value
+                            description: The value of the inference, as relevant for
+                              the given inference type.
+                            optional: false
+                            readonly: false
+                            restApiName: value
+                            type: *id001
+                          - clientName: description
+                            description: The description corresponding to the inference
+                              value.
+                            optional: true
+                            readonly: false
+                            restApiName: description
+                            type: *id001
+                          - clientName: confidence_score
+                            description: Confidence score for this inference.
+                            optional: true
+                            readonly: false
+                            restApiName: confidenceScore
+                            type: *id008
+                          - clientName: case_id
+                            description: 'An identifier for a clinical case, if there
+                              are multiple clinical cases
+
+                              regarding the same patient.'
+                            optional: true
+                            readonly: false
+                            restApiName: caseId
+                            type: *id001
+                          snakeCaseName: onco_phenotype_inference
+                          type: model
+                        type: list
+                    snakeCaseName: onco_phenotype_patient_result
+                    type: model
+                  type: list
+              - clientName: model_version
+                description: The version of the model used for inference, expressed
+                  as the model date.
+                optional: false
+                readonly: false
+                restApiName: modelVersion
+                type: *id019
+              snakeCaseName: onco_phenotype_results
+              type: model
+          snakeCaseName: onco_phenotype_response
+          type: model
+      summary: Get Onco Phenotype job details.
+      url: /oncophenotype/jobs/{jobId}
+    propertyName: ''
+  parameters:
+  - clientName: endpoint
+    description: 'Supported Cognitive Services endpoints (protocol and hostname, for
+      example:
+
+      https://westus2.api.cognitive.microsoft.com).'
+    implementation: Client
+    inOverload: false
+    location: endpointPath
+    optional: false
+    restApiName: endpoint
+    skipUrlEncoding: true
+    type: *id001
+  - clientName: credential
+    description: Credential needed for the client to connect to Azure.
+    implementation: Client
+    inOverload: false
+    location: other
+    optional: false
+    restApiName: credential
+    skipUrlEncoding: true
+    type: &id089
+      policy:
+        key: Ocp-Apim-Subscription-Key
+        type: AzureKeyCredentialPolicy
+      type: Key
+  - *id020
+  url: '{endpoint}/healthdecisionsupport'
+namespace: healthdecisionsupportapi
+subnamespaceToClients: {}
+types:
+- *id001
+- *id010
+- *id013
+- *id014
+- *id001
+- *id021
+- *id028
+- *id029
+- *id030
+- *id019
+- *id031
+- *id032
+- *id033
+- *id034
+- *id035
+- *id036
+- *id037
+- *id038
+- *id039
+- *id009
+- *id022
+- *id002
+- *id040
+- *id041
+- *id042
+- *id043
+- *id044
+- *id045
+- *id046
+- *id003
+- *id047
+- *id008
+- *id018
+- *id048
+- *id007
+- *id005
+- *id006
+- *id004
+- *id049
+- *id050
+- *id051
+- *id052
+- *id053
+- *id054
+- *id055
+- *id056
+- *id057
+- *id058
+- *id017
+- *id059
+- *id060
+- *id061
+- *id062
+- *id063
+- *id064
+- *id065
+- *id066
+- *id067
+- *id068
+- *id069
+- *id070
+- *id071
+- *id026
+- *id015
+- *id027
+- *id016
+- *id072
+- *id073
+- *id074
+- *id075
+- *id076
+- *id077
+- *id078
+- *id079
+- *id023
+- *id080
+- *id081
+- *id082
+- *id083
+- *id084
+- *id085
+- *id086
+- *id087
+- *id088
+- *id089
+- *id001
+- minLength: 1
+  type: string
+- *id012
+- *id025
+- *id090
+- *id091

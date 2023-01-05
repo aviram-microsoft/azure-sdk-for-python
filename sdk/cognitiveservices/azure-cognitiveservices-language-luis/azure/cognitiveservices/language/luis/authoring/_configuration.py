@@ -27,21 +27,20 @@ class LUISAuthoringClientConfiguration(Configuration):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         if endpoint is None:
             raise ValueError("Parameter 'endpoint' must not be None.")
         if credentials is None:
             raise ValueError("Parameter 'credentials' must not be None.")
-        base_url = '{Endpoint}/luis/authoring/v3.0-preview'
+        base_url = "{Endpoint}/luis/authoring/v3.0-preview"
 
         super(LUISAuthoringClientConfiguration, self).__init__(base_url)
 
         # Starting Autorest.Python 4.0.64, make connection pool activated by default
         self.keep_alive = True
 
-        self.add_user_agent('azure-cognitiveservices-language-luis/{}'.format(VERSION))
+        self.add_user_agent("azure-cognitiveservices-language-luis/{}".format(VERSION))
 
         self.endpoint = endpoint
         self.credentials = credentials

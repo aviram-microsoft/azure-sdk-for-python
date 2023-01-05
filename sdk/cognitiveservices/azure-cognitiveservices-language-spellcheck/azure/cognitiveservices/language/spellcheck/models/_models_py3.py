@@ -26,16 +26,14 @@ class ResponseBase(Model):
     """
 
     _validation = {
-        '_type': {'required': True},
+        "_type": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Identifiable': 'Identifiable'}
-    }
+    _subtype_map = {"_type": {"Identifiable": "Identifiable"}}
 
     def __init__(self, **kwargs) -> None:
         super(ResponseBase, self).__init__(**kwargs)
@@ -60,23 +58,21 @@ class Identifiable(ResponseBase):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Response': 'Response'}
-    }
+    _subtype_map = {"_type": {"Response": "Response"}}
 
     def __init__(self, **kwargs) -> None:
         super(Identifiable, self).__init__(**kwargs)
         self.id = None
-        self._type = 'Identifiable'
+        self._type = "Identifiable"
 
 
 class Response(Identifiable):
@@ -98,22 +94,20 @@ class Response(Identifiable):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'Answer': 'Answer', 'ErrorResponse': 'ErrorResponse'}
-    }
+    _subtype_map = {"_type": {"Answer": "Answer", "ErrorResponse": "ErrorResponse"}}
 
     def __init__(self, **kwargs) -> None:
         super(Response, self).__init__(**kwargs)
-        self._type = 'Response'
+        self._type = "Response"
 
 
 class Answer(Response):
@@ -134,22 +128,20 @@ class Answer(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'SpellCheck': 'SpellCheck'}
-    }
+    _subtype_map = {"_type": {"SpellCheck": "SpellCheck"}}
 
     def __init__(self, **kwargs) -> None:
         super(Answer, self).__init__(**kwargs)
-        self._type = 'Answer'
+        self._type = "Answer"
 
 
 class Error(Model):
@@ -185,21 +177,21 @@ class Error(Model):
     """
 
     _validation = {
-        'code': {'required': True},
-        'sub_code': {'readonly': True},
-        'message': {'required': True},
-        'more_details': {'readonly': True},
-        'parameter': {'readonly': True},
-        'value': {'readonly': True},
+        "code": {"required": True},
+        "sub_code": {"readonly": True},
+        "message": {"required": True},
+        "more_details": {"readonly": True},
+        "parameter": {"readonly": True},
+        "value": {"readonly": True},
     }
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'sub_code': {'key': 'subCode', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
-        'more_details': {'key': 'moreDetails', 'type': 'str'},
-        'parameter': {'key': 'parameter', 'type': 'str'},
-        'value': {'key': 'value', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "sub_code": {"key": "subCode", "type": "str"},
+        "message": {"key": "message", "type": "str"},
+        "more_details": {"key": "moreDetails", "type": "str"},
+        "parameter": {"key": "parameter", "type": "str"},
+        "value": {"key": "value", "type": "str"},
     }
 
     def __init__(self, *, message: str, code="None", **kwargs) -> None:
@@ -231,21 +223,21 @@ class ErrorResponse(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'errors': {'required': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "errors": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'errors': {'key': 'errors', 'type': '[Error]'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "errors": {"key": "errors", "type": "[Error]"},
     }
 
     def __init__(self, *, errors, **kwargs) -> None:
         super(ErrorResponse, self).__init__(**kwargs)
         self.errors = errors
-        self._type = 'ErrorResponse'
+        self._type = "ErrorResponse"
 
 
 class ErrorResponseException(HttpOperationError):
@@ -257,7 +249,7 @@ class ErrorResponseException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(ErrorResponseException, self).__init__(deserialize, response, 'ErrorResponse', *args)
+        super(ErrorResponseException, self).__init__(deserialize, response, "ErrorResponse", *args)
 
 
 class SpellCheck(Answer):
@@ -278,21 +270,21 @@ class SpellCheck(Answer):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'flagged_tokens': {'required': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "flagged_tokens": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'flagged_tokens': {'key': 'flaggedTokens', 'type': '[SpellingFlaggedToken]'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "flagged_tokens": {"key": "flaggedTokens", "type": "[SpellingFlaggedToken]"},
     }
 
     def __init__(self, *, flagged_tokens, **kwargs) -> None:
         super(SpellCheck, self).__init__(**kwargs)
         self.flagged_tokens = flagged_tokens
-        self._type = 'SpellCheck'
+        self._type = "SpellCheck"
 
 
 class SpellingFlaggedToken(Model):
@@ -319,19 +311,19 @@ class SpellingFlaggedToken(Model):
     """
 
     _validation = {
-        'offset': {'required': True},
-        'token': {'required': True},
-        'type': {'required': True},
-        'suggestions': {'readonly': True},
-        'ping_url_suffix': {'readonly': True},
+        "offset": {"required": True},
+        "token": {"required": True},
+        "type": {"required": True},
+        "suggestions": {"readonly": True},
+        "ping_url_suffix": {"readonly": True},
     }
 
     _attribute_map = {
-        'offset': {'key': 'offset', 'type': 'int'},
-        'token': {'key': 'token', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'suggestions': {'key': 'suggestions', 'type': '[SpellingTokenSuggestion]'},
-        'ping_url_suffix': {'key': 'pingUrlSuffix', 'type': 'str'},
+        "offset": {"key": "offset", "type": "int"},
+        "token": {"key": "token", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "suggestions": {"key": "suggestions", "type": "[SpellingTokenSuggestion]"},
+        "ping_url_suffix": {"key": "pingUrlSuffix", "type": "str"},
     }
 
     def __init__(self, *, offset: int, token: str, type="UnknownToken", **kwargs) -> None:
@@ -360,15 +352,15 @@ class SpellingTokenSuggestion(Model):
     """
 
     _validation = {
-        'suggestion': {'required': True},
-        'score': {'readonly': True},
-        'ping_url_suffix': {'readonly': True},
+        "suggestion": {"required": True},
+        "score": {"readonly": True},
+        "ping_url_suffix": {"readonly": True},
     }
 
     _attribute_map = {
-        'suggestion': {'key': 'suggestion', 'type': 'str'},
-        'score': {'key': 'score', 'type': 'float'},
-        'ping_url_suffix': {'key': 'pingUrlSuffix', 'type': 'str'},
+        "suggestion": {"key": "suggestion", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+        "ping_url_suffix": {"key": "pingUrlSuffix", "type": "str"},
     }
 
     def __init__(self, *, suggestion: str, **kwargs) -> None:

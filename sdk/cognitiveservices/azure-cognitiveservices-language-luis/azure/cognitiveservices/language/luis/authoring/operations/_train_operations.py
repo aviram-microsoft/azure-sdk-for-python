@@ -35,8 +35,7 @@ class TrainOperations(object):
 
         self.config = config
 
-    def train_version(
-            self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
+    def train_version(self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
         """Sends a training request for a version of a specified LUIS app. This
         POST request initiates a request asynchronously. To determine whether
         the training request is successful, submit a GET request to get
@@ -62,11 +61,11 @@ class TrainOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.train_version.metadata['url']
+        url = self.train_version.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -75,7 +74,7 @@ class TrainOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -88,17 +87,17 @@ class TrainOperations(object):
 
         deserialized = None
         if response.status_code == 202:
-            deserialized = self._deserialize('EnqueueTrainingResponse', response)
+            deserialized = self._deserialize("EnqueueTrainingResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    train_version.metadata = {'url': '/apps/{appId}/versions/{versionId}/train'}
 
-    def get_status(
-            self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
+    train_version.metadata = {"url": "/apps/{appId}/versions/{versionId}/train"}
+
+    def get_status(self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
         """Gets the training status of all models (intents and entities) for the
         specified LUIS app. You must call the train API to train the LUIS app
         before you call this API to get training status. "appID" specifies the
@@ -122,11 +121,11 @@ class TrainOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_status.metadata['url']
+        url = self.get_status.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -135,7 +134,7 @@ class TrainOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -148,11 +147,12 @@ class TrainOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[ModelTrainingInfo]', response)
+            deserialized = self._deserialize("[ModelTrainingInfo]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_status.metadata = {'url': '/apps/{appId}/versions/{versionId}/train'}
+
+    get_status.metadata = {"url": "/apps/{appId}/versions/{versionId}/train"}

@@ -11,9 +11,9 @@
 
 from ._configuration import CustomImageSearchClientConfiguration
 from ._custom_image_search_client import CustomImageSearchClient
-__all__ = ['CustomImageSearchClient', 'CustomImageSearchClientConfiguration']
+
+__all__ = ["CustomImageSearchClient", "CustomImageSearchClientConfiguration"]
 
 from .version import VERSION
 
 __version__ = VERSION
-

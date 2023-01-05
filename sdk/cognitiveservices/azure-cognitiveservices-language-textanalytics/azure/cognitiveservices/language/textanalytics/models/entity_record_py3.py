@@ -41,21 +41,32 @@ class EntityRecord(Model):
     """
 
     _validation = {
-        'wikipedia_url': {'readonly': True},
+        "wikipedia_url": {"readonly": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'matches': {'key': 'matches', 'type': '[MatchRecord]'},
-        'wikipedia_language': {'key': 'wikipediaLanguage', 'type': 'str'},
-        'wikipedia_id': {'key': 'wikipediaId', 'type': 'str'},
-        'wikipedia_url': {'key': 'wikipediaUrl', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'sub_type': {'key': 'subType', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "matches": {"key": "matches", "type": "[MatchRecord]"},
+        "wikipedia_language": {"key": "wikipediaLanguage", "type": "str"},
+        "wikipedia_id": {"key": "wikipediaId", "type": "str"},
+        "wikipedia_url": {"key": "wikipediaUrl", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "sub_type": {"key": "subType", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, matches=None, wikipedia_language: str=None, wikipedia_id: str=None, bing_id: str=None, type: str=None, sub_type: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        name: str = None,
+        matches=None,
+        wikipedia_language: str = None,
+        wikipedia_id: str = None,
+        bing_id: str = None,
+        type: str = None,
+        sub_type: str = None,
+        **kwargs
+    ) -> None:
         super(EntityRecord, self).__init__(**kwargs)
         self.name = name
         self.matches = matches

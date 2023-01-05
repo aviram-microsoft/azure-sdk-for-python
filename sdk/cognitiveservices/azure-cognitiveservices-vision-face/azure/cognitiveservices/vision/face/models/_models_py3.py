@@ -25,11 +25,11 @@ class Accessory(Model):
     """
 
     _attribute_map = {
-        'type': {'key': 'type', 'type': 'AccessoryType'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
+        "type": {"key": "type", "type": "AccessoryType"},
+        "confidence": {"key": "confidence", "type": "float"},
     }
 
-    def __init__(self, *, type=None, confidence: float=None, **kwargs) -> None:
+    def __init__(self, *, type=None, confidence: float = None, **kwargs) -> None:
         super(Accessory, self).__init__(**kwargs)
         self.type = type
         self.confidence = confidence
@@ -43,7 +43,7 @@ class APIError(Model):
     """
 
     _attribute_map = {
-        'error': {'key': 'error', 'type': 'Error'},
+        "error": {"key": "error", "type": "Error"},
     }
 
     def __init__(self, *, error=None, **kwargs) -> None:
@@ -60,7 +60,7 @@ class APIErrorException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(APIErrorException, self).__init__(deserialize, response, 'APIError', *args)
+        super(APIErrorException, self).__init__(deserialize, response, "APIError", *args)
 
 
 class ApplySnapshotRequest(Model):
@@ -82,12 +82,12 @@ class ApplySnapshotRequest(Model):
     """
 
     _validation = {
-        'object_id': {'required': True, 'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
+        "object_id": {"required": True, "max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
     }
 
     _attribute_map = {
-        'object_id': {'key': 'objectId', 'type': 'str'},
-        'mode': {'key': 'mode', 'type': 'SnapshotApplyMode'},
+        "object_id": {"key": "objectId", "type": "str"},
+        "mode": {"key": "mode", "type": "SnapshotApplyMode"},
     }
 
     def __init__(self, *, object_id: str, mode="CreateNew", **kwargs) -> None:
@@ -108,11 +108,11 @@ class Blur(Model):
     """
 
     _attribute_map = {
-        'blur_level': {'key': 'blurLevel', 'type': 'BlurLevel'},
-        'value': {'key': 'value', 'type': 'float'},
+        "blur_level": {"key": "blurLevel", "type": "BlurLevel"},
+        "value": {"key": "value", "type": "float"},
     }
 
-    def __init__(self, *, blur_level=None, value: float=None, **kwargs) -> None:
+    def __init__(self, *, blur_level=None, value: float = None, **kwargs) -> None:
         super(Blur, self).__init__(**kwargs)
         self.blur_level = blur_level
         self.value = value
@@ -130,13 +130,13 @@ class Coordinate(Model):
     """
 
     _validation = {
-        'x': {'required': True},
-        'y': {'required': True},
+        "x": {"required": True},
+        "y": {"required": True},
     }
 
     _attribute_map = {
-        'x': {'key': 'x', 'type': 'float'},
-        'y': {'key': 'y', 'type': 'float'},
+        "x": {"key": "x", "type": "float"},
+        "y": {"key": "y", "type": "float"},
     }
 
     def __init__(self, *, x: float, y: float, **kwargs) -> None:
@@ -169,18 +169,27 @@ class DetectedFace(Model):
     """
 
     _validation = {
-        'face_rectangle': {'required': True},
+        "face_rectangle": {"required": True},
     }
 
     _attribute_map = {
-        'face_id': {'key': 'faceId', 'type': 'str'},
-        'recognition_model': {'key': 'recognitionModel', 'type': 'str'},
-        'face_rectangle': {'key': 'faceRectangle', 'type': 'FaceRectangle'},
-        'face_landmarks': {'key': 'faceLandmarks', 'type': 'FaceLandmarks'},
-        'face_attributes': {'key': 'faceAttributes', 'type': 'FaceAttributes'},
+        "face_id": {"key": "faceId", "type": "str"},
+        "recognition_model": {"key": "recognitionModel", "type": "str"},
+        "face_rectangle": {"key": "faceRectangle", "type": "FaceRectangle"},
+        "face_landmarks": {"key": "faceLandmarks", "type": "FaceLandmarks"},
+        "face_attributes": {"key": "faceAttributes", "type": "FaceAttributes"},
     }
 
-    def __init__(self, *, face_rectangle, face_id: str=None, recognition_model="recognition_01", face_landmarks=None, face_attributes=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        face_rectangle,
+        face_id: str = None,
+        recognition_model="recognition_01",
+        face_landmarks=None,
+        face_attributes=None,
+        **kwargs
+    ) -> None:
         super(DetectedFace, self).__init__(**kwargs)
         self.face_id = face_id
         self.recognition_model = recognition_model
@@ -212,17 +221,29 @@ class Emotion(Model):
     """
 
     _attribute_map = {
-        'anger': {'key': 'anger', 'type': 'float'},
-        'contempt': {'key': 'contempt', 'type': 'float'},
-        'disgust': {'key': 'disgust', 'type': 'float'},
-        'fear': {'key': 'fear', 'type': 'float'},
-        'happiness': {'key': 'happiness', 'type': 'float'},
-        'neutral': {'key': 'neutral', 'type': 'float'},
-        'sadness': {'key': 'sadness', 'type': 'float'},
-        'surprise': {'key': 'surprise', 'type': 'float'},
+        "anger": {"key": "anger", "type": "float"},
+        "contempt": {"key": "contempt", "type": "float"},
+        "disgust": {"key": "disgust", "type": "float"},
+        "fear": {"key": "fear", "type": "float"},
+        "happiness": {"key": "happiness", "type": "float"},
+        "neutral": {"key": "neutral", "type": "float"},
+        "sadness": {"key": "sadness", "type": "float"},
+        "surprise": {"key": "surprise", "type": "float"},
     }
 
-    def __init__(self, *, anger: float=None, contempt: float=None, disgust: float=None, fear: float=None, happiness: float=None, neutral: float=None, sadness: float=None, surprise: float=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        anger: float = None,
+        contempt: float = None,
+        disgust: float = None,
+        fear: float = None,
+        happiness: float = None,
+        neutral: float = None,
+        sadness: float = None,
+        surprise: float = None,
+        **kwargs
+    ) -> None:
         super(Emotion, self).__init__(**kwargs)
         self.anger = anger
         self.contempt = contempt
@@ -244,11 +265,11 @@ class Error(Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
-    def __init__(self, *, code: str=None, message: str=None, **kwargs) -> None:
+    def __init__(self, *, code: str = None, message: str = None, **kwargs) -> None:
         super(Error, self).__init__(**kwargs)
         self.code = code
         self.message = message
@@ -268,11 +289,11 @@ class Exposure(Model):
     """
 
     _attribute_map = {
-        'exposure_level': {'key': 'exposureLevel', 'type': 'ExposureLevel'},
-        'value': {'key': 'value', 'type': 'float'},
+        "exposure_level": {"key": "exposureLevel", "type": "ExposureLevel"},
+        "value": {"key": "value", "type": "float"},
     }
 
-    def __init__(self, *, exposure_level=None, value: float=None, **kwargs) -> None:
+    def __init__(self, *, exposure_level=None, value: float = None, **kwargs) -> None:
         super(Exposure, self).__init__(**kwargs)
         self.exposure_level = exposure_level
         self.value = value
@@ -326,25 +347,45 @@ class FaceAttributes(Model):
     """
 
     _attribute_map = {
-        'age': {'key': 'age', 'type': 'float'},
-        'gender': {'key': 'gender', 'type': 'Gender'},
-        'smile': {'key': 'smile', 'type': 'float'},
-        'facial_hair': {'key': 'facialHair', 'type': 'FacialHair'},
-        'glasses': {'key': 'glasses', 'type': 'GlassesType'},
-        'head_pose': {'key': 'headPose', 'type': 'HeadPose'},
-        'emotion': {'key': 'emotion', 'type': 'Emotion'},
-        'hair': {'key': 'hair', 'type': 'Hair'},
-        'makeup': {'key': 'makeup', 'type': 'Makeup'},
-        'occlusion': {'key': 'occlusion', 'type': 'Occlusion'},
-        'accessories': {'key': 'accessories', 'type': '[Accessory]'},
-        'blur': {'key': 'blur', 'type': 'Blur'},
-        'exposure': {'key': 'exposure', 'type': 'Exposure'},
-        'noise': {'key': 'noise', 'type': 'Noise'},
-        'mask': {'key': 'mask', 'type': 'Mask'},
-        'quality_for_recognition': {'key': 'qualityForRecognition', 'type': 'QualityForRecognition'},
+        "age": {"key": "age", "type": "float"},
+        "gender": {"key": "gender", "type": "Gender"},
+        "smile": {"key": "smile", "type": "float"},
+        "facial_hair": {"key": "facialHair", "type": "FacialHair"},
+        "glasses": {"key": "glasses", "type": "GlassesType"},
+        "head_pose": {"key": "headPose", "type": "HeadPose"},
+        "emotion": {"key": "emotion", "type": "Emotion"},
+        "hair": {"key": "hair", "type": "Hair"},
+        "makeup": {"key": "makeup", "type": "Makeup"},
+        "occlusion": {"key": "occlusion", "type": "Occlusion"},
+        "accessories": {"key": "accessories", "type": "[Accessory]"},
+        "blur": {"key": "blur", "type": "Blur"},
+        "exposure": {"key": "exposure", "type": "Exposure"},
+        "noise": {"key": "noise", "type": "Noise"},
+        "mask": {"key": "mask", "type": "Mask"},
+        "quality_for_recognition": {"key": "qualityForRecognition", "type": "QualityForRecognition"},
     }
 
-    def __init__(self, *, age: float=None, gender=None, smile: float=None, facial_hair=None, glasses=None, head_pose=None, emotion=None, hair=None, makeup=None, occlusion=None, accessories=None, blur=None, exposure=None, noise=None, mask=None, quality_for_recognition=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        age: float = None,
+        gender=None,
+        smile: float = None,
+        facial_hair=None,
+        glasses=None,
+        head_pose=None,
+        emotion=None,
+        hair=None,
+        makeup=None,
+        occlusion=None,
+        accessories=None,
+        blur=None,
+        exposure=None,
+        noise=None,
+        mask=None,
+        quality_for_recognition=None,
+        **kwargs
+    ) -> None:
         super(FaceAttributes, self).__init__(**kwargs)
         self.age = age
         self.gender = gender
@@ -446,36 +487,67 @@ class FaceLandmarks(Model):
     """
 
     _attribute_map = {
-        'pupil_left': {'key': 'pupilLeft', 'type': 'Coordinate'},
-        'pupil_right': {'key': 'pupilRight', 'type': 'Coordinate'},
-        'nose_tip': {'key': 'noseTip', 'type': 'Coordinate'},
-        'mouth_left': {'key': 'mouthLeft', 'type': 'Coordinate'},
-        'mouth_right': {'key': 'mouthRight', 'type': 'Coordinate'},
-        'eyebrow_left_outer': {'key': 'eyebrowLeftOuter', 'type': 'Coordinate'},
-        'eyebrow_left_inner': {'key': 'eyebrowLeftInner', 'type': 'Coordinate'},
-        'eye_left_outer': {'key': 'eyeLeftOuter', 'type': 'Coordinate'},
-        'eye_left_top': {'key': 'eyeLeftTop', 'type': 'Coordinate'},
-        'eye_left_bottom': {'key': 'eyeLeftBottom', 'type': 'Coordinate'},
-        'eye_left_inner': {'key': 'eyeLeftInner', 'type': 'Coordinate'},
-        'eyebrow_right_inner': {'key': 'eyebrowRightInner', 'type': 'Coordinate'},
-        'eyebrow_right_outer': {'key': 'eyebrowRightOuter', 'type': 'Coordinate'},
-        'eye_right_inner': {'key': 'eyeRightInner', 'type': 'Coordinate'},
-        'eye_right_top': {'key': 'eyeRightTop', 'type': 'Coordinate'},
-        'eye_right_bottom': {'key': 'eyeRightBottom', 'type': 'Coordinate'},
-        'eye_right_outer': {'key': 'eyeRightOuter', 'type': 'Coordinate'},
-        'nose_root_left': {'key': 'noseRootLeft', 'type': 'Coordinate'},
-        'nose_root_right': {'key': 'noseRootRight', 'type': 'Coordinate'},
-        'nose_left_alar_top': {'key': 'noseLeftAlarTop', 'type': 'Coordinate'},
-        'nose_right_alar_top': {'key': 'noseRightAlarTop', 'type': 'Coordinate'},
-        'nose_left_alar_out_tip': {'key': 'noseLeftAlarOutTip', 'type': 'Coordinate'},
-        'nose_right_alar_out_tip': {'key': 'noseRightAlarOutTip', 'type': 'Coordinate'},
-        'upper_lip_top': {'key': 'upperLipTop', 'type': 'Coordinate'},
-        'upper_lip_bottom': {'key': 'upperLipBottom', 'type': 'Coordinate'},
-        'under_lip_top': {'key': 'underLipTop', 'type': 'Coordinate'},
-        'under_lip_bottom': {'key': 'underLipBottom', 'type': 'Coordinate'},
+        "pupil_left": {"key": "pupilLeft", "type": "Coordinate"},
+        "pupil_right": {"key": "pupilRight", "type": "Coordinate"},
+        "nose_tip": {"key": "noseTip", "type": "Coordinate"},
+        "mouth_left": {"key": "mouthLeft", "type": "Coordinate"},
+        "mouth_right": {"key": "mouthRight", "type": "Coordinate"},
+        "eyebrow_left_outer": {"key": "eyebrowLeftOuter", "type": "Coordinate"},
+        "eyebrow_left_inner": {"key": "eyebrowLeftInner", "type": "Coordinate"},
+        "eye_left_outer": {"key": "eyeLeftOuter", "type": "Coordinate"},
+        "eye_left_top": {"key": "eyeLeftTop", "type": "Coordinate"},
+        "eye_left_bottom": {"key": "eyeLeftBottom", "type": "Coordinate"},
+        "eye_left_inner": {"key": "eyeLeftInner", "type": "Coordinate"},
+        "eyebrow_right_inner": {"key": "eyebrowRightInner", "type": "Coordinate"},
+        "eyebrow_right_outer": {"key": "eyebrowRightOuter", "type": "Coordinate"},
+        "eye_right_inner": {"key": "eyeRightInner", "type": "Coordinate"},
+        "eye_right_top": {"key": "eyeRightTop", "type": "Coordinate"},
+        "eye_right_bottom": {"key": "eyeRightBottom", "type": "Coordinate"},
+        "eye_right_outer": {"key": "eyeRightOuter", "type": "Coordinate"},
+        "nose_root_left": {"key": "noseRootLeft", "type": "Coordinate"},
+        "nose_root_right": {"key": "noseRootRight", "type": "Coordinate"},
+        "nose_left_alar_top": {"key": "noseLeftAlarTop", "type": "Coordinate"},
+        "nose_right_alar_top": {"key": "noseRightAlarTop", "type": "Coordinate"},
+        "nose_left_alar_out_tip": {"key": "noseLeftAlarOutTip", "type": "Coordinate"},
+        "nose_right_alar_out_tip": {"key": "noseRightAlarOutTip", "type": "Coordinate"},
+        "upper_lip_top": {"key": "upperLipTop", "type": "Coordinate"},
+        "upper_lip_bottom": {"key": "upperLipBottom", "type": "Coordinate"},
+        "under_lip_top": {"key": "underLipTop", "type": "Coordinate"},
+        "under_lip_bottom": {"key": "underLipBottom", "type": "Coordinate"},
     }
 
-    def __init__(self, *, pupil_left=None, pupil_right=None, nose_tip=None, mouth_left=None, mouth_right=None, eyebrow_left_outer=None, eyebrow_left_inner=None, eye_left_outer=None, eye_left_top=None, eye_left_bottom=None, eye_left_inner=None, eyebrow_right_inner=None, eyebrow_right_outer=None, eye_right_inner=None, eye_right_top=None, eye_right_bottom=None, eye_right_outer=None, nose_root_left=None, nose_root_right=None, nose_left_alar_top=None, nose_right_alar_top=None, nose_left_alar_out_tip=None, nose_right_alar_out_tip=None, upper_lip_top=None, upper_lip_bottom=None, under_lip_top=None, under_lip_bottom=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        pupil_left=None,
+        pupil_right=None,
+        nose_tip=None,
+        mouth_left=None,
+        mouth_right=None,
+        eyebrow_left_outer=None,
+        eyebrow_left_inner=None,
+        eye_left_outer=None,
+        eye_left_top=None,
+        eye_left_bottom=None,
+        eye_left_inner=None,
+        eyebrow_right_inner=None,
+        eyebrow_right_outer=None,
+        eye_right_inner=None,
+        eye_right_top=None,
+        eye_right_bottom=None,
+        eye_right_outer=None,
+        nose_root_left=None,
+        nose_root_right=None,
+        nose_left_alar_top=None,
+        nose_right_alar_top=None,
+        nose_left_alar_out_tip=None,
+        nose_right_alar_out_tip=None,
+        upper_lip_top=None,
+        upper_lip_bottom=None,
+        under_lip_top=None,
+        under_lip_bottom=None,
+        **kwargs
+    ) -> None:
         super(FaceLandmarks, self).__init__(**kwargs)
         self.pupil_left = pupil_left
         self.pupil_right = pupil_right
@@ -519,16 +591,16 @@ class NonNullableNameAndNullableUserDataContract(Model):
     """
 
     _validation = {
-        'name': {'required': True, 'max_length': 128, 'min_length': 1},
-        'user_data': {'max_length': 16384},
+        "name": {"required": True, "max_length": 128, "min_length": 1},
+        "user_data": {"max_length": 16384},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'user_data': {'key': 'userData', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "user_data": {"key": "userData", "type": "str"},
     }
 
-    def __init__(self, *, name: str, user_data: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str, user_data: str = None, **kwargs) -> None:
         super(NonNullableNameAndNullableUserDataContract, self).__init__(**kwargs)
         self.name = name
         self.user_data = user_data
@@ -552,17 +624,17 @@ class MetaDataContract(NonNullableNameAndNullableUserDataContract):
     """
 
     _validation = {
-        'name': {'required': True, 'max_length': 128, 'min_length': 1},
-        'user_data': {'max_length': 16384},
+        "name": {"required": True, "max_length": 128, "min_length": 1},
+        "user_data": {"max_length": 16384},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'user_data': {'key': 'userData', 'type': 'str'},
-        'recognition_model': {'key': 'recognitionModel', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "user_data": {"key": "userData", "type": "str"},
+        "recognition_model": {"key": "recognitionModel", "type": "str"},
     }
 
-    def __init__(self, *, name: str, user_data: str=None, recognition_model="recognition_01", **kwargs) -> None:
+    def __init__(self, *, name: str, user_data: str = None, recognition_model="recognition_01", **kwargs) -> None:
         super(MetaDataContract, self).__init__(name=name, user_data=user_data, **kwargs)
         self.recognition_model = recognition_model
 
@@ -589,20 +661,29 @@ class FaceList(MetaDataContract):
     """
 
     _validation = {
-        'name': {'required': True, 'max_length': 128, 'min_length': 1},
-        'user_data': {'max_length': 16384},
-        'face_list_id': {'required': True, 'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
+        "name": {"required": True, "max_length": 128, "min_length": 1},
+        "user_data": {"max_length": 16384},
+        "face_list_id": {"required": True, "max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'user_data': {'key': 'userData', 'type': 'str'},
-        'recognition_model': {'key': 'recognitionModel', 'type': 'str'},
-        'face_list_id': {'key': 'faceListId', 'type': 'str'},
-        'persisted_faces': {'key': 'persistedFaces', 'type': '[PersistedFace]'},
+        "name": {"key": "name", "type": "str"},
+        "user_data": {"key": "userData", "type": "str"},
+        "recognition_model": {"key": "recognitionModel", "type": "str"},
+        "face_list_id": {"key": "faceListId", "type": "str"},
+        "persisted_faces": {"key": "persistedFaces", "type": "[PersistedFace]"},
     }
 
-    def __init__(self, *, name: str, face_list_id: str, user_data: str=None, recognition_model="recognition_01", persisted_faces=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        name: str,
+        face_list_id: str,
+        user_data: str = None,
+        recognition_model="recognition_01",
+        persisted_faces=None,
+        **kwargs
+    ) -> None:
         super(FaceList, self).__init__(name=name, user_data=user_data, recognition_model=recognition_model, **kwargs)
         self.face_list_id = face_list_id
         self.persisted_faces = persisted_faces
@@ -626,17 +707,17 @@ class FaceRectangle(Model):
     """
 
     _validation = {
-        'width': {'required': True},
-        'height': {'required': True},
-        'left': {'required': True},
-        'top': {'required': True},
+        "width": {"required": True},
+        "height": {"required": True},
+        "left": {"required": True},
+        "top": {"required": True},
     }
 
     _attribute_map = {
-        'width': {'key': 'width', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
-        'left': {'key': 'left', 'type': 'int'},
-        'top': {'key': 'top', 'type': 'int'},
+        "width": {"key": "width", "type": "int"},
+        "height": {"key": "height", "type": "int"},
+        "left": {"key": "left", "type": "int"},
+        "top": {"key": "top", "type": "int"},
     }
 
     def __init__(self, *, width: int, height: int, left: int, top: int, **kwargs) -> None:
@@ -659,12 +740,12 @@ class FacialHair(Model):
     """
 
     _attribute_map = {
-        'moustache': {'key': 'moustache', 'type': 'float'},
-        'beard': {'key': 'beard', 'type': 'float'},
-        'sideburns': {'key': 'sideburns', 'type': 'float'},
+        "moustache": {"key": "moustache", "type": "float"},
+        "beard": {"key": "beard", "type": "float"},
+        "sideburns": {"key": "sideburns", "type": "float"},
     }
 
-    def __init__(self, *, moustache: float=None, beard: float=None, sideburns: float=None, **kwargs) -> None:
+    def __init__(self, *, moustache: float = None, beard: float = None, sideburns: float = None, **kwargs) -> None:
         super(FacialHair, self).__init__(**kwargs)
         self.moustache = moustache
         self.beard = beard
@@ -710,23 +791,33 @@ class FindSimilarRequest(Model):
     """
 
     _validation = {
-        'face_id': {'required': True},
-        'face_list_id': {'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
-        'large_face_list_id': {'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
-        'face_ids': {'max_items': 1000},
-        'max_num_of_candidates_returned': {'maximum': 1000, 'minimum': 1},
+        "face_id": {"required": True},
+        "face_list_id": {"max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
+        "large_face_list_id": {"max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
+        "face_ids": {"max_items": 1000},
+        "max_num_of_candidates_returned": {"maximum": 1000, "minimum": 1},
     }
 
     _attribute_map = {
-        'face_id': {'key': 'faceId', 'type': 'str'},
-        'face_list_id': {'key': 'faceListId', 'type': 'str'},
-        'large_face_list_id': {'key': 'largeFaceListId', 'type': 'str'},
-        'face_ids': {'key': 'faceIds', 'type': '[str]'},
-        'max_num_of_candidates_returned': {'key': 'maxNumOfCandidatesReturned', 'type': 'int'},
-        'mode': {'key': 'mode', 'type': 'FindSimilarMatchMode'},
+        "face_id": {"key": "faceId", "type": "str"},
+        "face_list_id": {"key": "faceListId", "type": "str"},
+        "large_face_list_id": {"key": "largeFaceListId", "type": "str"},
+        "face_ids": {"key": "faceIds", "type": "[str]"},
+        "max_num_of_candidates_returned": {"key": "maxNumOfCandidatesReturned", "type": "int"},
+        "mode": {"key": "mode", "type": "FindSimilarMatchMode"},
     }
 
-    def __init__(self, *, face_id: str, face_list_id: str=None, large_face_list_id: str=None, face_ids=None, max_num_of_candidates_returned: int=20, mode="matchPerson", **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        face_id: str,
+        face_list_id: str = None,
+        large_face_list_id: str = None,
+        face_ids=None,
+        max_num_of_candidates_returned: int = 20,
+        mode="matchPerson",
+        **kwargs
+    ) -> None:
         super(FindSimilarRequest, self).__init__(**kwargs)
         self.face_id = face_id
         self.face_list_id = face_list_id
@@ -747,11 +838,11 @@ class GroupRequest(Model):
     """
 
     _validation = {
-        'face_ids': {'required': True, 'max_items': 1000},
+        "face_ids": {"required": True, "max_items": 1000},
     }
 
     _attribute_map = {
-        'face_ids': {'key': 'faceIds', 'type': '[str]'},
+        "face_ids": {"key": "faceIds", "type": "[str]"},
     }
 
     def __init__(self, *, face_ids, **kwargs) -> None:
@@ -773,12 +864,12 @@ class GroupResult(Model):
     """
 
     _validation = {
-        'groups': {'required': True},
+        "groups": {"required": True},
     }
 
     _attribute_map = {
-        'groups': {'key': 'groups', 'type': '[[str]]'},
-        'messy_group': {'key': 'messyGroup', 'type': '[str]'},
+        "groups": {"key": "groups", "type": "[[str]]"},
+        "messy_group": {"key": "messyGroup", "type": "[str]"},
     }
 
     def __init__(self, *, groups, messy_group=None, **kwargs) -> None:
@@ -803,12 +894,12 @@ class Hair(Model):
     """
 
     _attribute_map = {
-        'bald': {'key': 'bald', 'type': 'float'},
-        'invisible': {'key': 'invisible', 'type': 'bool'},
-        'hair_color': {'key': 'hairColor', 'type': '[HairColor]'},
+        "bald": {"key": "bald", "type": "float"},
+        "invisible": {"key": "invisible", "type": "bool"},
+        "hair_color": {"key": "hairColor", "type": "[HairColor]"},
     }
 
-    def __init__(self, *, bald: float=None, invisible: bool=None, hair_color=None, **kwargs) -> None:
+    def __init__(self, *, bald: float = None, invisible: bool = None, hair_color=None, **kwargs) -> None:
         super(Hair, self).__init__(**kwargs)
         self.bald = bald
         self.invisible = invisible
@@ -827,11 +918,11 @@ class HairColor(Model):
     """
 
     _attribute_map = {
-        'color': {'key': 'color', 'type': 'HairColorType'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
+        "color": {"key": "color", "type": "HairColorType"},
+        "confidence": {"key": "confidence", "type": "float"},
     }
 
-    def __init__(self, *, color=None, confidence: float=None, **kwargs) -> None:
+    def __init__(self, *, color=None, confidence: float = None, **kwargs) -> None:
         super(HairColor, self).__init__(**kwargs)
         self.color = color
         self.confidence = confidence
@@ -849,12 +940,12 @@ class HeadPose(Model):
     """
 
     _attribute_map = {
-        'roll': {'key': 'roll', 'type': 'float'},
-        'yaw': {'key': 'yaw', 'type': 'float'},
-        'pitch': {'key': 'pitch', 'type': 'float'},
+        "roll": {"key": "roll", "type": "float"},
+        "yaw": {"key": "yaw", "type": "float"},
+        "pitch": {"key": "pitch", "type": "float"},
     }
 
-    def __init__(self, *, roll: float=None, yaw: float=None, pitch: float=None, **kwargs) -> None:
+    def __init__(self, *, roll: float = None, yaw: float = None, pitch: float = None, **kwargs) -> None:
         super(HeadPose, self).__init__(**kwargs)
         self.roll = roll
         self.yaw = yaw
@@ -875,13 +966,13 @@ class IdentifyCandidate(Model):
     """
 
     _validation = {
-        'person_id': {'required': True},
-        'confidence': {'required': True},
+        "person_id": {"required": True},
+        "confidence": {"required": True},
     }
 
     _attribute_map = {
-        'person_id': {'key': 'personId', 'type': 'str'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
+        "person_id": {"key": "personId", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
     }
 
     def __init__(self, *, person_id: str, confidence: float, **kwargs) -> None:
@@ -919,21 +1010,30 @@ class IdentifyRequest(Model):
     """
 
     _validation = {
-        'face_ids': {'required': True, 'max_items': 10},
-        'person_group_id': {'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
-        'large_person_group_id': {'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
-        'max_num_of_candidates_returned': {'maximum': 100, 'minimum': 1},
+        "face_ids": {"required": True, "max_items": 10},
+        "person_group_id": {"max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
+        "large_person_group_id": {"max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
+        "max_num_of_candidates_returned": {"maximum": 100, "minimum": 1},
     }
 
     _attribute_map = {
-        'face_ids': {'key': 'faceIds', 'type': '[str]'},
-        'person_group_id': {'key': 'personGroupId', 'type': 'str'},
-        'large_person_group_id': {'key': 'largePersonGroupId', 'type': 'str'},
-        'max_num_of_candidates_returned': {'key': 'maxNumOfCandidatesReturned', 'type': 'int'},
-        'confidence_threshold': {'key': 'confidenceThreshold', 'type': 'float'},
+        "face_ids": {"key": "faceIds", "type": "[str]"},
+        "person_group_id": {"key": "personGroupId", "type": "str"},
+        "large_person_group_id": {"key": "largePersonGroupId", "type": "str"},
+        "max_num_of_candidates_returned": {"key": "maxNumOfCandidatesReturned", "type": "int"},
+        "confidence_threshold": {"key": "confidenceThreshold", "type": "float"},
     }
 
-    def __init__(self, *, face_ids, person_group_id: str=None, large_person_group_id: str=None, max_num_of_candidates_returned: int=1, confidence_threshold: float=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        face_ids,
+        person_group_id: str = None,
+        large_person_group_id: str = None,
+        max_num_of_candidates_returned: int = 1,
+        confidence_threshold: float = None,
+        **kwargs
+    ) -> None:
         super(IdentifyRequest, self).__init__(**kwargs)
         self.face_ids = face_ids
         self.person_group_id = person_group_id
@@ -958,13 +1058,13 @@ class IdentifyResult(Model):
     """
 
     _validation = {
-        'face_id': {'required': True},
-        'candidates': {'required': True},
+        "face_id": {"required": True},
+        "candidates": {"required": True},
     }
 
     _attribute_map = {
-        'face_id': {'key': 'faceId', 'type': 'str'},
-        'candidates': {'key': 'candidates', 'type': '[IdentifyCandidate]'},
+        "face_id": {"key": "faceId", "type": "str"},
+        "candidates": {"key": "candidates", "type": "[IdentifyCandidate]"},
     }
 
     def __init__(self, *, face_id: str, candidates, **kwargs) -> None:
@@ -983,11 +1083,11 @@ class ImageUrl(Model):
     """
 
     _validation = {
-        'url': {'required': True},
+        "url": {"required": True},
     }
 
     _attribute_map = {
-        'url': {'key': 'url', 'type': 'str'},
+        "url": {"key": "url", "type": "str"},
     }
 
     def __init__(self, *, url: str, **kwargs) -> None:
@@ -1015,20 +1115,24 @@ class LargeFaceList(MetaDataContract):
     """
 
     _validation = {
-        'name': {'required': True, 'max_length': 128, 'min_length': 1},
-        'user_data': {'max_length': 16384},
-        'large_face_list_id': {'required': True, 'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
+        "name": {"required": True, "max_length": 128, "min_length": 1},
+        "user_data": {"max_length": 16384},
+        "large_face_list_id": {"required": True, "max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'user_data': {'key': 'userData', 'type': 'str'},
-        'recognition_model': {'key': 'recognitionModel', 'type': 'str'},
-        'large_face_list_id': {'key': 'largeFaceListId', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "user_data": {"key": "userData", "type": "str"},
+        "recognition_model": {"key": "recognitionModel", "type": "str"},
+        "large_face_list_id": {"key": "largeFaceListId", "type": "str"},
     }
 
-    def __init__(self, *, name: str, large_face_list_id: str, user_data: str=None, recognition_model="recognition_01", **kwargs) -> None:
-        super(LargeFaceList, self).__init__(name=name, user_data=user_data, recognition_model=recognition_model, **kwargs)
+    def __init__(
+        self, *, name: str, large_face_list_id: str, user_data: str = None, recognition_model="recognition_01", **kwargs
+    ) -> None:
+        super(LargeFaceList, self).__init__(
+            name=name, user_data=user_data, recognition_model=recognition_model, **kwargs
+        )
         self.large_face_list_id = large_face_list_id
 
 
@@ -1052,20 +1156,30 @@ class LargePersonGroup(MetaDataContract):
     """
 
     _validation = {
-        'name': {'required': True, 'max_length': 128, 'min_length': 1},
-        'user_data': {'max_length': 16384},
-        'large_person_group_id': {'required': True, 'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
+        "name": {"required": True, "max_length": 128, "min_length": 1},
+        "user_data": {"max_length": 16384},
+        "large_person_group_id": {"required": True, "max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'user_data': {'key': 'userData', 'type': 'str'},
-        'recognition_model': {'key': 'recognitionModel', 'type': 'str'},
-        'large_person_group_id': {'key': 'largePersonGroupId', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "user_data": {"key": "userData", "type": "str"},
+        "recognition_model": {"key": "recognitionModel", "type": "str"},
+        "large_person_group_id": {"key": "largePersonGroupId", "type": "str"},
     }
 
-    def __init__(self, *, name: str, large_person_group_id: str, user_data: str=None, recognition_model="recognition_01", **kwargs) -> None:
-        super(LargePersonGroup, self).__init__(name=name, user_data=user_data, recognition_model=recognition_model, **kwargs)
+    def __init__(
+        self,
+        *,
+        name: str,
+        large_person_group_id: str,
+        user_data: str = None,
+        recognition_model="recognition_01",
+        **kwargs
+    ) -> None:
+        super(LargePersonGroup, self).__init__(
+            name=name, user_data=user_data, recognition_model=recognition_model, **kwargs
+        )
         self.large_person_group_id = large_person_group_id
 
 
@@ -1081,11 +1195,11 @@ class Makeup(Model):
     """
 
     _attribute_map = {
-        'eye_makeup': {'key': 'eyeMakeup', 'type': 'bool'},
-        'lip_makeup': {'key': 'lipMakeup', 'type': 'bool'},
+        "eye_makeup": {"key": "eyeMakeup", "type": "bool"},
+        "lip_makeup": {"key": "lipMakeup", "type": "bool"},
     }
 
-    def __init__(self, *, eye_makeup: bool=None, lip_makeup: bool=None, **kwargs) -> None:
+    def __init__(self, *, eye_makeup: bool = None, lip_makeup: bool = None, **kwargs) -> None:
         super(Makeup, self).__init__(**kwargs)
         self.eye_makeup = eye_makeup
         self.lip_makeup = lip_makeup
@@ -1103,11 +1217,11 @@ class Mask(Model):
     """
 
     _attribute_map = {
-        'type': {'key': 'type', 'type': 'MaskType'},
-        'nose_and_mouth_covered': {'key': 'noseAndMouthCovered', 'type': 'bool'},
+        "type": {"key": "type", "type": "MaskType"},
+        "nose_and_mouth_covered": {"key": "noseAndMouthCovered", "type": "bool"},
     }
 
-    def __init__(self, *, type=None, nose_and_mouth_covered: bool=None, **kwargs) -> None:
+    def __init__(self, *, type=None, nose_and_mouth_covered: bool = None, **kwargs) -> None:
         super(Mask, self).__init__(**kwargs)
         self.type = type
         self.nose_and_mouth_covered = nose_and_mouth_covered
@@ -1124,16 +1238,16 @@ class NameAndUserDataContract(Model):
     """
 
     _validation = {
-        'name': {'max_length': 128},
-        'user_data': {'max_length': 16384},
+        "name": {"max_length": 128},
+        "user_data": {"max_length": 16384},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'user_data': {'key': 'userData', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "user_data": {"key": "userData", "type": "str"},
     }
 
-    def __init__(self, *, name: str=None, user_data: str=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, user_data: str = None, **kwargs) -> None:
         super(NameAndUserDataContract, self).__init__(**kwargs)
         self.name = name
         self.user_data = user_data
@@ -1154,11 +1268,11 @@ class Noise(Model):
     """
 
     _attribute_map = {
-        'noise_level': {'key': 'noiseLevel', 'type': 'NoiseLevel'},
-        'value': {'key': 'value', 'type': 'float'},
+        "noise_level": {"key": "noiseLevel", "type": "NoiseLevel"},
+        "value": {"key": "value", "type": "float"},
     }
 
-    def __init__(self, *, noise_level=None, value: float=None, **kwargs) -> None:
+    def __init__(self, *, noise_level=None, value: float = None, **kwargs) -> None:
         super(Noise, self).__init__(**kwargs)
         self.noise_level = noise_level
         self.value = value
@@ -1178,12 +1292,14 @@ class Occlusion(Model):
     """
 
     _attribute_map = {
-        'forehead_occluded': {'key': 'foreheadOccluded', 'type': 'bool'},
-        'eye_occluded': {'key': 'eyeOccluded', 'type': 'bool'},
-        'mouth_occluded': {'key': 'mouthOccluded', 'type': 'bool'},
+        "forehead_occluded": {"key": "foreheadOccluded", "type": "bool"},
+        "eye_occluded": {"key": "eyeOccluded", "type": "bool"},
+        "mouth_occluded": {"key": "mouthOccluded", "type": "bool"},
     }
 
-    def __init__(self, *, forehead_occluded: bool=None, eye_occluded: bool=None, mouth_occluded: bool=None, **kwargs) -> None:
+    def __init__(
+        self, *, forehead_occluded: bool = None, eye_occluded: bool = None, mouth_occluded: bool = None, **kwargs
+    ) -> None:
         super(Occlusion, self).__init__(**kwargs)
         self.forehead_occluded = forehead_occluded
         self.eye_occluded = eye_occluded
@@ -1230,19 +1346,28 @@ class OperationStatus(Model):
     """
 
     _validation = {
-        'status': {'required': True},
-        'created_time': {'required': True},
+        "status": {"required": True},
+        "created_time": {"required": True},
     }
 
     _attribute_map = {
-        'status': {'key': 'status', 'type': 'OperationStatusType'},
-        'created_time': {'key': 'createdTime', 'type': 'iso-8601'},
-        'last_action_time': {'key': 'lastActionTime', 'type': 'iso-8601'},
-        'resource_location': {'key': 'resourceLocation', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "status": {"key": "status", "type": "OperationStatusType"},
+        "created_time": {"key": "createdTime", "type": "iso-8601"},
+        "last_action_time": {"key": "lastActionTime", "type": "iso-8601"},
+        "resource_location": {"key": "resourceLocation", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
-    def __init__(self, *, status, created_time, last_action_time=None, resource_location: str=None, message: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        status,
+        created_time,
+        last_action_time=None,
+        resource_location: str = None,
+        message: str = None,
+        **kwargs
+    ) -> None:
         super(OperationStatus, self).__init__(**kwargs)
         self.status = status
         self.created_time = created_time
@@ -1267,16 +1392,16 @@ class PersistedFace(Model):
     """
 
     _validation = {
-        'persisted_face_id': {'required': True},
-        'user_data': {'max_length': 1024},
+        "persisted_face_id": {"required": True},
+        "user_data": {"max_length": 1024},
     }
 
     _attribute_map = {
-        'persisted_face_id': {'key': 'persistedFaceId', 'type': 'str'},
-        'user_data': {'key': 'userData', 'type': 'str'},
+        "persisted_face_id": {"key": "persistedFaceId", "type": "str"},
+        "user_data": {"key": "userData", "type": "str"},
     }
 
-    def __init__(self, *, persisted_face_id: str, user_data: str=None, **kwargs) -> None:
+    def __init__(self, *, persisted_face_id: str, user_data: str = None, **kwargs) -> None:
         super(PersistedFace, self).__init__(**kwargs)
         self.persisted_face_id = persisted_face_id
         self.user_data = user_data
@@ -1300,19 +1425,21 @@ class Person(NameAndUserDataContract):
     """
 
     _validation = {
-        'name': {'max_length': 128},
-        'user_data': {'max_length': 16384},
-        'person_id': {'required': True},
+        "name": {"max_length": 128},
+        "user_data": {"max_length": 16384},
+        "person_id": {"required": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'user_data': {'key': 'userData', 'type': 'str'},
-        'person_id': {'key': 'personId', 'type': 'str'},
-        'persisted_face_ids': {'key': 'persistedFaceIds', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "user_data": {"key": "userData", "type": "str"},
+        "person_id": {"key": "personId", "type": "str"},
+        "persisted_face_ids": {"key": "persistedFaceIds", "type": "[str]"},
     }
 
-    def __init__(self, *, person_id: str, name: str=None, user_data: str=None, persisted_face_ids=None, **kwargs) -> None:
+    def __init__(
+        self, *, person_id: str, name: str = None, user_data: str = None, persisted_face_ids=None, **kwargs
+    ) -> None:
         super(Person, self).__init__(name=name, user_data=user_data, **kwargs)
         self.person_id = person_id
         self.persisted_face_ids = persisted_face_ids
@@ -1338,19 +1465,21 @@ class PersonGroup(MetaDataContract):
     """
 
     _validation = {
-        'name': {'required': True, 'max_length': 128, 'min_length': 1},
-        'user_data': {'max_length': 16384},
-        'person_group_id': {'required': True, 'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
+        "name": {"required": True, "max_length": 128, "min_length": 1},
+        "user_data": {"max_length": 16384},
+        "person_group_id": {"required": True, "max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'user_data': {'key': 'userData', 'type': 'str'},
-        'recognition_model': {'key': 'recognitionModel', 'type': 'str'},
-        'person_group_id': {'key': 'personGroupId', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "user_data": {"key": "userData", "type": "str"},
+        "recognition_model": {"key": "recognitionModel", "type": "str"},
+        "person_group_id": {"key": "personGroupId", "type": "str"},
     }
 
-    def __init__(self, *, name: str, person_group_id: str, user_data: str=None, recognition_model="recognition_01", **kwargs) -> None:
+    def __init__(
+        self, *, name: str, person_group_id: str, user_data: str = None, recognition_model="recognition_01", **kwargs
+    ) -> None:
         super(PersonGroup, self).__init__(name=name, user_data=user_data, recognition_model=recognition_model, **kwargs)
         self.person_group_id = person_group_id
 
@@ -1374,16 +1503,16 @@ class SimilarFace(Model):
     """
 
     _validation = {
-        'confidence': {'required': True},
+        "confidence": {"required": True},
     }
 
     _attribute_map = {
-        'face_id': {'key': 'faceId', 'type': 'str'},
-        'persisted_face_id': {'key': 'persistedFaceId', 'type': 'str'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
+        "face_id": {"key": "faceId", "type": "str"},
+        "persisted_face_id": {"key": "persistedFaceId", "type": "str"},
+        "confidence": {"key": "confidence", "type": "float"},
     }
 
-    def __init__(self, *, confidence: float, face_id: str=None, persisted_face_id: str=None, **kwargs) -> None:
+    def __init__(self, *, confidence: float, face_id: str = None, persisted_face_id: str = None, **kwargs) -> None:
         super(SimilarFace, self).__init__(**kwargs)
         self.face_id = face_id
         self.persisted_face_id = persisted_face_id
@@ -1426,26 +1555,37 @@ class Snapshot(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'account': {'required': True},
-        'type': {'required': True},
-        'apply_scope': {'required': True},
-        'user_data': {'max_length': 16384},
-        'created_time': {'required': True},
-        'last_update_time': {'required': True},
+        "id": {"required": True},
+        "account": {"required": True},
+        "type": {"required": True},
+        "apply_scope": {"required": True},
+        "user_data": {"max_length": 16384},
+        "created_time": {"required": True},
+        "last_update_time": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'account': {'key': 'account', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'SnapshotObjectType'},
-        'apply_scope': {'key': 'applyScope', 'type': '[str]'},
-        'user_data': {'key': 'userData', 'type': 'str'},
-        'created_time': {'key': 'createdTime', 'type': 'iso-8601'},
-        'last_update_time': {'key': 'lastUpdateTime', 'type': 'iso-8601'},
+        "id": {"key": "id", "type": "str"},
+        "account": {"key": "account", "type": "str"},
+        "type": {"key": "type", "type": "SnapshotObjectType"},
+        "apply_scope": {"key": "applyScope", "type": "[str]"},
+        "user_data": {"key": "userData", "type": "str"},
+        "created_time": {"key": "createdTime", "type": "iso-8601"},
+        "last_update_time": {"key": "lastUpdateTime", "type": "iso-8601"},
     }
 
-    def __init__(self, *, id: str, account: str, type, apply_scope, created_time, last_update_time, user_data: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str,
+        account: str,
+        type,
+        apply_scope,
+        created_time,
+        last_update_time,
+        user_data: str = None,
+        **kwargs
+    ) -> None:
         super(Snapshot, self).__init__(**kwargs)
         self.id = id
         self.account = account
@@ -1480,20 +1620,20 @@ class TakeSnapshotRequest(Model):
     """
 
     _validation = {
-        'type': {'required': True},
-        'object_id': {'required': True, 'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
-        'apply_scope': {'required': True},
-        'user_data': {'max_length': 16384},
+        "type": {"required": True},
+        "object_id": {"required": True, "max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
+        "apply_scope": {"required": True},
+        "user_data": {"max_length": 16384},
     }
 
     _attribute_map = {
-        'type': {'key': 'type', 'type': 'SnapshotObjectType'},
-        'object_id': {'key': 'objectId', 'type': 'str'},
-        'apply_scope': {'key': 'applyScope', 'type': '[str]'},
-        'user_data': {'key': 'userData', 'type': 'str'},
+        "type": {"key": "type", "type": "SnapshotObjectType"},
+        "object_id": {"key": "objectId", "type": "str"},
+        "apply_scope": {"key": "applyScope", "type": "[str]"},
+        "user_data": {"key": "userData", "type": "str"},
     }
 
-    def __init__(self, *, type, object_id: str, apply_scope, user_data: str=None, **kwargs) -> None:
+    def __init__(self, *, type, object_id: str, apply_scope, user_data: str = None, **kwargs) -> None:
         super(TakeSnapshotRequest, self).__init__(**kwargs)
         self.type = type
         self.object_id = object_id
@@ -1535,19 +1675,21 @@ class TrainingStatus(Model):
     """
 
     _validation = {
-        'status': {'required': True},
-        'created': {'required': True},
+        "status": {"required": True},
+        "created": {"required": True},
     }
 
     _attribute_map = {
-        'status': {'key': 'status', 'type': 'TrainingStatusType'},
-        'created': {'key': 'createdDateTime', 'type': 'iso-8601'},
-        'last_action': {'key': 'lastActionDateTime', 'type': 'iso-8601'},
-        'last_successful_training': {'key': 'lastSuccessfulTrainingDateTime', 'type': 'iso-8601'},
-        'message': {'key': 'message', 'type': 'str'},
+        "status": {"key": "status", "type": "TrainingStatusType"},
+        "created": {"key": "createdDateTime", "type": "iso-8601"},
+        "last_action": {"key": "lastActionDateTime", "type": "iso-8601"},
+        "last_successful_training": {"key": "lastSuccessfulTrainingDateTime", "type": "iso-8601"},
+        "message": {"key": "message", "type": "str"},
     }
 
-    def __init__(self, *, status, created, last_action=None, last_successful_training=None, message: str=None, **kwargs) -> None:
+    def __init__(
+        self, *, status, created, last_action=None, last_successful_training=None, message: str = None, **kwargs
+    ) -> None:
         super(TrainingStatus, self).__init__(**kwargs)
         self.status = status
         self.created = created
@@ -1565,14 +1707,14 @@ class UpdateFaceRequest(Model):
     """
 
     _validation = {
-        'user_data': {'max_length': 1024},
+        "user_data": {"max_length": 1024},
     }
 
     _attribute_map = {
-        'user_data': {'key': 'userData', 'type': 'str'},
+        "user_data": {"key": "userData", "type": "str"},
     }
 
-    def __init__(self, *, user_data: str=None, **kwargs) -> None:
+    def __init__(self, *, user_data: str = None, **kwargs) -> None:
         super(UpdateFaceRequest, self).__init__(**kwargs)
         self.user_data = user_data
 
@@ -1592,15 +1734,15 @@ class UpdateSnapshotRequest(Model):
     """
 
     _validation = {
-        'user_data': {'max_length': 16384},
+        "user_data": {"max_length": 16384},
     }
 
     _attribute_map = {
-        'apply_scope': {'key': 'applyScope', 'type': '[str]'},
-        'user_data': {'key': 'userData', 'type': 'str'},
+        "apply_scope": {"key": "applyScope", "type": "[str]"},
+        "user_data": {"key": "userData", "type": "str"},
     }
 
-    def __init__(self, *, apply_scope=None, user_data: str=None, **kwargs) -> None:
+    def __init__(self, *, apply_scope=None, user_data: str = None, **kwargs) -> None:
         super(UpdateSnapshotRequest, self).__init__(**kwargs)
         self.apply_scope = apply_scope
         self.user_data = user_data
@@ -1620,13 +1762,13 @@ class VerifyFaceToFaceRequest(Model):
     """
 
     _validation = {
-        'face_id1': {'required': True},
-        'face_id2': {'required': True},
+        "face_id1": {"required": True},
+        "face_id2": {"required": True},
     }
 
     _attribute_map = {
-        'face_id1': {'key': 'faceId1', 'type': 'str'},
-        'face_id2': {'key': 'faceId2', 'type': 'str'},
+        "face_id1": {"key": "faceId1", "type": "str"},
+        "face_id2": {"key": "faceId2", "type": "str"},
     }
 
     def __init__(self, *, face_id1: str, face_id2: str, **kwargs) -> None:
@@ -1659,20 +1801,22 @@ class VerifyFaceToPersonRequest(Model):
     """
 
     _validation = {
-        'face_id': {'required': True},
-        'person_group_id': {'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
-        'large_person_group_id': {'max_length': 64, 'pattern': r'^[a-z0-9-_]+$'},
-        'person_id': {'required': True},
+        "face_id": {"required": True},
+        "person_group_id": {"max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
+        "large_person_group_id": {"max_length": 64, "pattern": r"^[a-z0-9-_]+$"},
+        "person_id": {"required": True},
     }
 
     _attribute_map = {
-        'face_id': {'key': 'faceId', 'type': 'str'},
-        'person_group_id': {'key': 'personGroupId', 'type': 'str'},
-        'large_person_group_id': {'key': 'largePersonGroupId', 'type': 'str'},
-        'person_id': {'key': 'personId', 'type': 'str'},
+        "face_id": {"key": "faceId", "type": "str"},
+        "person_group_id": {"key": "personGroupId", "type": "str"},
+        "large_person_group_id": {"key": "largePersonGroupId", "type": "str"},
+        "person_id": {"key": "personId", "type": "str"},
     }
 
-    def __init__(self, *, face_id: str, person_id: str, person_group_id: str=None, large_person_group_id: str=None, **kwargs) -> None:
+    def __init__(
+        self, *, face_id: str, person_id: str, person_group_id: str = None, large_person_group_id: str = None, **kwargs
+    ) -> None:
         super(VerifyFaceToPersonRequest, self).__init__(**kwargs)
         self.face_id = face_id
         self.person_group_id = person_group_id
@@ -1698,13 +1842,13 @@ class VerifyResult(Model):
     """
 
     _validation = {
-        'is_identical': {'required': True},
-        'confidence': {'required': True},
+        "is_identical": {"required": True},
+        "confidence": {"required": True},
     }
 
     _attribute_map = {
-        'is_identical': {'key': 'isIdentical', 'type': 'bool'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
+        "is_identical": {"key": "isIdentical", "type": "bool"},
+        "confidence": {"key": "confidence", "type": "float"},
     }
 
     def __init__(self, *, is_identical: bool, confidence: float, **kwargs) -> None:

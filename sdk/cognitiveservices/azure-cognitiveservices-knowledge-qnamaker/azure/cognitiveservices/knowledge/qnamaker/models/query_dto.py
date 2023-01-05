@@ -49,29 +49,29 @@ class QueryDTO(Model):
     """
 
     _attribute_map = {
-        'qna_id': {'key': 'qnaId', 'type': 'str'},
-        'question': {'key': 'question', 'type': 'str'},
-        'top': {'key': 'top', 'type': 'int'},
-        'user_id': {'key': 'userId', 'type': 'str'},
-        'is_test': {'key': 'isTest', 'type': 'bool'},
-        'score_threshold': {'key': 'scoreThreshold', 'type': 'float'},
-        'context': {'key': 'context', 'type': 'QueryDTOContext'},
-        'ranker_type': {'key': 'rankerType', 'type': 'str'},
-        'strict_filters': {'key': 'strictFilters', 'type': '[MetadataDTO]'},
-        'strict_filters_compound_operation_type': {'key': 'strictFiltersCompoundOperationType', 'type': 'str'},
-        'answer_span_request': {'key': 'answerSpanRequest', 'type': 'QueryDTOAnswerSpanRequest'},
+        "qna_id": {"key": "qnaId", "type": "str"},
+        "question": {"key": "question", "type": "str"},
+        "top": {"key": "top", "type": "int"},
+        "user_id": {"key": "userId", "type": "str"},
+        "is_test": {"key": "isTest", "type": "bool"},
+        "score_threshold": {"key": "scoreThreshold", "type": "float"},
+        "context": {"key": "context", "type": "QueryDTOContext"},
+        "ranker_type": {"key": "rankerType", "type": "str"},
+        "strict_filters": {"key": "strictFilters", "type": "[MetadataDTO]"},
+        "strict_filters_compound_operation_type": {"key": "strictFiltersCompoundOperationType", "type": "str"},
+        "answer_span_request": {"key": "answerSpanRequest", "type": "QueryDTOAnswerSpanRequest"},
     }
 
     def __init__(self, **kwargs):
         super(QueryDTO, self).__init__(**kwargs)
-        self.qna_id = kwargs.get('qna_id', None)
-        self.question = kwargs.get('question', None)
-        self.top = kwargs.get('top', None)
-        self.user_id = kwargs.get('user_id', None)
-        self.is_test = kwargs.get('is_test', None)
-        self.score_threshold = kwargs.get('score_threshold', None)
-        self.context = kwargs.get('context', None)
-        self.ranker_type = kwargs.get('ranker_type', None)
-        self.strict_filters = kwargs.get('strict_filters', None)
-        self.strict_filters_compound_operation_type = kwargs.get('strict_filters_compound_operation_type', None)
-        self.answer_span_request = kwargs.get('answer_span_request', None)
+        self.qna_id = kwargs.get("qna_id", None)
+        self.question = kwargs.get("question", None)
+        self.top = kwargs.get("top", None)
+        self.user_id = kwargs.get("user_id", None)
+        self.is_test = kwargs.get("is_test", None)
+        self.score_threshold = kwargs.get("score_threshold", None)
+        self.context = kwargs.get("context", None)
+        self.ranker_type = kwargs.get("ranker_type", None)
+        self.strict_filters = kwargs.get("strict_filters", None)
+        self.strict_filters_compound_operation_type = kwargs.get("strict_filters_compound_operation_type", None)
+        self.answer_span_request = kwargs.get("answer_span_request", None)

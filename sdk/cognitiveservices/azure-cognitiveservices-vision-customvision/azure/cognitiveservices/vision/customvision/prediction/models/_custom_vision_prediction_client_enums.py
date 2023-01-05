@@ -67,18 +67,28 @@ class CustomVisionErrorCodes(str, Enum):
     bad_request_image_dimensions = "BadRequestImageDimensions"
     bad_request_image_exceeded_count = "BadRequestImageExceededCount"
     bad_request_training_not_needed = "BadRequestTrainingNotNeeded"
-    bad_request_training_not_needed_but_training_pipeline_updated = "BadRequestTrainingNotNeededButTrainingPipelineUpdated"
+    bad_request_training_not_needed_but_training_pipeline_updated = (
+        "BadRequestTrainingNotNeededButTrainingPipelineUpdated"
+    )
     bad_request_training_validation_failed = "BadRequestTrainingValidationFailed"
     bad_request_classification_training_validation_failed = "BadRequestClassificationTrainingValidationFailed"
-    bad_request_multi_class_classification_training_validation_failed = "BadRequestMultiClassClassificationTrainingValidationFailed"
-    bad_request_multi_label_classification_training_validation_failed = "BadRequestMultiLabelClassificationTrainingValidationFailed"
+    bad_request_multi_class_classification_training_validation_failed = (
+        "BadRequestMultiClassClassificationTrainingValidationFailed"
+    )
+    bad_request_multi_label_classification_training_validation_failed = (
+        "BadRequestMultiLabelClassificationTrainingValidationFailed"
+    )
     bad_request_detection_training_validation_failed = "BadRequestDetectionTrainingValidationFailed"
     bad_request_training_already_in_progress = "BadRequestTrainingAlreadyInProgress"
     bad_request_detection_training_not_allow_negative_tag = "BadRequestDetectionTrainingNotAllowNegativeTag"
     bad_request_invalid_email_address = "BadRequestInvalidEmailAddress"
     bad_request_domain_not_supported_for_advanced_training = "BadRequestDomainNotSupportedForAdvancedTraining"
-    bad_request_export_platform_not_supported_for_advanced_training = "BadRequestExportPlatformNotSupportedForAdvancedTraining"
-    bad_request_reserved_budget_in_hours_not_enough_for_advanced_training = "BadRequestReservedBudgetInHoursNotEnoughForAdvancedTraining"
+    bad_request_export_platform_not_supported_for_advanced_training = (
+        "BadRequestExportPlatformNotSupportedForAdvancedTraining"
+    )
+    bad_request_reserved_budget_in_hours_not_enough_for_advanced_training = (
+        "BadRequestReservedBudgetInHoursNotEnoughForAdvancedTraining"
+    )
     bad_request_export_validation_failed = "BadRequestExportValidationFailed"
     bad_request_export_already_in_progress = "BadRequestExportAlreadyInProgress"
     bad_request_prediction_ids_missing = "BadRequestPredictionIdsMissing"

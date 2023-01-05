@@ -15,9 +15,7 @@ from .. import models
 
 
 class CustomVisionTrainingClientOperationsMixin(object):
-
-    def get_domains(
-            self, custom_headers=None, raw=False, **operation_config):
+    def get_domains(self, custom_headers=None, raw=False, **operation_config):
         """Get a list of the available domains.
 
         :param dict custom_headers: headers that will be added to the request
@@ -33,9 +31,9 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_domains.metadata['url']
+        url = self.get_domains.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -44,7 +42,7 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -57,17 +55,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[Domain]', response)
+            deserialized = self._deserialize("[Domain]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_domains.metadata = {'url': '/domains'}
 
-    def get_domain(
-            self, domain_id, custom_headers=None, raw=False, **operation_config):
+    get_domains.metadata = {"url": "/domains"}
+
+    def get_domain(self, domain_id, custom_headers=None, raw=False, **operation_config):
         """Get information about a specific domain.
 
         :param domain_id: The id of the domain to get information about.
@@ -85,10 +83,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_domain.metadata['url']
+        url = self.get_domain.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'domainId': self._serialize.url("domain_id", domain_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "domainId": self._serialize.url("domain_id", domain_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -97,7 +95,7 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -110,17 +108,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Domain', response)
+            deserialized = self._deserialize("Domain", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_domain.metadata = {'url': '/domains/{domainId}'}
 
-    def get_projects(
-            self, custom_headers=None, raw=False, **operation_config):
+    get_domain.metadata = {"url": "/domains/{domainId}"}
+
+    def get_projects(self, custom_headers=None, raw=False, **operation_config):
         """Get your projects.
 
         :param dict custom_headers: headers that will be added to the request
@@ -136,9 +134,9 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_projects.metadata['url']
+        url = self.get_projects.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -147,7 +145,7 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -160,17 +158,29 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[Project]', response)
+            deserialized = self._deserialize("[Project]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_projects.metadata = {'url': '/projects'}
+
+    get_projects.metadata = {"url": "/projects"}
 
     def create_project(
-            self, name, description=None, domain_id=None, classification_type=None, target_export_platforms=None, export_model_container_uri=None, notification_queue_uri=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        name,
+        description=None,
+        domain_id=None,
+        classification_type=None,
+        target_export_platforms=None,
+        export_model_container_uri=None,
+        notification_queue_uri=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Create a project.
 
         :param name: Name of the project.
@@ -208,37 +218,43 @@ class CustomVisionTrainingClientOperationsMixin(object):
         """
         options = None
         if export_model_container_uri is not None or notification_queue_uri is not None:
-            options = models.CreateProjectOptions(export_model_container_uri=export_model_container_uri, notification_queue_uri=notification_queue_uri)
+            options = models.CreateProjectOptions(
+                export_model_container_uri=export_model_container_uri, notification_queue_uri=notification_queue_uri
+            )
 
         # Construct URL
-        url = self.create_project.metadata['url']
+        url = self.create_project.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['name'] = self._serialize.query("name", name, 'str')
+        query_parameters["name"] = self._serialize.query("name", name, "str")
         if description is not None:
-            query_parameters['description'] = self._serialize.query("description", description, 'str')
+            query_parameters["description"] = self._serialize.query("description", description, "str")
         if domain_id is not None:
-            query_parameters['domainId'] = self._serialize.query("domain_id", domain_id, 'str')
+            query_parameters["domainId"] = self._serialize.query("domain_id", domain_id, "str")
         if classification_type is not None:
-            query_parameters['classificationType'] = self._serialize.query("classification_type", classification_type, 'str')
+            query_parameters["classificationType"] = self._serialize.query(
+                "classification_type", classification_type, "str"
+            )
         if target_export_platforms is not None:
-            query_parameters['targetExportPlatforms'] = self._serialize.query("target_export_platforms", target_export_platforms, '[str]', div=',')
+            query_parameters["targetExportPlatforms"] = self._serialize.query(
+                "target_export_platforms", target_export_platforms, "[str]", div=","
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
         if options is not None:
-            body_content = self._serialize.body(options, 'CreateProjectOptions')
+            body_content = self._serialize.body(options, "CreateProjectOptions")
         else:
             body_content = None
 
@@ -251,17 +267,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Project', response)
+            deserialized = self._deserialize("Project", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_project.metadata = {'url': '/projects'}
 
-    def get_project(
-            self, project_id, custom_headers=None, raw=False, **operation_config):
+    create_project.metadata = {"url": "/projects"}
+
+    def get_project(self, project_id, custom_headers=None, raw=False, **operation_config):
         """Get a specific project.
 
         :param project_id: The id of the project to get.
@@ -279,10 +295,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_project.metadata['url']
+        url = self.get_project.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -291,7 +307,7 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -304,17 +320,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Project', response)
+            deserialized = self._deserialize("Project", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_project.metadata = {'url': '/projects/{projectId}'}
 
-    def delete_project(
-            self, project_id, custom_headers=None, raw=False, **operation_config):
+    get_project.metadata = {"url": "/projects/{projectId}"}
+
+    def delete_project(self, project_id, custom_headers=None, raw=False, **operation_config):
         """Delete a specific project.
 
         :param project_id: The project id.
@@ -330,10 +346,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.delete_project.metadata['url']
+        url = self.delete_project.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -355,10 +371,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete_project.metadata = {'url': '/projects/{projectId}'}
 
-    def update_project(
-            self, project_id, updated_project, custom_headers=None, raw=False, **operation_config):
+    delete_project.metadata = {"url": "/projects/{projectId}"}
+
+    def update_project(self, project_id, updated_project, custom_headers=None, raw=False, **operation_config):
         """Update a specific project.
 
         :param project_id: The id of the project to update.
@@ -379,10 +395,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.update_project.metadata['url']
+        url = self.update_project.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -391,13 +407,13 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(updated_project, 'Project')
+        body_content = self._serialize.body(updated_project, "Project")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -408,17 +424,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Project', response)
+            deserialized = self._deserialize("Project", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_project.metadata = {'url': '/projects/{projectId}'}
 
-    def get_artifact(
-            self, project_id, path, custom_headers=None, raw=False, callback=None, **operation_config):
+    update_project.metadata = {"url": "/projects/{projectId}"}
+
+    def get_artifact(self, project_id, path, custom_headers=None, raw=False, callback=None, **operation_config):
         """Get artifact content from blob storage, based on artifact relative path
         in the blob.
 
@@ -442,20 +458,20 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`HttpOperationError<msrest.exceptions.HttpOperationError>`
         """
         # Construct URL
-        url = self.get_artifact.metadata['url']
+        url = self.get_artifact.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['path'] = self._serialize.query("path", path, 'str')
+        query_parameters["path"] = self._serialize.query("path", path, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -473,10 +489,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
             return client_raw_response
 
         return deserialized
-    get_artifact.metadata = {'url': '/projects/{projectId}/artifacts'}
 
-    def export_project(
-            self, project_id, custom_headers=None, raw=False, **operation_config):
+    get_artifact.metadata = {"url": "/projects/{projectId}/artifacts"}
+
+    def export_project(self, project_id, custom_headers=None, raw=False, **operation_config):
         """Exports a project.
 
         :param project_id: The project id of the project to export.
@@ -494,10 +510,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.export_project.metadata['url']
+        url = self.export_project.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -506,7 +522,7 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -519,17 +535,30 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ProjectExport', response)
+            deserialized = self._deserialize("ProjectExport", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    export_project.metadata = {'url': '/projects/{projectId}/export'}
+
+    export_project.metadata = {"url": "/projects/{projectId}/export"}
 
     def get_images(
-            self, project_id, iteration_id=None, tag_ids=None, tagging_status=None, filter=None, order_by=None, take=50, skip=0, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        iteration_id=None,
+        tag_ids=None,
+        tagging_status=None,
+        filter=None,
+        order_by=None,
+        take=50,
+        skip=0,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Get images for a given project iteration or workspace.
 
         This API supports batching and range selection. By default it will only
@@ -581,33 +610,35 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_images.metadata['url']
+        url = self.get_images.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if iteration_id is not None:
-            query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+            query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
         if tag_ids is not None:
-            query_parameters['tagIds'] = self._serialize.query("tag_ids", tag_ids, '[str]', div=',', max_items=20, min_items=0)
+            query_parameters["tagIds"] = self._serialize.query(
+                "tag_ids", tag_ids, "[str]", div=",", max_items=20, min_items=0
+            )
         if tagging_status is not None:
-            query_parameters['taggingStatus'] = self._serialize.query("tagging_status", tagging_status, 'str')
+            query_parameters["taggingStatus"] = self._serialize.query("tagging_status", tagging_status, "str")
         if filter is not None:
-            query_parameters['$filter'] = self._serialize.query("filter", filter, 'str')
+            query_parameters["$filter"] = self._serialize.query("filter", filter, "str")
         if order_by is not None:
-            query_parameters['orderBy'] = self._serialize.query("order_by", order_by, 'str')
+            query_parameters["orderBy"] = self._serialize.query("order_by", order_by, "str")
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=256, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=256, minimum=0)
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int')
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -620,17 +651,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[Image]', response)
+            deserialized = self._deserialize("[Image]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_images.metadata = {'url': '/projects/{projectId}/images'}
+
+    get_images.metadata = {"url": "/projects/{projectId}/images"}
 
     def create_images_from_data(
-            self, project_id, image_data, tag_ids=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, image_data, tag_ids=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Add the provided images to the set of training images.
 
         This API accepts body content as multipart/form-data and
@@ -662,28 +695,30 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.create_images_from_data.metadata['url']
+        url = self.create_images_from_data.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if tag_ids is not None:
-            query_parameters['tagIds'] = self._serialize.query("tag_ids", tag_ids, '[str]', div=',', max_items=20, min_items=0)
+            query_parameters["tagIds"] = self._serialize.query(
+                "tag_ids", tag_ids, "[str]", div=",", max_items=20, min_items=0
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'multipart/form-data'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "multipart/form-data"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct form data
         form_data_content = {
-            'imageData': image_data,
+            "imageData": image_data,
         }
 
         # Construct and send request
@@ -695,19 +730,28 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageCreateSummary', response)
+            deserialized = self._deserialize("ImageCreateSummary", response)
         if response.status_code == 207:
-            deserialized = self._deserialize('ImageCreateSummary', response)
+            deserialized = self._deserialize("ImageCreateSummary", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_images_from_data.metadata = {'url': '/projects/{projectId}/images'}
+
+    create_images_from_data.metadata = {"url": "/projects/{projectId}/images"}
 
     def delete_images(
-            self, project_id, image_ids=None, all_images=None, all_iterations=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        image_ids=None,
+        all_images=None,
+        all_iterations=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Delete images from the set of training images.
 
         :param project_id: The project id.
@@ -734,21 +778,23 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.delete_images.metadata['url']
+        url = self.delete_images.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if image_ids is not None:
-            query_parameters['imageIds'] = self._serialize.query("image_ids", image_ids, '[str]', div=',', max_items=256, min_items=0)
+            query_parameters["imageIds"] = self._serialize.query(
+                "image_ids", image_ids, "[str]", div=",", max_items=256, min_items=0
+            )
         if all_images is not None:
-            query_parameters['allImages'] = self._serialize.query("all_images", all_images, 'bool')
+            query_parameters["allImages"] = self._serialize.query("all_images", all_images, "bool")
         if all_iterations is not None:
-            query_parameters['allIterations'] = self._serialize.query("all_iterations", all_iterations, 'bool')
+            query_parameters["allIterations"] = self._serialize.query("all_iterations", all_iterations, "bool")
 
         # Construct headers
         header_parameters = {}
@@ -765,10 +811,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete_images.metadata = {'url': '/projects/{projectId}/images'}
 
-    def get_image_region_proposals(
-            self, project_id, image_id, custom_headers=None, raw=False, **operation_config):
+    delete_images.metadata = {"url": "/projects/{projectId}/images"}
+
+    def get_image_region_proposals(self, project_id, image_id, custom_headers=None, raw=False, **operation_config):
         """Get region proposals for an image. Returns empty array if no proposals
         are found.
 
@@ -792,11 +838,11 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_image_region_proposals.metadata['url']
+        url = self.get_image_region_proposals.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'imageId': self._serialize.url("image_id", image_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "imageId": self._serialize.url("image_id", image_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -805,7 +851,7 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -818,17 +864,27 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageRegionProposal', response)
+            deserialized = self._deserialize("ImageRegionProposal", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_image_region_proposals.metadata = {'url': '/projects/{projectId}/images/{imageId}/regionproposals'}
+
+    get_image_region_proposals.metadata = {"url": "/projects/{projectId}/images/{imageId}/regionproposals"}
 
     def get_image_count(
-            self, project_id, iteration_id=None, tagging_status=None, filter=None, tag_ids=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        iteration_id=None,
+        tagging_status=None,
+        filter=None,
+        tag_ids=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Get the number of images.
 
         The filtering is on an and/or relationship. For example, if the
@@ -865,27 +921,27 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_image_count.metadata['url']
+        url = self.get_image_count.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if iteration_id is not None:
-            query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+            query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
         if tagging_status is not None:
-            query_parameters['taggingStatus'] = self._serialize.query("tagging_status", tagging_status, 'str')
+            query_parameters["taggingStatus"] = self._serialize.query("tagging_status", tagging_status, "str")
         if filter is not None:
-            query_parameters['$filter'] = self._serialize.query("filter", filter, 'str')
+            query_parameters["$filter"] = self._serialize.query("filter", filter, "str")
         if tag_ids is not None:
-            query_parameters['tagIds'] = self._serialize.query("tag_ids", tag_ids, '[str]', div=',')
+            query_parameters["tagIds"] = self._serialize.query("tag_ids", tag_ids, "[str]", div=",")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -898,17 +954,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('int', response)
+            deserialized = self._deserialize("int", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_image_count.metadata = {'url': '/projects/{projectId}/images/count'}
 
-    def create_images_from_files(
-            self, project_id, batch, custom_headers=None, raw=False, **operation_config):
+    get_image_count.metadata = {"url": "/projects/{projectId}/images/count"}
+
+    def create_images_from_files(self, project_id, batch, custom_headers=None, raw=False, **operation_config):
         """Add the provided batch of images to the set of training images.
 
         This API accepts a batch of files, and optionally tags, to create
@@ -937,10 +993,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.create_images_from_files.metadata['url']
+        url = self.create_images_from_files.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -949,13 +1005,13 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(batch, 'ImageFileCreateBatch')
+        body_content = self._serialize.body(batch, "ImageFileCreateBatch")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -966,19 +1022,21 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageCreateSummary', response)
+            deserialized = self._deserialize("ImageCreateSummary", response)
         if response.status_code == 207:
-            deserialized = self._deserialize('ImageCreateSummary', response)
+            deserialized = self._deserialize("ImageCreateSummary", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_images_from_files.metadata = {'url': '/projects/{projectId}/images/files'}
+
+    create_images_from_files.metadata = {"url": "/projects/{projectId}/images/files"}
 
     def get_images_by_ids(
-            self, project_id, image_ids=None, iteration_id=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, image_ids=None, iteration_id=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Get images by id for a given project iteration.
 
         This API will return a set of Images for the specified tags and
@@ -1004,23 +1062,25 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_images_by_ids.metadata['url']
+        url = self.get_images_by_ids.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if image_ids is not None:
-            query_parameters['imageIds'] = self._serialize.query("image_ids", image_ids, '[str]', div=',', max_items=256, min_items=0)
+            query_parameters["imageIds"] = self._serialize.query(
+                "image_ids", image_ids, "[str]", div=",", max_items=256, min_items=0
+            )
         if iteration_id is not None:
-            query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+            query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1033,17 +1093,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[Image]', response)
+            deserialized = self._deserialize("[Image]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_images_by_ids.metadata = {'url': '/projects/{projectId}/images/id'}
+
+    get_images_by_ids.metadata = {"url": "/projects/{projectId}/images/id"}
 
     def update_image_metadata(
-            self, project_id, image_ids, metadata, custom_headers=None, raw=False, **operation_config):
+        self, project_id, image_ids, metadata, custom_headers=None, raw=False, **operation_config
+    ):
         """Update metadata of images.
 
         This API accepts a batch of image Ids, and metadata, to update images.
@@ -1070,26 +1132,28 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.update_image_metadata.metadata['url']
+        url = self.update_image_metadata.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['imageIds'] = self._serialize.query("image_ids", image_ids, '[str]', div=',', max_items=256, min_items=0)
+        query_parameters["imageIds"] = self._serialize.query(
+            "image_ids", image_ids, "[str]", div=",", max_items=256, min_items=0
+        )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(metadata, '{str}')
+        body_content = self._serialize.body(metadata, "{str}")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -1100,19 +1164,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageMetadataUpdateSummary', response)
+            deserialized = self._deserialize("ImageMetadataUpdateSummary", response)
         if response.status_code == 207:
-            deserialized = self._deserialize('ImageMetadataUpdateSummary', response)
+            deserialized = self._deserialize("ImageMetadataUpdateSummary", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_image_metadata.metadata = {'url': '/projects/{projectId}/images/metadata'}
 
-    def create_images_from_predictions(
-            self, project_id, batch, custom_headers=None, raw=False, **operation_config):
+    update_image_metadata.metadata = {"url": "/projects/{projectId}/images/metadata"}
+
+    def create_images_from_predictions(self, project_id, batch, custom_headers=None, raw=False, **operation_config):
         """Add the specified predicted images to the set of training images.
 
         This API creates a batch of images from predicted images specified.
@@ -1141,10 +1205,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.create_images_from_predictions.metadata['url']
+        url = self.create_images_from_predictions.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1153,13 +1217,13 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(batch, 'ImageIdCreateBatch')
+        body_content = self._serialize.body(batch, "ImageIdCreateBatch")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -1170,19 +1234,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageCreateSummary', response)
+            deserialized = self._deserialize("ImageCreateSummary", response)
         if response.status_code == 207:
-            deserialized = self._deserialize('ImageCreateSummary', response)
+            deserialized = self._deserialize("ImageCreateSummary", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_images_from_predictions.metadata = {'url': '/projects/{projectId}/images/predictions'}
 
-    def create_image_regions(
-            self, project_id, regions=None, custom_headers=None, raw=False, **operation_config):
+    create_images_from_predictions.metadata = {"url": "/projects/{projectId}/images/predictions"}
+
+    def create_image_regions(self, project_id, regions=None, custom_headers=None, raw=False, **operation_config):
         """Create a set of image regions.
 
         This API accepts a batch of image regions, and optionally tags, to
@@ -1213,10 +1277,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
         batch = models.ImageRegionCreateBatch(regions=regions)
 
         # Construct URL
-        url = self.create_image_regions.metadata['url']
+        url = self.create_image_regions.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1225,13 +1289,13 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(batch, 'ImageRegionCreateBatch')
+        body_content = self._serialize.body(batch, "ImageRegionCreateBatch")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -1242,19 +1306,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageRegionCreateSummary', response)
+            deserialized = self._deserialize("ImageRegionCreateSummary", response)
         if response.status_code == 207:
-            deserialized = self._deserialize('ImageRegionCreateSummary', response)
+            deserialized = self._deserialize("ImageRegionCreateSummary", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_image_regions.metadata = {'url': '/projects/{projectId}/images/regions'}
 
-    def delete_image_regions(
-            self, project_id, region_ids, custom_headers=None, raw=False, **operation_config):
+    create_image_regions.metadata = {"url": "/projects/{projectId}/images/regions"}
+
+    def delete_image_regions(self, project_id, region_ids, custom_headers=None, raw=False, **operation_config):
         """Delete a set of image regions.
 
         :param project_id: The project id.
@@ -1272,16 +1336,18 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.delete_image_regions.metadata['url']
+        url = self.delete_image_regions.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['regionIds'] = self._serialize.query("region_ids", region_ids, '[str]', div=',', max_items=64, min_items=0)
+        query_parameters["regionIds"] = self._serialize.query(
+            "region_ids", region_ids, "[str]", div=",", max_items=64, min_items=0
+        )
 
         # Construct headers
         header_parameters = {}
@@ -1298,10 +1364,12 @@ class CustomVisionTrainingClientOperationsMixin(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete_image_regions.metadata = {'url': '/projects/{projectId}/images/regions'}
+
+    delete_image_regions.metadata = {"url": "/projects/{projectId}/images/regions"}
 
     def query_suggested_images(
-            self, project_id, iteration_id, query, custom_headers=None, raw=False, **operation_config):
+        self, project_id, iteration_id, query, custom_headers=None, raw=False, **operation_config
+    ):
         """Get untagged images whose suggested tags match given tags. Returns
         empty array if no images are found.
 
@@ -1329,26 +1397,26 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.query_suggested_images.metadata['url']
+        url = self.query_suggested_images.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+        query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(query, 'SuggestedTagAndRegionQueryToken')
+        body_content = self._serialize.body(query, "SuggestedTagAndRegionQueryToken")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -1359,17 +1427,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('SuggestedTagAndRegionQuery', response)
+            deserialized = self._deserialize("SuggestedTagAndRegionQuery", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    query_suggested_images.metadata = {'url': '/projects/{projectId}/images/suggested'}
+
+    query_suggested_images.metadata = {"url": "/projects/{projectId}/images/suggested"}
 
     def query_suggested_image_count(
-            self, project_id, iteration_id, tag_ids=None, threshold=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, iteration_id, tag_ids=None, threshold=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Get count of images whose suggested tags match given tags and their
         probabilities are greater than or equal to the given threshold. Returns
         count as 0 if none found.
@@ -1400,26 +1470,26 @@ class CustomVisionTrainingClientOperationsMixin(object):
         query = models.TagFilter(tag_ids=tag_ids, threshold=threshold)
 
         # Construct URL
-        url = self.query_suggested_image_count.metadata['url']
+        url = self.query_suggested_image_count.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+        query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(query, 'TagFilter')
+        body_content = self._serialize.body(query, "TagFilter")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -1430,17 +1500,28 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('{int}', response)
+            deserialized = self._deserialize("{int}", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    query_suggested_image_count.metadata = {'url': '/projects/{projectId}/images/suggested/count'}
+
+    query_suggested_image_count.metadata = {"url": "/projects/{projectId}/images/suggested/count"}
 
     def get_tagged_images(
-            self, project_id, iteration_id=None, tag_ids=None, order_by=None, take=50, skip=0, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        iteration_id=None,
+        tag_ids=None,
+        order_by=None,
+        take=50,
+        skip=0,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Get tagged images for a given project iteration.
 
         This API supports batching and range selection. By default it will only
@@ -1481,29 +1562,31 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_tagged_images.metadata['url']
+        url = self.get_tagged_images.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if iteration_id is not None:
-            query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+            query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
         if tag_ids is not None:
-            query_parameters['tagIds'] = self._serialize.query("tag_ids", tag_ids, '[str]', div=',', max_items=20, min_items=0)
+            query_parameters["tagIds"] = self._serialize.query(
+                "tag_ids", tag_ids, "[str]", div=",", max_items=20, min_items=0
+            )
         if order_by is not None:
-            query_parameters['orderBy'] = self._serialize.query("order_by", order_by, 'str')
+            query_parameters["orderBy"] = self._serialize.query("order_by", order_by, "str")
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=256, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=256, minimum=0)
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int')
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1516,17 +1599,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[Image]', response)
+            deserialized = self._deserialize("[Image]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_tagged_images.metadata = {'url': '/projects/{projectId}/images/tagged'}
+
+    get_tagged_images.metadata = {"url": "/projects/{projectId}/images/tagged"}
 
     def get_tagged_image_count(
-            self, project_id, iteration_id=None, tag_ids=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, iteration_id=None, tag_ids=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets the number of images tagged with the provided {tagIds}.
 
         The filtering is on an and/or relationship. For example, if the
@@ -1552,23 +1637,23 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_tagged_image_count.metadata['url']
+        url = self.get_tagged_image_count.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if iteration_id is not None:
-            query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+            query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
         if tag_ids is not None:
-            query_parameters['tagIds'] = self._serialize.query("tag_ids", tag_ids, '[str]', div=',')
+            query_parameters["tagIds"] = self._serialize.query("tag_ids", tag_ids, "[str]", div=",")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1581,17 +1666,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('int', response)
+            deserialized = self._deserialize("int", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_tagged_image_count.metadata = {'url': '/projects/{projectId}/images/tagged/count'}
 
-    def create_image_tags(
-            self, project_id, tags=None, custom_headers=None, raw=False, **operation_config):
+    get_tagged_image_count.metadata = {"url": "/projects/{projectId}/images/tagged/count"}
+
+    def create_image_tags(self, project_id, tags=None, custom_headers=None, raw=False, **operation_config):
         """Associate a set of images with a set of tags.
 
         :param project_id: The project id.
@@ -1614,10 +1699,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
         batch = models.ImageTagCreateBatch(tags=tags)
 
         # Construct URL
-        url = self.create_image_tags.metadata['url']
+        url = self.create_image_tags.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1626,13 +1711,13 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(batch, 'ImageTagCreateBatch')
+        body_content = self._serialize.body(batch, "ImageTagCreateBatch")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -1643,17 +1728,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageTagCreateSummary', response)
+            deserialized = self._deserialize("ImageTagCreateSummary", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_image_tags.metadata = {'url': '/projects/{projectId}/images/tags'}
 
-    def delete_image_tags(
-            self, project_id, image_ids, tag_ids, custom_headers=None, raw=False, **operation_config):
+    create_image_tags.metadata = {"url": "/projects/{projectId}/images/tags"}
+
+    def delete_image_tags(self, project_id, image_ids, tag_ids, custom_headers=None, raw=False, **operation_config):
         """Remove a set of tags from a set of images.
 
         :param project_id: The project id.
@@ -1674,17 +1759,21 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.delete_image_tags.metadata['url']
+        url = self.delete_image_tags.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['imageIds'] = self._serialize.query("image_ids", image_ids, '[str]', div=',', max_items=64, min_items=0)
-        query_parameters['tagIds'] = self._serialize.query("tag_ids", tag_ids, '[str]', div=',', max_items=20, min_items=0)
+        query_parameters["imageIds"] = self._serialize.query(
+            "image_ids", image_ids, "[str]", div=",", max_items=64, min_items=0
+        )
+        query_parameters["tagIds"] = self._serialize.query(
+            "tag_ids", tag_ids, "[str]", div=",", max_items=20, min_items=0
+        )
 
         # Construct headers
         header_parameters = {}
@@ -1701,10 +1790,20 @@ class CustomVisionTrainingClientOperationsMixin(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete_image_tags.metadata = {'url': '/projects/{projectId}/images/tags'}
+
+    delete_image_tags.metadata = {"url": "/projects/{projectId}/images/tags"}
 
     def get_untagged_images(
-            self, project_id, iteration_id=None, order_by=None, take=50, skip=0, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        iteration_id=None,
+        order_by=None,
+        take=50,
+        skip=0,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Get untagged images for a given project iteration.
 
         This API supports batching and range selection. By default it will only
@@ -1738,27 +1837,27 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_untagged_images.metadata['url']
+        url = self.get_untagged_images.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if iteration_id is not None:
-            query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+            query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
         if order_by is not None:
-            query_parameters['orderBy'] = self._serialize.query("order_by", order_by, 'str')
+            query_parameters["orderBy"] = self._serialize.query("order_by", order_by, "str")
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=256, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=256, minimum=0)
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int')
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1771,17 +1870,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[Image]', response)
+            deserialized = self._deserialize("[Image]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_untagged_images.metadata = {'url': '/projects/{projectId}/images/untagged'}
+
+    get_untagged_images.metadata = {"url": "/projects/{projectId}/images/untagged"}
 
     def get_untagged_image_count(
-            self, project_id, iteration_id=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, iteration_id=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets the number of untagged images.
 
         This API returns the images which have no tags for a given project and
@@ -1803,21 +1904,21 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_untagged_image_count.metadata['url']
+        url = self.get_untagged_image_count.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if iteration_id is not None:
-            query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+            query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1830,17 +1931,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('int', response)
+            deserialized = self._deserialize("int", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_untagged_image_count.metadata = {'url': '/projects/{projectId}/images/untagged/count'}
 
-    def create_images_from_urls(
-            self, project_id, batch, custom_headers=None, raw=False, **operation_config):
+    get_untagged_image_count.metadata = {"url": "/projects/{projectId}/images/untagged/count"}
+
+    def create_images_from_urls(self, project_id, batch, custom_headers=None, raw=False, **operation_config):
         """Add the provided images urls to the set of training images.
 
         This API accepts a batch of urls, and optionally tags, to create
@@ -1869,10 +1970,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.create_images_from_urls.metadata['url']
+        url = self.create_images_from_urls.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1881,13 +1982,13 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(batch, 'ImageUrlCreateBatch')
+        body_content = self._serialize.body(batch, "ImageUrlCreateBatch")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -1898,19 +1999,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImageCreateSummary', response)
+            deserialized = self._deserialize("ImageCreateSummary", response)
         if response.status_code == 207:
-            deserialized = self._deserialize('ImageCreateSummary', response)
+            deserialized = self._deserialize("ImageCreateSummary", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_images_from_urls.metadata = {'url': '/projects/{projectId}/images/urls'}
 
-    def get_iterations(
-            self, project_id, custom_headers=None, raw=False, **operation_config):
+    create_images_from_urls.metadata = {"url": "/projects/{projectId}/images/urls"}
+
+    def get_iterations(self, project_id, custom_headers=None, raw=False, **operation_config):
         """Get iterations for the project.
 
         :param project_id: The project id.
@@ -1928,10 +2029,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_iterations.metadata['url']
+        url = self.get_iterations.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1940,7 +2041,7 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1953,17 +2054,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[Iteration]', response)
+            deserialized = self._deserialize("[Iteration]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_iterations.metadata = {'url': '/projects/{projectId}/iterations'}
 
-    def get_iteration(
-            self, project_id, iteration_id, custom_headers=None, raw=False, **operation_config):
+    get_iterations.metadata = {"url": "/projects/{projectId}/iterations"}
+
+    def get_iteration(self, project_id, iteration_id, custom_headers=None, raw=False, **operation_config):
         """Get a specific iteration.
 
         :param project_id: The id of the project the iteration belongs to.
@@ -1983,11 +2084,11 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_iteration.metadata['url']
+        url = self.get_iteration.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'iterationId': self._serialize.url("iteration_id", iteration_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "iterationId": self._serialize.url("iteration_id", iteration_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1996,7 +2097,7 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2009,17 +2110,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Iteration', response)
+            deserialized = self._deserialize("Iteration", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_iteration.metadata = {'url': '/projects/{projectId}/iterations/{iterationId}'}
 
-    def delete_iteration(
-            self, project_id, iteration_id, custom_headers=None, raw=False, **operation_config):
+    get_iteration.metadata = {"url": "/projects/{projectId}/iterations/{iterationId}"}
+
+    def delete_iteration(self, project_id, iteration_id, custom_headers=None, raw=False, **operation_config):
         """Delete a specific iteration of a project.
 
         :param project_id: The project id.
@@ -2037,11 +2138,11 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.delete_iteration.metadata['url']
+        url = self.delete_iteration.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'iterationId': self._serialize.url("iteration_id", iteration_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "iterationId": self._serialize.url("iteration_id", iteration_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2063,10 +2164,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete_iteration.metadata = {'url': '/projects/{projectId}/iterations/{iterationId}'}
 
-    def update_iteration(
-            self, project_id, iteration_id, name, custom_headers=None, raw=False, **operation_config):
+    delete_iteration.metadata = {"url": "/projects/{projectId}/iterations/{iterationId}"}
+
+    def update_iteration(self, project_id, iteration_id, name, custom_headers=None, raw=False, **operation_config):
         """Update a specific iteration.
 
         :param project_id: Project id.
@@ -2090,11 +2191,11 @@ class CustomVisionTrainingClientOperationsMixin(object):
         updated_iteration = models.Iteration(name=name)
 
         # Construct URL
-        url = self.update_iteration.metadata['url']
+        url = self.update_iteration.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'iterationId': self._serialize.url("iteration_id", iteration_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "iterationId": self._serialize.url("iteration_id", iteration_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2103,13 +2204,13 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(updated_iteration, 'Iteration')
+        body_content = self._serialize.body(updated_iteration, "Iteration")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -2120,17 +2221,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Iteration', response)
+            deserialized = self._deserialize("Iteration", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_iteration.metadata = {'url': '/projects/{projectId}/iterations/{iterationId}'}
 
-    def get_exports(
-            self, project_id, iteration_id, custom_headers=None, raw=False, **operation_config):
+    update_iteration.metadata = {"url": "/projects/{projectId}/iterations/{iterationId}"}
+
+    def get_exports(self, project_id, iteration_id, custom_headers=None, raw=False, **operation_config):
         """Get the list of exports for a specific iteration.
 
         :param project_id: The project id.
@@ -2150,11 +2251,11 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_exports.metadata['url']
+        url = self.get_exports.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'iterationId': self._serialize.url("iteration_id", iteration_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "iterationId": self._serialize.url("iteration_id", iteration_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2163,7 +2264,7 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2176,17 +2277,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[Export]', response)
+            deserialized = self._deserialize("[Export]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_exports.metadata = {'url': '/projects/{projectId}/iterations/{iterationId}/export'}
+
+    get_exports.metadata = {"url": "/projects/{projectId}/iterations/{iterationId}/export"}
 
     def export_iteration(
-            self, project_id, iteration_id, platform, flavor=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, iteration_id, platform, flavor=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Export a trained iteration.
 
         :param project_id: The project id.
@@ -2213,23 +2316,23 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.export_iteration.metadata['url']
+        url = self.export_iteration.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'iterationId': self._serialize.url("iteration_id", iteration_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "iterationId": self._serialize.url("iteration_id", iteration_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['platform'] = self._serialize.query("platform", platform, 'str')
+        query_parameters["platform"] = self._serialize.query("platform", platform, "str")
         if flavor is not None:
-            query_parameters['flavor'] = self._serialize.query("flavor", flavor, 'str')
+            query_parameters["flavor"] = self._serialize.query("flavor", flavor, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2242,17 +2345,26 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Export', response)
+            deserialized = self._deserialize("Export", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    export_iteration.metadata = {'url': '/projects/{projectId}/iterations/{iterationId}/export'}
+
+    export_iteration.metadata = {"url": "/projects/{projectId}/iterations/{iterationId}/export"}
 
     def get_iteration_performance(
-            self, project_id, iteration_id, threshold=None, overlap_threshold=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        iteration_id,
+        threshold=None,
+        overlap_threshold=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Get detailed performance information about an iteration.
 
         :param project_id: The id of the project the iteration belongs to.
@@ -2277,24 +2389,26 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_iteration_performance.metadata['url']
+        url = self.get_iteration_performance.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'iterationId': self._serialize.url("iteration_id", iteration_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "iterationId": self._serialize.url("iteration_id", iteration_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if threshold is not None:
-            query_parameters['threshold'] = self._serialize.query("threshold", threshold, 'float')
+            query_parameters["threshold"] = self._serialize.query("threshold", threshold, "float")
         if overlap_threshold is not None:
-            query_parameters['overlapThreshold'] = self._serialize.query("overlap_threshold", overlap_threshold, 'float')
+            query_parameters["overlapThreshold"] = self._serialize.query(
+                "overlap_threshold", overlap_threshold, "float"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2307,17 +2421,28 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('IterationPerformance', response)
+            deserialized = self._deserialize("IterationPerformance", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_iteration_performance.metadata = {'url': '/projects/{projectId}/iterations/{iterationId}/performance'}
+
+    get_iteration_performance.metadata = {"url": "/projects/{projectId}/iterations/{iterationId}/performance"}
 
     def get_image_performances(
-            self, project_id, iteration_id, tag_ids=None, order_by=None, take=50, skip=0, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        iteration_id,
+        tag_ids=None,
+        order_by=None,
+        take=50,
+        skip=0,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Get image with its prediction for a given project iteration.
 
         This API supports batching and range selection. By default it will only
@@ -2358,28 +2483,30 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_image_performances.metadata['url']
+        url = self.get_image_performances.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'iterationId': self._serialize.url("iteration_id", iteration_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "iterationId": self._serialize.url("iteration_id", iteration_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if tag_ids is not None:
-            query_parameters['tagIds'] = self._serialize.query("tag_ids", tag_ids, '[str]', div=',', max_items=20, min_items=0)
+            query_parameters["tagIds"] = self._serialize.query(
+                "tag_ids", tag_ids, "[str]", div=",", max_items=20, min_items=0
+            )
         if order_by is not None:
-            query_parameters['orderBy'] = self._serialize.query("order_by", order_by, 'str')
+            query_parameters["orderBy"] = self._serialize.query("order_by", order_by, "str")
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=256, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=256, minimum=0)
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int')
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2392,17 +2519,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[ImagePerformance]', response)
+            deserialized = self._deserialize("[ImagePerformance]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_image_performances.metadata = {'url': '/projects/{projectId}/iterations/{iterationId}/performance/images'}
+
+    get_image_performances.metadata = {"url": "/projects/{projectId}/iterations/{iterationId}/performance/images"}
 
     def get_image_performance_count(
-            self, project_id, iteration_id, tag_ids=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, iteration_id, tag_ids=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets the number of images tagged with the provided {tagIds} that have
         prediction results from
         training for the provided iteration {iterationId}.
@@ -2430,22 +2559,22 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_image_performance_count.metadata['url']
+        url = self.get_image_performance_count.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'iterationId': self._serialize.url("iteration_id", iteration_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "iterationId": self._serialize.url("iteration_id", iteration_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if tag_ids is not None:
-            query_parameters['tagIds'] = self._serialize.query("tag_ids", tag_ids, '[str]', div=',')
+            query_parameters["tagIds"] = self._serialize.query("tag_ids", tag_ids, "[str]", div=",")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2458,17 +2587,29 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('int', response)
+            deserialized = self._deserialize("int", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_image_performance_count.metadata = {'url': '/projects/{projectId}/iterations/{iterationId}/performance/images/count'}
+
+    get_image_performance_count.metadata = {
+        "url": "/projects/{projectId}/iterations/{iterationId}/performance/images/count"
+    }
 
     def publish_iteration(
-            self, project_id, iteration_id, publish_name, prediction_id, overwrite=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        iteration_id,
+        publish_name,
+        prediction_id,
+        overwrite=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Publish a specific iteration.
 
         :param project_id: The project id.
@@ -2493,24 +2634,24 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.publish_iteration.metadata['url']
+        url = self.publish_iteration.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'iterationId': self._serialize.url("iteration_id", iteration_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "iterationId": self._serialize.url("iteration_id", iteration_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['publishName'] = self._serialize.query("publish_name", publish_name, 'str')
-        query_parameters['predictionId'] = self._serialize.query("prediction_id", prediction_id, 'str')
+        query_parameters["publishName"] = self._serialize.query("publish_name", publish_name, "str")
+        query_parameters["predictionId"] = self._serialize.query("prediction_id", prediction_id, "str")
         if overwrite is not None:
-            query_parameters['overwrite'] = self._serialize.query("overwrite", overwrite, 'bool')
+            query_parameters["overwrite"] = self._serialize.query("overwrite", overwrite, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2523,17 +2664,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('bool', response)
+            deserialized = self._deserialize("bool", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    publish_iteration.metadata = {'url': '/projects/{projectId}/iterations/{iterationId}/publish'}
 
-    def unpublish_iteration(
-            self, project_id, iteration_id, custom_headers=None, raw=False, **operation_config):
+    publish_iteration.metadata = {"url": "/projects/{projectId}/iterations/{iterationId}/publish"}
+
+    def unpublish_iteration(self, project_id, iteration_id, custom_headers=None, raw=False, **operation_config):
         """Unpublish a specific iteration.
 
         :param project_id: The project id.
@@ -2551,11 +2692,11 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.unpublish_iteration.metadata['url']
+        url = self.unpublish_iteration.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'iterationId': self._serialize.url("iteration_id", iteration_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "iterationId": self._serialize.url("iteration_id", iteration_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2577,10 +2718,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    unpublish_iteration.metadata = {'url': '/projects/{projectId}/iterations/{iterationId}/publish'}
 
-    def delete_prediction(
-            self, project_id, ids, custom_headers=None, raw=False, **operation_config):
+    unpublish_iteration.metadata = {"url": "/projects/{projectId}/iterations/{iterationId}/publish"}
+
+    def delete_prediction(self, project_id, ids, custom_headers=None, raw=False, **operation_config):
         """Delete a set of predicted images and their associated prediction
         results.
 
@@ -2599,16 +2740,16 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.delete_prediction.metadata['url']
+        url = self.delete_prediction.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['ids'] = self._serialize.query("ids", ids, '[str]', div=',', max_items=64, min_items=0)
+        query_parameters["ids"] = self._serialize.query("ids", ids, "[str]", div=",", max_items=64, min_items=0)
 
         # Construct headers
         header_parameters = {}
@@ -2625,10 +2766,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete_prediction.metadata = {'url': '/projects/{projectId}/predictions'}
 
-    def query_predictions(
-            self, project_id, query, custom_headers=None, raw=False, **operation_config):
+    delete_prediction.metadata = {"url": "/projects/{projectId}/predictions"}
+
+    def query_predictions(self, project_id, query, custom_headers=None, raw=False, **operation_config):
         """Get images that were sent to your prediction endpoint.
 
         :param project_id: The project id.
@@ -2650,10 +2791,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.query_predictions.metadata['url']
+        url = self.query_predictions.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -2662,13 +2803,13 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(query, 'PredictionQueryToken')
+        body_content = self._serialize.body(query, "PredictionQueryToken")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -2679,17 +2820,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PredictionQueryResult', response)
+            deserialized = self._deserialize("PredictionQueryResult", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    query_predictions.metadata = {'url': '/projects/{projectId}/predictions/query'}
+
+    query_predictions.metadata = {"url": "/projects/{projectId}/predictions/query"}
 
     def quick_test_image(
-            self, project_id, image_data, iteration_id=None, store=True, custom_headers=None, raw=False, **operation_config):
+        self, project_id, image_data, iteration_id=None, store=True, custom_headers=None, raw=False, **operation_config
+    ):
         """Quick test an image.
 
         :param project_id: The project id.
@@ -2717,30 +2860,30 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.quick_test_image.metadata['url']
+        url = self.quick_test_image.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if iteration_id is not None:
-            query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+            query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
         if store is not None:
-            query_parameters['store'] = self._serialize.query("store", store, 'bool')
+            query_parameters["store"] = self._serialize.query("store", store, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'multipart/form-data'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "multipart/form-data"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct form data
         form_data_content = {
-            'imageData': image_data,
+            "imageData": image_data,
         }
 
         # Construct and send request
@@ -2752,17 +2895,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImagePrediction', response)
+            deserialized = self._deserialize("ImagePrediction", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    quick_test_image.metadata = {'url': '/projects/{projectId}/quicktest/image'}
+
+    quick_test_image.metadata = {"url": "/projects/{projectId}/quicktest/image"}
 
     def quick_test_image_url(
-            self, project_id, url, iteration_id=None, store=True, custom_headers=None, raw=False, **operation_config):
+        self, project_id, url, iteration_id=None, store=True, custom_headers=None, raw=False, **operation_config
+    ):
         """Quick test an image url.
 
         :param project_id: The project to evaluate against.
@@ -2791,29 +2936,29 @@ class CustomVisionTrainingClientOperationsMixin(object):
         image_url = models.ImageUrl(url=url)
 
         # Construct URL
-        url = self.quick_test_image_url.metadata['url']
+        url = self.quick_test_image_url.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if iteration_id is not None:
-            query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+            query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
         if store is not None:
-            query_parameters['store'] = self._serialize.query("store", store, 'bool')
+            query_parameters["store"] = self._serialize.query("store", store, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'ImageUrl')
+        body_content = self._serialize.body(image_url, "ImageUrl")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -2824,17 +2969,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ImagePrediction', response)
+            deserialized = self._deserialize("ImagePrediction", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    quick_test_image_url.metadata = {'url': '/projects/{projectId}/quicktest/url'}
 
-    def get_tags(
-            self, project_id, iteration_id=None, custom_headers=None, raw=False, **operation_config):
+    quick_test_image_url.metadata = {"url": "/projects/{projectId}/quicktest/url"}
+
+    def get_tags(self, project_id, iteration_id=None, custom_headers=None, raw=False, **operation_config):
         """Get the tags for a given project and iteration.
 
         :param project_id: The project id.
@@ -2854,21 +2999,21 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_tags.metadata['url']
+        url = self.get_tags.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if iteration_id is not None:
-            query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+            query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2881,17 +3026,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[Tag]', response)
+            deserialized = self._deserialize("[Tag]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_tags.metadata = {'url': '/projects/{projectId}/tags'}
+
+    get_tags.metadata = {"url": "/projects/{projectId}/tags"}
 
     def create_tag(
-            self, project_id, name, description=None, type=None, custom_headers=None, raw=False, **operation_config):
+        self, project_id, name, description=None, type=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Create a tag for the project.
 
         :param project_id: The project id.
@@ -2916,24 +3063,24 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.create_tag.metadata['url']
+        url = self.create_tag.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['name'] = self._serialize.query("name", name, 'str')
+        query_parameters["name"] = self._serialize.query("name", name, "str")
         if description is not None:
-            query_parameters['description'] = self._serialize.query("description", description, 'str')
+            query_parameters["description"] = self._serialize.query("description", description, "str")
         if type is not None:
-            query_parameters['type'] = self._serialize.query("type", type, 'str')
+            query_parameters["type"] = self._serialize.query("type", type, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -2946,17 +3093,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Tag', response)
+            deserialized = self._deserialize("Tag", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_tag.metadata = {'url': '/projects/{projectId}/tags'}
 
-    def get_tag(
-            self, project_id, tag_id, iteration_id=None, custom_headers=None, raw=False, **operation_config):
+    create_tag.metadata = {"url": "/projects/{projectId}/tags"}
+
+    def get_tag(self, project_id, tag_id, iteration_id=None, custom_headers=None, raw=False, **operation_config):
         """Get information about a specific tag.
 
         :param project_id: The project this tag belongs to.
@@ -2979,22 +3126,22 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.get_tag.metadata['url']
+        url = self.get_tag.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'tagId': self._serialize.url("tag_id", tag_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "tagId": self._serialize.url("tag_id", tag_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if iteration_id is not None:
-            query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
+            query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3007,17 +3154,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Tag', response)
+            deserialized = self._deserialize("Tag", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_tag.metadata = {'url': '/projects/{projectId}/tags/{tagId}'}
 
-    def delete_tag(
-            self, project_id, tag_id, custom_headers=None, raw=False, **operation_config):
+    get_tag.metadata = {"url": "/projects/{projectId}/tags/{tagId}"}
+
+    def delete_tag(self, project_id, tag_id, custom_headers=None, raw=False, **operation_config):
         """Delete a tag from the project.
 
         :param project_id: The project id.
@@ -3035,11 +3182,11 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.delete_tag.metadata['url']
+        url = self.delete_tag.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'tagId': self._serialize.url("tag_id", tag_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "tagId": self._serialize.url("tag_id", tag_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3061,10 +3208,10 @@ class CustomVisionTrainingClientOperationsMixin(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete_tag.metadata = {'url': '/projects/{projectId}/tags/{tagId}'}
 
-    def update_tag(
-            self, project_id, tag_id, updated_tag, custom_headers=None, raw=False, **operation_config):
+    delete_tag.metadata = {"url": "/projects/{projectId}/tags/{tagId}"}
+
+    def update_tag(self, project_id, tag_id, updated_tag, custom_headers=None, raw=False, **operation_config):
         """Update a tag.
 
         :param project_id: The project id.
@@ -3087,11 +3234,11 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.update_tag.metadata['url']
+        url = self.update_tag.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str'),
-            'tagId': self._serialize.url("tag_id", tag_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
+            "tagId": self._serialize.url("tag_id", tag_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -3100,13 +3247,13 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(updated_tag, 'Tag')
+        body_content = self._serialize.body(updated_tag, "Tag")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -3117,17 +3264,19 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Tag', response)
+            deserialized = self._deserialize("Tag", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_tag.metadata = {'url': '/projects/{projectId}/tags/{tagId}'}
+
+    update_tag.metadata = {"url": "/projects/{projectId}/tags/{tagId}"}
 
     def suggest_tags_and_regions(
-            self, project_id, iteration_id, image_ids, custom_headers=None, raw=False, **operation_config):
+        self, project_id, iteration_id, image_ids, custom_headers=None, raw=False, **operation_config
+    ):
         """Suggest tags and regions for an array/batch of untagged images. Returns
         empty array if no tags are found.
 
@@ -3156,21 +3305,23 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.suggest_tags_and_regions.metadata['url']
+        url = self.suggest_tags_and_regions.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['iterationId'] = self._serialize.query("iteration_id", iteration_id, 'str')
-        query_parameters['imageIds'] = self._serialize.query("image_ids", image_ids, '[str]', div=',', max_items=64, min_items=0)
+        query_parameters["iterationId"] = self._serialize.query("iteration_id", iteration_id, "str")
+        query_parameters["imageIds"] = self._serialize.query(
+            "image_ids", image_ids, "[str]", div=",", max_items=64, min_items=0
+        )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3183,17 +3334,29 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[SuggestedTagAndRegion]', response)
+            deserialized = self._deserialize("[SuggestedTagAndRegion]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    suggest_tags_and_regions.metadata = {'url': '/projects/{projectId}/tagsandregions/suggestions'}
+
+    suggest_tags_and_regions.metadata = {"url": "/projects/{projectId}/tagsandregions/suggestions"}
 
     def train_project(
-            self, project_id, training_type=None, reserved_budget_in_hours=0, force_train=False, notification_email_address=None, selected_tags=None, custom_base_model_info=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        project_id,
+        training_type=None,
+        reserved_budget_in_hours=0,
+        force_train=False,
+        notification_email_address=None,
+        selected_tags=None,
+        custom_base_model_info=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Queues project for training.
 
         :param project_id: The project id.
@@ -3232,37 +3395,43 @@ class CustomVisionTrainingClientOperationsMixin(object):
         """
         training_parameters = None
         if selected_tags is not None or custom_base_model_info is not None:
-            training_parameters = models.TrainingParameters(selected_tags=selected_tags, custom_base_model_info=custom_base_model_info)
+            training_parameters = models.TrainingParameters(
+                selected_tags=selected_tags, custom_base_model_info=custom_base_model_info
+            )
 
         # Construct URL
-        url = self.train_project.metadata['url']
+        url = self.train_project.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'projectId': self._serialize.url("project_id", project_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "projectId": self._serialize.url("project_id", project_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if training_type is not None:
-            query_parameters['trainingType'] = self._serialize.query("training_type", training_type, 'str')
+            query_parameters["trainingType"] = self._serialize.query("training_type", training_type, "str")
         if reserved_budget_in_hours is not None:
-            query_parameters['reservedBudgetInHours'] = self._serialize.query("reserved_budget_in_hours", reserved_budget_in_hours, 'int')
+            query_parameters["reservedBudgetInHours"] = self._serialize.query(
+                "reserved_budget_in_hours", reserved_budget_in_hours, "int"
+            )
         if force_train is not None:
-            query_parameters['forceTrain'] = self._serialize.query("force_train", force_train, 'bool')
+            query_parameters["forceTrain"] = self._serialize.query("force_train", force_train, "bool")
         if notification_email_address is not None:
-            query_parameters['notificationEmailAddress'] = self._serialize.query("notification_email_address", notification_email_address, 'str')
+            query_parameters["notificationEmailAddress"] = self._serialize.query(
+                "notification_email_address", notification_email_address, "str"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
         if training_parameters is not None:
-            body_content = self._serialize.body(training_parameters, 'TrainingParameters')
+            body_content = self._serialize.body(training_parameters, "TrainingParameters")
         else:
             body_content = None
 
@@ -3275,17 +3444,17 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Iteration', response)
+            deserialized = self._deserialize("Iteration", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    train_project.metadata = {'url': '/projects/{projectId}/train'}
 
-    def import_project(
-            self, token, name=None, custom_headers=None, raw=False, **operation_config):
+    train_project.metadata = {"url": "/projects/{projectId}/train"}
+
+    def import_project(self, token, name=None, custom_headers=None, raw=False, **operation_config):
         """Imports a project.
 
         :param token: Token generated from the export project call.
@@ -3306,21 +3475,21 @@ class CustomVisionTrainingClientOperationsMixin(object):
          :class:`CustomVisionErrorException<azure.cognitiveservices.vision.customvision.training.models.CustomVisionErrorException>`
         """
         # Construct URL
-        url = self.import_project.metadata['url']
+        url = self.import_project.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['token'] = self._serialize.query("token", token, 'str')
+        query_parameters["token"] = self._serialize.query("token", token, "str")
         if name is not None:
-            query_parameters['name'] = self._serialize.query("name", name, 'str')
+            query_parameters["name"] = self._serialize.query("name", name, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -3333,11 +3502,12 @@ class CustomVisionTrainingClientOperationsMixin(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Project', response)
+            deserialized = self._deserialize("Project", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    import_project.metadata = {'url': '/projects/import'}
+
+    import_project.metadata = {"url": "/projects/import"}

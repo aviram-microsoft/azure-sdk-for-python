@@ -37,28 +37,28 @@ class QnADTO(Model):
     """
 
     _validation = {
-        'answer': {'required': True, 'max_length': 25000, 'min_length': 1},
-        'source': {'max_length': 300},
-        'questions': {'required': True},
-        'last_updated_timestamp': {'max_length': 300},
+        "answer": {"required": True, "max_length": 25000, "min_length": 1},
+        "source": {"max_length": 300},
+        "questions": {"required": True},
+        "last_updated_timestamp": {"max_length": 300},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'answer': {'key': 'answer', 'type': 'str'},
-        'source': {'key': 'source', 'type': 'str'},
-        'questions': {'key': 'questions', 'type': '[str]'},
-        'metadata': {'key': 'metadata', 'type': '[MetadataDTO]'},
-        'context': {'key': 'context', 'type': 'QnADTOContext'},
-        'last_updated_timestamp': {'key': 'lastUpdatedTimestamp', 'type': 'str'},
+        "id": {"key": "id", "type": "int"},
+        "answer": {"key": "answer", "type": "str"},
+        "source": {"key": "source", "type": "str"},
+        "questions": {"key": "questions", "type": "[str]"},
+        "metadata": {"key": "metadata", "type": "[MetadataDTO]"},
+        "context": {"key": "context", "type": "QnADTOContext"},
+        "last_updated_timestamp": {"key": "lastUpdatedTimestamp", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(QnADTO, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.answer = kwargs.get('answer', None)
-        self.source = kwargs.get('source', None)
-        self.questions = kwargs.get('questions', None)
-        self.metadata = kwargs.get('metadata', None)
-        self.context = kwargs.get('context', None)
-        self.last_updated_timestamp = kwargs.get('last_updated_timestamp', None)
+        self.id = kwargs.get("id", None)
+        self.answer = kwargs.get("answer", None)
+        self.source = kwargs.get("source", None)
+        self.questions = kwargs.get("questions", None)
+        self.metadata = kwargs.get("metadata", None)
+        self.context = kwargs.get("context", None)
+        self.last_updated_timestamp = kwargs.get("last_updated_timestamp", None)

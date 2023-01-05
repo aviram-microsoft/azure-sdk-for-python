@@ -12,5 +12,5 @@
 from ._custom_vision_prediction_client_operations import CustomVisionPredictionClientOperationsMixin
 
 __all__ = [
-    'CustomVisionPredictionClientOperationsMixin',
+    "CustomVisionPredictionClientOperationsMixin",
 ]

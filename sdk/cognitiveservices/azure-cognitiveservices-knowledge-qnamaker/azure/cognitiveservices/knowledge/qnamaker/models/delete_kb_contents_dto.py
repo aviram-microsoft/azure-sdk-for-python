@@ -22,11 +22,11 @@ class DeleteKbContentsDTO(Model):
     """
 
     _attribute_map = {
-        'ids': {'key': 'ids', 'type': '[int]'},
-        'sources': {'key': 'sources', 'type': '[str]'},
+        "ids": {"key": "ids", "type": "[int]"},
+        "sources": {"key": "sources", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(DeleteKbContentsDTO, self).__init__(**kwargs)
-        self.ids = kwargs.get('ids', None)
-        self.sources = kwargs.get('sources', None)
+        self.ids = kwargs.get("ids", None)
+        self.sources = kwargs.get("sources", None)

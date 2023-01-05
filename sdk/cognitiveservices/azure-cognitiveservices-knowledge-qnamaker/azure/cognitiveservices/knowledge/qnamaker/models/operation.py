@@ -37,21 +37,21 @@ class Operation(Model):
     """
 
     _attribute_map = {
-        'operation_state': {'key': 'operationState', 'type': 'str'},
-        'created_timestamp': {'key': 'createdTimestamp', 'type': 'str'},
-        'last_action_timestamp': {'key': 'lastActionTimestamp', 'type': 'str'},
-        'resource_location': {'key': 'resourceLocation', 'type': 'str'},
-        'user_id': {'key': 'userId', 'type': 'str'},
-        'operation_id': {'key': 'operationId', 'type': 'str'},
-        'error_response': {'key': 'errorResponse', 'type': 'ErrorResponse'},
+        "operation_state": {"key": "operationState", "type": "str"},
+        "created_timestamp": {"key": "createdTimestamp", "type": "str"},
+        "last_action_timestamp": {"key": "lastActionTimestamp", "type": "str"},
+        "resource_location": {"key": "resourceLocation", "type": "str"},
+        "user_id": {"key": "userId", "type": "str"},
+        "operation_id": {"key": "operationId", "type": "str"},
+        "error_response": {"key": "errorResponse", "type": "ErrorResponse"},
     }
 
     def __init__(self, **kwargs):
         super(Operation, self).__init__(**kwargs)
-        self.operation_state = kwargs.get('operation_state', None)
-        self.created_timestamp = kwargs.get('created_timestamp', None)
-        self.last_action_timestamp = kwargs.get('last_action_timestamp', None)
-        self.resource_location = kwargs.get('resource_location', None)
-        self.user_id = kwargs.get('user_id', None)
-        self.operation_id = kwargs.get('operation_id', None)
-        self.error_response = kwargs.get('error_response', None)
+        self.operation_state = kwargs.get("operation_state", None)
+        self.created_timestamp = kwargs.get("created_timestamp", None)
+        self.last_action_timestamp = kwargs.get("last_action_timestamp", None)
+        self.resource_location = kwargs.get("resource_location", None)
+        self.user_id = kwargs.get("user_id", None)
+        self.operation_id = kwargs.get("operation_id", None)
+        self.error_response = kwargs.get("error_response", None)

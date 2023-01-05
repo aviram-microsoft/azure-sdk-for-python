@@ -71,50 +71,48 @@ class Action(CreativeWork):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'alternate_name': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'thumbnail_url': {'readonly': True},
-        'provider': {'readonly': True},
-        'date_published': {'readonly': True},
-        'text': {'readonly': True},
-        'result': {'readonly': True},
-        'display_name': {'readonly': True},
-        'is_top_action': {'readonly': True},
-        'service_url': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "alternate_name": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "thumbnail_url": {"readonly": True},
+        "provider": {"readonly": True},
+        "date_published": {"readonly": True},
+        "text": {"readonly": True},
+        "result": {"readonly": True},
+        "display_name": {"readonly": True},
+        "is_top_action": {"readonly": True},
+        "service_url": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'alternate_name': {'key': 'alternateName', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'thumbnail_url': {'key': 'thumbnailUrl', 'type': 'str'},
-        'provider': {'key': 'provider', 'type': '[Thing]'},
-        'date_published': {'key': 'datePublished', 'type': 'str'},
-        'text': {'key': 'text', 'type': 'str'},
-        'result': {'key': 'result', 'type': '[Thing]'},
-        'display_name': {'key': 'displayName', 'type': 'str'},
-        'is_top_action': {'key': 'isTopAction', 'type': 'bool'},
-        'service_url': {'key': 'serviceUrl', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "alternate_name": {"key": "alternateName", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "thumbnail_url": {"key": "thumbnailUrl", "type": "str"},
+        "provider": {"key": "provider", "type": "[Thing]"},
+        "date_published": {"key": "datePublished", "type": "str"},
+        "text": {"key": "text", "type": "str"},
+        "result": {"key": "result", "type": "[Thing]"},
+        "display_name": {"key": "displayName", "type": "str"},
+        "is_top_action": {"key": "isTopAction", "type": "bool"},
+        "service_url": {"key": "serviceUrl", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'ImageAction': 'ImageAction'}
-    }
+    _subtype_map = {"_type": {"ImageAction": "ImageAction"}}
 
     def __init__(self, **kwargs):
         super(Action, self).__init__(**kwargs)
@@ -122,4 +120,4 @@ class Action(CreativeWork):
         self.display_name = None
         self.is_top_action = None
         self.service_url = None
-        self._type = 'Action'
+        self._type = "Action"

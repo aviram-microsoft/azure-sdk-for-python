@@ -22,11 +22,11 @@ class QueryContextDTO(Model):
     """
 
     _attribute_map = {
-        'previous_qna_id': {'key': 'previousQnaId', 'type': 'int'},
-        'previous_user_query': {'key': 'previousUserQuery', 'type': 'str'},
+        "previous_qna_id": {"key": "previousQnaId", "type": "int"},
+        "previous_user_query": {"key": "previousUserQuery", "type": "str"},
     }
 
-    def __init__(self, *, previous_qna_id: int=None, previous_user_query: str=None, **kwargs) -> None:
+    def __init__(self, *, previous_qna_id: int = None, previous_user_query: str = None, **kwargs) -> None:
         super(QueryContextDTO, self).__init__(**kwargs)
         self.previous_qna_id = previous_qna_id
         self.previous_user_query = previous_user_query

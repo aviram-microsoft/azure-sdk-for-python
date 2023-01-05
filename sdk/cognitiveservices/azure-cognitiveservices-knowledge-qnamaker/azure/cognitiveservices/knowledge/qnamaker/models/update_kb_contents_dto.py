@@ -30,19 +30,19 @@ class UpdateKbContentsDTO(Model):
     """
 
     _validation = {
-        'default_answer': {'max_length': 300, 'min_length': 1},
+        "default_answer": {"max_length": 300, "min_length": 1},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'qna_list': {'key': 'qnaList', 'type': '[UpdateQnaDTO]'},
-        'urls': {'key': 'urls', 'type': '[str]'},
-        'default_answer': {'key': 'defaultAnswer', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "qna_list": {"key": "qnaList", "type": "[UpdateQnaDTO]"},
+        "urls": {"key": "urls", "type": "[str]"},
+        "default_answer": {"key": "defaultAnswer", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(UpdateKbContentsDTO, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.qna_list = kwargs.get('qna_list', None)
-        self.urls = kwargs.get('urls', None)
-        self.default_answer = kwargs.get('default_answer', None)
+        self.name = kwargs.get("name", None)
+        self.qna_list = kwargs.get("qna_list", None)
+        self.urls = kwargs.get("urls", None)
+        self.default_answer = kwargs.get("default_answer", None)

@@ -39,25 +39,25 @@ class ImageKnowledge(Response):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'tags': {'readonly': True},
-        'image': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "tags": {"readonly": True},
+        "image": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'tags': {'key': 'tags', 'type': '[ImageTag]'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "tags": {"key": "tags", "type": "[ImageTag]"},
+        "image": {"key": "image", "type": "ImageObject"},
     }
 
     def __init__(self, **kwargs):
         super(ImageKnowledge, self).__init__(**kwargs)
         self.tags = None
         self.image = None
-        self._type = 'ImageKnowledge'
+        self._type = "ImageKnowledge"

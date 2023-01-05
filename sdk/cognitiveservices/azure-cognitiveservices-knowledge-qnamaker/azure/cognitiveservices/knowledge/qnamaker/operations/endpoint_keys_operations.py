@@ -33,8 +33,7 @@ class EndpointKeysOperations(object):
 
         self.config = config
 
-    def get_keys(
-            self, custom_headers=None, raw=False, **operation_config):
+    def get_keys(self, custom_headers=None, raw=False, **operation_config):
         """Gets endpoint keys for an endpoint.
 
         :param dict custom_headers: headers that will be added to the request
@@ -50,9 +49,9 @@ class EndpointKeysOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_keys.metadata['url']
+        url = self.get_keys.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -61,7 +60,7 @@ class EndpointKeysOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -75,17 +74,17 @@ class EndpointKeysOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('EndpointKeysDTO', response)
+            deserialized = self._deserialize("EndpointKeysDTO", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_keys.metadata = {'url': '/endpointkeys'}
 
-    def refresh_keys(
-            self, key_type, custom_headers=None, raw=False, **operation_config):
+    get_keys.metadata = {"url": "/endpointkeys"}
+
+    def refresh_keys(self, key_type, custom_headers=None, raw=False, **operation_config):
         """Re-generates an endpoint key.
 
         :param key_type: Type of Key
@@ -103,10 +102,10 @@ class EndpointKeysOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.knowledge.qnamaker.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.refresh_keys.metadata['url']
+        url = self.refresh_keys.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'keyType': self._serialize.url("key_type", key_type, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "keyType": self._serialize.url("key_type", key_type, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -115,7 +114,7 @@ class EndpointKeysOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -129,11 +128,12 @@ class EndpointKeysOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('EndpointKeysDTO', response)
+            deserialized = self._deserialize("EndpointKeysDTO", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    refresh_keys.metadata = {'url': '/endpointkeys/{keyType}'}
+
+    refresh_keys.metadata = {"url": "/endpointkeys/{keyType}"}

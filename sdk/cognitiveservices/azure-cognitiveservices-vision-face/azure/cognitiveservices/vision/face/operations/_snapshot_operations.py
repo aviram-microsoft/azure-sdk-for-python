@@ -35,8 +35,7 @@ class SnapshotOperations(object):
 
         self.config = config
 
-    def take(
-            self, type, object_id, apply_scope, user_data=None, custom_headers=None, raw=False, **operation_config):
+    def take(self, type, object_id, apply_scope, user_data=None, custom_headers=None, raw=False, **operation_config):
         """Submit an operation to take a snapshot of face list, large face list,
         person group or large person group, with user-specified snapshot type,
         source object id, apply scope and an optional user data.<br />
@@ -103,9 +102,9 @@ class SnapshotOperations(object):
         body = models.TakeSnapshotRequest(type=type, object_id=object_id, apply_scope=apply_scope, user_data=user_data)
 
         # Construct URL
-        url = self.take.metadata['url']
+        url = self.take.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -114,12 +113,12 @@ class SnapshotOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'TakeSnapshotRequest')
+        body_content = self._serialize.body(body, "TakeSnapshotRequest")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -130,14 +129,16 @@ class SnapshotOperations(object):
 
         if raw:
             client_raw_response = ClientRawResponse(None, response)
-            client_raw_response.add_headers({
-                'Operation-Location': 'str',
-            })
+            client_raw_response.add_headers(
+                {
+                    "Operation-Location": "str",
+                }
+            )
             return client_raw_response
-    take.metadata = {'url': '/snapshots'}
 
-    def list(
-            self, type=None, apply_scope=None, custom_headers=None, raw=False, **operation_config):
+    take.metadata = {"url": "/snapshots"}
+
+    def list(self, type=None, apply_scope=None, custom_headers=None, raw=False, **operation_config):
         """List all accessible snapshots with related information, including
         snapshots that were taken by the user, or snapshots to be applied to
         the user (subscription id was included in the applyScope in Snapshot -
@@ -165,22 +166,22 @@ class SnapshotOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.list.metadata['url']
+        url = self.list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if type is not None:
-            query_parameters['type'] = self._serialize.query("type", type, 'SnapshotObjectType')
+            query_parameters["type"] = self._serialize.query("type", type, "SnapshotObjectType")
         if apply_scope is not None:
-            query_parameters['applyScope'] = self._serialize.query("apply_scope", apply_scope, '[str]', div=',')
+            query_parameters["applyScope"] = self._serialize.query("apply_scope", apply_scope, "[str]", div=",")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -193,17 +194,17 @@ class SnapshotOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[Snapshot]', response)
+            deserialized = self._deserialize("[Snapshot]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list.metadata = {'url': '/snapshots'}
 
-    def get(
-            self, snapshot_id, custom_headers=None, raw=False, **operation_config):
+    list.metadata = {"url": "/snapshots"}
+
+    def get(self, snapshot_id, custom_headers=None, raw=False, **operation_config):
         """Retrieve information about a snapshot. Snapshot is only accessible to
         the source subscription who took it, and target subscriptions included
         in the applyScope in Snapshot - Take.
@@ -222,10 +223,10 @@ class SnapshotOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.get.metadata['url']
+        url = self.get.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'snapshotId': self._serialize.url("snapshot_id", snapshot_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "snapshotId": self._serialize.url("snapshot_id", snapshot_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -234,7 +235,7 @@ class SnapshotOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -247,17 +248,17 @@ class SnapshotOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Snapshot', response)
+            deserialized = self._deserialize("Snapshot", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get.metadata = {'url': '/snapshots/{snapshotId}'}
 
-    def update(
-            self, snapshot_id, apply_scope=None, user_data=None, custom_headers=None, raw=False, **operation_config):
+    get.metadata = {"url": "/snapshots/{snapshotId}"}
+
+    def update(self, snapshot_id, apply_scope=None, user_data=None, custom_headers=None, raw=False, **operation_config):
         """Update the information of a snapshot. Only the source subscription who
         took the snapshot can update the snapshot.
 
@@ -284,10 +285,10 @@ class SnapshotOperations(object):
         body = models.UpdateSnapshotRequest(apply_scope=apply_scope, user_data=user_data)
 
         # Construct URL
-        url = self.update.metadata['url']
+        url = self.update.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'snapshotId': self._serialize.url("snapshot_id", snapshot_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "snapshotId": self._serialize.url("snapshot_id", snapshot_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -296,12 +297,12 @@ class SnapshotOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'UpdateSnapshotRequest')
+        body_content = self._serialize.body(body, "UpdateSnapshotRequest")
 
         # Construct and send request
         request = self._client.patch(url, query_parameters, header_parameters, body_content)
@@ -313,10 +314,10 @@ class SnapshotOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    update.metadata = {'url': '/snapshots/{snapshotId}'}
 
-    def delete(
-            self, snapshot_id, custom_headers=None, raw=False, **operation_config):
+    update.metadata = {"url": "/snapshots/{snapshotId}"}
+
+    def delete(self, snapshot_id, custom_headers=None, raw=False, **operation_config):
         """Delete an existing snapshot according to the snapshotId. All object
         data and information in the snapshot will also be deleted. Only the
         source subscription who took the snapshot can delete the snapshot. If
@@ -336,10 +337,10 @@ class SnapshotOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.delete.metadata['url']
+        url = self.delete.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'snapshotId': self._serialize.url("snapshot_id", snapshot_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "snapshotId": self._serialize.url("snapshot_id", snapshot_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -361,10 +362,10 @@ class SnapshotOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    delete.metadata = {'url': '/snapshots/{snapshotId}'}
 
-    def apply(
-            self, snapshot_id, object_id, mode="CreateNew", custom_headers=None, raw=False, **operation_config):
+    delete.metadata = {"url": "/snapshots/{snapshotId}"}
+
+    def apply(self, snapshot_id, object_id, mode="CreateNew", custom_headers=None, raw=False, **operation_config):
         """Submit an operation to apply a snapshot to current subscription. For
         each snapshot, only subscriptions included in the applyScope of
         Snapshot - Take can apply it.<br />
@@ -429,10 +430,10 @@ class SnapshotOperations(object):
         body = models.ApplySnapshotRequest(object_id=object_id, mode=mode)
 
         # Construct URL
-        url = self.apply.metadata['url']
+        url = self.apply.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'snapshotId': self._serialize.url("snapshot_id", snapshot_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "snapshotId": self._serialize.url("snapshot_id", snapshot_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -441,12 +442,12 @@ class SnapshotOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(body, 'ApplySnapshotRequest')
+        body_content = self._serialize.body(body, "ApplySnapshotRequest")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -457,14 +458,16 @@ class SnapshotOperations(object):
 
         if raw:
             client_raw_response = ClientRawResponse(None, response)
-            client_raw_response.add_headers({
-                'Operation-Location': 'str',
-            })
+            client_raw_response.add_headers(
+                {
+                    "Operation-Location": "str",
+                }
+            )
             return client_raw_response
-    apply.metadata = {'url': '/snapshots/{snapshotId}/apply'}
 
-    def get_operation_status(
-            self, operation_id, custom_headers=None, raw=False, **operation_config):
+    apply.metadata = {"url": "/snapshots/{snapshotId}/apply"}
+
+    def get_operation_status(self, operation_id, custom_headers=None, raw=False, **operation_config):
         """Retrieve the status of a take/apply snapshot operation.
 
         :param operation_id: Id referencing a particular take/apply snapshot
@@ -482,10 +485,10 @@ class SnapshotOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.face.models.APIErrorException>`
         """
         # Construct URL
-        url = self.get_operation_status.metadata['url']
+        url = self.get_operation_status.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'operationId': self._serialize.url("operation_id", operation_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "operationId": self._serialize.url("operation_id", operation_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -494,7 +497,7 @@ class SnapshotOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -507,11 +510,12 @@ class SnapshotOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_operation_status.metadata = {'url': '/operations/{operationId}'}
+
+    get_operation_status.metadata = {"url": "/operations/{operationId}"}

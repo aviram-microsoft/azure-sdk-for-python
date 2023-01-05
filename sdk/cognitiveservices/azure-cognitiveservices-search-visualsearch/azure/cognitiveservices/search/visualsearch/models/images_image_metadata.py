@@ -35,15 +35,15 @@ class ImagesImageMetadata(Model):
     """
 
     _validation = {
-        'shopping_sources_count': {'readonly': True},
-        'recipe_sources_count': {'readonly': True},
-        'aggregate_offer': {'readonly': True},
+        "shopping_sources_count": {"readonly": True},
+        "recipe_sources_count": {"readonly": True},
+        "aggregate_offer": {"readonly": True},
     }
 
     _attribute_map = {
-        'shopping_sources_count': {'key': 'shoppingSourcesCount', 'type': 'int'},
-        'recipe_sources_count': {'key': 'recipeSourcesCount', 'type': 'int'},
-        'aggregate_offer': {'key': 'aggregateOffer', 'type': 'AggregateOffer'},
+        "shopping_sources_count": {"key": "shoppingSourcesCount", "type": "int"},
+        "recipe_sources_count": {"key": "recipeSourcesCount", "type": "int"},
+        "aggregate_offer": {"key": "aggregateOffer", "type": "AggregateOffer"},
     }
 
     def __init__(self, **kwargs):

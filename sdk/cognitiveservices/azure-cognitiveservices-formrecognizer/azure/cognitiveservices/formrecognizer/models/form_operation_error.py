@@ -20,9 +20,9 @@ class FormOperationError(Model):
     """
 
     _attribute_map = {
-        'error_message': {'key': 'errorMessage', 'type': 'str'},
+        "error_message": {"key": "errorMessage", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(FormOperationError, self).__init__(**kwargs)
-        self.error_message = kwargs.get('error_message', None)
+        self.error_message = kwargs.get("error_message", None)

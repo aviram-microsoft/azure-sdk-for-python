@@ -34,15 +34,25 @@ class ExtractedPage(Model):
     """
 
     _attribute_map = {
-        'number': {'key': 'number', 'type': 'int'},
-        'height': {'key': 'height', 'type': 'int'},
-        'width': {'key': 'width', 'type': 'int'},
-        'cluster_id': {'key': 'clusterId', 'type': 'int'},
-        'key_value_pairs': {'key': 'keyValuePairs', 'type': '[ExtractedKeyValuePair]'},
-        'tables': {'key': 'tables', 'type': '[ExtractedTable]'},
+        "number": {"key": "number", "type": "int"},
+        "height": {"key": "height", "type": "int"},
+        "width": {"key": "width", "type": "int"},
+        "cluster_id": {"key": "clusterId", "type": "int"},
+        "key_value_pairs": {"key": "keyValuePairs", "type": "[ExtractedKeyValuePair]"},
+        "tables": {"key": "tables", "type": "[ExtractedTable]"},
     }
 
-    def __init__(self, *, number: int=None, height: int=None, width: int=None, cluster_id: int=None, key_value_pairs=None, tables=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        number: int = None,
+        height: int = None,
+        width: int = None,
+        cluster_id: int = None,
+        key_value_pairs=None,
+        tables=None,
+        **kwargs
+    ) -> None:
         super(ExtractedPage, self).__init__(**kwargs)
         self.number = number
         self.height = height

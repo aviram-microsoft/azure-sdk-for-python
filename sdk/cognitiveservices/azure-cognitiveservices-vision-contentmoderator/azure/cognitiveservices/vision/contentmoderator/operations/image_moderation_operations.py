@@ -33,8 +33,7 @@ class ImageModerationOperations(object):
 
         self.config = config
 
-    def find_faces(
-            self, cache_image=None, custom_headers=None, raw=False, **operation_config):
+    def find_faces(self, cache_image=None, custom_headers=None, raw=False, **operation_config):
         """Returns the list of faces found.
 
         :param cache_image: Whether to retain the submitted image for future
@@ -53,20 +52,20 @@ class ImageModerationOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.find_faces.metadata['url']
+        url = self.find_faces.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -80,17 +79,19 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('FoundFaces', response)
+            deserialized = self._deserialize("FoundFaces", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    find_faces.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/FindFaces'}
+
+    find_faces.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/FindFaces"}
 
     def ocr_method(
-            self, language, cache_image=None, enhanced=False, custom_headers=None, raw=False, **operation_config):
+        self, language, cache_image=None, enhanced=False, custom_headers=None, raw=False, **operation_config
+    ):
         """Returns any text found in the image for the language specified. If no
         language is specified in input then the detection defaults to English.
 
@@ -116,23 +117,23 @@ class ImageModerationOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.ocr_method.metadata['url']
+        url = self.ocr_method.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['language'] = self._serialize.query("language", language, 'str')
+        query_parameters["language"] = self._serialize.query("language", language, "str")
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
         if enhanced is not None:
-            query_parameters['enhanced'] = self._serialize.query("enhanced", enhanced, 'bool')
+            query_parameters["enhanced"] = self._serialize.query("enhanced", enhanced, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -146,17 +147,17 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('OCR', response)
+            deserialized = self._deserialize("OCR", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    ocr_method.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/OCR'}
 
-    def evaluate_method(
-            self, cache_image=None, custom_headers=None, raw=False, **operation_config):
+    ocr_method.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/OCR"}
+
+    def evaluate_method(self, cache_image=None, custom_headers=None, raw=False, **operation_config):
         """Returns probabilities of the image containing racy or adult content.
 
         :param cache_image: Whether to retain the submitted image for future
@@ -175,20 +176,20 @@ class ImageModerationOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.evaluate_method.metadata['url']
+        url = self.evaluate_method.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -202,17 +203,17 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('Evaluate', response)
+            deserialized = self._deserialize("Evaluate", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    evaluate_method.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/Evaluate'}
 
-    def match_method(
-            self, list_id=None, cache_image=None, custom_headers=None, raw=False, **operation_config):
+    evaluate_method.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/Evaluate"}
+
+    def match_method(self, list_id=None, cache_image=None, custom_headers=None, raw=False, **operation_config):
         """Fuzzily match an image against one of your custom Image Lists. You can
         create and manage your custom image lists using <a
         href="/docs/services/578ff44d2703741568569ab9/operations/578ff7b12703741568569abe">this</a>
@@ -240,22 +241,22 @@ class ImageModerationOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.match_method.metadata['url']
+        url = self.match_method.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if list_id is not None:
-            query_parameters['listId'] = self._serialize.query("list_id", list_id, 'str')
+            query_parameters["listId"] = self._serialize.query("list_id", list_id, "str")
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -269,17 +270,19 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('MatchResponse', response)
+            deserialized = self._deserialize("MatchResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    match_method.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/Match'}
+
+    match_method.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/Match"}
 
     def find_faces_file_input(
-            self, image_stream, cache_image=None, custom_headers=None, raw=False, callback=None, **operation_config):
+        self, image_stream, cache_image=None, custom_headers=None, raw=False, callback=None, **operation_config
+    ):
         """Returns the list of faces found.
 
         :param image_stream: The image file.
@@ -305,21 +308,21 @@ class ImageModerationOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.find_faces_file_input.metadata['url']
+        url = self.find_faces_file_input.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'image/gif'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "image/gif"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -336,17 +339,26 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('FoundFaces', response)
+            deserialized = self._deserialize("FoundFaces", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    find_faces_file_input.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/FindFaces'}
+
+    find_faces_file_input.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/FindFaces"}
 
     def find_faces_url_input(
-            self, content_type, cache_image=None, data_representation="URL", value=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        content_type,
+        cache_image=None,
+        data_representation="URL",
+        value=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Returns the list of faces found.
 
         :param content_type: The content type.
@@ -373,27 +385,27 @@ class ImageModerationOperations(object):
         image_url = models.BodyModel(data_representation=data_representation, value=value)
 
         # Construct URL
-        url = self.find_faces_url_input.metadata['url']
+        url = self.find_faces_url_input.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'BodyModel')
+        body_content = self._serialize.body(image_url, "BodyModel")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -405,17 +417,28 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('FoundFaces', response)
+            deserialized = self._deserialize("FoundFaces", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    find_faces_url_input.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/FindFaces'}
+
+    find_faces_url_input.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/FindFaces"}
 
     def ocr_url_input(
-            self, language, content_type, cache_image=None, enhanced=False, data_representation="URL", value=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        language,
+        content_type,
+        cache_image=None,
+        enhanced=False,
+        data_representation="URL",
+        value=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Returns any text found in the image for the language specified. If no
         language is specified in input then the detection defaults to English.
 
@@ -449,30 +472,30 @@ class ImageModerationOperations(object):
         image_url = models.BodyModel(data_representation=data_representation, value=value)
 
         # Construct URL
-        url = self.ocr_url_input.metadata['url']
+        url = self.ocr_url_input.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['language'] = self._serialize.query("language", language, 'str')
+        query_parameters["language"] = self._serialize.query("language", language, "str")
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
         if enhanced is not None:
-            query_parameters['enhanced'] = self._serialize.query("enhanced", enhanced, 'bool')
+            query_parameters["enhanced"] = self._serialize.query("enhanced", enhanced, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'BodyModel')
+        body_content = self._serialize.body(image_url, "BodyModel")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -484,17 +507,27 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('OCR', response)
+            deserialized = self._deserialize("OCR", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    ocr_url_input.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/OCR'}
+
+    ocr_url_input.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/OCR"}
 
     def ocr_file_input(
-            self, language, image_stream, cache_image=None, enhanced=False, custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        language,
+        image_stream,
+        cache_image=None,
+        enhanced=False,
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """Returns any text found in the image for the language specified. If no
         language is specified in input then the detection defaults to English.
 
@@ -527,24 +560,24 @@ class ImageModerationOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.ocr_file_input.metadata['url']
+        url = self.ocr_file_input.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['language'] = self._serialize.query("language", language, 'str')
+        query_parameters["language"] = self._serialize.query("language", language, "str")
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
         if enhanced is not None:
-            query_parameters['enhanced'] = self._serialize.query("enhanced", enhanced, 'bool')
+            query_parameters["enhanced"] = self._serialize.query("enhanced", enhanced, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'image/gif'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "image/gif"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -561,17 +594,19 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('OCR', response)
+            deserialized = self._deserialize("OCR", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    ocr_file_input.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/OCR'}
+
+    ocr_file_input.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/OCR"}
 
     def evaluate_file_input(
-            self, image_stream, cache_image=None, custom_headers=None, raw=False, callback=None, **operation_config):
+        self, image_stream, cache_image=None, custom_headers=None, raw=False, callback=None, **operation_config
+    ):
         """Returns probabilities of the image containing racy or adult content.
 
         :param image_stream: The image file.
@@ -597,21 +632,21 @@ class ImageModerationOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.evaluate_file_input.metadata['url']
+        url = self.evaluate_file_input.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'image/gif'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "image/gif"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -628,17 +663,26 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('Evaluate', response)
+            deserialized = self._deserialize("Evaluate", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    evaluate_file_input.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/Evaluate'}
+
+    evaluate_file_input.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/Evaluate"}
 
     def evaluate_url_input(
-            self, content_type, cache_image=None, data_representation="URL", value=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        content_type,
+        cache_image=None,
+        data_representation="URL",
+        value=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Returns probabilities of the image containing racy or adult content.
 
         :param content_type: The content type.
@@ -665,27 +709,27 @@ class ImageModerationOperations(object):
         image_url = models.BodyModel(data_representation=data_representation, value=value)
 
         # Construct URL
-        url = self.evaluate_url_input.metadata['url']
+        url = self.evaluate_url_input.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'BodyModel')
+        body_content = self._serialize.body(image_url, "BodyModel")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -697,17 +741,27 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('Evaluate', response)
+            deserialized = self._deserialize("Evaluate", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    evaluate_url_input.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/Evaluate'}
+
+    evaluate_url_input.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/Evaluate"}
 
     def match_url_input(
-            self, content_type, list_id=None, cache_image=None, data_representation="URL", value=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        content_type,
+        list_id=None,
+        cache_image=None,
+        data_representation="URL",
+        value=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Fuzzily match an image against one of your custom Image Lists. You can
         create and manage your custom image lists using <a
         href="/docs/services/578ff44d2703741568569ab9/operations/578ff7b12703741568569abe">this</a>
@@ -743,29 +797,29 @@ class ImageModerationOperations(object):
         image_url = models.BodyModel(data_representation=data_representation, value=value)
 
         # Construct URL
-        url = self.match_url_input.metadata['url']
+        url = self.match_url_input.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if list_id is not None:
-            query_parameters['listId'] = self._serialize.query("list_id", list_id, 'str')
+            query_parameters["listId"] = self._serialize.query("list_id", list_id, "str")
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
 
         # Construct body
-        body_content = self._serialize.body(image_url, 'BodyModel')
+        body_content = self._serialize.body(image_url, "BodyModel")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -777,17 +831,26 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('MatchResponse', response)
+            deserialized = self._deserialize("MatchResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    match_url_input.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/Match'}
+
+    match_url_input.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/Match"}
 
     def match_file_input(
-            self, image_stream, list_id=None, cache_image=None, custom_headers=None, raw=False, callback=None, **operation_config):
+        self,
+        image_stream,
+        list_id=None,
+        cache_image=None,
+        custom_headers=None,
+        raw=False,
+        callback=None,
+        **operation_config
+    ):
         """Fuzzily match an image against one of your custom Image Lists. You can
         create and manage your custom image lists using <a
         href="/docs/services/578ff44d2703741568569ab9/operations/578ff7b12703741568569abe">this</a>
@@ -822,23 +885,23 @@ class ImageModerationOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.match_file_input.metadata['url']
+        url = self.match_file_input.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if list_id is not None:
-            query_parameters['listId'] = self._serialize.query("list_id", list_id, 'str')
+            query_parameters["listId"] = self._serialize.query("list_id", list_id, "str")
         if cache_image is not None:
-            query_parameters['CacheImage'] = self._serialize.query("cache_image", cache_image, 'bool')
+            query_parameters["CacheImage"] = self._serialize.query("cache_image", cache_image, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'image/gif'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "image/gif"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -855,11 +918,12 @@ class ImageModerationOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('MatchResponse', response)
+            deserialized = self._deserialize("MatchResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    match_file_input.metadata = {'url': '/contentmoderator/moderate/v1.0/ProcessImage/Match'}
+
+    match_file_input.metadata = {"url": "/contentmoderator/moderate/v1.0/ProcessImage/Match"}

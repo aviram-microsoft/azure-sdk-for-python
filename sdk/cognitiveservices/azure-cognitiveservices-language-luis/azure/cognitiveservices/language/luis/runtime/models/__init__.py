@@ -35,15 +35,16 @@ except (SyntaxError, ImportError):
     from ._models import Sentiment
 
 __all__ = [
-    'DynamicList',
-    'Error', 'ErrorException',
-    'ErrorBody',
-    'ExternalEntity',
-    'Intent',
-    'Prediction',
-    'PredictionRequest',
-    'PredictionRequestOptions',
-    'PredictionResponse',
-    'RequestList',
-    'Sentiment',
+    "DynamicList",
+    "Error",
+    "ErrorException",
+    "ErrorBody",
+    "ExternalEntity",
+    "Intent",
+    "Prediction",
+    "PredictionRequest",
+    "PredictionRequestOptions",
+    "PredictionResponse",
+    "RequestList",
+    "Sentiment",
 ]

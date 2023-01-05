@@ -20,9 +20,9 @@ class InnerError(Model):
     """
 
     _attribute_map = {
-        'request_id': {'key': 'requestId', 'type': 'str'},
+        "request_id": {"key": "requestId", "type": "str"},
     }
 
-    def __init__(self, *, request_id: str=None, **kwargs) -> None:
+    def __init__(self, *, request_id: str = None, **kwargs) -> None:
         super(InnerError, self).__init__(**kwargs)
         self.request_id = request_id

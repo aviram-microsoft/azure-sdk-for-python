@@ -27,15 +27,15 @@ class FormDocumentReport(Model):
     """
 
     _attribute_map = {
-        'document_name': {'key': 'documentName', 'type': 'str'},
-        'pages': {'key': 'pages', 'type': 'int'},
-        'errors': {'key': 'errors', 'type': '[str]'},
-        'status': {'key': 'status', 'type': 'str'},
+        "document_name": {"key": "documentName", "type": "str"},
+        "pages": {"key": "pages", "type": "int"},
+        "errors": {"key": "errors", "type": "[str]"},
+        "status": {"key": "status", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(FormDocumentReport, self).__init__(**kwargs)
-        self.document_name = kwargs.get('document_name', None)
-        self.pages = kwargs.get('pages', None)
-        self.errors = kwargs.get('errors', None)
-        self.status = kwargs.get('status', None)
+        self.document_name = kwargs.get("document_name", None)
+        self.pages = kwargs.get("pages", None)
+        self.errors = kwargs.get("errors", None)
+        self.status = kwargs.get("status", None)

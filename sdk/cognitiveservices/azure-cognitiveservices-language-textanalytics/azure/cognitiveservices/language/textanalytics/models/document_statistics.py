@@ -23,11 +23,11 @@ class DocumentStatistics(Model):
     """
 
     _attribute_map = {
-        'characters_count': {'key': 'charactersCount', 'type': 'int'},
-        'transactions_count': {'key': 'transactionsCount', 'type': 'int'},
+        "characters_count": {"key": "charactersCount", "type": "int"},
+        "transactions_count": {"key": "transactionsCount", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(DocumentStatistics, self).__init__(**kwargs)
-        self.characters_count = kwargs.get('characters_count', None)
-        self.transactions_count = kwargs.get('transactions_count', None)
+        self.characters_count = kwargs.get("characters_count", None)
+        self.transactions_count = kwargs.get("transactions_count", None)

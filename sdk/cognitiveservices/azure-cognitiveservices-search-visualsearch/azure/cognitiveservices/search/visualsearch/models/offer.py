@@ -89,46 +89,44 @@ class Offer(Thing):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'alternate_name': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'seller': {'readonly': True},
-        'price': {'readonly': True},
-        'price_currency': {'readonly': True},
-        'availability': {'readonly': True},
-        'aggregate_rating': {'readonly': True},
-        'last_updated': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "alternate_name": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "seller": {"readonly": True},
+        "price": {"readonly": True},
+        "price_currency": {"readonly": True},
+        "availability": {"readonly": True},
+        "aggregate_rating": {"readonly": True},
+        "last_updated": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'alternate_name': {'key': 'alternateName', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'seller': {'key': 'seller', 'type': 'Organization'},
-        'price': {'key': 'price', 'type': 'float'},
-        'price_currency': {'key': 'priceCurrency', 'type': 'str'},
-        'availability': {'key': 'availability', 'type': 'str'},
-        'aggregate_rating': {'key': 'aggregateRating', 'type': 'AggregateRating'},
-        'last_updated': {'key': 'lastUpdated', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "alternate_name": {"key": "alternateName", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "seller": {"key": "seller", "type": "Organization"},
+        "price": {"key": "price", "type": "float"},
+        "price_currency": {"key": "priceCurrency", "type": "str"},
+        "availability": {"key": "availability", "type": "str"},
+        "aggregate_rating": {"key": "aggregateRating", "type": "AggregateRating"},
+        "last_updated": {"key": "lastUpdated", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'AggregateOffer': 'AggregateOffer'}
-    }
+    _subtype_map = {"_type": {"AggregateOffer": "AggregateOffer"}}
 
     def __init__(self, **kwargs):
         super(Offer, self).__init__(**kwargs)
@@ -138,4 +136,4 @@ class Offer(Thing):
         self.availability = None
         self.aggregate_rating = None
         self.last_updated = None
-        self._type = 'Offer'
+        self._type = "Offer"

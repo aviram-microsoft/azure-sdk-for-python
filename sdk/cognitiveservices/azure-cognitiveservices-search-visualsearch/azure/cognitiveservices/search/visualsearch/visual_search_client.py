@@ -30,18 +30,17 @@ class VisualSearchClientConfiguration(Configuration):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         if endpoint is None:
             raise ValueError("Parameter 'endpoint' must not be None.")
         if credentials is None:
             raise ValueError("Parameter 'credentials' must not be None.")
-        base_url = '{Endpoint}/bing/v7.0'
+        base_url = "{Endpoint}/bing/v7.0"
 
         super(VisualSearchClientConfiguration, self).__init__(base_url)
 
-        self.add_user_agent('azure-cognitiveservices-search-visualsearch/{}'.format(VERSION))
+        self.add_user_agent("azure-cognitiveservices-search-visualsearch/{}".format(VERSION))
 
         self.endpoint = endpoint
         self.credentials = credentials
@@ -65,16 +64,14 @@ class VisualSearchClient(SDKClient):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         self.config = VisualSearchClientConfiguration(endpoint, credentials)
         super(VisualSearchClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = '1.0'
+        self.api_version = "1.0"
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
-        self.images = ImagesOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+        self.images = ImagesOperations(self._client, self.config, self._serialize, self._deserialize)

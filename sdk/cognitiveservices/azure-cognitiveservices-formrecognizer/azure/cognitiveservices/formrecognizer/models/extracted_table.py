@@ -24,11 +24,11 @@ class ExtractedTable(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'columns': {'key': 'columns', 'type': '[ExtractedTableColumn]'},
+        "id": {"key": "id", "type": "str"},
+        "columns": {"key": "columns", "type": "[ExtractedTableColumn]"},
     }
 
     def __init__(self, **kwargs):
         super(ExtractedTable, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.columns = kwargs.get('columns', None)
+        self.id = kwargs.get("id", None)
+        self.columns = kwargs.get("columns", None)

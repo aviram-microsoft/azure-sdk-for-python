@@ -21,7 +21,7 @@ class MultiLanguageBatchInput(Model):
     """
 
     _attribute_map = {
-        'documents': {'key': 'documents', 'type': '[MultiLanguageInput]'},
+        "documents": {"key": "documents", "type": "[MultiLanguageInput]"},
     }
 
     def __init__(self, *, documents=None, **kwargs) -> None:

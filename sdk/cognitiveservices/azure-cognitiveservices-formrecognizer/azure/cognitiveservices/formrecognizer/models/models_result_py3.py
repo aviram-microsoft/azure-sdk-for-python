@@ -21,7 +21,7 @@ class ModelsResult(Model):
     """
 
     _attribute_map = {
-        'models_property': {'key': 'models', 'type': '[ModelResult]'},
+        "models_property": {"key": "models", "type": "[ModelResult]"},
     }
 
     def __init__(self, *, models_property=None, **kwargs) -> None:

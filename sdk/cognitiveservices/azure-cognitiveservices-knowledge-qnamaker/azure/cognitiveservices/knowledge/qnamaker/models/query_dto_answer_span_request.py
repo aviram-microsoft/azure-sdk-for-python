@@ -26,13 +26,13 @@ class QueryDTOAnswerSpanRequest(AnswerSpanRequestDTO):
     """
 
     _validation = {
-        'top_answers_with_span': {'maximum': 10, 'minimum': 1},
+        "top_answers_with_span": {"maximum": 10, "minimum": 1},
     }
 
     _attribute_map = {
-        'enable': {'key': 'enable', 'type': 'bool'},
-        'score_threshold': {'key': 'scoreThreshold', 'type': 'float'},
-        'top_answers_with_span': {'key': 'topAnswersWithSpan', 'type': 'int'},
+        "enable": {"key": "enable", "type": "bool"},
+        "score_threshold": {"key": "scoreThreshold", "type": "float"},
+        "top_answers_with_span": {"key": "topAnswersWithSpan", "type": "int"},
     }
 
     def __init__(self, **kwargs):

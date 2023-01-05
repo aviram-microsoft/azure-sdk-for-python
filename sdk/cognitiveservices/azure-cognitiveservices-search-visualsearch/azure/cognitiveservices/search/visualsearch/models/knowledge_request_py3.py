@@ -22,7 +22,7 @@ class KnowledgeRequest(Model):
     """
 
     _attribute_map = {
-        'filters': {'key': 'filters', 'type': 'Filters'},
+        "filters": {"key": "filters", "type": "Filters"},
     }
 
     def __init__(self, *, filters=None, **kwargs) -> None:

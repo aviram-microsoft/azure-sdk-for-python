@@ -20,13 +20,13 @@ from ._settings_operations import SettingsOperations
 from ._azure_accounts_operations import AzureAccountsOperations
 
 __all__ = [
-    'FeaturesOperations',
-    'ExamplesOperations',
-    'ModelOperations',
-    'AppsOperations',
-    'VersionsOperations',
-    'TrainOperations',
-    'PatternOperations',
-    'SettingsOperations',
-    'AzureAccountsOperations',
+    "FeaturesOperations",
+    "ExamplesOperations",
+    "ModelOperations",
+    "AppsOperations",
+    "VersionsOperations",
+    "TrainOperations",
+    "PatternOperations",
+    "SettingsOperations",
+    "AzureAccountsOperations",
 ]

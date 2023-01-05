@@ -20,7 +20,7 @@ class EndpointSettingsDTOActiveLearning(ActiveLearningSettingsDTO):
     """
 
     _attribute_map = {
-        'enable': {'key': 'enable', 'type': 'str'},
+        "enable": {"key": "enable", "type": "str"},
     }
 
     def __init__(self, **kwargs):

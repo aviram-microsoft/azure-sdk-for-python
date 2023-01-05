@@ -36,8 +36,7 @@ class AppsOperations(object):
 
         self.config = config
 
-    def add(
-            self, application_create_object, custom_headers=None, raw=False, **operation_config):
+    def add(self, application_create_object, custom_headers=None, raw=False, **operation_config):
         """Creates a new LUIS app.
 
         :param application_create_object: An application containing Name,
@@ -58,9 +57,9 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.add.metadata['url']
+        url = self.add.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -69,13 +68,13 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(application_create_object, 'ApplicationCreateObject')
+        body_content = self._serialize.body(application_create_object, "ApplicationCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -86,17 +85,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add.metadata = {'url': '/apps/'}
 
-    def list(
-            self, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
+    add.metadata = {"url": "/apps/"}
+
+    def list(self, skip=0, take=100, custom_headers=None, raw=False, **operation_config):
         """Lists all of the user's applications.
 
         :param skip: The number of entries to skip. Default value is 0.
@@ -117,22 +116,22 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list.metadata['url']
+        url = self.list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -145,17 +144,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[ApplicationInfoResponse]', response)
+            deserialized = self._deserialize("[ApplicationInfoResponse]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list.metadata = {'url': '/apps/'}
 
-    def import_method(
-            self, luis_app, app_name=None, custom_headers=None, raw=False, **operation_config):
+    list.metadata = {"url": "/apps/"}
+
+    def import_method(self, luis_app, app_name=None, custom_headers=None, raw=False, **operation_config):
         """Imports an application to LUIS, the application's structure is included
         in the request body.
 
@@ -177,26 +176,26 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.import_method.metadata['url']
+        url = self.import_method.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if app_name is not None:
-            query_parameters['appName'] = self._serialize.query("app_name", app_name, 'str')
+            query_parameters["appName"] = self._serialize.query("app_name", app_name, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(luis_app, 'LuisApp')
+        body_content = self._serialize.body(luis_app, "LuisApp")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -207,17 +206,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    import_method.metadata = {'url': '/apps/import'}
 
-    def list_cortana_endpoints(
-            self, custom_headers=None, raw=False, **operation_config):
+    import_method.metadata = {"url": "/apps/import"}
+
+    def list_cortana_endpoints(self, custom_headers=None, raw=False, **operation_config):
         """Gets the endpoint URLs for the prebuilt Cortana applications.
 
         :param dict custom_headers: headers that will be added to the request
@@ -233,9 +232,9 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_cortana_endpoints.metadata['url']
+        url = self.list_cortana_endpoints.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -244,7 +243,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -257,17 +256,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PersonalAssistantsResponse', response)
+            deserialized = self._deserialize("PersonalAssistantsResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_cortana_endpoints.metadata = {'url': '/apps/assistants'}
 
-    def list_domains(
-            self, custom_headers=None, raw=False, **operation_config):
+    list_cortana_endpoints.metadata = {"url": "/apps/assistants"}
+
+    def list_domains(self, custom_headers=None, raw=False, **operation_config):
         """Gets the available application domains.
 
         :param dict custom_headers: headers that will be added to the request
@@ -281,9 +280,9 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_domains.metadata['url']
+        url = self.list_domains.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -292,7 +291,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -305,17 +304,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[str]', response)
+            deserialized = self._deserialize("[str]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_domains.metadata = {'url': '/apps/domains'}
 
-    def list_usage_scenarios(
-            self, custom_headers=None, raw=False, **operation_config):
+    list_domains.metadata = {"url": "/apps/domains"}
+
+    def list_usage_scenarios(self, custom_headers=None, raw=False, **operation_config):
         """Gets the application available usage scenarios.
 
         :param dict custom_headers: headers that will be added to the request
@@ -329,9 +328,9 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_usage_scenarios.metadata['url']
+        url = self.list_usage_scenarios.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -340,7 +339,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -353,17 +352,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[str]', response)
+            deserialized = self._deserialize("[str]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_usage_scenarios.metadata = {'url': '/apps/usagescenarios'}
 
-    def list_supported_cultures(
-            self, custom_headers=None, raw=False, **operation_config):
+    list_usage_scenarios.metadata = {"url": "/apps/usagescenarios"}
+
+    def list_supported_cultures(self, custom_headers=None, raw=False, **operation_config):
         """Gets a list of supported cultures. Cultures are equivalent to the
         written language and locale. For example,"en-us" represents the U.S.
         variation of English.
@@ -381,9 +380,9 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_supported_cultures.metadata['url']
+        url = self.list_supported_cultures.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -392,7 +391,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -405,17 +404,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[AvailableCulture]', response)
+            deserialized = self._deserialize("[AvailableCulture]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_supported_cultures.metadata = {'url': '/apps/cultures'}
 
-    def download_query_logs(
-            self, app_id, custom_headers=None, raw=False, callback=None, **operation_config):
+    list_supported_cultures.metadata = {"url": "/apps/cultures"}
+
+    def download_query_logs(self, app_id, custom_headers=None, raw=False, callback=None, **operation_config):
         """Gets the logs of the past month's endpoint queries for the application.
 
         :param app_id: The application ID.
@@ -436,10 +435,10 @@ class AppsOperations(object):
          :class:`HttpOperationError<msrest.exceptions.HttpOperationError>`
         """
         # Construct URL
-        url = self.download_query_logs.metadata['url']
+        url = self.download_query_logs.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -448,7 +447,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/octet-stream'
+        header_parameters["Accept"] = "application/octet-stream"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -466,10 +465,10 @@ class AppsOperations(object):
             return client_raw_response
 
         return deserialized
-    download_query_logs.metadata = {'url': '/apps/{appId}/querylogs'}
 
-    def get(
-            self, app_id, custom_headers=None, raw=False, **operation_config):
+    download_query_logs.metadata = {"url": "/apps/{appId}/querylogs"}
+
+    def get(self, app_id, custom_headers=None, raw=False, **operation_config):
         """Gets the application info.
 
         :param app_id: The application ID.
@@ -487,10 +486,10 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get.metadata['url']
+        url = self.get.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -499,7 +498,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -512,17 +511,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ApplicationInfoResponse', response)
+            deserialized = self._deserialize("ApplicationInfoResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get.metadata = {'url': '/apps/{appId}'}
 
-    def update(
-            self, app_id, name=None, description=None, custom_headers=None, raw=False, **operation_config):
+    get.metadata = {"url": "/apps/{appId}"}
+
+    def update(self, app_id, name=None, description=None, custom_headers=None, raw=False, **operation_config):
         """Updates the name or description of the application.
 
         :param app_id: The application ID.
@@ -546,10 +545,10 @@ class AppsOperations(object):
         application_update_object = models.ApplicationUpdateObject(name=name, description=description)
 
         # Construct URL
-        url = self.update.metadata['url']
+        url = self.update.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -558,13 +557,13 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(application_update_object, 'ApplicationUpdateObject')
+        body_content = self._serialize.body(application_update_object, "ApplicationUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -575,17 +574,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update.metadata = {'url': '/apps/{appId}'}
 
-    def delete(
-            self, app_id, force=False, custom_headers=None, raw=False, **operation_config):
+    update.metadata = {"url": "/apps/{appId}"}
+
+    def delete(self, app_id, force=False, custom_headers=None, raw=False, **operation_config):
         """Deletes an application.
 
         :param app_id: The application ID.
@@ -605,21 +604,21 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete.metadata['url']
+        url = self.delete.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if force is not None:
-            query_parameters['force'] = self._serialize.query("force", force, 'bool')
+            query_parameters["force"] = self._serialize.query("force", force, "bool")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -632,17 +631,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete.metadata = {'url': '/apps/{appId}'}
 
-    def publish(
-            self, app_id, version_id=None, is_staging=False, custom_headers=None, raw=False, **operation_config):
+    delete.metadata = {"url": "/apps/{appId}"}
+
+    def publish(self, app_id, version_id=None, is_staging=False, custom_headers=None, raw=False, **operation_config):
         """Publishes a specific version of the application.
 
         :param app_id: The application ID.
@@ -668,10 +667,10 @@ class AppsOperations(object):
         application_publish_object = models.ApplicationPublishObject(version_id=version_id, is_staging=is_staging)
 
         # Construct URL
-        url = self.publish.metadata['url']
+        url = self.publish.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -680,13 +679,13 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(application_publish_object, 'ApplicationPublishObject')
+        body_content = self._serialize.body(application_publish_object, "ApplicationPublishObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -697,19 +696,19 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('ProductionOrStagingEndpointInfo', response)
+            deserialized = self._deserialize("ProductionOrStagingEndpointInfo", response)
         if response.status_code == 207:
-            deserialized = self._deserialize('ProductionOrStagingEndpointInfo', response)
+            deserialized = self._deserialize("ProductionOrStagingEndpointInfo", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    publish.metadata = {'url': '/apps/{appId}/publish'}
 
-    def get_settings(
-            self, app_id, custom_headers=None, raw=False, **operation_config):
+    publish.metadata = {"url": "/apps/{appId}/publish"}
+
+    def get_settings(self, app_id, custom_headers=None, raw=False, **operation_config):
         """Get the application settings including 'UseAllTrainingData'.
 
         :param app_id: The application ID.
@@ -727,10 +726,10 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_settings.metadata['url']
+        url = self.get_settings.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -739,7 +738,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -752,17 +751,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('ApplicationSettings', response)
+            deserialized = self._deserialize("ApplicationSettings", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_settings.metadata = {'url': '/apps/{appId}/settings'}
 
-    def update_settings(
-            self, app_id, is_public=None, custom_headers=None, raw=False, **operation_config):
+    get_settings.metadata = {"url": "/apps/{appId}/settings"}
+
+    def update_settings(self, app_id, is_public=None, custom_headers=None, raw=False, **operation_config):
         """Updates the application settings including 'UseAllTrainingData'.
 
         :param app_id: The application ID.
@@ -785,10 +784,10 @@ class AppsOperations(object):
         application_setting_update_object = models.ApplicationSettingUpdateObject(is_public=is_public)
 
         # Construct URL
-        url = self.update_settings.metadata['url']
+        url = self.update_settings.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -797,13 +796,13 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(application_setting_update_object, 'ApplicationSettingUpdateObject')
+        body_content = self._serialize.body(application_setting_update_object, "ApplicationSettingUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -814,17 +813,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_settings.metadata = {'url': '/apps/{appId}/settings'}
 
-    def get_publish_settings(
-            self, app_id, custom_headers=None, raw=False, **operation_config):
+    update_settings.metadata = {"url": "/apps/{appId}/settings"}
+
+    def get_publish_settings(self, app_id, custom_headers=None, raw=False, **operation_config):
         """Get the application publish settings including 'UseAllTrainingData'.
 
         :param app_id: The application ID.
@@ -842,10 +841,10 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_publish_settings.metadata['url']
+        url = self.get_publish_settings.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -854,7 +853,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -867,17 +866,19 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('PublishSettings', response)
+            deserialized = self._deserialize("PublishSettings", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_publish_settings.metadata = {'url': '/apps/{appId}/publishsettings'}
+
+    get_publish_settings.metadata = {"url": "/apps/{appId}/publishsettings"}
 
     def update_publish_settings(
-            self, app_id, publish_setting_update_object, custom_headers=None, raw=False, **operation_config):
+        self, app_id, publish_setting_update_object, custom_headers=None, raw=False, **operation_config
+    ):
         """Updates the application publish settings including
         'UseAllTrainingData'.
 
@@ -900,10 +901,10 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.update_publish_settings.metadata['url']
+        url = self.update_publish_settings.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -912,13 +913,13 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(publish_setting_update_object, 'PublishSettingUpdateObject')
+        body_content = self._serialize.body(publish_setting_update_object, "PublishSettingUpdateObject")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -929,17 +930,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update_publish_settings.metadata = {'url': '/apps/{appId}/publishsettings'}
 
-    def list_endpoints(
-            self, app_id, custom_headers=None, raw=False, **operation_config):
+    update_publish_settings.metadata = {"url": "/apps/{appId}/publishsettings"}
+
+    def list_endpoints(self, app_id, custom_headers=None, raw=False, **operation_config):
         """Returns the available endpoint deployment regions and URLs.
 
         :param app_id: The application ID.
@@ -955,10 +956,10 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_endpoints.metadata['url']
+        url = self.list_endpoints.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -967,7 +968,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -980,17 +981,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('{str}', response)
+            deserialized = self._deserialize("{str}", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_endpoints.metadata = {'url': '/apps/{appId}/endpoints'}
 
-    def list_available_custom_prebuilt_domains(
-            self, custom_headers=None, raw=False, **operation_config):
+    list_endpoints.metadata = {"url": "/apps/{appId}/endpoints"}
+
+    def list_available_custom_prebuilt_domains(self, custom_headers=None, raw=False, **operation_config):
         """Gets all the available custom prebuilt domains for all cultures.
 
         :param dict custom_headers: headers that will be added to the request
@@ -1006,9 +1007,9 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_available_custom_prebuilt_domains.metadata['url']
+        url = self.list_available_custom_prebuilt_domains.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1017,7 +1018,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1030,17 +1031,19 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[PrebuiltDomain]', response)
+            deserialized = self._deserialize("[PrebuiltDomain]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_available_custom_prebuilt_domains.metadata = {'url': '/apps/customprebuiltdomains'}
+
+    list_available_custom_prebuilt_domains.metadata = {"url": "/apps/customprebuiltdomains"}
 
     def add_custom_prebuilt_domain(
-            self, domain_name=None, culture=None, custom_headers=None, raw=False, **operation_config):
+        self, domain_name=None, culture=None, custom_headers=None, raw=False, **operation_config
+    ):
         """Adds a prebuilt domain along with its intent and entity models as a new
         application.
 
@@ -1061,9 +1064,9 @@ class AppsOperations(object):
         prebuilt_domain_create_object = models.PrebuiltDomainCreateObject(domain_name=domain_name, culture=culture)
 
         # Construct URL
-        url = self.add_custom_prebuilt_domain.metadata['url']
+        url = self.add_custom_prebuilt_domain.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1072,13 +1075,13 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(prebuilt_domain_create_object, 'PrebuiltDomainCreateObject')
+        body_content = self._serialize.body(prebuilt_domain_create_object, "PrebuiltDomainCreateObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -1089,17 +1092,19 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add_custom_prebuilt_domain.metadata = {'url': '/apps/customprebuiltdomains'}
+
+    add_custom_prebuilt_domain.metadata = {"url": "/apps/customprebuiltdomains"}
 
     def list_available_custom_prebuilt_domains_for_culture(
-            self, culture, custom_headers=None, raw=False, **operation_config):
+        self, culture, custom_headers=None, raw=False, **operation_config
+    ):
         """Gets all the available prebuilt domains for a specific culture.
 
         :param culture: Culture.
@@ -1117,10 +1122,10 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_available_custom_prebuilt_domains_for_culture.metadata['url']
+        url = self.list_available_custom_prebuilt_domains_for_culture.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'culture': self._serialize.url("culture", culture, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "culture": self._serialize.url("culture", culture, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1129,7 +1134,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1142,17 +1147,19 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[PrebuiltDomain]', response)
+            deserialized = self._deserialize("[PrebuiltDomain]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_available_custom_prebuilt_domains_for_culture.metadata = {'url': '/apps/customprebuiltdomains/{culture}'}
+
+    list_available_custom_prebuilt_domains_for_culture.metadata = {"url": "/apps/customprebuiltdomains/{culture}"}
 
     def package_published_application_as_gzip(
-            self, app_id, slot_name, custom_headers=None, raw=False, callback=None, **operation_config):
+        self, app_id, slot_name, custom_headers=None, raw=False, callback=None, **operation_config
+    ):
         """package - Gets published LUIS application package in binary stream GZip
         format.
 
@@ -1179,11 +1186,11 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.package_published_application_as_gzip.metadata['url']
+        url = self.package_published_application_as_gzip.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'slotName': self._serialize.url("slot_name", slot_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "slotName": self._serialize.url("slot_name", slot_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1192,7 +1199,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1210,10 +1217,12 @@ class AppsOperations(object):
             return client_raw_response
 
         return deserialized
-    package_published_application_as_gzip.metadata = {'url': '/package/{appId}/slot/{slotName}/gzip'}
+
+    package_published_application_as_gzip.metadata = {"url": "/package/{appId}/slot/{slotName}/gzip"}
 
     def package_trained_application_as_gzip(
-            self, app_id, version_id, custom_headers=None, raw=False, callback=None, **operation_config):
+        self, app_id, version_id, custom_headers=None, raw=False, callback=None, **operation_config
+    ):
         """package - Gets trained LUIS application package in binary stream GZip
         format.
 
@@ -1240,11 +1249,11 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.package_trained_application_as_gzip.metadata['url']
+        url = self.package_trained_application_as_gzip.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -1253,7 +1262,7 @@ class AppsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -1271,10 +1280,10 @@ class AppsOperations(object):
             return client_raw_response
 
         return deserialized
-    package_trained_application_as_gzip.metadata = {'url': '/package/{appId}/versions/{versionId}/gzip'}
 
-    def import_v2_app(
-            self, luis_app_v2, app_name=None, custom_headers=None, raw=False, **operation_config):
+    package_trained_application_as_gzip.metadata = {"url": "/package/{appId}/versions/{versionId}/gzip"}
+
+    def import_v2_app(self, luis_app_v2, app_name=None, custom_headers=None, raw=False, **operation_config):
         """Imports an application to LUIS, the application's structure is included
         in the request body.
 
@@ -1296,26 +1305,26 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.import_v2_app.metadata['url']
+        url = self.import_v2_app.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if app_name is not None:
-            query_parameters['appName'] = self._serialize.query("app_name", app_name, 'str')
+            query_parameters["appName"] = self._serialize.query("app_name", app_name, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(luis_app_v2, 'LuisAppV2')
+        body_content = self._serialize.body(luis_app_v2, "LuisAppV2")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -1326,17 +1335,17 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    import_v2_app.metadata = {'url': '/apps/import'}
 
-    def import_lu_format(
-            self, luis_app_lu, app_name=None, custom_headers=None, raw=False, **operation_config):
+    import_v2_app.metadata = {"url": "/apps/import"}
+
+    def import_lu_format(self, luis_app_lu, app_name=None, custom_headers=None, raw=False, **operation_config):
         """Imports an application to LUIS, the application's structure is included
         in the request body.
 
@@ -1357,26 +1366,26 @@ class AppsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.import_lu_format.metadata['url']
+        url = self.import_lu_format.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if app_name is not None:
-            query_parameters['appName'] = self._serialize.query("app_name", app_name, 'str')
+            query_parameters["appName"] = self._serialize.query("app_name", app_name, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'text/plain'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "text/plain"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(luis_app_lu, 'str')
+        body_content = self._serialize.body(luis_app_lu, "str")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -1387,11 +1396,12 @@ class AppsOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('str', response)
+            deserialized = self._deserialize("str", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    import_lu_format.metadata = {'url': '/apps/import'}
+
+    import_lu_format.metadata = {"url": "/apps/import"}

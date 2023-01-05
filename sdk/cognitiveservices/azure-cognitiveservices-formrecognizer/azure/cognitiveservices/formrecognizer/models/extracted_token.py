@@ -28,13 +28,13 @@ class ExtractedToken(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'bounding_box': {'key': 'boundingBox', 'type': '[float]'},
-        'confidence': {'key': 'confidence', 'type': 'float'},
+        "text": {"key": "text", "type": "str"},
+        "bounding_box": {"key": "boundingBox", "type": "[float]"},
+        "confidence": {"key": "confidence", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(ExtractedToken, self).__init__(**kwargs)
-        self.text = kwargs.get('text', None)
-        self.bounding_box = kwargs.get('bounding_box', None)
-        self.confidence = kwargs.get('confidence', None)
+        self.text = kwargs.get("text", None)
+        self.bounding_box = kwargs.get("bounding_box", None)
+        self.confidence = kwargs.get("confidence", None)

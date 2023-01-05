@@ -38,17 +38,29 @@ class QnASearchResult(Model):
     """
 
     _attribute_map = {
-        'questions': {'key': 'questions', 'type': '[str]'},
-        'answer': {'key': 'answer', 'type': 'str'},
-        'score': {'key': 'score', 'type': 'float'},
-        'id': {'key': 'id', 'type': 'int'},
-        'source': {'key': 'source', 'type': 'str'},
-        'metadata': {'key': 'metadata', 'type': '[MetadataDTO]'},
-        'context': {'key': 'context', 'type': 'QnASearchResultContext'},
-        'answer_span': {'key': 'answerSpan', 'type': 'QnASearchResultAnswerSpan'},
+        "questions": {"key": "questions", "type": "[str]"},
+        "answer": {"key": "answer", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+        "id": {"key": "id", "type": "int"},
+        "source": {"key": "source", "type": "str"},
+        "metadata": {"key": "metadata", "type": "[MetadataDTO]"},
+        "context": {"key": "context", "type": "QnASearchResultContext"},
+        "answer_span": {"key": "answerSpan", "type": "QnASearchResultAnswerSpan"},
     }
 
-    def __init__(self, *, questions=None, answer: str=None, score: float=None, id: int=None, source: str=None, metadata=None, context=None, answer_span=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        questions=None,
+        answer: str = None,
+        score: float = None,
+        id: int = None,
+        source: str = None,
+        metadata=None,
+        context=None,
+        answer_span=None,
+        **kwargs
+    ) -> None:
         super(QnASearchResult, self).__init__(**kwargs)
         self.questions = questions
         self.answer = answer

@@ -37,27 +37,27 @@ class ApplicationCreateObject(Model):
     """
 
     _validation = {
-        'culture': {'required': True},
-        'name': {'required': True},
+        "culture": {"required": True},
+        "name": {"required": True},
     }
 
     _attribute_map = {
-        'culture': {'key': 'culture', 'type': 'str'},
-        'domain': {'key': 'domain', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'initial_version_id': {'key': 'initialVersionId', 'type': 'str'},
-        'usage_scenario': {'key': 'usageScenario', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "culture": {"key": "culture", "type": "str"},
+        "domain": {"key": "domain", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "initial_version_id": {"key": "initialVersionId", "type": "str"},
+        "usage_scenario": {"key": "usageScenario", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ApplicationCreateObject, self).__init__(**kwargs)
-        self.culture = kwargs.get('culture', None)
-        self.domain = kwargs.get('domain', None)
-        self.description = kwargs.get('description', None)
-        self.initial_version_id = kwargs.get('initial_version_id', None)
-        self.usage_scenario = kwargs.get('usage_scenario', None)
-        self.name = kwargs.get('name', None)
+        self.culture = kwargs.get("culture", None)
+        self.domain = kwargs.get("domain", None)
+        self.description = kwargs.get("description", None)
+        self.initial_version_id = kwargs.get("initial_version_id", None)
+        self.usage_scenario = kwargs.get("usage_scenario", None)
+        self.name = kwargs.get("name", None)
 
 
 class ApplicationInfoResponse(Model):
@@ -90,32 +90,32 @@ class ApplicationInfoResponse(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'culture': {'key': 'culture', 'type': 'str'},
-        'usage_scenario': {'key': 'usageScenario', 'type': 'str'},
-        'domain': {'key': 'domain', 'type': 'str'},
-        'versions_count': {'key': 'versionsCount', 'type': 'int'},
-        'created_date_time': {'key': 'createdDateTime', 'type': 'str'},
-        'endpoints': {'key': 'endpoints', 'type': 'object'},
-        'endpoint_hits_count': {'key': 'endpointHitsCount', 'type': 'int'},
-        'active_version': {'key': 'activeVersion', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "culture": {"key": "culture", "type": "str"},
+        "usage_scenario": {"key": "usageScenario", "type": "str"},
+        "domain": {"key": "domain", "type": "str"},
+        "versions_count": {"key": "versionsCount", "type": "int"},
+        "created_date_time": {"key": "createdDateTime", "type": "str"},
+        "endpoints": {"key": "endpoints", "type": "object"},
+        "endpoint_hits_count": {"key": "endpointHitsCount", "type": "int"},
+        "active_version": {"key": "activeVersion", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ApplicationInfoResponse, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.description = kwargs.get('description', None)
-        self.culture = kwargs.get('culture', None)
-        self.usage_scenario = kwargs.get('usage_scenario', None)
-        self.domain = kwargs.get('domain', None)
-        self.versions_count = kwargs.get('versions_count', None)
-        self.created_date_time = kwargs.get('created_date_time', None)
-        self.endpoints = kwargs.get('endpoints', None)
-        self.endpoint_hits_count = kwargs.get('endpoint_hits_count', None)
-        self.active_version = kwargs.get('active_version', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.description = kwargs.get("description", None)
+        self.culture = kwargs.get("culture", None)
+        self.usage_scenario = kwargs.get("usage_scenario", None)
+        self.domain = kwargs.get("domain", None)
+        self.versions_count = kwargs.get("versions_count", None)
+        self.created_date_time = kwargs.get("created_date_time", None)
+        self.endpoints = kwargs.get("endpoints", None)
+        self.endpoint_hits_count = kwargs.get("endpoint_hits_count", None)
+        self.active_version = kwargs.get("active_version", None)
 
 
 class ApplicationPublishObject(Model):
@@ -129,14 +129,14 @@ class ApplicationPublishObject(Model):
     """
 
     _attribute_map = {
-        'version_id': {'key': 'versionId', 'type': 'str'},
-        'is_staging': {'key': 'isStaging', 'type': 'bool'},
+        "version_id": {"key": "versionId", "type": "str"},
+        "is_staging": {"key": "isStaging", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(ApplicationPublishObject, self).__init__(**kwargs)
-        self.version_id = kwargs.get('version_id', None)
-        self.is_staging = kwargs.get('is_staging', False)
+        self.version_id = kwargs.get("version_id", None)
+        self.is_staging = kwargs.get("is_staging", False)
 
 
 class ApplicationSettings(Model):
@@ -153,19 +153,19 @@ class ApplicationSettings(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'is_public': {'required': True},
+        "id": {"required": True},
+        "is_public": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'is_public': {'key': 'public', 'type': 'bool'},
+        "id": {"key": "id", "type": "str"},
+        "is_public": {"key": "public", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(ApplicationSettings, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.is_public = kwargs.get('is_public', None)
+        self.id = kwargs.get("id", None)
+        self.is_public = kwargs.get("is_public", None)
 
 
 class ApplicationSettingUpdateObject(Model):
@@ -177,12 +177,12 @@ class ApplicationSettingUpdateObject(Model):
     """
 
     _attribute_map = {
-        'is_public': {'key': 'public', 'type': 'bool'},
+        "is_public": {"key": "public", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(ApplicationSettingUpdateObject, self).__init__(**kwargs)
-        self.is_public = kwargs.get('is_public', None)
+        self.is_public = kwargs.get("is_public", None)
 
 
 class ApplicationUpdateObject(Model):
@@ -195,14 +195,14 @@ class ApplicationUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ApplicationUpdateObject, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.description = kwargs.get('description', None)
+        self.name = kwargs.get("name", None)
+        self.description = kwargs.get("description", None)
 
 
 class AppVersionSettingObject(Model):
@@ -215,14 +215,14 @@ class AppVersionSettingObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'value': {'key': 'value', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "value": {"key": "value", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(AppVersionSettingObject, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.value = kwargs.get('value', None)
+        self.name = kwargs.get("name", None)
+        self.value = kwargs.get("value", None)
 
 
 class AvailableCulture(Model):
@@ -235,14 +235,14 @@ class AvailableCulture(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'code': {'key': 'code', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "code": {"key": "code", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(AvailableCulture, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.code = kwargs.get('code', None)
+        self.name = kwargs.get("name", None)
+        self.code = kwargs.get("code", None)
 
 
 class AvailablePrebuiltEntityModel(Model):
@@ -257,16 +257,16 @@ class AvailablePrebuiltEntityModel(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'examples': {'key': 'examples', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "examples": {"key": "examples", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(AvailablePrebuiltEntityModel, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.description = kwargs.get('description', None)
-        self.examples = kwargs.get('examples', None)
+        self.name = kwargs.get("name", None)
+        self.description = kwargs.get("description", None)
+        self.examples = kwargs.get("examples", None)
 
 
 class AzureAccountInfoObject(Model):
@@ -283,22 +283,22 @@ class AzureAccountInfoObject(Model):
     """
 
     _validation = {
-        'azure_subscription_id': {'required': True},
-        'resource_group': {'required': True},
-        'account_name': {'required': True},
+        "azure_subscription_id": {"required": True},
+        "resource_group": {"required": True},
+        "account_name": {"required": True},
     }
 
     _attribute_map = {
-        'azure_subscription_id': {'key': 'azureSubscriptionId', 'type': 'str'},
-        'resource_group': {'key': 'resourceGroup', 'type': 'str'},
-        'account_name': {'key': 'accountName', 'type': 'str'},
+        "azure_subscription_id": {"key": "azureSubscriptionId", "type": "str"},
+        "resource_group": {"key": "resourceGroup", "type": "str"},
+        "account_name": {"key": "accountName", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(AzureAccountInfoObject, self).__init__(**kwargs)
-        self.azure_subscription_id = kwargs.get('azure_subscription_id', None)
-        self.resource_group = kwargs.get('resource_group', None)
-        self.account_name = kwargs.get('account_name', None)
+        self.azure_subscription_id = kwargs.get("azure_subscription_id", None)
+        self.resource_group = kwargs.get("resource_group", None)
+        self.account_name = kwargs.get("account_name", None)
 
 
 class BatchLabelExample(Model):
@@ -315,16 +315,16 @@ class BatchLabelExample(Model):
     """
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': 'LabelExampleResponse'},
-        'has_error': {'key': 'hasError', 'type': 'bool'},
-        'error': {'key': 'error', 'type': 'OperationStatus'},
+        "value": {"key": "value", "type": "LabelExampleResponse"},
+        "has_error": {"key": "hasError", "type": "bool"},
+        "error": {"key": "error", "type": "OperationStatus"},
     }
 
     def __init__(self, **kwargs):
         super(BatchLabelExample, self).__init__(**kwargs)
-        self.value = kwargs.get('value', None)
-        self.has_error = kwargs.get('has_error', None)
-        self.error = kwargs.get('error', None)
+        self.value = kwargs.get("value", None)
+        self.has_error = kwargs.get("has_error", None)
+        self.error = kwargs.get("error", None)
 
 
 class ChildEntity(Model):
@@ -353,26 +353,26 @@ class ChildEntity(Model):
     """
 
     _validation = {
-        'id': {'required': True},
+        "id": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'instance_of': {'key': 'instanceOf', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "instance_of": {"key": "instanceOf", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
     }
 
     def __init__(self, **kwargs):
         super(ChildEntity, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.instance_of = kwargs.get('instance_of', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
-        self.children = kwargs.get('children', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.instance_of = kwargs.get("instance_of", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
+        self.children = kwargs.get("children", None)
 
 
 class ChildEntityModelCreateObject(Model):
@@ -388,16 +388,16 @@ class ChildEntityModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'children': {'key': 'children', 'type': '[ChildEntityModelCreateObject]'},
-        'name': {'key': 'name', 'type': 'str'},
-        'instance_of': {'key': 'instanceOf', 'type': 'str'},
+        "children": {"key": "children", "type": "[ChildEntityModelCreateObject]"},
+        "name": {"key": "name", "type": "str"},
+        "instance_of": {"key": "instanceOf", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ChildEntityModelCreateObject, self).__init__(**kwargs)
-        self.children = kwargs.get('children', None)
-        self.name = kwargs.get('name', None)
-        self.instance_of = kwargs.get('instance_of', None)
+        self.children = kwargs.get("children", None)
+        self.name = kwargs.get("name", None)
+        self.instance_of = kwargs.get("instance_of", None)
 
 
 class ClosedList(Model):
@@ -413,16 +413,16 @@ class ClosedList(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'sub_lists': {'key': 'subLists', 'type': '[SubClosedList]'},
-        'roles': {'key': 'roles', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "sub_lists": {"key": "subLists", "type": "[SubClosedList]"},
+        "roles": {"key": "roles", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(ClosedList, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.sub_lists = kwargs.get('sub_lists', None)
-        self.roles = kwargs.get('roles', None)
+        self.name = kwargs.get("name", None)
+        self.sub_lists = kwargs.get("sub_lists", None)
+        self.roles = kwargs.get("roles", None)
 
 
 class ClosedListEntityExtractor(Model):
@@ -453,27 +453,27 @@ class ClosedListEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'sub_lists': {'key': 'subLists', 'type': '[SubClosedListResponse]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "sub_lists": {"key": "subLists", "type": "[SubClosedListResponse]"},
     }
 
     def __init__(self, **kwargs):
         super(ClosedListEntityExtractor, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
-        self.roles = kwargs.get('roles', None)
-        self.sub_lists = kwargs.get('sub_lists', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
+        self.roles = kwargs.get("roles", None)
+        self.sub_lists = kwargs.get("sub_lists", None)
 
 
 class ClosedListModelCreateObject(Model):
@@ -487,14 +487,14 @@ class ClosedListModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'sub_lists': {'key': 'subLists', 'type': '[WordListObject]'},
-        'name': {'key': 'name', 'type': 'str'},
+        "sub_lists": {"key": "subLists", "type": "[WordListObject]"},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ClosedListModelCreateObject, self).__init__(**kwargs)
-        self.sub_lists = kwargs.get('sub_lists', None)
-        self.name = kwargs.get('name', None)
+        self.sub_lists = kwargs.get("sub_lists", None)
+        self.name = kwargs.get("name", None)
 
 
 class ClosedListModelPatchObject(Model):
@@ -506,12 +506,12 @@ class ClosedListModelPatchObject(Model):
     """
 
     _attribute_map = {
-        'sub_lists': {'key': 'subLists', 'type': '[WordListObject]'},
+        "sub_lists": {"key": "subLists", "type": "[WordListObject]"},
     }
 
     def __init__(self, **kwargs):
         super(ClosedListModelPatchObject, self).__init__(**kwargs)
-        self.sub_lists = kwargs.get('sub_lists', None)
+        self.sub_lists = kwargs.get("sub_lists", None)
 
 
 class ClosedListModelUpdateObject(Model):
@@ -525,14 +525,14 @@ class ClosedListModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'sub_lists': {'key': 'subLists', 'type': '[WordListObject]'},
-        'name': {'key': 'name', 'type': 'str'},
+        "sub_lists": {"key": "subLists", "type": "[WordListObject]"},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ClosedListModelUpdateObject, self).__init__(**kwargs)
-        self.sub_lists = kwargs.get('sub_lists', None)
-        self.name = kwargs.get('name', None)
+        self.sub_lists = kwargs.get("sub_lists", None)
+        self.name = kwargs.get("name", None)
 
 
 class CollaboratorsArray(Model):
@@ -543,12 +543,12 @@ class CollaboratorsArray(Model):
     """
 
     _attribute_map = {
-        'emails': {'key': 'emails', 'type': '[str]'},
+        "emails": {"key": "emails", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(CollaboratorsArray, self).__init__(**kwargs)
-        self.emails = kwargs.get('emails', None)
+        self.emails = kwargs.get("emails", None)
 
 
 class CompositeChildModelCreateObject(Model):
@@ -559,12 +559,12 @@ class CompositeChildModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(CompositeChildModelCreateObject, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
+        self.name = kwargs.get("name", None)
 
 
 class CompositeEntityExtractor(Model):
@@ -595,27 +595,27 @@ class CompositeEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
     }
 
     def __init__(self, **kwargs):
         super(CompositeEntityExtractor, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
-        self.roles = kwargs.get('roles', None)
-        self.children = kwargs.get('children', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
+        self.roles = kwargs.get("roles", None)
+        self.children = kwargs.get("children", None)
 
 
 class CompositeEntityModel(Model):
@@ -628,14 +628,14 @@ class CompositeEntityModel(Model):
     """
 
     _attribute_map = {
-        'children': {'key': 'children', 'type': '[str]'},
-        'name': {'key': 'name', 'type': 'str'},
+        "children": {"key": "children", "type": "[str]"},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(CompositeEntityModel, self).__init__(**kwargs)
-        self.children = kwargs.get('children', None)
-        self.name = kwargs.get('name', None)
+        self.children = kwargs.get("children", None)
+        self.name = kwargs.get("name", None)
 
 
 class CustomPrebuiltModel(Model):
@@ -667,29 +667,29 @@ class CustomPrebuiltModel(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'custom_prebuilt_domain_name': {'key': 'customPrebuiltDomainName', 'type': 'str'},
-        'custom_prebuilt_model_name': {'key': 'customPrebuiltModelName', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "custom_prebuilt_domain_name": {"key": "customPrebuiltDomainName", "type": "str"},
+        "custom_prebuilt_model_name": {"key": "customPrebuiltModelName", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
     }
 
     def __init__(self, **kwargs):
         super(CustomPrebuiltModel, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
-        self.custom_prebuilt_domain_name = kwargs.get('custom_prebuilt_domain_name', None)
-        self.custom_prebuilt_model_name = kwargs.get('custom_prebuilt_model_name', None)
-        self.roles = kwargs.get('roles', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
+        self.custom_prebuilt_domain_name = kwargs.get("custom_prebuilt_domain_name", None)
+        self.custom_prebuilt_model_name = kwargs.get("custom_prebuilt_model_name", None)
+        self.roles = kwargs.get("roles", None)
 
 
 class EndpointInfo(Model):
@@ -715,26 +715,26 @@ class EndpointInfo(Model):
     """
 
     _attribute_map = {
-        'version_id': {'key': 'versionId', 'type': 'str'},
-        'is_staging': {'key': 'isStaging', 'type': 'bool'},
-        'endpoint_url': {'key': 'endpointUrl', 'type': 'str'},
-        'region': {'key': 'region', 'type': 'str'},
-        'assigned_endpoint_key': {'key': 'assignedEndpointKey', 'type': 'str'},
-        'endpoint_region': {'key': 'endpointRegion', 'type': 'str'},
-        'failed_regions': {'key': 'failedRegions', 'type': 'str'},
-        'published_date_time': {'key': 'publishedDateTime', 'type': 'str'},
+        "version_id": {"key": "versionId", "type": "str"},
+        "is_staging": {"key": "isStaging", "type": "bool"},
+        "endpoint_url": {"key": "endpointUrl", "type": "str"},
+        "region": {"key": "region", "type": "str"},
+        "assigned_endpoint_key": {"key": "assignedEndpointKey", "type": "str"},
+        "endpoint_region": {"key": "endpointRegion", "type": "str"},
+        "failed_regions": {"key": "failedRegions", "type": "str"},
+        "published_date_time": {"key": "publishedDateTime", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(EndpointInfo, self).__init__(**kwargs)
-        self.version_id = kwargs.get('version_id', None)
-        self.is_staging = kwargs.get('is_staging', None)
-        self.endpoint_url = kwargs.get('endpoint_url', None)
-        self.region = kwargs.get('region', None)
-        self.assigned_endpoint_key = kwargs.get('assigned_endpoint_key', None)
-        self.endpoint_region = kwargs.get('endpoint_region', None)
-        self.failed_regions = kwargs.get('failed_regions', None)
-        self.published_date_time = kwargs.get('published_date_time', None)
+        self.version_id = kwargs.get("version_id", None)
+        self.is_staging = kwargs.get("is_staging", None)
+        self.endpoint_url = kwargs.get("endpoint_url", None)
+        self.region = kwargs.get("region", None)
+        self.assigned_endpoint_key = kwargs.get("assigned_endpoint_key", None)
+        self.endpoint_region = kwargs.get("endpoint_region", None)
+        self.failed_regions = kwargs.get("failed_regions", None)
+        self.published_date_time = kwargs.get("published_date_time", None)
 
 
 class EnqueueTrainingResponse(Model):
@@ -749,14 +749,14 @@ class EnqueueTrainingResponse(Model):
     """
 
     _attribute_map = {
-        'status_id': {'key': 'statusId', 'type': 'int'},
-        'status': {'key': 'status', 'type': 'str'},
+        "status_id": {"key": "statusId", "type": "int"},
+        "status": {"key": "status", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(EnqueueTrainingResponse, self).__init__(**kwargs)
-        self.status_id = kwargs.get('status_id', None)
-        self.status = kwargs.get('status', None)
+        self.status_id = kwargs.get("status_id", None)
+        self.status = kwargs.get("status", None)
 
 
 class EntitiesSuggestionExample(Model):
@@ -776,18 +776,18 @@ class EntitiesSuggestionExample(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'tokenized_text': {'key': 'tokenizedText', 'type': '[str]'},
-        'intent_predictions': {'key': 'intentPredictions', 'type': '[IntentPrediction]'},
-        'entity_predictions': {'key': 'entityPredictions', 'type': '[EntityPrediction]'},
+        "text": {"key": "text", "type": "str"},
+        "tokenized_text": {"key": "tokenizedText", "type": "[str]"},
+        "intent_predictions": {"key": "intentPredictions", "type": "[IntentPrediction]"},
+        "entity_predictions": {"key": "entityPredictions", "type": "[EntityPrediction]"},
     }
 
     def __init__(self, **kwargs):
         super(EntitiesSuggestionExample, self).__init__(**kwargs)
-        self.text = kwargs.get('text', None)
-        self.tokenized_text = kwargs.get('tokenized_text', None)
-        self.intent_predictions = kwargs.get('intent_predictions', None)
-        self.entity_predictions = kwargs.get('entity_predictions', None)
+        self.text = kwargs.get("text", None)
+        self.tokenized_text = kwargs.get("tokenized_text", None)
+        self.intent_predictions = kwargs.get("intent_predictions", None)
+        self.entity_predictions = kwargs.get("entity_predictions", None)
 
 
 class EntityExtractor(Model):
@@ -819,29 +819,29 @@ class EntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'custom_prebuilt_domain_name': {'key': 'customPrebuiltDomainName', 'type': 'str'},
-        'custom_prebuilt_model_name': {'key': 'customPrebuiltModelName', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "custom_prebuilt_domain_name": {"key": "customPrebuiltDomainName", "type": "str"},
+        "custom_prebuilt_model_name": {"key": "customPrebuiltModelName", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(EntityExtractor, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
-        self.roles = kwargs.get('roles', None)
-        self.custom_prebuilt_domain_name = kwargs.get('custom_prebuilt_domain_name', None)
-        self.custom_prebuilt_model_name = kwargs.get('custom_prebuilt_model_name', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
+        self.roles = kwargs.get("roles", None)
+        self.custom_prebuilt_domain_name = kwargs.get("custom_prebuilt_domain_name", None)
+        self.custom_prebuilt_model_name = kwargs.get("custom_prebuilt_model_name", None)
 
 
 class EntityLabel(Model):
@@ -868,28 +868,28 @@ class EntityLabel(Model):
     """
 
     _validation = {
-        'entity_name': {'required': True},
-        'start_token_index': {'required': True},
-        'end_token_index': {'required': True},
+        "entity_name": {"required": True},
+        "start_token_index": {"required": True},
+        "end_token_index": {"required": True},
     }
 
     _attribute_map = {
-        'entity_name': {'key': 'entityName', 'type': 'str'},
-        'start_token_index': {'key': 'startTokenIndex', 'type': 'int'},
-        'end_token_index': {'key': 'endTokenIndex', 'type': 'int'},
-        'role': {'key': 'role', 'type': 'str'},
-        'role_id': {'key': 'roleId', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[EntityLabel]'},
+        "entity_name": {"key": "entityName", "type": "str"},
+        "start_token_index": {"key": "startTokenIndex", "type": "int"},
+        "end_token_index": {"key": "endTokenIndex", "type": "int"},
+        "role": {"key": "role", "type": "str"},
+        "role_id": {"key": "roleId", "type": "str"},
+        "children": {"key": "children", "type": "[EntityLabel]"},
     }
 
     def __init__(self, **kwargs):
         super(EntityLabel, self).__init__(**kwargs)
-        self.entity_name = kwargs.get('entity_name', None)
-        self.start_token_index = kwargs.get('start_token_index', None)
-        self.end_token_index = kwargs.get('end_token_index', None)
-        self.role = kwargs.get('role', None)
-        self.role_id = kwargs.get('role_id', None)
-        self.children = kwargs.get('children', None)
+        self.entity_name = kwargs.get("entity_name", None)
+        self.start_token_index = kwargs.get("start_token_index", None)
+        self.end_token_index = kwargs.get("end_token_index", None)
+        self.role = kwargs.get("role", None)
+        self.role_id = kwargs.get("role_id", None)
+        self.children = kwargs.get("children", None)
 
 
 class EntityLabelObject(Model):
@@ -914,26 +914,26 @@ class EntityLabelObject(Model):
     """
 
     _validation = {
-        'entity_name': {'required': True},
-        'start_char_index': {'required': True},
-        'end_char_index': {'required': True},
+        "entity_name": {"required": True},
+        "start_char_index": {"required": True},
+        "end_char_index": {"required": True},
     }
 
     _attribute_map = {
-        'entity_name': {'key': 'entityName', 'type': 'str'},
-        'start_char_index': {'key': 'startCharIndex', 'type': 'int'},
-        'end_char_index': {'key': 'endCharIndex', 'type': 'int'},
-        'role': {'key': 'role', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[EntityLabelObject]'},
+        "entity_name": {"key": "entityName", "type": "str"},
+        "start_char_index": {"key": "startCharIndex", "type": "int"},
+        "end_char_index": {"key": "endCharIndex", "type": "int"},
+        "role": {"key": "role", "type": "str"},
+        "children": {"key": "children", "type": "[EntityLabelObject]"},
     }
 
     def __init__(self, **kwargs):
         super(EntityLabelObject, self).__init__(**kwargs)
-        self.entity_name = kwargs.get('entity_name', None)
-        self.start_char_index = kwargs.get('start_char_index', None)
-        self.end_char_index = kwargs.get('end_char_index', None)
-        self.role = kwargs.get('role', None)
-        self.children = kwargs.get('children', None)
+        self.entity_name = kwargs.get("entity_name", None)
+        self.start_char_index = kwargs.get("start_char_index", None)
+        self.end_char_index = kwargs.get("end_char_index", None)
+        self.role = kwargs.get("role", None)
+        self.children = kwargs.get("children", None)
 
 
 class EntityModelCreateObject(Model):
@@ -947,14 +947,14 @@ class EntityModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'children': {'key': 'children', 'type': '[ChildEntityModelCreateObject]'},
-        'name': {'key': 'name', 'type': 'str'},
+        "children": {"key": "children", "type": "[ChildEntityModelCreateObject]"},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(EntityModelCreateObject, self).__init__(**kwargs)
-        self.children = kwargs.get('children', None)
-        self.name = kwargs.get('name', None)
+        self.children = kwargs.get("children", None)
+        self.name = kwargs.get("name", None)
 
 
 class ModelInfo(Model):
@@ -979,23 +979,23 @@ class ModelInfo(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ModelInfo, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
 
 
 class EntityModelInfo(ModelInfo):
@@ -1023,21 +1023,21 @@ class EntityModelInfo(ModelInfo):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
     }
 
     def __init__(self, **kwargs):
         super(EntityModelInfo, self).__init__(**kwargs)
-        self.roles = kwargs.get('roles', None)
+        self.roles = kwargs.get("roles", None)
 
 
 class EntityModelUpdateObject(Model):
@@ -1050,14 +1050,14 @@ class EntityModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'instance_of': {'key': 'instanceOf', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "instance_of": {"key": "instanceOf", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(EntityModelUpdateObject, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.instance_of = kwargs.get('instance_of', None)
+        self.name = kwargs.get("name", None)
+        self.instance_of = kwargs.get("instance_of", None)
 
 
 class EntityPrediction(Model):
@@ -1081,27 +1081,27 @@ class EntityPrediction(Model):
     """
 
     _validation = {
-        'entity_name': {'required': True},
-        'start_token_index': {'required': True},
-        'end_token_index': {'required': True},
-        'phrase': {'required': True},
+        "entity_name": {"required": True},
+        "start_token_index": {"required": True},
+        "end_token_index": {"required": True},
+        "phrase": {"required": True},
     }
 
     _attribute_map = {
-        'entity_name': {'key': 'entityName', 'type': 'str'},
-        'start_token_index': {'key': 'startTokenIndex', 'type': 'int'},
-        'end_token_index': {'key': 'endTokenIndex', 'type': 'int'},
-        'phrase': {'key': 'phrase', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[EntityPrediction]'},
+        "entity_name": {"key": "entityName", "type": "str"},
+        "start_token_index": {"key": "startTokenIndex", "type": "int"},
+        "end_token_index": {"key": "endTokenIndex", "type": "int"},
+        "phrase": {"key": "phrase", "type": "str"},
+        "children": {"key": "children", "type": "[EntityPrediction]"},
     }
 
     def __init__(self, **kwargs):
         super(EntityPrediction, self).__init__(**kwargs)
-        self.entity_name = kwargs.get('entity_name', None)
-        self.start_token_index = kwargs.get('start_token_index', None)
-        self.end_token_index = kwargs.get('end_token_index', None)
-        self.phrase = kwargs.get('phrase', None)
-        self.children = kwargs.get('children', None)
+        self.entity_name = kwargs.get("entity_name", None)
+        self.start_token_index = kwargs.get("start_token_index", None)
+        self.end_token_index = kwargs.get("end_token_index", None)
+        self.phrase = kwargs.get("phrase", None)
+        self.children = kwargs.get("children", None)
 
 
 class EntityRole(Model):
@@ -1114,14 +1114,14 @@ class EntityRole(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(EntityRole, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
 
 
 class EntityRoleCreateObject(Model):
@@ -1132,12 +1132,12 @@ class EntityRoleCreateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(EntityRoleCreateObject, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
+        self.name = kwargs.get("name", None)
 
 
 class EntityRoleUpdateObject(Model):
@@ -1148,12 +1148,12 @@ class EntityRoleUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(EntityRoleUpdateObject, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
+        self.name = kwargs.get("name", None)
 
 
 class ErrorResponse(Model):
@@ -1167,14 +1167,14 @@ class ErrorResponse(Model):
     """
 
     _attribute_map = {
-        'additional_properties': {'key': '', 'type': '{object}'},
-        'error_type': {'key': 'errorType', 'type': 'str'},
+        "additional_properties": {"key": "", "type": "{object}"},
+        "error_type": {"key": "errorType", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ErrorResponse, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get('additional_properties', None)
-        self.error_type = kwargs.get('error_type', None)
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.error_type = kwargs.get("error_type", None)
 
 
 class ErrorResponseException(HttpOperationError):
@@ -1186,7 +1186,7 @@ class ErrorResponseException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(ErrorResponseException, self).__init__(deserialize, response, 'ErrorResponse', *args)
+        super(ErrorResponseException, self).__init__(deserialize, response, "ErrorResponse", *args)
 
 
 class ExampleLabelObject(Model):
@@ -1204,16 +1204,16 @@ class ExampleLabelObject(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'entity_labels': {'key': 'entityLabels', 'type': '[EntityLabelObject]'},
-        'intent_name': {'key': 'intentName', 'type': 'str'},
+        "text": {"key": "text", "type": "str"},
+        "entity_labels": {"key": "entityLabels", "type": "[EntityLabelObject]"},
+        "intent_name": {"key": "intentName", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ExampleLabelObject, self).__init__(**kwargs)
-        self.text = kwargs.get('text', None)
-        self.entity_labels = kwargs.get('entity_labels', None)
-        self.intent_name = kwargs.get('intent_name', None)
+        self.text = kwargs.get("text", None)
+        self.entity_labels = kwargs.get("entity_labels", None)
+        self.intent_name = kwargs.get("intent_name", None)
 
 
 class ExplicitListItem(Model):
@@ -1226,14 +1226,14 @@ class ExplicitListItem(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'long'},
-        'explicit_list_item': {'key': 'explicitListItem', 'type': 'str'},
+        "id": {"key": "id", "type": "long"},
+        "explicit_list_item": {"key": "explicitListItem", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ExplicitListItem, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.explicit_list_item = kwargs.get('explicit_list_item', None)
+        self.id = kwargs.get("id", None)
+        self.explicit_list_item = kwargs.get("explicit_list_item", None)
 
 
 class ExplicitListItemCreateObject(Model):
@@ -1244,12 +1244,12 @@ class ExplicitListItemCreateObject(Model):
     """
 
     _attribute_map = {
-        'explicit_list_item': {'key': 'explicitListItem', 'type': 'str'},
+        "explicit_list_item": {"key": "explicitListItem", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ExplicitListItemCreateObject, self).__init__(**kwargs)
-        self.explicit_list_item = kwargs.get('explicit_list_item', None)
+        self.explicit_list_item = kwargs.get("explicit_list_item", None)
 
 
 class ExplicitListItemUpdateObject(Model):
@@ -1260,12 +1260,12 @@ class ExplicitListItemUpdateObject(Model):
     """
 
     _attribute_map = {
-        'explicit_list_item': {'key': 'explicitListItem', 'type': 'str'},
+        "explicit_list_item": {"key": "explicitListItem", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ExplicitListItemUpdateObject, self).__init__(**kwargs)
-        self.explicit_list_item = kwargs.get('explicit_list_item', None)
+        self.explicit_list_item = kwargs.get("explicit_list_item", None)
 
 
 class FeatureInfoObject(Model):
@@ -1283,18 +1283,18 @@ class FeatureInfoObject(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'name': {'key': 'name', 'type': 'str'},
-        'is_active': {'key': 'isActive', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "is_active": {"key": "isActive", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(FeatureInfoObject, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.is_active = kwargs.get('is_active', None)
-        self.enabled_for_all_models = kwargs.get('enabled_for_all_models', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.is_active = kwargs.get("is_active", None)
+        self.enabled_for_all_models = kwargs.get("enabled_for_all_models", None)
 
 
 class FeaturesResponseObject(Model):
@@ -1309,14 +1309,14 @@ class FeaturesResponseObject(Model):
     """
 
     _attribute_map = {
-        'phraselist_features': {'key': 'phraselistFeatures', 'type': '[PhraseListFeatureInfo]'},
-        'pattern_features': {'key': 'patternFeatures', 'type': '[PatternFeatureInfo]'},
+        "phraselist_features": {"key": "phraselistFeatures", "type": "[PhraseListFeatureInfo]"},
+        "pattern_features": {"key": "patternFeatures", "type": "[PatternFeatureInfo]"},
     }
 
     def __init__(self, **kwargs):
         super(FeaturesResponseObject, self).__init__(**kwargs)
-        self.phraselist_features = kwargs.get('phraselist_features', None)
-        self.pattern_features = kwargs.get('pattern_features', None)
+        self.phraselist_features = kwargs.get("phraselist_features", None)
+        self.pattern_features = kwargs.get("pattern_features", None)
 
 
 class HierarchicalChildEntity(ChildEntity):
@@ -1345,16 +1345,16 @@ class HierarchicalChildEntity(ChildEntity):
     """
 
     _validation = {
-        'id': {'required': True},
+        "id": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'instance_of': {'key': 'instanceOf', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "instance_of": {"key": "instanceOf", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
     }
 
     def __init__(self, **kwargs):
@@ -1369,12 +1369,12 @@ class HierarchicalChildModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(HierarchicalChildModelUpdateObject, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
+        self.name = kwargs.get("name", None)
 
 
 class HierarchicalEntityExtractor(Model):
@@ -1405,27 +1405,27 @@ class HierarchicalEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
     }
 
     def __init__(self, **kwargs):
         super(HierarchicalEntityExtractor, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
-        self.roles = kwargs.get('roles', None)
-        self.children = kwargs.get('children', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
+        self.roles = kwargs.get("roles", None)
+        self.children = kwargs.get("children", None)
 
 
 class HierarchicalModel(Model):
@@ -1447,20 +1447,20 @@ class HierarchicalModel(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[JsonChild]'},
-        'features': {'key': 'features', 'type': '[JsonModelFeatureInformation]'},
-        'roles': {'key': 'roles', 'type': '[str]'},
-        'inherits': {'key': 'inherits', 'type': 'PrebuiltDomainObject'},
+        "name": {"key": "name", "type": "str"},
+        "children": {"key": "children", "type": "[JsonChild]"},
+        "features": {"key": "features", "type": "[JsonModelFeatureInformation]"},
+        "roles": {"key": "roles", "type": "[str]"},
+        "inherits": {"key": "inherits", "type": "PrebuiltDomainObject"},
     }
 
     def __init__(self, **kwargs):
         super(HierarchicalModel, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.children = kwargs.get('children', None)
-        self.features = kwargs.get('features', None)
-        self.roles = kwargs.get('roles', None)
-        self.inherits = kwargs.get('inherits', None)
+        self.name = kwargs.get("name", None)
+        self.children = kwargs.get("children", None)
+        self.features = kwargs.get("features", None)
+        self.roles = kwargs.get("roles", None)
+        self.inherits = kwargs.get("inherits", None)
 
 
 class HierarchicalModelV2(Model):
@@ -1478,18 +1478,18 @@ class HierarchicalModelV2(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[str]'},
-        'inherits': {'key': 'inherits', 'type': 'PrebuiltDomainObject'},
-        'roles': {'key': 'roles', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "children": {"key": "children", "type": "[str]"},
+        "inherits": {"key": "inherits", "type": "PrebuiltDomainObject"},
+        "roles": {"key": "roles", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(HierarchicalModelV2, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.children = kwargs.get('children', None)
-        self.inherits = kwargs.get('inherits', None)
-        self.roles = kwargs.get('roles', None)
+        self.name = kwargs.get("name", None)
+        self.children = kwargs.get("children", None)
+        self.inherits = kwargs.get("inherits", None)
+        self.roles = kwargs.get("roles", None)
 
 
 class IntentClassifier(ModelInfo):
@@ -1518,23 +1518,23 @@ class IntentClassifier(ModelInfo):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'custom_prebuilt_domain_name': {'key': 'customPrebuiltDomainName', 'type': 'str'},
-        'custom_prebuilt_model_name': {'key': 'customPrebuiltModelName', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "custom_prebuilt_domain_name": {"key": "customPrebuiltDomainName", "type": "str"},
+        "custom_prebuilt_model_name": {"key": "customPrebuiltModelName", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(IntentClassifier, self).__init__(**kwargs)
-        self.custom_prebuilt_domain_name = kwargs.get('custom_prebuilt_domain_name', None)
-        self.custom_prebuilt_model_name = kwargs.get('custom_prebuilt_model_name', None)
+        self.custom_prebuilt_domain_name = kwargs.get("custom_prebuilt_domain_name", None)
+        self.custom_prebuilt_model_name = kwargs.get("custom_prebuilt_model_name", None)
 
 
 class IntentPrediction(Model):
@@ -1547,14 +1547,14 @@ class IntentPrediction(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'score': {'key': 'score', 'type': 'float'},
+        "name": {"key": "name", "type": "str"},
+        "score": {"key": "score", "type": "float"},
     }
 
     def __init__(self, **kwargs):
         super(IntentPrediction, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.score = kwargs.get('score', None)
+        self.name = kwargs.get("name", None)
+        self.score = kwargs.get("score", None)
 
 
 class IntentsSuggestionExample(Model):
@@ -1574,18 +1574,18 @@ class IntentsSuggestionExample(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'tokenized_text': {'key': 'tokenizedText', 'type': '[str]'},
-        'intent_predictions': {'key': 'intentPredictions', 'type': '[IntentPrediction]'},
-        'entity_predictions': {'key': 'entityPredictions', 'type': '[EntityPrediction]'},
+        "text": {"key": "text", "type": "str"},
+        "tokenized_text": {"key": "tokenizedText", "type": "[str]"},
+        "intent_predictions": {"key": "intentPredictions", "type": "[IntentPrediction]"},
+        "entity_predictions": {"key": "entityPredictions", "type": "[EntityPrediction]"},
     }
 
     def __init__(self, **kwargs):
         super(IntentsSuggestionExample, self).__init__(**kwargs)
-        self.text = kwargs.get('text', None)
-        self.tokenized_text = kwargs.get('tokenized_text', None)
-        self.intent_predictions = kwargs.get('intent_predictions', None)
-        self.entity_predictions = kwargs.get('entity_predictions', None)
+        self.text = kwargs.get("text", None)
+        self.tokenized_text = kwargs.get("tokenized_text", None)
+        self.intent_predictions = kwargs.get("intent_predictions", None)
+        self.entity_predictions = kwargs.get("entity_predictions", None)
 
 
 class JsonChild(Model):
@@ -1604,18 +1604,18 @@ class JsonChild(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'instance_of': {'key': 'instanceOf', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[JsonChild]'},
-        'features': {'key': 'features', 'type': '[JsonModelFeatureInformation]'},
+        "name": {"key": "name", "type": "str"},
+        "instance_of": {"key": "instanceOf", "type": "str"},
+        "children": {"key": "children", "type": "[JsonChild]"},
+        "features": {"key": "features", "type": "[JsonModelFeatureInformation]"},
     }
 
     def __init__(self, **kwargs):
         super(JsonChild, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.instance_of = kwargs.get('instance_of', None)
-        self.children = kwargs.get('children', None)
-        self.features = kwargs.get('features', None)
+        self.name = kwargs.get("name", None)
+        self.instance_of = kwargs.get("instance_of", None)
+        self.children = kwargs.get("children", None)
+        self.features = kwargs.get("features", None)
 
 
 class JSONEntity(Model):
@@ -1639,26 +1639,26 @@ class JSONEntity(Model):
     """
 
     _validation = {
-        'start_pos': {'required': True},
-        'end_pos': {'required': True},
-        'entity': {'required': True},
+        "start_pos": {"required": True},
+        "end_pos": {"required": True},
+        "entity": {"required": True},
     }
 
     _attribute_map = {
-        'start_pos': {'key': 'startPos', 'type': 'int'},
-        'end_pos': {'key': 'endPos', 'type': 'int'},
-        'entity': {'key': 'entity', 'type': 'str'},
-        'role': {'key': 'role', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[JSONEntity]'},
+        "start_pos": {"key": "startPos", "type": "int"},
+        "end_pos": {"key": "endPos", "type": "int"},
+        "entity": {"key": "entity", "type": "str"},
+        "role": {"key": "role", "type": "str"},
+        "children": {"key": "children", "type": "[JSONEntity]"},
     }
 
     def __init__(self, **kwargs):
         super(JSONEntity, self).__init__(**kwargs)
-        self.start_pos = kwargs.get('start_pos', None)
-        self.end_pos = kwargs.get('end_pos', None)
-        self.entity = kwargs.get('entity', None)
-        self.role = kwargs.get('role', None)
-        self.children = kwargs.get('children', None)
+        self.start_pos = kwargs.get("start_pos", None)
+        self.end_pos = kwargs.get("end_pos", None)
+        self.entity = kwargs.get("entity", None)
+        self.role = kwargs.get("role", None)
+        self.children = kwargs.get("children", None)
 
 
 class JSONModelFeature(Model):
@@ -1686,20 +1686,20 @@ class JSONModelFeature(Model):
     """
 
     _attribute_map = {
-        'activated': {'key': 'activated', 'type': 'bool'},
-        'name': {'key': 'name', 'type': 'str'},
-        'words': {'key': 'words', 'type': 'str'},
-        'mode': {'key': 'mode', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
+        "activated": {"key": "activated", "type": "bool"},
+        "name": {"key": "name", "type": "str"},
+        "words": {"key": "words", "type": "str"},
+        "mode": {"key": "mode", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(JSONModelFeature, self).__init__(**kwargs)
-        self.activated = kwargs.get('activated', None)
-        self.name = kwargs.get('name', None)
-        self.words = kwargs.get('words', None)
-        self.mode = kwargs.get('mode', None)
-        self.enabled_for_all_models = kwargs.get('enabled_for_all_models', True)
+        self.activated = kwargs.get("activated", None)
+        self.name = kwargs.get("name", None)
+        self.words = kwargs.get("words", None)
+        self.mode = kwargs.get("mode", None)
+        self.enabled_for_all_models = kwargs.get("enabled_for_all_models", True)
 
 
 class JsonModelFeatureInformation(Model):
@@ -1713,14 +1713,14 @@ class JsonModelFeatureInformation(Model):
     """
 
     _attribute_map = {
-        'model_name': {'key': 'modelName', 'type': 'str'},
-        'feature_name': {'key': 'featureName', 'type': 'str'},
+        "model_name": {"key": "modelName", "type": "str"},
+        "feature_name": {"key": "featureName", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(JsonModelFeatureInformation, self).__init__(**kwargs)
-        self.model_name = kwargs.get('model_name', None)
-        self.feature_name = kwargs.get('feature_name', None)
+        self.model_name = kwargs.get("model_name", None)
+        self.feature_name = kwargs.get("feature_name", None)
 
 
 class JSONRegexFeature(Model):
@@ -1735,16 +1735,16 @@ class JSONRegexFeature(Model):
     """
 
     _attribute_map = {
-        'pattern': {'key': 'pattern', 'type': 'str'},
-        'activated': {'key': 'activated', 'type': 'bool'},
-        'name': {'key': 'name', 'type': 'str'},
+        "pattern": {"key": "pattern", "type": "str"},
+        "activated": {"key": "activated", "type": "bool"},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(JSONRegexFeature, self).__init__(**kwargs)
-        self.pattern = kwargs.get('pattern', None)
-        self.activated = kwargs.get('activated', None)
-        self.name = kwargs.get('name', None)
+        self.pattern = kwargs.get("pattern", None)
+        self.activated = kwargs.get("activated", None)
+        self.name = kwargs.get("name", None)
 
 
 class JSONUtterance(Model):
@@ -1760,16 +1760,16 @@ class JSONUtterance(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        'intent': {'key': 'intent', 'type': 'str'},
-        'entities': {'key': 'entities', 'type': '[JSONEntity]'},
+        "text": {"key": "text", "type": "str"},
+        "intent": {"key": "intent", "type": "str"},
+        "entities": {"key": "entities", "type": "[JSONEntity]"},
     }
 
     def __init__(self, **kwargs):
         super(JSONUtterance, self).__init__(**kwargs)
-        self.text = kwargs.get('text', None)
-        self.intent = kwargs.get('intent', None)
-        self.entities = kwargs.get('entities', None)
+        self.text = kwargs.get("text", None)
+        self.intent = kwargs.get("intent", None)
+        self.entities = kwargs.get("entities", None)
 
 
 class LabeledUtterance(Model):
@@ -1796,24 +1796,24 @@ class LabeledUtterance(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'text': {'key': 'text', 'type': 'str'},
-        'tokenized_text': {'key': 'tokenizedText', 'type': '[str]'},
-        'intent_label': {'key': 'intentLabel', 'type': 'str'},
-        'entity_labels': {'key': 'entityLabels', 'type': '[EntityLabel]'},
-        'intent_predictions': {'key': 'intentPredictions', 'type': '[IntentPrediction]'},
-        'entity_predictions': {'key': 'entityPredictions', 'type': '[EntityPrediction]'},
+        "id": {"key": "id", "type": "int"},
+        "text": {"key": "text", "type": "str"},
+        "tokenized_text": {"key": "tokenizedText", "type": "[str]"},
+        "intent_label": {"key": "intentLabel", "type": "str"},
+        "entity_labels": {"key": "entityLabels", "type": "[EntityLabel]"},
+        "intent_predictions": {"key": "intentPredictions", "type": "[IntentPrediction]"},
+        "entity_predictions": {"key": "entityPredictions", "type": "[EntityPrediction]"},
     }
 
     def __init__(self, **kwargs):
         super(LabeledUtterance, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.text = kwargs.get('text', None)
-        self.tokenized_text = kwargs.get('tokenized_text', None)
-        self.intent_label = kwargs.get('intent_label', None)
-        self.entity_labels = kwargs.get('entity_labels', None)
-        self.intent_predictions = kwargs.get('intent_predictions', None)
-        self.entity_predictions = kwargs.get('entity_predictions', None)
+        self.id = kwargs.get("id", None)
+        self.text = kwargs.get("text", None)
+        self.tokenized_text = kwargs.get("tokenized_text", None)
+        self.intent_label = kwargs.get("intent_label", None)
+        self.entity_labels = kwargs.get("entity_labels", None)
+        self.intent_predictions = kwargs.get("intent_predictions", None)
+        self.entity_predictions = kwargs.get("entity_predictions", None)
 
 
 class LabelExampleResponse(Model):
@@ -1826,14 +1826,14 @@ class LabelExampleResponse(Model):
     """
 
     _attribute_map = {
-        'utterance_text': {'key': 'UtteranceText', 'type': 'str'},
-        'example_id': {'key': 'ExampleId', 'type': 'int'},
+        "utterance_text": {"key": "UtteranceText", "type": "str"},
+        "example_id": {"key": "ExampleId", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(LabelExampleResponse, self).__init__(**kwargs)
-        self.utterance_text = kwargs.get('utterance_text', None)
-        self.example_id = kwargs.get('example_id', None)
+        self.utterance_text = kwargs.get("utterance_text", None)
+        self.example_id = kwargs.get("example_id", None)
 
 
 class LabelTextObject(Model):
@@ -1846,14 +1846,14 @@ class LabelTextObject(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'text': {'key': 'text', 'type': 'str'},
+        "id": {"key": "id", "type": "int"},
+        "text": {"key": "text", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(LabelTextObject, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.text = kwargs.get('text', None)
+        self.id = kwargs.get("id", None)
+        self.text = kwargs.get("text", None)
 
 
 class LuisApp(Model):
@@ -1909,44 +1909,44 @@ class LuisApp(Model):
     """
 
     _attribute_map = {
-        'additional_properties': {'key': '', 'type': '{object}'},
-        'name': {'key': 'name', 'type': 'str'},
-        'version_id': {'key': 'versionId', 'type': 'str'},
-        'desc': {'key': 'desc', 'type': 'str'},
-        'culture': {'key': 'culture', 'type': 'str'},
-        'intents': {'key': 'intents', 'type': '[HierarchicalModel]'},
-        'entities': {'key': 'entities', 'type': '[HierarchicalModel]'},
-        'closed_lists': {'key': 'closedLists', 'type': '[ClosedList]'},
-        'composites': {'key': 'composites', 'type': '[HierarchicalModel]'},
-        'hierarchicals': {'key': 'hierarchicals', 'type': '[HierarchicalModel]'},
-        'pattern_any_entities': {'key': 'patternAnyEntities', 'type': '[PatternAny]'},
-        'regex_entities': {'key': 'regex_entities', 'type': '[RegexEntity]'},
-        'prebuilt_entities': {'key': 'prebuiltEntities', 'type': '[PrebuiltEntity]'},
-        'regex_features': {'key': 'regex_features', 'type': '[JSONRegexFeature]'},
-        'phraselists': {'key': 'phraselists', 'type': '[JSONModelFeature]'},
-        'patterns': {'key': 'patterns', 'type': '[PatternRule]'},
-        'utterances': {'key': 'utterances', 'type': '[JSONUtterance]'},
+        "additional_properties": {"key": "", "type": "{object}"},
+        "name": {"key": "name", "type": "str"},
+        "version_id": {"key": "versionId", "type": "str"},
+        "desc": {"key": "desc", "type": "str"},
+        "culture": {"key": "culture", "type": "str"},
+        "intents": {"key": "intents", "type": "[HierarchicalModel]"},
+        "entities": {"key": "entities", "type": "[HierarchicalModel]"},
+        "closed_lists": {"key": "closedLists", "type": "[ClosedList]"},
+        "composites": {"key": "composites", "type": "[HierarchicalModel]"},
+        "hierarchicals": {"key": "hierarchicals", "type": "[HierarchicalModel]"},
+        "pattern_any_entities": {"key": "patternAnyEntities", "type": "[PatternAny]"},
+        "regex_entities": {"key": "regex_entities", "type": "[RegexEntity]"},
+        "prebuilt_entities": {"key": "prebuiltEntities", "type": "[PrebuiltEntity]"},
+        "regex_features": {"key": "regex_features", "type": "[JSONRegexFeature]"},
+        "phraselists": {"key": "phraselists", "type": "[JSONModelFeature]"},
+        "patterns": {"key": "patterns", "type": "[PatternRule]"},
+        "utterances": {"key": "utterances", "type": "[JSONUtterance]"},
     }
 
     def __init__(self, **kwargs):
         super(LuisApp, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get('additional_properties', None)
-        self.name = kwargs.get('name', None)
-        self.version_id = kwargs.get('version_id', None)
-        self.desc = kwargs.get('desc', None)
-        self.culture = kwargs.get('culture', None)
-        self.intents = kwargs.get('intents', None)
-        self.entities = kwargs.get('entities', None)
-        self.closed_lists = kwargs.get('closed_lists', None)
-        self.composites = kwargs.get('composites', None)
-        self.hierarchicals = kwargs.get('hierarchicals', None)
-        self.pattern_any_entities = kwargs.get('pattern_any_entities', None)
-        self.regex_entities = kwargs.get('regex_entities', None)
-        self.prebuilt_entities = kwargs.get('prebuilt_entities', None)
-        self.regex_features = kwargs.get('regex_features', None)
-        self.phraselists = kwargs.get('phraselists', None)
-        self.patterns = kwargs.get('patterns', None)
-        self.utterances = kwargs.get('utterances', None)
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.name = kwargs.get("name", None)
+        self.version_id = kwargs.get("version_id", None)
+        self.desc = kwargs.get("desc", None)
+        self.culture = kwargs.get("culture", None)
+        self.intents = kwargs.get("intents", None)
+        self.entities = kwargs.get("entities", None)
+        self.closed_lists = kwargs.get("closed_lists", None)
+        self.composites = kwargs.get("composites", None)
+        self.hierarchicals = kwargs.get("hierarchicals", None)
+        self.pattern_any_entities = kwargs.get("pattern_any_entities", None)
+        self.regex_entities = kwargs.get("regex_entities", None)
+        self.prebuilt_entities = kwargs.get("prebuilt_entities", None)
+        self.regex_features = kwargs.get("regex_features", None)
+        self.phraselists = kwargs.get("phraselists", None)
+        self.patterns = kwargs.get("patterns", None)
+        self.utterances = kwargs.get("utterances", None)
 
 
 class LuisAppV2(Model):
@@ -2001,44 +2001,44 @@ class LuisAppV2(Model):
     """
 
     _attribute_map = {
-        'additional_properties': {'key': '', 'type': '{object}'},
-        'luis_schema_version': {'key': 'luis_schema_version', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'version_id': {'key': 'versionId', 'type': 'str'},
-        'desc': {'key': 'desc', 'type': 'str'},
-        'culture': {'key': 'culture', 'type': 'str'},
-        'intents': {'key': 'intents', 'type': '[HierarchicalModelV2]'},
-        'entities': {'key': 'entities', 'type': '[HierarchicalModelV2]'},
-        'closed_lists': {'key': 'closedLists', 'type': '[ClosedList]'},
-        'composites': {'key': 'composites', 'type': '[HierarchicalModelV2]'},
-        'pattern_any_entities': {'key': 'patternAnyEntities', 'type': '[PatternAny]'},
-        'regex_entities': {'key': 'regex_entities', 'type': '[RegexEntity]'},
-        'prebuilt_entities': {'key': 'prebuiltEntities', 'type': '[PrebuiltEntity]'},
-        'regex_features': {'key': 'regex_features', 'type': '[JSONRegexFeature]'},
-        'model_features': {'key': 'model_features', 'type': '[JSONModelFeature]'},
-        'patterns': {'key': 'patterns', 'type': '[PatternRule]'},
-        'utterances': {'key': 'utterances', 'type': '[JSONUtterance]'},
+        "additional_properties": {"key": "", "type": "{object}"},
+        "luis_schema_version": {"key": "luis_schema_version", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "version_id": {"key": "versionId", "type": "str"},
+        "desc": {"key": "desc", "type": "str"},
+        "culture": {"key": "culture", "type": "str"},
+        "intents": {"key": "intents", "type": "[HierarchicalModelV2]"},
+        "entities": {"key": "entities", "type": "[HierarchicalModelV2]"},
+        "closed_lists": {"key": "closedLists", "type": "[ClosedList]"},
+        "composites": {"key": "composites", "type": "[HierarchicalModelV2]"},
+        "pattern_any_entities": {"key": "patternAnyEntities", "type": "[PatternAny]"},
+        "regex_entities": {"key": "regex_entities", "type": "[RegexEntity]"},
+        "prebuilt_entities": {"key": "prebuiltEntities", "type": "[PrebuiltEntity]"},
+        "regex_features": {"key": "regex_features", "type": "[JSONRegexFeature]"},
+        "model_features": {"key": "model_features", "type": "[JSONModelFeature]"},
+        "patterns": {"key": "patterns", "type": "[PatternRule]"},
+        "utterances": {"key": "utterances", "type": "[JSONUtterance]"},
     }
 
     def __init__(self, **kwargs):
         super(LuisAppV2, self).__init__(**kwargs)
-        self.additional_properties = kwargs.get('additional_properties', None)
-        self.luis_schema_version = kwargs.get('luis_schema_version', None)
-        self.name = kwargs.get('name', None)
-        self.version_id = kwargs.get('version_id', None)
-        self.desc = kwargs.get('desc', None)
-        self.culture = kwargs.get('culture', None)
-        self.intents = kwargs.get('intents', None)
-        self.entities = kwargs.get('entities', None)
-        self.closed_lists = kwargs.get('closed_lists', None)
-        self.composites = kwargs.get('composites', None)
-        self.pattern_any_entities = kwargs.get('pattern_any_entities', None)
-        self.regex_entities = kwargs.get('regex_entities', None)
-        self.prebuilt_entities = kwargs.get('prebuilt_entities', None)
-        self.regex_features = kwargs.get('regex_features', None)
-        self.model_features = kwargs.get('model_features', None)
-        self.patterns = kwargs.get('patterns', None)
-        self.utterances = kwargs.get('utterances', None)
+        self.additional_properties = kwargs.get("additional_properties", None)
+        self.luis_schema_version = kwargs.get("luis_schema_version", None)
+        self.name = kwargs.get("name", None)
+        self.version_id = kwargs.get("version_id", None)
+        self.desc = kwargs.get("desc", None)
+        self.culture = kwargs.get("culture", None)
+        self.intents = kwargs.get("intents", None)
+        self.entities = kwargs.get("entities", None)
+        self.closed_lists = kwargs.get("closed_lists", None)
+        self.composites = kwargs.get("composites", None)
+        self.pattern_any_entities = kwargs.get("pattern_any_entities", None)
+        self.regex_entities = kwargs.get("regex_entities", None)
+        self.prebuilt_entities = kwargs.get("prebuilt_entities", None)
+        self.regex_features = kwargs.get("regex_features", None)
+        self.model_features = kwargs.get("model_features", None)
+        self.patterns = kwargs.get("patterns", None)
+        self.utterances = kwargs.get("utterances", None)
 
 
 class ModelCreateObject(Model):
@@ -2049,12 +2049,12 @@ class ModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ModelCreateObject, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
+        self.name = kwargs.get("name", None)
 
 
 class ModelFeatureInformation(Model):
@@ -2070,16 +2070,16 @@ class ModelFeatureInformation(Model):
     """
 
     _attribute_map = {
-        'model_name': {'key': 'modelName', 'type': 'str'},
-        'feature_name': {'key': 'featureName', 'type': 'str'},
-        'is_required': {'key': 'isRequired', 'type': 'bool'},
+        "model_name": {"key": "modelName", "type": "str"},
+        "feature_name": {"key": "featureName", "type": "str"},
+        "is_required": {"key": "isRequired", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(ModelFeatureInformation, self).__init__(**kwargs)
-        self.model_name = kwargs.get('model_name', None)
-        self.feature_name = kwargs.get('feature_name', None)
-        self.is_required = kwargs.get('is_required', None)
+        self.model_name = kwargs.get("model_name", None)
+        self.feature_name = kwargs.get("feature_name", None)
+        self.is_required = kwargs.get("is_required", None)
 
 
 class ModelInfoResponse(Model):
@@ -2122,37 +2122,37 @@ class ModelInfoResponse(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
-        'sub_lists': {'key': 'subLists', 'type': '[SubClosedListResponse]'},
-        'custom_prebuilt_domain_name': {'key': 'customPrebuiltDomainName', 'type': 'str'},
-        'custom_prebuilt_model_name': {'key': 'customPrebuiltModelName', 'type': 'str'},
-        'regex_pattern': {'key': 'regexPattern', 'type': 'str'},
-        'explicit_list': {'key': 'explicitList', 'type': '[ExplicitListItem]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
+        "sub_lists": {"key": "subLists", "type": "[SubClosedListResponse]"},
+        "custom_prebuilt_domain_name": {"key": "customPrebuiltDomainName", "type": "str"},
+        "custom_prebuilt_model_name": {"key": "customPrebuiltModelName", "type": "str"},
+        "regex_pattern": {"key": "regexPattern", "type": "str"},
+        "explicit_list": {"key": "explicitList", "type": "[ExplicitListItem]"},
     }
 
     def __init__(self, **kwargs):
         super(ModelInfoResponse, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
-        self.roles = kwargs.get('roles', None)
-        self.children = kwargs.get('children', None)
-        self.sub_lists = kwargs.get('sub_lists', None)
-        self.custom_prebuilt_domain_name = kwargs.get('custom_prebuilt_domain_name', None)
-        self.custom_prebuilt_model_name = kwargs.get('custom_prebuilt_model_name', None)
-        self.regex_pattern = kwargs.get('regex_pattern', None)
-        self.explicit_list = kwargs.get('explicit_list', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
+        self.roles = kwargs.get("roles", None)
+        self.children = kwargs.get("children", None)
+        self.sub_lists = kwargs.get("sub_lists", None)
+        self.custom_prebuilt_domain_name = kwargs.get("custom_prebuilt_domain_name", None)
+        self.custom_prebuilt_model_name = kwargs.get("custom_prebuilt_model_name", None)
+        self.regex_pattern = kwargs.get("regex_pattern", None)
+        self.explicit_list = kwargs.get("explicit_list", None)
 
 
 class ModelTrainingDetails(Model):
@@ -2173,20 +2173,20 @@ class ModelTrainingDetails(Model):
     """
 
     _attribute_map = {
-        'status_id': {'key': 'statusId', 'type': 'int'},
-        'status': {'key': 'status', 'type': 'str'},
-        'example_count': {'key': 'exampleCount', 'type': 'int'},
-        'training_date_time': {'key': 'trainingDateTime', 'type': 'iso-8601'},
-        'failure_reason': {'key': 'failureReason', 'type': 'str'},
+        "status_id": {"key": "statusId", "type": "int"},
+        "status": {"key": "status", "type": "str"},
+        "example_count": {"key": "exampleCount", "type": "int"},
+        "training_date_time": {"key": "trainingDateTime", "type": "iso-8601"},
+        "failure_reason": {"key": "failureReason", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ModelTrainingDetails, self).__init__(**kwargs)
-        self.status_id = kwargs.get('status_id', None)
-        self.status = kwargs.get('status', None)
-        self.example_count = kwargs.get('example_count', None)
-        self.training_date_time = kwargs.get('training_date_time', None)
-        self.failure_reason = kwargs.get('failure_reason', None)
+        self.status_id = kwargs.get("status_id", None)
+        self.status = kwargs.get("status", None)
+        self.example_count = kwargs.get("example_count", None)
+        self.training_date_time = kwargs.get("training_date_time", None)
+        self.failure_reason = kwargs.get("failure_reason", None)
 
 
 class ModelTrainingInfo(Model):
@@ -2200,14 +2200,14 @@ class ModelTrainingInfo(Model):
     """
 
     _attribute_map = {
-        'model_id': {'key': 'modelId', 'type': 'str'},
-        'details': {'key': 'details', 'type': 'ModelTrainingDetails'},
+        "model_id": {"key": "modelId", "type": "str"},
+        "details": {"key": "details", "type": "ModelTrainingDetails"},
     }
 
     def __init__(self, **kwargs):
         super(ModelTrainingInfo, self).__init__(**kwargs)
-        self.model_id = kwargs.get('model_id', None)
-        self.details = kwargs.get('details', None)
+        self.model_id = kwargs.get("model_id", None)
+        self.details = kwargs.get("details", None)
 
 
 class ModelUpdateObject(Model):
@@ -2218,12 +2218,12 @@ class ModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ModelUpdateObject, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
+        self.name = kwargs.get("name", None)
 
 
 class NDepthEntityExtractor(Model):
@@ -2258,31 +2258,31 @@ class NDepthEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'custom_prebuilt_domain_name': {'key': 'customPrebuiltDomainName', 'type': 'str'},
-        'custom_prebuilt_model_name': {'key': 'customPrebuiltModelName', 'type': 'str'},
-        'children': {'key': 'children', 'type': '[ChildEntity]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "custom_prebuilt_domain_name": {"key": "customPrebuiltDomainName", "type": "str"},
+        "custom_prebuilt_model_name": {"key": "customPrebuiltModelName", "type": "str"},
+        "children": {"key": "children", "type": "[ChildEntity]"},
     }
 
     def __init__(self, **kwargs):
         super(NDepthEntityExtractor, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
-        self.roles = kwargs.get('roles', None)
-        self.custom_prebuilt_domain_name = kwargs.get('custom_prebuilt_domain_name', None)
-        self.custom_prebuilt_model_name = kwargs.get('custom_prebuilt_model_name', None)
-        self.children = kwargs.get('children', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
+        self.roles = kwargs.get("roles", None)
+        self.custom_prebuilt_domain_name = kwargs.get("custom_prebuilt_domain_name", None)
+        self.custom_prebuilt_model_name = kwargs.get("custom_prebuilt_model_name", None)
+        self.children = kwargs.get("children", None)
 
 
 class OperationError(Model):
@@ -2295,14 +2295,14 @@ class OperationError(Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(OperationError, self).__init__(**kwargs)
-        self.code = kwargs.get('code', None)
-        self.message = kwargs.get('message', None)
+        self.code = kwargs.get("code", None)
+        self.message = kwargs.get("message", None)
 
 
 class OperationStatus(Model):
@@ -2317,14 +2317,14 @@ class OperationStatus(Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "code": {"key": "code", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(OperationStatus, self).__init__(**kwargs)
-        self.code = kwargs.get('code', None)
-        self.message = kwargs.get('message', None)
+        self.code = kwargs.get("code", None)
+        self.message = kwargs.get("message", None)
 
 
 class PatternAny(Model):
@@ -2339,16 +2339,16 @@ class PatternAny(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'explicit_list': {'key': 'explicitList', 'type': '[str]'},
-        'roles': {'key': 'roles', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "explicit_list": {"key": "explicitList", "type": "[str]"},
+        "roles": {"key": "roles", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(PatternAny, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.explicit_list = kwargs.get('explicit_list', None)
-        self.roles = kwargs.get('roles', None)
+        self.name = kwargs.get("name", None)
+        self.explicit_list = kwargs.get("explicit_list", None)
+        self.roles = kwargs.get("roles", None)
 
 
 class PatternAnyEntityExtractor(Model):
@@ -2379,27 +2379,27 @@ class PatternAnyEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'explicit_list': {'key': 'explicitList', 'type': '[ExplicitListItem]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "explicit_list": {"key": "explicitList", "type": "[ExplicitListItem]"},
     }
 
     def __init__(self, **kwargs):
         super(PatternAnyEntityExtractor, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
-        self.roles = kwargs.get('roles', None)
-        self.explicit_list = kwargs.get('explicit_list', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
+        self.roles = kwargs.get("roles", None)
+        self.explicit_list = kwargs.get("explicit_list", None)
 
 
 class PatternAnyModelCreateObject(Model):
@@ -2412,14 +2412,14 @@ class PatternAnyModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'explicit_list': {'key': 'explicitList', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "explicit_list": {"key": "explicitList", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(PatternAnyModelCreateObject, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.explicit_list = kwargs.get('explicit_list', None)
+        self.name = kwargs.get("name", None)
+        self.explicit_list = kwargs.get("explicit_list", None)
 
 
 class PatternAnyModelUpdateObject(Model):
@@ -2432,14 +2432,14 @@ class PatternAnyModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'explicit_list': {'key': 'explicitList', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "explicit_list": {"key": "explicitList", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(PatternAnyModelUpdateObject, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.explicit_list = kwargs.get('explicit_list', None)
+        self.name = kwargs.get("name", None)
+        self.explicit_list = kwargs.get("explicit_list", None)
 
 
 class PatternFeatureInfo(FeatureInfoObject):
@@ -2459,16 +2459,16 @@ class PatternFeatureInfo(FeatureInfoObject):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'name': {'key': 'name', 'type': 'str'},
-        'is_active': {'key': 'isActive', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
-        'pattern': {'key': 'pattern', 'type': 'str'},
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "is_active": {"key": "isActive", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
+        "pattern": {"key": "pattern", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(PatternFeatureInfo, self).__init__(**kwargs)
-        self.pattern = kwargs.get('pattern', None)
+        self.pattern = kwargs.get("pattern", None)
 
 
 class PatternRule(Model):
@@ -2481,14 +2481,14 @@ class PatternRule(Model):
     """
 
     _attribute_map = {
-        'pattern': {'key': 'pattern', 'type': 'str'},
-        'intent': {'key': 'intent', 'type': 'str'},
+        "pattern": {"key": "pattern", "type": "str"},
+        "intent": {"key": "intent", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(PatternRule, self).__init__(**kwargs)
-        self.pattern = kwargs.get('pattern', None)
-        self.intent = kwargs.get('intent', None)
+        self.pattern = kwargs.get("pattern", None)
+        self.intent = kwargs.get("intent", None)
 
 
 class PatternRuleCreateObject(Model):
@@ -2501,14 +2501,14 @@ class PatternRuleCreateObject(Model):
     """
 
     _attribute_map = {
-        'pattern': {'key': 'pattern', 'type': 'str'},
-        'intent': {'key': 'intent', 'type': 'str'},
+        "pattern": {"key": "pattern", "type": "str"},
+        "intent": {"key": "intent", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(PatternRuleCreateObject, self).__init__(**kwargs)
-        self.pattern = kwargs.get('pattern', None)
-        self.intent = kwargs.get('intent', None)
+        self.pattern = kwargs.get("pattern", None)
+        self.intent = kwargs.get("intent", None)
 
 
 class PatternRuleInfo(Model):
@@ -2523,16 +2523,16 @@ class PatternRuleInfo(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'pattern': {'key': 'pattern', 'type': 'str'},
-        'intent': {'key': 'intent', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "pattern": {"key": "pattern", "type": "str"},
+        "intent": {"key": "intent", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(PatternRuleInfo, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.pattern = kwargs.get('pattern', None)
-        self.intent = kwargs.get('intent', None)
+        self.id = kwargs.get("id", None)
+        self.pattern = kwargs.get("pattern", None)
+        self.intent = kwargs.get("intent", None)
 
 
 class PatternRuleUpdateObject(Model):
@@ -2547,16 +2547,16 @@ class PatternRuleUpdateObject(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'pattern': {'key': 'pattern', 'type': 'str'},
-        'intent': {'key': 'intent', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "pattern": {"key": "pattern", "type": "str"},
+        "intent": {"key": "intent", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(PatternRuleUpdateObject, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.pattern = kwargs.get('pattern', None)
-        self.intent = kwargs.get('intent', None)
+        self.id = kwargs.get("id", None)
+        self.pattern = kwargs.get("pattern", None)
+        self.intent = kwargs.get("intent", None)
 
 
 class PersonalAssistantsResponse(Model):
@@ -2570,14 +2570,14 @@ class PersonalAssistantsResponse(Model):
     """
 
     _attribute_map = {
-        'endpoint_keys': {'key': 'endpointKeys', 'type': '[str]'},
-        'endpoint_urls': {'key': 'endpointUrls', 'type': '{str}'},
+        "endpoint_keys": {"key": "endpointKeys", "type": "[str]"},
+        "endpoint_urls": {"key": "endpointUrls", "type": "{str}"},
     }
 
     def __init__(self, **kwargs):
         super(PersonalAssistantsResponse, self).__init__(**kwargs)
-        self.endpoint_keys = kwargs.get('endpoint_keys', None)
-        self.endpoint_urls = kwargs.get('endpoint_urls', None)
+        self.endpoint_keys = kwargs.get("endpoint_keys", None)
+        self.endpoint_urls = kwargs.get("endpoint_urls", None)
 
 
 class PhraselistCreateObject(Model):
@@ -2603,18 +2603,18 @@ class PhraselistCreateObject(Model):
     """
 
     _attribute_map = {
-        'phrases': {'key': 'phrases', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'is_exchangeable': {'key': 'isExchangeable', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
+        "phrases": {"key": "phrases", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "is_exchangeable": {"key": "isExchangeable", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(PhraselistCreateObject, self).__init__(**kwargs)
-        self.phrases = kwargs.get('phrases', None)
-        self.name = kwargs.get('name', None)
-        self.is_exchangeable = kwargs.get('is_exchangeable', True)
-        self.enabled_for_all_models = kwargs.get('enabled_for_all_models', True)
+        self.phrases = kwargs.get("phrases", None)
+        self.name = kwargs.get("name", None)
+        self.is_exchangeable = kwargs.get("is_exchangeable", True)
+        self.enabled_for_all_models = kwargs.get("enabled_for_all_models", True)
 
 
 class PhraseListFeatureInfo(FeatureInfoObject):
@@ -2646,18 +2646,18 @@ class PhraseListFeatureInfo(FeatureInfoObject):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'int'},
-        'name': {'key': 'name', 'type': 'str'},
-        'is_active': {'key': 'isActive', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
-        'phrases': {'key': 'phrases', 'type': 'str'},
-        'is_exchangeable': {'key': 'isExchangeable', 'type': 'bool'},
+        "id": {"key": "id", "type": "int"},
+        "name": {"key": "name", "type": "str"},
+        "is_active": {"key": "isActive", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
+        "phrases": {"key": "phrases", "type": "str"},
+        "is_exchangeable": {"key": "isExchangeable", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(PhraseListFeatureInfo, self).__init__(**kwargs)
-        self.phrases = kwargs.get('phrases', None)
-        self.is_exchangeable = kwargs.get('is_exchangeable', None)
+        self.phrases = kwargs.get("phrases", None)
+        self.is_exchangeable = kwargs.get("is_exchangeable", None)
 
 
 class PhraselistUpdateObject(Model):
@@ -2689,20 +2689,20 @@ class PhraselistUpdateObject(Model):
     """
 
     _attribute_map = {
-        'phrases': {'key': 'phrases', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'is_active': {'key': 'isActive', 'type': 'bool'},
-        'is_exchangeable': {'key': 'isExchangeable', 'type': 'bool'},
-        'enabled_for_all_models': {'key': 'enabledForAllModels', 'type': 'bool'},
+        "phrases": {"key": "phrases", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "is_active": {"key": "isActive", "type": "bool"},
+        "is_exchangeable": {"key": "isExchangeable", "type": "bool"},
+        "enabled_for_all_models": {"key": "enabledForAllModels", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(PhraselistUpdateObject, self).__init__(**kwargs)
-        self.phrases = kwargs.get('phrases', None)
-        self.name = kwargs.get('name', None)
-        self.is_active = kwargs.get('is_active', True)
-        self.is_exchangeable = kwargs.get('is_exchangeable', True)
-        self.enabled_for_all_models = kwargs.get('enabled_for_all_models', True)
+        self.phrases = kwargs.get("phrases", None)
+        self.name = kwargs.get("name", None)
+        self.is_active = kwargs.get("is_active", True)
+        self.is_exchangeable = kwargs.get("is_exchangeable", True)
+        self.enabled_for_all_models = kwargs.get("enabled_for_all_models", True)
 
 
 class PrebuiltDomain(Model):
@@ -2725,22 +2725,22 @@ class PrebuiltDomain(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'culture': {'key': 'culture', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'examples': {'key': 'examples', 'type': 'str'},
-        'intents': {'key': 'intents', 'type': '[PrebuiltDomainItem]'},
-        'entities': {'key': 'entities', 'type': '[PrebuiltDomainItem]'},
+        "name": {"key": "name", "type": "str"},
+        "culture": {"key": "culture", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "examples": {"key": "examples", "type": "str"},
+        "intents": {"key": "intents", "type": "[PrebuiltDomainItem]"},
+        "entities": {"key": "entities", "type": "[PrebuiltDomainItem]"},
     }
 
     def __init__(self, **kwargs):
         super(PrebuiltDomain, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.culture = kwargs.get('culture', None)
-        self.description = kwargs.get('description', None)
-        self.examples = kwargs.get('examples', None)
-        self.intents = kwargs.get('intents', None)
-        self.entities = kwargs.get('entities', None)
+        self.name = kwargs.get("name", None)
+        self.culture = kwargs.get("culture", None)
+        self.description = kwargs.get("description", None)
+        self.examples = kwargs.get("examples", None)
+        self.intents = kwargs.get("intents", None)
+        self.entities = kwargs.get("entities", None)
 
 
 class PrebuiltDomainCreateBaseObject(Model):
@@ -2752,12 +2752,12 @@ class PrebuiltDomainCreateBaseObject(Model):
     """
 
     _attribute_map = {
-        'domain_name': {'key': 'domainName', 'type': 'str'},
+        "domain_name": {"key": "domainName", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(PrebuiltDomainCreateBaseObject, self).__init__(**kwargs)
-        self.domain_name = kwargs.get('domain_name', None)
+        self.domain_name = kwargs.get("domain_name", None)
 
 
 class PrebuiltDomainCreateObject(Model):
@@ -2771,14 +2771,14 @@ class PrebuiltDomainCreateObject(Model):
     """
 
     _attribute_map = {
-        'domain_name': {'key': 'domainName', 'type': 'str'},
-        'culture': {'key': 'culture', 'type': 'str'},
+        "domain_name": {"key": "domainName", "type": "str"},
+        "culture": {"key": "culture", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(PrebuiltDomainCreateObject, self).__init__(**kwargs)
-        self.domain_name = kwargs.get('domain_name', None)
-        self.culture = kwargs.get('culture', None)
+        self.domain_name = kwargs.get("domain_name", None)
+        self.culture = kwargs.get("culture", None)
 
 
 class PrebuiltDomainItem(Model):
@@ -2793,16 +2793,16 @@ class PrebuiltDomainItem(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'description': {'key': 'description', 'type': 'str'},
-        'examples': {'key': 'examples', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "description": {"key": "description", "type": "str"},
+        "examples": {"key": "examples", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(PrebuiltDomainItem, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.description = kwargs.get('description', None)
-        self.examples = kwargs.get('examples', None)
+        self.name = kwargs.get("name", None)
+        self.description = kwargs.get("description", None)
+        self.examples = kwargs.get("examples", None)
 
 
 class PrebuiltDomainModelCreateObject(Model):
@@ -2816,14 +2816,14 @@ class PrebuiltDomainModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'domain_name': {'key': 'domainName', 'type': 'str'},
-        'model_name': {'key': 'modelName', 'type': 'str'},
+        "domain_name": {"key": "domainName", "type": "str"},
+        "model_name": {"key": "modelName", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(PrebuiltDomainModelCreateObject, self).__init__(**kwargs)
-        self.domain_name = kwargs.get('domain_name', None)
-        self.model_name = kwargs.get('model_name', None)
+        self.domain_name = kwargs.get("domain_name", None)
+        self.model_name = kwargs.get("model_name", None)
 
 
 class PrebuiltDomainObject(Model):
@@ -2836,14 +2836,14 @@ class PrebuiltDomainObject(Model):
     """
 
     _attribute_map = {
-        'domain_name': {'key': 'domain_name', 'type': 'str'},
-        'model_name': {'key': 'model_name', 'type': 'str'},
+        "domain_name": {"key": "domain_name", "type": "str"},
+        "model_name": {"key": "model_name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(PrebuiltDomainObject, self).__init__(**kwargs)
-        self.domain_name = kwargs.get('domain_name', None)
-        self.model_name = kwargs.get('model_name', None)
+        self.domain_name = kwargs.get("domain_name", None)
+        self.model_name = kwargs.get("model_name", None)
 
 
 class PrebuiltEntity(Model):
@@ -2856,14 +2856,14 @@ class PrebuiltEntity(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "roles": {"key": "roles", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(PrebuiltEntity, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.roles = kwargs.get('roles', None)
+        self.name = kwargs.get("name", None)
+        self.roles = kwargs.get("roles", None)
 
 
 class PrebuiltEntityExtractor(Model):
@@ -2891,25 +2891,25 @@ class PrebuiltEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
     }
 
     def __init__(self, **kwargs):
         super(PrebuiltEntityExtractor, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
-        self.roles = kwargs.get('roles', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
+        self.roles = kwargs.get("roles", None)
 
 
 class ProductionOrStagingEndpointInfo(EndpointInfo):
@@ -2935,14 +2935,14 @@ class ProductionOrStagingEndpointInfo(EndpointInfo):
     """
 
     _attribute_map = {
-        'version_id': {'key': 'versionId', 'type': 'str'},
-        'is_staging': {'key': 'isStaging', 'type': 'bool'},
-        'endpoint_url': {'key': 'endpointUrl', 'type': 'str'},
-        'region': {'key': 'region', 'type': 'str'},
-        'assigned_endpoint_key': {'key': 'assignedEndpointKey', 'type': 'str'},
-        'endpoint_region': {'key': 'endpointRegion', 'type': 'str'},
-        'failed_regions': {'key': 'failedRegions', 'type': 'str'},
-        'published_date_time': {'key': 'publishedDateTime', 'type': 'str'},
+        "version_id": {"key": "versionId", "type": "str"},
+        "is_staging": {"key": "isStaging", "type": "bool"},
+        "endpoint_url": {"key": "endpointUrl", "type": "str"},
+        "region": {"key": "region", "type": "str"},
+        "assigned_endpoint_key": {"key": "assignedEndpointKey", "type": "str"},
+        "endpoint_region": {"key": "endpointRegion", "type": "str"},
+        "failed_regions": {"key": "failedRegions", "type": "str"},
+        "published_date_time": {"key": "publishedDateTime", "type": "str"},
     }
 
     def __init__(self, **kwargs):
@@ -2968,25 +2968,25 @@ class PublishSettings(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'is_sentiment_analysis_enabled': {'required': True},
-        'is_speech_enabled': {'required': True},
-        'is_spell_checker_enabled': {'required': True},
+        "id": {"required": True},
+        "is_sentiment_analysis_enabled": {"required": True},
+        "is_speech_enabled": {"required": True},
+        "is_spell_checker_enabled": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'is_sentiment_analysis_enabled': {'key': 'sentimentAnalysis', 'type': 'bool'},
-        'is_speech_enabled': {'key': 'speech', 'type': 'bool'},
-        'is_spell_checker_enabled': {'key': 'spellChecker', 'type': 'bool'},
+        "id": {"key": "id", "type": "str"},
+        "is_sentiment_analysis_enabled": {"key": "sentimentAnalysis", "type": "bool"},
+        "is_speech_enabled": {"key": "speech", "type": "bool"},
+        "is_spell_checker_enabled": {"key": "spellChecker", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(PublishSettings, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.is_sentiment_analysis_enabled = kwargs.get('is_sentiment_analysis_enabled', None)
-        self.is_speech_enabled = kwargs.get('is_speech_enabled', None)
-        self.is_spell_checker_enabled = kwargs.get('is_spell_checker_enabled', None)
+        self.id = kwargs.get("id", None)
+        self.is_sentiment_analysis_enabled = kwargs.get("is_sentiment_analysis_enabled", None)
+        self.is_speech_enabled = kwargs.get("is_speech_enabled", None)
+        self.is_spell_checker_enabled = kwargs.get("is_spell_checker_enabled", None)
 
 
 class PublishSettingUpdateObject(Model):
@@ -3003,16 +3003,16 @@ class PublishSettingUpdateObject(Model):
     """
 
     _attribute_map = {
-        'sentiment_analysis': {'key': 'sentimentAnalysis', 'type': 'bool'},
-        'speech': {'key': 'speech', 'type': 'bool'},
-        'spell_checker': {'key': 'spellChecker', 'type': 'bool'},
+        "sentiment_analysis": {"key": "sentimentAnalysis", "type": "bool"},
+        "speech": {"key": "speech", "type": "bool"},
+        "spell_checker": {"key": "spellChecker", "type": "bool"},
     }
 
     def __init__(self, **kwargs):
         super(PublishSettingUpdateObject, self).__init__(**kwargs)
-        self.sentiment_analysis = kwargs.get('sentiment_analysis', None)
-        self.speech = kwargs.get('speech', None)
-        self.spell_checker = kwargs.get('spell_checker', None)
+        self.sentiment_analysis = kwargs.get("sentiment_analysis", None)
+        self.speech = kwargs.get("speech", None)
+        self.spell_checker = kwargs.get("spell_checker", None)
 
 
 class RegexEntity(Model):
@@ -3027,16 +3027,16 @@ class RegexEntity(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'regex_pattern': {'key': 'regexPattern', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[str]'},
+        "name": {"key": "name", "type": "str"},
+        "regex_pattern": {"key": "regexPattern", "type": "str"},
+        "roles": {"key": "roles", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(RegexEntity, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.regex_pattern = kwargs.get('regex_pattern', None)
-        self.roles = kwargs.get('roles', None)
+        self.name = kwargs.get("name", None)
+        self.regex_pattern = kwargs.get("regex_pattern", None)
+        self.roles = kwargs.get("roles", None)
 
 
 class RegexEntityExtractor(Model):
@@ -3066,27 +3066,27 @@ class RegexEntityExtractor(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'readable_type': {'required': True},
+        "id": {"required": True},
+        "readable_type": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'type_id': {'key': 'typeId', 'type': 'int'},
-        'readable_type': {'key': 'readableType', 'type': 'str'},
-        'roles': {'key': 'roles', 'type': '[EntityRole]'},
-        'regex_pattern': {'key': 'regexPattern', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "type_id": {"key": "typeId", "type": "int"},
+        "readable_type": {"key": "readableType", "type": "str"},
+        "roles": {"key": "roles", "type": "[EntityRole]"},
+        "regex_pattern": {"key": "regexPattern", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(RegexEntityExtractor, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.name = kwargs.get('name', None)
-        self.type_id = kwargs.get('type_id', None)
-        self.readable_type = kwargs.get('readable_type', None)
-        self.roles = kwargs.get('roles', None)
-        self.regex_pattern = kwargs.get('regex_pattern', None)
+        self.id = kwargs.get("id", None)
+        self.name = kwargs.get("name", None)
+        self.type_id = kwargs.get("type_id", None)
+        self.readable_type = kwargs.get("readable_type", None)
+        self.roles = kwargs.get("roles", None)
+        self.regex_pattern = kwargs.get("regex_pattern", None)
 
 
 class RegexModelCreateObject(Model):
@@ -3099,14 +3099,14 @@ class RegexModelCreateObject(Model):
     """
 
     _attribute_map = {
-        'regex_pattern': {'key': 'regexPattern', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "regex_pattern": {"key": "regexPattern", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(RegexModelCreateObject, self).__init__(**kwargs)
-        self.regex_pattern = kwargs.get('regex_pattern', None)
-        self.name = kwargs.get('name', None)
+        self.regex_pattern = kwargs.get("regex_pattern", None)
+        self.name = kwargs.get("name", None)
 
 
 class RegexModelUpdateObject(Model):
@@ -3119,14 +3119,14 @@ class RegexModelUpdateObject(Model):
     """
 
     _attribute_map = {
-        'regex_pattern': {'key': 'regexPattern', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
+        "regex_pattern": {"key": "regexPattern", "type": "str"},
+        "name": {"key": "name", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(RegexModelUpdateObject, self).__init__(**kwargs)
-        self.regex_pattern = kwargs.get('regex_pattern', None)
-        self.name = kwargs.get('name', None)
+        self.regex_pattern = kwargs.get("regex_pattern", None)
+        self.name = kwargs.get("name", None)
 
 
 class SubClosedList(Model):
@@ -3139,14 +3139,14 @@ class SubClosedList(Model):
     """
 
     _attribute_map = {
-        'canonical_form': {'key': 'canonicalForm', 'type': 'str'},
-        'list': {'key': 'list', 'type': '[str]'},
+        "canonical_form": {"key": "canonicalForm", "type": "str"},
+        "list": {"key": "list", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(SubClosedList, self).__init__(**kwargs)
-        self.canonical_form = kwargs.get('canonical_form', None)
-        self.list = kwargs.get('list', None)
+        self.canonical_form = kwargs.get("canonical_form", None)
+        self.list = kwargs.get("list", None)
 
 
 class SubClosedListResponse(SubClosedList):
@@ -3161,14 +3161,14 @@ class SubClosedListResponse(SubClosedList):
     """
 
     _attribute_map = {
-        'canonical_form': {'key': 'canonicalForm', 'type': 'str'},
-        'list': {'key': 'list', 'type': '[str]'},
-        'id': {'key': 'id', 'type': 'int'},
+        "canonical_form": {"key": "canonicalForm", "type": "str"},
+        "list": {"key": "list", "type": "[str]"},
+        "id": {"key": "id", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(SubClosedListResponse, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
+        self.id = kwargs.get("id", None)
 
 
 class TaskUpdateObject(Model):
@@ -3179,12 +3179,12 @@ class TaskUpdateObject(Model):
     """
 
     _attribute_map = {
-        'version': {'key': 'version', 'type': 'str'},
+        "version": {"key": "version", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(TaskUpdateObject, self).__init__(**kwargs)
-        self.version = kwargs.get('version', None)
+        self.version = kwargs.get("version", None)
 
 
 class UserAccessList(Model):
@@ -3197,14 +3197,14 @@ class UserAccessList(Model):
     """
 
     _attribute_map = {
-        'owner': {'key': 'owner', 'type': 'str'},
-        'emails': {'key': 'emails', 'type': '[str]'},
+        "owner": {"key": "owner", "type": "str"},
+        "emails": {"key": "emails", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(UserAccessList, self).__init__(**kwargs)
-        self.owner = kwargs.get('owner', None)
-        self.emails = kwargs.get('emails', None)
+        self.owner = kwargs.get("owner", None)
+        self.emails = kwargs.get("emails", None)
 
 
 class UserCollaborator(Model):
@@ -3215,12 +3215,12 @@ class UserCollaborator(Model):
     """
 
     _attribute_map = {
-        'email': {'key': 'email', 'type': 'str'},
+        "email": {"key": "email", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(UserCollaborator, self).__init__(**kwargs)
-        self.email = kwargs.get('email', None)
+        self.email = kwargs.get("email", None)
 
 
 class VersionInfo(Model):
@@ -3258,39 +3258,39 @@ class VersionInfo(Model):
     """
 
     _validation = {
-        'version': {'required': True},
-        'training_status': {'required': True},
+        "version": {"required": True},
+        "training_status": {"required": True},
     }
 
     _attribute_map = {
-        'version': {'key': 'version', 'type': 'str'},
-        'created_date_time': {'key': 'createdDateTime', 'type': 'iso-8601'},
-        'last_modified_date_time': {'key': 'lastModifiedDateTime', 'type': 'iso-8601'},
-        'last_trained_date_time': {'key': 'lastTrainedDateTime', 'type': 'iso-8601'},
-        'last_published_date_time': {'key': 'lastPublishedDateTime', 'type': 'iso-8601'},
-        'endpoint_url': {'key': 'endpointUrl', 'type': 'str'},
-        'assigned_endpoint_key': {'key': 'assignedEndpointKey', 'type': '{str}'},
-        'external_api_keys': {'key': 'externalApiKeys', 'type': 'object'},
-        'intents_count': {'key': 'intentsCount', 'type': 'int'},
-        'entities_count': {'key': 'entitiesCount', 'type': 'int'},
-        'endpoint_hits_count': {'key': 'endpointHitsCount', 'type': 'int'},
-        'training_status': {'key': 'trainingStatus', 'type': 'TrainingStatus'},
+        "version": {"key": "version", "type": "str"},
+        "created_date_time": {"key": "createdDateTime", "type": "iso-8601"},
+        "last_modified_date_time": {"key": "lastModifiedDateTime", "type": "iso-8601"},
+        "last_trained_date_time": {"key": "lastTrainedDateTime", "type": "iso-8601"},
+        "last_published_date_time": {"key": "lastPublishedDateTime", "type": "iso-8601"},
+        "endpoint_url": {"key": "endpointUrl", "type": "str"},
+        "assigned_endpoint_key": {"key": "assignedEndpointKey", "type": "{str}"},
+        "external_api_keys": {"key": "externalApiKeys", "type": "object"},
+        "intents_count": {"key": "intentsCount", "type": "int"},
+        "entities_count": {"key": "entitiesCount", "type": "int"},
+        "endpoint_hits_count": {"key": "endpointHitsCount", "type": "int"},
+        "training_status": {"key": "trainingStatus", "type": "TrainingStatus"},
     }
 
     def __init__(self, **kwargs):
         super(VersionInfo, self).__init__(**kwargs)
-        self.version = kwargs.get('version', None)
-        self.created_date_time = kwargs.get('created_date_time', None)
-        self.last_modified_date_time = kwargs.get('last_modified_date_time', None)
-        self.last_trained_date_time = kwargs.get('last_trained_date_time', None)
-        self.last_published_date_time = kwargs.get('last_published_date_time', None)
-        self.endpoint_url = kwargs.get('endpoint_url', None)
-        self.assigned_endpoint_key = kwargs.get('assigned_endpoint_key', None)
-        self.external_api_keys = kwargs.get('external_api_keys', None)
-        self.intents_count = kwargs.get('intents_count', None)
-        self.entities_count = kwargs.get('entities_count', None)
-        self.endpoint_hits_count = kwargs.get('endpoint_hits_count', None)
-        self.training_status = kwargs.get('training_status', None)
+        self.version = kwargs.get("version", None)
+        self.created_date_time = kwargs.get("created_date_time", None)
+        self.last_modified_date_time = kwargs.get("last_modified_date_time", None)
+        self.last_trained_date_time = kwargs.get("last_trained_date_time", None)
+        self.last_published_date_time = kwargs.get("last_published_date_time", None)
+        self.endpoint_url = kwargs.get("endpoint_url", None)
+        self.assigned_endpoint_key = kwargs.get("assigned_endpoint_key", None)
+        self.external_api_keys = kwargs.get("external_api_keys", None)
+        self.intents_count = kwargs.get("intents_count", None)
+        self.entities_count = kwargs.get("entities_count", None)
+        self.endpoint_hits_count = kwargs.get("endpoint_hits_count", None)
+        self.training_status = kwargs.get("training_status", None)
 
 
 class WordListBaseUpdateObject(Model):
@@ -3303,14 +3303,14 @@ class WordListBaseUpdateObject(Model):
     """
 
     _attribute_map = {
-        'canonical_form': {'key': 'canonicalForm', 'type': 'str'},
-        'list': {'key': 'list', 'type': '[str]'},
+        "canonical_form": {"key": "canonicalForm", "type": "str"},
+        "list": {"key": "list", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(WordListBaseUpdateObject, self).__init__(**kwargs)
-        self.canonical_form = kwargs.get('canonical_form', None)
-        self.list = kwargs.get('list', None)
+        self.canonical_form = kwargs.get("canonical_form", None)
+        self.list = kwargs.get("list", None)
 
 
 class WordListObject(Model):
@@ -3323,11 +3323,11 @@ class WordListObject(Model):
     """
 
     _attribute_map = {
-        'canonical_form': {'key': 'canonicalForm', 'type': 'str'},
-        'list': {'key': 'list', 'type': '[str]'},
+        "canonical_form": {"key": "canonicalForm", "type": "str"},
+        "list": {"key": "list", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(WordListObject, self).__init__(**kwargs)
-        self.canonical_form = kwargs.get('canonical_form', None)
-        self.list = kwargs.get('list', None)
+        self.canonical_form = kwargs.get("canonical_form", None)
+        self.list = kwargs.get("list", None)

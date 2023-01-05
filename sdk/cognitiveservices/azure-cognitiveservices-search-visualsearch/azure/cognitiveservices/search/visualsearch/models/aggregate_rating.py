@@ -36,22 +36,22 @@ class AggregateRating(Rating):
     """
 
     _validation = {
-        'text': {'readonly': True},
-        '_type': {'required': True},
-        'rating_value': {'required': True},
-        'best_rating': {'readonly': True},
-        'review_count': {'readonly': True},
+        "text": {"readonly": True},
+        "_type": {"required": True},
+        "rating_value": {"required": True},
+        "best_rating": {"readonly": True},
+        "review_count": {"readonly": True},
     }
 
     _attribute_map = {
-        'text': {'key': 'text', 'type': 'str'},
-        '_type': {'key': '_type', 'type': 'str'},
-        'rating_value': {'key': 'ratingValue', 'type': 'float'},
-        'best_rating': {'key': 'bestRating', 'type': 'float'},
-        'review_count': {'key': 'reviewCount', 'type': 'int'},
+        "text": {"key": "text", "type": "str"},
+        "_type": {"key": "_type", "type": "str"},
+        "rating_value": {"key": "ratingValue", "type": "float"},
+        "best_rating": {"key": "bestRating", "type": "float"},
+        "review_count": {"key": "reviewCount", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(AggregateRating, self).__init__(**kwargs)
         self.review_count = None
-        self._type = 'AggregateRating'
+        self._type = "AggregateRating"

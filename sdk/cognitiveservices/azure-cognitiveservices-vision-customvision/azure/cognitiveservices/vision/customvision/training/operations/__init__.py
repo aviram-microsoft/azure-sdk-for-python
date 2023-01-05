@@ -12,5 +12,5 @@
 from ._custom_vision_training_client_operations import CustomVisionTrainingClientOperationsMixin
 
 __all__ = [
-    'CustomVisionTrainingClientOperationsMixin',
+    "CustomVisionTrainingClientOperationsMixin",
 ]

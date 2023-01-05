@@ -33,17 +33,17 @@ class MatchRecord(Model):
     """
 
     _attribute_map = {
-        'wikipedia_score': {'key': 'wikipediaScore', 'type': 'float'},
-        'entity_type_score': {'key': 'entityTypeScore', 'type': 'float'},
-        'text': {'key': 'text', 'type': 'str'},
-        'offset': {'key': 'offset', 'type': 'int'},
-        'length': {'key': 'length', 'type': 'int'},
+        "wikipedia_score": {"key": "wikipediaScore", "type": "float"},
+        "entity_type_score": {"key": "entityTypeScore", "type": "float"},
+        "text": {"key": "text", "type": "str"},
+        "offset": {"key": "offset", "type": "int"},
+        "length": {"key": "length", "type": "int"},
     }
 
     def __init__(self, **kwargs):
         super(MatchRecord, self).__init__(**kwargs)
-        self.wikipedia_score = kwargs.get('wikipedia_score', None)
-        self.entity_type_score = kwargs.get('entity_type_score', None)
-        self.text = kwargs.get('text', None)
-        self.offset = kwargs.get('offset', None)
-        self.length = kwargs.get('length', None)
+        self.wikipedia_score = kwargs.get("wikipedia_score", None)
+        self.entity_type_score = kwargs.get("entity_type_score", None)
+        self.text = kwargs.get("text", None)
+        self.offset = kwargs.get("offset", None)
+        self.length = kwargs.get("length", None)

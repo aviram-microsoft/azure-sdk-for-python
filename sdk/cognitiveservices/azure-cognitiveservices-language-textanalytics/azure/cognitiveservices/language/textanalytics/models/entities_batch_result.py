@@ -31,15 +31,15 @@ class EntitiesBatchResult(Model):
     """
 
     _validation = {
-        'documents': {'readonly': True},
-        'errors': {'readonly': True},
-        'statistics': {'readonly': True},
+        "documents": {"readonly": True},
+        "errors": {"readonly": True},
+        "statistics": {"readonly": True},
     }
 
     _attribute_map = {
-        'documents': {'key': 'documents', 'type': '[EntitiesBatchResultItem]'},
-        'errors': {'key': 'errors', 'type': '[ErrorRecord]'},
-        'statistics': {'key': 'statistics', 'type': 'RequestStatistics'},
+        "documents": {"key": "documents", "type": "[EntitiesBatchResultItem]"},
+        "errors": {"key": "errors", "type": "[ErrorRecord]"},
+        "statistics": {"key": "statistics", "type": "RequestStatistics"},
     }
 
     def __init__(self, **kwargs):

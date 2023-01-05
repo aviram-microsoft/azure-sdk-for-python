@@ -21,7 +21,7 @@ class APIError(Model):
     """
 
     _attribute_map = {
-        'error': {'key': 'Error', 'type': 'Error'},
+        "error": {"key": "Error", "type": "Error"},
     }
 
     def __init__(self, *, error=None, **kwargs) -> None:
@@ -38,7 +38,7 @@ class APIErrorException(HttpOperationError):
 
     def __init__(self, deserialize, response, *args):
 
-        super(APIErrorException, self).__init__(deserialize, response, 'APIError', *args)
+        super(APIErrorException, self).__init__(deserialize, response, "APIError", *args)
 
 
 class Address(Model):
@@ -51,11 +51,11 @@ class Address(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'Text', 'type': 'str'},
-        'index': {'key': 'Index', 'type': 'int'},
+        "text": {"key": "Text", "type": "str"},
+        "index": {"key": "Index", "type": "int"},
     }
 
-    def __init__(self, *, text: str=None, index: int=None, **kwargs) -> None:
+    def __init__(self, *, text: str = None, index: int = None, **kwargs) -> None:
         super(Address, self).__init__(**kwargs)
         self.text = text
         self.index = index
@@ -73,12 +73,12 @@ class Body(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'Name', 'type': 'str'},
-        'description': {'key': 'Description', 'type': 'str'},
-        'metadata': {'key': 'Metadata', 'type': '{str}'},
+        "name": {"key": "Name", "type": "str"},
+        "description": {"key": "Description", "type": "str"},
+        "metadata": {"key": "Metadata", "type": "{str}"},
     }
 
-    def __init__(self, *, name: str=None, description: str=None, metadata=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, description: str = None, metadata=None, **kwargs) -> None:
         super(Body, self).__init__(**kwargs)
         self.name = name
         self.description = description
@@ -95,11 +95,11 @@ class BodyModel(Model):
     """
 
     _attribute_map = {
-        'data_representation': {'key': 'DataRepresentation', 'type': 'str'},
-        'value': {'key': 'Value', 'type': 'str'},
+        "data_representation": {"key": "DataRepresentation", "type": "str"},
+        "value": {"key": "Value", "type": "str"},
     }
 
-    def __init__(self, *, data_representation: str="URL", value: str=None, **kwargs) -> None:
+    def __init__(self, *, data_representation: str = "URL", value: str = None, **kwargs) -> None:
         super(BodyModel, self).__init__(**kwargs)
         self.data_representation = data_representation
         self.value = value
@@ -115,11 +115,11 @@ class Candidate(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'Text', 'type': 'str'},
-        'confidence': {'key': 'Confidence', 'type': 'float'},
+        "text": {"key": "Text", "type": "str"},
+        "confidence": {"key": "Confidence", "type": "float"},
     }
 
-    def __init__(self, *, text: str=None, confidence: float=None, **kwargs) -> None:
+    def __init__(self, *, text: str = None, confidence: float = None, **kwargs) -> None:
         super(Candidate, self).__init__(**kwargs)
         self.text = text
         self.confidence = confidence
@@ -148,13 +148,15 @@ class Classification(Model):
     """
 
     _attribute_map = {
-        'category1': {'key': 'Category1', 'type': 'ClassificationCategory1'},
-        'category2': {'key': 'Category2', 'type': 'ClassificationCategory2'},
-        'category3': {'key': 'Category3', 'type': 'ClassificationCategory3'},
-        'review_recommended': {'key': 'ReviewRecommended', 'type': 'bool'},
+        "category1": {"key": "Category1", "type": "ClassificationCategory1"},
+        "category2": {"key": "Category2", "type": "ClassificationCategory2"},
+        "category3": {"key": "Category3", "type": "ClassificationCategory3"},
+        "review_recommended": {"key": "ReviewRecommended", "type": "bool"},
     }
 
-    def __init__(self, *, category1=None, category2=None, category3=None, review_recommended: bool=None, **kwargs) -> None:
+    def __init__(
+        self, *, category1=None, category2=None, category3=None, review_recommended: bool = None, **kwargs
+    ) -> None:
         super(Classification, self).__init__(**kwargs)
         self.category1 = category1
         self.category2 = category2
@@ -172,10 +174,10 @@ class ClassificationCategory1(Model):
     """
 
     _attribute_map = {
-        'score': {'key': 'Score', 'type': 'float'},
+        "score": {"key": "Score", "type": "float"},
     }
 
-    def __init__(self, *, score: float=None, **kwargs) -> None:
+    def __init__(self, *, score: float = None, **kwargs) -> None:
         super(ClassificationCategory1, self).__init__(**kwargs)
         self.score = score
 
@@ -190,10 +192,10 @@ class ClassificationCategory2(Model):
     """
 
     _attribute_map = {
-        'score': {'key': 'Score', 'type': 'float'},
+        "score": {"key": "Score", "type": "float"},
     }
 
-    def __init__(self, *, score: float=None, **kwargs) -> None:
+    def __init__(self, *, score: float = None, **kwargs) -> None:
         super(ClassificationCategory2, self).__init__(**kwargs)
         self.score = score
 
@@ -208,10 +210,10 @@ class ClassificationCategory3(Model):
     """
 
     _attribute_map = {
-        'score': {'key': 'Score', 'type': 'float'},
+        "score": {"key": "Score", "type": "float"},
     }
 
-    def __init__(self, *, score: float=None, **kwargs) -> None:
+    def __init__(self, *, score: float = None, **kwargs) -> None:
         super(ClassificationCategory3, self).__init__(**kwargs)
         self.score = score
 
@@ -226,11 +228,11 @@ class Content(Model):
     """
 
     _validation = {
-        'content_value': {'required': True},
+        "content_value": {"required": True},
     }
 
     _attribute_map = {
-        'content_value': {'key': 'ContentValue', 'type': 'str'},
+        "content_value": {"key": "ContentValue", "type": "str"},
     }
 
     def __init__(self, *, content_value: str, **kwargs) -> None:
@@ -259,20 +261,22 @@ class CreateReviewBodyItem(Model):
     """
 
     _validation = {
-        'type': {'required': True},
-        'content': {'required': True},
-        'content_id': {'required': True},
+        "type": {"required": True},
+        "content": {"required": True},
+        "content_id": {"required": True},
     }
 
     _attribute_map = {
-        'type': {'key': 'Type', 'type': 'str'},
-        'content': {'key': 'Content', 'type': 'str'},
-        'content_id': {'key': 'ContentId', 'type': 'str'},
-        'callback_endpoint': {'key': 'CallbackEndpoint', 'type': 'str'},
-        'metadata': {'key': 'Metadata', 'type': '[CreateReviewBodyItemMetadataItem]'},
+        "type": {"key": "Type", "type": "str"},
+        "content": {"key": "Content", "type": "str"},
+        "content_id": {"key": "ContentId", "type": "str"},
+        "callback_endpoint": {"key": "CallbackEndpoint", "type": "str"},
+        "metadata": {"key": "Metadata", "type": "[CreateReviewBodyItemMetadataItem]"},
     }
 
-    def __init__(self, *, type, content: str, content_id: str, callback_endpoint: str=None, metadata=None, **kwargs) -> None:
+    def __init__(
+        self, *, type, content: str, content_id: str, callback_endpoint: str = None, metadata=None, **kwargs
+    ) -> None:
         super(CreateReviewBodyItem, self).__init__(**kwargs)
         self.type = type
         self.content = content
@@ -293,13 +297,13 @@ class CreateReviewBodyItemMetadataItem(Model):
     """
 
     _validation = {
-        'key': {'required': True},
-        'value': {'required': True},
+        "key": {"required": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        'key': {'key': 'Key', 'type': 'str'},
-        'value': {'key': 'Value', 'type': 'str'},
+        "key": {"key": "Key", "type": "str"},
+        "value": {"key": "Value", "type": "str"},
     }
 
     def __init__(self, *, key: str, value: str, **kwargs) -> None:
@@ -340,26 +344,37 @@ class CreateVideoReviewsBodyItem(Model):
     """
 
     _validation = {
-        'type': {'required': True, 'constant': True},
-        'content': {'required': True},
-        'content_id': {'required': True},
-        'status': {'required': True},
+        "type": {"required": True, "constant": True},
+        "content": {"required": True},
+        "content_id": {"required": True},
+        "status": {"required": True},
     }
 
     _attribute_map = {
-        'video_frames': {'key': 'VideoFrames', 'type': '[CreateVideoReviewsBodyItemVideoFramesItem]'},
-        'metadata': {'key': 'Metadata', 'type': '[CreateVideoReviewsBodyItemMetadataItem]'},
-        'type': {'key': 'Type', 'type': 'str'},
-        'content': {'key': 'Content', 'type': 'str'},
-        'content_id': {'key': 'ContentId', 'type': 'str'},
-        'status': {'key': 'Status', 'type': 'str'},
-        'timescale': {'key': 'Timescale', 'type': 'int'},
-        'callback_endpoint': {'key': 'CallbackEndpoint', 'type': 'str'},
+        "video_frames": {"key": "VideoFrames", "type": "[CreateVideoReviewsBodyItemVideoFramesItem]"},
+        "metadata": {"key": "Metadata", "type": "[CreateVideoReviewsBodyItemMetadataItem]"},
+        "type": {"key": "Type", "type": "str"},
+        "content": {"key": "Content", "type": "str"},
+        "content_id": {"key": "ContentId", "type": "str"},
+        "status": {"key": "Status", "type": "str"},
+        "timescale": {"key": "Timescale", "type": "int"},
+        "callback_endpoint": {"key": "CallbackEndpoint", "type": "str"},
     }
 
     type = "Video"
 
-    def __init__(self, *, content: str, content_id: str, status, video_frames=None, metadata=None, timescale: int=None, callback_endpoint: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        content: str,
+        content_id: str,
+        status,
+        video_frames=None,
+        metadata=None,
+        timescale: int = None,
+        callback_endpoint: str = None,
+        **kwargs
+    ) -> None:
         super(CreateVideoReviewsBodyItem, self).__init__(**kwargs)
         self.video_frames = video_frames
         self.metadata = metadata
@@ -382,13 +397,13 @@ class CreateVideoReviewsBodyItemMetadataItem(Model):
     """
 
     _validation = {
-        'key': {'required': True},
-        'value': {'required': True},
+        "key": {"required": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        'key': {'key': 'Key', 'type': 'str'},
-        'value': {'key': 'Value', 'type': 'str'},
+        "key": {"key": "Key", "type": "str"},
+        "value": {"key": "Value", "type": "str"},
     }
 
     def __init__(self, *, key: str, value: str, **kwargs) -> None:
@@ -417,20 +432,25 @@ class CreateVideoReviewsBodyItemVideoFramesItem(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'timestamp': {'required': True},
-        'frame_image': {'required': True},
+        "id": {"required": True},
+        "timestamp": {"required": True},
+        "frame_image": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'Id', 'type': 'str'},
-        'timestamp': {'key': 'Timestamp', 'type': 'int'},
-        'frame_image': {'key': 'FrameImage', 'type': 'str'},
-        'reviewer_result_tags': {'key': 'ReviewerResultTags', 'type': '[CreateVideoReviewsBodyItemVideoFramesItemReviewerResultTagsItem]'},
-        'metadata': {'key': 'Metadata', 'type': '[CreateVideoReviewsBodyItemVideoFramesItemMetadataItem]'},
+        "id": {"key": "Id", "type": "str"},
+        "timestamp": {"key": "Timestamp", "type": "int"},
+        "frame_image": {"key": "FrameImage", "type": "str"},
+        "reviewer_result_tags": {
+            "key": "ReviewerResultTags",
+            "type": "[CreateVideoReviewsBodyItemVideoFramesItemReviewerResultTagsItem]",
+        },
+        "metadata": {"key": "Metadata", "type": "[CreateVideoReviewsBodyItemVideoFramesItemMetadataItem]"},
     }
 
-    def __init__(self, *, id: str, timestamp: int, frame_image: str, reviewer_result_tags=None, metadata=None, **kwargs) -> None:
+    def __init__(
+        self, *, id: str, timestamp: int, frame_image: str, reviewer_result_tags=None, metadata=None, **kwargs
+    ) -> None:
         super(CreateVideoReviewsBodyItemVideoFramesItem, self).__init__(**kwargs)
         self.id = id
         self.timestamp = timestamp
@@ -451,13 +471,13 @@ class CreateVideoReviewsBodyItemVideoFramesItemMetadataItem(Model):
     """
 
     _validation = {
-        'key': {'required': True},
-        'value': {'required': True},
+        "key": {"required": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        'key': {'key': 'Key', 'type': 'str'},
-        'value': {'key': 'Value', 'type': 'str'},
+        "key": {"key": "Key", "type": "str"},
+        "value": {"key": "Value", "type": "str"},
     }
 
     def __init__(self, *, key: str, value: str, **kwargs) -> None:
@@ -478,13 +498,13 @@ class CreateVideoReviewsBodyItemVideoFramesItemReviewerResultTagsItem(Model):
     """
 
     _validation = {
-        'key': {'required': True},
-        'value': {'required': True},
+        "key": {"required": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        'key': {'key': 'Key', 'type': 'str'},
-        'value': {'key': 'Value', 'type': 'str'},
+        "key": {"key": "Key", "type": "str"},
+        "value": {"key": "Value", "type": "str"},
     }
 
     def __init__(self, *, key: str, value: str, **kwargs) -> None:
@@ -506,12 +526,12 @@ class DetectedLanguage(Model):
     """
 
     _attribute_map = {
-        'detected_language': {'key': 'DetectedLanguage', 'type': 'str'},
-        'status': {'key': 'Status', 'type': 'Status'},
-        'tracking_id': {'key': 'TrackingId', 'type': 'str'},
+        "detected_language": {"key": "DetectedLanguage", "type": "str"},
+        "status": {"key": "Status", "type": "Status"},
+        "tracking_id": {"key": "TrackingId", "type": "str"},
     }
 
-    def __init__(self, *, detected_language: str=None, status=None, tracking_id: str=None, **kwargs) -> None:
+    def __init__(self, *, detected_language: str = None, status=None, tracking_id: str = None, **kwargs) -> None:
         super(DetectedLanguage, self).__init__(**kwargs)
         self.detected_language = detected_language
         self.status = status
@@ -534,13 +554,15 @@ class DetectedTerms(Model):
     """
 
     _attribute_map = {
-        'index': {'key': 'Index', 'type': 'int'},
-        'original_index': {'key': 'OriginalIndex', 'type': 'int'},
-        'list_id': {'key': 'ListId', 'type': 'int'},
-        'term': {'key': 'Term', 'type': 'str'},
+        "index": {"key": "Index", "type": "int"},
+        "original_index": {"key": "OriginalIndex", "type": "int"},
+        "list_id": {"key": "ListId", "type": "int"},
+        "term": {"key": "Term", "type": "str"},
     }
 
-    def __init__(self, *, index: int=None, original_index: int=None, list_id: int=None, term: str=None, **kwargs) -> None:
+    def __init__(
+        self, *, index: int = None, original_index: int = None, list_id: int = None, term: str = None, **kwargs
+    ) -> None:
         super(DetectedTerms, self).__init__(**kwargs)
         self.index = index
         self.original_index = original_index
@@ -563,13 +585,15 @@ class Email(Model):
     """
 
     _attribute_map = {
-        'detected': {'key': 'Detected', 'type': 'str'},
-        'sub_type': {'key': 'SubType', 'type': 'str'},
-        'text': {'key': 'Text', 'type': 'str'},
-        'index': {'key': 'Index', 'type': 'int'},
+        "detected": {"key": "Detected", "type": "str"},
+        "sub_type": {"key": "SubType", "type": "str"},
+        "text": {"key": "Text", "type": "str"},
+        "index": {"key": "Index", "type": "int"},
     }
 
-    def __init__(self, *, detected: str=None, sub_type: str=None, text: str=None, index: int=None, **kwargs) -> None:
+    def __init__(
+        self, *, detected: str = None, sub_type: str = None, text: str = None, index: int = None, **kwargs
+    ) -> None:
         super(Email, self).__init__(**kwargs)
         self.detected = detected
         self.sub_type = sub_type
@@ -587,11 +611,11 @@ class Error(Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'Code', 'type': 'str'},
-        'message': {'key': 'Message', 'type': 'str'},
+        "code": {"key": "Code", "type": "str"},
+        "message": {"key": "Message", "type": "str"},
     }
 
-    def __init__(self, *, code: str=None, message: str=None, **kwargs) -> None:
+    def __init__(self, *, code: str = None, message: str = None, **kwargs) -> None:
         super(Error, self).__init__(**kwargs)
         self.code = code
         self.message = message
@@ -625,18 +649,31 @@ class Evaluate(Model):
     """
 
     _attribute_map = {
-        'cache_id': {'key': 'CacheID', 'type': 'str'},
-        'result': {'key': 'Result', 'type': 'bool'},
-        'tracking_id': {'key': 'TrackingId', 'type': 'str'},
-        'adult_classification_score': {'key': 'AdultClassificationScore', 'type': 'float'},
-        'is_image_adult_classified': {'key': 'IsImageAdultClassified', 'type': 'bool'},
-        'racy_classification_score': {'key': 'RacyClassificationScore', 'type': 'float'},
-        'is_image_racy_classified': {'key': 'IsImageRacyClassified', 'type': 'bool'},
-        'advanced_info': {'key': 'AdvancedInfo', 'type': '[KeyValuePair]'},
-        'status': {'key': 'Status', 'type': 'Status'},
+        "cache_id": {"key": "CacheID", "type": "str"},
+        "result": {"key": "Result", "type": "bool"},
+        "tracking_id": {"key": "TrackingId", "type": "str"},
+        "adult_classification_score": {"key": "AdultClassificationScore", "type": "float"},
+        "is_image_adult_classified": {"key": "IsImageAdultClassified", "type": "bool"},
+        "racy_classification_score": {"key": "RacyClassificationScore", "type": "float"},
+        "is_image_racy_classified": {"key": "IsImageRacyClassified", "type": "bool"},
+        "advanced_info": {"key": "AdvancedInfo", "type": "[KeyValuePair]"},
+        "status": {"key": "Status", "type": "Status"},
     }
 
-    def __init__(self, *, cache_id: str=None, result: bool=None, tracking_id: str=None, adult_classification_score: float=None, is_image_adult_classified: bool=None, racy_classification_score: float=None, is_image_racy_classified: bool=None, advanced_info=None, status=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        cache_id: str = None,
+        result: bool = None,
+        tracking_id: str = None,
+        adult_classification_score: float = None,
+        is_image_adult_classified: bool = None,
+        racy_classification_score: float = None,
+        is_image_racy_classified: bool = None,
+        advanced_info=None,
+        status=None,
+        **kwargs
+    ) -> None:
         super(Evaluate, self).__init__(**kwargs)
         self.cache_id = cache_id
         self.result = result
@@ -663,13 +700,13 @@ class Face(Model):
     """
 
     _attribute_map = {
-        'bottom': {'key': 'Bottom', 'type': 'int'},
-        'left': {'key': 'Left', 'type': 'int'},
-        'right': {'key': 'Right', 'type': 'int'},
-        'top': {'key': 'Top', 'type': 'int'},
+        "bottom": {"key": "Bottom", "type": "int"},
+        "left": {"key": "Left", "type": "int"},
+        "right": {"key": "Right", "type": "int"},
+        "top": {"key": "Top", "type": "int"},
     }
 
-    def __init__(self, *, bottom: int=None, left: int=None, right: int=None, top: int=None, **kwargs) -> None:
+    def __init__(self, *, bottom: int = None, left: int = None, right: int = None, top: int = None, **kwargs) -> None:
         super(Face, self).__init__(**kwargs)
         self.bottom = bottom
         self.left = left
@@ -700,16 +737,27 @@ class FoundFaces(Model):
     """
 
     _attribute_map = {
-        'status': {'key': 'Status', 'type': 'Status'},
-        'tracking_id': {'key': 'TrackingId', 'type': 'str'},
-        'cache_id': {'key': 'CacheId', 'type': 'str'},
-        'result': {'key': 'Result', 'type': 'bool'},
-        'count': {'key': 'Count', 'type': 'int'},
-        'advanced_info': {'key': 'AdvancedInfo', 'type': '[KeyValuePair]'},
-        'faces': {'key': 'Faces', 'type': '[Face]'},
+        "status": {"key": "Status", "type": "Status"},
+        "tracking_id": {"key": "TrackingId", "type": "str"},
+        "cache_id": {"key": "CacheId", "type": "str"},
+        "result": {"key": "Result", "type": "bool"},
+        "count": {"key": "Count", "type": "int"},
+        "advanced_info": {"key": "AdvancedInfo", "type": "[KeyValuePair]"},
+        "faces": {"key": "Faces", "type": "[Face]"},
     }
 
-    def __init__(self, *, status=None, tracking_id: str=None, cache_id: str=None, result: bool=None, count: int=None, advanced_info=None, faces=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        status=None,
+        tracking_id: str = None,
+        cache_id: str = None,
+        result: bool = None,
+        count: int = None,
+        advanced_info=None,
+        faces=None,
+        **kwargs
+    ) -> None:
         super(FoundFaces, self).__init__(**kwargs)
         self.status = status
         self.tracking_id = tracking_id
@@ -736,13 +784,15 @@ class Frame(Model):
     """
 
     _attribute_map = {
-        'timestamp': {'key': 'Timestamp', 'type': 'str'},
-        'frame_image': {'key': 'FrameImage', 'type': 'str'},
-        'metadata': {'key': 'Metadata', 'type': '[KeyValuePair]'},
-        'reviewer_result_tags': {'key': 'ReviewerResultTags', 'type': '[Tag]'},
+        "timestamp": {"key": "Timestamp", "type": "str"},
+        "frame_image": {"key": "FrameImage", "type": "str"},
+        "metadata": {"key": "Metadata", "type": "[KeyValuePair]"},
+        "reviewer_result_tags": {"key": "ReviewerResultTags", "type": "[Tag]"},
     }
 
-    def __init__(self, *, timestamp: str=None, frame_image: str=None, metadata=None, reviewer_result_tags=None, **kwargs) -> None:
+    def __init__(
+        self, *, timestamp: str = None, frame_image: str = None, metadata=None, reviewer_result_tags=None, **kwargs
+    ) -> None:
         super(Frame, self).__init__(**kwargs)
         self.timestamp = timestamp
         self.frame_image = frame_image
@@ -761,11 +811,11 @@ class Frames(Model):
     """
 
     _attribute_map = {
-        'review_id': {'key': 'ReviewId', 'type': 'str'},
-        'video_frames': {'key': 'VideoFrames', 'type': '[Frame]'},
+        "review_id": {"key": "ReviewId", "type": "str"},
+        "video_frames": {"key": "VideoFrames", "type": "[Frame]"},
     }
 
-    def __init__(self, *, review_id: str=None, video_frames=None, **kwargs) -> None:
+    def __init__(self, *, review_id: str = None, video_frames=None, **kwargs) -> None:
         super(Frames, self).__init__(**kwargs)
         self.review_id = review_id
         self.video_frames = video_frames
@@ -783,12 +833,12 @@ class IPA(Model):
     """
 
     _attribute_map = {
-        'sub_type': {'key': 'SubType', 'type': 'str'},
-        'text': {'key': 'Text', 'type': 'str'},
-        'index': {'key': 'Index', 'type': 'int'},
+        "sub_type": {"key": "SubType", "type": "str"},
+        "text": {"key": "Text", "type": "str"},
+        "index": {"key": "Index", "type": "int"},
     }
 
-    def __init__(self, *, sub_type: str=None, text: str=None, index: int=None, **kwargs) -> None:
+    def __init__(self, *, sub_type: str = None, text: str = None, index: int = None, **kwargs) -> None:
         super(IPA, self).__init__(**kwargs)
         self.sub_type = sub_type
         self.text = text
@@ -811,13 +861,15 @@ class Image(Model):
     """
 
     _attribute_map = {
-        'content_id': {'key': 'ContentId', 'type': 'str'},
-        'additional_info': {'key': 'AdditionalInfo', 'type': '[ImageAdditionalInfoItem]'},
-        'status': {'key': 'Status', 'type': 'Status'},
-        'tracking_id': {'key': 'TrackingId', 'type': 'str'},
+        "content_id": {"key": "ContentId", "type": "str"},
+        "additional_info": {"key": "AdditionalInfo", "type": "[ImageAdditionalInfoItem]"},
+        "status": {"key": "Status", "type": "Status"},
+        "tracking_id": {"key": "TrackingId", "type": "str"},
     }
 
-    def __init__(self, *, content_id: str=None, additional_info=None, status=None, tracking_id: str=None, **kwargs) -> None:
+    def __init__(
+        self, *, content_id: str = None, additional_info=None, status=None, tracking_id: str = None, **kwargs
+    ) -> None:
         super(Image, self).__init__(**kwargs)
         self.content_id = content_id
         self.additional_info = additional_info
@@ -835,11 +887,11 @@ class ImageAdditionalInfoItem(Model):
     """
 
     _attribute_map = {
-        'key': {'key': 'Key', 'type': 'str'},
-        'value': {'key': 'Value', 'type': 'str'},
+        "key": {"key": "Key", "type": "str"},
+        "value": {"key": "Value", "type": "str"},
     }
 
-    def __init__(self, *, key: str=None, value: str=None, **kwargs) -> None:
+    def __init__(self, *, key: str = None, value: str = None, **kwargs) -> None:
         super(ImageAdditionalInfoItem, self).__init__(**kwargs)
         self.key = key
         self.value = value
@@ -860,13 +912,15 @@ class ImageIds(Model):
     """
 
     _attribute_map = {
-        'content_source': {'key': 'ContentSource', 'type': 'str'},
-        'content_ids': {'key': 'ContentIds', 'type': '[int]'},
-        'status': {'key': 'Status', 'type': 'Status'},
-        'tracking_id': {'key': 'TrackingId', 'type': 'str'},
+        "content_source": {"key": "ContentSource", "type": "str"},
+        "content_ids": {"key": "ContentIds", "type": "[int]"},
+        "status": {"key": "Status", "type": "Status"},
+        "tracking_id": {"key": "TrackingId", "type": "str"},
     }
 
-    def __init__(self, *, content_source: str=None, content_ids=None, status=None, tracking_id: str=None, **kwargs) -> None:
+    def __init__(
+        self, *, content_source: str = None, content_ids=None, status=None, tracking_id: str = None, **kwargs
+    ) -> None:
         super(ImageIds, self).__init__(**kwargs)
         self.content_source = content_source
         self.content_ids = content_ids
@@ -888,13 +942,13 @@ class ImageList(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'Id', 'type': 'int'},
-        'name': {'key': 'Name', 'type': 'str'},
-        'description': {'key': 'Description', 'type': 'str'},
-        'metadata': {'key': 'Metadata', 'type': '{str}'},
+        "id": {"key": "Id", "type": "int"},
+        "name": {"key": "Name", "type": "str"},
+        "description": {"key": "Description", "type": "str"},
+        "metadata": {"key": "Metadata", "type": "{str}"},
     }
 
-    def __init__(self, *, id: int=None, name: str=None, description: str=None, metadata=None, **kwargs) -> None:
+    def __init__(self, *, id: int = None, name: str = None, description: str = None, metadata=None, **kwargs) -> None:
         super(ImageList, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -929,18 +983,31 @@ class Job(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'Id', 'type': 'str'},
-        'team_name': {'key': 'TeamName', 'type': 'str'},
-        'status': {'key': 'Status', 'type': 'str'},
-        'workflow_id': {'key': 'WorkflowId', 'type': 'str'},
-        'type': {'key': 'Type', 'type': 'str'},
-        'call_back_endpoint': {'key': 'CallBackEndpoint', 'type': 'str'},
-        'review_id': {'key': 'ReviewId', 'type': 'str'},
-        'result_meta_data': {'key': 'ResultMetaData', 'type': '[KeyValuePair]'},
-        'job_execution_report': {'key': 'JobExecutionReport', 'type': '[JobExecutionReportDetails]'},
+        "id": {"key": "Id", "type": "str"},
+        "team_name": {"key": "TeamName", "type": "str"},
+        "status": {"key": "Status", "type": "str"},
+        "workflow_id": {"key": "WorkflowId", "type": "str"},
+        "type": {"key": "Type", "type": "str"},
+        "call_back_endpoint": {"key": "CallBackEndpoint", "type": "str"},
+        "review_id": {"key": "ReviewId", "type": "str"},
+        "result_meta_data": {"key": "ResultMetaData", "type": "[KeyValuePair]"},
+        "job_execution_report": {"key": "JobExecutionReport", "type": "[JobExecutionReportDetails]"},
     }
 
-    def __init__(self, *, id: str=None, team_name: str=None, status: str=None, workflow_id: str=None, type: str=None, call_back_endpoint: str=None, review_id: str=None, result_meta_data=None, job_execution_report=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        id: str = None,
+        team_name: str = None,
+        status: str = None,
+        workflow_id: str = None,
+        type: str = None,
+        call_back_endpoint: str = None,
+        review_id: str = None,
+        result_meta_data=None,
+        job_execution_report=None,
+        **kwargs
+    ) -> None:
         super(Job, self).__init__(**kwargs)
         self.id = id
         self.team_name = team_name
@@ -963,11 +1030,11 @@ class JobExecutionReportDetails(Model):
     """
 
     _attribute_map = {
-        'ts': {'key': 'Ts', 'type': 'str'},
-        'msg': {'key': 'Msg', 'type': 'str'},
+        "ts": {"key": "Ts", "type": "str"},
+        "msg": {"key": "Msg", "type": "str"},
     }
 
-    def __init__(self, *, ts: str=None, msg: str=None, **kwargs) -> None:
+    def __init__(self, *, ts: str = None, msg: str = None, **kwargs) -> None:
         super(JobExecutionReportDetails, self).__init__(**kwargs)
         self.ts = ts
         self.msg = msg
@@ -981,10 +1048,10 @@ class JobId(Model):
     """
 
     _attribute_map = {
-        'job_id': {'key': 'JobId', 'type': 'str'},
+        "job_id": {"key": "JobId", "type": "str"},
     }
 
-    def __init__(self, *, job_id: str=None, **kwargs) -> None:
+    def __init__(self, *, job_id: str = None, **kwargs) -> None:
         super(JobId, self).__init__(**kwargs)
         self.job_id = job_id
 
@@ -997,7 +1064,7 @@ class JobListResult(Model):
     """
 
     _attribute_map = {
-        'value': {'key': 'Value', 'type': '[str]'},
+        "value": {"key": "Value", "type": "[str]"},
     }
 
     def __init__(self, *, value=None, **kwargs) -> None:
@@ -1015,11 +1082,11 @@ class KeyValuePair(Model):
     """
 
     _attribute_map = {
-        'key': {'key': 'Key', 'type': 'str'},
-        'value': {'key': 'Value', 'type': 'str'},
+        "key": {"key": "Key", "type": "str"},
+        "value": {"key": "Value", "type": "str"},
     }
 
-    def __init__(self, *, key: str=None, value: str=None, **kwargs) -> None:
+    def __init__(self, *, key: str = None, value: str = None, **kwargs) -> None:
         super(KeyValuePair, self).__init__(**kwargs)
         self.key = key
         self.value = value
@@ -1041,14 +1108,16 @@ class Match(Model):
     """
 
     _attribute_map = {
-        'score': {'key': 'Score', 'type': 'float'},
-        'match_id': {'key': 'MatchId', 'type': 'int'},
-        'source': {'key': 'Source', 'type': 'str'},
-        'tags': {'key': 'Tags', 'type': '[int]'},
-        'label': {'key': 'Label', 'type': 'str'},
+        "score": {"key": "Score", "type": "float"},
+        "match_id": {"key": "MatchId", "type": "int"},
+        "source": {"key": "Source", "type": "str"},
+        "tags": {"key": "Tags", "type": "[int]"},
+        "label": {"key": "Label", "type": "str"},
     }
 
-    def __init__(self, *, score: float=None, match_id: int=None, source: str=None, tags=None, label: str=None, **kwargs) -> None:
+    def __init__(
+        self, *, score: float = None, match_id: int = None, source: str = None, tags=None, label: str = None, **kwargs
+    ) -> None:
         super(Match, self).__init__(**kwargs)
         self.score = score
         self.match_id = match_id
@@ -1075,14 +1144,23 @@ class MatchResponse(Model):
     """
 
     _attribute_map = {
-        'tracking_id': {'key': 'TrackingId', 'type': 'str'},
-        'cache_id': {'key': 'CacheID', 'type': 'str'},
-        'is_match': {'key': 'IsMatch', 'type': 'bool'},
-        'matches': {'key': 'Matches', 'type': '[Match]'},
-        'status': {'key': 'Status', 'type': 'Status'},
+        "tracking_id": {"key": "TrackingId", "type": "str"},
+        "cache_id": {"key": "CacheID", "type": "str"},
+        "is_match": {"key": "IsMatch", "type": "bool"},
+        "matches": {"key": "Matches", "type": "[Match]"},
+        "status": {"key": "Status", "type": "Status"},
     }
 
-    def __init__(self, *, tracking_id: str=None, cache_id: str=None, is_match: bool=None, matches=None, status=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        tracking_id: str = None,
+        cache_id: str = None,
+        is_match: bool = None,
+        matches=None,
+        status=None,
+        **kwargs
+    ) -> None:
         super(MatchResponse, self).__init__(**kwargs)
         self.tracking_id = tracking_id
         self.cache_id = cache_id
@@ -1114,16 +1192,27 @@ class OCR(Model):
     """
 
     _attribute_map = {
-        'status': {'key': 'Status', 'type': 'Status'},
-        'metadata': {'key': 'Metadata', 'type': '[KeyValuePair]'},
-        'tracking_id': {'key': 'TrackingId', 'type': 'str'},
-        'cache_id': {'key': 'CacheId', 'type': 'str'},
-        'language': {'key': 'Language', 'type': 'str'},
-        'text': {'key': 'Text', 'type': 'str'},
-        'candidates': {'key': 'Candidates', 'type': '[Candidate]'},
+        "status": {"key": "Status", "type": "Status"},
+        "metadata": {"key": "Metadata", "type": "[KeyValuePair]"},
+        "tracking_id": {"key": "TrackingId", "type": "str"},
+        "cache_id": {"key": "CacheId", "type": "str"},
+        "language": {"key": "Language", "type": "str"},
+        "text": {"key": "Text", "type": "str"},
+        "candidates": {"key": "Candidates", "type": "[Candidate]"},
     }
 
-    def __init__(self, *, status=None, metadata=None, tracking_id: str=None, cache_id: str=None, language: str=None, text: str=None, candidates=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        status=None,
+        metadata=None,
+        tracking_id: str = None,
+        cache_id: str = None,
+        language: str = None,
+        text: str = None,
+        candidates=None,
+        **kwargs
+    ) -> None:
         super(OCR, self).__init__(**kwargs)
         self.status = status
         self.metadata = metadata
@@ -1155,11 +1244,11 @@ class PII(Model):
     """
 
     _attribute_map = {
-        'email': {'key': 'Email', 'type': '[Email]'},
-        'ssn': {'key': 'SSN', 'type': '[SSN]'},
-        'ipa': {'key': 'IPA', 'type': '[IPA]'},
-        'phone': {'key': 'Phone', 'type': '[Phone]'},
-        'address': {'key': 'Address', 'type': '[Address]'},
+        "email": {"key": "Email", "type": "[Email]"},
+        "ssn": {"key": "SSN", "type": "[SSN]"},
+        "ipa": {"key": "IPA", "type": "[IPA]"},
+        "phone": {"key": "Phone", "type": "[Phone]"},
+        "address": {"key": "Address", "type": "[Address]"},
     }
 
     def __init__(self, *, email=None, ssn=None, ipa=None, phone=None, address=None, **kwargs) -> None:
@@ -1184,12 +1273,12 @@ class Phone(Model):
     """
 
     _attribute_map = {
-        'country_code': {'key': 'CountryCode', 'type': 'str'},
-        'text': {'key': 'Text', 'type': 'str'},
-        'index': {'key': 'Index', 'type': 'int'},
+        "country_code": {"key": "CountryCode", "type": "str"},
+        "text": {"key": "Text", "type": "str"},
+        "index": {"key": "Index", "type": "int"},
     }
 
-    def __init__(self, *, country_code: str=None, text: str=None, index: int=None, **kwargs) -> None:
+    def __init__(self, *, country_code: str = None, text: str = None, index: int = None, **kwargs) -> None:
         super(Phone, self).__init__(**kwargs)
         self.country_code = country_code
         self.text = text
@@ -1213,14 +1302,23 @@ class RefreshIndex(Model):
     """
 
     _attribute_map = {
-        'content_source_id': {'key': 'ContentSourceId', 'type': 'str'},
-        'is_update_success': {'key': 'IsUpdateSuccess', 'type': 'bool'},
-        'advanced_info': {'key': 'AdvancedInfo', 'type': '[{str}]'},
-        'status': {'key': 'Status', 'type': 'Status'},
-        'tracking_id': {'key': 'TrackingId', 'type': 'str'},
+        "content_source_id": {"key": "ContentSourceId", "type": "str"},
+        "is_update_success": {"key": "IsUpdateSuccess", "type": "bool"},
+        "advanced_info": {"key": "AdvancedInfo", "type": "[{str}]"},
+        "status": {"key": "Status", "type": "Status"},
+        "tracking_id": {"key": "TrackingId", "type": "str"},
     }
 
-    def __init__(self, *, content_source_id: str=None, is_update_success: bool=None, advanced_info=None, status=None, tracking_id: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        content_source_id: str = None,
+        is_update_success: bool = None,
+        advanced_info=None,
+        status=None,
+        tracking_id: str = None,
+        **kwargs
+    ) -> None:
         super(RefreshIndex, self).__init__(**kwargs)
         self.content_source_id = content_source_id
         self.is_update_success = is_update_success
@@ -1257,19 +1355,33 @@ class Review(Model):
     """
 
     _attribute_map = {
-        'review_id': {'key': 'ReviewId', 'type': 'str'},
-        'sub_team': {'key': 'SubTeam', 'type': 'str'},
-        'status': {'key': 'Status', 'type': 'str'},
-        'reviewer_result_tags': {'key': 'ReviewerResultTags', 'type': '[KeyValuePair]'},
-        'created_by': {'key': 'CreatedBy', 'type': 'str'},
-        'metadata': {'key': 'Metadata', 'type': '[KeyValuePair]'},
-        'type': {'key': 'Type', 'type': 'str'},
-        'content': {'key': 'Content', 'type': 'str'},
-        'content_id': {'key': 'ContentId', 'type': 'str'},
-        'callback_endpoint': {'key': 'CallbackEndpoint', 'type': 'str'},
+        "review_id": {"key": "ReviewId", "type": "str"},
+        "sub_team": {"key": "SubTeam", "type": "str"},
+        "status": {"key": "Status", "type": "str"},
+        "reviewer_result_tags": {"key": "ReviewerResultTags", "type": "[KeyValuePair]"},
+        "created_by": {"key": "CreatedBy", "type": "str"},
+        "metadata": {"key": "Metadata", "type": "[KeyValuePair]"},
+        "type": {"key": "Type", "type": "str"},
+        "content": {"key": "Content", "type": "str"},
+        "content_id": {"key": "ContentId", "type": "str"},
+        "callback_endpoint": {"key": "CallbackEndpoint", "type": "str"},
     }
 
-    def __init__(self, *, review_id: str=None, sub_team: str=None, status: str=None, reviewer_result_tags=None, created_by: str=None, metadata=None, type: str=None, content: str=None, content_id: str=None, callback_endpoint: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        review_id: str = None,
+        sub_team: str = None,
+        status: str = None,
+        reviewer_result_tags=None,
+        created_by: str = None,
+        metadata=None,
+        type: str = None,
+        content: str = None,
+        content_id: str = None,
+        callback_endpoint: str = None,
+        **kwargs
+    ) -> None:
         super(Review, self).__init__(**kwargs)
         self.review_id = review_id
         self.sub_team = sub_team
@@ -1293,11 +1405,11 @@ class SSN(Model):
     """
 
     _attribute_map = {
-        'text': {'key': 'Text', 'type': 'str'},
-        'index': {'key': 'Index', 'type': 'int'},
+        "text": {"key": "Text", "type": "str"},
+        "index": {"key": "Index", "type": "int"},
     }
 
-    def __init__(self, *, text: str=None, index: int=None, **kwargs) -> None:
+    def __init__(self, *, text: str = None, index: int = None, **kwargs) -> None:
         super(SSN, self).__init__(**kwargs)
         self.text = text
         self.index = index
@@ -1332,19 +1444,33 @@ class Screen(Model):
     """
 
     _attribute_map = {
-        'original_text': {'key': 'OriginalText', 'type': 'str'},
-        'normalized_text': {'key': 'NormalizedText', 'type': 'str'},
-        'auto_corrected_text': {'key': 'AutoCorrectedText', 'type': 'str'},
-        'misrepresentation': {'key': 'Misrepresentation', 'type': '[str]'},
-        'classification': {'key': 'Classification', 'type': 'Classification'},
-        'status': {'key': 'Status', 'type': 'Status'},
-        'pii': {'key': 'PII', 'type': 'PII'},
-        'language': {'key': 'Language', 'type': 'str'},
-        'terms': {'key': 'Terms', 'type': '[DetectedTerms]'},
-        'tracking_id': {'key': 'TrackingId', 'type': 'str'},
+        "original_text": {"key": "OriginalText", "type": "str"},
+        "normalized_text": {"key": "NormalizedText", "type": "str"},
+        "auto_corrected_text": {"key": "AutoCorrectedText", "type": "str"},
+        "misrepresentation": {"key": "Misrepresentation", "type": "[str]"},
+        "classification": {"key": "Classification", "type": "Classification"},
+        "status": {"key": "Status", "type": "Status"},
+        "pii": {"key": "PII", "type": "PII"},
+        "language": {"key": "Language", "type": "str"},
+        "terms": {"key": "Terms", "type": "[DetectedTerms]"},
+        "tracking_id": {"key": "TrackingId", "type": "str"},
     }
 
-    def __init__(self, *, original_text: str=None, normalized_text: str=None, auto_corrected_text: str=None, misrepresentation=None, classification=None, status=None, pii=None, language: str=None, terms=None, tracking_id: str=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        original_text: str = None,
+        normalized_text: str = None,
+        auto_corrected_text: str = None,
+        misrepresentation=None,
+        classification=None,
+        status=None,
+        pii=None,
+        language: str = None,
+        terms=None,
+        tracking_id: str = None,
+        **kwargs
+    ) -> None:
         super(Screen, self).__init__(**kwargs)
         self.original_text = original_text
         self.normalized_text = normalized_text
@@ -1370,12 +1496,12 @@ class Status(Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'Code', 'type': 'int'},
-        'description': {'key': 'Description', 'type': 'str'},
-        'exception': {'key': 'Exception', 'type': 'str'},
+        "code": {"key": "Code", "type": "int"},
+        "description": {"key": "Description", "type": "str"},
+        "exception": {"key": "Exception", "type": "str"},
     }
 
-    def __init__(self, *, code: int=None, description: str=None, exception: str=None, **kwargs) -> None:
+    def __init__(self, *, code: int = None, description: str = None, exception: str = None, **kwargs) -> None:
         super(Status, self).__init__(**kwargs)
         self.code = code
         self.description = description
@@ -1392,11 +1518,11 @@ class Tag(Model):
     """
 
     _attribute_map = {
-        'key': {'key': 'Key', 'type': 'str'},
-        'value': {'key': 'Value', 'type': 'str'},
+        "key": {"key": "Key", "type": "str"},
+        "value": {"key": "Value", "type": "str"},
     }
 
-    def __init__(self, *, key: str=None, value: str=None, **kwargs) -> None:
+    def __init__(self, *, key: str = None, value: str = None, **kwargs) -> None:
         super(Tag, self).__init__(**kwargs)
         self.key = key
         self.value = value
@@ -1416,13 +1542,13 @@ class TermList(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'Id', 'type': 'int'},
-        'name': {'key': 'Name', 'type': 'str'},
-        'description': {'key': 'Description', 'type': 'str'},
-        'metadata': {'key': 'Metadata', 'type': '{str}'},
+        "id": {"key": "Id", "type": "int"},
+        "name": {"key": "Name", "type": "str"},
+        "description": {"key": "Description", "type": "str"},
+        "metadata": {"key": "Metadata", "type": "{str}"},
     }
 
-    def __init__(self, *, id: int=None, name: str=None, description: str=None, metadata=None, **kwargs) -> None:
+    def __init__(self, *, id: int = None, name: str = None, description: str = None, metadata=None, **kwargs) -> None:
         super(TermList, self).__init__(**kwargs)
         self.id = id
         self.name = name
@@ -1442,8 +1568,8 @@ class Terms(Model):
     """
 
     _attribute_map = {
-        'data': {'key': 'Data', 'type': 'TermsData'},
-        'paging': {'key': 'Paging', 'type': 'TermsPaging'},
+        "data": {"key": "Data", "type": "TermsData"},
+        "paging": {"key": "Paging", "type": "TermsPaging"},
     }
 
     def __init__(self, *, data=None, paging=None, **kwargs) -> None:
@@ -1468,13 +1594,13 @@ class TermsData(Model):
     """
 
     _attribute_map = {
-        'language': {'key': 'Language', 'type': 'str'},
-        'terms': {'key': 'Terms', 'type': '[TermsInList]'},
-        'status': {'key': 'Status', 'type': 'Status'},
-        'tracking_id': {'key': 'TrackingId', 'type': 'str'},
+        "language": {"key": "Language", "type": "str"},
+        "terms": {"key": "Terms", "type": "[TermsInList]"},
+        "status": {"key": "Status", "type": "Status"},
+        "tracking_id": {"key": "TrackingId", "type": "str"},
     }
 
-    def __init__(self, *, language: str=None, terms=None, status=None, tracking_id: str=None, **kwargs) -> None:
+    def __init__(self, *, language: str = None, terms=None, status=None, tracking_id: str = None, **kwargs) -> None:
         super(TermsData, self).__init__(**kwargs)
         self.language = language
         self.terms = terms
@@ -1490,10 +1616,10 @@ class TermsInList(Model):
     """
 
     _attribute_map = {
-        'term': {'key': 'Term', 'type': 'str'},
+        "term": {"key": "Term", "type": "str"},
     }
 
-    def __init__(self, *, term: str=None, **kwargs) -> None:
+    def __init__(self, *, term: str = None, **kwargs) -> None:
         super(TermsInList, self).__init__(**kwargs)
         self.term = term
 
@@ -1512,13 +1638,15 @@ class TermsPaging(Model):
     """
 
     _attribute_map = {
-        'total': {'key': 'Total', 'type': 'int'},
-        'limit': {'key': 'Limit', 'type': 'int'},
-        'offset': {'key': 'Offset', 'type': 'int'},
-        'returned': {'key': 'Returned', 'type': 'int'},
+        "total": {"key": "Total", "type": "int"},
+        "limit": {"key": "Limit", "type": "int"},
+        "offset": {"key": "Offset", "type": "int"},
+        "returned": {"key": "Returned", "type": "int"},
     }
 
-    def __init__(self, *, total: int=None, limit: int=None, offset: int=None, returned: int=None, **kwargs) -> None:
+    def __init__(
+        self, *, total: int = None, limit: int = None, offset: int = None, returned: int = None, **kwargs
+    ) -> None:
         super(TermsPaging, self).__init__(**kwargs)
         self.total = total
         self.limit = limit
@@ -1539,13 +1667,13 @@ class TranscriptModerationBodyItem(Model):
     """
 
     _validation = {
-        'timestamp': {'required': True},
-        'terms': {'required': True},
+        "timestamp": {"required": True},
+        "terms": {"required": True},
     }
 
     _attribute_map = {
-        'timestamp': {'key': 'Timestamp', 'type': 'str'},
-        'terms': {'key': 'Terms', 'type': '[TranscriptModerationBodyItemTermsItem]'},
+        "timestamp": {"key": "Timestamp", "type": "str"},
+        "terms": {"key": "Terms", "type": "[TranscriptModerationBodyItemTermsItem]"},
     }
 
     def __init__(self, *, timestamp: str, terms, **kwargs) -> None:
@@ -1566,13 +1694,13 @@ class TranscriptModerationBodyItemTermsItem(Model):
     """
 
     _validation = {
-        'index': {'required': True},
-        'term': {'required': True},
+        "index": {"required": True},
+        "term": {"required": True},
     }
 
     _attribute_map = {
-        'index': {'key': 'Index', 'type': 'int'},
-        'term': {'key': 'Term', 'type': 'str'},
+        "index": {"key": "Index", "type": "int"},
+        "term": {"key": "Term", "type": "str"},
     }
 
     def __init__(self, *, index: int, term: str, **kwargs) -> None:
@@ -1599,15 +1727,15 @@ class VideoFrameBodyItem(Model):
     """
 
     _validation = {
-        'timestamp': {'required': True},
-        'frame_image': {'required': True},
+        "timestamp": {"required": True},
+        "frame_image": {"required": True},
     }
 
     _attribute_map = {
-        'timestamp': {'key': 'Timestamp', 'type': 'str'},
-        'frame_image': {'key': 'FrameImage', 'type': 'str'},
-        'reviewer_result_tags': {'key': 'ReviewerResultTags', 'type': '[VideoFrameBodyItemReviewerResultTagsItem]'},
-        'metadata': {'key': 'Metadata', 'type': '[VideoFrameBodyItemMetadataItem]'},
+        "timestamp": {"key": "Timestamp", "type": "str"},
+        "frame_image": {"key": "FrameImage", "type": "str"},
+        "reviewer_result_tags": {"key": "ReviewerResultTags", "type": "[VideoFrameBodyItemReviewerResultTagsItem]"},
+        "metadata": {"key": "Metadata", "type": "[VideoFrameBodyItemMetadataItem]"},
     }
 
     def __init__(self, *, timestamp: str, frame_image: str, reviewer_result_tags=None, metadata=None, **kwargs) -> None:
@@ -1630,13 +1758,13 @@ class VideoFrameBodyItemMetadataItem(Model):
     """
 
     _validation = {
-        'key': {'required': True},
-        'value': {'required': True},
+        "key": {"required": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        'key': {'key': 'Key', 'type': 'str'},
-        'value': {'key': 'Value', 'type': 'str'},
+        "key": {"key": "Key", "type": "str"},
+        "value": {"key": "Value", "type": "str"},
     }
 
     def __init__(self, *, key: str, value: str, **kwargs) -> None:
@@ -1657,13 +1785,13 @@ class VideoFrameBodyItemReviewerResultTagsItem(Model):
     """
 
     _validation = {
-        'key': {'required': True},
-        'value': {'required': True},
+        "key": {"required": True},
+        "value": {"required": True},
     }
 
     _attribute_map = {
-        'key': {'key': 'Key', 'type': 'str'},
-        'value': {'key': 'Value', 'type': 'str'},
+        "key": {"key": "Key", "type": "str"},
+        "value": {"key": "Value", "type": "str"},
     }
 
     def __init__(self, *, key: str, value: str, **kwargs) -> None:

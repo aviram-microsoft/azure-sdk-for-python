@@ -38,7 +38,40 @@ class CustomInstanceOperations(object):
         self.x_bing_apis_sdk = "true"
 
     def image_search(
-            self, custom_config, query, accept_language=None, user_agent=None, client_id=None, client_ip=None, location=None, aspect=None, color=None, country_code=None, count=None, freshness=None, height=None, id=None, image_content=None, image_type=None, license=None, market=None, max_file_size=None, max_height=None, max_width=None, min_file_size=None, min_height=None, min_width=None, offset=None, safe_search=None, size=None, set_lang=None, width=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        custom_config,
+        query,
+        accept_language=None,
+        user_agent=None,
+        client_id=None,
+        client_ip=None,
+        location=None,
+        aspect=None,
+        color=None,
+        country_code=None,
+        count=None,
+        freshness=None,
+        height=None,
+        id=None,
+        image_content=None,
+        image_type=None,
+        license=None,
+        market=None,
+        max_file_size=None,
+        max_height=None,
+        max_width=None,
+        min_file_size=None,
+        min_height=None,
+        min_width=None,
+        offset=None,
+        safe_search=None,
+        size=None,
+        set_lang=None,
+        width=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """The Custom Image Search API lets you send an image search query to Bing
         and get image results found in your custom view of the web.
 
@@ -412,77 +445,79 @@ class CustomInstanceOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.search.customimagesearch.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.image_search.metadata['url']
+        url = self.image_search.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['customConfig'] = self._serialize.query("custom_config", custom_config, 'str')
+        query_parameters["customConfig"] = self._serialize.query("custom_config", custom_config, "str")
         if aspect is not None:
-            query_parameters['aspect'] = self._serialize.query("aspect", aspect, 'str')
+            query_parameters["aspect"] = self._serialize.query("aspect", aspect, "str")
         if color is not None:
-            query_parameters['color'] = self._serialize.query("color", color, 'str')
+            query_parameters["color"] = self._serialize.query("color", color, "str")
         if country_code is not None:
-            query_parameters['cc'] = self._serialize.query("country_code", country_code, 'str')
+            query_parameters["cc"] = self._serialize.query("country_code", country_code, "str")
         if count is not None:
-            query_parameters['count'] = self._serialize.query("count", count, 'int')
+            query_parameters["count"] = self._serialize.query("count", count, "int")
         if freshness is not None:
-            query_parameters['freshness'] = self._serialize.query("freshness", freshness, 'str')
+            query_parameters["freshness"] = self._serialize.query("freshness", freshness, "str")
         if height is not None:
-            query_parameters['height'] = self._serialize.query("height", height, 'int')
+            query_parameters["height"] = self._serialize.query("height", height, "int")
         if id is not None:
-            query_parameters['id'] = self._serialize.query("id", id, 'str')
+            query_parameters["id"] = self._serialize.query("id", id, "str")
         if image_content is not None:
-            query_parameters['imageContent'] = self._serialize.query("image_content", image_content, 'str')
+            query_parameters["imageContent"] = self._serialize.query("image_content", image_content, "str")
         if image_type is not None:
-            query_parameters['imageType'] = self._serialize.query("image_type", image_type, 'str')
+            query_parameters["imageType"] = self._serialize.query("image_type", image_type, "str")
         if license is not None:
-            query_parameters['license'] = self._serialize.query("license", license, 'str')
+            query_parameters["license"] = self._serialize.query("license", license, "str")
         if market is not None:
-            query_parameters['mkt'] = self._serialize.query("market", market, 'str')
+            query_parameters["mkt"] = self._serialize.query("market", market, "str")
         if max_file_size is not None:
-            query_parameters['maxFileSize'] = self._serialize.query("max_file_size", max_file_size, 'long')
+            query_parameters["maxFileSize"] = self._serialize.query("max_file_size", max_file_size, "long")
         if max_height is not None:
-            query_parameters['maxHeight'] = self._serialize.query("max_height", max_height, 'long')
+            query_parameters["maxHeight"] = self._serialize.query("max_height", max_height, "long")
         if max_width is not None:
-            query_parameters['maxWidth'] = self._serialize.query("max_width", max_width, 'long')
+            query_parameters["maxWidth"] = self._serialize.query("max_width", max_width, "long")
         if min_file_size is not None:
-            query_parameters['minFileSize'] = self._serialize.query("min_file_size", min_file_size, 'long')
+            query_parameters["minFileSize"] = self._serialize.query("min_file_size", min_file_size, "long")
         if min_height is not None:
-            query_parameters['minHeight'] = self._serialize.query("min_height", min_height, 'long')
+            query_parameters["minHeight"] = self._serialize.query("min_height", min_height, "long")
         if min_width is not None:
-            query_parameters['minWidth'] = self._serialize.query("min_width", min_width, 'long')
+            query_parameters["minWidth"] = self._serialize.query("min_width", min_width, "long")
         if offset is not None:
-            query_parameters['offset'] = self._serialize.query("offset", offset, 'long')
-        query_parameters['q'] = self._serialize.query("query", query, 'str')
+            query_parameters["offset"] = self._serialize.query("offset", offset, "long")
+        query_parameters["q"] = self._serialize.query("query", query, "str")
         if safe_search is not None:
-            query_parameters['safeSearch'] = self._serialize.query("safe_search", safe_search, 'str')
+            query_parameters["safeSearch"] = self._serialize.query("safe_search", safe_search, "str")
         if size is not None:
-            query_parameters['size'] = self._serialize.query("size", size, 'str')
+            query_parameters["size"] = self._serialize.query("size", size, "str")
         if set_lang is not None:
-            query_parameters['setLang'] = self._serialize.query("set_lang", set_lang, 'str')
+            query_parameters["setLang"] = self._serialize.query("set_lang", set_lang, "str")
         if width is not None:
-            query_parameters['width'] = self._serialize.query("width", width, 'int')
+            query_parameters["width"] = self._serialize.query("width", width, "int")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['X-BingApis-SDK'] = self._serialize.header("self.x_bing_apis_sdk", self.x_bing_apis_sdk, 'str')
+        header_parameters["X-BingApis-SDK"] = self._serialize.header(
+            "self.x_bing_apis_sdk", self.x_bing_apis_sdk, "str"
+        )
         if accept_language is not None:
-            header_parameters['Accept-Language'] = self._serialize.header("accept_language", accept_language, 'str')
+            header_parameters["Accept-Language"] = self._serialize.header("accept_language", accept_language, "str")
         if user_agent is not None:
-            header_parameters['User-Agent'] = self._serialize.header("user_agent", user_agent, 'str')
+            header_parameters["User-Agent"] = self._serialize.header("user_agent", user_agent, "str")
         if client_id is not None:
-            header_parameters['X-MSEdge-ClientID'] = self._serialize.header("client_id", client_id, 'str')
+            header_parameters["X-MSEdge-ClientID"] = self._serialize.header("client_id", client_id, "str")
         if client_ip is not None:
-            header_parameters['X-MSEdge-ClientIP'] = self._serialize.header("client_ip", client_ip, 'str')
+            header_parameters["X-MSEdge-ClientIP"] = self._serialize.header("client_ip", client_ip, "str")
         if location is not None:
-            header_parameters['X-Search-Location'] = self._serialize.header("location", location, 'str')
+            header_parameters["X-Search-Location"] = self._serialize.header("location", location, "str")
 
         # Construct and send request
         request = self._client.get(url, query_parameters, header_parameters)
@@ -493,11 +528,12 @@ class CustomInstanceOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Images', response)
+            deserialized = self._deserialize("Images", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    image_search.metadata = {'url': '/images/search'}
+
+    image_search.metadata = {"url": "/images/search"}

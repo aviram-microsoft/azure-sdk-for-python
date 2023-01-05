@@ -59,32 +59,22 @@ class LUISAuthoringClient(SDKClient):
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         self.config = LUISAuthoringClientConfiguration(endpoint, credentials)
         super(LUISAuthoringClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = '3.0-preview'
+        self.api_version = "3.0-preview"
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
 
-        self.features = FeaturesOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.examples = ExamplesOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.model = ModelOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.apps = AppsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.versions = VersionsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.train = TrainOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.pattern = PatternOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.settings = SettingsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
-        self.azure_accounts = AzureAccountsOperations(
-            self._client, self.config, self._serialize, self._deserialize)
+        self.features = FeaturesOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.examples = ExamplesOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.model = ModelOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.apps = AppsOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.versions = VersionsOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.train = TrainOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.pattern = PatternOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.settings = SettingsOperations(self._client, self.config, self._serialize, self._deserialize)
+        self.azure_accounts = AzureAccountsOperations(self._client, self.config, self._serialize, self._deserialize)

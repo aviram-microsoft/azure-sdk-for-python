@@ -36,7 +36,8 @@ class AzureAccountsOperations(object):
         self.config = config
 
     def assign_to_app(
-            self, app_id, arm_token=None, azure_account_info_object=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, arm_token=None, azure_account_info_object=None, custom_headers=None, raw=False, **operation_config
+    ):
         """apps - Assign a LUIS Azure account to an application.
 
         Assigns an Azure account to the application.
@@ -63,10 +64,10 @@ class AzureAccountsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.assign_to_app.metadata['url']
+        url = self.assign_to_app.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -75,16 +76,16 @@ class AzureAccountsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
         if arm_token is not None:
-            header_parameters['ArmToken'] = self._serialize.header("arm_token", arm_token, 'str')
+            header_parameters["ArmToken"] = self._serialize.header("arm_token", arm_token, "str")
 
         # Construct body
         if azure_account_info_object is not None:
-            body_content = self._serialize.body(azure_account_info_object, 'AzureAccountInfoObject')
+            body_content = self._serialize.body(azure_account_info_object, "AzureAccountInfoObject")
         else:
             body_content = None
 
@@ -97,17 +98,17 @@ class AzureAccountsOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    assign_to_app.metadata = {'url': '/apps/{appId}/azureaccounts'}
 
-    def get_assigned(
-            self, app_id, arm_token=None, custom_headers=None, raw=False, **operation_config):
+    assign_to_app.metadata = {"url": "/apps/{appId}/azureaccounts"}
+
+    def get_assigned(self, app_id, arm_token=None, custom_headers=None, raw=False, **operation_config):
         """apps - Get LUIS Azure accounts assigned to the application.
 
         Gets the LUIS Azure accounts assigned to the application for the user
@@ -131,10 +132,10 @@ class AzureAccountsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.get_assigned.metadata['url']
+        url = self.get_assigned.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -143,11 +144,11 @@ class AzureAccountsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
         if arm_token is not None:
-            header_parameters['ArmToken'] = self._serialize.header("arm_token", arm_token, 'str')
+            header_parameters["ArmToken"] = self._serialize.header("arm_token", arm_token, "str")
 
         # Construct and send request
         request = self._client.get(url, query_parameters, header_parameters)
@@ -158,17 +159,19 @@ class AzureAccountsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[AzureAccountInfoObject]', response)
+            deserialized = self._deserialize("[AzureAccountInfoObject]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_assigned.metadata = {'url': '/apps/{appId}/azureaccounts'}
+
+    get_assigned.metadata = {"url": "/apps/{appId}/azureaccounts"}
 
     def remove_from_app(
-            self, app_id, arm_token=None, azure_account_info_object=None, custom_headers=None, raw=False, **operation_config):
+        self, app_id, arm_token=None, azure_account_info_object=None, custom_headers=None, raw=False, **operation_config
+    ):
         """apps - Removes an assigned LUIS Azure account from an application.
 
         Removes assigned Azure account from the application.
@@ -195,10 +198,10 @@ class AzureAccountsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.remove_from_app.metadata['url']
+        url = self.remove_from_app.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -207,16 +210,16 @@ class AzureAccountsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
         if arm_token is not None:
-            header_parameters['ArmToken'] = self._serialize.header("arm_token", arm_token, 'str')
+            header_parameters["ArmToken"] = self._serialize.header("arm_token", arm_token, "str")
 
         # Construct body
         if azure_account_info_object is not None:
-            body_content = self._serialize.body(azure_account_info_object, 'AzureAccountInfoObject')
+            body_content = self._serialize.body(azure_account_info_object, "AzureAccountInfoObject")
         else:
             body_content = None
 
@@ -229,17 +232,17 @@ class AzureAccountsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    remove_from_app.metadata = {'url': '/apps/{appId}/azureaccounts'}
 
-    def list_user_luis_accounts(
-            self, arm_token=None, custom_headers=None, raw=False, **operation_config):
+    remove_from_app.metadata = {"url": "/apps/{appId}/azureaccounts"}
+
+    def list_user_luis_accounts(self, arm_token=None, custom_headers=None, raw=False, **operation_config):
         """user - Get LUIS Azure accounts.
 
         Gets the LUIS Azure accounts for the user using his ARM token.
@@ -260,9 +263,9 @@ class AzureAccountsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list_user_luis_accounts.metadata['url']
+        url = self.list_user_luis_accounts.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -271,11 +274,11 @@ class AzureAccountsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
         if arm_token is not None:
-            header_parameters['ArmToken'] = self._serialize.header("arm_token", arm_token, 'str')
+            header_parameters["ArmToken"] = self._serialize.header("arm_token", arm_token, "str")
 
         # Construct and send request
         request = self._client.get(url, query_parameters, header_parameters)
@@ -286,11 +289,12 @@ class AzureAccountsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[AzureAccountInfoObject]', response)
+            deserialized = self._deserialize("[AzureAccountInfoObject]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list_user_luis_accounts.metadata = {'url': '/azureaccounts'}
+
+    list_user_luis_accounts.metadata = {"url": "/azureaccounts"}

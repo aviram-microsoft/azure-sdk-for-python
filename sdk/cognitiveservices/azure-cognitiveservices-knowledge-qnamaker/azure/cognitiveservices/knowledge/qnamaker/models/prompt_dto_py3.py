@@ -30,17 +30,19 @@ class PromptDTO(Model):
     """
 
     _validation = {
-        'display_text': {'max_length': 200},
+        "display_text": {"max_length": 200},
     }
 
     _attribute_map = {
-        'display_order': {'key': 'displayOrder', 'type': 'int'},
-        'qna_id': {'key': 'qnaId', 'type': 'int'},
-        'qna': {'key': 'qna', 'type': 'PromptDTOQna'},
-        'display_text': {'key': 'displayText', 'type': 'str'},
+        "display_order": {"key": "displayOrder", "type": "int"},
+        "qna_id": {"key": "qnaId", "type": "int"},
+        "qna": {"key": "qna", "type": "PromptDTOQna"},
+        "display_text": {"key": "displayText", "type": "str"},
     }
 
-    def __init__(self, *, display_order: int=None, qna_id: int=None, qna=None, display_text: str=None, **kwargs) -> None:
+    def __init__(
+        self, *, display_order: int = None, qna_id: int = None, qna=None, display_text: str = None, **kwargs
+    ) -> None:
         super(PromptDTO, self).__init__(**kwargs)
         self.display_order = display_order
         self.qna_id = qna_id

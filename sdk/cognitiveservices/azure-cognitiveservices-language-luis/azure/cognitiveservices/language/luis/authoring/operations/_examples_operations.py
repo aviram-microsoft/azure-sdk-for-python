@@ -36,7 +36,15 @@ class ExamplesOperations(object):
         self.config = config
 
     def add(
-            self, app_id, version_id, example_label_object, enable_nested_children=False, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        example_label_object,
+        enable_nested_children=False,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Adds a labeled example utterance in a version of the application.
 
         :param app_id: The application ID.
@@ -62,28 +70,30 @@ class ExamplesOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.add.metadata['url']
+        url = self.add.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if enable_nested_children is not None:
-            query_parameters['enableNestedChildren'] = self._serialize.query("enable_nested_children", enable_nested_children, 'bool')
+            query_parameters["enableNestedChildren"] = self._serialize.query(
+                "enable_nested_children", enable_nested_children, "bool"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(example_label_object, 'ExampleLabelObject')
+        body_content = self._serialize.body(example_label_object, "ExampleLabelObject")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -94,17 +104,26 @@ class ExamplesOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('LabelExampleResponse', response)
+            deserialized = self._deserialize("LabelExampleResponse", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    add.metadata = {'url': '/apps/{appId}/versions/{versionId}/example'}
+
+    add.metadata = {"url": "/apps/{appId}/versions/{versionId}/example"}
 
     def batch(
-            self, app_id, version_id, example_label_object_array, enable_nested_children=False, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        example_label_object_array,
+        enable_nested_children=False,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Adds a batch of labeled example utterances to a version of the
         application.
 
@@ -130,28 +149,30 @@ class ExamplesOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.batch.metadata['url']
+        url = self.batch.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if enable_nested_children is not None:
-            query_parameters['enableNestedChildren'] = self._serialize.query("enable_nested_children", enable_nested_children, 'bool')
+            query_parameters["enableNestedChildren"] = self._serialize.query(
+                "enable_nested_children", enable_nested_children, "bool"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(example_label_object_array, '[ExampleLabelObject]')
+        body_content = self._serialize.body(example_label_object_array, "[ExampleLabelObject]")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -162,19 +183,29 @@ class ExamplesOperations(object):
 
         deserialized = None
         if response.status_code == 201:
-            deserialized = self._deserialize('[BatchLabelExample]', response)
+            deserialized = self._deserialize("[BatchLabelExample]", response)
         if response.status_code == 207:
-            deserialized = self._deserialize('[BatchLabelExample]', response)
+            deserialized = self._deserialize("[BatchLabelExample]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    batch.metadata = {'url': '/apps/{appId}/versions/{versionId}/examples'}
+
+    batch.metadata = {"url": "/apps/{appId}/versions/{versionId}/examples"}
 
     def list(
-            self, app_id, version_id, skip=0, take=100, enable_nested_children=False, custom_headers=None, raw=False, **operation_config):
+        self,
+        app_id,
+        version_id,
+        skip=0,
+        take=100,
+        enable_nested_children=False,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Returns example utterances to be reviewed from a version of the
         application.
 
@@ -202,26 +233,28 @@ class ExamplesOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list.metadata['url']
+        url = self.list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if skip is not None:
-            query_parameters['skip'] = self._serialize.query("skip", skip, 'int', minimum=0)
+            query_parameters["skip"] = self._serialize.query("skip", skip, "int", minimum=0)
         if take is not None:
-            query_parameters['take'] = self._serialize.query("take", take, 'int', maximum=500, minimum=0)
+            query_parameters["take"] = self._serialize.query("take", take, "int", maximum=500, minimum=0)
         if enable_nested_children is not None:
-            query_parameters['enableNestedChildren'] = self._serialize.query("enable_nested_children", enable_nested_children, 'bool')
+            query_parameters["enableNestedChildren"] = self._serialize.query(
+                "enable_nested_children", enable_nested_children, "bool"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -234,17 +267,17 @@ class ExamplesOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[LabeledUtterance]', response)
+            deserialized = self._deserialize("[LabeledUtterance]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list.metadata = {'url': '/apps/{appId}/versions/{versionId}/examples'}
 
-    def delete(
-            self, app_id, version_id, example_id, custom_headers=None, raw=False, **operation_config):
+    list.metadata = {"url": "/apps/{appId}/versions/{versionId}/examples"}
+
+    def delete(self, app_id, version_id, example_id, custom_headers=None, raw=False, **operation_config):
         """Deletes the labeled example utterances with the specified ID from a
         version of the application.
 
@@ -267,12 +300,12 @@ class ExamplesOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.delete.metadata['url']
+        url = self.delete.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str'),
-            'exampleId': self._serialize.url("example_id", example_id, 'int')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
+            "exampleId": self._serialize.url("example_id", example_id, "int"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -281,7 +314,7 @@ class ExamplesOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -294,11 +327,12 @@ class ExamplesOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    delete.metadata = {'url': '/apps/{appId}/versions/{versionId}/examples/{exampleId}'}
+
+    delete.metadata = {"url": "/apps/{appId}/versions/{versionId}/examples/{exampleId}"}

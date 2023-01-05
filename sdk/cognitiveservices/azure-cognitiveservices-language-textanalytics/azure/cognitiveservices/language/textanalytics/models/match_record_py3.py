@@ -33,14 +33,23 @@ class MatchRecord(Model):
     """
 
     _attribute_map = {
-        'wikipedia_score': {'key': 'wikipediaScore', 'type': 'float'},
-        'entity_type_score': {'key': 'entityTypeScore', 'type': 'float'},
-        'text': {'key': 'text', 'type': 'str'},
-        'offset': {'key': 'offset', 'type': 'int'},
-        'length': {'key': 'length', 'type': 'int'},
+        "wikipedia_score": {"key": "wikipediaScore", "type": "float"},
+        "entity_type_score": {"key": "entityTypeScore", "type": "float"},
+        "text": {"key": "text", "type": "str"},
+        "offset": {"key": "offset", "type": "int"},
+        "length": {"key": "length", "type": "int"},
     }
 
-    def __init__(self, *, wikipedia_score: float=None, entity_type_score: float=None, text: str=None, offset: int=None, length: int=None, **kwargs) -> None:
+    def __init__(
+        self,
+        *,
+        wikipedia_score: float = None,
+        entity_type_score: float = None,
+        text: str = None,
+        offset: int = None,
+        length: int = None,
+        **kwargs
+    ) -> None:
         super(MatchRecord, self).__init__(**kwargs)
         self.wikipedia_score = wikipedia_score
         self.entity_type_score = entity_type_score

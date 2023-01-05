@@ -18,11 +18,11 @@ from .list_management_term_operations import ListManagementTermOperations
 from .reviews_operations import ReviewsOperations
 
 __all__ = [
-    'ImageModerationOperations',
-    'TextModerationOperations',
-    'ListManagementImageListsOperations',
-    'ListManagementTermListsOperations',
-    'ListManagementImageOperations',
-    'ListManagementTermOperations',
-    'ReviewsOperations',
+    "ImageModerationOperations",
+    "TextModerationOperations",
+    "ListManagementImageListsOperations",
+    "ListManagementTermListsOperations",
+    "ListManagementImageOperations",
+    "ListManagementTermOperations",
+    "ReviewsOperations",
 ]

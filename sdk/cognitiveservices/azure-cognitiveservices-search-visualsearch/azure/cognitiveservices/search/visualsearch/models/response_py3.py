@@ -37,25 +37,23 @@ class Response(Identifiable):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
     }
 
-    _subtype_map = {
-        '_type': {'ImageKnowledge': 'ImageKnowledge', 'ErrorResponse': 'ErrorResponse', 'Thing': 'Thing'}
-    }
+    _subtype_map = {"_type": {"ImageKnowledge": "ImageKnowledge", "ErrorResponse": "ErrorResponse", "Thing": "Thing"}}
 
     def __init__(self, **kwargs) -> None:
         super(Response, self).__init__(**kwargs)
         self.read_link = None
         self.web_search_url = None
-        self._type = 'Response'
+        self._type = "Response"

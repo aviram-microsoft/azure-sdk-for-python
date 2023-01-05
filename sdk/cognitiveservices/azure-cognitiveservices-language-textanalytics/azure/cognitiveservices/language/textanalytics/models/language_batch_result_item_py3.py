@@ -27,12 +27,12 @@ class LanguageBatchResultItem(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'detected_languages': {'key': 'detectedLanguages', 'type': '[DetectedLanguage]'},
-        'statistics': {'key': 'statistics', 'type': 'DocumentStatistics'},
+        "id": {"key": "id", "type": "str"},
+        "detected_languages": {"key": "detectedLanguages", "type": "[DetectedLanguage]"},
+        "statistics": {"key": "statistics", "type": "DocumentStatistics"},
     }
 
-    def __init__(self, *, id: str=None, detected_languages=None, statistics=None, **kwargs) -> None:
+    def __init__(self, *, id: str = None, detected_languages=None, statistics=None, **kwargs) -> None:
         super(LanguageBatchResultItem, self).__init__(**kwargs)
         self.id = id
         self.detected_languages = detected_languages

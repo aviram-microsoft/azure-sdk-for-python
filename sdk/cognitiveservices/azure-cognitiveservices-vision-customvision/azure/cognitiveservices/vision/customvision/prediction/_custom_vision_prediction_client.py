@@ -30,14 +30,12 @@ class CustomVisionPredictionClient(CustomVisionPredictionClientOperationsMixin, 
     :type credentials: None
     """
 
-    def __init__(
-            self, endpoint, credentials):
+    def __init__(self, endpoint, credentials):
 
         self.config = CustomVisionPredictionClientConfiguration(endpoint, credentials)
         super(CustomVisionPredictionClient, self).__init__(self.config.credentials, self.config)
 
         client_models = {k: v for k, v in models.__dict__.items() if isinstance(v, type)}
-        self.api_version = '3.1'
+        self.api_version = "3.1"
         self._serialize = Serializer(client_models)
         self._deserialize = Deserializer(client_models)
-

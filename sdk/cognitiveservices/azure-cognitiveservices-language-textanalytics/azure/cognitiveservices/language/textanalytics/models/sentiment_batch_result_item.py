@@ -29,13 +29,13 @@ class SentimentBatchResultItem(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'score': {'key': 'score', 'type': 'float'},
-        'statistics': {'key': 'statistics', 'type': 'DocumentStatistics'},
+        "id": {"key": "id", "type": "str"},
+        "score": {"key": "score", "type": "float"},
+        "statistics": {"key": "statistics", "type": "DocumentStatistics"},
     }
 
     def __init__(self, **kwargs):
         super(SentimentBatchResultItem, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.score = kwargs.get('score', None)
-        self.statistics = kwargs.get('statistics', None)
+        self.id = kwargs.get("id", None)
+        self.score = kwargs.get("score", None)
+        self.statistics = kwargs.get("statistics", None)

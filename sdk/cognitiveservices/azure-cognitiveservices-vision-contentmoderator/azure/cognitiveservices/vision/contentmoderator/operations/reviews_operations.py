@@ -35,8 +35,7 @@ class ReviewsOperations(object):
         self.config = config
         self.content_type = "text/plain"
 
-    def get_review(
-            self, team_name, review_id, custom_headers=None, raw=False, **operation_config):
+    def get_review(self, team_name, review_id, custom_headers=None, raw=False, **operation_config):
         """Returns review details for the review Id passed.
 
         :param team_name: Your Team Name.
@@ -55,11 +54,11 @@ class ReviewsOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.get_review.metadata['url']
+        url = self.get_review.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str'),
-            'reviewId': self._serialize.url("review_id", review_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
+            "reviewId": self._serialize.url("review_id", review_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -68,7 +67,7 @@ class ReviewsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -82,17 +81,17 @@ class ReviewsOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('Review', response)
+            deserialized = self._deserialize("Review", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_review.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}'}
 
-    def get_job_details(
-            self, team_name, job_id, custom_headers=None, raw=False, **operation_config):
+    get_review.metadata = {"url": "/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}"}
+
+    def get_job_details(self, team_name, job_id, custom_headers=None, raw=False, **operation_config):
         """Get the Job Details for a Job Id.
 
         :param team_name: Your Team Name.
@@ -111,11 +110,11 @@ class ReviewsOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.get_job_details.metadata['url']
+        url = self.get_job_details.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str'),
-            'JobId': self._serialize.url("job_id", job_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
+            "JobId": self._serialize.url("job_id", job_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -124,7 +123,7 @@ class ReviewsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -138,17 +137,26 @@ class ReviewsOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('Job', response)
+            deserialized = self._deserialize("Job", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_job_details.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/jobs/{JobId}'}
+
+    get_job_details.metadata = {"url": "/contentmoderator/review/v1.0/teams/{teamName}/jobs/{JobId}"}
 
     def create_reviews(
-            self, url_content_type, team_name, create_review_body, sub_team=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        url_content_type,
+        team_name,
+        create_review_body,
+        sub_team=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """The reviews created would show up for Reviewers on your team. As
         Reviewers complete reviewing, results of the Review would be POSTED
         (i.e. HTTP POST) on the specified CallBackEndpoint.
@@ -195,28 +203,28 @@ class ReviewsOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.create_reviews.metadata['url']
+        url = self.create_reviews.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if sub_team is not None:
-            query_parameters['subTeam'] = self._serialize.query("sub_team", sub_team, 'str')
+            query_parameters["subTeam"] = self._serialize.query("sub_team", sub_team, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['UrlContentType'] = self._serialize.header("url_content_type", url_content_type, 'str')
+        header_parameters["UrlContentType"] = self._serialize.header("url_content_type", url_content_type, "str")
 
         # Construct body
-        body_content = self._serialize.body(create_review_body, '[CreateReviewBodyItem]')
+        body_content = self._serialize.body(create_review_body, "[CreateReviewBodyItem]")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -228,17 +236,29 @@ class ReviewsOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('[str]', response)
+            deserialized = self._deserialize("[str]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_reviews.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/reviews'}
+
+    create_reviews.metadata = {"url": "/contentmoderator/review/v1.0/teams/{teamName}/reviews"}
 
     def create_job(
-            self, team_name, content_type, content_id, workflow_name, job_content_type, content_value, call_back_endpoint=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        team_name,
+        content_type,
+        content_id,
+        workflow_name,
+        job_content_type,
+        content_value,
+        call_back_endpoint=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """A job Id will be returned for the content posted on this endpoint.
         Once the content is evaluated against the Workflow provided the review
         will be created or ignored based on the workflow expression.
@@ -315,31 +335,33 @@ class ReviewsOperations(object):
         content = models.Content(content_value=content_value)
 
         # Construct URL
-        url = self.create_job.metadata['url']
+        url = self.create_job.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
-        query_parameters['ContentType'] = self._serialize.query("content_type", content_type, 'str')
-        query_parameters['ContentId'] = self._serialize.query("content_id", content_id, 'str')
-        query_parameters['WorkflowName'] = self._serialize.query("workflow_name", workflow_name, 'str')
+        query_parameters["ContentType"] = self._serialize.query("content_type", content_type, "str")
+        query_parameters["ContentId"] = self._serialize.query("content_id", content_id, "str")
+        query_parameters["WorkflowName"] = self._serialize.query("workflow_name", workflow_name, "str")
         if call_back_endpoint is not None:
-            query_parameters['CallBackEndpoint'] = self._serialize.query("call_back_endpoint", call_back_endpoint, 'str')
+            query_parameters["CallBackEndpoint"] = self._serialize.query(
+                "call_back_endpoint", call_back_endpoint, "str"
+            )
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("job_content_type", job_content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("job_content_type", job_content_type, "str")
 
         # Construct body
-        body_content = self._serialize.body(content, 'Content')
+        body_content = self._serialize.body(content, "Content")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -351,17 +373,17 @@ class ReviewsOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('JobId', response)
+            deserialized = self._deserialize("JobId", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_job.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/jobs'}
 
-    def add_video_frame(
-            self, team_name, review_id, timescale=None, custom_headers=None, raw=False, **operation_config):
+    create_job.metadata = {"url": "/contentmoderator/review/v1.0/teams/{teamName}/jobs"}
+
+    def add_video_frame(self, team_name, review_id, timescale=None, custom_headers=None, raw=False, **operation_config):
         """The reviews created would show up for Reviewers on your team. As
         Reviewers complete reviewing, results of the Review would be POSTED
         (i.e. HTTP POST) on the specified CallBackEndpoint.
@@ -404,18 +426,18 @@ class ReviewsOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.add_video_frame.metadata['url']
+        url = self.add_video_frame.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str'),
-            'reviewId': self._serialize.url("review_id", review_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
+            "reviewId": self._serialize.url("review_id", review_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if timescale is not None:
-            query_parameters['timescale'] = self._serialize.query("timescale", timescale, 'int')
+            query_parameters["timescale"] = self._serialize.query("timescale", timescale, "int")
 
         # Construct headers
         header_parameters = {}
@@ -432,10 +454,20 @@ class ReviewsOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    add_video_frame.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames'}
+
+    add_video_frame.metadata = {"url": "/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames"}
 
     def get_video_frames(
-            self, team_name, review_id, start_seed=None, no_of_records=None, filter=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        team_name,
+        review_id,
+        start_seed=None,
+        no_of_records=None,
+        filter=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """The reviews created would show up for Reviewers on your team. As
         Reviewers complete reviewing, results of the Review would be POSTED
         (i.e. HTTP POST) on the specified CallBackEndpoint.
@@ -484,26 +516,26 @@ class ReviewsOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.get_video_frames.metadata['url']
+        url = self.get_video_frames.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str'),
-            'reviewId': self._serialize.url("review_id", review_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
+            "reviewId": self._serialize.url("review_id", review_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if start_seed is not None:
-            query_parameters['startSeed'] = self._serialize.query("start_seed", start_seed, 'int')
+            query_parameters["startSeed"] = self._serialize.query("start_seed", start_seed, "int")
         if no_of_records is not None:
-            query_parameters['noOfRecords'] = self._serialize.query("no_of_records", no_of_records, 'int')
+            query_parameters["noOfRecords"] = self._serialize.query("no_of_records", no_of_records, "int")
         if filter is not None:
-            query_parameters['filter'] = self._serialize.query("filter", filter, 'str')
+            query_parameters["filter"] = self._serialize.query("filter", filter, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -517,17 +549,17 @@ class ReviewsOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('Frames', response)
+            deserialized = self._deserialize("Frames", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    get_video_frames.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames'}
 
-    def publish_video_review(
-            self, team_name, review_id, custom_headers=None, raw=False, **operation_config):
+    get_video_frames.metadata = {"url": "/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames"}
+
+    def publish_video_review(self, team_name, review_id, custom_headers=None, raw=False, **operation_config):
         """Publish video review to make it available for review.
 
         :param team_name: Your team name.
@@ -545,11 +577,11 @@ class ReviewsOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.publish_video_review.metadata['url']
+        url = self.publish_video_review.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str'),
-            'reviewId': self._serialize.url("review_id", review_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
+            "reviewId": self._serialize.url("review_id", review_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -571,10 +603,19 @@ class ReviewsOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    publish_video_review.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/publish'}
+
+    publish_video_review.metadata = {"url": "/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/publish"}
 
     def add_video_transcript_moderation_result(
-            self, content_type, team_name, review_id, transcript_moderation_body, custom_headers=None, raw=False, **operation_config):
+        self,
+        content_type,
+        team_name,
+        review_id,
+        transcript_moderation_body,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """This API adds a transcript screen text result file for a video review.
         Transcript screen text result file is a result of Screen Text API . In
         order to generate transcript screen text result file , a transcript
@@ -601,11 +642,11 @@ class ReviewsOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.add_video_transcript_moderation_result.metadata['url']
+        url = self.add_video_transcript_moderation_result.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str'),
-            'reviewId': self._serialize.url("review_id", review_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
+            "reviewId": self._serialize.url("review_id", review_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -614,13 +655,13 @@ class ReviewsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
 
         # Construct body
-        body_content = self._serialize.body(transcript_moderation_body, '[TranscriptModerationBodyItem]')
+        body_content = self._serialize.body(transcript_moderation_body, "[TranscriptModerationBodyItem]")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -632,10 +673,14 @@ class ReviewsOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    add_video_transcript_moderation_result.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/transcriptmoderationresult'}
+
+    add_video_transcript_moderation_result.metadata = {
+        "url": "/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/transcriptmoderationresult"
+    }
 
     def add_video_transcript(
-            self, team_name, review_id, vt_tfile, custom_headers=None, raw=False, callback=None, **operation_config):
+        self, team_name, review_id, vt_tfile, custom_headers=None, raw=False, callback=None, **operation_config
+    ):
         """This API adds a transcript file (text version of all the words spoken
         in a video) to a video review. The file should be a valid WebVTT
         format.
@@ -662,11 +707,11 @@ class ReviewsOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.add_video_transcript.metadata['url']
+        url = self.add_video_transcript.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str'),
-            'reviewId': self._serialize.url("review_id", review_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
+            "reviewId": self._serialize.url("review_id", review_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -675,10 +720,10 @@ class ReviewsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'text/plain'
+        header_parameters["Content-Type"] = "text/plain"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("self.content_type", self.content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("self.content_type", self.content_type, "str")
 
         # Construct body
         body_content = self._client.stream_upload(vt_tfile, callback)
@@ -693,10 +738,21 @@ class ReviewsOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    add_video_transcript.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/transcript'}
+
+    add_video_transcript.metadata = {
+        "url": "/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/transcript"
+    }
 
     def create_video_reviews(
-            self, content_type, team_name, create_video_reviews_body, sub_team=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        content_type,
+        team_name,
+        create_video_reviews_body,
+        sub_team=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """The reviews created would show up for Reviewers on your team. As
         Reviewers complete reviewing, results of the Review would be POSTED
         (i.e. HTTP POST) on the specified CallBackEndpoint.
@@ -743,28 +799,28 @@ class ReviewsOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.create_video_reviews.metadata['url']
+        url = self.create_video_reviews.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if sub_team is not None:
-            query_parameters['subTeam'] = self._serialize.query("sub_team", sub_team, 'str')
+            query_parameters["subTeam"] = self._serialize.query("sub_team", sub_team, "str")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
 
         # Construct body
-        body_content = self._serialize.body(create_video_reviews_body, '[CreateVideoReviewsBodyItem]')
+        body_content = self._serialize.body(create_video_reviews_body, "[CreateVideoReviewsBodyItem]")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -776,17 +832,27 @@ class ReviewsOperations(object):
         deserialized = None
 
         if response.status_code == 200:
-            deserialized = self._deserialize('[str]', response)
+            deserialized = self._deserialize("[str]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    create_video_reviews.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/reviews'}
+
+    create_video_reviews.metadata = {"url": "/contentmoderator/review/v1.0/teams/{teamName}/reviews"}
 
     def add_video_frame_url(
-            self, content_type, team_name, review_id, video_frame_body, timescale=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        content_type,
+        team_name,
+        review_id,
+        video_frame_body,
+        timescale=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Use this method to add frames for a video review.Timescale: This
         parameter is a factor which is used to convert the timestamp on a frame
         into milliseconds. Timescale is provided in the output of the Content
@@ -815,28 +881,28 @@ class ReviewsOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.add_video_frame_url.metadata['url']
+        url = self.add_video_frame_url.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str'),
-            'reviewId': self._serialize.url("review_id", review_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
+            "reviewId": self._serialize.url("review_id", review_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if timescale is not None:
-            query_parameters['timescale'] = self._serialize.query("timescale", timescale, 'int')
+            query_parameters["timescale"] = self._serialize.query("timescale", timescale, "int")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
 
         # Construct body
-        body_content = self._serialize.body(video_frame_body, '[VideoFrameBodyItem]')
+        body_content = self._serialize.body(video_frame_body, "[VideoFrameBodyItem]")
 
         # Construct and send request
         request = self._client.post(url, query_parameters, header_parameters, body_content)
@@ -848,10 +914,21 @@ class ReviewsOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    add_video_frame_url.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames'}
+
+    add_video_frame_url.metadata = {"url": "/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames"}
 
     def add_video_frame_stream(
-            self, content_type, team_name, review_id, frame_image_zip, frame_metadata, timescale=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        content_type,
+        team_name,
+        review_id,
+        frame_image_zip,
+        frame_metadata,
+        timescale=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """Use this method to add frames for a video review.Timescale: This
         parameter is a factor which is used to convert the timestamp on a frame
         into milliseconds. Timescale is provided in the output of the Content
@@ -881,30 +958,30 @@ class ReviewsOperations(object):
          :class:`APIErrorException<azure.cognitiveservices.vision.contentmoderator.models.APIErrorException>`
         """
         # Construct URL
-        url = self.add_video_frame_stream.metadata['url']
+        url = self.add_video_frame_stream.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'teamName': self._serialize.url("team_name", team_name, 'str'),
-            'reviewId': self._serialize.url("review_id", review_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "teamName": self._serialize.url("team_name", team_name, "str"),
+            "reviewId": self._serialize.url("review_id", review_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if timescale is not None:
-            query_parameters['timescale'] = self._serialize.query("timescale", timescale, 'int')
+            query_parameters["timescale"] = self._serialize.query("timescale", timescale, "int")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Content-Type'] = 'multipart/form-data'
+        header_parameters["Content-Type"] = "multipart/form-data"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['Content-Type'] = self._serialize.header("content_type", content_type, 'str')
+        header_parameters["Content-Type"] = self._serialize.header("content_type", content_type, "str")
 
         # Construct form data
         form_data_content = {
-            'frameImageZip': frame_image_zip,
-            'frameMetadata': frame_metadata,
+            "frameImageZip": frame_image_zip,
+            "frameMetadata": frame_metadata,
         }
 
         # Construct and send request
@@ -917,4 +994,7 @@ class ReviewsOperations(object):
         if raw:
             client_raw_response = ClientRawResponse(None, response)
             return client_raw_response
-    add_video_frame_stream.metadata = {'url': '/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames'}
+
+    add_video_frame_stream.metadata = {
+        "url": "/contentmoderator/review/v1.0/teams/{teamName}/reviews/{reviewId}/frames"
+    }

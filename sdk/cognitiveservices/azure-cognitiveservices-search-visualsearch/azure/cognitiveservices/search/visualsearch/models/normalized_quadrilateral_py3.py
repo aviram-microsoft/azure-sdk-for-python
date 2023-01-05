@@ -62,37 +62,37 @@ class NormalizedQuadrilateral(StructuredValue):
     """
 
     _validation = {
-        '_type': {'required': True},
-        'id': {'readonly': True},
-        'read_link': {'readonly': True},
-        'web_search_url': {'readonly': True},
-        'name': {'readonly': True},
-        'url': {'readonly': True},
-        'image': {'readonly': True},
-        'description': {'readonly': True},
-        'alternate_name': {'readonly': True},
-        'bing_id': {'readonly': True},
-        'top_left': {'required': True},
-        'top_right': {'required': True},
-        'bottom_right': {'required': True},
-        'bottom_left': {'required': True},
+        "_type": {"required": True},
+        "id": {"readonly": True},
+        "read_link": {"readonly": True},
+        "web_search_url": {"readonly": True},
+        "name": {"readonly": True},
+        "url": {"readonly": True},
+        "image": {"readonly": True},
+        "description": {"readonly": True},
+        "alternate_name": {"readonly": True},
+        "bing_id": {"readonly": True},
+        "top_left": {"required": True},
+        "top_right": {"required": True},
+        "bottom_right": {"required": True},
+        "bottom_left": {"required": True},
     }
 
     _attribute_map = {
-        '_type': {'key': '_type', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'read_link': {'key': 'readLink', 'type': 'str'},
-        'web_search_url': {'key': 'webSearchUrl', 'type': 'str'},
-        'name': {'key': 'name', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'image': {'key': 'image', 'type': 'ImageObject'},
-        'description': {'key': 'description', 'type': 'str'},
-        'alternate_name': {'key': 'alternateName', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'top_left': {'key': 'topLeft', 'type': 'Point2D'},
-        'top_right': {'key': 'topRight', 'type': 'Point2D'},
-        'bottom_right': {'key': 'bottomRight', 'type': 'Point2D'},
-        'bottom_left': {'key': 'bottomLeft', 'type': 'Point2D'},
+        "_type": {"key": "_type", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "read_link": {"key": "readLink", "type": "str"},
+        "web_search_url": {"key": "webSearchUrl", "type": "str"},
+        "name": {"key": "name", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "image": {"key": "image", "type": "ImageObject"},
+        "description": {"key": "description", "type": "str"},
+        "alternate_name": {"key": "alternateName", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "top_left": {"key": "topLeft", "type": "Point2D"},
+        "top_right": {"key": "topRight", "type": "Point2D"},
+        "bottom_right": {"key": "bottomRight", "type": "Point2D"},
+        "bottom_left": {"key": "bottomLeft", "type": "Point2D"},
     }
 
     def __init__(self, *, top_left, top_right, bottom_right, bottom_left, **kwargs) -> None:
@@ -101,4 +101,4 @@ class NormalizedQuadrilateral(StructuredValue):
         self.top_right = top_right
         self.bottom_right = bottom_right
         self.bottom_left = bottom_left
-        self._type = 'NormalizedQuadrilateral'
+        self._type = "NormalizedQuadrilateral"

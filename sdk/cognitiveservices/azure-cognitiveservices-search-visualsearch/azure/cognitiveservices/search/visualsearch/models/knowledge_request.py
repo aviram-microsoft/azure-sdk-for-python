@@ -22,9 +22,9 @@ class KnowledgeRequest(Model):
     """
 
     _attribute_map = {
-        'filters': {'key': 'filters', 'type': 'Filters'},
+        "filters": {"key": "filters", "type": "Filters"},
     }
 
     def __init__(self, **kwargs):
         super(KnowledgeRequest, self).__init__(**kwargs)
-        self.filters = kwargs.get('filters', None)
+        self.filters = kwargs.get("filters", None)

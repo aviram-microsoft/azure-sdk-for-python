@@ -12,7 +12,6 @@
 from .visual_search_client import VisualSearchClient
 from .version import VERSION
 
-__all__ = ['VisualSearchClient']
+__all__ = ["VisualSearchClient"]
 
 __version__ = VERSION
-

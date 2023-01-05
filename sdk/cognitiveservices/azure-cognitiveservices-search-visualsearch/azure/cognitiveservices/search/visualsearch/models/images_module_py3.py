@@ -24,11 +24,11 @@ class ImagesModule(Model):
     """
 
     _validation = {
-        'value': {'readonly': True},
+        "value": {"readonly": True},
     }
 
     _attribute_map = {
-        'value': {'key': 'value', 'type': '[ImageObject]'},
+        "value": {"key": "value", "type": "[ImageObject]"},
     }
 
     def __init__(self, **kwargs) -> None:

@@ -12,7 +12,6 @@
 from .content_moderator_client import ContentModeratorClient
 from .version import VERSION
 
-__all__ = ['ContentModeratorClient']
+__all__ = ["ContentModeratorClient"]
 
 __version__ = VERSION
-

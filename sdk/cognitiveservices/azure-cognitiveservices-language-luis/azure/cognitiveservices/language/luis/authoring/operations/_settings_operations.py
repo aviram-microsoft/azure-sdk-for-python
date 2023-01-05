@@ -35,8 +35,7 @@ class SettingsOperations(object):
 
         self.config = config
 
-    def list(
-            self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
+    def list(self, app_id, version_id, custom_headers=None, raw=False, **operation_config):
         """Gets the settings in a version of the application.
 
         :param app_id: The application ID.
@@ -56,11 +55,11 @@ class SettingsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.list.metadata['url']
+        url = self.list.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -69,7 +68,7 @@ class SettingsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
 
@@ -82,17 +81,19 @@ class SettingsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('[AppVersionSettingObject]', response)
+            deserialized = self._deserialize("[AppVersionSettingObject]", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    list.metadata = {'url': '/apps/{appId}/versions/{versionId}/settings'}
+
+    list.metadata = {"url": "/apps/{appId}/versions/{versionId}/settings"}
 
     def update(
-            self, app_id, version_id, list_of_app_version_setting_object, custom_headers=None, raw=False, **operation_config):
+        self, app_id, version_id, list_of_app_version_setting_object, custom_headers=None, raw=False, **operation_config
+    ):
         """Updates the settings in a version of the application.
 
         :param app_id: The application ID.
@@ -116,11 +117,11 @@ class SettingsOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.language.luis.authoring.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.update.metadata['url']
+        url = self.update.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True),
-            'appId': self._serialize.url("app_id", app_id, 'str'),
-            'versionId': self._serialize.url("version_id", version_id, 'str')
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True),
+            "appId": self._serialize.url("app_id", app_id, "str"),
+            "versionId": self._serialize.url("version_id", version_id, "str"),
         }
         url = self._client.format_url(url, **path_format_arguments)
 
@@ -129,13 +130,13 @@ class SettingsOperations(object):
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
-        header_parameters['Content-Type'] = 'application/json; charset=utf-8'
+        header_parameters["Accept"] = "application/json"
+        header_parameters["Content-Type"] = "application/json; charset=utf-8"
         if custom_headers:
             header_parameters.update(custom_headers)
 
         # Construct body
-        body_content = self._serialize.body(list_of_app_version_setting_object, '[AppVersionSettingObject]')
+        body_content = self._serialize.body(list_of_app_version_setting_object, "[AppVersionSettingObject]")
 
         # Construct and send request
         request = self._client.put(url, query_parameters, header_parameters, body_content)
@@ -146,11 +147,12 @@ class SettingsOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('OperationStatus', response)
+            deserialized = self._deserialize("OperationStatus", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    update.metadata = {'url': '/apps/{appId}/versions/{versionId}/settings'}
+
+    update.metadata = {"url": "/apps/{appId}/versions/{versionId}/settings"}

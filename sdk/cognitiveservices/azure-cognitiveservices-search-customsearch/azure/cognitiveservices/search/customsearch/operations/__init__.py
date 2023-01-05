@@ -12,5 +12,5 @@
 from ._custom_instance_operations import CustomInstanceOperations
 
 __all__ = [
-    'CustomInstanceOperations',
+    "CustomInstanceOperations",
 ]

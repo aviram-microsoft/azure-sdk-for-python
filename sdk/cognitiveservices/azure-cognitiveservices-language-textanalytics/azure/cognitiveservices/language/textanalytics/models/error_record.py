@@ -22,11 +22,11 @@ class ErrorRecord(Model):
     """
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'message': {'key': 'message', 'type': 'str'},
+        "id": {"key": "id", "type": "str"},
+        "message": {"key": "message", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(ErrorRecord, self).__init__(**kwargs)
-        self.id = kwargs.get('id', None)
-        self.message = kwargs.get('message', None)
+        self.id = kwargs.get("id", None)
+        self.message = kwargs.get("message", None)

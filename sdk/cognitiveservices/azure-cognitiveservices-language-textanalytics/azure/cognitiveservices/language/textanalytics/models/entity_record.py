@@ -41,27 +41,27 @@ class EntityRecord(Model):
     """
 
     _validation = {
-        'wikipedia_url': {'readonly': True},
+        "wikipedia_url": {"readonly": True},
     }
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'matches': {'key': 'matches', 'type': '[MatchRecord]'},
-        'wikipedia_language': {'key': 'wikipediaLanguage', 'type': 'str'},
-        'wikipedia_id': {'key': 'wikipediaId', 'type': 'str'},
-        'wikipedia_url': {'key': 'wikipediaUrl', 'type': 'str'},
-        'bing_id': {'key': 'bingId', 'type': 'str'},
-        'type': {'key': 'type', 'type': 'str'},
-        'sub_type': {'key': 'subType', 'type': 'str'},
+        "name": {"key": "name", "type": "str"},
+        "matches": {"key": "matches", "type": "[MatchRecord]"},
+        "wikipedia_language": {"key": "wikipediaLanguage", "type": "str"},
+        "wikipedia_id": {"key": "wikipediaId", "type": "str"},
+        "wikipedia_url": {"key": "wikipediaUrl", "type": "str"},
+        "bing_id": {"key": "bingId", "type": "str"},
+        "type": {"key": "type", "type": "str"},
+        "sub_type": {"key": "subType", "type": "str"},
     }
 
     def __init__(self, **kwargs):
         super(EntityRecord, self).__init__(**kwargs)
-        self.name = kwargs.get('name', None)
-        self.matches = kwargs.get('matches', None)
-        self.wikipedia_language = kwargs.get('wikipedia_language', None)
-        self.wikipedia_id = kwargs.get('wikipedia_id', None)
+        self.name = kwargs.get("name", None)
+        self.matches = kwargs.get("matches", None)
+        self.wikipedia_language = kwargs.get("wikipedia_language", None)
+        self.wikipedia_id = kwargs.get("wikipedia_id", None)
         self.wikipedia_url = None
-        self.bing_id = kwargs.get('bing_id', None)
-        self.type = kwargs.get('type', None)
-        self.sub_type = kwargs.get('sub_type', None)
+        self.bing_id = kwargs.get("bing_id", None)
+        self.type = kwargs.get("type", None)
+        self.sub_type = kwargs.get("sub_type", None)

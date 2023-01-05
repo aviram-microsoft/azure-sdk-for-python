@@ -38,7 +38,30 @@ class VideosOperations(object):
         self.x_bing_apis_sdk = "true"
 
     def search(
-            self, query, accept_language=None, user_agent=None, client_id=None, client_ip=None, location=None, country_code=None, count=None, freshness=None, id=None, length=None, market=None, offset=None, pricing=None, resolution=None, safe_search=None, set_lang=None, text_decorations=None, text_format=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        query,
+        accept_language=None,
+        user_agent=None,
+        client_id=None,
+        client_ip=None,
+        location=None,
+        country_code=None,
+        count=None,
+        freshness=None,
+        id=None,
+        length=None,
+        market=None,
+        offset=None,
+        pricing=None,
+        resolution=None,
+        safe_search=None,
+        set_lang=None,
+        text_decorations=None,
+        text_format=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """The Video Search API lets you send a search query to Bing and get back
         a list of videos that are relevant to the search query. This section
         provides technical details about the query parameters and headers that
@@ -339,58 +362,60 @@ class VideosOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.search.videosearch.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.search.metadata['url']
+        url = self.search.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if country_code is not None:
-            query_parameters['cc'] = self._serialize.query("country_code", country_code, 'str')
+            query_parameters["cc"] = self._serialize.query("country_code", country_code, "str")
         if count is not None:
-            query_parameters['count'] = self._serialize.query("count", count, 'int')
+            query_parameters["count"] = self._serialize.query("count", count, "int")
         if freshness is not None:
-            query_parameters['freshness'] = self._serialize.query("freshness", freshness, 'Freshness')
+            query_parameters["freshness"] = self._serialize.query("freshness", freshness, "Freshness")
         if id is not None:
-            query_parameters['id'] = self._serialize.query("id", id, 'str')
+            query_parameters["id"] = self._serialize.query("id", id, "str")
         if length is not None:
-            query_parameters['length'] = self._serialize.query("length", length, 'VideoLength')
+            query_parameters["length"] = self._serialize.query("length", length, "VideoLength")
         if market is not None:
-            query_parameters['mkt'] = self._serialize.query("market", market, 'str')
+            query_parameters["mkt"] = self._serialize.query("market", market, "str")
         if offset is not None:
-            query_parameters['offset'] = self._serialize.query("offset", offset, 'int')
+            query_parameters["offset"] = self._serialize.query("offset", offset, "int")
         if pricing is not None:
-            query_parameters['pricing'] = self._serialize.query("pricing", pricing, 'VideoPricing')
-        query_parameters['q'] = self._serialize.query("query", query, 'str')
+            query_parameters["pricing"] = self._serialize.query("pricing", pricing, "VideoPricing")
+        query_parameters["q"] = self._serialize.query("query", query, "str")
         if resolution is not None:
-            query_parameters['resolution'] = self._serialize.query("resolution", resolution, 'VideoResolution')
+            query_parameters["resolution"] = self._serialize.query("resolution", resolution, "VideoResolution")
         if safe_search is not None:
-            query_parameters['safeSearch'] = self._serialize.query("safe_search", safe_search, 'SafeSearch')
+            query_parameters["safeSearch"] = self._serialize.query("safe_search", safe_search, "SafeSearch")
         if set_lang is not None:
-            query_parameters['setLang'] = self._serialize.query("set_lang", set_lang, 'str')
+            query_parameters["setLang"] = self._serialize.query("set_lang", set_lang, "str")
         if text_decorations is not None:
-            query_parameters['textDecorations'] = self._serialize.query("text_decorations", text_decorations, 'bool')
+            query_parameters["textDecorations"] = self._serialize.query("text_decorations", text_decorations, "bool")
         if text_format is not None:
-            query_parameters['textFormat'] = self._serialize.query("text_format", text_format, 'TextFormat')
+            query_parameters["textFormat"] = self._serialize.query("text_format", text_format, "TextFormat")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['X-BingApis-SDK'] = self._serialize.header("self.x_bing_apis_sdk", self.x_bing_apis_sdk, 'str')
+        header_parameters["X-BingApis-SDK"] = self._serialize.header(
+            "self.x_bing_apis_sdk", self.x_bing_apis_sdk, "str"
+        )
         if accept_language is not None:
-            header_parameters['Accept-Language'] = self._serialize.header("accept_language", accept_language, 'str')
+            header_parameters["Accept-Language"] = self._serialize.header("accept_language", accept_language, "str")
         if user_agent is not None:
-            header_parameters['User-Agent'] = self._serialize.header("user_agent", user_agent, 'str')
+            header_parameters["User-Agent"] = self._serialize.header("user_agent", user_agent, "str")
         if client_id is not None:
-            header_parameters['X-MSEdge-ClientID'] = self._serialize.header("client_id", client_id, 'str')
+            header_parameters["X-MSEdge-ClientID"] = self._serialize.header("client_id", client_id, "str")
         if client_ip is not None:
-            header_parameters['X-MSEdge-ClientIP'] = self._serialize.header("client_ip", client_ip, 'str')
+            header_parameters["X-MSEdge-ClientIP"] = self._serialize.header("client_ip", client_ip, "str")
         if location is not None:
-            header_parameters['X-Search-Location'] = self._serialize.header("location", location, 'str')
+            header_parameters["X-Search-Location"] = self._serialize.header("location", location, "str")
 
         # Construct and send request
         request = self._client.get(url, query_parameters, header_parameters)
@@ -401,17 +426,37 @@ class VideosOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('Videos', response)
+            deserialized = self._deserialize("Videos", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    search.metadata = {'url': '/videos/search'}
+
+    search.metadata = {"url": "/videos/search"}
 
     def details(
-            self, query, accept_language=None, user_agent=None, client_id=None, client_ip=None, location=None, country_code=None, id=None, modules=None, market=None, resolution=None, safe_search=None, set_lang=None, text_decorations=None, text_format=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        query,
+        accept_language=None,
+        user_agent=None,
+        client_id=None,
+        client_ip=None,
+        location=None,
+        country_code=None,
+        id=None,
+        modules=None,
+        market=None,
+        resolution=None,
+        safe_search=None,
+        set_lang=None,
+        text_decorations=None,
+        text_format=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """The Video Detail Search API lets you search on Bing and get back
         insights about a video, such as related videos. This section provides
         technical details about the query parameters and headers that you use
@@ -680,50 +725,52 @@ class VideosOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.search.videosearch.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.details.metadata['url']
+        url = self.details.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if country_code is not None:
-            query_parameters['cc'] = self._serialize.query("country_code", country_code, 'str')
+            query_parameters["cc"] = self._serialize.query("country_code", country_code, "str")
         if id is not None:
-            query_parameters['id'] = self._serialize.query("id", id, 'str')
+            query_parameters["id"] = self._serialize.query("id", id, "str")
         if modules is not None:
-            query_parameters['modules'] = self._serialize.query("modules", modules, '[VideoInsightModule]', div=',')
+            query_parameters["modules"] = self._serialize.query("modules", modules, "[VideoInsightModule]", div=",")
         if market is not None:
-            query_parameters['mkt'] = self._serialize.query("market", market, 'str')
-        query_parameters['q'] = self._serialize.query("query", query, 'str')
+            query_parameters["mkt"] = self._serialize.query("market", market, "str")
+        query_parameters["q"] = self._serialize.query("query", query, "str")
         if resolution is not None:
-            query_parameters['resolution'] = self._serialize.query("resolution", resolution, 'VideoResolution')
+            query_parameters["resolution"] = self._serialize.query("resolution", resolution, "VideoResolution")
         if safe_search is not None:
-            query_parameters['safeSearch'] = self._serialize.query("safe_search", safe_search, 'SafeSearch')
+            query_parameters["safeSearch"] = self._serialize.query("safe_search", safe_search, "SafeSearch")
         if set_lang is not None:
-            query_parameters['setLang'] = self._serialize.query("set_lang", set_lang, 'str')
+            query_parameters["setLang"] = self._serialize.query("set_lang", set_lang, "str")
         if text_decorations is not None:
-            query_parameters['textDecorations'] = self._serialize.query("text_decorations", text_decorations, 'bool')
+            query_parameters["textDecorations"] = self._serialize.query("text_decorations", text_decorations, "bool")
         if text_format is not None:
-            query_parameters['textFormat'] = self._serialize.query("text_format", text_format, 'TextFormat')
+            query_parameters["textFormat"] = self._serialize.query("text_format", text_format, "TextFormat")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['X-BingApis-SDK'] = self._serialize.header("self.x_bing_apis_sdk", self.x_bing_apis_sdk, 'str')
+        header_parameters["X-BingApis-SDK"] = self._serialize.header(
+            "self.x_bing_apis_sdk", self.x_bing_apis_sdk, "str"
+        )
         if accept_language is not None:
-            header_parameters['Accept-Language'] = self._serialize.header("accept_language", accept_language, 'str')
+            header_parameters["Accept-Language"] = self._serialize.header("accept_language", accept_language, "str")
         if user_agent is not None:
-            header_parameters['User-Agent'] = self._serialize.header("user_agent", user_agent, 'str')
+            header_parameters["User-Agent"] = self._serialize.header("user_agent", user_agent, "str")
         if client_id is not None:
-            header_parameters['X-MSEdge-ClientID'] = self._serialize.header("client_id", client_id, 'str')
+            header_parameters["X-MSEdge-ClientID"] = self._serialize.header("client_id", client_id, "str")
         if client_ip is not None:
-            header_parameters['X-MSEdge-ClientIP'] = self._serialize.header("client_ip", client_ip, 'str')
+            header_parameters["X-MSEdge-ClientIP"] = self._serialize.header("client_ip", client_ip, "str")
         if location is not None:
-            header_parameters['X-Search-Location'] = self._serialize.header("location", location, 'str')
+            header_parameters["X-Search-Location"] = self._serialize.header("location", location, "str")
 
         # Construct and send request
         request = self._client.get(url, query_parameters, header_parameters)
@@ -734,17 +781,33 @@ class VideosOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('VideoDetails', response)
+            deserialized = self._deserialize("VideoDetails", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    details.metadata = {'url': '/videos/details'}
+
+    details.metadata = {"url": "/videos/details"}
 
     def trending(
-            self, accept_language=None, user_agent=None, client_id=None, client_ip=None, location=None, country_code=None, market=None, safe_search=None, set_lang=None, text_decorations=None, text_format=None, custom_headers=None, raw=False, **operation_config):
+        self,
+        accept_language=None,
+        user_agent=None,
+        client_id=None,
+        client_ip=None,
+        location=None,
+        country_code=None,
+        market=None,
+        safe_search=None,
+        set_lang=None,
+        text_decorations=None,
+        text_format=None,
+        custom_headers=None,
+        raw=False,
+        **operation_config
+    ):
         """The Video Trending Search API lets you search on Bing and get back a
         list of videos that are trending based on search requests made by
         others. The videos are broken out into different categories. For
@@ -977,43 +1040,45 @@ class VideosOperations(object):
          :class:`ErrorResponseException<azure.cognitiveservices.search.videosearch.models.ErrorResponseException>`
         """
         # Construct URL
-        url = self.trending.metadata['url']
+        url = self.trending.metadata["url"]
         path_format_arguments = {
-            'Endpoint': self._serialize.url("self.config.endpoint", self.config.endpoint, 'str', skip_quote=True)
+            "Endpoint": self._serialize.url("self.config.endpoint", self.config.endpoint, "str", skip_quote=True)
         }
         url = self._client.format_url(url, **path_format_arguments)
 
         # Construct parameters
         query_parameters = {}
         if country_code is not None:
-            query_parameters['cc'] = self._serialize.query("country_code", country_code, 'str')
+            query_parameters["cc"] = self._serialize.query("country_code", country_code, "str")
         if market is not None:
-            query_parameters['mkt'] = self._serialize.query("market", market, 'str')
+            query_parameters["mkt"] = self._serialize.query("market", market, "str")
         if safe_search is not None:
-            query_parameters['safeSearch'] = self._serialize.query("safe_search", safe_search, 'SafeSearch')
+            query_parameters["safeSearch"] = self._serialize.query("safe_search", safe_search, "SafeSearch")
         if set_lang is not None:
-            query_parameters['setLang'] = self._serialize.query("set_lang", set_lang, 'str')
+            query_parameters["setLang"] = self._serialize.query("set_lang", set_lang, "str")
         if text_decorations is not None:
-            query_parameters['textDecorations'] = self._serialize.query("text_decorations", text_decorations, 'bool')
+            query_parameters["textDecorations"] = self._serialize.query("text_decorations", text_decorations, "bool")
         if text_format is not None:
-            query_parameters['textFormat'] = self._serialize.query("text_format", text_format, 'TextFormat')
+            query_parameters["textFormat"] = self._serialize.query("text_format", text_format, "TextFormat")
 
         # Construct headers
         header_parameters = {}
-        header_parameters['Accept'] = 'application/json'
+        header_parameters["Accept"] = "application/json"
         if custom_headers:
             header_parameters.update(custom_headers)
-        header_parameters['X-BingApis-SDK'] = self._serialize.header("self.x_bing_apis_sdk", self.x_bing_apis_sdk, 'str')
+        header_parameters["X-BingApis-SDK"] = self._serialize.header(
+            "self.x_bing_apis_sdk", self.x_bing_apis_sdk, "str"
+        )
         if accept_language is not None:
-            header_parameters['Accept-Language'] = self._serialize.header("accept_language", accept_language, 'str')
+            header_parameters["Accept-Language"] = self._serialize.header("accept_language", accept_language, "str")
         if user_agent is not None:
-            header_parameters['User-Agent'] = self._serialize.header("user_agent", user_agent, 'str')
+            header_parameters["User-Agent"] = self._serialize.header("user_agent", user_agent, "str")
         if client_id is not None:
-            header_parameters['X-MSEdge-ClientID'] = self._serialize.header("client_id", client_id, 'str')
+            header_parameters["X-MSEdge-ClientID"] = self._serialize.header("client_id", client_id, "str")
         if client_ip is not None:
-            header_parameters['X-MSEdge-ClientIP'] = self._serialize.header("client_ip", client_ip, 'str')
+            header_parameters["X-MSEdge-ClientIP"] = self._serialize.header("client_ip", client_ip, "str")
         if location is not None:
-            header_parameters['X-Search-Location'] = self._serialize.header("location", location, 'str')
+            header_parameters["X-Search-Location"] = self._serialize.header("location", location, "str")
 
         # Construct and send request
         request = self._client.get(url, query_parameters, header_parameters)
@@ -1024,11 +1089,12 @@ class VideosOperations(object):
 
         deserialized = None
         if response.status_code == 200:
-            deserialized = self._deserialize('TrendingVideos', response)
+            deserialized = self._deserialize("TrendingVideos", response)
 
         if raw:
             client_raw_response = ClientRawResponse(deserialized, response)
             return client_raw_response
 
         return deserialized
-    trending.metadata = {'url': '/videos/trending'}
+
+    trending.metadata = {"url": "/videos/trending"}

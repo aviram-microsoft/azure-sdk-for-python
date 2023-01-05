@@ -26,12 +26,12 @@ class DetectedLanguage(Model):
     """
 
     _attribute_map = {
-        'name': {'key': 'name', 'type': 'str'},
-        'iso6391_name': {'key': 'iso6391Name', 'type': 'str'},
-        'score': {'key': 'score', 'type': 'float'},
+        "name": {"key": "name", "type": "str"},
+        "iso6391_name": {"key": "iso6391Name", "type": "str"},
+        "score": {"key": "score", "type": "float"},
     }
 
-    def __init__(self, *, name: str=None, iso6391_name: str=None, score: float=None, **kwargs) -> None:
+    def __init__(self, *, name: str = None, iso6391_name: str = None, score: float = None, **kwargs) -> None:
         super(DetectedLanguage, self).__init__(**kwargs)
         self.name = name
         self.iso6391_name = iso6391_name

@@ -12,5 +12,5 @@
 from .images_operations import ImagesOperations
 
 __all__ = [
-    'ImagesOperations',
+    "ImagesOperations",
 ]

@@ -25,12 +25,12 @@ class MultiLanguageInput(Model):
     """
 
     _attribute_map = {
-        'language': {'key': 'language', 'type': 'str'},
-        'id': {'key': 'id', 'type': 'str'},
-        'text': {'key': 'text', 'type': 'str'},
+        "language": {"key": "language", "type": "str"},
+        "id": {"key": "id", "type": "str"},
+        "text": {"key": "text", "type": "str"},
     }
 
-    def __init__(self, *, language: str=None, id: str=None, text: str=None, **kwargs) -> None:
+    def __init__(self, *, language: str = None, id: str = None, text: str = None, **kwargs) -> None:
         super(MultiLanguageInput, self).__init__(**kwargs)
         self.language = language
         self.id = id

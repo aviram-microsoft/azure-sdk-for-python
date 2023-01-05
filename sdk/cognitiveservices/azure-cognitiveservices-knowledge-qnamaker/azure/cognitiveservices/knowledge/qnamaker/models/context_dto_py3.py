@@ -27,15 +27,15 @@ class ContextDTO(Model):
     """
 
     _validation = {
-        'prompts': {'max_items': 20},
+        "prompts": {"max_items": 20},
     }
 
     _attribute_map = {
-        'is_context_only': {'key': 'isContextOnly', 'type': 'bool'},
-        'prompts': {'key': 'prompts', 'type': '[PromptDTO]'},
+        "is_context_only": {"key": "isContextOnly", "type": "bool"},
+        "prompts": {"key": "prompts", "type": "[PromptDTO]"},
     }
 
-    def __init__(self, *, is_context_only: bool=None, prompts=None, **kwargs) -> None:
+    def __init__(self, *, is_context_only: bool = None, prompts=None, **kwargs) -> None:
         super(ContextDTO, self).__init__(**kwargs)
         self.is_context_only = is_context_only
         self.prompts = prompts

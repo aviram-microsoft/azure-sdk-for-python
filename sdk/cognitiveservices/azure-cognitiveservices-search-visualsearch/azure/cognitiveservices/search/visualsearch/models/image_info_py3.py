@@ -41,12 +41,12 @@ class ImageInfo(Model):
     """
 
     _attribute_map = {
-        'image_insights_token': {'key': 'imageInsightsToken', 'type': 'str'},
-        'url': {'key': 'url', 'type': 'str'},
-        'crop_area': {'key': 'cropArea', 'type': 'CropArea'},
+        "image_insights_token": {"key": "imageInsightsToken", "type": "str"},
+        "url": {"key": "url", "type": "str"},
+        "crop_area": {"key": "cropArea", "type": "CropArea"},
     }
 
-    def __init__(self, *, image_insights_token: str=None, url: str=None, crop_area=None, **kwargs) -> None:
+    def __init__(self, *, image_insights_token: str = None, url: str = None, crop_area=None, **kwargs) -> None:
         super(ImageInfo, self).__init__(**kwargs)
         self.image_insights_token = image_insights_token
         self.url = url

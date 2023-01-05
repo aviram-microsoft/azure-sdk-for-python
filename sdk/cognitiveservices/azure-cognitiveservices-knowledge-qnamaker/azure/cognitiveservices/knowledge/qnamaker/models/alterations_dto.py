@@ -22,13 +22,13 @@ class AlterationsDTO(Model):
     """
 
     _validation = {
-        'alterations': {'required': True},
+        "alterations": {"required": True},
     }
 
     _attribute_map = {
-        'alterations': {'key': 'alterations', 'type': '[str]'},
+        "alterations": {"key": "alterations", "type": "[str]"},
     }
 
     def __init__(self, **kwargs):
         super(AlterationsDTO, self).__init__(**kwargs)
-        self.alterations = kwargs.get('alterations', None)
+        self.alterations = kwargs.get("alterations", None)

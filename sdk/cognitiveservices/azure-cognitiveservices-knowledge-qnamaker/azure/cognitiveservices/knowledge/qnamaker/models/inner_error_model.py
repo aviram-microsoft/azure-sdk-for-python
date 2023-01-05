@@ -27,11 +27,11 @@ class InnerErrorModel(Model):
     """
 
     _attribute_map = {
-        'code': {'key': 'code', 'type': 'str'},
-        'inner_error': {'key': 'innerError', 'type': 'InnerErrorModel'},
+        "code": {"key": "code", "type": "str"},
+        "inner_error": {"key": "innerError", "type": "InnerErrorModel"},
     }
 
     def __init__(self, **kwargs):
         super(InnerErrorModel, self).__init__(**kwargs)
-        self.code = kwargs.get('code', None)
-        self.inner_error = kwargs.get('inner_error', None)
+        self.code = kwargs.get("code", None)
+        self.inner_error = kwargs.get("inner_error", None)
