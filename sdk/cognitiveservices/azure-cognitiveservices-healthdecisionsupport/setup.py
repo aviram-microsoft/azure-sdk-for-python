@@ -12,7 +12,7 @@ import re
 from setuptools import setup, find_packages
 
 
-PACKAGE_NAME = "azure-cognitiveservice-helathdecisionsupport"
+PACKAGE_NAME = "azure-cognitiveservices-helathdecisionsupport"
 PACKAGE_PPRINT_NAME = "None"
 
 # a-b-c => a/b/c
@@ -55,7 +55,7 @@ setup(
             "tests",
             # Exclude packages that will be covered by PEP420 or nspkg
             "azure",
-            "azure.cognitiveservice",
+            "azure.cognitiveservices",
         ]
     ),
     include_package_data=True,

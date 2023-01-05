@@ -7,7 +7,7 @@
 ### Installating the package
 
 ```bash
-python -m pip install azure-cognitiveservice-helathdecisionsupport
+python -m pip install azure-cognitiveservices-helathdecisionsupport
 ```
 
 #### Prequisites
