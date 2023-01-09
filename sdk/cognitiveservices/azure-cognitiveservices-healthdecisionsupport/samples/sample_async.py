@@ -2,7 +2,6 @@ import asyncio
 import json
 import sys
 
-
 sys.path.append("../azure/cognitiveservices")
 sys.path.append("..")
 from azure.cognitiveservices.helathdecisionsupport.aio import TrialMatcherClient

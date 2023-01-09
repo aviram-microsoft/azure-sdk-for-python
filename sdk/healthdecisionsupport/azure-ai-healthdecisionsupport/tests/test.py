@@ -2,10 +2,10 @@ import asyncio
 import json
 import sys
 
-
-sys.path.append("../azure/cognitiveservices")
+sys.path.append("../azure/healthdecisionsupport")
 sys.path.append("..")
-from azure.cognitiveservices.helathdecisionsupport.aio import TrialMatcherClient
+
+from azure.ai.helathdecisionsupport.aio import TrialMatcherClient
 from azure.core.credentials import AzureKeyCredential
 
 async def sample_trialmatcher_async() -> None:
