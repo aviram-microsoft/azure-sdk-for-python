@@ -286,7 +286,15 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
             headers=_headers,
             params=_params,
         )
-        request.url = self._client.format_url(request.url)
+
+        path_format_arguments = {
+            "Endpoint": self._serialize.url("self._config.endpoint", self._config.endpoint, "str", skip_quote=True),
+            "ApiVersion": self._serialize.url(
+                "self._config.api_version", self._config.api_version, "str", skip_quote=True
+            ),
+        }
+        request.url = self._client.format_url(request.url, **path_format_arguments)
+        #request.url = self._client.format_url(request.url)
 
         pipeline_response: PipelineResponse = self._client._pipeline.run(  # pylint: disable=protected-access
             request, stream=False, **kwargs

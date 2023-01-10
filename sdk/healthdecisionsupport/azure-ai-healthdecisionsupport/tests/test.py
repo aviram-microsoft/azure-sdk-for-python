@@ -1,34 +1,44 @@
-import asyncio
 import json
 import sys
+import pytest
+import functools
 
 sys.path.append("../azure/healthdecisionsupport")
 sys.path.append("..")
 
-from azure.ai.helathdecisionsupport.aio import TrialMatcherClient
+from devtools_testutils import (
+    AzureRecordedTestCase,
+    PowerShellPreparer,
+    recorded_by_proxy,
+)
+
+from azure.ai.helathdecisionsupport import TrialMatcherClient
 from azure.core.credentials import AzureKeyCredential
 
-async def sample_trialmatcher_async() -> None:
-    endpoint = "http://westeurope.api.cognitive.microsoft.com"
-    key = "95c92b4a837a420c83d37ef2689d7f4a"
+TrialMatcherDetectorEnvPreparer = functools.partial(
+    PowerShellPreparer,
+    "trial_matcher",
+    trial_matcher_endpoint="https://westeurope.api.cognitive.microsoft.com/",
+    trial_matcher_key="95c92b4a837a420c83d37ef2689d7f4a",
+)
 
-    trial_matcher_client = TrialMatcherClient(
-        endpoint=endpoint,
-        credential=AzureKeyCredential(key)
-    )
+class TestTrialMatcher(AzureRecordedTestCase):
+    @TrialMatcherDetectorEnvPreparer()
+    @recorded_by_proxy
+    def test_trialmatcher_connection(self, trial_matcher_endpoint, trial_matcher_key) -> None:
 
-    # Opening JSON file
-    f = open("C:\\Users\\reutgross\\Downloads\\bodySample.json")
+        trial_matcher_client = TrialMatcherClient(trial_matcher_endpoint, AzureKeyCredential(trial_matcher_key))
+        assert trial_matcher_client is not None
+        #
+        # f = open('bodySample.json')
+        # j = json.load(f)
+        #
+        # response = trial_matcher_client.create_job(j)
+        print("hi")
 
-    # returns JSON object as a dictionary
-    j = json.load(f)
-
-    response = trial_matcher_client.create_job(j)
-    print(response)
-
-async def main():
-    await sample_trialmatcher_async()
-
-
-if __name__ == '__main__':
-    asyncio.run(main())
+# def main():
+#     trialmatcher_test()
+#
+#
+# if __name__ == '__main__':
+#     main()
