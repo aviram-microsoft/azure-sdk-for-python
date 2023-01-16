@@ -32,7 +32,7 @@ from devtools_testutils.sanitizers import add_remove_header_sanitizer, add_gener
 # Ignore async tests for Python < 3.5
 collect_ignore_glob = []
 if sys.version_info < (3, 5):
-    collect_ignore_glob.append("*_async.py")
+    collect_ignore_glob.append("*sync_onco_test.py")
     collect_ignore_glob.append("test_cncf*")
 
 @pytest.fixture(scope="session", autouse=True)

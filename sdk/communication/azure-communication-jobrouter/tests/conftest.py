@@ -100,4 +100,4 @@ def initialize_class(request):
 # Ignore async tests for Python < 3.5
 collect_ignore_glob = []
 if sys.version_info < (3, 5):
-    collect_ignore_glob.append("*_async.py")
+    collect_ignore_glob.append("*sync_onco_test.py")

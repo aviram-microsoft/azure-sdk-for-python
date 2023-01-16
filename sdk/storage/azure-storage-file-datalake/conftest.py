@@ -20,7 +20,7 @@ from devtools_testutils import (
 # Ignore async tests for PyPy
 collect_ignore_glob = []
 if platform.python_implementation() == "PyPy":
-    collect_ignore_glob.append("tests/*_async.py")
+    collect_ignore_glob.append("tests/*sync_onco_test.py")
 
 @pytest.fixture(scope="session", autouse=True)
 def add_sanitizers(test_proxy):

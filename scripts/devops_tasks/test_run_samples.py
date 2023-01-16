@@ -182,7 +182,7 @@ def execute_sample(sample, samples_errors, timed):
     if isinstance(sample, tuple):
         sample, timeout, pass_if_timeout = sample
 
-    if sys.version_info < (3, 5) and sample.endswith("_async.py"):
+    if sys.version_info < (3, 5) and sample.endswith("sync_onco_test.py"):
         return
 
     logging.info("Testing {}".format(sample))
