@@ -30,10 +30,12 @@ class TrialMatcherClient(TrialMatcherClientOperationsMixin):  # pylint: disable=
      "2022-01-01-preview". Note that overriding this default value may result in unsupported
      behavior.
     :paramtype api_version: str
+    :keyword int polling_interval: Default waiting time between two polls for LRO operations if no
+     Retry-After header is present.
     """
 
     def __init__(self, endpoint: str, credential: AzureKeyCredential, **kwargs: Any) -> None:
-        _endpoint = "{Endpoint}/healthdecisionsupport"
+        _endpoint = "{endpoint}/healthdecisionsupport"
         self._config = TrialMatcherClientConfiguration(endpoint=endpoint, credential=credential, **kwargs)
         self._client = PipelineClient(base_url=_endpoint, config=self._config, **kwargs)
 
@@ -90,6 +92,8 @@ class OncoPhenotypeClient(OncoPhenotypeClientOperationsMixin):  # pylint: disabl
      "2022-01-01-preview". Note that overriding this default value may result in unsupported
      behavior.
     :paramtype api_version: str
+    :keyword int polling_interval: Default waiting time between two polls for LRO operations if no
+     Retry-After header is present.
     """
 
     def __init__(self, endpoint: str, credential: AzureKeyCredential, **kwargs: Any) -> None:

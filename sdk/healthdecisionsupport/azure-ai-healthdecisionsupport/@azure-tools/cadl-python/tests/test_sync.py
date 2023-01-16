@@ -6,13 +6,14 @@ import functools
 sys.path.append("../azure/healthdecisionsupport")
 sys.path.append("..")
 
+from azure.ai.helathdecisionsupport import TrialMatcherClient
+
 from devtools_testutils import (
     AzureRecordedTestCase,
     PowerShellPreparer,
     recorded_by_proxy,
 )
 
-from azure.ai.helathdecisionsupport import TrialMatcherClient
 from azure.core.credentials import AzureKeyCredential
 
 TrialMatcherDetectorEnvPreparer = functools.partial(
@@ -25,8 +26,9 @@ TrialMatcherDetectorEnvPreparer = functools.partial(
 class TestTrialMatcher(AzureRecordedTestCase):
     @TrialMatcherDetectorEnvPreparer()
     @recorded_by_proxy
-    def test_trialmatcher_connection(self, trial_matcher_endpoint, trial_matcher_key) -> None:
-
+    def test_trialmatcher_connection(self, **kwargs):
+        trial_matcher_endpoint = kwargs.pop("trial_matcher_endpoint")
+        trial_matcher_key = kwargs.pop("trial_matcher_key")
         trial_matcher_client = TrialMatcherClient(trial_matcher_endpoint, AzureKeyCredential(trial_matcher_key))
         assert trial_matcher_client is not None
         #
@@ -35,10 +37,3 @@ class TestTrialMatcher(AzureRecordedTestCase):
         #
         # response = trial_matcher_client.create_job(j)
         print("hi")
-
-# def main():
-#     trialmatcher_test()
-#
-#
-# if __name__ == '__main__':
-#     main()

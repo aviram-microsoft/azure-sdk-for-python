@@ -79,7 +79,7 @@ class TestAzureLogExporter(unittest.TestCase):
                     "test": "attribute",
                     SpanAttributes.EXCEPTION_TYPE: "ZeroDivisionError",
                     SpanAttributes.EXCEPTION_MESSAGE: "division by zero",
-                    SpanAttributes.EXCEPTION_STACKTRACE: 'Traceback (most recent call last):\n  File "test.py", line 38, in <module>\n    raise ZeroDivisionError()\nZeroDivisionError\n'
+                    SpanAttributes.EXCEPTION_STACKTRACE: 'Traceback (most recent call last):\n  File "test_sync.py", line 38, in <module>\n    raise ZeroDivisionError()\nZeroDivisionError\n'
                 },
             ),
             InstrumentationScope("test_name"),
@@ -222,7 +222,7 @@ class TestAzureLogExporter(unittest.TestCase):
         self.assertEqual(envelope.data.base_data.exceptions[0].type_name, "ZeroDivisionError")
         self.assertEqual(envelope.data.base_data.exceptions[0].message, "division by zero")
         self.assertTrue(envelope.data.base_data.exceptions[0].has_full_stack)
-        self.assertEqual(envelope.data.base_data.exceptions[0].stack, 'Traceback (most recent call last):\n  File "test.py", line 38, in <module>\n    raise ZeroDivisionError()\nZeroDivisionError\n')
+        self.assertEqual(envelope.data.base_data.exceptions[0].stack, 'Traceback (most recent call last):\n  File "test_sync.py", line 38, in <module>\n    raise ZeroDivisionError()\nZeroDivisionError\n')
 
 class TestAzureLogExporterUtils(unittest.TestCase):
     def test_get_log_export_result(self):

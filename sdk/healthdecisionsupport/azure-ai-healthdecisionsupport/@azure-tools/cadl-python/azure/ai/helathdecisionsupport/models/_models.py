@@ -8,21 +8,14 @@
 # --------------------------------------------------------------------------
 
 import datetime
-import sys
 from typing import Any, List, Mapping, Optional, TYPE_CHECKING, Union, overload
 
 from .. import _model_base
 from .._model_base import rest_field
 
-if sys.version_info >= (3, 9):
-    from collections.abc import MutableMapping
-else:
-    from typing import MutableMapping  # type: ignore  # pylint: disable=ungrouped-imports
-
 if TYPE_CHECKING:
     # pylint: disable=unused-import,ungrouped-imports
     from .. import models as _models
-JSON = MutableMapping[str, Any]  # pylint: disable=unsubscriptable-object
 
 
 class Age(_model_base.Model):
@@ -32,7 +25,7 @@ class Age(_model_base.Model):
 
     :ivar unit: Possible units for a person's age. Required. Known values are: "years", "months",
      and "days".
-    :vartype unit: str or ~healthdecisionsupportapi.models.AgeUnit
+    :vartype unit: str or ~azure.ai.helathdecisionsupport.models.AgeUnit
     :ivar value: The number of years/months/days that represents the person's age. Required.
     :vartype value: float
     """
@@ -57,23 +50,23 @@ class Age(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
 class Area(_model_base.Model):
-    """A geographical area, expressed as a ``Circle`` geometry represented using a ``GeoJSON Feature`` (see `GeoJSON spec <https://tools.ietf.org/html/rfc7946>`_\ ).
+    """A geographical area, expressed as a ``Circle`` geometry represented using a ``GeoJSON Feature``
+    (see `GeoJSON spec <https://tools.ietf.org/html/rfc7946>`_\ ).
 
     All required parameters must be populated in order to send to Azure.
 
     :ivar type: ``GeoJSON`` type. Required. "Feature"
-    :vartype type: str or ~healthdecisionsupportapi.models.GeoJsonType
+    :vartype type: str or ~azure.ai.helathdecisionsupport.models.GeoJsonType
     :ivar geometry: ``GeoJSON`` geometry, representing the area circle's center. Required.
-    :vartype geometry: ~healthdecisionsupportapi.models.AreaGeometry
+    :vartype geometry: ~azure.ai.helathdecisionsupport.models.AreaGeometry
     :ivar properties: ``GeoJSON`` object properties. Required.
-    :vartype properties: ~healthdecisionsupportapi.models.AreaProperties
+    :vartype properties: ~azure.ai.helathdecisionsupport.models.AreaProperties
     """
 
     type: Union[str, "_models.GeoJsonType"] = rest_field()
@@ -99,9 +92,8 @@ class Area(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -111,7 +103,7 @@ class AreaGeometry(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar type: ``GeoJSON`` geometry type. Required. "Point"
-    :vartype type: str or ~healthdecisionsupportapi.models.GeoJsonGeometryType
+    :vartype type: str or ~azure.ai.helathdecisionsupport.models.GeoJsonGeometryType
     :ivar coordinates: Coordinates of the area circle's center, represented according to the
      ``GeoJSON`` standard.
      This is an array of 2 decimal numbers, longitude and latitude (precisely in this order).
@@ -140,9 +132,8 @@ This is an array of 2 decimal numbers, longitude and latitude (precisely in this
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -152,7 +143,7 @@ class AreaProperties(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar sub_type: ``GeoJSON`` object sub-type. Required. "Circle"
-    :vartype sub_type: str or ~healthdecisionsupportapi.models.GeoJsonPropertiesSubType
+    :vartype sub_type: str or ~azure.ai.helathdecisionsupport.models.GeoJsonPropertiesSubType
     :ivar radius: The radius of the area's circle, in meters. Required.
     :vartype radius: float
     """
@@ -177,9 +168,8 @@ class AreaProperties(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -224,9 +214,8 @@ class ClinicalCodedElement(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -271,9 +260,8 @@ class ClinicalNoteEvidence(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -282,11 +270,11 @@ class ClinicalTrialDemographics(_model_base.Model):
 
     :ivar accepted_genders: A list of genders accepted by a clinical trial.
     :vartype accepted_genders: list[str or
-     ~healthdecisionsupportapi.models.ClinicalTrialAcceptedGender]
+     ~azure.ai.helathdecisionsupport.models.ClinicalTrialAcceptedGender]
     :ivar accepted_age_range: A definition of the range of ages accepted by a clinical trial.
      Contains a minimum age and/or a maximum age.
     :vartype accepted_age_range:
-     ~healthdecisionsupportapi.models.ClinicalTrialDemographicsAcceptedAgeRange
+     ~azure.ai.helathdecisionsupport.models.ClinicalTrialDemographicsAcceptedAgeRange
     """
 
     accepted_genders: Optional[List[Union[str, "_models.ClinicalTrialAcceptedGender"]]] = rest_field(
@@ -313,19 +301,19 @@ class ClinicalTrialDemographics(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
 class ClinicalTrialDemographicsAcceptedAgeRange(_model_base.Model):
-    """A definition of the range of ages accepted by a clinical trial. Contains a minimum age and/or a maximum age.
+    """A definition of the range of ages accepted by a clinical trial. Contains a minimum age and/or a
+    maximum age.
 
     :ivar minimum_age: A person's age, given as a number (value) and a unit (e.g. years, months).
-    :vartype minimum_age: ~healthdecisionsupportapi.models.Age
+    :vartype minimum_age: ~azure.ai.helathdecisionsupport.models.Age
     :ivar maximum_age: A person's age, given as a number (value) and a unit (e.g. years, months).
-    :vartype maximum_age: ~healthdecisionsupportapi.models.Age
+    :vartype maximum_age: ~azure.ai.helathdecisionsupport.models.Age
     """
 
     minimum_age: Optional["_models.Age"] = rest_field(name="minimumAge")
@@ -348,9 +336,8 @@ class ClinicalTrialDemographicsAcceptedAgeRange(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -366,9 +353,9 @@ class ClinicalTrialDetails(_model_base.Model):
      exclusion), given as text.
     :vartype eligibility_criteria_text: str
     :ivar demographics: Demographic criteria for a clinical trial.
-    :vartype demographics: ~healthdecisionsupportapi.models.ClinicalTrialDemographics
+    :vartype demographics: ~azure.ai.helathdecisionsupport.models.ClinicalTrialDemographics
     :ivar metadata: Trial data which is of interest to the potential participant. Required.
-    :vartype metadata: ~healthdecisionsupportapi.models.ClinicalTrialMetadata
+    :vartype metadata: ~azure.ai.helathdecisionsupport.models.ClinicalTrialMetadata
     """
 
     id: str = rest_field()
@@ -397,9 +384,8 @@ class ClinicalTrialDetails(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -410,24 +396,24 @@ class ClinicalTrialMetadata(_model_base.Model):
 
     :ivar phases: Phases which are relevant for the clinical trial.
      Each clinical trial can be in a certain phase or in multiple phases.
-    :vartype phases: list[str or ~healthdecisionsupportapi.models.ClinicalTrialPhase]
+    :vartype phases: list[str or ~azure.ai.helathdecisionsupport.models.ClinicalTrialPhase]
     :ivar study_type: Possible study types of a clinical trial. Known values are: "interventional",
      "observational", "expandedAccess", and "patientRegistries".
-    :vartype study_type: str or ~healthdecisionsupportapi.models.ClinicalTrialStudyType
+    :vartype study_type: str or ~azure.ai.helathdecisionsupport.models.ClinicalTrialStudyType
     :ivar recruitment_status: Possible recruitment status of a clinical trial. Known values are:
      "unknownStatus", "notYetRecruiting", "recruiting", and "enrollingByInvitation".
     :vartype recruitment_status: str or
-     ~healthdecisionsupportapi.models.ClinicalTrialRecruitmentStatus
+     ~azure.ai.helathdecisionsupport.models.ClinicalTrialRecruitmentStatus
     :ivar conditions: Medical conditions and their synonyms which are relevant for the clinical
      trial, given as strings. Required.
     :vartype conditions: list[str]
     :ivar sponsors: Sponsors/collaborators involved with the trial.
     :vartype sponsors: list[str]
     :ivar contacts: Contact details of the trial administrators, for patients that want to
-     sparticipate in the trial.
-    :vartype contacts: list[~healthdecisionsupportapi.models.ContactDetails]
+     participate in the trial.
+    :vartype contacts: list[~azure.ai.helathdecisionsupport.models.ContactDetails]
     :ivar facilities: Research facilities where the clinical trial is conducted.
-    :vartype facilities: list[~healthdecisionsupportapi.models.ClinicalTrialResearchFacility]
+    :vartype facilities: list[~azure.ai.helathdecisionsupport.models.ClinicalTrialResearchFacility]
     """
 
     phases: Optional[List[Union[str, "_models.ClinicalTrialPhase"]]] = rest_field()
@@ -444,7 +430,7 @@ Each clinical trial can be in a certain phase or in multiple phases. """
     sponsors: Optional[List[str]] = rest_field()
     """Sponsors/collaborators involved with the trial. """
     contacts: Optional[List["_models.ContactDetails"]] = rest_field()
-    """Contact details of the trial administrators, for patients that want to sparticipate in the trial. """
+    """Contact details of the trial administrators, for patients that want to participate in the trial. """
     facilities: Optional[List["_models.ClinicalTrialResearchFacility"]] = rest_field()
     """Research facilities where the clinical trial is conducted. """
 
@@ -468,14 +454,14 @@ Each clinical trial can be in a certain phase or in multiple phases. """
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
 class ClinicalTrialRegistryFilter(_model_base.Model):  # pylint: disable=too-many-instance-attributes
-    """A filter defining a subset of clinical trials from a given clinical trial registry (e.g. clinicaltrials.gov).
+    """A filter defining a subset of clinical trials from a given clinical trial registry (e.g.
+    clinicaltrials.gov).
 
     :ivar conditions: Trials with any of the given medical conditions will be included in the
      selection (provided that other limitations are satisfied).
@@ -484,12 +470,13 @@ class ClinicalTrialRegistryFilter(_model_base.Model):  # pylint: disable=too-man
     :ivar study_types: Trials with any of the given study types will be included in the selection
      (provided that other limitations are satisfied).
      Leaving this list empty will not limit the study types.
-    :vartype study_types: list[str or ~healthdecisionsupportapi.models.ClinicalTrialStudyType]
+    :vartype study_types: list[str or
+     ~azure.ai.helathdecisionsupport.models.ClinicalTrialStudyType]
     :ivar recruitment_statuses: Trials with any of the given recruitment statuses will be included
      in the selection (provided that other limitations are satisfied).
      Leaving this list empty will not limit the recruitment statuses.
     :vartype recruitment_statuses: list[str or
-     ~healthdecisionsupportapi.models.ClinicalTrialRecruitmentStatus]
+     ~azure.ai.helathdecisionsupport.models.ClinicalTrialRecruitmentStatus]
     :ivar sponsors: Trials with any of the given sponsors will be included in the selection
      (provided that other limitations are satisfied).
      Leaving this list empty will not limit the sponsors.
@@ -497,11 +484,11 @@ class ClinicalTrialRegistryFilter(_model_base.Model):  # pylint: disable=too-man
     :ivar phases: Trials with any of the given phases will be included in the selection (provided
      that other limitations are satisfied).
      Leaving this list empty will not limit the phases.
-    :vartype phases: list[str or ~healthdecisionsupportapi.models.ClinicalTrialPhase]
+    :vartype phases: list[str or ~azure.ai.helathdecisionsupport.models.ClinicalTrialPhase]
     :ivar purposes: Trials with any of the given purposes will be included in the selection
      (provided that other limitations are satisfied).
      Leaving this list empty will not limit the purposes.
-    :vartype purposes: list[str or ~healthdecisionsupportapi.models.ClinicalTrialPurpose]
+    :vartype purposes: list[str or ~azure.ai.helathdecisionsupport.models.ClinicalTrialPurpose]
     :ivar ids: Trials with any of the given identifiers will be included in the selection (provided
      that other limitations are satisfied).
      Leaving this list empty will not limit the trial identifiers.
@@ -509,7 +496,7 @@ class ClinicalTrialRegistryFilter(_model_base.Model):  # pylint: disable=too-man
     :ivar sources: Trials with any of the given sources will be included in the selection (provided
      that other limitations are satisfied).
      Leaving this list empty will not limit the sources.
-    :vartype sources: list[str or ~healthdecisionsupportapi.models.ClinicalTrialSource]
+    :vartype sources: list[str or ~azure.ai.helathdecisionsupport.models.ClinicalTrialSource]
     :ivar facility_names: Trials with any of the given facility names will be included in the
      selection (provided that other limitations are satisfied).
      Leaving this list empty will not limit the trial facility names.
@@ -517,11 +504,11 @@ class ClinicalTrialRegistryFilter(_model_base.Model):  # pylint: disable=too-man
     :ivar facility_locations: Trials with any of the given facility locations will be included in
      the selection (provided that other limitations are satisfied).
      Leaving this list empty will not limit the trial facility locations.
-    :vartype facility_locations: list[~healthdecisionsupportapi.models.Location]
+    :vartype facility_locations: list[~azure.ai.helathdecisionsupport.models.Location]
     :ivar facility_areas: Trials with any of the given facility area boundaries will be included in
      the selection (provided that other limitations are satisfied).
      Leaving this list empty will not limit the trial facility area boundaries.
-    :vartype facility_areas: list[~healthdecisionsupportapi.models.Area]
+    :vartype facility_areas: list[~azure.ai.helathdecisionsupport.models.Area]
     """
 
     conditions: Optional[List[str]] = rest_field()
@@ -584,9 +571,8 @@ Leaving this list empty will not limit the trial facility area boundaries. """
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -631,22 +617,23 @@ class ClinicalTrialResearchFacility(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
 class ClinicalTrials(_model_base.Model):
     """The clinical trials that the patient(s) should be matched to.
-    The trial selection can be given as a list of custom clinical trials and/or a list of filters to known clinical trial registries.
+    The trial selection can be given as a list of custom clinical trials and/or a list of filters
+    to known clinical trial registries.
     In case both are given, the resulting trial set is a union of the two sets.
 
-        :ivar custom_trials: A list of clinical trials.
-        :vartype custom_trials: list[~healthdecisionsupportapi.models.ClinicalTrialDetails]
-        :ivar registry_filters: A list of filters, each one creating a selection of trials from a given
-         clinical trial registry.
-        :vartype registry_filters: list[~healthdecisionsupportapi.models.ClinicalTrialRegistryFilter]
+    :ivar custom_trials: A list of clinical trials.
+    :vartype custom_trials: list[~azure.ai.helathdecisionsupport.models.ClinicalTrialDetails]
+    :ivar registry_filters: A list of filters, each one creating a selection of trials from a given
+     clinical trial registry.
+    :vartype registry_filters:
+     list[~azure.ai.helathdecisionsupport.models.ClinicalTrialRegistryFilter]
     """
 
     custom_trials: Optional[List["_models.ClinicalTrialDetails"]] = rest_field(name="customTrials")
@@ -670,9 +657,8 @@ clinical trial registry. """
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -710,9 +696,8 @@ class ContactDetails(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -725,7 +710,7 @@ class DocumentContent(_model_base.Model):
      In case the source type is 'inline', the content is given as a string (for instance, text).
      In case the source type is 'reference', the content is given as a URI. Required. Known values
      are: "inline" and "reference".
-    :vartype source_type: str or ~healthdecisionsupportapi.models.DocumentContentSourceType
+    :vartype source_type: str or ~azure.ai.helathdecisionsupport.models.DocumentContentSourceType
     :ivar value: The content of the document, given either inline (as a string) or as a reference
      (URI). Required.
     :vartype value: str
@@ -753,9 +738,8 @@ In case the source type is 'reference', the content is given as a URI. Required.
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -772,10 +756,10 @@ class Error(_model_base.Model):
     :vartype target: str
     :ivar details: An array of details about specific errors that led to this reported error.
      Required.
-    :vartype details: list[~healthdecisionsupportapi.models.Error]
+    :vartype details: list[~azure.ai.helathdecisionsupport.models.Error]
     :ivar innererror: An object containing more specific information than the current object about
      the error.
-    :vartype innererror: ~healthdecisionsupportapi.models.InnerError
+    :vartype innererror: ~azure.ai.helathdecisionsupport.models.InnerError
     """
 
     code: str = rest_field()
@@ -807,14 +791,14 @@ class Error(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
 class ExtendedClinicalCodedElement(_model_base.Model):
-    """A piece of clinical information, expressed as a code in a clinical coding system, extended by semantic information.
+    """A piece of clinical information, expressed as a code in a clinical coding system, extended by
+    semantic information.
 
     All required parameters must be populated in order to send to Azure.
 
@@ -867,9 +851,8 @@ class ExtendedClinicalCodedElement(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -877,11 +860,11 @@ class InferenceEvidence(_model_base.Model):
     """A piece of evidence corresponding to an inference.
 
     :ivar patient_data_evidence: A piece of evidence from a clinical note (text document).
-    :vartype patient_data_evidence: ~healthdecisionsupportapi.models.ClinicalNoteEvidence
+    :vartype patient_data_evidence: ~azure.ai.helathdecisionsupport.models.ClinicalNoteEvidence
     :ivar patient_info_evidence: A piece of clinical information, expressed as a code in a clinical
      coding
      system.
-    :vartype patient_info_evidence: ~healthdecisionsupportapi.models.ClinicalCodedElement
+    :vartype patient_info_evidence: ~azure.ai.helathdecisionsupport.models.ClinicalCodedElement
     :ivar importance: A value indicating how important this piece of evidence is for the inference.
     :vartype importance: float
     """
@@ -910,21 +893,22 @@ system. """
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
 class InnerError(_model_base.Model):
-    """An object containing more specific information about the error. As per Microsoft One API guidelines - https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses.
+    """An object containing more specific information about the error. As per Microsoft One API
+    guidelines -
+    https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md#7102-error-condition-responses.
 
     All required parameters must be populated in order to send to Azure.
 
     :ivar code: One of a server-defined set of error codes. Required.
     :vartype code: str
     :ivar innererror: Inner error.
-    :vartype innererror: ~healthdecisionsupportapi.models.InnerError
+    :vartype innererror: ~azure.ai.helathdecisionsupport.models.InnerError
     """
 
     code: str = rest_field()
@@ -947,9 +931,8 @@ class InnerError(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -959,14 +942,14 @@ class Location(_model_base.Model):
     country or country (for countries where there are no states) should be added.
     In case a state is specified (without a city), country should be added.
 
-        All required parameters must be populated in order to send to Azure.
+    All required parameters must be populated in order to send to Azure.
 
-        :ivar city: City name.
-        :vartype city: str
-        :ivar state: State name.
-        :vartype state: str
-        :ivar country: Country name. Required.
-        :vartype country: str
+    :ivar city: City name.
+    :vartype city: str
+    :ivar state: State name.
+    :vartype state: str
+    :ivar country: Country name. Required.
+    :vartype country: str
     """
 
     city: Optional[str] = rest_field()
@@ -992,9 +975,8 @@ class Location(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1028,9 +1010,8 @@ class ModelConfiguration(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1042,7 +1023,7 @@ class OncoPhenotypeInference(_model_base.Model):
     :ivar type: The type of the Onco Phenotype inference. Required. Known values are: "tumorSite",
      "histology", "clinicalStageT", "clinicalStageN", "clinicalStageM", "pathologicStageT",
      "pathologicStageN", and "pathologicStageM".
-    :vartype type: str or ~healthdecisionsupportapi.models.OncoPhenotypeInferenceType
+    :vartype type: str or ~azure.ai.helathdecisionsupport.models.OncoPhenotypeInferenceType
     :ivar value: The value of the inference, as relevant for the given inference type. Required.
     :vartype value: str
     :ivar description: The description corresponding to the inference value.
@@ -1050,7 +1031,7 @@ class OncoPhenotypeInference(_model_base.Model):
     :ivar confidence_score: Confidence score for this inference.
     :vartype confidence_score: float
     :ivar evidence: The evidence corresponding to the inference value.
-    :vartype evidence: list[~healthdecisionsupportapi.models.InferenceEvidence]
+    :vartype evidence: list[~azure.ai.helathdecisionsupport.models.InferenceEvidence]
     :ivar case_id: An identifier for a clinical case, if there are multiple clinical cases
      regarding the same patient.
     :vartype case_id: str
@@ -1088,9 +1069,8 @@ class OncoPhenotypeInference(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1106,7 +1086,7 @@ class OncoPhenotypeModelConfiguration(ModelConfiguration):
      This could be used if only part of the Onco Phenotype inferences are required.
      If this list is omitted or empty, the model will return all the inference types.
     :vartype inference_types: list[str or
-     ~healthdecisionsupportapi.models.OncoPhenotypeInferenceType]
+     ~azure.ai.helathdecisionsupport.models.OncoPhenotypeInferenceType]
     :ivar check_for_cancer_case: An indication whether to perform a preliminary step on the
      patient's documents to determine whether they relate to a Cancer case.
     :vartype check_for_cancer_case: bool
@@ -1138,9 +1118,8 @@ If this list is omitted or empty, the model will return all the inference types.
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1152,7 +1131,7 @@ class OncoPhenotypePatientResult(_model_base.Model):
     :ivar id: The identifier given for the patient in the request. Required.
     :vartype id: str
     :ivar inferences: The model's inferences for the given patient. Required.
-    :vartype inferences: list[~healthdecisionsupportapi.models.OncoPhenotypeInference]
+    :vartype inferences: list[~azure.ai.helathdecisionsupport.models.OncoPhenotypeInference]
     """
 
     id: str = rest_field()
@@ -1175,9 +1154,8 @@ class OncoPhenotypePatientResult(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1187,7 +1165,7 @@ class Request(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar patients: The list of patients, including their clinical information and data. Required.
-    :vartype patients: list[~healthdecisionsupportapi.models.Patient]
+    :vartype patients: list[~azure.ai.helathdecisionsupport.models.Patient]
     """
 
     patients: List["_models.Patient"] = rest_field()
@@ -1207,9 +1185,8 @@ class Request(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1219,9 +1196,9 @@ class OncoPhenotypeRequest(Request):
     All required parameters must be populated in order to send to Azure.
 
     :ivar patients: The list of patients, including their clinical information and data. Required.
-    :vartype patients: list[~healthdecisionsupportapi.models.Patient]
+    :vartype patients: list[~azure.ai.helathdecisionsupport.models.Patient]
     :ivar configuration: Configuration affecting the Onco Phenotype model's inference.
-    :vartype configuration: ~healthdecisionsupportapi.models.OncoPhenotypeModelConfiguration
+    :vartype configuration: ~azure.ai.helathdecisionsupport.models.OncoPhenotypeModelConfiguration
     """
 
     configuration: Optional["_models.OncoPhenotypeModelConfiguration"] = rest_field()
@@ -1242,9 +1219,8 @@ class OncoPhenotypeRequest(Request):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1267,11 +1243,11 @@ class OncoPhenotypeResponse(_model_base.Model):
     :vartype last_update_date_time: ~datetime.datetime
     :ivar status: The status of the processing job. Required. Known values are: "notStarted",
      "running", "succeeded", "failed", and "partiallyCompleted".
-    :vartype status: str or ~healthdecisionsupportapi.models.JobStatus
+    :vartype status: str or ~azure.ai.helathdecisionsupport.models.JobStatus
     :ivar errors: An array of errors, if any errors occurred during the processing job.
-    :vartype errors: list[~healthdecisionsupportapi.models.Error]
+    :vartype errors: list[~azure.ai.helathdecisionsupport.models.Error]
     :ivar results: The inference results for the Onco Phenotype request.
-    :vartype results: ~healthdecisionsupportapi.models.OncoPhenotypeResults
+    :vartype results: ~azure.ai.helathdecisionsupport.models.OncoPhenotypeResults
     """
 
     job_id: str = rest_field(name="jobId", readonly=True)
@@ -1308,9 +1284,8 @@ class OncoPhenotypeResponse(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1320,7 +1295,7 @@ class OncoPhenotypeResults(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar patients: Results for the patients given in the request. Required.
-    :vartype patients: list[~healthdecisionsupportapi.models.OncoPhenotypePatientResult]
+    :vartype patients: list[~azure.ai.helathdecisionsupport.models.OncoPhenotypePatientResult]
     :ivar model_version: The version of the model used for inference, expressed as the model date.
      Required.
     :vartype model_version: ~datetime.date
@@ -1346,9 +1321,8 @@ class OncoPhenotypeResults(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1362,9 +1336,9 @@ class Patient(_model_base.Model):
     :vartype id: str
     :ivar info: Patient structured information, including demographics and known structured
      clinical information.
-    :vartype info: ~healthdecisionsupportapi.models.PatientInfo
+    :vartype info: ~azure.ai.helathdecisionsupport.models.PatientInfo
     :ivar data: Patient unstructured clinical data, given as documents.
-    :vartype data: list[~healthdecisionsupportapi.models.PatientDocument]
+    :vartype data: list[~azure.ai.helathdecisionsupport.models.PatientDocument]
     """
 
     id: str = rest_field()
@@ -1390,25 +1364,25 @@ class Patient(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
 class PatientDocument(_model_base.Model):
-    """A clinical document related to a patient. Document here is in the wide sense - not just a text document (note).
+    """A clinical document related to a patient. Document here is in the wide sense - not just a text
+    document (note).
 
     All required parameters must be populated in order to send to Azure.
 
     :ivar type: The type of the patient document, such as 'note' (text document) or 'fhirBundle'
      (FHIR JSON document). Required. Known values are: "note", "fhirBundle", "dicom", and
      "genomicSequencing".
-    :vartype type: str or ~healthdecisionsupportapi.models.DocumentType
+    :vartype type: str or ~azure.ai.helathdecisionsupport.models.DocumentType
     :ivar clinical_type: The type of the clinical document. Known values are: "consultation",
      "dischargeSummary", "historyAndPhysical", "procedure", "progress", "imaging", "laboratory", and
      "pathology".
-    :vartype clinical_type: str or ~healthdecisionsupportapi.models.ClinicalDocumentType
+    :vartype clinical_type: str or ~azure.ai.helathdecisionsupport.models.ClinicalDocumentType
     :ivar id: A given identifier for the document. Has to be unique across all documents for a
      single patient. Required.
     :vartype id: str
@@ -1417,7 +1391,7 @@ class PatientDocument(_model_base.Model):
     :ivar created_date_time: The date and time when the document was created.
     :vartype created_date_time: ~datetime.datetime
     :ivar content: The content of the patient document. Required.
-    :vartype content: ~healthdecisionsupportapi.models.DocumentContent
+    :vartype content: ~azure.ai.helathdecisionsupport.models.DocumentContent
     """
 
     type: Union[str, "_models.DocumentType"] = rest_field()
@@ -1452,21 +1426,21 @@ class PatientDocument(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
 class PatientInfo(_model_base.Model):
-    """Patient structured information, including demographics and known structured clinical information.
+    """Patient structured information, including demographics and known structured clinical
+    information.
 
     :ivar gender: The patient's gender. Known values are: "female", "male", and "unspecified".
-    :vartype gender: str or ~healthdecisionsupportapi.models.PatientInfoGender
+    :vartype gender: str or ~azure.ai.helathdecisionsupport.models.PatientInfoGender
     :ivar birth_date: The patient's date of birth.
     :vartype birth_date: ~datetime.date
     :ivar clinical_info: Known clinical information for the patient, structured.
-    :vartype clinical_info: list[~healthdecisionsupportapi.models.ClinicalCodedElement]
+    :vartype clinical_info: list[~azure.ai.helathdecisionsupport.models.ClinicalCodedElement]
     """
 
     gender: Optional[Union[str, "_models.PatientInfoGender"]] = rest_field()
@@ -1492,9 +1466,8 @@ class PatientInfo(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1504,7 +1477,7 @@ class TrialMatcherInference(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar type: The type of the Trial Matcher inference. Required. "trialEligibility"
-    :vartype type: str or ~healthdecisionsupportapi.models.TrialMatcherInferenceType
+    :vartype type: str or ~azure.ai.helathdecisionsupport.models.TrialMatcherInferenceType
     :ivar value: The value of the inference, as relevant for the given inference type. Required.
     :vartype value: str
     :ivar description: The description corresponding to the inference value.
@@ -1512,14 +1485,14 @@ class TrialMatcherInference(_model_base.Model):
     :ivar confidence_score: Confidence score for this inference.
     :vartype confidence_score: float
     :ivar evidence: The evidence corresponding to the inference value.
-    :vartype evidence: list[~healthdecisionsupportapi.models.TrialMatcherInferenceEvidence]
+    :vartype evidence: list[~azure.ai.helathdecisionsupport.models.TrialMatcherInferenceEvidence]
     :ivar id: The identifier of the clinical trial.
     :vartype id: str
     :ivar source: Possible sources of a clinical trial. Known values are: "custom" and
      "clinicaltrials.gov".
-    :vartype source: str or ~healthdecisionsupportapi.models.ClinicalTrialSource
+    :vartype source: str or ~azure.ai.helathdecisionsupport.models.ClinicalTrialSource
     :ivar metadata: Trial data which is of interest to the potential participant.
-    :vartype metadata: ~healthdecisionsupportapi.models.ClinicalTrialMetadata
+    :vartype metadata: ~azure.ai.helathdecisionsupport.models.ClinicalTrialMetadata
     """
 
     type: Union[str, "_models.TrialMatcherInferenceType"] = rest_field()
@@ -1560,9 +1533,8 @@ class TrialMatcherInference(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1573,11 +1545,11 @@ class TrialMatcherInferenceEvidence(_model_base.Model):
      a clinical trial.
     :vartype eligibility_criteria_evidence: str
     :ivar patient_data_evidence: A piece of evidence from a clinical note (text document).
-    :vartype patient_data_evidence: ~healthdecisionsupportapi.models.ClinicalNoteEvidence
+    :vartype patient_data_evidence: ~azure.ai.helathdecisionsupport.models.ClinicalNoteEvidence
     :ivar patient_info_evidence: A piece of clinical information, expressed as a code in a clinical
      coding
      system.
-    :vartype patient_info_evidence: ~healthdecisionsupportapi.models.ClinicalCodedElement
+    :vartype patient_info_evidence: ~azure.ai.helathdecisionsupport.models.ClinicalCodedElement
     :ivar importance: A value indicating how important this piece of evidence is for the inference.
     :vartype importance: float
     """
@@ -1609,9 +1581,8 @@ system. """
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1630,7 +1601,7 @@ class TrialMatcherModelConfiguration(ModelConfiguration):
      selection can be given as a list of custom clinical trials and/or a list of
      filters to known clinical trial registries. In case both are given, the
      resulting trial set is a union of the two sets. Required.
-    :vartype clinical_trials: ~healthdecisionsupportapi.models.ClinicalTrials
+    :vartype clinical_trials: ~azure.ai.helathdecisionsupport.models.ClinicalTrials
     """
 
     clinical_trials: "_models.ClinicalTrials" = rest_field(name="clinicalTrials")
@@ -1655,9 +1626,8 @@ resulting trial set is a union of the two sets. Required. """
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1669,11 +1639,12 @@ class TrialMatcherPatientResult(_model_base.Model):
     :ivar id: The identifier given for the patient in the request. Required.
     :vartype id: str
     :ivar inferences: The model's inferences for the given patient. Required.
-    :vartype inferences: list[~healthdecisionsupportapi.models.TrialMatcherInference]
+    :vartype inferences: list[~azure.ai.helathdecisionsupport.models.TrialMatcherInference]
     :ivar needed_clinical_info: Clinical information which is needed to provide better trial
+     matching results for the patient. Clinical information which is needed to provide better trial
      matching results for the patient.
     :vartype needed_clinical_info:
-     list[~healthdecisionsupportapi.models.ExtendedClinicalCodedElement]
+     list[~azure.ai.helathdecisionsupport.models.ExtendedClinicalCodedElement]
     """
 
     id: str = rest_field()
@@ -1681,7 +1652,7 @@ class TrialMatcherPatientResult(_model_base.Model):
     inferences: List["_models.TrialMatcherInference"] = rest_field()
     """The model's inferences for the given patient. Required. """
     needed_clinical_info: Optional[List["_models.ExtendedClinicalCodedElement"]] = rest_field(name="neededClinicalInfo")
-    """Clinical information which is needed to provide better trial matching results for the patient. """
+    """Clinical information which is needed to provide better trial matching results for the patient. Clinical information which is needed to provide better trial matching results for the patient."""
 
     @overload
     def __init__(
@@ -1699,9 +1670,8 @@ class TrialMatcherPatientResult(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1711,9 +1681,9 @@ class TrialMatcherRequest(Request):
     All required parameters must be populated in order to send to Azure.
 
     :ivar patients: The list of patients, including their clinical information and data. Required.
-    :vartype patients: list[~healthdecisionsupportapi.models.Patient]
+    :vartype patients: list[~azure.ai.helathdecisionsupport.models.Patient]
     :ivar configuration: Configuration affecting the Trial Matcher model's inference.
-    :vartype configuration: ~healthdecisionsupportapi.models.TrialMatcherModelConfiguration
+    :vartype configuration: ~azure.ai.helathdecisionsupport.models.TrialMatcherModelConfiguration
     """
 
     configuration: Optional["_models.TrialMatcherModelConfiguration"] = rest_field()
@@ -1734,9 +1704,8 @@ class TrialMatcherRequest(Request):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1759,11 +1728,11 @@ class TrialMatcherResponse(_model_base.Model):
     :vartype last_update_date_time: ~datetime.datetime
     :ivar status: The status of the processing job. Required. Known values are: "notStarted",
      "running", "succeeded", "failed", and "partiallyCompleted".
-    :vartype status: str or ~healthdecisionsupportapi.models.JobStatus
+    :vartype status: str or ~azure.ai.helathdecisionsupport.models.JobStatus
     :ivar errors: An array of errors, if any errors occurred during the processing job.
-    :vartype errors: list[~healthdecisionsupportapi.models.Error]
+    :vartype errors: list[~azure.ai.helathdecisionsupport.models.Error]
     :ivar results: The inference results for the Trial Matcher request.
-    :vartype results: ~healthdecisionsupportapi.models.TrialMatcherResults
+    :vartype results: ~azure.ai.helathdecisionsupport.models.TrialMatcherResults
     """
 
     job_id: str = rest_field(name="jobId", readonly=True)
@@ -1800,9 +1769,8 @@ class TrialMatcherResponse(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)
 
 
@@ -1812,7 +1780,7 @@ class TrialMatcherResults(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar patients: Results for the patients given in the request. Required.
-    :vartype patients: list[~healthdecisionsupportapi.models.TrialMatcherPatientResult]
+    :vartype patients: list[~azure.ai.helathdecisionsupport.models.TrialMatcherPatientResult]
     :ivar model_version: The version of the model used for inference, expressed as the model date.
      Required.
     :vartype model_version: ~datetime.date
@@ -1844,7 +1812,6 @@ class TrialMatcherResults(_model_base.Model):
         :param mapping: raw JSON to initialize the model.
         :type mapping: Mapping[str, Any]
         """
-        ...
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):  # pylint: disable=useless-super-delegation
         super().__init__(*args, **kwargs)

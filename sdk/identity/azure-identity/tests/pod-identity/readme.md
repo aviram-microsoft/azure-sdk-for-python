@@ -156,7 +156,7 @@ az aks get-credentials -g $RESOURCE_GROUP -n $AKS_NAME
 
 ### Run the test script
 ```sh
-python ./pod-identity/run-test.py \
+python ./pod-identity/run-test_sync.py \
  --client-id $MANAGED_IDENTITY_CLIENT_ID \
  --resource-id $MANAGED_IDENTITY_ID \
  --vault-url https://$KEY_VAULT_NAME.vault.azure.net \

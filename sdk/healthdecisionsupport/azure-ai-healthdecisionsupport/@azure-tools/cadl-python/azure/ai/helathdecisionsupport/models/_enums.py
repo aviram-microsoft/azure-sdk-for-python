@@ -11,7 +11,7 @@ from azure.core import CaseInsensitiveEnumMeta
 
 
 class AgeUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """AgeUnit."""
+    """Possible units for a person's age."""
 
     YEARS = "years"
     MONTHS = "months"
@@ -19,7 +19,7 @@ class AgeUnit(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class ClinicalDocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """ClinicalDocumentType."""
+    """The type of the clinical document."""
 
     CONSULTATION = "consultation"
     DISCHARGE_SUMMARY = "dischargeSummary"
@@ -32,14 +32,14 @@ class ClinicalDocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class ClinicalTrialAcceptedGender(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """ClinicalTrialAcceptedGender."""
+    """Gender definitions as accepted by clinical trials."""
 
     FEMALE = "female"
     MALE = "male"
 
 
 class ClinicalTrialPhase(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """ClinicalTrialPhase."""
+    """Possible phases of a clinical trial."""
 
     NOT_APPLICABLE = "notApplicable"
     EARLY_PHASE1 = "earlyPhase1"
@@ -50,7 +50,7 @@ class ClinicalTrialPhase(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class ClinicalTrialPurpose(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """ClinicalTrialPurpose."""
+    """Possible purposes of a clinical trial."""
 
     NOT_APPLICABLE = "notApplicable"
     SCREENING = "screening"
@@ -65,7 +65,7 @@ class ClinicalTrialPurpose(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class ClinicalTrialRecruitmentStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """ClinicalTrialRecruitmentStatus."""
+    """Possible recruitment status of a clinical trial."""
 
     UNKNOWN_STATUS = "unknownStatus"
     NOT_YET_RECRUITING = "notYetRecruiting"
@@ -74,14 +74,14 @@ class ClinicalTrialRecruitmentStatus(str, Enum, metaclass=CaseInsensitiveEnumMet
 
 
 class ClinicalTrialSource(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """ClinicalTrialSource."""
+    """Possible sources of a clinical trial."""
 
     CUSTOM = "custom"
     CLINICALTRIALS_GOV = "clinicaltrials.gov"
 
 
 class ClinicalTrialStudyType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """ClinicalTrialStudyType."""
+    """Possible study types of a clinical trial."""
 
     INTERVENTIONAL = "interventional"
     OBSERVATIONAL = "observational"
@@ -90,14 +90,19 @@ class ClinicalTrialStudyType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class DocumentContentSourceType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """DocumentContentSourceType."""
+    """The type of the content's source.
+    In case the source type is 'inline', the content is given as a string (for instance, text).
+    In case the source type is 'reference', the content is given as a URI.
+    """
 
     INLINE = "inline"
     REFERENCE = "reference"
 
 
 class DocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """DocumentType."""
+    """The type of the patient document, such as 'note' (text document) or 'fhirBundle' (FHIR JSON
+    document).
+    """
 
     NOTE = "note"
     FHIR_BUNDLE = "fhirBundle"
@@ -106,25 +111,25 @@ class DocumentType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class GeoJsonGeometryType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """GeoJsonGeometryType."""
+    """``GeoJSON`` geometry type."""
 
     POINT = "Point"
 
 
 class GeoJsonPropertiesSubType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """GeoJsonPropertiesSubType."""
+    """``GeoJSON`` object sub-type."""
 
     CIRCLE = "Circle"
 
 
 class GeoJsonType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """GeoJsonType."""
+    """``GeoJSON`` type."""
 
     FEATURE = "Feature"
 
 
 class JobStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """JobStatus."""
+    """The status of the processing job."""
 
     NOT_STARTED = "notStarted"
     RUNNING = "running"
@@ -134,7 +139,7 @@ class JobStatus(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class OncoPhenotypeInferenceType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """OncoPhenotypeInferenceType."""
+    """The type of the Onco Phenotype inference."""
 
     TUMOR_SITE = "tumorSite"
     HISTOLOGY = "histology"
@@ -147,7 +152,7 @@ class OncoPhenotypeInferenceType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class PatientInfoGender(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """PatientInfoGender."""
+    """The patient's gender."""
 
     FEMALE = "female"
     MALE = "male"
@@ -155,13 +160,16 @@ class PatientInfoGender(str, Enum, metaclass=CaseInsensitiveEnumMeta):
 
 
 class RepeatabilityResult(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """RepeatabilityResult."""
+    """ "The result of a repeatable request (\ ``accepted``\ /\ ``rejected``\ ), as specified in `OASIS
+    Repeatable Requests Version 1.0
+    <https://docs.oasis-open.org/odata/repeatable-requests/v1.0/cs01/repeatable-requests-v1.0-cs01.html#sec_RepeatabilityResult>`_.
+    """
 
     ACCEPTED = "accepted"
     REJECTED = "rejected"
 
 
 class TrialMatcherInferenceType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """TrialMatcherInferenceType."""
+    """The type of the Trial Matcher inference."""
 
     TRIAL_ELIGIBILITY = "trialEligibility"
