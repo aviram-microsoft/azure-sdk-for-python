@@ -3,7 +3,7 @@ import functools
 # sys.path.append("../azure/healthdecisionsupport")
 # sys.path.append("..")
 
-from azure.ai.helathdecisionsupport import TrialMatcherClient
+from azure.ai.helathdecisionsupport import OncoPhenotypeClient
 
 from devtools_testutils import (
     AzureRecordedTestCase,
@@ -13,21 +13,21 @@ from devtools_testutils import (
 
 from azure.core.credentials import AzureKeyCredential
 
-TrialMatcherDetectorEnvPreparer = functools.partial(
+OncoEnvPreparer = functools.partial(
     PowerShellPreparer,
-    "trial_matcher",
-    trial_matcher_endpoint="https://westeurope.api.cognitive.microsoft.com/",
-    trial_matcher_key="95c92b4a837a420c83d37ef2689d7f4a",
+    "onco",
+    endpoint="https://westeurope.api.cognitive.microsoft.com",
+    key="95c92b4a837a420c83d37ef2689d7f4a",
 )
 
-class TestTrialMatcher(AzureRecordedTestCase):
-    @TrialMatcherDetectorEnvPreparer()
+class TestOnco(AzureRecordedTestCase):
+    @OncoEnvPreparer()
     @recorded_by_proxy
-    def test_trialmatcher_connection(self, **kwargs):
-        trial_matcher_endpoint = kwargs.pop("trial_matcher_endpoint")
-        trial_matcher_key = kwargs.pop("trial_matcher_key")
-        trial_matcher_client = TrialMatcherClient(trial_matcher_endpoint, AzureKeyCredential(trial_matcher_key))
-        assert trial_matcher_client is not None
+    def test_onco(self, **kwargs):
+        onco_endpoint = kwargs.pop("endpoint")
+        onco_key = kwargs.pop("key")
+        onco_client = OncoPhenotypeClient(onco_endpoint, AzureKeyCredential(onco_key))
+        assert onco_client is not None
         #
         # f = open('bodySample.json')
         # j = json.load(f)
