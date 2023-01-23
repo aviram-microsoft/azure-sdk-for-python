@@ -1,6 +1,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
 
+import os
 import datetime
 import asyncio
 import json
@@ -9,18 +10,16 @@ from azure.core.credentials import AzureKeyCredential
 from azure.ai.helathdecisionsupport.models import *
 from azure.ai.helathdecisionsupport.aio import OncoPhenotypeClient
 
-# delete it!
-########################################################################
-endpoint = "https://westeurope.api.cognitive.microsoft.com"
-key = "95c92b4a837a420c83d37ef2689d7f4a"
-
 
 class HealthDecisionSupportSamples:
     async def create_onco_phenotype_job(self):
+        KEY = os.getenv("HEALTH_DECISION_SUPPORT_KEY")
+        ENDPOINT = os.getenv("HEALTH_DECISION_SUPPORT_ENDPOINT")
+
         # Create an Onco Phenotype client
         # <client>
-        onco_phenotype_client = OncoPhenotypeClient(endpoint=endpoint,
-                                                    credential=AzureKeyCredential(key))
+        onco_phenotype_client = OncoPhenotypeClient(endpoint=ENDPOINT,
+                                                    credential=AzureKeyCredential(KEY))
         # </client>
 
         # Construct patient

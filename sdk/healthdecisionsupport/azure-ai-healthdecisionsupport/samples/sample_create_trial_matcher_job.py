@@ -1,6 +1,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
 
+import os
 import datetime
 import asyncio
 import json
@@ -9,18 +10,16 @@ from azure.core.credentials import AzureKeyCredential
 from azure.ai.helathdecisionsupport.models import *
 from azure.ai.helathdecisionsupport.aio import TrialMatcherClient
 
-# delete it!
-########################################################################
-endpoint = "https://westeurope.api.cognitive.microsoft.com"
-key = "95c92b4a837a420c83d37ef2689d7f4a"
-
 
 class HealthDecisionSupportSamples:
     async def create_trial_matcher_job(self):
+        KEY = os.getenv("HEALTH_DECISION_SUPPORT_KEY")
+        ENDPOINT = os.getenv("HEALTH_DECISION_SUPPORT_ENDPOINT")
+
         # Create an Trial Matcher client
         # <client>
-        trial_matcher_client = TrialMatcherClient(endpoint=endpoint,
-                                                  credential=AzureKeyCredential(key))
+        trial_matcher_client = TrialMatcherClient(endpoint=ENDPOINT,
+                                                  credential=AzureKeyCredential(KEY))
         # </client>
 
         # Create clinical info list
@@ -97,8 +96,8 @@ class HealthDecisionSupportSamples:
 
         # view operation results
         def callback(response):
-            trial_matcher_response = load_json(response.http_response.content)
             if response.http_request.method == "GET":
+                trial_matcher_response = load_json(response.http_response.content)
                 if trial_matcher_response.status == JobStatus.SUCCEEDED:
                     tm_results = trial_matcher_response.results
                     for patient_result in tm_results.patients:
