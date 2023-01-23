@@ -10,15 +10,27 @@ from azure.ai.helathdecisionsupport.models import *
 from azure.ai.helathdecisionsupport.aio import OncoPhenotypeClient
 
 # delete it!
+########################################################################
 endpoint = "https://westeurope.api.cognitive.microsoft.com"
 key = "95c92b4a837a420c83d37ef2689d7f4a"
 
 
 class HealthDecisionSupportSamples:
     async def create_onco_phenotype_job(self):
+        # Create an Onco Phenotype client
+        # <client>
+        onco_phenotype_client = OncoPhenotypeClient(endpoint=endpoint,
+                                                    credential=AzureKeyCredential(key))
+        # </client>
+
+        # Construct patient
+        # <PatientConstructor>
         patient_info = PatientInfo(gender=PatientInfoGender.FEMALE, birth_date=datetime.date(1979, 10, 8))
         patient1 = Patient(id="patient_id", info=patient_info)
+        # </PatientConstructor>
 
+        # Add document list
+        # <DocumentList>
         doc_content1 = "15.8.2021" \
                        + "Jane Doe 091175-8967" \
                        + "42 year old female, married with 3 children, works as a nurse. " \
@@ -89,7 +101,8 @@ class HealthDecisionSupportSamples:
                        + "                               Diagnosis" \
                        + " A.  BREAST, LEFT AT 2:00 4 CM FN; ULTRASOUND-GUIDED NEEDLE CORE BIOPSIES:" \
                        + " - Invasive carcinoma of no special type (invasive ductal carcinoma), grade 1" \
-                       + " Nottingham histologic grade:  1/3 (tubules 2; nuclear grade 2; mitotic rate 1; total score;  5/9)" \
+                       + " Nottingham histologic grade:  1/3 (tubules 2; nuclear grade 2; mitotic rate 1; " \
+                       + " total score; 5/9)" \
                        + " Fragments involved by invasive carcinoma:  2" \
                        + " Largest measurement of invasive carcinoma on a single fragment:  7 mm" \
                        + " Ductal carcinoma in situ (DCIS):  Present" \
@@ -113,12 +126,15 @@ class HealthDecisionSupportSamples:
 
         patient_doc_list = [patient_document1, patient_document2, patient_document3]
         patient1.data = patient_doc_list
+        # <\DocumentList>
+
+        # Set configuration to include evidence for the cancer staging inferences
         configuration = OncoPhenotypeModelConfiguration(include_evidence=True)
+
+        # Construct the request with the patient and configuration
         onco_phenotype_request = OncoPhenotypeRequest(patients=[patient1], configuration=configuration)
 
-        onco_phenotype_client = OncoPhenotypeClient(endpoint=endpoint,
-                                                    credential=AzureKeyCredential(key))
-
+        # view operation results
         def callback(response):
             if response.http_request.method == "GET":
                 onco_phenotype_response = load_json(response.http_response.content)
@@ -128,21 +144,26 @@ class HealthDecisionSupportSamples:
                         print(f"\n==== Inferences of Patient {patient_result.id} ====")
                         for onco_inference in patient_result.inferences:
                             print(
-                                f"\n=== Clinical Type: {str(onco_inference.type)} Value: {onco_inference.value} ConfidenceScore: {onco_inference.confidence_score} ===")
+                                f"\n=== Clinical Type: {str(onco_inference.type)} Value: {onco_inference.value}\
+                                 ConfidenceScore: {onco_inference.confidence_score} ===")
                             for evidence in onco_inference.evidence:
                                 if evidence.patient_data_evidence is not None:
                                     data_evidence = evidence.patient_data_evidence
                                     print(
-                                        f"Evidence {data_evidence.id} {data_evidence.offset} {data_evidence.length} {data_evidence.text}")
+                                        f"Evidence {data_evidence.id} {data_evidence.offset} {data_evidence.length}\
+                                         {data_evidence.text}")
                                 if evidence.patient_info_evidence is not None:
                                     info_evidence = evidence.patient_info_evidence
                                     print(
-                                        f"Evidence {info_evidence.system} {info_evidence.code} {info_evidence.name} {info_evidence.value}")
-                        else:
-                            onco_errors = onco_phenotype_response.errors
-                            for error in onco_errors:
-                                print(f"{error.code} : {error.message}")
+                                        f"Evidence {info_evidence.system} {info_evidence.code} {info_evidence.name}\
+                                         {info_evidence.value}")
+                else:
+                    onco_errors = onco_phenotype_response.errors
+                    if onco_errors is not None:
+                        for error in onco_errors:
+                            print(f"{error.code} : {error.message}")
 
+        # Health Decision Support Onco Phenotype create job async
         try:
             poller = await onco_phenotype_client.begin_create_job(onco_phenotype_request, raw_response_hook=callback)
             await poller.wait()
