@@ -7,7 +7,7 @@
 ### Installating the package
 
 ```bash
-python -m pip install azure-ai-helathdecisionsupport
+python -m pip install azure-ai-healthdecisionsupport
 ```
 
 #### Prequisites

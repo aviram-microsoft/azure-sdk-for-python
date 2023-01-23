@@ -12,7 +12,7 @@ import re
 from setuptools import setup, find_packages
 
 
-PACKAGE_NAME = "azure-ai-helathdecisionsupport"
+PACKAGE_NAME = "azure-ai-healthdecisionsupport"
 PACKAGE_PPRINT_NAME = "None"
 
 # a-b-c => a/b/c

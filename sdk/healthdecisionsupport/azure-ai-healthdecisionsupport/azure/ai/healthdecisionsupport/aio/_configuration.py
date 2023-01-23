@@ -50,7 +50,7 @@ class TrialMatcherClientConfiguration(Configuration):  # pylint: disable=too-man
         self.endpoint = endpoint
         self.credential = credential
         self.api_version = api_version
-        kwargs.setdefault("sdk_moniker", "ai-helathdecisionsupport/{}".format(VERSION))
+        kwargs.setdefault("sdk_moniker", "ai-healthdecisionsupport/{}".format(VERSION))
         self._configure(**kwargs)
 
     def _configure(self, **kwargs: Any) -> None:
@@ -98,7 +98,7 @@ class OncoPhenotypeClientConfiguration(Configuration):  # pylint: disable=too-ma
         self.endpoint = endpoint
         self.credential = credential
         self.api_version = api_version
-        kwargs.setdefault("sdk_moniker", "ai-helathdecisionsupport/{}".format(VERSION))
+        kwargs.setdefault("sdk_moniker", "ai-healthdecisionsupport/{}".format(VERSION))
         self._configure(**kwargs)
 
     def _configure(self, **kwargs: Any) -> None:

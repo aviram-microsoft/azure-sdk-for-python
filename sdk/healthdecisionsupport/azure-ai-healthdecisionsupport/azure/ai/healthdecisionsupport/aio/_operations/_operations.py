@@ -20,156 +20,34 @@ from azure.core.exceptions import (
     map_error,
 )
 from azure.core.pipeline import PipelineResponse
-from azure.core.pipeline.transport import HttpResponse
-from azure.core.polling import LROPoller, NoPolling, PollingMethod
-from azure.core.polling.base_polling import LROBasePolling
+from azure.core.pipeline.transport import AsyncHttpResponse
+from azure.core.polling import AsyncLROPoller, AsyncNoPolling, AsyncPollingMethod
+from azure.core.polling.async_base_polling import AsyncLROBasePolling
 from azure.core.rest import HttpRequest
-from azure.core.tracing.decorator import distributed_trace
+from azure.core.tracing.decorator_async import distributed_trace_async
 from azure.core.utils import case_insensitive_dict
 
-from .. import models as _models
-from .._model_base import AzureJSONEncoder, _deserialize
-from .._serialization import Serializer
-from .._vendor import OncoPhenotypeClientMixinABC, TrialMatcherClientMixinABC, _format_url_section
+from ... import models as _models
+from ..._model_base import AzureJSONEncoder, _deserialize
+from ..._operations._operations import (
+    build_onco_phenotype_create_job_request,
+    build_onco_phenotype_get_job_request,
+    build_trial_matcher_create_job_request,
+    build_trial_matcher_get_job_request,
+)
+from .._vendor import OncoPhenotypeClientMixinABC, TrialMatcherClientMixinABC
 
 if sys.version_info >= (3, 9):
     from collections.abc import MutableMapping
 else:
     from typing import MutableMapping  # type: ignore  # pylint: disable=ungrouped-imports
-if sys.version_info >= (3, 8):
-    from typing import Literal  # pylint: disable=no-name-in-module, ungrouped-imports
-else:
-    from typing_extensions import Literal  # type: ignore  # pylint: disable=ungrouped-imports
 JSON = MutableMapping[str, Any]  # pylint: disable=unsubscriptable-object
 T = TypeVar("T")
-ClsType = Optional[Callable[[PipelineResponse[HttpRequest, HttpResponse], T, Dict[str, Any]], Any]]
-
-_SERIALIZER = Serializer()
-_SERIALIZER.client_side_validation = False
-
-
-def build_trial_matcher_create_job_request(
-    *,
-    repeatability_request_id: Optional[str] = None,
-    repeatability_first_sent: Optional[datetime.datetime] = None,
-    **kwargs: Any
-) -> HttpRequest:
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
-
-    content_type: Optional[str] = kwargs.pop("content_type", _headers.pop("Content-Type", None))
-    api_version: Literal["2022-01-01-preview"] = kwargs.pop(
-        "api_version", _params.pop("api-version", "2022-01-01-preview")
-    )
-    # Construct URL
-    _url = "/trialmatcher/jobs"
-
-    # Construct parameters
-    _params["api-version"] = _SERIALIZER.query("api_version", api_version, "str")
-
-    # Construct headers
-    if repeatability_request_id is not None:
-        _headers["Repeatability-Request-ID"] = _SERIALIZER.header(
-            "repeatability_request_id", repeatability_request_id, "str"
-        )
-    if repeatability_first_sent is not None:
-        _headers["Repeatability-First-Sent"] = _SERIALIZER.header(
-            "repeatability_first_sent", repeatability_first_sent, "iso-8601"
-        )
-    if content_type is not None:
-        _headers["Content-Type"] = _SERIALIZER.header("content_type", content_type, "str")
-
-    return HttpRequest(method="POST", url=_url, params=_params, headers=_headers, **kwargs)
-
-
-def build_trial_matcher_get_job_request(job_id: str, **kwargs: Any) -> HttpRequest:
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
-
-    api_version: Literal["2022-01-01-preview"] = kwargs.pop(
-        "api_version", _params.pop("api-version", "2022-01-01-preview")
-    )
-    accept = _headers.pop("Accept", "application/json")
-
-    # Construct URL
-    _url = "/trialmatcher/jobs/{jobId}"
-    path_format_arguments = {
-        "jobId": _SERIALIZER.url("job_id", job_id, "str"),
-    }
-
-    _url: str = _format_url_section(_url, **path_format_arguments)  # type: ignore
-
-    # Construct parameters
-    _params["api-version"] = _SERIALIZER.query("api_version", api_version, "str")
-
-    # Construct headers
-    _headers["Accept"] = _SERIALIZER.header("accept", accept, "str")
-
-    return HttpRequest(method="GET", url=_url, params=_params, headers=_headers, **kwargs)
-
-
-def build_onco_phenotype_create_job_request(
-    *,
-    repeatability_request_id: Optional[str] = None,
-    repeatability_first_sent: Optional[datetime.datetime] = None,
-    **kwargs: Any
-) -> HttpRequest:
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
-
-    content_type: Optional[str] = kwargs.pop("content_type", _headers.pop("Content-Type", None))
-    api_version: Literal["2022-01-01-preview"] = kwargs.pop(
-        "api_version", _params.pop("api-version", "2022-01-01-preview")
-    )
-    # Construct URL
-    _url = "/oncophenotype/jobs"
-
-    # Construct parameters
-    _params["api-version"] = _SERIALIZER.query("api_version", api_version, "str")
-
-    # Construct headers
-    if repeatability_request_id is not None:
-        _headers["Repeatability-Request-ID"] = _SERIALIZER.header(
-            "repeatability_request_id", repeatability_request_id, "str"
-        )
-    if repeatability_first_sent is not None:
-        _headers["Repeatability-First-Sent"] = _SERIALIZER.header(
-            "repeatability_first_sent", repeatability_first_sent, "iso-8601"
-        )
-    if content_type is not None:
-        _headers["Content-Type"] = _SERIALIZER.header("content_type", content_type, "str")
-
-    return HttpRequest(method="POST", url=_url, params=_params, headers=_headers, **kwargs)
-
-
-def build_onco_phenotype_get_job_request(job_id: str, **kwargs: Any) -> HttpRequest:
-    _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
-    _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
-
-    api_version: Literal["2022-01-01-preview"] = kwargs.pop(
-        "api_version", _params.pop("api-version", "2022-01-01-preview")
-    )
-    accept = _headers.pop("Accept", "application/json")
-
-    # Construct URL
-    _url = "/oncophenotype/jobs/{jobId}"
-    path_format_arguments = {
-        "jobId": _SERIALIZER.url("job_id", job_id, "str"),
-    }
-
-    _url: str = _format_url_section(_url, **path_format_arguments)  # type: ignore
-
-    # Construct parameters
-    _params["api-version"] = _SERIALIZER.query("api_version", api_version, "str")
-
-    # Construct headers
-    _headers["Accept"] = _SERIALIZER.header("accept", accept, "str")
-
-    return HttpRequest(method="GET", url=_url, params=_params, headers=_headers, **kwargs)
+ClsType = Optional[Callable[[PipelineResponse[HttpRequest, AsyncHttpResponse], T, Dict[str, Any]], Any]]
 
 
 class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
-    def _create_job_initial(  # pylint: disable=inconsistent-return-statements
+    async def _create_job_initial(  # pylint: disable=inconsistent-return-statements
         self,
         body: Union[_models.TrialMatcherRequest, JSON, IO],
         *,
@@ -212,7 +90,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         }
         request.url = self._client.format_url(request.url, **path_format_arguments)
 
-        pipeline_response: PipelineResponse = self._client._pipeline.run(  # pylint: disable=protected-access
+        pipeline_response: PipelineResponse = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
             request, stream=False, **kwargs
         )
 
@@ -233,7 +111,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
             return cls(pipeline_response, None, response_headers)
 
     @overload
-    def begin_create_job(
+    async def begin_create_job(
         self,
         body: _models.TrialMatcherRequest,
         *,
@@ -241,13 +119,13 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         repeatability_first_sent: Optional[datetime.datetime] = None,
         content_type: str = "application/json",
         **kwargs: Any
-    ) -> LROPoller[None]:
+    ) -> AsyncLROPoller[None]:
         """Create Trial Matcher job.
 
         Creates a Trial Matcher job with the given request body.
 
         :param body: The body of a Trial Matcher request. Required.
-        :type body: ~azure.ai.helathdecisionsupport.models.TrialMatcherRequest
+        :type body: ~azure.ai.healthdecisionsupport.models.TrialMatcherRequest
         :keyword repeatability_request_id: An opaque, globally-unique, client-generated string
          identifier for the request. Default value is None.
         :paramtype repeatability_request_id: str
@@ -258,19 +136,19 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
          Default value is "application/json".
         :paramtype content_type: str
         :keyword str continuation_token: A continuation token to restart a poller from a saved state.
-        :keyword polling: By default, your polling method will be LROBasePolling. Pass in False for
-         this operation to not poll, or pass in your own initialized polling object for a personal
+        :keyword polling: By default, your polling method will be AsyncLROBasePolling. Pass in False
+         for this operation to not poll, or pass in your own initialized polling object for a personal
          polling strategy.
-        :paramtype polling: bool or ~azure.core.polling.PollingMethod
+        :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no
          Retry-After header is present.
-        :return: An instance of LROPoller that returns None
-        :rtype: ~azure.core.polling.LROPoller[None]
+        :return: An instance of AsyncLROPoller that returns None
+        :rtype: ~azure.core.polling.AsyncLROPoller[None]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
 
     @overload
-    def begin_create_job(
+    async def begin_create_job(
         self,
         body: JSON,
         *,
@@ -278,7 +156,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         repeatability_first_sent: Optional[datetime.datetime] = None,
         content_type: str = "application/json",
         **kwargs: Any
-    ) -> LROPoller[None]:
+    ) -> AsyncLROPoller[None]:
         """Create Trial Matcher job.
 
         Creates a Trial Matcher job with the given request body.
@@ -295,19 +173,19 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
          Default value is "application/json".
         :paramtype content_type: str
         :keyword str continuation_token: A continuation token to restart a poller from a saved state.
-        :keyword polling: By default, your polling method will be LROBasePolling. Pass in False for
-         this operation to not poll, or pass in your own initialized polling object for a personal
+        :keyword polling: By default, your polling method will be AsyncLROBasePolling. Pass in False
+         for this operation to not poll, or pass in your own initialized polling object for a personal
          polling strategy.
-        :paramtype polling: bool or ~azure.core.polling.PollingMethod
+        :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no
          Retry-After header is present.
-        :return: An instance of LROPoller that returns None
-        :rtype: ~azure.core.polling.LROPoller[None]
+        :return: An instance of AsyncLROPoller that returns None
+        :rtype: ~azure.core.polling.AsyncLROPoller[None]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
 
     @overload
-    def begin_create_job(
+    async def begin_create_job(
         self,
         body: IO,
         *,
@@ -315,7 +193,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         repeatability_first_sent: Optional[datetime.datetime] = None,
         content_type: str = "application/json",
         **kwargs: Any
-    ) -> LROPoller[None]:
+    ) -> AsyncLROPoller[None]:
         """Create Trial Matcher job.
 
         Creates a Trial Matcher job with the given request body.
@@ -332,33 +210,33 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
          Default value is "application/json".
         :paramtype content_type: str
         :keyword str continuation_token: A continuation token to restart a poller from a saved state.
-        :keyword polling: By default, your polling method will be LROBasePolling. Pass in False for
-         this operation to not poll, or pass in your own initialized polling object for a personal
+        :keyword polling: By default, your polling method will be AsyncLROBasePolling. Pass in False
+         for this operation to not poll, or pass in your own initialized polling object for a personal
          polling strategy.
-        :paramtype polling: bool or ~azure.core.polling.PollingMethod
+        :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no
          Retry-After header is present.
-        :return: An instance of LROPoller that returns None
-        :rtype: ~azure.core.polling.LROPoller[None]
+        :return: An instance of AsyncLROPoller that returns None
+        :rtype: ~azure.core.polling.AsyncLROPoller[None]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
 
-    @distributed_trace
-    def begin_create_job(
+    @distributed_trace_async
+    async def begin_create_job(
         self,
         body: Union[_models.TrialMatcherRequest, JSON, IO],
         *,
         repeatability_request_id: Optional[str] = None,
         repeatability_first_sent: Optional[datetime.datetime] = None,
         **kwargs: Any
-    ) -> LROPoller[None]:
+    ) -> AsyncLROPoller[None]:
         """Create Trial Matcher job.
 
         Creates a Trial Matcher job with the given request body.
 
         :param body: The body of a Trial Matcher request. Is one of the following types: model, JSON,
          IO Required.
-        :type body: ~azure.ai.helathdecisionsupport.models.TrialMatcherRequest or JSON or IO
+        :type body: ~azure.ai.healthdecisionsupport.models.TrialMatcherRequest or JSON or IO
         :keyword repeatability_request_id: An opaque, globally-unique, client-generated string
          identifier for the request. Default value is None.
         :paramtype repeatability_request_id: str
@@ -369,14 +247,14 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
          value is None.
         :paramtype content_type: str
         :keyword str continuation_token: A continuation token to restart a poller from a saved state.
-        :keyword polling: By default, your polling method will be LROBasePolling. Pass in False for
-         this operation to not poll, or pass in your own initialized polling object for a personal
+        :keyword polling: By default, your polling method will be AsyncLROBasePolling. Pass in False
+         for this operation to not poll, or pass in your own initialized polling object for a personal
          polling strategy.
-        :paramtype polling: bool or ~azure.core.polling.PollingMethod
+        :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no
          Retry-After header is present.
-        :return: An instance of LROPoller that returns None
-        :rtype: ~azure.core.polling.LROPoller[None]
+        :return: An instance of AsyncLROPoller that returns None
+        :rtype: ~azure.core.polling.AsyncLROPoller[None]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
@@ -384,11 +262,11 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
 
         content_type: Optional[str] = kwargs.pop("content_type", _headers.pop("Content-Type", None))
         cls: ClsType[None] = kwargs.pop("cls", None)
-        polling: Union[bool, PollingMethod] = kwargs.pop("polling", True)
+        polling: Union[bool, AsyncPollingMethod] = kwargs.pop("polling", True)
         lro_delay = kwargs.pop("polling_interval", self._config.polling_interval)
         cont_token: Optional[str] = kwargs.pop("continuation_token", None)
         if cont_token is None:
-            raw_result = self._create_job_initial(  # type: ignore
+            raw_result = await self._create_job_initial(  # type: ignore
                 body=body,
                 repeatability_request_id=repeatability_request_id,
                 repeatability_first_sent=repeatability_first_sent,
@@ -409,24 +287,25 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         }
 
         if polling is True:
-            polling_method: PollingMethod = cast(
-                PollingMethod, LROBasePolling(lro_delay, path_format_arguments=path_format_arguments, **kwargs)
+            polling_method: AsyncPollingMethod = cast(
+                AsyncPollingMethod,
+                AsyncLROBasePolling(lro_delay, path_format_arguments=path_format_arguments, **kwargs),
             )
         elif polling is False:
-            polling_method = cast(PollingMethod, NoPolling())
+            polling_method = cast(AsyncPollingMethod, AsyncNoPolling())
         else:
             polling_method = polling
         if cont_token:
-            return LROPoller.from_continuation_token(
+            return AsyncLROPoller.from_continuation_token(
                 polling_method=polling_method,
                 continuation_token=cont_token,
                 client=self._client,
                 deserialization_callback=get_long_running_output,
             )
-        return LROPoller(self._client, raw_result, get_long_running_output, polling_method)  # type: ignore
+        return AsyncLROPoller(self._client, raw_result, get_long_running_output, polling_method)  # type: ignore
 
-    @distributed_trace
-    def get_job(self, job_id: str, **kwargs: Any) -> _models.TrialMatcherResponse:
+    @distributed_trace_async
+    async def get_job(self, job_id: str, **kwargs: Any) -> _models.TrialMatcherResponse:
         """Get Trial Matcher job details.
 
         Gets the status and details of the Trial Matcher job.
@@ -434,7 +313,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         :param job_id: A processing job identifier. Required.
         :type job_id: str
         :return: TrialMatcherResponse. The TrialMatcherResponse is compatible with MutableMapping
-        :rtype: ~azure.ai.helathdecisionsupport.models.TrialMatcherResponse
+        :rtype: ~azure.ai.healthdecisionsupport.models.TrialMatcherResponse
         :raises ~azure.core.exceptions.HttpResponseError:
         """
         error_map = {
@@ -461,7 +340,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         }
         request.url = self._client.format_url(request.url, **path_format_arguments)
 
-        pipeline_response: PipelineResponse = self._client._pipeline.run(  # pylint: disable=protected-access
+        pipeline_response: PipelineResponse = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
             request, stream=False, **kwargs
         )
 
@@ -480,7 +359,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
 
 
 class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
-    def _create_job_initial(  # pylint: disable=inconsistent-return-statements
+    async def _create_job_initial(  # pylint: disable=inconsistent-return-statements
         self,
         body: Union[_models.OncoPhenotypeRequest, JSON, IO],
         *,
@@ -524,7 +403,7 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
         }
         request.url = self._client.format_url(request.url, **path_format_arguments)
 
-        pipeline_response: PipelineResponse = self._client._pipeline.run(  # pylint: disable=protected-access
+        pipeline_response: PipelineResponse = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
             request, stream=False, **kwargs
         )
 
@@ -545,7 +424,7 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
             return cls(pipeline_response, None, response_headers)
 
     @overload
-    def begin_create_job(
+    async def begin_create_job(
         self,
         body: _models.OncoPhenotypeRequest,
         *,
@@ -553,13 +432,13 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
         repeatability_first_sent: Optional[datetime.datetime] = None,
         content_type: str = "application/json",
         **kwargs: Any
-    ) -> LROPoller[None]:
+    ) -> AsyncLROPoller[None]:
         """Create Onco Phenotype job.
 
         Creates an Onco Phenotype job with the given request body.
 
         :param body: The body of an Onco Phenotype request. Required.
-        :type body: ~azure.ai.helathdecisionsupport.models.OncoPhenotypeRequest
+        :type body: ~azure.ai.healthdecisionsupport.models.OncoPhenotypeRequest
         :keyword repeatability_request_id: An opaque, globally-unique, client-generated string
          identifier for the request. Default value is None.
         :paramtype repeatability_request_id: str
@@ -570,19 +449,19 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
          Default value is "application/json".
         :paramtype content_type: str
         :keyword str continuation_token: A continuation token to restart a poller from a saved state.
-        :keyword polling: By default, your polling method will be LROBasePolling. Pass in False for
-         this operation to not poll, or pass in your own initialized polling object for a personal
+        :keyword polling: By default, your polling method will be AsyncLROBasePolling. Pass in False
+         for this operation to not poll, or pass in your own initialized polling object for a personal
          polling strategy.
-        :paramtype polling: bool or ~azure.core.polling.PollingMethod
+        :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no
          Retry-After header is present.
-        :return: An instance of LROPoller that returns None
-        :rtype: ~azure.core.polling.LROPoller[None]
+        :return: An instance of AsyncLROPoller that returns None
+        :rtype: ~azure.core.polling.AsyncLROPoller[None]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
 
     @overload
-    def begin_create_job(
+    async def begin_create_job(
         self,
         body: JSON,
         *,
@@ -590,7 +469,7 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
         repeatability_first_sent: Optional[datetime.datetime] = None,
         content_type: str = "application/json",
         **kwargs: Any
-    ) -> LROPoller[None]:
+    ) -> AsyncLROPoller[None]:
         """Create Onco Phenotype job.
 
         Creates an Onco Phenotype job with the given request body.
@@ -607,19 +486,19 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
          Default value is "application/json".
         :paramtype content_type: str
         :keyword str continuation_token: A continuation token to restart a poller from a saved state.
-        :keyword polling: By default, your polling method will be LROBasePolling. Pass in False for
-         this operation to not poll, or pass in your own initialized polling object for a personal
+        :keyword polling: By default, your polling method will be AsyncLROBasePolling. Pass in False
+         for this operation to not poll, or pass in your own initialized polling object for a personal
          polling strategy.
-        :paramtype polling: bool or ~azure.core.polling.PollingMethod
+        :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no
          Retry-After header is present.
-        :return: An instance of LROPoller that returns None
-        :rtype: ~azure.core.polling.LROPoller[None]
+        :return: An instance of AsyncLROPoller that returns None
+        :rtype: ~azure.core.polling.AsyncLROPoller[None]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
 
     @overload
-    def begin_create_job(
+    async def begin_create_job(
         self,
         body: IO,
         *,
@@ -627,7 +506,7 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
         repeatability_first_sent: Optional[datetime.datetime] = None,
         content_type: str = "application/json",
         **kwargs: Any
-    ) -> LROPoller[None]:
+    ) -> AsyncLROPoller[None]:
         """Create Onco Phenotype job.
 
         Creates an Onco Phenotype job with the given request body.
@@ -644,33 +523,33 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
          Default value is "application/json".
         :paramtype content_type: str
         :keyword str continuation_token: A continuation token to restart a poller from a saved state.
-        :keyword polling: By default, your polling method will be LROBasePolling. Pass in False for
-         this operation to not poll, or pass in your own initialized polling object for a personal
+        :keyword polling: By default, your polling method will be AsyncLROBasePolling. Pass in False
+         for this operation to not poll, or pass in your own initialized polling object for a personal
          polling strategy.
-        :paramtype polling: bool or ~azure.core.polling.PollingMethod
+        :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no
          Retry-After header is present.
-        :return: An instance of LROPoller that returns None
-        :rtype: ~azure.core.polling.LROPoller[None]
+        :return: An instance of AsyncLROPoller that returns None
+        :rtype: ~azure.core.polling.AsyncLROPoller[None]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
 
-    @distributed_trace
-    def begin_create_job(
+    @distributed_trace_async
+    async def begin_create_job(
         self,
         body: Union[_models.OncoPhenotypeRequest, JSON, IO],
         *,
         repeatability_request_id: Optional[str] = None,
         repeatability_first_sent: Optional[datetime.datetime] = None,
         **kwargs: Any
-    ) -> LROPoller[None]:
+    ) -> AsyncLROPoller[None]:
         """Create Onco Phenotype job.
 
         Creates an Onco Phenotype job with the given request body.
 
         :param body: The body of an Onco Phenotype request. Is one of the following types: model, JSON,
          IO Required.
-        :type body: ~azure.ai.helathdecisionsupport.models.OncoPhenotypeRequest or JSON or IO
+        :type body: ~azure.ai.healthdecisionsupport.models.OncoPhenotypeRequest or JSON or IO
         :keyword repeatability_request_id: An opaque, globally-unique, client-generated string
          identifier for the request. Default value is None.
         :paramtype repeatability_request_id: str
@@ -681,14 +560,14 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
          value is None.
         :paramtype content_type: str
         :keyword str continuation_token: A continuation token to restart a poller from a saved state.
-        :keyword polling: By default, your polling method will be LROBasePolling. Pass in False for
-         this operation to not poll, or pass in your own initialized polling object for a personal
+        :keyword polling: By default, your polling method will be AsyncLROBasePolling. Pass in False
+         for this operation to not poll, or pass in your own initialized polling object for a personal
          polling strategy.
-        :paramtype polling: bool or ~azure.core.polling.PollingMethod
+        :paramtype polling: bool or ~azure.core.polling.AsyncPollingMethod
         :keyword int polling_interval: Default waiting time between two polls for LRO operations if no
          Retry-After header is present.
-        :return: An instance of LROPoller that returns None
-        :rtype: ~azure.core.polling.LROPoller[None]
+        :return: An instance of AsyncLROPoller that returns None
+        :rtype: ~azure.core.polling.AsyncLROPoller[None]
         :raises ~azure.core.exceptions.HttpResponseError:
         """
         _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
@@ -696,11 +575,11 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
 
         content_type: Optional[str] = kwargs.pop("content_type", _headers.pop("Content-Type", None))
         cls: ClsType[None] = kwargs.pop("cls", None)
-        polling: Union[bool, PollingMethod] = kwargs.pop("polling", True)
+        polling: Union[bool, AsyncPollingMethod] = kwargs.pop("polling", True)
         lro_delay = kwargs.pop("polling_interval", self._config.polling_interval)
         cont_token: Optional[str] = kwargs.pop("continuation_token", None)
         if cont_token is None:
-            raw_result = self._create_job_initial(  # type: ignore
+            raw_result = await self._create_job_initial(  # type: ignore
                 body=body,
                 repeatability_request_id=repeatability_request_id,
                 repeatability_first_sent=repeatability_first_sent,
@@ -722,24 +601,25 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
         }
 
         if polling is True:
-            polling_method: PollingMethod = cast(
-                PollingMethod, LROBasePolling(lro_delay, path_format_arguments=path_format_arguments, **kwargs)
+            polling_method: AsyncPollingMethod = cast(
+                AsyncPollingMethod,
+                AsyncLROBasePolling(lro_delay, path_format_arguments=path_format_arguments, **kwargs),
             )
         elif polling is False:
-            polling_method = cast(PollingMethod, NoPolling())
+            polling_method = cast(AsyncPollingMethod, AsyncNoPolling())
         else:
             polling_method = polling
         if cont_token:
-            return LROPoller.from_continuation_token(
+            return AsyncLROPoller.from_continuation_token(
                 polling_method=polling_method,
                 continuation_token=cont_token,
                 client=self._client,
                 deserialization_callback=get_long_running_output,
             )
-        return LROPoller(self._client, raw_result, get_long_running_output, polling_method)  # type: ignore
+        return AsyncLROPoller(self._client, raw_result, get_long_running_output, polling_method)  # type: ignore
 
-    @distributed_trace
-    def get_job(self, job_id: str, **kwargs: Any) -> _models.OncoPhenotypeResponse:
+    @distributed_trace_async
+    async def get_job(self, job_id: str, **kwargs: Any) -> _models.OncoPhenotypeResponse:
         """Get Onco Phenotype job details.
 
         Gets the status and details of the Onco Phenotype job.
@@ -747,7 +627,7 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
         :param job_id: A processing job identifier. Required.
         :type job_id: str
         :return: OncoPhenotypeResponse. The OncoPhenotypeResponse is compatible with MutableMapping
-        :rtype: ~azure.ai.helathdecisionsupport.models.OncoPhenotypeResponse
+        :rtype: ~azure.ai.healthdecisionsupport.models.OncoPhenotypeResponse
         :raises ~azure.core.exceptions.HttpResponseError:
         """
         error_map = {
@@ -775,7 +655,7 @@ class OncoPhenotypeClientOperationsMixin(OncoPhenotypeClientMixinABC):
         }
         request.url = self._client.format_url(request.url, **path_format_arguments)
 
-        pipeline_response: PipelineResponse = self._client._pipeline.run(  # pylint: disable=protected-access
+        pipeline_response: PipelineResponse = await self._client._pipeline.run(  # type: ignore # pylint: disable=protected-access
             request, stream=False, **kwargs
         )
 
