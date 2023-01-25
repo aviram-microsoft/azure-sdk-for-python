@@ -15,7 +15,7 @@ def onco_test() -> LROPoller:
     onco_client = OncoPhenotypeClient(endpoint=endpoint,
                                       credential=AzureKeyCredential(key))
 
-    payload = load_json('onco_data.json')
+    payload = load_json('onco_test_data.json')
 
     # client_job_processor = ProcessJob(onco_client)
     # response = client_job_processor.process_request(payload)

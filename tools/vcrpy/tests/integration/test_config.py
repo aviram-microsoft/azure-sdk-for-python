@@ -8,21 +8,21 @@ from six.moves.urllib.request import urlopen
 def test_set_serializer_default_config(tmpdir, httpbin):
     my_vcr = vcr.VCR(serializer="json")
 
-    with my_vcr.use_cassette(str(tmpdir.join("test.json"))):
+    with my_vcr.use_cassette(str(tmpdir.join("_test_onco.pyTestOncotest_onco.json"))):
         assert my_vcr.serializer == "json"
         urlopen(httpbin.url + "/get")
 
-    with open(str(tmpdir.join("test.json"))) as f:
+    with open(str(tmpdir.join("_test_onco.pyTestOncotest_onco.json"))) as f:
         assert json.loads(f.read())
 
 
 def test_default_set_cassette_library_dir(tmpdir, httpbin):
     my_vcr = vcr.VCR(cassette_library_dir=str(tmpdir.join("subdir")))
 
-    with my_vcr.use_cassette("test.json"):
+    with my_vcr.use_cassette("_test_onco.pyTestOncotest_onco.json"):
         urlopen(httpbin.url + "/get")
 
-    assert os.path.exists(str(tmpdir.join("subdir").join("test.json")))
+    assert os.path.exists(str(tmpdir.join("subdir").join("_test_onco.pyTestOncotest_onco.json")))
 
 
 def test_override_set_cassette_library_dir(tmpdir, httpbin):
@@ -30,20 +30,20 @@ def test_override_set_cassette_library_dir(tmpdir, httpbin):
 
     cld = str(tmpdir.join("subdir2"))
 
-    with my_vcr.use_cassette("test.json", cassette_library_dir=cld):
+    with my_vcr.use_cassette("_test_onco.pyTestOncotest_onco.json", cassette_library_dir=cld):
         urlopen(httpbin.url + "/get")
 
-    assert os.path.exists(str(tmpdir.join("subdir2").join("test.json")))
-    assert not os.path.exists(str(tmpdir.join("subdir").join("test.json")))
+    assert os.path.exists(str(tmpdir.join("subdir2").join("_test_onco.pyTestOncotest_onco.json")))
+    assert not os.path.exists(str(tmpdir.join("subdir").join("_test_onco.pyTestOncotest_onco.json")))
 
 
 def test_override_match_on(tmpdir, httpbin):
     my_vcr = vcr.VCR(match_on=["method"])
 
-    with my_vcr.use_cassette(str(tmpdir.join("test.json"))):
+    with my_vcr.use_cassette(str(tmpdir.join("_test_onco.pyTestOncotest_onco.json"))):
         urlopen(httpbin.url)
 
-    with my_vcr.use_cassette(str(tmpdir.join("test.json"))) as cass:
+    with my_vcr.use_cassette(str(tmpdir.join("_test_onco.pyTestOncotest_onco.json"))) as cass:
         urlopen(httpbin.url + "/get")
 
     assert len(cass) == 1

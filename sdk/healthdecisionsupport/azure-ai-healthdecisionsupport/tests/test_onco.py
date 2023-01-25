@@ -1,8 +1,8 @@
 import functools
+import json
+import os
 
-# sys.path.append("../azure/healthdecisionsupport")
-# sys.path.append("..")
-
+from azure.core.credentials import AzureKeyCredential
 from azure.ai.helathdecisionsupport import OncoPhenotypeClient
 
 from devtools_testutils import (
@@ -11,26 +11,34 @@ from devtools_testutils import (
     recorded_by_proxy,
 )
 
-from azure.core.credentials import AzureKeyCredential
-
-OncoEnvPreparer = functools.partial(
+HealthDecisionSupportEnvPreparer = functools.partial(
     PowerShellPreparer,
-    "onco",
-    endpoint="https://westeurope.api.cognitive.microsoft.com",
-    key="95c92b4a837a420c83d37ef2689d7f4a",
+    "healthdecisionsupport",
+    healthdecisionsupport_endpoint="https://fake_ad_resource.cognitiveservices.azure.com/",
+    healthdecisionsupport_key="00000000000000000000000000000000",
 )
 
+
 class TestOnco(AzureRecordedTestCase):
-    @OncoEnvPreparer()
+
+    def load_json(self, path) -> json:
+        with open(path, 'rt', encoding='utf8') as json_file:
+            res = json.load(json_file)
+            return res
+
+
+    @HealthDecisionSupportEnvPreparer()
     @recorded_by_proxy
-    def test_onco(self, **kwargs):
-        onco_endpoint = kwargs.pop("endpoint")
-        onco_key = kwargs.pop("key")
-        onco_client = OncoPhenotypeClient(onco_endpoint, AzureKeyCredential(onco_key))
+    def test_onco(self, healthdecisionsupport_endpoint, healthdecisionsupport_key):
+        onco_client = OncoPhenotypeClient(healthdecisionsupport_endpoint, AzureKeyCredential(healthdecisionsupport_key))
+
         assert onco_client is not None
-        #
-        # f = open('bodySample.json')
-        # j = json.load(f)
-        #
-        # response = trial_matcher_client.create_job(j)
-        print("hi")
+
+        data = self.load_json('onco_test_data.json')
+
+        def my_callback(response):
+            print(response.http_response.content)
+
+        poller = onco_client.begin_create_job(data, raw_response_hook=my_callback)
+        poller.wait()
+

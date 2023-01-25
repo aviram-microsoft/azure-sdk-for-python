@@ -39,13 +39,19 @@ load_dotenv()
 
 
 @pytest.fixture(scope="session", autouse=True)
-def start_proxy(test_proxy):
-    return
+
+
 def add_sanitizers(test_proxy):
-    trial_matcher_endpoint = os.environ.get("TRIAL_MATCHER_ENDPOINT", "https://fake_ad_resource.cognitiveservices.azure.com/")
-    trial_matcher_key = os.environ.get("TRIAL_MATCHER_KEY", "00000000000000000000000000000000"),
-    add_general_regex_sanitizer(regex=trial_matcher_endpoint, value="00000000000000000000000000000000")
+    healthdecisionsupport_endpoint = os.environ.get(
+        "HEALTHDECISIONSUPPORT_ENDPOINT", "https://fake_ad_resource.cognitiveservices.azure.com/"
+    )
+    healthdecisionsupport_key = os.environ.get("HEALTHDECISIONSUPPORT_KEY", "00000000000000000000000000000000")
     add_general_regex_sanitizer(
-        regex=trial_matcher_key, value="https://fake_ad_resource.cognitiveservices.azure.com/"
+        regex=healthdecisionsupport_endpoint, value="https://fake_ad_resource.cognitiveservices.azure.com/"
+    )
+    add_general_regex_sanitizer(
+        regex=healthdecisionsupport_key, value="00000000000000000000000000000000"
     )
 
+def start_proxy(test_proxy):
+    return
