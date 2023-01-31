@@ -94,37 +94,30 @@ class HealthDecisionSupportSamples:
         configuration = TrialMatcherModelConfiguration(clinical_trials=clinical_trials)
         trial_matcher_request = TrialMatcherRequest(patients=[patient1], configuration=configuration)
 
-        # view operation results
-        def print_results(response):
-            if response.http_request.method == "GET":
-                trial_matcher_response = load_json(response.http_response.content)
-                if trial_matcher_response.status == JobStatus.SUCCEEDED:
-                    tm_results = trial_matcher_response.results
-                    for patient_result in tm_results.patients:
-                        print(f"Inferences of Patient {patient_result.id}")
-                        for tm_inferences in patient_result.inferences:
-                            print(f"Trial Id {tm_inferences.id}")
-                            print(f"Type: {str(tm_inferences.type)}  Value: {tm_inferences.value}")
-                            print(f"Description {tm_inferences.description}")
-                else:
-                    tm_errors = trial_matcher_response.errors
-                    if tm_errors is not None:
-                        for error in tm_errors:
-                            print(f"{error.code} : {error.message}")
-
-        # Health Decision Support Trial Matcher create job async
+        # Health Decision Support Trial match trials
         try:
-            poller = await trial_matcher_client.begin_match_trial(trial_matcher_request)
-            response = await poller.wait()
-            print_results(response)
+            poller = await trial_matcher_client.begin_match_trials(trial_matcher_request)
+            trial_matcher_response = await poller.result()
+            self.print_results(trial_matcher_response)
         except Exception as ex:
             print(str(ex))
             return
 
-
-def load_json(content) -> TrialMatcherResponse:
-    my_json = content.decode('utf8').replace("'", '"')
-    return TrialMatcherResponse(json.loads(my_json))
+    # print match trials (eligible/ineligible)
+    def print_results(self, trial_matcher_response):
+        if trial_matcher_response.status == JobStatus.SUCCEEDED:
+            tm_results = trial_matcher_response.results
+            for patient_result in tm_results.patients:
+                print(f"Inferences of Patient {patient_result.id}")
+                for tm_inferences in patient_result.inferences:
+                    print(f"Trial Id {tm_inferences.id}")
+                    print(f"Type: {str(tm_inferences.type)}  Value: {tm_inferences.value}")
+                    print(f"Description {tm_inferences.description}")
+        else:
+            tm_errors = trial_matcher_response.errors
+            if tm_errors is not None:
+                for error in tm_errors:
+                    print(f"{error.code} : {error.message}")
 
 
 async def main():

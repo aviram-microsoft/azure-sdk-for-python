@@ -133,48 +133,35 @@ class HealthDecisionSupportSamples:
         # Construct the request with the patient and configuration
         onco_phenotype_request = OncoPhenotypeRequest(patients=[patient1], configuration=configuration)
 
-        # print operation results
-        def print_results(response):
-            if response.http_request.method == "GET":
-                onco_phenotype_response = load_json(response.http_response.content)
-                if onco_phenotype_response.status == JobStatus.SUCCEEDED:
-                    onco_results = onco_phenotype_response.results
-                    for patient_result in onco_results.patients:
-                        print(f"\n==== Inferences of Patient {patient_result.id} ====")
-                        for onco_inference in patient_result.inferences:
-                            print(
-                                f"\n=== Clinical Type: {str(onco_inference.type)} Value: {onco_inference.value}\
-                                 ConfidenceScore: {onco_inference.confidence_score} ===")
-                            for evidence in onco_inference.evidence:
-                                if evidence.patient_data_evidence is not None:
-                                    data_evidence = evidence.patient_data_evidence
-                                    print(
-                                        f"Evidence {data_evidence.id} {data_evidence.offset} {data_evidence.length}\
-                                         {data_evidence.text}")
-                                if evidence.patient_info_evidence is not None:
-                                    info_evidence = evidence.patient_info_evidence
-                                    print(
-                                        f"Evidence {info_evidence.system} {info_evidence.code} {info_evidence.name}\
-                                         {info_evidence.value}")
-                else:
-                    onco_errors = onco_phenotype_response.errors
-                    if onco_errors is not None:
-                        for error in onco_errors:
-                            print(f"{error.code} : {error.message}")
-
-        # Health Decision Support Onco Phenotype create job async
+        # Health Decision Support Infer Oncology Phenotyping
         try:
             poller = await onco_phenotype_client.begin_infer_oncology_phenotyping(onco_phenotype_request)
-            response = await poller.wait()
-            print_results(response)
+            onco_phenotype_response = await poller.resut()
+            self.print_inferences(onco_phenotype_response)
         except Exception as ex:
             print(str(ex))
             return
 
-
-def load_json(content) -> OncoPhenotypeResponse:
-    my_json = content.decode('utf8').replace("'", '"')
-    return OncoPhenotypeResponse(json.loads(my_json))
+    # print the inferences
+    def print_inferences(self, onco_phenotype_response):
+        if onco_phenotype_response.status == JobStatus.SUCCEEDED:
+            onco_results = onco_phenotype_response.results
+            for patient_result in onco_results.patients:
+                print(f"\n==== Inferences of Patient {patient_result.id} ====")
+                for onco_inference in patient_result.inferences:
+                    print(
+                        f"\n=== Clinical Type: {str(onco_inference.type)} Value: {onco_inference.value}\
+                            ConfidenceScore: {onco_inference.confidence_score} ===")
+                    for evidence in onco_inference.evidence:
+                        data_evidence = evidence.patient_data_evidence
+                        print(
+                            f"Evidence {data_evidence.id} {data_evidence.offset} {data_evidence.length}\
+                                {data_evidence.text}")
+        else:
+            onco_errors = onco_phenotype_response.errors
+            if onco_errors is not None:
+                for error in onco_errors:
+                    print(f"{error.code} : {error.message}")
 
 
 async def main():
