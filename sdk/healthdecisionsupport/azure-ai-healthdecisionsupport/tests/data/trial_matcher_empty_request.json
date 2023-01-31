@@ -1,0 +1,31 @@
+{
+  "configuration": {
+    "clinicalTrials": {
+      "registryFilters": [
+        {
+          "conditions": [
+            "non Existant Condition"
+          ],
+          "phases": [
+            "Phase3"
+          ],
+          "sources": [
+            "clinicaltrials.gov"
+          ]
+        }
+      ]
+    },
+    "verbose": false,
+    "includeEvidence": false
+  },
+  "patients": [
+    {
+      "id": "patient_1",
+      "info": {
+        "clinicalInfo": [],
+        "gender":"male",
+        "birthDate" : "1/1/1989"
+      }
+    }
+  ]
+}

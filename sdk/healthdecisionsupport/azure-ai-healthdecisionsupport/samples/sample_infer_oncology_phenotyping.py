@@ -10,18 +10,16 @@ from azure.core.credentials import AzureKeyCredential
 from azure.ai.healthdecisionsupport.models import *
 from azure.ai.healthdecisionsupport.aio import OncoPhenotypeClient
 
-endpoint = "https://westeurope.api.cognitive.microsoft.com"
-key = "95c92b4a837a420c83d37ef2689d7f4a"
 
 class HealthDecisionSupportSamples:
-    async def create_onco_phenotype_job(self):
-        endpoint = "https://westeurope.api.cognitive.microsoft.com"
-        key = "95c92b4a837a420c83d37ef2689d7f4a"
+    async def infer_oncology_phenotyping(self):
+        KEY = os.getenv("HEALTH_DECISION_SUPPORT_KEY")
+        ENDPOINT = os.getenv("HEALTH_DECISION_SUPPORT_ENDPOINT")
 
         # Create an Onco Phenotype client
         # <client>
-        onco_phenotype_client = OncoPhenotypeClient(endpoint=endpoint,
-                                                    credential=AzureKeyCredential(key))
+        onco_phenotype_client = OncoPhenotypeClient(endpoint=ENDPOINT,
+                                                    credential=AzureKeyCredential(KEY))
         # </client>
 
         # Construct patient
@@ -135,8 +133,8 @@ class HealthDecisionSupportSamples:
         # Construct the request with the patient and configuration
         onco_phenotype_request = OncoPhenotypeRequest(patients=[patient1], configuration=configuration)
 
-        # view operation results
-        def callback(response):
+        # print operation results
+        def print_results(response):
             if response.http_request.method == "GET":
                 onco_phenotype_response = load_json(response.http_response.content)
                 if onco_phenotype_response.status == JobStatus.SUCCEEDED:
@@ -166,8 +164,9 @@ class HealthDecisionSupportSamples:
 
         # Health Decision Support Onco Phenotype create job async
         try:
-            poller = await onco_phenotype_client.begin_infer_oncology_phenotyping(onco_phenotype_request, raw_response_hook=callback)
-            await poller.wait()
+            poller = await onco_phenotype_client.begin_infer_oncology_phenotyping(onco_phenotype_request)
+            response = await poller.wait()
+            print_results(response)
         except Exception as ex:
             print(str(ex))
             return
@@ -180,8 +179,7 @@ def load_json(content) -> OncoPhenotypeResponse:
 
 async def main():
     sample = HealthDecisionSupportSamples()
-    await sample.create_onco_phenotype_job()
-    print("hi")
+    await sample.infer_oncology_phenotyping()
 
 
 if __name__ == "__main__":

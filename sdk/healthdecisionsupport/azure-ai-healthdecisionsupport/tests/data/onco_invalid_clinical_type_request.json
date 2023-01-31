@@ -1,0 +1,36 @@
+{
+  "configuration": {
+    "checkForCancerCase": true,
+    "verbose": false,
+    "includeEvidence": true
+  },
+  "patients": [
+    {
+      "id": "patient1",
+      "data": [
+        {
+          "kind": "note",
+          "clinicalType": "pathology",
+          "id": "document1",
+          "language": "en",
+          "createdDateTime": "2022-01-01T00:00:00",
+          "content": {
+            "sourceType": "inline",
+            "value": "Sample pathology report."
+          }
+        },
+        {
+          "kind": "note",
+          "clinicalType": "dischargeSummary",
+          "id": "document2",
+          "language": "en",
+          "createdDateTime": "2022-01-01T00:00:00",
+          "content": {
+            "sourceType": "inline",
+            "value": "Sample discharge summary."
+          }
+        }
+      ]
+    }
+  ]
+}

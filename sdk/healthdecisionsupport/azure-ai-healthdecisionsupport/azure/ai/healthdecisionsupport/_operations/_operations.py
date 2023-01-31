@@ -47,7 +47,7 @@ _SERIALIZER = Serializer()
 _SERIALIZER.client_side_validation = False
 
 
-def build_trial_matcher_match_trial_request(**kwargs: Any) -> HttpRequest:
+def build_trial_matcher_match_trials_request(**kwargs: Any) -> HttpRequest:
     _headers = case_insensitive_dict(kwargs.pop("headers", {}) or {})
     _params = case_insensitive_dict(kwargs.pop("params", {}) or {})
 
@@ -96,7 +96,7 @@ def build_onco_phenotype_infer_oncology_phenotyping_request(**kwargs: Any) -> Ht
 
 
 class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
-    def _match_trial_initial(
+    def _match_trials_initial(
         self, body: Union[_models.TrialMatcherRequest, JSON, IO], **kwargs: Any
     ) -> _models.TrialMatcherResponse:
         error_map = {
@@ -120,7 +120,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         else:
             _content = json.dumps(body, cls=AzureJSONEncoder)  # type: ignore
 
-        request = build_trial_matcher_match_trial_request(
+        request = build_trial_matcher_match_trials_request(
             content_type=content_type,
             api_version=self._config.api_version,
             content=_content,
@@ -153,7 +153,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         return deserialized  # type: ignore
 
     @overload
-    def begin_match_trial(
+    def begin_match_trials(
         self, body: _models.TrialMatcherRequest, *, content_type: str = "application/json", **kwargs: Any
     ) -> LROPoller[_models.TrialMatcherResponse]:
         """Create Trial Matcher job.
@@ -179,7 +179,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         """
 
     @overload
-    def begin_match_trial(
+    def begin_match_trials(
         self, body: JSON, *, content_type: str = "application/json", **kwargs: Any
     ) -> LROPoller[_models.TrialMatcherResponse]:
         """Create Trial Matcher job.
@@ -205,7 +205,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         """
 
     @overload
-    def begin_match_trial(
+    def begin_match_trials(
         self, body: IO, *, content_type: str = "application/json", **kwargs: Any
     ) -> LROPoller[_models.TrialMatcherResponse]:
         """Create Trial Matcher job.
@@ -231,7 +231,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         """
 
     @distributed_trace
-    def begin_match_trial(
+    def begin_match_trials(
         self, body: Union[_models.TrialMatcherRequest, JSON, IO], **kwargs: Any
     ) -> LROPoller[_models.TrialMatcherResponse]:
         """Create Trial Matcher job.
@@ -264,7 +264,7 @@ class TrialMatcherClientOperationsMixin(TrialMatcherClientMixinABC):
         lro_delay = kwargs.pop("polling_interval", self._config.polling_interval)
         cont_token: Optional[str] = kwargs.pop("continuation_token", None)
         if cont_token is None:
-            raw_result = self._match_trial_initial(
+            raw_result = self._match_trials_initial(
                 body=body, content_type=content_type, cls=lambda x, y, z: x, headers=_headers, params=_params, **kwargs
             )
         kwargs.pop("error_map", None)
