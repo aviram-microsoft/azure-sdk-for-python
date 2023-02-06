@@ -4,6 +4,7 @@
 import os
 import datetime
 import asyncio
+import json
 
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.healthdecisionsupport.models import *
@@ -135,7 +136,7 @@ class HealthDecisionSupportSamples:
         # Health Decision Support Infer Oncology Phenotyping
         try:
             poller = await onco_phenotype_client.begin_infer_oncology_phenotyping(onco_phenotype_request)
-            onco_phenotype_response = await poller.result()
+            onco_phenotype_response = await poller.resut()
             self.print_inferences(onco_phenotype_response)
         except Exception as ex:
             print(str(ex))

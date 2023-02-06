@@ -25,7 +25,7 @@ class Age(_model_base.Model):
 
     :ivar unit: Possible units for a person's age. Required. Known values are: "years", "months",
      and "days".
-    :vartype unit: str or ~azure.ai.healthdecisionsupport.models.AgeUnit
+    :vartype unit: str or ~healthdecisionsupportapi.models.AgeUnit
     :ivar value: The number of years/months/days that represents the person's age. Required.
     :vartype value: float
     """
@@ -62,11 +62,11 @@ class Area(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar type: ``GeoJSON`` type. Required. "Feature"
-    :vartype type: str or ~azure.ai.healthdecisionsupport.models.GeoJsonType
+    :vartype type: str or ~healthdecisionsupportapi.models.GeoJsonType
     :ivar geometry: ``GeoJSON`` geometry, representing the area circle's center. Required.
-    :vartype geometry: ~azure.ai.healthdecisionsupport.models.AreaGeometry
+    :vartype geometry: ~healthdecisionsupportapi.models.AreaGeometry
     :ivar properties: ``GeoJSON`` object properties. Required.
-    :vartype properties: ~azure.ai.healthdecisionsupport.models.AreaProperties
+    :vartype properties: ~healthdecisionsupportapi.models.AreaProperties
     """
 
     type: Union[str, "_models.GeoJsonType"] = rest_field()
@@ -103,7 +103,7 @@ class AreaGeometry(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar type: ``GeoJSON`` geometry type. Required. "Point"
-    :vartype type: str or ~azure.ai.healthdecisionsupport.models.GeoJsonGeometryType
+    :vartype type: str or ~healthdecisionsupportapi.models.GeoJsonGeometryType
     :ivar coordinates: Coordinates of the area circle's center, represented according to the
      ``GeoJSON`` standard.
      This is an array of 2 decimal numbers, longitude and latitude (precisely in this order).
@@ -143,7 +143,7 @@ class AreaProperties(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar sub_type: ``GeoJSON`` object sub-type. Required. "Circle"
-    :vartype sub_type: str or ~azure.ai.healthdecisionsupport.models.GeoJsonPropertiesSubType
+    :vartype sub_type: str or ~healthdecisionsupportapi.models.GeoJsonPropertiesSubType
     :ivar radius: The radius of the area's circle, in meters. Required.
     :vartype radius: float
     """
@@ -270,11 +270,11 @@ class ClinicalTrialDemographics(_model_base.Model):
 
     :ivar accepted_genders: A list of genders accepted by a clinical trial.
     :vartype accepted_genders: list[str or
-     ~azure.ai.healthdecisionsupport.models.ClinicalTrialAcceptedGender]
+     ~healthdecisionsupportapi.models.ClinicalTrialAcceptedGender]
     :ivar accepted_age_range: A definition of the range of ages accepted by a clinical trial.
      Contains a minimum age and/or a maximum age.
     :vartype accepted_age_range:
-     ~azure.ai.healthdecisionsupport.models.ClinicalTrialDemographicsAcceptedAgeRange
+     ~healthdecisionsupportapi.models.ClinicalTrialDemographicsAcceptedAgeRange
     """
 
     accepted_genders: Optional[List[Union[str, "_models.ClinicalTrialAcceptedGender"]]] = rest_field(
@@ -311,9 +311,9 @@ class ClinicalTrialDemographicsAcceptedAgeRange(_model_base.Model):
     maximum age.
 
     :ivar minimum_age: A person's age, given as a number (value) and a unit (e.g. years, months).
-    :vartype minimum_age: ~azure.ai.healthdecisionsupport.models.Age
+    :vartype minimum_age: ~healthdecisionsupportapi.models.Age
     :ivar maximum_age: A person's age, given as a number (value) and a unit (e.g. years, months).
-    :vartype maximum_age: ~azure.ai.healthdecisionsupport.models.Age
+    :vartype maximum_age: ~healthdecisionsupportapi.models.Age
     """
 
     minimum_age: Optional["_models.Age"] = rest_field(name="minimumAge")
@@ -353,9 +353,9 @@ class ClinicalTrialDetails(_model_base.Model):
      exclusion), given as text.
     :vartype eligibility_criteria_text: str
     :ivar demographics: Demographic criteria for a clinical trial.
-    :vartype demographics: ~azure.ai.healthdecisionsupport.models.ClinicalTrialDemographics
+    :vartype demographics: ~healthdecisionsupportapi.models.ClinicalTrialDemographics
     :ivar metadata: Trial data which is of interest to the potential participant. Required.
-    :vartype metadata: ~azure.ai.healthdecisionsupport.models.ClinicalTrialMetadata
+    :vartype metadata: ~healthdecisionsupportapi.models.ClinicalTrialMetadata
     """
 
     id: str = rest_field()
@@ -396,14 +396,14 @@ class ClinicalTrialMetadata(_model_base.Model):
 
     :ivar phases: Phases which are relevant for the clinical trial.
      Each clinical trial can be in a certain phase or in multiple phases.
-    :vartype phases: list[str or ~azure.ai.healthdecisionsupport.models.ClinicalTrialPhase]
+    :vartype phases: list[str or ~healthdecisionsupportapi.models.ClinicalTrialPhase]
     :ivar study_type: Possible study types of a clinical trial. Known values are: "interventional",
      "observational", "expandedAccess", and "patientRegistries".
-    :vartype study_type: str or ~azure.ai.healthdecisionsupport.models.ClinicalTrialStudyType
+    :vartype study_type: str or ~healthdecisionsupportapi.models.ClinicalTrialStudyType
     :ivar recruitment_status: Possible recruitment status of a clinical trial. Known values are:
      "unknownStatus", "notYetRecruiting", "recruiting", and "enrollingByInvitation".
     :vartype recruitment_status: str or
-     ~azure.ai.healthdecisionsupport.models.ClinicalTrialRecruitmentStatus
+     ~healthdecisionsupportapi.models.ClinicalTrialRecruitmentStatus
     :ivar conditions: Medical conditions and their synonyms which are relevant for the clinical
      trial, given as strings. Required.
     :vartype conditions: list[str]
@@ -411,9 +411,9 @@ class ClinicalTrialMetadata(_model_base.Model):
     :vartype sponsors: list[str]
     :ivar contacts: Contact details of the trial administrators, for patients that want to
      participate in the trial.
-    :vartype contacts: list[~azure.ai.healthdecisionsupport.models.ContactDetails]
+    :vartype contacts: list[~healthdecisionsupportapi.models.ContactDetails]
     :ivar facilities: Research facilities where the clinical trial is conducted.
-    :vartype facilities: list[~azure.ai.healthdecisionsupport.models.ClinicalTrialResearchFacility]
+    :vartype facilities: list[~healthdecisionsupportapi.models.ClinicalTrialResearchFacility]
     """
 
     phases: Optional[List[Union[str, "_models.ClinicalTrialPhase"]]] = rest_field()
@@ -470,13 +470,12 @@ class ClinicalTrialRegistryFilter(_model_base.Model):  # pylint: disable=too-man
     :ivar study_types: Trials with any of the given study types will be included in the selection
      (provided that other limitations are satisfied).
      Leaving this list empty will not limit the study types.
-    :vartype study_types: list[str or
-     ~azure.ai.healthdecisionsupport.models.ClinicalTrialStudyType]
+    :vartype study_types: list[str or ~healthdecisionsupportapi.models.ClinicalTrialStudyType]
     :ivar recruitment_statuses: Trials with any of the given recruitment statuses will be included
      in the selection (provided that other limitations are satisfied).
      Leaving this list empty will not limit the recruitment statuses.
     :vartype recruitment_statuses: list[str or
-     ~azure.ai.healthdecisionsupport.models.ClinicalTrialRecruitmentStatus]
+     ~healthdecisionsupportapi.models.ClinicalTrialRecruitmentStatus]
     :ivar sponsors: Trials with any of the given sponsors will be included in the selection
      (provided that other limitations are satisfied).
      Leaving this list empty will not limit the sponsors.
@@ -484,11 +483,11 @@ class ClinicalTrialRegistryFilter(_model_base.Model):  # pylint: disable=too-man
     :ivar phases: Trials with any of the given phases will be included in the selection (provided
      that other limitations are satisfied).
      Leaving this list empty will not limit the phases.
-    :vartype phases: list[str or ~azure.ai.healthdecisionsupport.models.ClinicalTrialPhase]
+    :vartype phases: list[str or ~healthdecisionsupportapi.models.ClinicalTrialPhase]
     :ivar purposes: Trials with any of the given purposes will be included in the selection
      (provided that other limitations are satisfied).
      Leaving this list empty will not limit the purposes.
-    :vartype purposes: list[str or ~azure.ai.healthdecisionsupport.models.ClinicalTrialPurpose]
+    :vartype purposes: list[str or ~healthdecisionsupportapi.models.ClinicalTrialPurpose]
     :ivar ids: Trials with any of the given identifiers will be included in the selection (provided
      that other limitations are satisfied).
      Leaving this list empty will not limit the trial identifiers.
@@ -496,7 +495,7 @@ class ClinicalTrialRegistryFilter(_model_base.Model):  # pylint: disable=too-man
     :ivar sources: Trials with any of the given sources will be included in the selection (provided
      that other limitations are satisfied).
      Leaving this list empty will not limit the sources.
-    :vartype sources: list[str or ~azure.ai.healthdecisionsupport.models.ClinicalTrialSource]
+    :vartype sources: list[str or ~healthdecisionsupportapi.models.ClinicalTrialSource]
     :ivar facility_names: Trials with any of the given facility names will be included in the
      selection (provided that other limitations are satisfied).
      Leaving this list empty will not limit the trial facility names.
@@ -504,11 +503,11 @@ class ClinicalTrialRegistryFilter(_model_base.Model):  # pylint: disable=too-man
     :ivar facility_locations: Trials with any of the given facility locations will be included in
      the selection (provided that other limitations are satisfied).
      Leaving this list empty will not limit the trial facility locations.
-    :vartype facility_locations: list[~azure.ai.healthdecisionsupport.models.Location]
+    :vartype facility_locations: list[~healthdecisionsupportapi.models.Location]
     :ivar facility_areas: Trials with any of the given facility area boundaries will be included in
      the selection (provided that other limitations are satisfied).
      Leaving this list empty will not limit the trial facility area boundaries.
-    :vartype facility_areas: list[~azure.ai.healthdecisionsupport.models.Area]
+    :vartype facility_areas: list[~healthdecisionsupportapi.models.Area]
     """
 
     conditions: Optional[List[str]] = rest_field()
@@ -629,11 +628,10 @@ class ClinicalTrials(_model_base.Model):
     In case both are given, the resulting trial set is a union of the two sets.
 
     :ivar custom_trials: A list of clinical trials.
-    :vartype custom_trials: list[~azure.ai.healthdecisionsupport.models.ClinicalTrialDetails]
+    :vartype custom_trials: list[~healthdecisionsupportapi.models.ClinicalTrialDetails]
     :ivar registry_filters: A list of filters, each one creating a selection of trials from a given
      clinical trial registry.
-    :vartype registry_filters:
-     list[~azure.ai.healthdecisionsupport.models.ClinicalTrialRegistryFilter]
+    :vartype registry_filters: list[~healthdecisionsupportapi.models.ClinicalTrialRegistryFilter]
     """
 
     custom_trials: Optional[List["_models.ClinicalTrialDetails"]] = rest_field(name="customTrials")
@@ -710,7 +708,7 @@ class DocumentContent(_model_base.Model):
      In case the source type is 'inline', the content is given as a string (for instance, text).
      In case the source type is 'reference', the content is given as a URI. Required. Known values
      are: "inline" and "reference".
-    :vartype source_type: str or ~azure.ai.healthdecisionsupport.models.DocumentContentSourceType
+    :vartype source_type: str or ~healthdecisionsupportapi.models.DocumentContentSourceType
     :ivar value: The content of the document, given either inline (as a string) or as a reference
      (URI). Required.
     :vartype value: str
@@ -756,10 +754,10 @@ class Error(_model_base.Model):
     :vartype target: str
     :ivar details: An array of details about specific errors that led to this reported error.
      Required.
-    :vartype details: list[~azure.ai.healthdecisionsupport.models.Error]
+    :vartype details: list[~healthdecisionsupportapi.models.Error]
     :ivar innererror: An object containing more specific information than the current object about
      the error.
-    :vartype innererror: ~azure.ai.healthdecisionsupport.models.InnerError
+    :vartype innererror: ~healthdecisionsupportapi.models.InnerError
     """
 
     code: str = rest_field()
@@ -860,11 +858,11 @@ class InferenceEvidence(_model_base.Model):
     """A piece of evidence corresponding to an inference.
 
     :ivar patient_data_evidence: A piece of evidence from a clinical note (text document).
-    :vartype patient_data_evidence: ~azure.ai.healthdecisionsupport.models.ClinicalNoteEvidence
+    :vartype patient_data_evidence: ~healthdecisionsupportapi.models.ClinicalNoteEvidence
     :ivar patient_info_evidence: A piece of clinical information, expressed as a code in a clinical
      coding
      system.
-    :vartype patient_info_evidence: ~azure.ai.healthdecisionsupport.models.ClinicalCodedElement
+    :vartype patient_info_evidence: ~healthdecisionsupportapi.models.ClinicalCodedElement
     :ivar importance: A value indicating how important this piece of evidence is for the inference.
     :vartype importance: float
     """
@@ -908,7 +906,7 @@ class InnerError(_model_base.Model):
     :ivar code: One of a server-defined set of error codes. Required.
     :vartype code: str
     :ivar innererror: Inner error.
-    :vartype innererror: ~azure.ai.healthdecisionsupport.models.InnerError
+    :vartype innererror: ~healthdecisionsupportapi.models.InnerError
     """
 
     code: str = rest_field()
@@ -988,7 +986,7 @@ class OncoPhenotypeInference(_model_base.Model):
     :ivar type: The type of the Onco Phenotype inference. Required. Known values are: "tumorSite",
      "histology", "clinicalStageT", "clinicalStageN", "clinicalStageM", "pathologicStageT",
      "pathologicStageN", and "pathologicStageM".
-    :vartype type: str or ~azure.ai.healthdecisionsupport.models.OncoPhenotypeInferenceType
+    :vartype type: str or ~healthdecisionsupportapi.models.OncoPhenotypeInferenceType
     :ivar value: The value of the inference, as relevant for the given inference type. Required.
     :vartype value: str
     :ivar description: The description corresponding to the inference value.
@@ -996,7 +994,7 @@ class OncoPhenotypeInference(_model_base.Model):
     :ivar confidence_score: Confidence score for this inference.
     :vartype confidence_score: float
     :ivar evidence: The evidence corresponding to the inference value.
-    :vartype evidence: list[~azure.ai.healthdecisionsupport.models.InferenceEvidence]
+    :vartype evidence: list[~healthdecisionsupportapi.models.InferenceEvidence]
     :ivar case_id: An identifier for a clinical case, if there are multiple clinical cases
      regarding the same patient.
     :vartype case_id: str
@@ -1051,7 +1049,7 @@ class OncoPhenotypeModelConfiguration(_model_base.Model):
      This could be used if only part of the Onco Phenotype inferences are required.
      If this list is omitted or empty, the model will return all the inference types.
     :vartype inference_types: list[str or
-     ~azure.ai.healthdecisionsupport.models.OncoPhenotypeInferenceType]
+     ~healthdecisionsupportapi.models.OncoPhenotypeInferenceType]
     :ivar check_for_cancer_case: An indication whether to perform a preliminary step on the
      patient's documents to determine whether they relate to a Cancer case.
     :vartype check_for_cancer_case: bool
@@ -1100,7 +1098,7 @@ class OncoPhenotypePatientResult(_model_base.Model):
     :ivar id: The identifier given for the patient in the request. Required.
     :vartype id: str
     :ivar inferences: The model's inferences for the given patient. Required.
-    :vartype inferences: list[~azure.ai.healthdecisionsupport.models.OncoPhenotypeInference]
+    :vartype inferences: list[~healthdecisionsupportapi.models.OncoPhenotypeInference]
     """
 
     id: str = rest_field()
@@ -1134,9 +1132,9 @@ class OncoPhenotypeRequest(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar patients: The list of patients, including their clinical information and data. Required.
-    :vartype patients: list[~azure.ai.healthdecisionsupport.models.Patient]
+    :vartype patients: list[~healthdecisionsupportapi.models.Patient]
     :ivar configuration: Configuration affecting the Onco Phenotype model's inference.
-    :vartype configuration: ~azure.ai.healthdecisionsupport.models.OncoPhenotypeModelConfiguration
+    :vartype configuration: ~healthdecisionsupportapi.models.OncoPhenotypeModelConfiguration
     """
 
     patients: List["_models.Patient"] = rest_field()
@@ -1183,27 +1181,50 @@ class OncoPhenotypeResponse(_model_base.Model):
     :vartype last_update_date_time: ~datetime.datetime
     :ivar status: The status of the processing job. Required. Known values are: "notStarted",
      "running", "succeeded", "failed", and "partiallyCompleted".
-    :vartype status: str or ~azure.ai.healthdecisionsupport.models.JobStatus
+    :vartype status: str or ~healthdecisionsupportapi.models.JobStatus
     :ivar errors: An array of errors, if any errors occurred during the processing job.
-    :vartype errors: list[~azure.ai.healthdecisionsupport.models.Error]
+    :vartype errors: list[~healthdecisionsupportapi.models.Error]
     :ivar results: The inference results for the Onco Phenotype request.
-    :vartype results: ~azure.ai.healthdecisionsupport.models.OncoPhenotypeResults
+    :vartype results: ~healthdecisionsupportapi.models.OncoPhenotypeResults
     """
 
     job_id: str = rest_field(name="jobId", readonly=True)
     """A processing job identifier. Required. """
-    created_date_time: datetime.datetime = rest_field(name="createdDateTime", readonly=True)
+    created_date_time: datetime.datetime = rest_field(name="createdDateTime")
     """The date and time when the processing job was created. Required. """
-    expiration_date_time: datetime.datetime = rest_field(name="expirationDateTime", readonly=True)
+    expiration_date_time: datetime.datetime = rest_field(name="expirationDateTime")
     """The date and time when the processing job is set to expire. Required. """
-    last_update_date_time: datetime.datetime = rest_field(name="lastUpdateDateTime", readonly=True)
+    last_update_date_time: datetime.datetime = rest_field(name="lastUpdateDateTime")
     """The date and time when the processing job was last updated. Required. """
-    status: Union[str, "_models.JobStatus"] = rest_field(readonly=True)
+    status: Union[str, "_models.JobStatus"] = rest_field()
     """The status of the processing job. Required. Known values are: \"notStarted\", \"running\", \"succeeded\", \"failed\", and \"partiallyCompleted\"."""
-    errors: Optional[List["_models.Error"]] = rest_field(readonly=True)
+    errors: Optional[List["_models.Error"]] = rest_field()
     """An array of errors, if any errors occurred during the processing job. """
-    results: Optional["_models.OncoPhenotypeResults"] = rest_field(readonly=True)
+    results: Optional["_models.OncoPhenotypeResults"] = rest_field()
     """The inference results for the Onco Phenotype request. """
+
+    @overload
+    def __init__(
+        self,
+        *,
+        created_date_time: datetime.datetime,
+        expiration_date_time: datetime.datetime,
+        last_update_date_time: datetime.datetime,
+        status: Union[str, "_models.JobStatus"],
+        errors: Optional[List["_models.Error"]] = None,
+        results: Optional["_models.OncoPhenotypeResults"] = None,
+    ):
+        ...
+
+    @overload
+    def __init__(self, mapping: Mapping[str, Any]):
+        """
+        :param mapping: raw JSON to initialize the model.
+        :type mapping: Mapping[str, Any]
+        """
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:  # pylint: disable=useless-super-delegation
+        super().__init__(*args, **kwargs)
 
 
 class OncoPhenotypeResults(_model_base.Model):
@@ -1212,7 +1233,7 @@ class OncoPhenotypeResults(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar patients: Results for the patients given in the request. Required.
-    :vartype patients: list[~azure.ai.healthdecisionsupport.models.OncoPhenotypePatientResult]
+    :vartype patients: list[~healthdecisionsupportapi.models.OncoPhenotypePatientResult]
     :ivar model_version: The version of the model used for inference, expressed as the model date.
      Required.
     :vartype model_version: str
@@ -1253,9 +1274,9 @@ class Patient(_model_base.Model):
     :vartype id: str
     :ivar info: Patient structured information, including demographics and known structured
      clinical information.
-    :vartype info: ~azure.ai.healthdecisionsupport.models.PatientInfo
+    :vartype info: ~healthdecisionsupportapi.models.PatientInfo
     :ivar data: Patient unstructured clinical data, given as documents.
-    :vartype data: list[~azure.ai.healthdecisionsupport.models.PatientDocument]
+    :vartype data: list[~healthdecisionsupportapi.models.PatientDocument]
     """
 
     id: str = rest_field()
@@ -1295,11 +1316,11 @@ class PatientDocument(_model_base.Model):
     :ivar type: The type of the patient document, such as 'note' (text document) or 'fhirBundle'
      (FHIR JSON document). Required. Known values are: "note", "fhirBundle", "dicom", and
      "genomicSequencing".
-    :vartype type: str or ~azure.ai.healthdecisionsupport.models.DocumentType
+    :vartype type: str or ~healthdecisionsupportapi.models.DocumentType
     :ivar clinical_type: The type of the clinical document. Known values are: "consultation",
      "dischargeSummary", "historyAndPhysical", "procedure", "progress", "imaging", "laboratory", and
      "pathology".
-    :vartype clinical_type: str or ~azure.ai.healthdecisionsupport.models.ClinicalDocumentType
+    :vartype clinical_type: str or ~healthdecisionsupportapi.models.ClinicalDocumentType
     :ivar id: A given identifier for the document. Has to be unique across all documents for a
      single patient. Required.
     :vartype id: str
@@ -1308,7 +1329,7 @@ class PatientDocument(_model_base.Model):
     :ivar created_date_time: The date and time when the document was created.
     :vartype created_date_time: ~datetime.datetime
     :ivar content: The content of the patient document. Required.
-    :vartype content: ~azure.ai.healthdecisionsupport.models.DocumentContent
+    :vartype content: ~healthdecisionsupportapi.models.DocumentContent
     """
 
     type: Union[str, "_models.DocumentType"] = rest_field()
@@ -1353,11 +1374,11 @@ class PatientInfo(_model_base.Model):
     information.
 
     :ivar gender: The patient's gender. Known values are: "female", "male", and "unspecified".
-    :vartype gender: str or ~azure.ai.healthdecisionsupport.models.PatientInfoGender
+    :vartype gender: str or ~healthdecisionsupportapi.models.PatientInfoGender
     :ivar birth_date: The patient's date of birth.
     :vartype birth_date: ~datetime.date
     :ivar clinical_info: Known clinical information for the patient, structured.
-    :vartype clinical_info: list[~azure.ai.healthdecisionsupport.models.ClinicalCodedElement]
+    :vartype clinical_info: list[~healthdecisionsupportapi.models.ClinicalCodedElement]
     """
 
     gender: Optional[Union[str, "_models.PatientInfoGender"]] = rest_field()
@@ -1394,7 +1415,7 @@ class TrialMatcherInference(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar type: The type of the Trial Matcher inference. Required. "trialEligibility"
-    :vartype type: str or ~azure.ai.healthdecisionsupport.models.TrialMatcherInferenceType
+    :vartype type: str or ~healthdecisionsupportapi.models.TrialMatcherInferenceType
     :ivar value: The value of the inference, as relevant for the given inference type. Required.
     :vartype value: str
     :ivar description: The description corresponding to the inference value.
@@ -1402,14 +1423,14 @@ class TrialMatcherInference(_model_base.Model):
     :ivar confidence_score: Confidence score for this inference.
     :vartype confidence_score: float
     :ivar evidence: The evidence corresponding to the inference value.
-    :vartype evidence: list[~azure.ai.healthdecisionsupport.models.TrialMatcherInferenceEvidence]
+    :vartype evidence: list[~healthdecisionsupportapi.models.TrialMatcherInferenceEvidence]
     :ivar id: The identifier of the clinical trial.
     :vartype id: str
     :ivar source: Possible sources of a clinical trial. Known values are: "custom" and
      "clinicaltrials.gov".
-    :vartype source: str or ~azure.ai.healthdecisionsupport.models.ClinicalTrialSource
+    :vartype source: str or ~healthdecisionsupportapi.models.ClinicalTrialSource
     :ivar metadata: Trial data which is of interest to the potential participant.
-    :vartype metadata: ~azure.ai.healthdecisionsupport.models.ClinicalTrialMetadata
+    :vartype metadata: ~healthdecisionsupportapi.models.ClinicalTrialMetadata
     """
 
     type: Union[str, "_models.TrialMatcherInferenceType"] = rest_field()
@@ -1462,11 +1483,11 @@ class TrialMatcherInferenceEvidence(_model_base.Model):
      a clinical trial.
     :vartype eligibility_criteria_evidence: str
     :ivar patient_data_evidence: A piece of evidence from a clinical note (text document).
-    :vartype patient_data_evidence: ~azure.ai.healthdecisionsupport.models.ClinicalNoteEvidence
+    :vartype patient_data_evidence: ~healthdecisionsupportapi.models.ClinicalNoteEvidence
     :ivar patient_info_evidence: A piece of clinical information, expressed as a code in a clinical
      coding
      system.
-    :vartype patient_info_evidence: ~azure.ai.healthdecisionsupport.models.ClinicalCodedElement
+    :vartype patient_info_evidence: ~healthdecisionsupportapi.models.ClinicalCodedElement
     :ivar importance: A value indicating how important this piece of evidence is for the inference.
     :vartype importance: float
     """
@@ -1518,7 +1539,7 @@ class TrialMatcherModelConfiguration(_model_base.Model):
      selection can be given as a list of custom clinical trials and/or a list of
      filters to known clinical trial registries. In case both are given, the
      resulting trial set is a union of the two sets. Required.
-    :vartype clinical_trials: ~azure.ai.healthdecisionsupport.models.ClinicalTrials
+    :vartype clinical_trials: ~healthdecisionsupportapi.models.ClinicalTrials
     """
 
     verbose: bool = rest_field(default=False)
@@ -1560,12 +1581,12 @@ class TrialMatcherPatientResult(_model_base.Model):
     :ivar id: The identifier given for the patient in the request. Required.
     :vartype id: str
     :ivar inferences: The model's inferences for the given patient. Required.
-    :vartype inferences: list[~azure.ai.healthdecisionsupport.models.TrialMatcherInference]
+    :vartype inferences: list[~healthdecisionsupportapi.models.TrialMatcherInference]
     :ivar needed_clinical_info: Clinical information which is needed to provide better trial
      matching results for the patient. Clinical information which is needed to provide better trial
      matching results for the patient.
     :vartype needed_clinical_info:
-     list[~azure.ai.healthdecisionsupport.models.ExtendedClinicalCodedElement]
+     list[~healthdecisionsupportapi.models.ExtendedClinicalCodedElement]
     """
 
     id: str = rest_field()
@@ -1602,9 +1623,9 @@ class TrialMatcherRequest(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar patients: The list of patients, including their clinical information and data. Required.
-    :vartype patients: list[~azure.ai.healthdecisionsupport.models.Patient]
+    :vartype patients: list[~healthdecisionsupportapi.models.Patient]
     :ivar configuration: Configuration affecting the Trial Matcher model's inference.
-    :vartype configuration: ~azure.ai.healthdecisionsupport.models.TrialMatcherModelConfiguration
+    :vartype configuration: ~healthdecisionsupportapi.models.TrialMatcherModelConfiguration
     """
 
     patients: List["_models.Patient"] = rest_field()
@@ -1651,27 +1672,50 @@ class TrialMatcherResponse(_model_base.Model):
     :vartype last_update_date_time: ~datetime.datetime
     :ivar status: The status of the processing job. Required. Known values are: "notStarted",
      "running", "succeeded", "failed", and "partiallyCompleted".
-    :vartype status: str or ~azure.ai.healthdecisionsupport.models.JobStatus
+    :vartype status: str or ~healthdecisionsupportapi.models.JobStatus
     :ivar errors: An array of errors, if any errors occurred during the processing job.
-    :vartype errors: list[~azure.ai.healthdecisionsupport.models.Error]
+    :vartype errors: list[~healthdecisionsupportapi.models.Error]
     :ivar results: The inference results for the Trial Matcher request.
-    :vartype results: ~azure.ai.healthdecisionsupport.models.TrialMatcherResults
+    :vartype results: ~healthdecisionsupportapi.models.TrialMatcherResults
     """
 
     job_id: str = rest_field(name="jobId", readonly=True)
     """A processing job identifier. Required. """
-    created_date_time: datetime.datetime = rest_field(name="createdDateTime", readonly=True)
+    created_date_time: datetime.datetime = rest_field(name="createdDateTime")
     """The date and time when the processing job was created. Required. """
-    expiration_date_time: datetime.datetime = rest_field(name="expirationDateTime", readonly=True)
+    expiration_date_time: datetime.datetime = rest_field(name="expirationDateTime")
     """The date and time when the processing job is set to expire. Required. """
-    last_update_date_time: datetime.datetime = rest_field(name="lastUpdateDateTime", readonly=True)
+    last_update_date_time: datetime.datetime = rest_field(name="lastUpdateDateTime")
     """The date and time when the processing job was last updated. Required. """
-    status: Union[str, "_models.JobStatus"] = rest_field(readonly=True)
+    status: Union[str, "_models.JobStatus"] = rest_field()
     """The status of the processing job. Required. Known values are: \"notStarted\", \"running\", \"succeeded\", \"failed\", and \"partiallyCompleted\"."""
-    errors: Optional[List["_models.Error"]] = rest_field(readonly=True)
+    errors: Optional[List["_models.Error"]] = rest_field()
     """An array of errors, if any errors occurred during the processing job. """
-    results: Optional["_models.TrialMatcherResults"] = rest_field(readonly=True)
+    results: Optional["_models.TrialMatcherResults"] = rest_field()
     """The inference results for the Trial Matcher request. """
+
+    @overload
+    def __init__(
+        self,
+        *,
+        created_date_time: datetime.datetime,
+        expiration_date_time: datetime.datetime,
+        last_update_date_time: datetime.datetime,
+        status: Union[str, "_models.JobStatus"],
+        errors: Optional[List["_models.Error"]] = None,
+        results: Optional["_models.TrialMatcherResults"] = None,
+    ):
+        ...
+
+    @overload
+    def __init__(self, mapping: Mapping[str, Any]):
+        """
+        :param mapping: raw JSON to initialize the model.
+        :type mapping: Mapping[str, Any]
+        """
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:  # pylint: disable=useless-super-delegation
+        super().__init__(*args, **kwargs)
 
 
 class TrialMatcherResults(_model_base.Model):
@@ -1680,7 +1724,7 @@ class TrialMatcherResults(_model_base.Model):
     All required parameters must be populated in order to send to Azure.
 
     :ivar patients: Results for the patients given in the request. Required.
-    :vartype patients: list[~azure.ai.healthdecisionsupport.models.TrialMatcherPatientResult]
+    :vartype patients: list[~healthdecisionsupportapi.models.TrialMatcherPatientResult]
     :ivar model_version: The version of the model used for inference, expressed as the model date.
      Required.
     :vartype model_version: str

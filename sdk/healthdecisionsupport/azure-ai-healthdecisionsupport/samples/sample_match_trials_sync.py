@@ -3,15 +3,39 @@
 
 import os
 import datetime
-import asyncio
 
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.healthdecisionsupport.models import *
-from azure.ai.healthdecisionsupport.aio import TrialMatcherClient
+from azure.ai.healthdecisionsupport import TrialMatcherClient
+
+"""
+FILE: sample_match_trials_sync.py
+
+DESCRIPTION:
+    This example demonstrates Finding potential eligible trials for a patient,
+    based on patient’s structured medical information.
+    It uses **SYNC** function unlike other samples that uses async function.
+
+    It looks for structured clinical trials that were taken from ClinicalTrials.gov
+    Trial Matcher model matches a single patient to a set of relevant clinical trials,
+    that this patient appears to be qualified for. This use case will demonstrate:
+    a. How to use the trial matcher when patient clinical health information is provided to the
+    Trial Matcher in a key-value structure with coded elements.
+    b. How to use the clinical trial configuration to narrow down the trial condition,
+    recruitment status, location and other criteria that the service users may choose to prioritize.
+
+
+USAGE:
+    python sample_match_trials_sync.py
+
+    Set the environment variables with your own values before running the sample:
+    1) HEALTH_DECISION_SUPPORT_KEY - your source from Health Decision Support API key.
+    2) HEALTH_DECISION_SUPPORT_ENDPOINT - the endpoint to your source Health Decision Support resource.
+"""
 
 
 class HealthDecisionSupportSamples:
-    async def match_trials(self):
+    def match_trials(self):
         KEY = os.getenv("HEALTH_DECISION_SUPPORT_KEY")
         ENDPOINT = os.getenv("HEALTH_DECISION_SUPPORT_ENDPOINT")
 
@@ -24,45 +48,25 @@ class HealthDecisionSupportSamples:
         # Create clinical info list
         # <clinicalInfo>
         clinical_info_list = [ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="C0006826",
-                                                   name="Malignant Neoplasms",
+                                                   code="C0032181",
+                                                   name="Platelet count",
+                                                   value="250000"),
+                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
+                                                   code="C0002965",
+                                                   name="Unstable Angina",
                                                    value="true"),
                               ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
                                                    code="C1522449",
-                                                   name="Therapeutic radiology procedure",
-                                                   value="true"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="METASTATIC",
-                                                   name="metastatic",
-                                                   value="true"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="C1512162",
-                                                   name="Eastern Cooperative Oncology Group",
-                                                   value="1"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="C0019693",
-                                                   name="HIV Infections",
+                                                   name="Radiotherapy",
                                                    value="false"),
+                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
+                                                   code="C0242957",
+                                                   name="GeneOrProtein-Expression",
+                                                   value="Negative;EntityType:GENEORPROTEIN-EXPRESSION"),
                               ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
                                                    code="C1300072",
-                                                   name="Tumor stage",
-                                                   value="2"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="C0019163",
-                                                   name="Hepatitis B",
-                                                   value="false"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="C0018802",
-                                                   name="Congestive heart failure",
-                                                   value="true"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="C0019196",
-                                                   name="Hepatitis C",
-                                                   value="false"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="C0220650",
-                                                   name="Metastatic malignant neoplasm to brain",
-                                                   value="true")]
+                                                   name="cancer stage",
+                                                   value="2")]
 
         # </clinicalInfo>
 
@@ -76,15 +80,13 @@ class HealthDecisionSupportSamples:
         # Create registry filter
         registry_filters = ClinicalTrialRegistryFilter()
         # Limit the trial to a specific patient condition ("Non-small cell lung cancer")
-        registry_filters.conditions = ["Non-small cell lung cancer"]
-        # Limit the clinical trial to a certain phase, phase 1
-        registry_filters.phases = [ClinicalTrialPhase.PHASE1]
+        registry_filters.conditions = ["non small cell lung cancer (nsclc)"]
         # Specify the clinical trial registry source as ClinicalTrials.Gov
         registry_filters.sources = [ClinicalTrialSource.CLINICALTRIALS_GOV]
         # Limit the clinical trial to a certain location, in this case California, USA
         registry_filters.facility_locations = [Location(country="United States", city="Gilbert", state="Arizona")]
-        # Limit the trial to a specific study type, interventional
-        registry_filters.study_types = [ClinicalTrialStudyType.INTERVENTIONAL]
+        # Limit the trial to a specific recruitment status
+        registry_filters.recruitment_statuses = [ClinicalTrialRecruitmentStatus.RECRUITING]
 
         # Construct ClinicalTrial instance and attach the registry filter to it.
         clinical_trials = ClinicalTrials(registry_filters=[registry_filters])
@@ -95,8 +97,8 @@ class HealthDecisionSupportSamples:
 
         # Health Decision Support Trial match trials
         try:
-            poller = await trial_matcher_client.begin_match_trials(trial_matcher_request)
-            trial_matcher_response = await poller.result()
+            poller = trial_matcher_client.begin_match_trials(trial_matcher_request)
+            trial_matcher_response = poller.result()
             self.print_results(trial_matcher_response)
         except Exception as ex:
             print(str(ex))
@@ -119,11 +121,7 @@ class HealthDecisionSupportSamples:
                     print(f"{error.code} : {error.message}")
 
 
-async def main():
-    sample = HealthDecisionSupportSamples()
-    await sample.match_trials()
-
-
 if __name__ == "__main__":
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-    asyncio.run(main())
+    sample = HealthDecisionSupportSamples()
+    sample.match_trials()
+

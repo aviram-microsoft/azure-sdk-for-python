@@ -159,13 +159,6 @@ class PatientInfoGender(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     UNSPECIFIED = "unspecified"
 
 
-class RepeatabilityResultType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
-    """Type of RepeatabilityResultType."""
-
-    ACCEPTED = "accepted"
-    REJECTED = "rejected"
-
-
 class TrialMatcherInferenceType(str, Enum, metaclass=CaseInsensitiveEnumMeta):
     """The type of the Trial Matcher inference."""
 

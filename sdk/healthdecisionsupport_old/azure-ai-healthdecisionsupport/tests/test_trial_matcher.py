@@ -1,0 +1,65 @@
+import functools
+import json
+
+from azure.ai.healthdecisionsupport.models import *
+from azure.core.credentials import AzureKeyCredential
+from azure.ai.healthdecisionsupport import TrialMatcherClient
+
+from devtools_testutils import (
+    AzureRecordedTestCase,
+    PowerShellPreparer,
+    recorded_by_proxy,
+)
+
+HealthDecisionSupportEnvPreparer = functools.partial(
+    PowerShellPreparer,
+    "healthdecisionsupport",
+    healthdecisionsupport_endpoint="https://fake_ad_resource.cognitiveservices.azure.com/",
+    healthdecisionsupport_key="00000000000000000000000000000000",
+)
+
+
+class TestTrialMatcher(AzureRecordedTestCase):
+
+    @staticmethod
+    def load_json(path) -> json:
+        with open(path, 'rt', encoding='utf8') as json_file:
+            res = json.load(json_file)
+            return res
+
+    @staticmethod
+    def response_json(content) -> TrialMatcherResponse:
+        my_json = content.decode('utf8').replace("'", '"')
+        return TrialMatcherResponse(json.loads(my_json))
+
+    @HealthDecisionSupportEnvPreparer()
+    @recorded_by_proxy
+    def test_valid_request(self, healthdecisionsupport_endpoint, healthdecisionsupport_key):
+        trial_matcher_client = TrialMatcherClient(healthdecisionsupport_endpoint,
+                                                  AzureKeyCredential(healthdecisionsupport_key))
+
+        assert trial_matcher_client is not None
+
+        data = self.load_json('trial_matcher_valid_request.json')
+
+        poller = trial_matcher_client.begin_match_trial(data)
+        response = poller.result()
+        if response.status == JobStatus.SUCCEEDED:
+            assert response.results.patients[0].inferences == []
+            print(response.results)
+
+    @HealthDecisionSupportEnvPreparer()
+    @recorded_by_proxy
+    def test_empty_request(self, healthdecisionsupport_endpoint, healthdecisionsupport_key):
+        trial_matcher_client = TrialMatcherClient(healthdecisionsupport_endpoint,
+                                                  AzureKeyCredential(healthdecisionsupport_key))
+
+        assert trial_matcher_client is not None
+
+        data = self.load_json('trial_matcher_empty_request.json')
+
+        poller = trial_matcher_client.begin_match_trial(data)
+        response = poller.result()
+        if response.status == JobStatus.SUCCEEDED:
+            assert response.results.patients[0].inferences == []
+            print(response.results)

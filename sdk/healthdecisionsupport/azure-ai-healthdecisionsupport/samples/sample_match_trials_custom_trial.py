@@ -9,6 +9,26 @@ from azure.core.credentials import AzureKeyCredential
 from azure.ai.healthdecisionsupport.models import *
 from azure.ai.healthdecisionsupport.aio import TrialMatcherClient
 
+"""
+FILE: sample_match_trials_custom_trial.py
+
+DESCRIPTION:
+    Trial Eligibility Assessment for a Custom Trial
+    
+    Trial Matcher can be used to understand the gaps of eligibility criteria for a specific patient for a
+    given clinical trial. In this case, the trial is not taken from clinicaltrials.gov, however the trial
+    is a custom trial that might be not published clinicaltrials.gov yet.  The custom trial eligibility
+    criteria section is provided as an input to the Trial Matcher.
+
+
+USAGE:
+    python sample_match_trials_unstructured_clinical_note.py
+
+    Set the environment variables with your own values before running the sample:
+    1) HEALTH_DECISION_SUPPORT_KEY - your source from Health Decision Support API key.
+    2) HEALTH_DECISION_SUPPORT_ENDPOINT - the endpoint to your source Health Decision Support resource.
+"""
+
 
 class HealthDecisionSupportSamples:
     async def match_trials(self):
@@ -32,10 +52,6 @@ class HealthDecisionSupportSamples:
                                                    name="Therapeutic radiology procedure",
                                                    value="true"),
                               ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="METASTATIC",
-                                                   name="metastatic",
-                                                   value="true"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
                                                    code="C1512162",
                                                    name="Eastern Cooperative Oncology Group",
                                                    value="1"),
@@ -46,23 +62,7 @@ class HealthDecisionSupportSamples:
                               ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
                                                    code="C1300072",
                                                    name="Tumor stage",
-                                                   value="2"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="C0019163",
-                                                   name="Hepatitis B",
-                                                   value="false"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="C0018802",
-                                                   name="Congestive heart failure",
-                                                   value="true"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="C0019196",
-                                                   name="Hepatitis C",
-                                                   value="false"),
-                              ClinicalCodedElement(system="http://www.nlm.nih.gov/research/umls",
-                                                   code="C0220650",
-                                                   name="Metastatic malignant neoplasm to brain",
-                                                   value="true")]
+                                                   value="2")]
 
         # </clinicalInfo>
 
@@ -70,24 +70,29 @@ class HealthDecisionSupportSamples:
         # <PatientConstructor>
         patient_info = PatientInfo(gender=PatientInfoGender.MALE, birth_date=datetime.date(1965, 12, 26),
                                    clinical_info=clinical_info_list)
-        patient1 = Patient(id="patient_id", info=patient_info)
+        patient1 = Patient(id="Albus", info=patient_info)
         # </PatientConstructor>
 
-        # Create registry filter
-        registry_filters = ClinicalTrialRegistryFilter()
-        # Limit the trial to a specific patient condition ("Non-small cell lung cancer")
-        registry_filters.conditions = ["Non-small cell lung cancer"]
-        # Limit the clinical trial to a certain phase, phase 1
-        registry_filters.phases = [ClinicalTrialPhase.PHASE1]
-        # Specify the clinical trial registry source as ClinicalTrials.Gov
-        registry_filters.sources = [ClinicalTrialSource.CLINICALTRIALS_GOV]
-        # Limit the clinical trial to a certain location, in this case California, USA
-        registry_filters.facility_locations = [Location(country="United States", city="Gilbert", state="Arizona")]
-        # Limit the trial to a specific study type, interventional
-        registry_filters.study_types = [ClinicalTrialStudyType.INTERVENTIONAL]
+        clinical_trial_meta_data = ClinicalTrialMetadata(conditions=["Diabetes"],
+                                                         phases=[ClinicalTrialPhase.PHASE1],
+                                                         study_type=ClinicalTrialStudyType.INTERVENTIONAL,
+                                                         recruitment_status=ClinicalTrialRecruitmentStatus.RECRUITING,
+                                                         contacts=[ContactDetails(name="Dr Chan",
+                                                                                  email="DrChan@gmail.com",
+                                                                                  phone="1-800-CallChan")])
 
-        # Construct ClinicalTrial instance and attach the registry filter to it.
-        clinical_trials = ClinicalTrials(registry_filters=[registry_filters])
+        clinical_trial_demographics = ClinicalTrialDemographics(
+            accepted_age_range=ClinicalTrialDemographicsAcceptedAgeRange(
+                minimum_age=Age(unit=AgeUnit.YEARS, value=5), maximum_age=Age(unit=AgeUnit.YEARS,value=100)))
+
+        clinical_trial_details = ClinicalTrialDetails(id="Grey Anotamy's new trial",
+                                                      metadata=clinical_trial_meta_data,
+                                                      demographics=clinical_trial_demographics)
+
+        # Construct ClinicalTrial
+        # <ClinicalTrials>
+        clinical_trials = ClinicalTrials(custom_trials=[clinical_trial_details])
+        # </ClinicalTrials>
 
         # Create TrialMatcherRequest
         configuration = TrialMatcherModelConfiguration(clinical_trials=clinical_trials)
