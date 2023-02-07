@@ -13,7 +13,7 @@ from azure.ai.healthdecisionsupport.aio import TrialMatcherClient
 FILE: sample_match_trials_custom_trial.py
 
 DESCRIPTION:
-    Trial Eligibility Assessment for a Custom Trial
+    Trial Eligibility Assessment for a Custom Trial.
     
     Trial Matcher can be used to understand the gaps of eligibility criteria for a specific patient for a
     given clinical trial. In this case, the trial is not taken from clinicaltrials.gov, however the trial
@@ -68,7 +68,7 @@ class HealthDecisionSupportSamples:
 
         # Construct Patient
         # <PatientConstructor>
-        patient_info = PatientInfo(gender=PatientInfoGender.MALE, birth_date=datetime.date(1965, 12, 26),
+        patient_info = PatientInfo(gender=PatientInfoGender.MALE, birth_date=datetime.date(1963, 1, 1),
                                    clinical_info=clinical_info_list)
         patient1 = Patient(id="Albus", info=patient_info)
         # </PatientConstructor>
@@ -83,7 +83,7 @@ class HealthDecisionSupportSamples:
 
         clinical_trial_demographics = ClinicalTrialDemographics(
             accepted_age_range=ClinicalTrialDemographicsAcceptedAgeRange(
-                minimum_age=Age(unit=AgeUnit.YEARS, value=5), maximum_age=Age(unit=AgeUnit.YEARS,value=100)))
+                minimum_age=Age(unit=AgeUnit.YEARS, value=5), maximum_age=Age(unit=AgeUnit.YEARS, value=100)))
 
         clinical_trial_details = ClinicalTrialDetails(id="Grey Anotamy's new trial",
                                                       metadata=clinical_trial_meta_data,

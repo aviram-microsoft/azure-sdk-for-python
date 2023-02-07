@@ -9,6 +9,27 @@ from azure.core.credentials import AzureKeyCredential
 from azure.ai.healthdecisionsupport.models import *
 from azure.ai.healthdecisionsupport.aio import TrialMatcherClient
 
+"""
+FILE: sample_match_trials.py
+
+DESCRIPTION:
+    Finding potential eligible trials for a patient, based on patient’s structured medical information.
+
+    Trial Matcher model matches a single patient to a set of relevant clinical trials,
+    that this patient appears to be qualified for. This use case will demonstrate:
+    a. How to use the trial matcher when patient clinical health information is provided to the
+    Trial Matcher in a key-value structure with coded elements.
+    b. How to use the clinical trial configuration to narrow down the trial condition,
+    recruitment status, location and other criteria that the service users may choose to prioritize.
+
+USAGE:
+    python sample_match_trials.py
+
+    Set the environment variables with your own values before running the sample:
+    1) HEALTH_DECISION_SUPPORT_KEY - your source from Health Decision Support API key.
+    2) HEALTH_DECISION_SUPPORT_ENDPOINT - the endpoint to your source Health Decision Support resource.
+"""
+
 
 class HealthDecisionSupportSamples:
     async def match_trials(self):

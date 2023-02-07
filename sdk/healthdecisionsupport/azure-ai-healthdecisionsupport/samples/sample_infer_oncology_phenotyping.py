@@ -9,6 +9,26 @@ from azure.core.credentials import AzureKeyCredential
 from azure.ai.healthdecisionsupport.models import *
 from azure.ai.healthdecisionsupport.aio import OncoPhenotypeClient
 
+"""
+FILE: sample_infer_oncology_phenotyping.py
+
+DESCRIPTION:
+    Infer key cancer attributes such as tumor site, histology, clinical stage TNM categories and pathologic stage TNM 
+    categories from a patient's unstructured clinical documents.
+    
+    OncoPhenotype model enables cancer registrars and clinical researchers to infer key cancer attributes from 
+    unstructured clinical documents along with evidence relevant to those attributes. This model can help reduce the 
+    manual time spent combing through large amounts of patient documentation. 
+
+
+USAGE:
+    python sample_infer_oncology_phenotyping.py
+
+    Set the environment variables with your own values before running the sample:
+    1) HEALTH_DECISION_SUPPORT_KEY - your source from Health Decision Support API key.
+    2) HEALTH_DECISION_SUPPORT_ENDPOINT - the endpoint to your source Health Decision Support resource.
+"""
+
 
 class HealthDecisionSupportSamples:
     async def infer_oncology_phenotyping(self):

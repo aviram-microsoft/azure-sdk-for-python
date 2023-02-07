@@ -12,11 +12,9 @@ from azure.ai.healthdecisionsupport import TrialMatcherClient
 FILE: sample_match_trials_sync.py
 
 DESCRIPTION:
-    This example demonstrates Finding potential eligible trials for a patient,
-    based on patient’s structured medical information.
+    Finding potential eligible trials for a patient, based on patient’s structured medical information.
     It uses **SYNC** function unlike other samples that uses async function.
 
-    It looks for structured clinical trials that were taken from ClinicalTrials.gov
     Trial Matcher model matches a single patient to a set of relevant clinical trials,
     that this patient appears to be qualified for. This use case will demonstrate:
     a. How to use the trial matcher when patient clinical health information is provided to the

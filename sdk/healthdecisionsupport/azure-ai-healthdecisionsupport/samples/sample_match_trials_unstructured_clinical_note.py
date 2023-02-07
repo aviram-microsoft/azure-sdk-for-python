@@ -106,7 +106,8 @@ class HealthDecisionSupportSamples:
                     print(f"{error.code} : {error.message}")
 
     def get_patient_doc_content(self) -> str:
-        content = "TITLE:  Cardiology Consult\r\n DIVISION OF CARDIOLOGY\r\n COMPREHENSIVE CONSULTATION NOTE\r\nCHIEF " \
+        content = "TITLE:  Cardiology Consult\r\n                       DIVISION OF CARDIOLOGY\r\n                   " \
+                  " COMPREHENSIVE CONSULTATION NOTE\r\nCHIEF " \
                   "COMPLAINT: Patient is seen in consultation today at the\r\nrequest of Dr. [**Last Name (STitle) " \
                   "13959**]. We are asked to give consultative advice\r\nregarding evaluation and management of Acute " \
                   "CHF.\r\nHISTORY OF PRESENT ILLNESS:\r\n71 year old man with CAD w/ diastolic dysfunction, CKD, " \
