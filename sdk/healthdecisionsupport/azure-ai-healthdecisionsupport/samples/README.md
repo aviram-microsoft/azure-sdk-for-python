@@ -19,7 +19,10 @@ These sample programs show common scenarios for the Health Decision Support clie
 |----------------|-------------|
 |[sample_infer_oncology_phenotyping.py][sample_infer_oncology_phenotyping] |Infer oncology phenotyping.|
 |[sample_match_trials.py][sample_match_trials] |Match trials.|
-
+|[sample_match_trials_custom_trial.py][sample_match_trials_custom_trial] |Match trials custom trial.|
+|[sample_match_trials_fhir.py][sample_match_trials_fhir] |Match trials fhir.|
+|[sample_match_trials_sync.py][sample_match_trials_sync] |Match trials sync.|
+|[sample_match_trials_unstructured_clinical_note.py][sample_match_trials_unstructured_clinical_note] |Match trials unstructured clinical note.|
 
 ## Prerequisites
 * Python 2.7 or 3.5 or higher is required to use this package.
@@ -55,3 +58,7 @@ what you can do with the Health Decision Support client library.
 
 [sample_infer_oncology_phenotyping]: https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/healthdecisionsupport/azure-ai-healthdecisionsupport/samples/sample_infer_oncology_phenotyping.py
 [sample_match_trials]: https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/healthdecisionsupport/azure-ai-healthdecisionsupport/samples/sample_match_trials.py
+[sample_match_trials_custom_trial]: https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/healthdecisionsupport/azure-ai-healthdecisionsupport/samples/sample_match_trials_custom_trial.py
+[sample_match_trials_fhir]: https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/healthdecisionsupport/azure-ai-healthdecisionsupport/samples/sample_match_trials_fhir.py
+[sample_match_trials_sync]: https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/healthdecisionsupport/azure-ai-healthdecisionsupport/samples/sample_match_trials_sync.py
+[sample_match_trials_unstructured_clinical_note]: https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/healthdecisionsupport/azure-ai-healthdecisionsupport/samples/sample_match_trials_unstructured_clinical_note.py
