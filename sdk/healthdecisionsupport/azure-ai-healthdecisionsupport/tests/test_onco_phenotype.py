@@ -27,11 +27,6 @@ class TestOncoPhenotype(AzureRecordedTestCase):
             res = json.load(json_file)
             return res
 
-    @staticmethod
-    def response_json(content) -> OncoPhenotypeResponse:
-        my_json = content.decode('utf8').replace("'", '"')
-        return OncoPhenotypeResponse(json.loads(my_json))
-
     @HealthDecisionSupportEnvPreparer()
     @recorded_by_proxy
     def test_onco_phenotype(self, healthdecisionsupport_endpoint, healthdecisionsupport_key):
