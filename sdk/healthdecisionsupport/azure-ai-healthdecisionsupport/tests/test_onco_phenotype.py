@@ -1,6 +1,5 @@
 import functools
 import json
-import os
 
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.healthdecisionsupport import OncoPhenotypeClient

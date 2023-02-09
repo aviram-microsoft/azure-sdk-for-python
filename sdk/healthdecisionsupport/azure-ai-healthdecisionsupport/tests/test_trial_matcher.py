@@ -1,9 +1,9 @@
 import functools
 import json
 
-from azure.ai.healthdecisionsupport.models import *
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.healthdecisionsupport import TrialMatcherClient
+from azure.ai.healthdecisionsupport.models import *
 
 from devtools_testutils import (
     AzureRecordedTestCase,
@@ -26,11 +26,6 @@ class TestTrialMatcher(AzureRecordedTestCase):
         with open(path, 'rt', encoding='utf8') as json_file:
             res = json.load(json_file)
             return res
-
-    @staticmethod
-    def response_json(content) -> TrialMatcherResponse:
-        my_json = content.decode('utf8').replace("'", '"')
-        return TrialMatcherResponse(json.loads(my_json))
 
     @HealthDecisionSupportEnvPreparer()
     @recorded_by_proxy
