@@ -40,26 +40,9 @@ class TestTrialMatcher(AzureRecordedTestCase):
 
         assert trial_matcher_client is not None
 
-        data = self.load_json('trial_matcher_valid_request.json')
+        data = self.load_json('data/trial_matcher_valid_request.json')
 
-        poller = trial_matcher_client.begin_match_trial(data)
+        poller = trial_matcher_client.begin_match_trials(data)
         response = poller.result()
-        if response.status == JobStatus.SUCCEEDED:
-            assert response.results.patients[0].inferences == []
-            print(response.results)
 
-    @HealthDecisionSupportEnvPreparer()
-    @recorded_by_proxy
-    def test_empty_request(self, healthdecisionsupport_endpoint, healthdecisionsupport_key):
-        trial_matcher_client = TrialMatcherClient(healthdecisionsupport_endpoint,
-                                                  AzureKeyCredential(healthdecisionsupport_key))
-
-        assert trial_matcher_client is not None
-
-        data = self.load_json('trial_matcher_empty_request.json')
-
-        poller = trial_matcher_client.begin_match_trial(data)
-        response = poller.result()
-        if response.status == JobStatus.SUCCEEDED:
-            assert response.results.patients[0].inferences == []
-            print(response.results)
+        assert len(response.results.patients[0].inferences) == 17

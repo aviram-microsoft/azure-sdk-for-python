@@ -1,0 +1,18 @@
+trigger: none
+
+stages:
+  - template: ../../eng/pipelines/templates/stages/healthdecisionsupport-sdk-tests.yml
+    parameters:
+      BuildTargetingString: azure-ai-healthdecisionsupport
+      ServiceDirectory: healthdecisionsupport
+      Clouds: Canary
+      MatrixReplace:
+        - TestSamples=.*/true
+      EnvVars:
+        AZURE_CLIENT_ID: $(HEALTHDECISIONSUPPORT_CLIENT_ID)
+        AZURE_TENANT_ID: $(HEALTHDECISIONSUPPORT_TENANT_ID)
+        AZURE_SUBSCRIPTION_ID: $(HEALTHDECISIONSUPPORT_SUBSCRIPTION_ID)
+        AZURE_CLIENT_SECRET: $(HEALTHDECISIONSUPPORT_CLIENT_SECRET)
+        TEST_MODE: 'RunLiveNoRecord'
+        AZURE_SKIP_LIVE_RECORDING: 'True'
+        AZURE_TEST_RUN_LIVE: 'false'

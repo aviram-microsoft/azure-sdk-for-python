@@ -4,7 +4,7 @@
       "RequestUri": "https://fake_ad_resource.cognitiveservices.azure.com//healthdecisionsupport/trialmatcher/jobs?api-version=2022-01-01-preview",
       "RequestMethod": "POST",
       "RequestHeaders": {
-        "Accept": "*/*",
+        "Accept": "application/json",
         "Accept-Encoding": "gzip, deflate",
         "Connection": "keep-alive",
         "Content-Length": "621",

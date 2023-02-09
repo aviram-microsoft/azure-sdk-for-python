@@ -1,5 +1,6 @@
 import functools
 import json
+import os
 
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.healthdecisionsupport import OncoPhenotypeClient
@@ -43,8 +44,7 @@ class TestOncoPhenotype(AzureRecordedTestCase):
 
         poller = onco_client.begin_infer_oncology_phenotyping(data)
         response = poller.result()
-        if response.status == JobStatus.SUCCEEDED:
-            assert response.results.patients[0].inferences == []
-            print(response.results)
+
+        assert len(response.results.patients[0].inferences) == 8
 
 
