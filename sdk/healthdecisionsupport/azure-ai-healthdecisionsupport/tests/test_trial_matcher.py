@@ -35,9 +35,9 @@ class TestTrialMatcher(AzureRecordedTestCase):
 
         assert trial_matcher_client is not None
 
-        data = self.load_json('data/trial_matcher_valid_request.json')
+        data = self.load_json('data/trial_matcher_data.json')
 
         poller = trial_matcher_client.begin_match_trials(data)
         response = poller.result()
 
-        assert len(response.results.patients[0].inferences) == 17
+        assert len(response.results.patients[0].inferences) == 37
