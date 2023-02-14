@@ -7,7 +7,7 @@
         "Accept": "application/json",
         "Accept-Encoding": "gzip, deflate",
         "Connection": "keep-alive",
-        "Content-Length": "1056",
+        "Content-Length": "1059",
         "Content-Type": "application/json",
         "Ocp-Apim-Subscription-Key": "00000000000000000000000000000000",
         "User-Agent": "azsdk-python-ai-healthdecisionsupport/1.0.0b1 Python/3.11.1 (Windows-10-10.0.22621-SP0)"
@@ -40,7 +40,7 @@
         },
         "patients": [
           {
-            "id": "Albus",
+            "id": "patient1",
             "info": {
               "gender": "male",
               "birthDate": "1961-04-25T09:54:29.5210127\u002B00:00",
@@ -82,20 +82,20 @@
       },
       "StatusCode": 202,
       "ResponseHeaders": {
-        "apim-request-id": "3261785f-4f2b-4fba-b605-eef0360fcbcf",
+        "apim-request-id": "d7dd0f5e-6602-4a8f-a1f1-065f055b28e2",
         "Content-Length": "0",
-        "Date": "Tue, 14 Feb 2023 14:41:14 GMT",
-        "operation-location": "https://fake_ad_resource.cognitiveservices.azure.com//healthdecisionsupport/trialmatcher/jobs/dfd9f89b-89ba-49e1-bc06-a1944cb8cde1?api-version=2022-01-01-preview",
+        "Date": "Tue, 14 Feb 2023 14:49:03 GMT",
+        "operation-location": "https://fake_ad_resource.cognitiveservices.azure.com//healthdecisionsupport/trialmatcher/jobs/2c6dc9a9-8c8e-4225-9fad-021504e1db5a?api-version=2022-01-01-preview",
         "Retry-After": "1",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
         "X-Content-Type-Options": "nosniff",
-        "x-envoy-upstream-service-time": "71",
+        "x-envoy-upstream-service-time": "320",
         "x-ms-region": "West Europe"
       },
       "ResponseBody": null
     },
     {
-      "RequestUri": "https://fake_ad_resource.cognitiveservices.azure.com//healthdecisionsupport/trialmatcher/jobs/dfd9f89b-89ba-49e1-bc06-a1944cb8cde1?api-version=2022-01-01-preview",
+      "RequestUri": "https://fake_ad_resource.cognitiveservices.azure.com//healthdecisionsupport/trialmatcher/jobs/2c6dc9a9-8c8e-4225-9fad-021504e1db5a?api-version=2022-01-01-preview",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "Accept": "*/*",
@@ -107,224 +107,21 @@
       "RequestBody": null,
       "StatusCode": 200,
       "ResponseHeaders": {
-        "apim-request-id": "40d9b316-48d4-4891-b08b-e04fc0eb1b82",
-        "Content-Length": "199",
+        "apim-request-id": "f2c1f270-94cc-4b7b-925f-eccbd79aec64",
+        "Content-Length": "12219",
         "Content-Type": "application/json; charset=utf-8",
-        "Date": "Tue, 14 Feb 2023 14:41:15 GMT",
-        "Retry-After": "1",
+        "Date": "Tue, 14 Feb 2023 14:49:03 GMT",
         "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
         "X-Content-Type-Options": "nosniff",
-        "x-envoy-upstream-service-time": "20",
-        "x-ms-region": "West Europe"
-      },
-      "ResponseBody": {
-        "jobId": "dfd9f89b-89ba-49e1-bc06-a1944cb8cde1",
-        "createdDateTime": "2023-02-14T14:41:15Z",
-        "expirationDateTime": "2023-02-15T14:41:15Z",
-        "lastUpdateDateTime": "2023-02-14T14:41:15Z",
-        "status": "notStarted"
-      }
-    },
-    {
-      "RequestUri": "https://fake_ad_resource.cognitiveservices.azure.com//healthdecisionsupport/trialmatcher/jobs/dfd9f89b-89ba-49e1-bc06-a1944cb8cde1?api-version=2022-01-01-preview",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "Accept": "*/*",
-        "Accept-Encoding": "gzip, deflate",
-        "Connection": "keep-alive",
-        "Ocp-Apim-Subscription-Key": "00000000000000000000000000000000",
-        "User-Agent": "azsdk-python-ai-healthdecisionsupport/1.0.0b1 Python/3.11.1 (Windows-10-10.0.22621-SP0)"
-      },
-      "RequestBody": null,
-      "StatusCode": 200,
-      "ResponseHeaders": {
-        "apim-request-id": "1b85c685-39e3-427f-aa75-338396b0da05",
-        "Content-Length": "196",
-        "Content-Type": "application/json; charset=utf-8",
-        "Date": "Tue, 14 Feb 2023 14:41:16 GMT",
-        "Retry-After": "1",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
-        "X-Content-Type-Options": "nosniff",
-        "x-envoy-upstream-service-time": "23",
-        "x-ms-region": "West Europe"
-      },
-      "ResponseBody": {
-        "jobId": "dfd9f89b-89ba-49e1-bc06-a1944cb8cde1",
-        "createdDateTime": "2023-02-14T14:41:15Z",
-        "expirationDateTime": "2023-02-15T14:41:15Z",
-        "lastUpdateDateTime": "2023-02-14T14:41:15Z",
-        "status": "running"
-      }
-    },
-    {
-      "RequestUri": "https://fake_ad_resource.cognitiveservices.azure.com//healthdecisionsupport/trialmatcher/jobs/dfd9f89b-89ba-49e1-bc06-a1944cb8cde1?api-version=2022-01-01-preview",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "Accept": "*/*",
-        "Accept-Encoding": "gzip, deflate",
-        "Connection": "keep-alive",
-        "Ocp-Apim-Subscription-Key": "00000000000000000000000000000000",
-        "User-Agent": "azsdk-python-ai-healthdecisionsupport/1.0.0b1 Python/3.11.1 (Windows-10-10.0.22621-SP0)"
-      },
-      "RequestBody": null,
-      "StatusCode": 200,
-      "ResponseHeaders": {
-        "apim-request-id": "2584b6eb-8259-400d-81b6-11315611beba",
-        "Content-Length": "196",
-        "Content-Type": "application/json; charset=utf-8",
-        "Date": "Tue, 14 Feb 2023 14:41:17 GMT",
-        "Retry-After": "1",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
-        "X-Content-Type-Options": "nosniff",
-        "x-envoy-upstream-service-time": "22",
-        "x-ms-region": "West Europe"
-      },
-      "ResponseBody": {
-        "jobId": "dfd9f89b-89ba-49e1-bc06-a1944cb8cde1",
-        "createdDateTime": "2023-02-14T14:41:15Z",
-        "expirationDateTime": "2023-02-15T14:41:15Z",
-        "lastUpdateDateTime": "2023-02-14T14:41:15Z",
-        "status": "running"
-      }
-    },
-    {
-      "RequestUri": "https://fake_ad_resource.cognitiveservices.azure.com//healthdecisionsupport/trialmatcher/jobs/dfd9f89b-89ba-49e1-bc06-a1944cb8cde1?api-version=2022-01-01-preview",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "Accept": "*/*",
-        "Accept-Encoding": "gzip, deflate",
-        "Connection": "keep-alive",
-        "Ocp-Apim-Subscription-Key": "00000000000000000000000000000000",
-        "User-Agent": "azsdk-python-ai-healthdecisionsupport/1.0.0b1 Python/3.11.1 (Windows-10-10.0.22621-SP0)"
-      },
-      "RequestBody": null,
-      "StatusCode": 200,
-      "ResponseHeaders": {
-        "apim-request-id": "a7c47212-9e4e-4af9-8d79-871cdb12f7d5",
-        "Content-Length": "196",
-        "Content-Type": "application/json; charset=utf-8",
-        "Date": "Tue, 14 Feb 2023 14:41:18 GMT",
-        "Retry-After": "1",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
-        "X-Content-Type-Options": "nosniff",
-        "x-envoy-upstream-service-time": "9",
-        "x-ms-region": "West Europe"
-      },
-      "ResponseBody": {
-        "jobId": "dfd9f89b-89ba-49e1-bc06-a1944cb8cde1",
-        "createdDateTime": "2023-02-14T14:41:15Z",
-        "expirationDateTime": "2023-02-15T14:41:15Z",
-        "lastUpdateDateTime": "2023-02-14T14:41:15Z",
-        "status": "running"
-      }
-    },
-    {
-      "RequestUri": "https://fake_ad_resource.cognitiveservices.azure.com//healthdecisionsupport/trialmatcher/jobs/dfd9f89b-89ba-49e1-bc06-a1944cb8cde1?api-version=2022-01-01-preview",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "Accept": "*/*",
-        "Accept-Encoding": "gzip, deflate",
-        "Connection": "keep-alive",
-        "Ocp-Apim-Subscription-Key": "00000000000000000000000000000000",
-        "User-Agent": "azsdk-python-ai-healthdecisionsupport/1.0.0b1 Python/3.11.1 (Windows-10-10.0.22621-SP0)"
-      },
-      "RequestBody": null,
-      "StatusCode": 200,
-      "ResponseHeaders": {
-        "apim-request-id": "648c9403-675d-4af4-9f68-5efd45dbc7a4",
-        "Content-Length": "196",
-        "Content-Type": "application/json; charset=utf-8",
-        "Date": "Tue, 14 Feb 2023 14:41:19 GMT",
-        "Retry-After": "1",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
-        "X-Content-Type-Options": "nosniff",
-        "x-envoy-upstream-service-time": "9",
-        "x-ms-region": "West Europe"
-      },
-      "ResponseBody": {
-        "jobId": "dfd9f89b-89ba-49e1-bc06-a1944cb8cde1",
-        "createdDateTime": "2023-02-14T14:41:15Z",
-        "expirationDateTime": "2023-02-15T14:41:15Z",
-        "lastUpdateDateTime": "2023-02-14T14:41:15Z",
-        "status": "running"
-      }
-    },
-    {
-      "RequestUri": "https://fake_ad_resource.cognitiveservices.azure.com//healthdecisionsupport/trialmatcher/jobs/dfd9f89b-89ba-49e1-bc06-a1944cb8cde1?api-version=2022-01-01-preview",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "Accept": "*/*",
-        "Accept-Encoding": "gzip, deflate",
-        "Connection": "keep-alive",
-        "Ocp-Apim-Subscription-Key": "00000000000000000000000000000000",
-        "User-Agent": "azsdk-python-ai-healthdecisionsupport/1.0.0b1 Python/3.11.1 (Windows-10-10.0.22621-SP0)"
-      },
-      "RequestBody": null,
-      "StatusCode": 200,
-      "ResponseHeaders": {
-        "apim-request-id": "f16180e2-6fcd-42fe-a51d-75889e09ad0d",
-        "Content-Length": "12216",
-        "Content-Type": "application/json; charset=utf-8",
-        "Date": "Tue, 14 Feb 2023 14:41:20 GMT",
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
-        "X-Content-Type-Options": "nosniff",
-        "x-envoy-upstream-service-time": "12",
+        "x-envoy-upstream-service-time": "75",
         "x-ms-region": "West Europe"
       },
       "ResponseBody": {
         "results": {
           "patients": [
             {
-              "id": "Albus",
+              "id": "patient1",
               "inferences": [
-                {
-                  "type": "trialEligibility",
-                  "evidence": [
-                    {
-                      "eligibilityCriteriaEvidence": "Inclusion: Has a radiation therapy plan approved by the central radiation therapy quality assurance vendor",
-                      "patientInfoEvidence": {
-                        "system": "http://www.nlm.nih.gov/research/umls",
-                        "code": "C1522449",
-                        "name": "Radiotherapy",
-                        "value": "false"
-                      },
-                      "importance": 0.0
-                    },
-                    {
-                      "eligibilityCriteriaEvidence": "Inclusion: Is able to receive SBRT and does not have an ultra-centrally located tumor",
-                      "patientInfoEvidence": {
-                        "system": "http://www.nlm.nih.gov/research/umls",
-                        "code": "C1522449",
-                        "name": "Radiotherapy",
-                        "value": "false"
-                      },
-                      "importance": 0.0
-                    }
-                  ],
-                  "id": "NCT03924869",
-                  "source": "clinicaltrials.gov",
-                  "value": "Ineligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "evidence": [
-                    {
-                      "eligibilityCriteriaEvidence": "Exclusion: Clinically significant cardiovascular disease: cerebral vascular accident/stroke , myocardial infarction , unstable angina, congestive heart failure , or the presence of any condition that can increase proarrhythmic risk including any new, unstable, or serious cardiac arrhythmia requiring medication, or other baseline arrhythmia that might interfere with interpretation of ECGs on study . Patients with QTcF \u003E450 msec for males and \u003E470 msec for females on screening ECG are excluded. Any patients with a bundle branch block will be excluded with QTcF \u003E450 msec. Males who are on stable doses of concomitant medication with known prolongation of QTcF will only be excluded for QTcF \u003E470 msec.",
-                      "patientInfoEvidence": {
-                        "system": "http://www.nlm.nih.gov/research/umls",
-                        "code": "C4018874",
-                        "name": "Patient Gender",
-                        "value": "male"
-                      },
-                      "importance": 0.0
-                    }
-                  ],
-                  "id": "NCT04200963",
-                  "source": "clinicaltrials.gov",
-                  "value": "Ineligible",
-                  "confidenceScore": 0.0
-                },
                 {
                   "type": "trialEligibility",
                   "evidence": [
@@ -358,36 +155,17 @@
                   "type": "trialEligibility",
                   "evidence": [
                     {
-                      "eligibilityCriteriaEvidence": "Inclusion: Concomitant RT with TMZ treatment planned to start no later than 8 weeks from surgery",
+                      "eligibilityCriteriaEvidence": "Exclusion: Clinically significant cardiovascular disease: cerebral vascular accident/stroke , myocardial infarction , unstable angina, congestive heart failure , or the presence of any condition that can increase proarrhythmic risk including any new, unstable, or serious cardiac arrhythmia requiring medication, or other baseline arrhythmia that might interfere with interpretation of ECGs on study . Patients with QTcF \u003E450 msec for males and \u003E470 msec for females on screening ECG are excluded. Any patients with a bundle branch block will be excluded with QTcF \u003E450 msec. Males who are on stable doses of concomitant medication with known prolongation of QTcF will only be excluded for QTcF \u003E470 msec.",
                       "patientInfoEvidence": {
                         "system": "http://www.nlm.nih.gov/research/umls",
-                        "code": "C1522449",
-                        "name": "Radiotherapy",
-                        "value": "false"
+                        "code": "C4018874",
+                        "name": "Patient Gender",
+                        "value": "male"
                       },
                       "importance": 0.0
                     }
                   ],
-                  "id": "NCT04471844",
-                  "source": "clinicaltrials.gov",
-                  "value": "Ineligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "evidence": [
-                    {
-                      "eligibilityCriteriaEvidence": "Inclusion: PRE-REGISTRATION: , Past radiosurgery to other lesions is allowed.: NOTE: The surgically resected lesion cannot be the same location treated in the past with radiosurgery .",
-                      "patientInfoEvidence": {
-                        "system": "http://www.nlm.nih.gov/research/umls",
-                        "code": "C1522449",
-                        "name": "Radiotherapy",
-                        "value": "false"
-                      },
-                      "importance": 0.0
-                    }
-                  ],
-                  "id": "NCT04114981",
+                  "id": "NCT04200963",
                   "source": "clinicaltrials.gov",
                   "value": "Ineligible",
                   "confidenceScore": 0.0
@@ -407,6 +185,44 @@
                     }
                   ],
                   "id": "NCT04513717",
+                  "source": "clinicaltrials.gov",
+                  "value": "Ineligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "evidence": [
+                    {
+                      "eligibilityCriteriaEvidence": "Inclusion: Major Exclusion Criteria: Second primary malignancy that has not been in remission for greater than 3 years. Exceptions that do not require a 3-year remission: non-melanoma skin cancer, resected melanoma in situ, in situ cervical cancer, adequately treated Stage I cancer from which the subject is currently in remission and has been in remission for \u22652 years, low-risk prostate cancer with Gleason score \u003C7 and prostate-specific antigen \u003C10 ng/mL",
+                      "patientInfoEvidence": {
+                        "system": "http://www.nlm.nih.gov/research/umls",
+                        "code": "C1300072",
+                        "name": "cancer stage",
+                        "value": "2"
+                      },
+                      "importance": 0.0
+                    }
+                  ],
+                  "id": "NCT04184050",
+                  "source": "clinicaltrials.gov",
+                  "value": "Ineligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "evidence": [
+                    {
+                      "eligibilityCriteriaEvidence": "Inclusion: Concomitant RT with TMZ treatment planned to start no later than 8 weeks from surgery",
+                      "patientInfoEvidence": {
+                        "system": "http://www.nlm.nih.gov/research/umls",
+                        "code": "C1522449",
+                        "name": "Radiotherapy",
+                        "value": "false"
+                      },
+                      "importance": 0.0
+                    }
+                  ],
+                  "id": "NCT04471844",
                   "source": "clinicaltrials.gov",
                   "value": "Ineligible",
                   "confidenceScore": 0.0
@@ -444,6 +260,25 @@
                   "type": "trialEligibility",
                   "evidence": [
                     {
+                      "eligibilityCriteriaEvidence": "Inclusion: PRE-REGISTRATION: , Past radiosurgery to other lesions is allowed.: NOTE: The surgically resected lesion cannot be the same location treated in the past with radiosurgery .",
+                      "patientInfoEvidence": {
+                        "system": "http://www.nlm.nih.gov/research/umls",
+                        "code": "C1522449",
+                        "name": "Radiotherapy",
+                        "value": "false"
+                      },
+                      "importance": 0.0
+                    }
+                  ],
+                  "id": "NCT04114981",
+                  "source": "clinicaltrials.gov",
+                  "value": "Ineligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "evidence": [
+                    {
                       "eligibilityCriteriaEvidence": "Inclusion: Last dose of previous anticancer therapy \u2265 21 days, radiotherapy \u003E 21 days, or surgical intervention \u003E 21 days prior to the first dose of T3011.",
                       "patientInfoEvidence": {
                         "system": "http://www.nlm.nih.gov/research/umls",
@@ -463,138 +298,29 @@
                   "type": "trialEligibility",
                   "evidence": [
                     {
-                      "eligibilityCriteriaEvidence": "Inclusion: Major Exclusion Criteria: Second primary malignancy that has not been in remission for greater than 3 years. Exceptions that do not require a 3-year remission: non-melanoma skin cancer, resected melanoma in situ, in situ cervical cancer, adequately treated Stage I cancer from which the subject is currently in remission and has been in remission for \u22652 years, low-risk prostate cancer with Gleason score \u003C7 and prostate-specific antigen \u003C10 ng/mL",
+                      "eligibilityCriteriaEvidence": "Inclusion: Has a radiation therapy plan approved by the central radiation therapy quality assurance vendor",
                       "patientInfoEvidence": {
                         "system": "http://www.nlm.nih.gov/research/umls",
-                        "code": "C1300072",
-                        "name": "cancer stage",
-                        "value": "2"
+                        "code": "C1522449",
+                        "name": "Radiotherapy",
+                        "value": "false"
+                      },
+                      "importance": 0.0
+                    },
+                    {
+                      "eligibilityCriteriaEvidence": "Inclusion: Is able to receive SBRT and does not have an ultra-centrally located tumor",
+                      "patientInfoEvidence": {
+                        "system": "http://www.nlm.nih.gov/research/umls",
+                        "code": "C1522449",
+                        "name": "Radiotherapy",
+                        "value": "false"
                       },
                       "importance": 0.0
                     }
                   ],
-                  "id": "NCT04184050",
+                  "id": "NCT03924869",
                   "source": "clinicaltrials.gov",
                   "value": "Ineligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT05590377",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT05514054",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT04093596",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT05288166",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT04267848",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT04649112",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT03674567",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT03377491",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT04975308",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT02343042",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT04875286",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT04476797",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT04123366",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT04367311",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT04165083",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT03767348",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
-                  "confidenceScore": 0.0
-                },
-                {
-                  "type": "trialEligibility",
-                  "id": "NCT04165070",
-                  "source": "clinicaltrials.gov",
-                  "value": "Eligible",
                   "confidenceScore": 0.0
                 },
                 {
@@ -606,7 +332,7 @@
                 },
                 {
                   "type": "trialEligibility",
-                  "id": "NCT04165798",
+                  "id": "NCT04619004",
                   "source": "clinicaltrials.gov",
                   "value": "Eligible",
                   "confidenceScore": 0.0
@@ -620,7 +346,56 @@
                 },
                 {
                   "type": "trialEligibility",
-                  "id": "NCT02201992",
+                  "id": "NCT03377491",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT05514054",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT05590377",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT02343042",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT04267848",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT04875286",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT04367311",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT04123366",
                   "source": "clinicaltrials.gov",
                   "value": "Eligible",
                   "confidenceScore": 0.0
@@ -634,7 +409,77 @@
                 },
                 {
                   "type": "trialEligibility",
-                  "id": "NCT04619004",
+                  "id": "NCT04165070",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT04649112",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT04476797",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT04975308",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT02201992",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT04165798",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT05288166",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT04093596",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT03767348",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT04165083",
+                  "source": "clinicaltrials.gov",
+                  "value": "Eligible",
+                  "confidenceScore": 0.0
+                },
+                {
+                  "type": "trialEligibility",
+                  "id": "NCT03674567",
                   "source": "clinicaltrials.gov",
                   "value": "Eligible",
                   "confidenceScore": 0.0
@@ -706,10 +551,10 @@
           "modelVersion": "2023.130.1.0",
           "knowledgeGraphLastUpdateDate": "01/11/2023"
         },
-        "jobId": "dfd9f89b-89ba-49e1-bc06-a1944cb8cde1",
-        "createdDateTime": "2023-02-14T14:41:15Z",
-        "expirationDateTime": "2023-02-15T14:41:15Z",
-        "lastUpdateDateTime": "2023-02-14T14:41:20Z",
+        "jobId": "2c6dc9a9-8c8e-4225-9fad-021504e1db5a",
+        "createdDateTime": "2023-02-14T14:49:03Z",
+        "expirationDateTime": "2023-02-15T14:49:03Z",
+        "lastUpdateDateTime": "2023-02-14T14:49:03Z",
         "status": "succeeded"
       }
     }

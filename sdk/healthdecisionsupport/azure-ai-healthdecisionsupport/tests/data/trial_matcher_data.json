@@ -26,7 +26,7 @@
     },
     "patients": [
         {
-            "id": "Albus",
+            "id": "patient1",
             "info": {
                 "gender": "male",
                 "birthDate": "1961-04-25T09:54:29.5210127+00:00",
